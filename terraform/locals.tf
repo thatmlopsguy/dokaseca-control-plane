@@ -19,10 +19,51 @@ locals {
     enable_ingress_nginx                   = try(var.addons.enable_ingress_nginx, false)
     enable_keda                            = try(var.addons.enable_keda, false)
     enable_kyverno                         = try(var.addons.enable_kyverno, false)
+    enable_kyverno_policies                = try(var.addons.enable_kyverno_policies, false)
     enable_kube_prometheus_stack           = try(var.addons.enable_kube_prometheus_stack, false)
     enable_metrics_server                  = try(var.addons.enable_metrics_server, false)
     enable_prometheus_adapter              = try(var.addons.enable_prometheus_adapter, false)
     enable_dapr                            = try(var.addons.enable_dapr, false)
+    enable_trivy                           = try(var.addons.enable_trivy, false)
+    enable_grafana_operator                = try(var.addons.enable_grafana_operator, false)
+    enable_alloy                           = try(var.addons.enable_alloy, false)
+    enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
+    enable_cloudnative_pg = try(var.addons.enable_cloudnative_pg, false)
+    enable_connaisseur = try(var.addons.enable_connaisseur, false)
+    # enable_cortex
+    # enable_crossplane
+    # enable_devlake
+    # enable_flagsmith
+    # enable_istio
+    # enable_kiali
+    # enable_jaeger
+    # enable_kargo
+    # enable_kepler
+    # enable_keptn
+    # enable_loki
+    # enable_promtail
+    # enable_fluentbit
+    # enable_fluentd
+    # enable_metallb
+    # enable_minio
+    # enable_open_feature
+    # enable_opentelemetry_operator
+    # enable_opencost
+    # enable_openfunction
+    # enable_pyroscope
+    # enable_polaris
+    # enable_pyrra
+    # enable_reloader
+    # enable_sealed_secrets
+    # enable_sloth
+    # enable_strimzi
+    # enable_tempo
+    # enable_thanos
+    # enable_traefik
+    # enable_vault
+    # enable_vcluster
+    # enable_vector
+    # enable_zipkin
   }
   addons = merge(
     local.oss_addons,

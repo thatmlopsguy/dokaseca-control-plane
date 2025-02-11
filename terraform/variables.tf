@@ -23,7 +23,9 @@ variable "addons" {
     enable_velero                                = true
     enable_kube_prometheus_stack                 = true
     enable_metrics_server                        = true
+    enable_keda                                  = true
     enable_dapr                                  = true
+    enable_trivy                                 = true
     # you can add any addon here, make sure to update the gitops repo with the corresponding application set
     enable_foo                                   = true
   }
