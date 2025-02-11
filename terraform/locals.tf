@@ -11,59 +11,60 @@ locals {
   gitops_addons_revision = var.gitops_addons_revision
 
   oss_addons = {
-    enable_argo_cd                         = try(var.addons.enable_argo_cd, true)
-    enable_argo_rollouts                   = try(var.addons.enable_argo_rollouts, false)
-    enable_argo_events                     = try(var.addons.enable_argo_events, false)
-    enable_argo_workflows                  = try(var.addons.enable_argo_workflows, false)
-    enable_external_secrets                = try(var.addons.enable_external_secrets, false)
-    enable_ingress_nginx                   = try(var.addons.enable_ingress_nginx, false)
-    enable_keda                            = try(var.addons.enable_keda, false)
-    enable_kyverno                         = try(var.addons.enable_kyverno, false)
-    enable_kyverno_policies                = try(var.addons.enable_kyverno_policies, false)
-    enable_kube_prometheus_stack           = try(var.addons.enable_kube_prometheus_stack, false)
-    enable_metrics_server                  = try(var.addons.enable_metrics_server, false)
-    enable_prometheus_adapter              = try(var.addons.enable_prometheus_adapter, false)
-    enable_dapr                            = try(var.addons.enable_dapr, false)
-    enable_trivy                           = try(var.addons.enable_trivy, false)
-    enable_grafana_operator                = try(var.addons.enable_grafana_operator, false)
-    enable_alloy                           = try(var.addons.enable_alloy, false)
-    enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
-    enable_cloudnative_pg = try(var.addons.enable_cloudnative_pg, false)
-    enable_connaisseur = try(var.addons.enable_connaisseur, false)
-    # enable_cortex
-    # enable_crossplane
-    # enable_devlake
-    # enable_flagsmith
-    # enable_istio
-    # enable_kiali
-    # enable_jaeger
-    # enable_kargo
-    # enable_kepler
-    # enable_keptn
-    # enable_loki
-    # enable_promtail
-    # enable_fluentbit
-    # enable_fluentd
-    # enable_metallb
-    # enable_minio
-    # enable_open_feature
-    # enable_opentelemetry_operator
-    # enable_opencost
-    # enable_openfunction
-    # enable_pyroscope
-    # enable_polaris
-    # enable_pyrra
-    # enable_reloader
-    # enable_sealed_secrets
-    # enable_sloth
-    # enable_strimzi
-    # enable_tempo
-    # enable_thanos
-    # enable_traefik
-    # enable_vault
-    # enable_vcluster
-    # enable_vector
-    # enable_zipkin
+    enable_argo_cd                = try(var.addons.enable_argo_cd, true)
+    enable_argo_cd_image_updater  = try(var.addons.enable_argo_cd_image_updater, true)
+    enable_argo_rollouts          = try(var.addons.enable_argo_rollouts, false)
+    enable_argo_events            = try(var.addons.enable_argo_events, false)
+    enable_argo_workflows         = try(var.addons.enable_argo_workflows, false)
+    enable_external_secrets       = try(var.addons.enable_external_secrets, false)
+    enable_ingress_nginx          = try(var.addons.enable_ingress_nginx, false)
+    enable_keda                   = try(var.addons.enable_keda, false)
+    enable_kyverno                = try(var.addons.enable_kyverno, false)
+    enable_kyverno_policies       = try(var.addons.enable_kyverno_policies, false)
+    enable_kube_prometheus_stack  = try(var.addons.enable_kube_prometheus_stack, false)
+    enable_metrics_server         = try(var.addons.enable_metrics_server, false)
+    enable_prometheus_adapter     = try(var.addons.enable_prometheus_adapter, false)
+    enable_dapr                   = try(var.addons.enable_dapr, false)
+    enable_trivy                  = try(var.addons.enable_trivy, false)
+    enable_grafana_operator       = try(var.addons.enable_grafana_operator, false)
+    enable_alloy                  = try(var.addons.enable_alloy, false)
+    enable_chaos_mesh             = try(var.addons.enable_chaos_mesh, false)
+    enable_cloudnative_pg         = try(var.addons.enable_cloudnative_pg, false)
+    enable_connaisseur            = try(var.addons.enable_connaisseur, false)
+    enable_cortex                 = try(var.addons.enable_cortex, false)
+    enable_crossplane             = try(var.addons.enable_crossplane, false)
+    enable_devlake                = try(var.addons.enable_devlake, false)
+    enable_flagsmith              = try(var.addons.enable_flagsmith, false)
+    enable_istio                  = try(var.addons.enable_istio, false)
+    enable_kiali                  = try(var.addons.enable_kiali, false)
+    enable_jaeger                 = try(var.addons.enable_jaeger, false)
+    enable_kargo                  = try(var.addons.enable_kargo, false)
+    enable_kepler                 = try(var.addons.enable_kepler, false)
+    enable_keptn                  = try(var.addons.enable_keptn, false)
+    enable_loki                   = try(var.addons.enable_loki, false)
+    enable_promtail               = try(var.addons.enable_promtail, false)
+    enable_fluentbit              = try(var.addons.enable_fluentbit, false)
+    enable_fluentd                = try(var.addons.enable_fluentd, false)
+    enable_metallb                = try(var.addons.enable_metallb, false)
+    enable_minio                  = try(var.addons.enable_minio, false)
+    enable_open_feature           = try(var.addons.enable_open_feature, false)
+    enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
+    enable_opencost               = try(var.addons.enable_opencost, false)
+    enable_openfunction           = try(var.addons.enable_openfunction, false)
+    enable_pyroscope              = try(var.addons.enable_pyroscope, false)
+    enable_polaris                = try(var.addons.enable_polaris, false)
+    enable_pyrra                  = try(var.addons.enable_pyrra, false)
+    enable_reloader               = try(var.addons.enable_reloader, false)
+    enable_sealed_secrets         = try(var.addons.enable_sealed_secrets, false)
+    enable_sloth                  = try(var.addons.enable_sloth, false)
+    enable_strimzi                = try(var.addons.enable_strimzi, false)
+    enable_tempo                  = try(var.addons.enable_tempo, false)
+    enable_thanos                 = try(var.addons.enable_thanos, false)
+    enable_traefik                = try(var.addons.enable_traefik, false)
+    enable_vault                  = try(var.addons.enable_vault, false)
+    enable_vcluster               = try(var.addons.enable_vcluster, false)
+    enable_vector                 = try(var.addons.enable_vector, false)
+    enable_zipkin                 = try(var.addons.enable_zipkin, false)
   }
   addons = merge(
     local.oss_addons,
@@ -81,7 +82,7 @@ locals {
   )
 
   argocd_apps = {
-    addons    = file("${path.module}/bootstrap/addons.yaml")
+    addons = file("${path.module}/bootstrap/addons.yaml")
     # workloads = file("${path.module}/bootstrap/workloads.yaml")
   }
 

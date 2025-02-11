@@ -14,20 +14,21 @@ variable "addons" {
   description = "Kubernetes addons"
   type        = any
   default = {
-    enable_argo_cd                               = true
-    enable_argo_rollouts                         = true
-    enable_argo_workflows                        = true
-    enable_argo_events                           = false
-    enable_cert_manager                          = true
-    enable_external_secrets                      = true
-    enable_velero                                = true
-    enable_kube_prometheus_stack                 = true
-    enable_metrics_server                        = true
-    enable_keda                                  = true
-    enable_dapr                                  = true
-    enable_trivy                                 = true
+    enable_argo_cd               = true
+    enable_argo_cd_image_updater = true
+    enable_argo_rollouts         = true
+    enable_argo_workflows        = true
+    enable_argo_events           = false
+    enable_cert_manager          = true
+    enable_external_secrets      = true
+    enable_velero                = true
+    enable_kube_prometheus_stack = true
+    enable_metrics_server        = true
+    enable_keda                  = true
+    enable_dapr                  = true
+    enable_trivy                 = true
     # you can add any addon here, make sure to update the gitops repo with the corresponding application set
-    enable_foo                                   = true
+    enable_foo = true
   }
 }
 

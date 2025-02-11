@@ -1,0 +1,8 @@
+{
+    "[terraform]": {
+        "editor.formatOnSave": true
+    },
+    "cSpell.words": [
+        "metallb"
+    ]
+}
