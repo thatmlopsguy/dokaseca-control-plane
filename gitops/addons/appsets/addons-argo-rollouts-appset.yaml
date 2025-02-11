@@ -37,7 +37,7 @@ spec:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
     spec:
-      project: default
+      project: infrastructure
       sources:
         - repoURL: '{{metadata.annotations.addons_repo_url}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
