@@ -11,18 +11,18 @@ locals {
   gitops_addons_revision = var.gitops_addons_revision
 
   oss_addons = {
-    enable_argocd                          = try(var.addons.enable_argocd, true)
+    enable_argo_cd                         = try(var.addons.enable_argo_cd, true)
     enable_argo_rollouts                   = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events                     = try(var.addons.enable_argo_events, false)
     enable_argo_workflows                  = try(var.addons.enable_argo_workflows, false)
-    enable_gatekeeper                      = try(var.addons.enable_gatekeeper, false)
-    enable_gpu_operator                    = try(var.addons.enable_gpu_operator, false)
+    enable_external_secrets                = try(var.addons.enable_external_secrets, false)
     enable_ingress_nginx                   = try(var.addons.enable_ingress_nginx, false)
     enable_keda                            = try(var.addons.enable_keda, false)
     enable_kyverno                         = try(var.addons.enable_kyverno, false)
     enable_kube_prometheus_stack           = try(var.addons.enable_kube_prometheus_stack, false)
     enable_metrics_server                  = try(var.addons.enable_metrics_server, false)
     enable_prometheus_adapter              = try(var.addons.enable_prometheus_adapter, false)
+    enable_dapr                            = try(var.addons.enable_dapr, false)
   }
   addons = merge(
     local.oss_addons,
