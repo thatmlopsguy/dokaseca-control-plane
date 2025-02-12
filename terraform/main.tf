@@ -31,7 +31,7 @@ resource "kind_cluster" "main" {
 }
 
 module "gitops_bridge_bootstrap" {
-  source = "gitops-bridge-dev/gitops-bridge/helm"
+  source = "git::https://github.com/gitops-bridge-dev/terraform-helm-gitops-bridge?ref=33c09eb68af1ee673040bde58c3188383c46c288"
 
   count = var.enable_gitops_bridge ? 1 : 0
 
