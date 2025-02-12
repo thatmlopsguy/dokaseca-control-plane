@@ -12,3 +12,8 @@ repos:
     hooks:
       - id: checkov
         name: checkov
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.2.1
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
