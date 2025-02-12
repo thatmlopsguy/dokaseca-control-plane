@@ -13,7 +13,6 @@ spec:
           - clusters:
               values:
                 addonChart: argo-rollouts
-                # anything not staging or prod use this version
                 addonChartVersion: 2.39.0
                 addonChartRepository: https://argoproj.github.io/argo-helm
               selector:

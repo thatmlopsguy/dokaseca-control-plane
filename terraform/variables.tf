@@ -10,6 +10,12 @@ variable "kubernetes_version" {
   default     = "v1.31.2"
 }
 
+variable "enable_gitops_bridge" {
+  description = "Enable gitops bridge"
+  type        = bool
+  default     = true
+}
+
 variable "addons" {
   description = "Kubernetes addons"
   type        = any

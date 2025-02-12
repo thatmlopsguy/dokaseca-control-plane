@@ -1,5 +1,6 @@
 cluster_name           = "main"
 kubernetes_version     = "1.31.2"
+enable_gitops_bridge   = true
 gitops_addons_org      = "https://github.com/thatmlopsguy"
 gitops_addons_repo     = "k8s-homelab"
 gitops_addons_basepath = "gitops"
