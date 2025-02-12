@@ -3,6 +3,8 @@
         "editor.formatOnSave": true
     },
     "cSpell.words": [
-        "metallb"
+        "metallb",
+        "openfunction",
+        "traefik"
     ]
 }
