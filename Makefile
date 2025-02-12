@@ -9,7 +9,7 @@ help: ## Show this help
 terraform-init: ## Initialize terraform modules
 	@cd terraform && terraform init
 
-terraform-apply: ## Create infra
+terraform-apply: terraform-init ## Create infra
 	@cd terraform && terraform apply -auto-approve
 
 terraform-destroy: ## Destroy infra
