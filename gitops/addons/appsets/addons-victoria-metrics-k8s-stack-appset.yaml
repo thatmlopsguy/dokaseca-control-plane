@@ -60,3 +60,17 @@ spec:
         syncOptions:
           - CreateNamespace=true
           - ServerSideApply=true # Big CRDs.
+      # https://docs.victoriametrics.com/helm/victoriametrics-operator/
+          - RespectIgnoreDifferences=true
+      ignoreDifferences:
+        - group: ""
+          kind: Secret
+          name: <fullname>-validation
+          namespace: <operator-namespace>
+          jsonPointers:
+            - /data
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          name: <fullname>-admission
+          jqPathExpressions:
+          - '.webhooks[]?.clientConfig.caBundle'
