@@ -21,3 +21,19 @@ argo-cd-ui: ## Access argocd ui
 
 argo-cd-password: ## Get argocd password
 	@kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+##@ Observability (metrics, traces, logs)
+grafana-vm-ui: ## Access grafana ui
+	@kubectl port-forward svc/victoria-metrics-k8s-stack-grafana -n monitoring 3000:80
+
+grafana-vm-password: ## Get grafana password
+	@kubectl get secret -n monitoring victoria-metrics-k8s-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode; echo
+
+vm-ui: ## Access victoria metrics ui
+	@kubectl port-forward svc/vmsingle-victoria-metrics-k8s-stack -n monitoring 8429:8429
+
+alertmanager-vm-ui: ## Access alertmanager ui
+	@kubectl port-forward svc/vmalertmanager-victoria-metrics-k8s-stack -n monitoring 9093:9093
+
+vmalert-ui: ## Access vmalert ui
+	@kubectl port-forward svc/vmalert-victoria-metrics-k8s-stack -n monitoring 8081:8080
