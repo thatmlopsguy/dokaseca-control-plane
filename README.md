@@ -49,3 +49,4 @@ You can inspect the deployed clusters by typing:
 ```sh
 $ kind get clusters
 main
+```
