@@ -17,6 +17,7 @@ locals {
     enable_argo_events                = try(var.addons.enable_argo_events, false)
     enable_argo_workflows             = try(var.addons.enable_argo_workflows, false)
     enable_external_secrets           = try(var.addons.enable_external_secrets, false)
+    enable_cert_manager               = try(var.addons.enable_cert_manager, false)
     enable_ingress_nginx              = try(var.addons.enable_ingress_nginx, false)
     enable_keda                       = try(var.addons.enable_keda, false)
     enable_kyverno                    = try(var.addons.enable_kyverno, false)
