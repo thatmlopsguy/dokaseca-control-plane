@@ -1,0 +1,39 @@
+site_name: Kubernetes homelab
+site_description: A kubernetes homelab to test some applications
+
+# Repository
+repo_url: https://github.com/thatmlopsguy/k8s-homelab
+repo_name: k8s-homelab
+
+# Navigation
+nav:
+  - Introduction: index.md
+
+# Configuration
+theme:
+  name: "material"
+  locale: en
+  font: false
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: amber
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+markdown_extensions:
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      check_paths: true

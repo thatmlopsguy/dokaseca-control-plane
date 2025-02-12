@@ -1,0 +1,24 @@
+cluster_name           = "main"
+kubernetes_version     = "1.31.2"
+enable_gitops_bridge   = true
+gitops_addons_org      = "https://github.com/thatmlopsguy"
+gitops_addons_repo     = "k8s-homelab"
+gitops_addons_basepath = "gitops"
+gitops_addons_path     = "addons"
+gitops_addons_revision = "dev"
+addons = {
+  enable_argo_cd                    = true
+  enable_argo_cd_image_updater      = false
+  enable_argo_rollouts              = false
+  enable_argo_workflows             = false
+  enable_argo_events                = false
+  enable_cert_manager               = true
+  enable_external_secrets           = false
+  enable_velero                     = false
+  enable_kube_prometheus_stack      = false
+  enable_metrics_server             = false
+  enable_keda                       = false
+  enable_dapr                       = false
+  enable_trivy                      = false
+  enable_victoria_metrics_k8s_stack = true
+}

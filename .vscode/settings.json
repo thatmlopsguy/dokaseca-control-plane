@@ -1,0 +1,14 @@
+{
+    "[terraform]": {
+        "editor.formatOnSave": true
+    },
+    "cSpell.words": [
+        "admissionregistration",
+        "crds",
+        "homelab",
+        "metallb",
+        "openfunction",
+        "traefik",
+        "vmalert"
+    ]
+}
