@@ -14,7 +14,7 @@ spec:
               values:
                 addonChart: kro
                 addonChartVersion: 0.2.1
-                addonChartRepository: ghcr.io/kro-run/kro/kro
+                addonChartRepository: ghcr.io/kro-run/kro
               selector:
                 matchExpressions:
                   - key: enable_kro
@@ -58,4 +58,3 @@ spec:
         automated: {}
         syncOptions:
           - CreateNamespace=true
-          - ServerSideApply=true # Big CRDs.
