@@ -14,7 +14,7 @@ spec:
               values:
                 addonChart: kro
                 addonChartVersion: 0.2.1
-                addonChartRepository: oci://ghcr.io/kro-run/kro/kro
+                addonChartRepository: ghcr.io/kro-run/kro/kro
               selector:
                 matchExpressions:
                   - key: enable_kro
