@@ -16,6 +16,12 @@ variable "enable_gitops_bridge" {
   default     = true
 }
 
+variable "argocd_chart_version" {
+  description = "Argocd helm chart version"
+  type        = string
+  default     = "7.8.2"
+}
+
 variable "addons" {
   description = "Kubernetes addons"
   type        = any
@@ -33,8 +39,7 @@ variable "addons" {
     enable_keda                  = true
     enable_dapr                  = true
     enable_trivy                 = true
-    # you can add any addon here, make sure to update the gitops repo with the corresponding application set
-    enable_foo = true
+    enable_kro                   = false
   }
 }
 
@@ -67,4 +72,66 @@ variable "gitops_addons_path" {
   description = "Git repository path for addons"
   type        = string
   default     = "addons"
+}
+
+# Workloads Git
+variable "gitops_workload_org" {
+  description = "Git repository org/user contains for workload"
+  type        = string
+  default     = "https://github.com/gitops-bridge-dev"
+}
+
+variable "gitops_workload_repo" {
+  description = "Git repository contains for workload"
+  type        = string
+  default     = "gitops-bridge"
+}
+
+variable "gitops_workload_revision" {
+  description = "Git repository revision/branch/ref for workload"
+  type        = string
+  default     = "main"
+}
+
+variable "gitops_workload_basepath" {
+  description = "Git repository base path for workload"
+  type        = string
+  default     = "argocd/iac/terraform/examples/eks/"
+}
+
+variable "gitops_workload_path" {
+  description = "Git repository path for workload"
+  type        = string
+  default     = "karpenter/k8s"
+}
+
+# Clusters Git
+variable "gitops_cluster_org" {
+  description = "Git repository org/user contains for clusters"
+  type        = string
+  default     = "https://github.com/gitops-bridge-dev"
+}
+
+variable "gitops_cluster_repo" {
+  description = "Git repository contains for clusters"
+  type        = string
+  default     = "gitops-bridge"
+}
+
+variable "gitops_cluster_revision" {
+  description = "Git repository revision/branch/ref for clusters"
+  type        = string
+  default     = "main"
+}
+
+variable "gitops_cluster_basepath" {
+  description = "Git repository base path for clusters"
+  type        = string
+  default     = "argocd/iac/terraform/examples/eks/"
+}
+
+variable "gitops_cluster_path" {
+  description = "Git repository path for clusters"
+  type        = string
+  default     = "karpenter/k8s"
 }

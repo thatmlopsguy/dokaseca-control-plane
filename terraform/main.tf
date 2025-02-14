@@ -41,8 +41,37 @@ module "gitops_bridge_bootstrap" {
     metadata     = local.addons_metadata
     addons       = local.addons
   }
+
+  argocd = {
+    chart         = "argo-cd"
+    chart_version = var.argocd_chart_version
+
+    values = [local.argocd_helm_values]
+  }
+
   apps = local.argocd_apps
 
-
   depends_on = [kind_cluster.main]
+}
+
+
+resource "kubernetes_secret" "kro_helm_oci" {
+  count = var.addons.enable_kro ? 1 : 0
+
+  metadata {
+    name      = "kro-helm-oci"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    url       = "ghcr.io/kro-run/kro/kro"
+    name      = "kro"
+    type      = "helm"
+    enableOCI = "true"
+  }
+
+  depends_on = [module.gitops_bridge_bootstrap]
 }

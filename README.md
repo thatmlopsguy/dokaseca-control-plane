@@ -5,6 +5,7 @@ My kubernetes homelab to test some applications.
 ## Prerequisite
 
 * [Docker](https://www.docker.com/)
+* [Terraform](https://www.terraform.io/)
 * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/)
@@ -41,12 +42,68 @@ The following command with create a kind cluster.
 make terraform-apply
 ```
 
-If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
-installed and all the enabled addons.
-
 You can inspect the deployed clusters by typing:
 
 ```sh
 $ kind get clusters
 main
+```
+
+If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
+installed and all the enabled addons. You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.
+The annotations contain metadata for the addons' Helm charts and ArgoCD ApplicationSets.
+
+```sh
+kubectl get secret -n argocd -l argocd.argoproj.io/secret-type=cluster -o json | jq '.items[0].metadata.annotations'
+```
+
+The output looks like the following:
+
+```json
+{
+  "addons_repo_basepath": "gitops",
+  "addons_repo_path": "addons",
+  "addons_repo_revision": "dev",
+  "addons_repo_url": "https://github.com/thatmlopsguy/k8s-homelab",
+  "cluster_name": "main",
+  "environment": "prod"
+}
+```
+
+The labels offer a straightforward way to enable or disable an addon in ArgoCD for the cluster.
+
+```sh
+kubectl get secret -n argocd -l argocd.argoproj.io/secret-type=cluster -o json | jq '.items[0].metadata.labels'
+```
+
+The output looks like the following:
+
+```json
+{
+  "argocd.argoproj.io/secret-type": "cluster",
+  "cluster_name": "main",
+  "enable_alloy": "false",
+  "enable_argo_cd": "true",
+  "enable_argo_cd_image_updater": "false",
+  "enable_argo_events": "false",
+  "enable_argo_rollouts": "false",
+  "enable_argo_workflows": "false",
+  "enable_trivy": "false",
+  "enable_vault": "false",
+  "enable_vcluster": "false",
+  "enable_vector": "false",
+  "enable_victoria_metrics_k8s_stack": "true",
+  "enable_zipkin": "false",
+  "environment": "prod",
+  "k8s_cluster_name": "main",
+  "kubernetes_version": "1.31.2"
+}
+```
+
+## Destroy kind Cluster
+
+To tear down all the resources and the kind cluster, run the following command:
+
+```sh
+make terraform-destroy
 ```

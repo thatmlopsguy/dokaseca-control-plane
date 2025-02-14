@@ -1,6 +1,6 @@
 locals {
   name        = "ex-${replace(basename(path.cwd), "_", "-")}"
-  environment = "prod"
+  environment = "dev"
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
@@ -9,6 +9,16 @@ locals {
   gitops_addons_basepath = var.gitops_addons_basepath
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
+
+  gitops_workload_url      = "${var.gitops_workload_org}/${var.gitops_workload_repo}"
+  gitops_workload_basepath = var.gitops_workload_basepath
+  gitops_workload_path     = var.gitops_workload_path
+  gitops_workload_revision = var.gitops_workload_revision
+
+  gitops_cluster_url      = "${var.gitops_cluster_org}/${var.gitops_cluster_repo}"
+  gitops_cluster_basepath = var.gitops_cluster_basepath
+  gitops_cluster_path     = var.gitops_cluster_path
+  gitops_cluster_revision = var.gitops_cluster_revision
 
   oss_addons = {
     enable_argo_cd                    = try(var.addons.enable_argo_cd, true)
@@ -43,6 +53,7 @@ locals {
     enable_kepler                     = try(var.addons.enable_kepler, false)
     enable_keptn                      = try(var.addons.enable_keptn, false)
     enable_loki                       = try(var.addons.enable_loki, false)
+    enable_litmus                     = try(var.addons.enable_litmus, false)
     enable_promtail                   = try(var.addons.enable_promtail, false)
     enable_fluentbit                  = try(var.addons.enable_fluentbit, false)
     enable_fluentd                    = try(var.addons.enable_fluentd, false)
@@ -69,6 +80,7 @@ locals {
     enable_headlamp                   = try(var.addons.enable_headlamp, false)
     enable_logging_operator           = try(var.addons.enable_logging_operator, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
+    enable_kro                        = try(var.addons.enable_kro, false)
   }
   addons = merge(
     local.oss_addons,
@@ -82,12 +94,32 @@ locals {
       addons_repo_basepath = local.gitops_addons_basepath
       addons_repo_path     = local.gitops_addons_path
       addons_repo_revision = local.gitops_addons_revision
+    },
+    {
+      workload_repo_url      = local.gitops_workload_url
+      workload_repo_basepath = local.gitops_workload_basepath
+      workload_repo_path     = local.gitops_workload_path
+      workload_repo_revision = local.gitops_workload_revision
+    },
+    {
+      cluster_repo_url      = local.gitops_cluster_url
+      cluster_repo_basepath = local.gitops_cluster_basepath
+      cluster_repo_path     = local.gitops_cluster_path
+      cluster_repo_revision = local.gitops_cluster_revision
     }
   )
 
+  argocd_helm_values = <<-EOT
+    dex:
+      enabled: false
+    notifications:
+      enabled: false
+    EOT
+
   argocd_apps = {
-    addons = file("${path.module}/bootstrap/addons.yaml")
-    # workloads = file("${path.module}/bootstrap/workloads.yaml")
+    addons    = file("${path.module}/bootstrap/addons.yaml")
+    workloads = file("${path.module}/bootstrap/workloads.yaml")
+    clusters  = file("${path.module}/bootstrap/clusters.yaml")
   }
 
   tags = {

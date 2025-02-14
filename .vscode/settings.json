@@ -1,6 +1,7 @@
 {
     "[terraform]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "hashicorp.terraform"
     },
     "cSpell.words": [
         "admissionregistration",
@@ -20,5 +21,6 @@
         "**/Thumbs.db": true,
         "**/terraform.tfstate*": true,
         "**/.terraform.lock.hcl": true
-    }
+    },
+    "editor.formatOnSave": true,
 }

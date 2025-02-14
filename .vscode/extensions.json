@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "ms-kubernetes-tools.kind-vscode"
+        "ms-kubernetes-tools.kind-vscode",
+        "hashicorp.terraform"
     ]
 }
