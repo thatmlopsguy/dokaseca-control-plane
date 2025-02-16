@@ -24,6 +24,7 @@ addons = {
   enable_victoria_metrics_k8s_stack = false
   enable_kro                        = false
   enable_capi_operator              = true
+  enable_cilium                     = false
 }
 gitops_workload_org      = "https://github.com/thatmlopsguy"
 gitops_workload_repo     = "k8s-homelab"

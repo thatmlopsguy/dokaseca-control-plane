@@ -10,6 +10,12 @@ resource "kind_cluster" "main" {
     node {
       role = "control-plane"
 
+      #
+      extra_mounts {
+        host_path      = "/var/run/docker.sock"
+        container_path = "/var/run/docker.sock"
+      }
+
       kubeadm_config_patches = [
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
       ]
@@ -18,6 +24,7 @@ resource "kind_cluster" "main" {
         container_port = 80
         host_port      = 80
       }
+
       extra_port_mappings {
         container_port = 443
         host_port      = 443
