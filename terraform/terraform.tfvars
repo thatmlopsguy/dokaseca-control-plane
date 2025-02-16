@@ -22,7 +22,8 @@ addons = {
   enable_dapr                       = false
   enable_trivy                      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_kro                        = true
+  enable_kro                        = false
+  enable_capi_operator              = true
 }
 gitops_workload_org      = "https://github.com/thatmlopsguy"
 gitops_workload_repo     = "k8s-homelab"

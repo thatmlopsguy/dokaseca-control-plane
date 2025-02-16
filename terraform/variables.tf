@@ -40,6 +40,7 @@ variable "addons" {
     enable_dapr                  = true
     enable_trivy                 = true
     enable_kro                   = false
+    enable_capi_operator         = true # requires enable_cert_manager
   }
 }
 

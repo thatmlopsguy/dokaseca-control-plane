@@ -81,6 +81,7 @@ locals {
     enable_logging_operator           = try(var.addons.enable_logging_operator, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
     enable_kro                        = try(var.addons.enable_kro, false)
+    enable_capi_operator              = try(var.addons.enable_capi_operator, false)
   }
   addons = merge(
     local.oss_addons,
