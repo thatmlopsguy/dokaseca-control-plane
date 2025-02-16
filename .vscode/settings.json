@@ -20,7 +20,7 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/Thumbs.db": true,
-        "**/terraform.tfstate*": true,
+        "**/terraform.tfstate*": false,
         "**/.terraform.lock.hcl": true
     },
     "editor.formatOnSave": true,

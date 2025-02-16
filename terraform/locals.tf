@@ -84,6 +84,7 @@ locals {
     enable_capi_operator              = try(var.addons.enable_capi_operator, false)
     enable_cilium                     = try(var.addons.enable_cilium, false)
     enable_metallb                    = try(var.addons.enable_metallb, false)
+    enable_ingress_nginx              = try(var.addons.enable_ingress_nginx, false)
   }
   addons = merge(
     local.oss_addons,
