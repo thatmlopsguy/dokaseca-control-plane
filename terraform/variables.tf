@@ -42,6 +42,7 @@ variable "addons" {
     enable_kro                   = false
     enable_capi_operator         = true # requires enable_cert_manager
     enable_cilium                = false
+    enable_metallb               = false
   }
 }
 

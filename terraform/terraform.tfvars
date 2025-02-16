@@ -25,6 +25,7 @@ addons = {
   enable_kro                        = false
   enable_capi_operator              = true
   enable_cilium                     = false
+  enable_metallb                    = false
 }
 gitops_workload_org      = "https://github.com/thatmlopsguy"
 gitops_workload_repo     = "k8s-homelab"

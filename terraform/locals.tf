@@ -83,6 +83,7 @@ locals {
     enable_kro                        = try(var.addons.enable_kro, false)
     enable_capi_operator              = try(var.addons.enable_capi_operator, false)
     enable_cilium                     = try(var.addons.enable_cilium, false)
+    enable_metallb                    = try(var.addons.enable_metallb, false)
   }
   addons = merge(
     local.oss_addons,
