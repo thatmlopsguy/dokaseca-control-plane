@@ -10,6 +10,10 @@ locals {
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
 
+  gitops_resources_url      = "${var.gitops_resources_org}/${var.gitops_resources_repo}"
+  gitops_resources_basepath = var.gitops_resources_basepath
+  gitops_resources_revision = var.gitops_resources_revision
+
   gitops_workload_url      = "${var.gitops_workload_org}/${var.gitops_workload_repo}"
   gitops_workload_basepath = var.gitops_workload_basepath
   gitops_workload_path     = var.gitops_workload_path
@@ -98,6 +102,11 @@ locals {
       addons_repo_basepath = local.gitops_addons_basepath
       addons_repo_path     = local.gitops_addons_path
       addons_repo_revision = local.gitops_addons_revision
+    },
+    {
+      resources_repo_url      = local.gitops_resources_url
+      resources_repo_basepath = local.gitops_resources_basepath
+      resources_repo_revision = local.gitops_resources_revision
     },
     {
       workload_repo_url      = local.gitops_workload_url

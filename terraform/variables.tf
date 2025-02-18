@@ -72,10 +72,29 @@ variable "gitops_addons_basepath" {
   default     = "gitops"
 }
 
-variable "gitops_addons_path" {
-  description = "Git repository path for addons"
+# Addon Resources Git
+variable "gitops_resources_org" {
+  description = "Git repository org/user contains for addon resources"
   type        = string
-  default     = "addons"
+  default     = "https://github.com/gitops-bridge-dev"
+}
+
+variable "gitops_resources_repo" {
+  description = "Git repository contains for addon resources"
+  type        = string
+  default     = "gitops-bridge-argocd-control-plane-template"
+}
+
+variable "gitops_resources_basepath" {
+  description = "Git repository base path for addon resources"
+  type        = string
+  default     = "gitops"
+}
+
+variable "gitops_resources_revision" {
+  description = "Git repository revision/branch/ref for addon resources"
+  type        = string
+  default     = "main"
 }
 
 # Workloads Git
@@ -91,12 +110,6 @@ variable "gitops_workload_repo" {
   default     = "gitops-bridge"
 }
 
-variable "gitops_workload_revision" {
-  description = "Git repository revision/branch/ref for workload"
-  type        = string
-  default     = "main"
-}
-
 variable "gitops_workload_basepath" {
   description = "Git repository base path for workload"
   type        = string
@@ -107,6 +120,12 @@ variable "gitops_workload_path" {
   description = "Git repository path for workload"
   type        = string
   default     = "karpenter/k8s"
+}
+
+variable "gitops_workload_revision" {
+  description = "Git repository revision/branch/ref for workload"
+  type        = string
+  default     = "main"
 }
 
 # Clusters Git
@@ -122,12 +141,6 @@ variable "gitops_cluster_repo" {
   default     = "gitops-bridge"
 }
 
-variable "gitops_cluster_revision" {
-  description = "Git repository revision/branch/ref for clusters"
-  type        = string
-  default     = "main"
-}
-
 variable "gitops_cluster_basepath" {
   description = "Git repository base path for clusters"
   type        = string
@@ -138,4 +151,10 @@ variable "gitops_cluster_path" {
   description = "Git repository path for clusters"
   type        = string
   default     = "karpenter/k8s"
+}
+
+variable "gitops_cluster_revision" {
+  description = "Git repository revision/branch/ref for clusters"
+  type        = string
+  default     = "main"
 }

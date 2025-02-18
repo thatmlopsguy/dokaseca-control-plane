@@ -1,1 +1,4 @@
 quiet: true
+download-external-modules: true
+directory: terraform
+framework: terraform
