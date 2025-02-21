@@ -44,6 +44,9 @@ variable "addons" {
     enable_cilium                = false
     enable_metallb               = false
     enable_ingress_nginx         = true
+    enable_ngrok                 = false
+    enable_cilium                = false
+    enable_ray_operator          = false
   }
 }
 
@@ -70,6 +73,12 @@ variable "gitops_addons_basepath" {
   description = "Git repository base path for addons"
   type        = string
   default     = "gitops"
+}
+
+variable "gitops_addons_path" {
+  description = "Git repository path for addons"
+  type        = string
+  default     = "addons"
 }
 
 # Addon Resources Git
