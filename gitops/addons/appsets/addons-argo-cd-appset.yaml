@@ -2,9 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: addons-metallb
-  annotations:
-    argocd.argoproj.io/sync-wave: '-20'
+  name: addons-argo-cd
 spec:
   syncPolicy:
     preserveResourcesOnDeletion: true
@@ -14,13 +12,12 @@ spec:
         generators:
           - clusters:
               values:
-                addonChart: metallb
-                addonChartVersion: 0.14.8
-                addonChartRepository: https://metallb.github.io/metallb
-                addonChartNamespace: metallb-system
+                addonChart: argo-cd
+                addonChartVersion: 7.8.4
+                addonChartRepository: https://argoproj.github.io/argo-helm
               selector:
                 matchExpressions:
-                  - key: enable_metallb
+                  - key: enable_argo_cd
                     operator: In
                     values: ['true']
           - clusters:
@@ -28,13 +25,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 0.14.8
+                addonChartVersion: 7.8.4
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 0.14.8
+                addonChartVersion: 7.8.4
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
@@ -55,9 +52,10 @@ spec:
               - $values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
       destination:
-        namespace: '{{values.addonChartNamespace}}'
+        namespace: '{{values.addonChart}}'
         name: '{{name}}'
       syncPolicy:
         automated: {}
         syncOptions:
           - CreateNamespace=true
+          - ServerSideApply=true # Big CRDs.
