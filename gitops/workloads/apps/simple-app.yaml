@@ -7,7 +7,7 @@ spec:
   project: workloads
   source:
     repoURL: https://github.com/thatmlopsguy/k8s-homelab
-    targetRevision: HEAD
+    targetRevision: dev
     path: examples/simple-app
   destination:
     server: https://kubernetes.default.svc
