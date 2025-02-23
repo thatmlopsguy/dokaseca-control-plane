@@ -76,3 +76,15 @@ kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 
 polaris-ui: ## Access polaris dashboard
 	@kubectl port-forward -n polaris svc/polaris-dashboard 9080:80
+
+##@ Cost
+opencost-ui: ## Access opencost ui
+	@kubectl port-forward -n opencost service/opencost 9092:9090
+
+##@ Chaos Engineering
+litmus-ui: ## Access Litmus ui
+	@echo "default credentials Username: admin Password: litmus"
+	@kubectl port-forward -n litmus svc/litmus-frontend-service 9091:9091
+
+chaos-mesh-ui: ## Access chaos mesh ui
+	@kubectl port-forward -n chaos-mesh svc/chaos-dashboard 2333:2333
