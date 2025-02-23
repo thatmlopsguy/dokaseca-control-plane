@@ -31,6 +31,8 @@ variable "addons" {
     enable_argo_rollouts           = true
     enable_argo_workflows          = true
     enable_argo_events             = false
+    enable_kargo                   = false
+    enable_keptn                   = false
     enable_cert_manager            = true
     enable_external_secrets        = true
     enable_velero                  = true

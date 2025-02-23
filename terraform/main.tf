@@ -145,3 +145,24 @@ resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
 
   depends_on = [module.gitops_bridge_bootstrap]
 }
+
+resource "kubernetes_secret" "kargo_helm_oci" {
+  count = var.addons.enable_kargo ? 1 : 0
+
+  metadata {
+    name      = "kargo-helm-oci"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    url       = "ghcr.io/akuity/kargo-charts"
+    name      = "kargo"
+    type      = "helm"
+    enableOCI = "true"
+  }
+
+  depends_on = [module.gitops_bridge_bootstrap]
+}
