@@ -70,6 +70,9 @@ vmalert-ui: ## Access vmalert ui
 zipkin-ui: ## Access zipkin ui
 	@kubectl port-forward svc/zipkin -n zipkin 9411:9411
 
+jaeger-ui: ## Access jaeger ui
+	@kubectl port-forward svc/jaeger-query -n monitoring 16686:80
+
 ##@Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
