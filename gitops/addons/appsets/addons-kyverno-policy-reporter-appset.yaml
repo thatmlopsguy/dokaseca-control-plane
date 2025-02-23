@@ -17,6 +17,9 @@ spec:
                 addonChartRepository: https://kyverno.github.io/policy-reporter
               selector:
                 matchExpressions:
+                  - key: enable_kyverno
+                    operator: In
+                    values: ['true']
                   - key: enable_kyverno_policy_reporter
                     operator: In
                     values: ['true']
