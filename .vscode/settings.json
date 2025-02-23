@@ -8,6 +8,7 @@
         "capi",
         "crds",
         "homelab",
+        "keyclock",
         "metallb",
         "openfunction",
         "traefik",

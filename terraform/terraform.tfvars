@@ -14,7 +14,6 @@ addons = {
   enable_argo_rollouts         = false
   enable_argo_workflows        = false
   enable_argo_events           = false
-  enable_velero                = false
   enable_keda                  = false
   enable_dapr                  = false
   enable_kro                   = false
@@ -47,6 +46,8 @@ addons = {
   enable_vector    = false
   # cost
   enable_opencost = false
+  # disaster recovery
+  enable_velero = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

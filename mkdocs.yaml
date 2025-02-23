@@ -12,6 +12,8 @@ nav:
   - Observability: observability.md
   - Compliance: compliance.md
   - Security: security.md
+  - Cost Management: cost.md
+  - Backup: backup.md
   - References: references.md
 
 # Configuration
