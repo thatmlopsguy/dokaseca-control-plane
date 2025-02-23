@@ -55,6 +55,7 @@ variable "addons" {
     enable_opencost                = false
     enable_grafana_operator        = true
     enable_polaris                 = false
+    enable_devlake                 = false
   }
 }
 

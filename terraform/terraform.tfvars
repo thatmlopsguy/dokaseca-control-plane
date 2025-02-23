@@ -28,6 +28,9 @@ addons = {
   enable_grafana_operator           = true
   enable_cortex                     = false
   enable_thanos                     = false
+  enable_tempo                      = false
+  enable_zipkin                     = false
+  enable_jaeger                     = false
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
@@ -58,6 +61,8 @@ addons = {
   # storage
   enable_minio          = false
   enable_cloudnative_pg = false
+  # dora
+  enable_devlake = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

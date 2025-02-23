@@ -33,7 +33,6 @@ locals {
     enable_keda                  = try(var.addons.enable_keda, false)
     enable_dapr                  = try(var.addons.enable_dapr, false)
     enable_crossplane            = try(var.addons.enable_crossplane, false)
-    enable_devlake               = try(var.addons.enable_devlake, false)
     enable_flagsmith             = try(var.addons.enable_flagsmith, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
     enable_kepler                = try(var.addons.enable_kepler, false)
@@ -99,6 +98,8 @@ locals {
     # storage
     enable_cloudnative_pg = try(var.addons.enable_cloudnative_pg, false)
     enable_minio          = try(var.addons.enable_minio, false)
+    # dora metrics
+    enable_devlake = try(var.addons.enable_devlake, false)
   }
   addons = merge(
     local.oss_addons,

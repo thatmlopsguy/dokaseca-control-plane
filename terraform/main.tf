@@ -103,3 +103,24 @@ resource "kubernetes_secret" "grafana_helm_oci" {
 
   depends_on = [module.gitops_bridge_bootstrap]
 }
+
+resource "kubernetes_secret" "logging_operator_helm_oci" {
+  count = var.addons.enable_logging_operator ? 1 : 0
+
+  metadata {
+    name      = "logging-operator-helm-oci"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    url       = "ghcr.io/kube-logging/helm-charts"
+    name      = "logging-operator"
+    type      = "helm"
+    enableOCI = "true"
+  }
+
+  depends_on = [module.gitops_bridge_bootstrap]
+}

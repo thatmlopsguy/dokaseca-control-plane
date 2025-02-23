@@ -70,3 +70,6 @@ vmalert-ui: ## Access vmalert ui
 ##@Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
+
+polaris-ui: ## Access polaris dashboard
+	@kubectl port-forward -n polaris svc/polaris-dashboard 9080:80
