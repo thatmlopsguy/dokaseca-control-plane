@@ -26,6 +26,8 @@ addons = {
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
   enable_grafana_operator           = true
+  enable_cortex                     = false
+  enable_thanos                     = false
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
@@ -40,14 +42,15 @@ addons = {
   enable_kyverno                 = false
   enable_kyverno_policies        = false
   enable_kyverno_policy_reporter = false
-  enable_polaris                 = false
+  enable_polaris                 = true
   enable_connaisseur             = false
   # logging
-  enable_promtail  = true
-  enable_fluentbit = false
-  enable_fluentd   = false
-  enable_alloy     = false
-  enable_vector    = false
+  enable_promtail         = true
+  enable_fluentbit        = false
+  enable_fluentd          = false
+  enable_alloy            = false
+  enable_vector           = true
+  enable_logging_operator = true
   # cost
   enable_opencost = false
   # disaster recovery
