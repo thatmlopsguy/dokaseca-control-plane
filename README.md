@@ -28,8 +28,8 @@ version.BuildInfo{Version:"v3.15.2", GitCommit:"v3.15.2", GitTreeState:"", GoVer
 To increase these limits temporarily run the following commands on the host:
 
 ```sh
-sudo sysctl fs.inotify.max_user_watches=524288
-sudo sysctl fs.inotify.max_user_instances=512
+sudo sysctl fs.inotify.max_user_watches=1048576
+sudo sysctl fs.inotify.max_user_instances=8192
 ```
 
 Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)

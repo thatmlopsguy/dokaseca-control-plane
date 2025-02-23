@@ -7,7 +7,12 @@ repo_name: k8s-homelab
 
 # Navigation
 nav:
-  - Introduction: index.md
+  - Overview: index.md
+  - Networking: networking.md
+  - Observability: observability.md
+  - Compliance: compliance.md
+  - Security: security.md
+  - References: references.md
 
 # Configuration
 theme:
