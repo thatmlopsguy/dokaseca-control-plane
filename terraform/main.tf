@@ -124,3 +124,24 @@ resource "kubernetes_secret" "logging_operator_helm_oci" {
 
   depends_on = [module.gitops_bridge_bootstrap]
 }
+
+resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
+  count = var.addons.enable_strimzi ? 1 : 0
+
+  metadata {
+    name      = "strimzi-kafka-operator-helm-oci"
+    namespace = "argocd"
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    url       = "quay.io/strimzi-helm"
+    name      = "strimzi-kafka-operator"
+    type      = "helm"
+    enableOCI = "true"
+  }
+
+  depends_on = [module.gitops_bridge_bootstrap]
+}

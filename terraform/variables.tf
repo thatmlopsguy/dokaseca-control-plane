@@ -56,6 +56,7 @@ variable "addons" {
     enable_grafana_operator        = true
     enable_polaris                 = false
     enable_devlake                 = false
+    enable_strimzi                 = false
   }
 }
 
