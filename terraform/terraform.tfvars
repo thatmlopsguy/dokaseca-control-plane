@@ -30,7 +30,7 @@ addons = {
   enable_thanos                     = false
   enable_tempo                      = false
   enable_zipkin                     = false
-  enable_jaeger                     = false
+  enable_jaeger                     = true
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
@@ -45,15 +45,15 @@ addons = {
   enable_kyverno                 = false
   enable_kyverno_policies        = false
   enable_kyverno_policy_reporter = false
-  enable_polaris                 = true
+  enable_polaris                 = false
   enable_connaisseur             = false
   # logging
-  enable_promtail         = true
+  enable_promtail         = false
   enable_fluentbit        = false
   enable_fluentd          = false
   enable_alloy            = false
-  enable_vector           = true
-  enable_logging_operator = true
+  enable_vector           = false
+  enable_logging_operator = false
   # cost
   enable_opencost = false
   # disaster recovery
@@ -63,6 +63,11 @@ addons = {
   enable_cloudnative_pg = false
   # dora
   enable_devlake = false
+  # chaos engineering
+  enable_litmus     = false
+  enable_chaos_mesh = false
+  # utils
+  enable_reloader = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
