@@ -9,33 +9,36 @@ gitops_addons_revision = "dev"
 argocd_chart_version   = "7.8.4"
 addons = {
   # gitops bridge create enable_argocd variable
-  enable_argo_cd                    = true
-  enable_argo_cd_image_updater      = false
-  enable_argo_rollouts              = false
-  enable_argo_workflows             = false
-  enable_argo_events                = false
-  enable_cert_manager               = true
-  enable_external_secrets           = false
-  enable_velero                     = false
+  enable_argo_cd               = true
+  enable_argo_cd_image_updater = false
+  enable_argo_rollouts         = false
+  enable_argo_workflows        = false
+  enable_argo_events           = false
+  enable_velero                = false
+  enable_keda                  = false
+  enable_dapr                  = false
+  enable_kro                   = false
+  enable_capi_operator         = false
+  enable_ray_operator          = false
+  enable_vcluster              = false
+  # monitoring
   enable_kube_prometheus_stack      = false
   enable_metrics_server             = false
-  enable_keda                       = false
-  enable_dapr                       = false
-  enable_trivy                      = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_kro                        = false
-  enable_capi_operator              = false
-  enable_cilium                     = false
-  enable_metallb                    = false
-  enable_ingress_nginx              = false
-  enable_ngrok                      = false
-  enable_ray_operator               = false
-  enable_vcluster                   = false
+  # security
+  enable_cert_manager     = true
+  enable_external_secrets = false
+  enable_trivy            = false
+  # networking
+  enable_cilium        = false
+  enable_metallb       = false
+  enable_ingress_nginx = false
+  enable_ngrok         = false
   # compliance
-  enable_kyverno                 = false
+  enable_kyverno                 = true
   enable_kyverno_policies        = false
-  enable_kyverno_policy_reporter = false
+  enable_kyverno_policy_reporter = true
   # logging
   enable_promtail  = true
   enable_fluentbit = false

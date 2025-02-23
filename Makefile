@@ -1,3 +1,6 @@
+# Project Setup
+PROJECT_NAME := k8s-homelab
+
 all: help
 
 .PHONY: help
@@ -14,6 +17,32 @@ terraform-apply: terraform-init ## Create infra
 
 terraform-destroy: ## Destroy infra
 	@cd terraform && terraform destroy --auto-approve
+
+##@ KinD
+kind-create-cluster: ## Create kind cluster
+	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
+		kind create cluster --name=$(PROJECT_NAME) --config kind/simple.yaml --wait 180s; \
+		kubectl wait pod --all -n kube-system --for condition=Ready --timeout 180s; \
+	fi
+
+kind-delete-cluster: ## Delete kind cluster
+	@if [ "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
+		kind delete cluster --name=$(PROJECT_NAME) || true; \
+	fi
+
+##@ Cluster API
+cluster-spoke-dev: ## Create manifest spoke-dev
+	clusterctl init --infrastructure docker
+	clusterctl generate cluster spoke-dev \
+		--flavor development \
+		--infrastructure docker \
+		--kubernetes-version v1.31.0 \
+		--control-plane-machine-count=1 \
+		--worker-machine-count=1 > c1-clusterapi.yaml
+
+##@ Ingress
+ingress-nginx: ## Deploy ingress-nginx
+	kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
 
 ##@ Argo
 argo-cd-ui: ## Access argocd ui
@@ -37,3 +66,7 @@ alertmanager-vm-ui: ## Access alertmanager ui
 
 vmalert-ui: ## Access vmalert ui
 	@kubectl port-forward svc/vmalert-victoria-metrics-k8s-stack -n monitoring 8081:8080
+
+##@Compliance
+kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
+	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
