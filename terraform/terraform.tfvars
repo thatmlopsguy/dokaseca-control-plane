@@ -41,6 +41,7 @@ addons = {
   enable_kyverno_policies        = false
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
+  enable_connaisseur             = false
   # logging
   enable_promtail  = true
   enable_fluentbit = false

@@ -32,7 +32,6 @@ locals {
     enable_argo_workflows        = try(var.addons.enable_argo_workflows, false)
     enable_keda                  = try(var.addons.enable_keda, false)
     enable_dapr                  = try(var.addons.enable_dapr, false)
-    enable_connaisseur           = try(var.addons.enable_connaisseur, false)
     enable_crossplane            = try(var.addons.enable_crossplane, false)
     enable_devlake               = try(var.addons.enable_devlake, false)
     enable_flagsmith             = try(var.addons.enable_flagsmith, false)
@@ -93,6 +92,7 @@ locals {
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
     enable_kyverno_policy_reporter = try(var.addons.enable_kyverno_policy_reporter, false)
     enable_polaris                 = try(var.addons.enable_polaris, false)
+    enable_connaisseur             = try(var.addons.enable_connaisseur, false)
     # chaos engineering
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
