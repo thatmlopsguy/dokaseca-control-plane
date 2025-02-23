@@ -20,6 +20,8 @@ addons = {
   enable_capi_operator         = false
   enable_ray_operator          = false
   enable_vcluster              = false
+  enable_strimzi               = true
+  enable_open_feature          = true
   # monitoring
   enable_kube_prometheus_stack      = false
   enable_metrics_server             = false
