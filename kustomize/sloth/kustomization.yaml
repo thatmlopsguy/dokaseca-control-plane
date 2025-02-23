@@ -4,3 +4,5 @@ kind: Kustomization
 resources:
 - https://raw.githubusercontent.com/slok/sloth/v0.11.0/pkg/kubernetes/gen/crd/sloth.slok.dev_prometheusservicelevels.yaml
 - https://raw.githubusercontent.com/slok/sloth/v0.11.0/deploy/kubernetes/raw/sloth-with-common-plugins.yaml
+
+# resources are installed in the monitoring namespace
