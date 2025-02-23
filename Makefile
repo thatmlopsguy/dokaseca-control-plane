@@ -67,6 +67,9 @@ alertmanager-vm-ui: ## Access alertmanager ui
 vmalert-ui: ## Access vmalert ui
 	@kubectl port-forward svc/vmalert-victoria-metrics-k8s-stack -n monitoring 8081:8080
 
+zipkin-ui: ## Access zipkin ui
+	@kubectl port-forward svc/zipkin -n zipkin 9411:9411
+
 ##@Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
