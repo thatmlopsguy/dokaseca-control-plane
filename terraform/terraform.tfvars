@@ -8,8 +8,9 @@ gitops_addons_path     = "addons"
 gitops_addons_revision = "dev"
 argocd_chart_version   = "7.8.4"
 addons = {
+  # gitops bridge create enable_argocd variable
   enable_argo_cd                    = true
-  enable_argo_cd_image_updater      = true
+  enable_argo_cd_image_updater      = false
   enable_argo_rollouts              = false
   enable_argo_workflows             = false
   enable_argo_events                = false
@@ -29,7 +30,18 @@ addons = {
   enable_ingress_nginx              = false
   enable_ngrok                      = false
   enable_ray_operator               = false
-  enable_vcluster                   = true
+  enable_vcluster                   = false
+  # compliance
+  enable_kyverno                 = false
+  enable_kyverno_policies        = false
+  enable_kyverno_policy_reporter = false
+  # logging
+  enable_promtail  = true
+  enable_fluentbit = false
+  enable_fluentd   = false
+  enable_alloy     = false
+  enable_vector    = false
+
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

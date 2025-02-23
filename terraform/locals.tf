@@ -36,6 +36,7 @@ locals {
     enable_keda                       = try(var.addons.enable_keda, false)
     enable_kyverno                    = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies           = try(var.addons.enable_kyverno_policies, false)
+    enable_kyverno_policy_reporter    = try(var.addons.enable_kyverno_policy_reporter, false)
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_metrics_server             = try(var.addons.enable_metrics_server, false)
     enable_prometheus_adapter         = try(var.addons.enable_prometheus_adapter, false)
