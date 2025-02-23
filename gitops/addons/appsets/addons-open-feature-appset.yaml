@@ -45,9 +45,9 @@ spec:
         - repoURL: '{{metadata.annotations.addons_repo_url}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
           ref: values
-        - repoURL: '{{values.addonChartRepository}}'
+        - chart: '{{values.addonChart}}'
+          repoURL: '{{values.addonChartRepository}}'
           targetRevision: '{{values.addonChartVersion}}'
-          path: deploy/helm/grafana-operator
           helm:
             releaseName: '{{values.addonChart}}'
             ignoreMissingValueFiles: true
