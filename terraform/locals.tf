@@ -33,7 +33,6 @@ locals {
     enable_keda                  = try(var.addons.enable_keda, false)
     enable_dapr                  = try(var.addons.enable_dapr, false)
     enable_crossplane            = try(var.addons.enable_crossplane, false)
-    enable_flagsmith             = try(var.addons.enable_flagsmith, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
     enable_kepler                = try(var.addons.enable_kepler, false)
     enable_keptn                 = try(var.addons.enable_keptn, false)
