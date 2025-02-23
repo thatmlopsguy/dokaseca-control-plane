@@ -42,7 +42,8 @@ addons = {
   enable_fluentd   = false
   enable_alloy     = false
   enable_vector    = false
-
+  # cost
+  enable_opencost = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
