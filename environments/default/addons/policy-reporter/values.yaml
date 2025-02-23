@@ -1,2 +1,6 @@
+ui:
+  enabled: true
+kyverno-plugin:
+  enabled: true
 metrics:
   enabled: true
