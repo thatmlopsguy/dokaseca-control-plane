@@ -88,3 +88,15 @@ litmus-ui: ## Access Litmus ui
 
 chaos-mesh-ui: ## Access chaos mesh ui
 	@kubectl port-forward -n chaos-mesh svc/chaos-dashboard 2333:2333
+
+
+##@ Documentation
+.PHONY: docs-install docs-serve docs-build
+docs-install: ## Install the requirements for starting the local web server for serving docs
+	@python -m venv .venv && \
+	. .venv/bin/activate && \
+	pip install -U pip && \
+	pip install -r requirements/docs.txt
+
+docs-serve: docs-install ## Start a local web server for serving documentation
+	@mkdocs serve || echo "Error running mkserve. Have you run make install?"
