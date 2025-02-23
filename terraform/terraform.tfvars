@@ -22,6 +22,7 @@ addons = {
   enable_keda                       = false
   enable_dapr                       = false
   enable_trivy                      = false
+  enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
   enable_kro                        = false
   enable_capi_operator              = false
