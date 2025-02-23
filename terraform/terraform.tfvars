@@ -25,12 +25,14 @@ addons = {
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
+  enable_grafana_operator           = false
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
   enable_trivy            = false
   # networking
   enable_cilium        = false
+  enable_calico        = false
   enable_metallb       = false
   enable_ingress_nginx = false
   enable_ngrok         = false

@@ -45,6 +45,7 @@ variable "addons" {
     enable_kyverno_policy_reporter = false
     enable_capi_operator           = true # requires enable_cert_manager
     enable_cilium                  = false
+    enable_calico                  = false
     enable_metallb                 = false
     enable_ingress_nginx           = true
     enable_ngrok                   = false
@@ -52,6 +53,7 @@ variable "addons" {
     enable_ray_operator            = false
     enable_promtail                = false
     enable_opencost                = false
+    enable_grafana_operator        = true
   }
 }
 
