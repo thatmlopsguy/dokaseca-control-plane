@@ -60,6 +60,7 @@ variable "addons" {
     enable_devlake                 = false
     enable_strimzi                 = false
     enable_open_feature            = false
+    enable_istio                   = false
   }
 }
 

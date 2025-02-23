@@ -45,6 +45,7 @@ addons = {
   enable_metallb       = false
   enable_ingress_nginx = false
   enable_ngrok         = false
+  enable_istio         = true
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false
