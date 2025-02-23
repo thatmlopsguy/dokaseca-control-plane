@@ -14,7 +14,8 @@ spec:
               values:
                 addonChart: grafana-operator
                 addonChartVersion: v5.16.0
-                addonChartRepository: ghcr.io/grafana/helm-charts
+                #addonChartRepository: ghcr.io/grafana/helm-charts
+                addonChartRepository: https://github.com/grafana/grafana-operator
                 addonChartNamespace: monitoring
               selector:
                 matchExpressions:
@@ -42,9 +43,9 @@ spec:
         - repoURL: '{{metadata.annotations.addons_repo_url}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
           ref: values
-        - chart: '{{values.addonChart}}'
-          repoURL: '{{values.addonChartRepository}}'
+        - repoURL: '{{values.addonChartRepository}}'
           targetRevision: '{{values.addonChartVersion}}'
+          path: deploy/helm/grafana-operator
           helm:
             releaseName: '{{values.addonChart}}'
             ignoreMissingValueFiles: true
