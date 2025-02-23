@@ -40,7 +40,7 @@ variable "addons" {
     enable_dapr                    = true
     enable_trivy                   = true
     enable_kro                     = false
-    enable_kvverno                 = false
+    enable_kyverno                 = false
     enable_kyverno_policies        = false
     enable_kyverno_policy_reporter = false
     enable_capi_operator           = true # requires enable_cert_manager
@@ -54,6 +54,7 @@ variable "addons" {
     enable_promtail                = false
     enable_opencost                = false
     enable_grafana_operator        = true
+    enable_polaris                 = false
   }
 }
 

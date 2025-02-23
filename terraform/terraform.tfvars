@@ -25,7 +25,7 @@ addons = {
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_grafana_operator           = false
+  enable_grafana_operator           = true
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
@@ -37,9 +37,10 @@ addons = {
   enable_ingress_nginx = false
   enable_ngrok         = false
   # compliance
-  enable_kyverno                 = true
+  enable_kyverno                 = false
   enable_kyverno_policies        = false
-  enable_kyverno_policy_reporter = true
+  enable_kyverno_policy_reporter = false
+  enable_polaris                 = false
   # logging
   enable_promtail  = true
   enable_fluentbit = false
@@ -50,6 +51,9 @@ addons = {
   enable_opencost = false
   # disaster recovery
   enable_velero = false
+  # storage
+  enable_minio          = false
+  enable_cloudnative_pg = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
