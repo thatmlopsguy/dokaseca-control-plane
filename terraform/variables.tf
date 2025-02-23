@@ -51,6 +51,7 @@ variable "addons" {
     enable_cilium                  = false
     enable_ray_operator            = false
     enable_promtail                = false
+    enable_opencost                = false
   }
 }
 
