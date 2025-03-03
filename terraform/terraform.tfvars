@@ -35,6 +35,7 @@ addons = {
   enable_tempo                      = false
   enable_zipkin                     = false
   enable_jaeger                     = true
+  enable_opentelemetry_operator     = false
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
