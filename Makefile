@@ -73,6 +73,9 @@ zipkin-ui: ## Access zipkin ui
 jaeger-ui: ## Access jaeger ui
 	@kubectl port-forward svc/jaeger-query -n monitoring 16686:80
 
+kiali-ui: ## Access kiali ui
+	@kubectl port-forward -n istio-system svc/kiali 20001:20001
+
 ##@Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
@@ -92,6 +95,12 @@ litmus-ui: ## Access Litmus ui
 chaos-mesh-ui: ## Access chaos mesh ui
 	@kubectl port-forward -n chaos-mesh svc/chaos-dashboard 2333:2333
 
+##@ SRE
+keptn-password: ## Get keptn password
+	@kubectl get secret -n keptn-system bridge-credentials -o jsonpath={.data.BASIC_AUTH_PASSWORD} | base64 -d
+
+keptn-ui: ## Access keptn ui
+	@kubectl port-forward -n keptn-system svc/lifecycle-webhook-service 8081:443
 
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
