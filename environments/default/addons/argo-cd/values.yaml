@@ -2,3 +2,11 @@ dex:
   enabled: false
 notifications:
   enabled: false
+
+global:
+  domain: argocd.k8s-home.lab
+
+server:
+  ingress:
+    enable: true
+    ingressClassName: "nginx"
