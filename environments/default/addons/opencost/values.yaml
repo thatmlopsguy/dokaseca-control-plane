@@ -6,3 +6,11 @@ opencost:
       CPU: 1.25
       RAM: 0.50
       storage: 0.25
+  ui:
+    ingress:
+        enabled: true
+        ingressClassName: nginx
+        hosts:
+          - host: opencost.k8s-homelab
+            paths:
+              - /
