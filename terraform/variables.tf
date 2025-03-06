@@ -4,6 +4,12 @@ variable "cluster_name" {
   default     = "main"
 }
 
+variable "domain_name" {
+  description = "Domain name"
+  type        = string
+  default     = "k8s-home.lab"
+}
+
 variable "kubernetes_version" {
   description = "Version of the Kind node image"
   type        = string

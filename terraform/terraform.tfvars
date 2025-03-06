@@ -1,4 +1,5 @@
 cluster_name           = "main"
+domain_name            = "k8s-home.lab"
 kubernetes_version     = "1.31.2"
 enable_gitops_bridge   = true
 gitops_addons_org      = "https://github.com/thatmlopsguy"
@@ -28,7 +29,7 @@ addons = {
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_grafana_operator           = true
+  enable_grafana_operator           = false
   enable_cortex                     = false
   enable_thanos                     = false
   enable_tempo                      = false
@@ -43,8 +44,8 @@ addons = {
   # networking
   enable_cilium        = false
   enable_calico        = false
-  enable_metallb       = false
-  enable_ingress_nginx = false
+  enable_metallb       = true
+  enable_ingress_nginx = true
   enable_ngrok         = false
   enable_istio         = true
   # compliance
@@ -65,7 +66,7 @@ addons = {
   # disaster recovery
   enable_velero = false
   # storage
-  enable_minio          = false
+  enable_minio          = true
   enable_cloudnative_pg = false
   # dora
   enable_devlake = false

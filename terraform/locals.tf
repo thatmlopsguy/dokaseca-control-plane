@@ -5,6 +5,8 @@ locals {
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
 
+  domain_name = var.domain_name
+
   gitops_addons_url      = "${var.gitops_addons_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
   gitops_addons_path     = var.gitops_addons_path
@@ -103,7 +105,8 @@ locals {
   addons = merge(
     local.oss_addons,
     { kubernetes_version = local.cluster_version },
-    { k8s_cluster_name = local.cluster_name }
+    { k8s_cluster_name = local.cluster_name },
+    { k8s_domain_name = local.domain_name },
   )
 
   addons_metadata = merge(
