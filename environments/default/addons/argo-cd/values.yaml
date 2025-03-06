@@ -8,5 +8,6 @@ global:
 
 server:
   ingress:
-    enable: true
-    ingressClassName: "nginx"
+    enabled: true
+    ingressClassName: nginx
+    tls: false
