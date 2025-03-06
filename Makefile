@@ -42,7 +42,10 @@ cluster-spoke-dev: ## Create manifest spoke-dev
 
 ##@ Ingress
 ingress-nginx: ## Deploy ingress-nginx
-	kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+	@kubectl apply -f https://kind.sigs.k8s.io/examples/ingress/deploy-ingress-nginx.yaml
+
+ingress-lb-ip: ## Get ingress-nginx load balancer ip
+	@kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}'; echo
 
 ##@ Argo
 argo-cd-ui: ## Access argocd ui
