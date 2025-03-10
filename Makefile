@@ -112,7 +112,7 @@ keptn-ui: ## Access keptn ui
 karpor-ui: ## Access karpor ui
 	@kubectl -n karpor port-forward service/karpor-server 7443:7443
 
-headlamp-ui:
+headlamp-ui: ## Access headlamp ui
 	@kubectl port-forward -n kube-system service/headlamp 8080:80
 
 ##@ Documentation
