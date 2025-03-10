@@ -115,6 +115,9 @@ karpor-ui: ## Access karpor ui
 headlamp-ui: ## Access headlamp ui
 	@kubectl port-forward -n kube-system service/headlamp 8080:80
 
+headlamp-token: ## Get headlamp token
+	@kubectl create token headlamp-admin -n kube-system
+
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs
