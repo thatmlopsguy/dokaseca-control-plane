@@ -40,15 +40,17 @@ locals {
     enable_keptn                 = try(var.addons.enable_keptn, false)
     enable_open_feature          = try(var.addons.enable_open_feature, false)
     enable_openfunction          = try(var.addons.enable_openfunction, false)
-    enable_reloader              = try(var.addons.enable_reloader, false)
     enable_sloth                 = try(var.addons.enable_sloth, false)
     enable_strimzi               = try(var.addons.enable_strimzi, false)
     enable_vcluster              = try(var.addons.enable_vcluster, false)
     enable_headlamp              = try(var.addons.enable_headlamp, false)
-    enable_kro                   = try(var.addons.enable_kro, false)
     enable_capi_operator         = try(var.addons.enable_capi_operator, false)
-    enable_keyclock              = try(var.addons.enable_keyclock, false)
     enable_ray_operator          = try(var.addons.enable_ray_operator, false)
+    # platform engineering
+    enable_karpor = try(var.addons.enable_karpor, false)
+    enable_kro    = try(var.addons.enable_kro, false)
+    # identity
+    enable_keyclock = try(var.addons.enable_keyclock, false)
     # networking
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false)
     enable_traefik       = try(var.addons.enable_traefik, false)
@@ -101,6 +103,9 @@ locals {
     enable_minio          = try(var.addons.enable_minio, false)
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
+    # misc
+    enable_reloader  = try(var.addons.enable_reloader, false)
+    enable_reflector = try(var.addons.enable_reflector, false)
   }
   addons = merge(
     local.oss_addons,

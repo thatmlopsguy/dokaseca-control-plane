@@ -67,6 +67,8 @@ variable "addons" {
     enable_strimzi                 = false
     enable_open_feature            = false
     enable_istio                   = false
+    enable_reloader                = false
+    enable_karpor                  = false
   }
 }
 

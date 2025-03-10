@@ -25,6 +25,8 @@ addons = {
   enable_vcluster              = false
   enable_strimzi               = false
   enable_open_feature          = false
+  # platform engineering
+  enable_karpor = true
   # monitoring
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
@@ -47,7 +49,7 @@ addons = {
   enable_metallb       = true
   enable_ingress_nginx = true
   enable_ngrok         = false
-  enable_istio         = true
+  enable_istio         = false
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false
@@ -62,7 +64,7 @@ addons = {
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = false
+  enable_opencost = true
   # disaster recovery
   enable_velero = false
   # storage
@@ -74,7 +76,8 @@ addons = {
   enable_litmus     = false
   enable_chaos_mesh = false
   # utils
-  enable_reloader = false
+  enable_reloader  = false
+  enable_reflector = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
