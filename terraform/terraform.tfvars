@@ -10,7 +10,7 @@ gitops_addons_revision = "dev"
 argocd_chart_version   = "7.8.4"
 addons = {
   # gitops bridge create enable_argocd variable
-  enable_argo_cd               = true
+  enable_argo_cd               = false
   enable_argo_cd_image_updater = false
   enable_argo_rollouts         = false
   enable_argo_workflows        = false
@@ -26,7 +26,7 @@ addons = {
   enable_strimzi               = false
   enable_open_feature          = false
   # platform engineering
-  enable_karpor = true
+  enable_karpor = false
   # monitoring
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
@@ -37,17 +37,17 @@ addons = {
   enable_tempo                      = false
   enable_zipkin                     = false
   enable_jaeger                     = false
-  enable_opentelemetry_operator     = true
-  enable_kiali                      = true
+  enable_opentelemetry_operator     = false
+  enable_kiali                      = false
   # security
-  enable_cert_manager     = true
+  enable_cert_manager     = false
   enable_external_secrets = false
   enable_trivy            = false
   # networking
   enable_cilium        = false
   enable_calico        = false
-  enable_metallb       = true
-  enable_ingress_nginx = true
+  enable_metallb       = false
+  enable_ingress_nginx = false
   enable_ngrok         = false
   enable_istio         = false
   # compliance
@@ -64,11 +64,11 @@ addons = {
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = true
+  enable_opencost = false
   # disaster recovery
   enable_velero = false
   # storage
-  enable_minio          = true
+  enable_minio          = false
   enable_cloudnative_pg = false
   # dora
   enable_devlake = false
@@ -78,6 +78,7 @@ addons = {
   # utils
   enable_reloader  = false
   enable_reflector = false
+  enable_headlamp  = true
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

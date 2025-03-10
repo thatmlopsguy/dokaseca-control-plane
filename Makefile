@@ -1,5 +1,5 @@
 # Project Setup
-PROJECT_NAME := k8s-homelab
+PROJECT_NAME := main
 
 all: help
 
@@ -29,6 +29,9 @@ kind-delete-cluster: ## Delete kind cluster
 	@if [ "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
 		kind delete cluster --name=$(PROJECT_NAME) || true; \
 	fi
+
+kind-export-kubeconfig: ## Export kind kubeconfig
+	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig  kind/$(PROJECT_NAME)
 
 ##@ Cluster API
 cluster-spoke-dev: ## Create manifest spoke-dev
@@ -79,7 +82,7 @@ jaeger-ui: ## Access jaeger ui
 kiali-ui: ## Access kiali ui
 	@kubectl port-forward -n istio-system svc/kiali 20001:20001
 
-##@Compliance
+##@ Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
 
@@ -104,6 +107,13 @@ keptn-password: ## Get keptn password
 
 keptn-ui: ## Access keptn ui
 	@kubectl port-forward -n keptn-system svc/lifecycle-webhook-service 8081:443
+
+##@ Platform Engineering
+karpor-ui: ## Access karpor ui
+	@kubectl -n karpor port-forward service/karpor-server 7443:7443
+
+headlamp-ui:
+	@kubectl port-forward -n kube-system service/headlamp 8080:80
 
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build

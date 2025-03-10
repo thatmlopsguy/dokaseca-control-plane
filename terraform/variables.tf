@@ -69,6 +69,7 @@ variable "addons" {
     enable_istio                   = false
     enable_reloader                = false
     enable_karpor                  = false
+    enable_headlamp                = false
   }
 }
 
