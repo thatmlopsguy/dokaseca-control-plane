@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster-addons
+  name: addons
   namespace: argocd
 spec:
   syncPolicy:
@@ -15,7 +15,7 @@ spec:
               values: [in-cluster]
   template:
     metadata:
-      name: 'bootstrap-addons'
+      name: 'addons'
     spec:
       project: default
       source:
