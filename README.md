@@ -1,6 +1,7 @@
 # k8s-homelab
 
-My kubernetes homelab to test some applications.
+Welcome to my homelab Kubernetes cluster repository! This project serves as both a personal learning journey and a
+resource for others interested in setting up their own Kubernetes Homelabs.
 
 ## Prerequisite
 
