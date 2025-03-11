@@ -1,0 +1,3 @@
+catalog:
+  demoCatalogLocation: "https://github.com/thatmlopsguy/backstage-helm-chart/blob/main/demo-catalog/all.yaml"
+  customCatalogLocation: "None"

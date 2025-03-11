@@ -140,7 +140,10 @@ locals {
       cluster_repo_basepath = local.gitops_cluster_basepath
       cluster_repo_path     = local.gitops_cluster_path
       cluster_repo_revision = local.gitops_cluster_revision
-    }
+    },
+    {
+      backstage_github_token = var.backstage_github_token
+    },
   )
 
   argocd_helm_values = <<-EOT
