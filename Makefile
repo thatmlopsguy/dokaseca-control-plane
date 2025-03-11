@@ -118,6 +118,9 @@ headlamp-ui: ## Access headlamp ui
 headlamp-token: ## Get headlamp token
 	@kubectl create token headlamp-admin -n kube-system
 
+backstage-ui: ## Access backstage ui
+	@kubectl port-forward svc/backstage -n backstage 7007:7007
+
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs
