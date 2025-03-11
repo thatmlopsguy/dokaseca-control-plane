@@ -2,10 +2,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: addons-cloudnative-pg
+  name: addons-backstage
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: '-10'
+    argocd.argoproj.io/sync-wave: '-2'
 spec:
   syncPolicy:
     preserveResourcesOnDeletion: true
@@ -15,12 +15,14 @@ spec:
         generators:
           - clusters:
               values:
-                addonChart: cloudnative-pg
-                addonChartVersion: 0.23.0
-                addonChartRepository: https://cloudnative-pg.github.io/charts
-                addonChartNamespace: cnpg-system
+                addonChart: backstage
+                addonChartVersion: 0.3.1
+                addonChartRepository: http://helm.platformers.community
               selector:
                 matchExpressions:
+                  - key: enable_backstage
+                    operator: In
+                    values: ['true']
                   - key: enable_cloudnative_pg
                     operator: In
                     values: ['true']
@@ -29,13 +31,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 0.23.0
+                addonChartVersion: 0.3.1
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 0.23.0
+                addonChartVersion: 0.3.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
@@ -55,8 +57,11 @@ spec:
               - $values/environments/default/addons/{{values.addonChart}}/values.yaml
               - $values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
+        - repoURL: '{{metadata.annotations.addons_repo_url}}'
+          path: 'kustomize/{{values.addonChart}}'
+          targetRevision: '{{metadata.annotations.addons_repo_revision}}'
       destination:
-        namespace: '{{values.addonChartNamespace}}'
+        namespace: '{{values.addonChart}}'
         name: '{{name}}'
       syncPolicy:
         automated: {}

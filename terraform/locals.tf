@@ -107,6 +107,8 @@ locals {
     enable_reloader  = try(var.addons.enable_reloader, false)
     enable_reflector = try(var.addons.enable_reflector, false)
     enable_headlamp  = try(var.addons.enable_headlamp, false)
+    # portal
+    enable_backstage = try(var.addons.enable_backstage, false)
   }
   addons = merge(
     local.oss_addons,

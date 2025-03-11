@@ -69,7 +69,7 @@ addons = {
   enable_velero = false
   # storage
   enable_minio          = false
-  enable_cloudnative_pg = false
+  enable_cloudnative_pg = true
   # dora
   enable_devlake = false
   # chaos engineering
@@ -79,6 +79,8 @@ addons = {
   enable_reloader  = false
   enable_reflector = false
   enable_headlamp  = true
+  # portal
+  enable_backstage = true # requires enable_cloudnative_pg
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

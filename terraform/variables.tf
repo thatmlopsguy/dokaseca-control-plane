@@ -70,6 +70,7 @@ variable "addons" {
     enable_reloader                = false
     enable_karpor                  = false
     enable_headlamp                = false
+    enable_backstage = false
   }
 }
 
