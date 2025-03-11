@@ -78,7 +78,7 @@ addons = {
   # utils
   enable_reloader  = false
   enable_reflector = false
-  enable_headlamp  = true
+  enable_headlamp  = false
   # portal
   enable_backstage = true # requires enable_cloudnative_pg
 }
