@@ -64,6 +64,15 @@ grafana-vm-ui: ## Access grafana ui
 grafana-vm-password: ## Get grafana password
 	@kubectl get secret -n monitoring victoria-metrics-k8s-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode; echo
 
+grafana-ui: ## Access grafana ui
+	@kubectl port-forward svc/kube-prometheus-stack-grafana -n monitoring 3000:80
+
+grafana-password: ## Get grafana password (default: prom-operator)
+	@kubectl get secret -n monitoring kube-prometheus-stack-grafana -o jsonpath="{.data.admin-password}" | base64 --decode; echo
+
+prometheus-ui: ## Access prometheus ui
+	@kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 9090:9090
+
 vm-ui: ## Access victoria metrics ui
 	@kubectl port-forward svc/vmsingle-victoria-metrics-k8s-stack -n monitoring 8429:8429
 

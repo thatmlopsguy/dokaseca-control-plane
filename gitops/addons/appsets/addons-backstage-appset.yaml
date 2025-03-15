@@ -8,7 +8,7 @@ metadata:
     argocd.argoproj.io/sync-wave: '-2'
 spec:
   syncPolicy:
-    preserveResourcesOnDeletion: true
+    preserveResourcesOnDeletion: false
   generators:
     - merge:
         mergeKeys: [server]
