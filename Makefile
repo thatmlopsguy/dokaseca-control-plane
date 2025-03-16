@@ -130,6 +130,16 @@ headlamp-token: ## Get headlamp token
 backstage-ui: ## Access backstage ui
 	@kubectl port-forward svc/backstage -n backstage 7007:7007
 
+kargo-ui: ## Access kargo ui (password: oFUvUWUmelWqEIZ6ppHQrkEfFaPgvvJx)
+	@kubectl port-forward svc/kargo-api -n kargo 8081:80
+
+kargo-secret: ## create kargo secret (requires apache2-utils)
+	@echo "Generating credentials..."
+	@pass=$$(openssl rand -base64 48 | tr -d "=+/" | head -c 32); \
+	echo "Password: $$pass"; \
+	echo "Password Hash: $$(htpasswd -bnBC 10 "" $$pass | tr -d ':')"; \
+	echo "Signing Key: $$(openssl rand -base64 48 | tr -d "=+/" | head -c 32)"
+
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs
