@@ -166,3 +166,4 @@ resource "kubernetes_secret" "kargo_helm_oci" {
 
   depends_on = [module.gitops_bridge_bootstrap]
 }
+

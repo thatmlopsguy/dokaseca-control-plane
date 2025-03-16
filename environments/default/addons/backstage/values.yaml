@@ -8,6 +8,7 @@ appConfig: |
 
   app:
     title: MLOps Community Backstage
+
   backend:
     baseUrl: ${BASE_URL}:7007
     listen: ':7007'

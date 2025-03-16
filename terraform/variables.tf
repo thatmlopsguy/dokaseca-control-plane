@@ -191,3 +191,9 @@ variable "gitops_cluster_revision" {
   type        = string
   default     = "main"
 }
+
+variable "backstage_github_token" {
+  description = "Backstage github token"
+  type  = string
+  default = "TODO"
+}

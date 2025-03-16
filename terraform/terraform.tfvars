@@ -11,11 +11,11 @@ argocd_chart_version   = "7.8.4"
 addons = {
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
-  enable_argo_cd_image_updater = false
-  enable_argo_rollouts         = false
+  enable_argo_cd_image_updater = true
+  enable_argo_rollouts         = true
   enable_argo_workflows        = false
   enable_argo_events           = false
-  enable_kargo                 = false
+  enable_kargo                 = true
   enable_keptn                 = false
   enable_keda                  = false
   enable_dapr                  = false
@@ -23,13 +23,12 @@ addons = {
   enable_capi_operator         = false
   enable_ray_operator          = false
   enable_vcluster              = false
-  enable_strimzi               = false
   enable_open_feature          = false
   # platform engineering
   enable_karpor = false
   # monitoring
   enable_metrics_server             = false
-  enable_kube_prometheus_stack      = false
+  enable_kube_prometheus_stack      = true
   enable_victoria_metrics_k8s_stack = false
   enable_grafana_operator           = false
   enable_cortex                     = false
@@ -40,7 +39,7 @@ addons = {
   enable_opentelemetry_operator     = false
   enable_kiali                      = false
   # security
-  enable_cert_manager     = false
+  enable_cert_manager     = true
   enable_external_secrets = false
   enable_trivy            = false
   # networking
@@ -69,7 +68,11 @@ addons = {
   enable_velero = false
   # storage
   enable_minio          = false
-  enable_cloudnative_pg = true
+  enable_cloudnative_pg = false
+  enable_atlas_operator = false
+  # messaging
+  enable_strimzi = false
+  enable_nats    = false
   # dora
   enable_devlake = false
   # chaos engineering
@@ -80,7 +83,7 @@ addons = {
   enable_reflector = false
   enable_headlamp  = false
   # portal
-  enable_backstage = true # requires enable_cloudnative_pg
+  enable_backstage = false # requires enable_cloudnative_pg
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
