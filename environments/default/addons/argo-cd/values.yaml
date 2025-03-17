@@ -11,3 +11,16 @@ server:
     enabled: true
     ingressClassName: nginx
     tls: false
+  extensions:
+    enabled: true
+    extensionList:
+      - name: rollout-extension
+        env:
+          - name: EXTENSION_URL
+            value: https://github.com/argoproj-labs/rollout-extension/releases/download/v0.3.4/extension.tar
+      - name: extension-trivy
+        env:
+          - name: EXTENSION_URL
+            value: https://github.com/mziyabo/argocd-trivy-extension/releases/download/v0.2.0/extension-trivy.tar
+          - name: EXTENSION_CHECKSUM_URL
+            value: https://github.com/mziyabo/argocd-trivy-extension/releases/download/v0.2.0/extension-trivy_checksums.txt

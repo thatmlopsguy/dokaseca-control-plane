@@ -91,6 +91,10 @@ jaeger-ui: ## Access jaeger ui
 kiali-ui: ## Access kiali ui
 	@kubectl port-forward -n istio-system svc/kiali 20001:20001
 
+##@ Security
+kubescape-scan: ## scan kubernetes
+	@kubescape scan
+
 ##@ Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
