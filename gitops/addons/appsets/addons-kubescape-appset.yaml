@@ -54,7 +54,7 @@ spec:
               - $values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
             values: |
-              clusterName: {{metadata.annotations.k8s_cluster_name}}
+              clusterName: {{metadata.annotations.cluster_name}}
       destination:
         namespace: '{{values.addonChartNamespace}}'
         name: '{{name}}'
