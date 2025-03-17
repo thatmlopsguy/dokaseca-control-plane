@@ -57,6 +57,9 @@ argo-cd-ui: ## Access argocd ui
 argo-cd-password: ## Get argocd password
 	@kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
+argo-rollout-ui: ## Access argocd rollout dashboard
+	@kubectl port-forward svc/argo-rollouts-dashboard -n argo-rollouts 3100:3100
+
 ##@ Observability (metrics, traces, logs)
 grafana-vm-ui: ## Access grafana ui
 	@kubectl port-forward svc/victoria-metrics-k8s-stack-grafana -n monitoring 3000:80
