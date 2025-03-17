@@ -42,6 +42,7 @@ addons = {
   enable_cert_manager     = true
   enable_external_secrets = false
   enable_trivy            = false
+  enable_kubescape        = true
   # networking
   enable_cilium        = false
   enable_calico        = false

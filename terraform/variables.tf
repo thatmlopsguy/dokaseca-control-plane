@@ -70,7 +70,8 @@ variable "addons" {
     enable_reloader                = false
     enable_karpor                  = false
     enable_headlamp                = false
-    enable_backstage = false
+    enable_backstage               = false
+    enable_kubescape               = false
   }
 }
 
@@ -194,6 +195,6 @@ variable "gitops_cluster_revision" {
 
 variable "backstage_github_token" {
   description = "Backstage github token"
-  type  = string
-  default = "TODO"
+  type        = string
+  default     = "TODO"
 }
