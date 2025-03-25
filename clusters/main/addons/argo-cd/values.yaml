@@ -1,0 +1,15 @@
+
+argo-cd:
+  configs:
+    cm:
+      accounts.backstage: apiKey
+      statusbadge:
+        enabled: true
+
+    rbac:
+    # Policy rules are in the form:
+    #  p, subject, resource, action, object, effect
+    # Role definitions and bindings are in the form:
+    #  g, subject, inherited-subject
+      policy.csv: |
+        p, backstage, applications, get, */*, allow
