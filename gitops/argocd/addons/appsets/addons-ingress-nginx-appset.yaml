@@ -14,7 +14,7 @@ spec:
           - clusters:
               values:
                 addonChart: ingress-nginx
-                addonChartVersion: 4.11.3
+                addonChartVersion: 4.12.1
                 addonChartRepository: https://kubernetes.github.io/ingress-nginx
                 addonChartNamespace: ingress-nginx
               selector:
@@ -27,13 +27,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 4.11.3
+                addonChartVersion: 4.12.1
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 4.11.3
+                addonChartVersion: 4.12.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
