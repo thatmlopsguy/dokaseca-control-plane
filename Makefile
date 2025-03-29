@@ -50,7 +50,14 @@ ingress-nginx: ## Deploy ingress-nginx
 ingress-lb-ip: ## Get ingress-nginx load balancer ip
 	@kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}'; echo
 
+##@FluxCD
+flux-check: ## Check prerequisites
+	@flux check --pre
+
 ##@ Argo
+argo-cd-login: ## Login to argocd
+	@argocd login --insecure localhost:8088
+
 argo-cd-ui: ## Access argocd ui
 	@kubectl port-forward svc/argo-cd-argocd-server -n argocd 8088:443
 

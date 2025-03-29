@@ -29,6 +29,7 @@ locals {
   oss_addons = {
     enable_argo_cd               = try(var.addons.enable_argo_cd, true)
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, true)
+    enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, true)
     enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events           = try(var.addons.enable_argo_events, false)
     enable_argo_workflows        = try(var.addons.enable_argo_workflows, false)
@@ -67,6 +68,7 @@ locals {
     enable_logging_operator           = try(var.addons.enable_logging_operator, false)
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
+    enable_victoria_logs              = try(var.addons.enable_victoria_logs, false)
     enable_pyroscope                  = try(var.addons.enable_pyroscope, false)
     enable_alloy                      = try(var.addons.enable_alloy, false)
     enable_vector                     = try(var.addons.enable_vector, false)
@@ -155,9 +157,9 @@ locals {
     EOT
 
   argocd_apps = {
-    addons    = file("${path.module}/bootstrap/addons.yaml")
-    workloads = file("${path.module}/bootstrap/workloads.yaml")
-    clusters  = file("${path.module}/bootstrap/clusters.yaml")
+    addons    = file("${path.module}/argocd/bootstrap/addons.yaml")
+    workloads = file("${path.module}/argocd/bootstrap/workloads.yaml")
+    clusters  = file("${path.module}/argocd/bootstrap/clusters.yaml")
   }
 
   tags = {

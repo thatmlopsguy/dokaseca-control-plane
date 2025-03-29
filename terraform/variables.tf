@@ -22,6 +22,24 @@ variable "enable_gitops_bridge" {
   default     = true
 }
 
+variable "enable_fluxcd" {
+  description = "Enable fluxcd"
+  type        = bool
+  default     = false
+}
+
+variable "fluxcd_namespace" {
+  description = "Kubernetes namespace to deploy Flux2 in"
+  type        = string
+  default     = "flux-system"
+}
+
+variable "fluxcd_chart_version" {
+  description = "fluxcd helm chart version"
+  type        = string
+  default     = "2.15.0"
+}
+
 variable "argocd_chart_version" {
   description = "Argocd helm chart version"
   type        = string
@@ -34,6 +52,7 @@ variable "addons" {
   default = {
     enable_argo_cd                 = true
     enable_argo_cd_image_updater   = true
+    enable_gitops_promoter         = false
     enable_argo_rollouts           = true
     enable_argo_workflows          = true
     enable_argo_events             = false
@@ -72,6 +91,7 @@ variable "addons" {
     enable_headlamp                = false
     enable_backstage               = false
     enable_kubescape               = false
+    enable_victoria_logs           = false
   }
 }
 

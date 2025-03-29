@@ -61,9 +61,23 @@ module "gitops_bridge_bootstrap" {
   depends_on = [kind_cluster.main]
 }
 
+module "fluxcd" {
+  source = "./modules/fluxcd"
+
+  count = var.enable_fluxcd ? 1 : 0
+
+  namespace     = var.fluxcd_namespace
+  chart_version = var.fluxcd_chart_version
+
+  repository_url     = var.gitops_addons_org
+  repository_branch  = var.gitops_addons_revision
+  kustomization_path = "./gitops/fluxcd/addons/"
+
+  depends_on = [kind_cluster.main]
+}
 
 resource "kubernetes_secret" "kro_helm_oci" {
-  count = var.addons.enable_kro ? 1 : 0
+  count = var.addons.enable_kro && var.enable_gitops_bridge ? 1 : 0
 
   metadata {
     name      = "kro-helm-oci"
@@ -84,7 +98,7 @@ resource "kubernetes_secret" "kro_helm_oci" {
 }
 
 resource "kubernetes_secret" "grafana_helm_oci" {
-  count = var.addons.enable_grafana_operator ? 1 : 0
+  count = var.addons.enable_grafana_operator && var.enable_gitops_bridge ? 1 : 0
 
   metadata {
     name      = "grafana-helm-oci"
@@ -105,7 +119,7 @@ resource "kubernetes_secret" "grafana_helm_oci" {
 }
 
 resource "kubernetes_secret" "logging_operator_helm_oci" {
-  count = var.addons.enable_logging_operator ? 1 : 0
+  count = var.addons.enable_logging_operator && var.enable_gitops_bridge ? 1 : 0
 
   metadata {
     name      = "logging-operator-helm-oci"
@@ -126,7 +140,7 @@ resource "kubernetes_secret" "logging_operator_helm_oci" {
 }
 
 resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
-  count = var.addons.enable_strimzi ? 1 : 0
+  count = var.addons.enable_strimzi && var.enable_gitops_bridge ? 1 : 0
 
   metadata {
     name      = "strimzi-kafka-operator-helm-oci"
@@ -147,7 +161,7 @@ resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
 }
 
 resource "kubernetes_secret" "kargo_helm_oci" {
-  count = var.addons.enable_kargo ? 1 : 0
+  count = var.addons.enable_kargo && var.enable_gitops_bridge ? 1 : 0
 
   metadata {
     name      = "kargo-helm-oci"
@@ -166,4 +180,3 @@ resource "kubernetes_secret" "kargo_helm_oci" {
 
   depends_on = [module.gitops_bridge_bootstrap]
 }
-

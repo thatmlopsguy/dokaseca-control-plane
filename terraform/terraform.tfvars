@@ -1,7 +1,10 @@
 cluster_name           = "main"
 domain_name            = "k8s-home.lab"
 kubernetes_version     = "1.31.2"
-enable_gitops_bridge   = true
+enable_gitops_bridge   = false
+enable_fluxcd          = true
+fluxcd_namespace       = "flux-system"
+fluxcd_chart_version   = "2.15.0"
 gitops_addons_org      = "https://github.com/thatmlopsguy"
 gitops_addons_repo     = "k8s-homelab"
 gitops_addons_basepath = "gitops/argocd"
@@ -12,6 +15,7 @@ addons = {
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = true
   enable_argo_cd_image_updater = true
+  enable_gitops_promoter       = false
   enable_argo_rollouts         = true
   enable_argo_workflows        = false
   enable_argo_events           = false
@@ -30,6 +34,7 @@ addons = {
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
+  enable_victoria_logs              = false
   enable_grafana_operator           = false
   enable_cortex                     = false
   enable_thanos                     = false
@@ -44,10 +49,10 @@ addons = {
   enable_trivy            = false
   enable_kubescape        = false
   # networking
+  enable_metallb       = true
   enable_cilium        = false
   enable_calico        = false
-  enable_metallb       = false
-  enable_ingress_nginx = false
+  enable_ingress_nginx = true
   enable_ngrok         = false
   enable_istio         = false
   # compliance
