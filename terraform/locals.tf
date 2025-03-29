@@ -157,9 +157,9 @@ locals {
     EOT
 
   argocd_apps = {
-    addons    = file("${path.module}/argocd/bootstrap/addons.yaml")
-    workloads = file("${path.module}/argocd/bootstrap/workloads.yaml")
-    clusters  = file("${path.module}/argocd/bootstrap/clusters.yaml")
+    addons    = file("${path.module}/bootstrap/argocd/addons.yaml")
+    workloads = file("${path.module}/bootstrap/argocd/workloads.yaml")
+    clusters  = file("${path.module}/bootstrap/argocd/clusters.yaml")
   }
 
   tags = {
