@@ -112,6 +112,10 @@ locals {
     enable_headlamp  = try(var.addons.enable_headlamp, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
+    # machine learning
+    enable_mlflow  = try(var.addons.enable_mlflow, false)
+    enable_kuberay = try(var.addons.enable_kuberay, false)
+    enable_seldon  = try(var.addons.enable_seldon, false)
   }
   addons = merge(
     local.oss_addons,

@@ -92,6 +92,9 @@ variable "addons" {
     enable_backstage               = false
     enable_kubescape               = false
     enable_victoria_logs           = false
+    enable_mlflow                  = false
+    enable_kuberay                 = false
+    enable_seldon                  = false
   }
 }
 

@@ -1,8 +1,8 @@
 cluster_name           = "main"
 domain_name            = "k8s-home.lab"
 kubernetes_version     = "1.31.2"
-enable_gitops_bridge   = false
-enable_fluxcd          = true
+enable_gitops_bridge   = true
+enable_fluxcd          = false
 fluxcd_namespace       = "flux-system"
 fluxcd_chart_version   = "2.15.0"
 gitops_addons_org      = "https://github.com/thatmlopsguy"
@@ -14,12 +14,12 @@ argocd_chart_version   = "7.8.4"
 addons = {
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = true
-  enable_argo_cd_image_updater = true
-  enable_gitops_promoter       = false
-  enable_argo_rollouts         = true
+  enable_argo_cd_image_updater = false
+  enable_gitops_promoter       = true
+  enable_argo_rollouts         = false
   enable_argo_workflows        = false
   enable_argo_events           = false
-  enable_kargo                 = true
+  enable_kargo                 = false
   enable_keptn                 = false
   enable_keda                  = false
   enable_dapr                  = false
@@ -90,6 +90,10 @@ addons = {
   enable_headlamp  = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
+  # machine learning
+  enable_mlflow  = false
+  enable_kuberay = false
+  enable_seldon  = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
