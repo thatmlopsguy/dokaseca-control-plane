@@ -12,3 +12,7 @@ argo-cd:
     #  g, subject, inherited-subject
       policy.csv: |
         p, backstage, applications, get, */*, allow
+
+configs:
+  secret:
+    argocdServerAdminPassword: "$2a$10$25uRY9BK1bS9q7MD/ZsXkOLyfmJnPulmj8JIPwPZg9/4QjpsJG7vS"
