@@ -1,5 +1,7 @@
 # k8s-homelab
 
+[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/k8s-homelab?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/k8s-homelab)
+
 Welcome to my homelab Kubernetes cluster repository! This project serves as both a personal learning journey and a
 resource for others interested in setting up their own Kubernetes Homelabs.
 
@@ -11,7 +13,7 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [kustomize](https://kustomize.io/)
-* [k9s](https://k9scli.io/) (optional, if you'd like to inspect your cluster visually)
+* [k9s](https://k9scli.io/) or [freelens](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
 ```sh
 $ kubectl version
@@ -108,3 +110,9 @@ To tear down all the resources and the kind cluster, run the following command:
 ```sh
 make terraform-destroy
 ```
+
+## Contributing
+
+Anyone is welcome to collaborate to this project.
+
+![Star History Chart](https://api.star-history.com/svg?repos=thatmlopsguy/k8s-homelab&type=Date)
