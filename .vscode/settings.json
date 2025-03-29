@@ -16,6 +16,7 @@
         "kubescape",
         "metallb",
         "openfunction",
+        "seldon",
         "statusbadge",
         "traefik",
         "vmalert"

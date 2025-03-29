@@ -55,6 +55,10 @@ flux-check: ## Check prerequisites
 	@flux check --pre
 
 ##@ Argo
+argo-cd-kustomize-install: ## Install argocd with kustomize
+	@kustomize build --enable-helm kustomize/argo-cd | kubectl apply -f -
+	@rm -rf kustomize/argo-cd/charts
+
 argo-cd-login: ## Login to argocd
 	@argocd login --insecure localhost:8088
 
