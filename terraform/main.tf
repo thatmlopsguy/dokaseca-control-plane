@@ -69,7 +69,7 @@ module "fluxcd" {
   namespace     = var.fluxcd_namespace
   chart_version = var.fluxcd_chart_version
 
-  repository_url     = var.gitops_addons_org
+  repository_url     = "${var.gitops_addons_org}/${var.gitops_addons_repo}"
   repository_branch  = var.gitops_addons_revision
   kustomization_path = "./gitops/fluxcd/addons/"
 
