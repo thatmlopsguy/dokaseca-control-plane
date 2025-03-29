@@ -1,6 +1,57 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "adrgen@latest": {
+      "last_modified": "2025-03-11T17:52:14Z",
+      "resolved": "github:NixOS/nixpkgs/0d534853a55b5d02a4ababa1d71921ce8f0aee4c#adrgen",
+      "source": "devbox-search",
+      "version": "0.4.0-beta",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/lkjkpbx8jbpsn4xpwqakzzx1d0gxg1aa-adrgen-0.4.0-beta",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/lkjkpbx8jbpsn4xpwqakzzx1d0gxg1aa-adrgen-0.4.0-beta"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3hhj482q1an79wwlkkmqk80rakaxscx1-adrgen-0.4.0-beta",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3hhj482q1an79wwlkkmqk80rakaxscx1-adrgen-0.4.0-beta"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dq728sa2hsfhnp21qxi82mb95b74616y-adrgen-0.4.0-beta",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dq728sa2hsfhnp21qxi82mb95b74616y-adrgen-0.4.0-beta"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/rvgyvgh7yrff664d404qsp77mhdq8j6k-adrgen-0.4.0-beta",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/rvgyvgh7yrff664d404qsp77mhdq8j6k-adrgen-0.4.0-beta"
+        }
+      }
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "resolved": "github:NixOS/nixpkgs/1750f3c1c89488e2ffdd47cab9d05454dddfb734?lastModified=1742800061&narHash=sha256-oDJGK1UMArK52vcW9S5S2apeec4rbfNELgc50LqiPNs%3D"
+    },
     "terraform@1.10.4": {
       "last_modified": "2025-01-19T08:16:51Z",
       "resolved": "github:NixOS/nixpkgs/50165c4f7eb48ce82bd063e1fb8047a0f515f8ce#terraform",
