@@ -114,5 +114,3 @@ make terraform-destroy
 ## Contributing
 
 Anyone is welcome to collaborate to this project.
-
-![Star History Chart](https://api.star-history.com/svg?repos=thatmlopsguy/k8s-homelab&type=Date)

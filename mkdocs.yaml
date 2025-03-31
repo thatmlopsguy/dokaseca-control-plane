@@ -8,14 +8,29 @@ repo_name: k8s-homelab
 # Navigation
 nav:
   - Overview: index.md
+  - Getting Started:
+    - Installation: install.md
+    - Architecture: architecture.md
+  - Identity: identity.md
+  - Catalog: catalog.md
+  - Repository: repository.md
+  - Portal: portal.md
+  - CI/CD: pipelines.md
   - Networking: networking.md
   - Observability: observability.md
   - Compliance: compliance.md
   - Security: security.md
-  - Storage: storage.md
+  - Data Streams: streams.md
+  - Data Storage: storage.md
   - Cost Management: cost.md
-  - Backup: backup.md
-  - References: references.md
+  - Chaos Engineering: chaos_engineering.md
+  - Disaster Recovery: backup.md
+  - Resources:
+    - Glossary: glossary.md
+    - Contributing: contributing.md
+    - Release Notes: releases.md
+    - Roadmap: roadmap.md
+    - References: references.md
 
 # Configuration
 theme:

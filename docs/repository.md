@@ -1,3 +1,3 @@
-# Compliance
+# Artifact Repositories
 
 Documentation coming soon!

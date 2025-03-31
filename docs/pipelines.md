@@ -1,3 +1,3 @@
-# Compliance
+# Pipelines
 
 Documentation coming soon!

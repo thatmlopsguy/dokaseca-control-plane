@@ -27,6 +27,11 @@ locals {
   gitops_cluster_revision = var.gitops_cluster_revision
 
   oss_addons = {
+    # identity
+    enable_authentik = try(var.addons.enable_authentik, true)
+    enable_keycloak  = try(var.addons.enable_keycloak, true)
+    enable_authelia  = try(var.addons.enable_authelia, true)
+    # pipelines
     enable_argo_cd               = try(var.addons.enable_argo_cd, true)
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, true)
     enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, true)
@@ -116,6 +121,9 @@ locals {
     enable_mlflow  = try(var.addons.enable_mlflow, false)
     enable_kuberay = try(var.addons.enable_kuberay, false)
     enable_seldon  = try(var.addons.enable_seldon, false)
+    enable_litellm = try(var.addons.enable_litellm, false)
+    enable_milvus  = try(var.addons.enable_milvus, false)
+    enable_ollama  = try(var.addons.enable_ollama, false)
   }
   addons = merge(
     local.oss_addons,

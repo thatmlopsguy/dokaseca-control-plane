@@ -1,3 +1,3 @@
-# Compliance
+# Architecture
 
 Documentation coming soon!
