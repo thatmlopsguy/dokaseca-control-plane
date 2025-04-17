@@ -5,3 +5,6 @@
 - [Mia-Platform](https://docs.mia-platform.eu/)
 - [Devtron](https://docs.devtron.ai/)
 - [mlinfra](https://mlinfra.io/latest/)
+- [choreo-idp](https://github.com/choreo-idp/choreo)
+- [deckhouse](https://github.com/deckhouse/deckhouse)
+- [kusion](https://github.com/KusionStack/kusion)

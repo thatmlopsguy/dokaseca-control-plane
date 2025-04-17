@@ -1,7 +1,7 @@
 cluster_name           = "main"
 domain_name            = "k8s-home.lab"
 kubernetes_version     = "1.31.2"
-enable_gitops_bridge   = false
+enable_gitops_bridge   = true
 enable_fluxcd          = false
 fluxcd_namespace       = "flux-system"
 fluxcd_chart_version   = "2.15.0"
@@ -58,6 +58,7 @@ addons = {
   enable_cilium        = false
   enable_calico        = false
   enable_ingress_nginx = true
+  enable_traefik       = false
   enable_ngrok         = false
   enable_istio         = false
   # compliance

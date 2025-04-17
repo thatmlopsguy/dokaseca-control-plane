@@ -1,0 +1,8 @@
+# Add 'Documentation' label to any changes within 'docs' folder or any subfolders
+Documentation:
+- changed-files:
+  - any-glob-to-any-file: docs/**
+
+# Add 'release' label to any PR that is opened against the `main` branch
+release:
+ - base-branch: 'main'

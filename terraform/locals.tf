@@ -27,6 +27,8 @@ locals {
   gitops_cluster_revision = var.gitops_cluster_revision
 
   oss_addons = {
+    # dashboard
+    enable_headlamp = try(var.addons.enable_headlamp, false)
     # identity
     enable_authentik = try(var.addons.enable_authentik, true)
     enable_keycloak  = try(var.addons.enable_keycloak, true)
@@ -34,27 +36,28 @@ locals {
     # pipelines
     enable_argo_cd               = try(var.addons.enable_argo_cd, true)
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, true)
-    enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, true)
     enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events           = try(var.addons.enable_argo_events, false)
     enable_argo_workflows        = try(var.addons.enable_argo_workflows, false)
     enable_keda                  = try(var.addons.enable_keda, false)
-    enable_dapr                  = try(var.addons.enable_dapr, false)
-    enable_crossplane            = try(var.addons.enable_crossplane, false)
-    enable_kargo                 = try(var.addons.enable_kargo, false)
-    enable_kepler                = try(var.addons.enable_kepler, false)
     enable_keptn                 = try(var.addons.enable_keptn, false)
     enable_open_feature          = try(var.addons.enable_open_feature, false)
     enable_openfunction          = try(var.addons.enable_openfunction, false)
     enable_sloth                 = try(var.addons.enable_sloth, false)
-    enable_strimzi               = try(var.addons.enable_strimzi, false)
-    enable_vcluster              = try(var.addons.enable_vcluster, false)
-    enable_headlamp              = try(var.addons.enable_headlamp, false)
     enable_capi_operator         = try(var.addons.enable_capi_operator, false)
     enable_ray_operator          = try(var.addons.enable_ray_operator, false)
+    # orchestration
+    enable_crossplane = try(var.addons.enable_crossplane, false)
+    enable_vcluster   = try(var.addons.enable_vcluster, false)
+    # gitops promoter
+    enable_kargo           = try(var.addons.enable_kargo, false)
+    enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
+    # queues
+    enable_strimzi = try(var.addons.enable_strimzi, false)
     # platform engineering
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
+    enable_dapr   = try(var.addons.enable_dapr, false)
     # identity
     enable_keyclock = try(var.addons.enable_keyclock, false)
     # networking
@@ -97,6 +100,7 @@ locals {
     enable_kubescape        = try(var.addons.enable_kubescape, false)
     # cost
     enable_opencost = try(var.addons.enable_opencost, false)
+    enable_kepler   = try(var.addons.enable_kepler, false)
     # compliance
     enable_kyverno                 = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)

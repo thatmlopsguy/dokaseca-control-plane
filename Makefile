@@ -1,5 +1,12 @@
 # Project Setup
 PROJECT_NAME := main
+# Read the version from the VERSION file
+RELEASE_VERSION ?= $(shell cat VERSION)
+
+# Setting SHELL to bash allows bash commands to be executed by recipes.
+# Options are set to exit when a recipe line exits non-zero or a piped command fails.
+SHELL = /usr/bin/env bash -o pipefail
+.SHELLFLAGS = -ec
 
 all: help
 
@@ -50,7 +57,7 @@ ingress-nginx: ## Deploy ingress-nginx
 ingress-lb-ip: ## Get ingress-nginx load balancer ip
 	@kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}'; echo
 
-##@FluxCD
+##@ FluxCD
 flux-check: ## Check prerequisites
 	@flux check --pre
 

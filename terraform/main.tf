@@ -10,7 +10,6 @@ resource "kind_cluster" "main" {
     node {
       role = "control-plane"
 
-      #
       extra_mounts {
         host_path      = "/var/run/docker.sock"
         container_path = "/var/run/docker.sock"

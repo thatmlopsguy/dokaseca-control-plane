@@ -1,6 +1,9 @@
 # k8s-homelab
 
 [![GitHub](https://img.shields.io/github/stars/thatmlopsguy/k8s-homelab?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/k8s-homelab)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/issues)
+[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/k8s-homelab)](https://github.com/thatmlopsguy/k8s-homelab/pulls)
 
 Welcome to my homelab Kubernetes cluster repository! This project serves as both a personal learning journey and a
 resource for others interested in setting up their own Kubernetes Homelabs.
