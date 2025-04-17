@@ -19,21 +19,24 @@ addons = {
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
   enable_argo_cd_image_updater = false
-  enable_gitops_promoter       = true
   enable_argo_rollouts         = false
   enable_argo_workflows        = false
   enable_argo_events           = false
-  enable_kargo                 = false
   enable_keptn                 = false
   enable_keda                  = false
   enable_dapr                  = false
-  enable_kro                   = false
   enable_capi_operator         = false
   enable_ray_operator          = false
-  enable_vcluster              = false
   enable_open_feature          = false
+  # orchestration
+  enable_crossplane = false
+  enable_vcluster   = true
+  # gitops promoter
+  enable_kargo           = false
+  enable_gitops_promoter = false
   # platform engineering
   enable_karpor = false
+  enable_kro    = false
   # monitoring
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
@@ -57,8 +60,8 @@ addons = {
   enable_metallb       = true
   enable_cilium        = false
   enable_calico        = false
-  enable_ingress_nginx = true
-  enable_traefik       = false
+  enable_ingress_nginx = false
+  enable_traefik       = true
   enable_ngrok         = false
   enable_istio         = false
   # compliance

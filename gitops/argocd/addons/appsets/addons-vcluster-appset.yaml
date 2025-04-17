@@ -14,7 +14,7 @@ spec:
           - clusters:
               values:
                 addonChart: vcluster
-                addonChartVersion: 0.22.4
+                addonChartVersion: 0.24.1
                 addonChartRepository: https://charts.loft.sh
               selector:
                 matchExpressions:
@@ -26,13 +26,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 0.22.4
+                addonChartVersion: 0.24.1
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 0.22.4
+                addonChartVersion: 0.24.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}

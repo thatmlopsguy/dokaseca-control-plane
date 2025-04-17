@@ -52,14 +52,13 @@ locals {
     # gitops promoter
     enable_kargo           = try(var.addons.enable_kargo, false)
     enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
-    # queues
+    # messaging
     enable_strimzi = try(var.addons.enable_strimzi, false)
+    enable_nats    = try(var.addons.enable_nats, false)
     # platform engineering
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
     enable_dapr   = try(var.addons.enable_dapr, false)
-    # identity
-    enable_keyclock = try(var.addons.enable_keyclock, false)
     # networking
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false)
     enable_traefik       = try(var.addons.enable_traefik, false)
