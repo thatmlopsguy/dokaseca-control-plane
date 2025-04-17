@@ -8,3 +8,5 @@
 - [choreo-idp](https://github.com/choreo-idp/choreo)
 - [deckhouse](https://github.com/deckhouse/deckhouse)
 - [kusion](https://github.com/KusionStack/kusion)
+- [Janus idp](https://janus-idp.io/)
+- [Harmonix](https://harmonixonaws.io/)
