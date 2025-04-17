@@ -40,7 +40,7 @@ spec:
     spec:
       project: addons
       source:
-        - repoURL: '{{metadata.annotations.addons_repo_url}}'
+          repoURL: '{{metadata.annotations.addons_repo_url}}'
           path: 'kustomize/{{values.addonChart}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
       destination:
