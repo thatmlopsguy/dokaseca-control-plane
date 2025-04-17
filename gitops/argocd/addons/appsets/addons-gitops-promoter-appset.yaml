@@ -14,11 +14,26 @@ spec:
           - clusters:
               values:
                 addonChart: gitops-promoter
+                addonChartNamespace: promoter-system
               selector:
                 matchExpressions:
                   - key: enable_gitops_promoter
                     operator: In
                     values: ['true']
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: dev
+              values:
+                addonChart: gitops-promoter
+                addonChartNamespace: promoter-system
+          - clusters:
+              selector:
+                matchLabels:
+                  environment: prod
+              values:
+                addonChart: gitops-promoter
+                addonChartNamespace: promoter-system
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
@@ -29,7 +44,7 @@ spec:
           path: 'kustomize/{{values.addonChart}}'
           targetRevision: '{{metadata.annotations.addons_repo_revision}}'
       destination:
-        namespace: '{{values.addonChart}}'
+        namespace: '{{values.addonChartNamespace}}'
         name: '{{name}}'
       syncPolicy:
         automated: {}
