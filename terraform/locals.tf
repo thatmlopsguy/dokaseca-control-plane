@@ -30,12 +30,12 @@ locals {
     # dashboard
     enable_headlamp = try(var.addons.enable_headlamp, false)
     # identity
-    enable_authentik = try(var.addons.enable_authentik, true)
-    enable_keycloak  = try(var.addons.enable_keycloak, true)
-    enable_authelia  = try(var.addons.enable_authelia, true)
+    enable_authentik = try(var.addons.enable_authentik, false)
+    enable_keycloak  = try(var.addons.enable_keycloak, false)
+    enable_authelia  = try(var.addons.enable_authelia, false)
     # pipelines
-    enable_argo_cd               = try(var.addons.enable_argo_cd, true)
-    enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, true)
+    enable_argo_cd               = try(var.addons.enable_argo_cd, false)
+    enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events           = try(var.addons.enable_argo_events, false)
     enable_argo_workflows        = try(var.addons.enable_argo_workflows, false)
