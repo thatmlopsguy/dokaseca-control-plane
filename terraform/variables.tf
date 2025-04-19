@@ -61,6 +61,10 @@ variable "addons" {
   description = "Kubernetes addons"
   type        = any
   default = {
+    # dashboard
+    enable_headlamp                = false
+    enable_helm_dashboard          = false
+    enable_komoplane               = false
     enable_argo_cd                 = true
     enable_argo_cd_image_updater   = true
     enable_gitops_promoter         = false
@@ -99,7 +103,6 @@ variable "addons" {
     enable_istio                   = false
     enable_reloader                = false
     enable_karpor                  = false
-    enable_headlamp                = false
     enable_backstage               = false
     enable_kubescape               = false
     enable_victoria_logs           = false

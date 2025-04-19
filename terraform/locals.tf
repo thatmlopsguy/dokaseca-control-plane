@@ -28,7 +28,9 @@ locals {
 
   oss_addons = {
     # dashboard
-    enable_headlamp = try(var.addons.enable_headlamp, false)
+    enable_headlamp       = try(var.addons.enable_headlamp, false)
+    enable_helm_dashboard = try(var.addons.enable_helm_dashboard, false)
+    enable_komoplane      = try(var.addons.enable_komoplane, false)
     # identity
     enable_authentik = try(var.addons.enable_authentik, false)
     enable_keycloak  = try(var.addons.enable_keycloak, false)
@@ -44,11 +46,10 @@ locals {
     enable_open_feature          = try(var.addons.enable_open_feature, false)
     enable_openfunction          = try(var.addons.enable_openfunction, false)
     enable_sloth                 = try(var.addons.enable_sloth, false)
-    enable_capi_operator         = try(var.addons.enable_capi_operator, false)
-    enable_ray_operator          = try(var.addons.enable_ray_operator, false)
     # orchestration
-    enable_crossplane = try(var.addons.enable_crossplane, false)
-    enable_vcluster   = try(var.addons.enable_vcluster, false)
+    enable_capi_operator = try(var.addons.enable_capi_operator, false)
+    enable_crossplane    = try(var.addons.enable_crossplane, false)
+    enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
     enable_kargo           = try(var.addons.enable_kargo, false)
     enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
@@ -123,12 +124,13 @@ locals {
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # machine learning
-    enable_mlflow  = try(var.addons.enable_mlflow, false)
-    enable_kuberay = try(var.addons.enable_kuberay, false)
-    enable_seldon  = try(var.addons.enable_seldon, false)
-    enable_litellm = try(var.addons.enable_litellm, false)
-    enable_milvus  = try(var.addons.enable_milvus, false)
-    enable_ollama  = try(var.addons.enable_ollama, false)
+    enable_ray_operator = try(var.addons.enable_ray_operator, false)
+    enable_mlflow       = try(var.addons.enable_mlflow, false)
+    enable_kuberay      = try(var.addons.enable_kuberay, false)
+    enable_seldon       = try(var.addons.enable_seldon, false)
+    enable_litellm      = try(var.addons.enable_litellm, false)
+    enable_milvus       = try(var.addons.enable_milvus, false)
+    enable_ollama       = try(var.addons.enable_ollama, false)
   }
   addons = merge(
     local.oss_addons,

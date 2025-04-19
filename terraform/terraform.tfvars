@@ -13,10 +13,15 @@ gitops_addons_path     = "addons"
 gitops_addons_revision = "dev"
 argocd_chart_version   = "7.8.4"
 addons = {
+  # dashboard
+  enable_headlamp       = false
+  enable_helm_dashboard = false
+  enable_komoplane      = false # requires enable_crossplane
   # identity
   enable_authentik = false
   enable_keycloak  = false
   enable_authelia  = false
+  # continuos delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
   enable_argo_cd_image_updater = false
@@ -24,14 +29,15 @@ addons = {
   enable_argo_workflows        = false
   enable_argo_events           = false
   enable_keptn                 = false
-  enable_keda                  = false
-  enable_dapr                  = false
-  enable_capi_operator         = false
-  enable_ray_operator          = false
-  enable_open_feature          = false
+  # developer experience
+  enable_keda = false
+  enable_dapr = false
+  # feature flags
+  enable_open_feature = false
   # orchestration
-  enable_crossplane = false
-  enable_vcluster   = true
+  enable_capi_operator = false
+  enable_crossplane    = true
+  enable_vcluster      = true
   # gitops promoter
   enable_kargo           = false
   enable_gitops_promoter = false
@@ -98,16 +104,16 @@ addons = {
   # utils
   enable_reloader  = false
   enable_reflector = false
-  enable_headlamp  = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
-  enable_mlflow  = false
-  enable_kuberay = false
-  enable_seldon  = false
-  enable_litellm = false
-  enable_milvus  = false
-  enable_ollama  = false
+  enable_ray_operator = false
+  enable_mlflow       = false
+  enable_kuberay      = false
+  enable_seldon       = false
+  enable_litellm      = false
+  enable_milvus       = false
+  enable_ollama       = false
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"
