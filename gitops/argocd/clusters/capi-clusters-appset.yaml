@@ -8,13 +8,13 @@ spec:
   - list:
       elements:
       - clusterName: cluster1
-        gitRepo: https://github.com/christianh814/argocd-capi-demo
-        appPath: capi
-        appBranch: main
+        gitRepo: https://github.com/thatmlopsguy/k8s-homelab
+        appPath: charts/capi
+        appBranch: dev
       - clusterName: cluster2
-        gitRepo: https://github.com/christianh814/argocd-capi-demo
-        appPath: capi
-        appBranch: main
+        gitRepo: https://github.com/thatmlopsguy/k8s-homelab
+        appPath: charts/capi
+        appBranch: dev
   template:
     metadata:
       name: '{{clusterName}}-capi'
