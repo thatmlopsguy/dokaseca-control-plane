@@ -8,6 +8,7 @@
         "authelia",
         "authentik",
         "capi",
+        "codefresh",
         "crds",
         "freelens",
         "healthcheck",

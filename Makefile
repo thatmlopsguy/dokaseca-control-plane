@@ -1,5 +1,5 @@
 # Project Setup
-PROJECT_NAME := main
+PROJECT_NAME := control-plane
 # Read the version from the VERSION file
 RELEASE_VERSION ?= $(shell cat VERSION)
 
@@ -164,6 +164,9 @@ kargo-secret: ## create kargo secret (requires apache2-utils)
 	echo "Password: $$pass"; \
 	echo "Password Hash: $$(htpasswd -bnBC 10 "" $$pass | tr -d ':')"; \
 	echo "Signing Key: $$(openssl rand -base64 48 | tr -d "=+/" | head -c 32)"
+
+vclusters: ## list of vclusters
+	@vcluster list
 
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
