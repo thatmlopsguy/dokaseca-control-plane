@@ -11,7 +11,7 @@ gitops_addons_repo     = "k8s-homelab"
 gitops_addons_basepath = "gitops/argocd"
 gitops_addons_path     = "addons"
 gitops_addons_revision = "dev"
-argocd_chart_version   = "7.8.4"
+argocd_chart_version   = "7.8.26"
 addons = {
   # dashboard
   enable_headlamp       = false
@@ -115,7 +115,7 @@ addons = {
   enable_milvus       = false
   enable_ollama       = false
   # azure
-  enable_azure_service_operator = false
+  enable_azure_service_operator = false # requires enable_cert_manager
   # aws
   # gcp
 }
