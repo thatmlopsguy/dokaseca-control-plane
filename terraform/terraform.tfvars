@@ -35,9 +35,9 @@ addons = {
   # feature flags
   enable_open_feature = false
   # orchestration
-  enable_capi_operator = false
-  enable_crossplane    = true
-  enable_vcluster      = true
+  enable_capi_operator = false # requires enable_cert_manager
+  enable_crossplane    = false
+  enable_vcluster      = false
   # gitops promoter
   enable_kargo           = false
   enable_gitops_promoter = false
@@ -64,12 +64,12 @@ addons = {
   enable_trivy            = false
   enable_kubescape        = false
   # networking
-  enable_kubevip       = true
+  enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false
   enable_calico        = false
   enable_ingress_nginx = false
-  enable_traefik       = true
+  enable_traefik       = false
   enable_ngrok         = false
   enable_istio         = false
   # compliance
@@ -114,6 +114,10 @@ addons = {
   enable_litellm      = false
   enable_milvus       = false
   enable_ollama       = false
+  # azure
+  enable_azure_service_operator = false
+  # aws
+  # gcp
 }
 gitops_resources_org      = "https://github.com/thatmlopsguy"
 gitops_resources_repo     = "k8s-homelab"

@@ -5,7 +5,8 @@ locals {
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
 
-  domain_name = var.domain_name
+  cloud_provider = var.cloud_provider
+  domain_name    = var.domain_name
 
   gitops_addons_url      = "${var.gitops_addons_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -53,7 +54,6 @@ locals {
     # gitops promoter
     enable_kargo           = try(var.addons.enable_kargo, false)
     enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
-    enable_codefresh       = try(var.addons.enable_codefresh, false)
     # messaging
     enable_strimzi = try(var.addons.enable_strimzi, false)
     enable_nats    = try(var.addons.enable_nats, false)
@@ -132,11 +132,33 @@ locals {
     enable_milvus       = try(var.addons.enable_milvus, false)
     enable_ollama       = try(var.addons.enable_ollama, false)
   }
+
+  # Enterprise
+  enterprise_addons = {
+    enable_codefresh = try(var.addons.enable_codefresh, false)
+  }
+
+  # Azure
+  azure_addons = {
+    enable_azure_service_operator = try(var.addons.enable_azure_service_operator, false)
+  }
+
+  # AWS
+  aws_addons = {}
+
+  # GCP
+  gcp_addons = {}
+
   addons = merge(
     local.oss_addons,
+    local.enterprise_addons,
+    local.azure_addons,
+    local.aws_addons,
+    local.gcp_addons,
     { kubernetes_version = local.cluster_version },
     { k8s_cluster_name = local.cluster_name },
     { k8s_domain_name = local.domain_name },
+    { cloud_provider = local.cloud_provider }
   )
 
   addons_metadata = merge(
