@@ -1,0 +1,21 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-helm
+  namespace: crossplane-system
+spec:
+  package: xpkg.upbound.io/crossplane-contrib/provider-helm:v0.20.4
+  controllerConfigRef:
+    name: helm-config-debug
+---
+apiVersion: pkg.crossplane.io/v1alpha1
+kind: ControllerConfig
+metadata:
+  name: helm-config-debug
+  namespace: crossplane-system
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  serviceAccountName: helm-provider-cluster-admin
+  args:
+  - '--debug'
