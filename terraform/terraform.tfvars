@@ -34,6 +34,7 @@ addons = {
   # gitops promoter
   enable_kargo           = false
   enable_gitops_promoter = false
+  enable_codefresh       = false
   # platform engineering
   enable_karpor = false
   enable_kro    = false

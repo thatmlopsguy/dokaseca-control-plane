@@ -52,6 +52,7 @@ locals {
     # gitops promoter
     enable_kargo           = try(var.addons.enable_kargo, false)
     enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
+    enable_codefresh       = try(var.addons.enable_codefresh, false)
     # messaging
     enable_strimzi = try(var.addons.enable_strimzi, false)
     enable_nats    = try(var.addons.enable_nats, false)
