@@ -14,7 +14,7 @@ spec:
           - clusters:
               values:
                 addonChart: crossplane
-                addonChartVersion: 1.20.0
+                addonChartVersion: 1.19.1 # helm search repo -l crossplane
                 addonChartRepository: https://charts.crossplane.io/stable
                 addonChartNamespace: crossplane-system
               selector:
@@ -27,13 +27,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 1.20.0
+                addonChartVersion: 1.19.1
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 1.20.0
+                addonChartVersion: 1.19.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
