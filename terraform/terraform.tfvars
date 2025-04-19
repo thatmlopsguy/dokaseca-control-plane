@@ -1,5 +1,6 @@
-cluster_name           = "main"
+cluster_name           = "control-plane"
 domain_name            = "k8s-home.lab"
+cloud_provider         = "local"
 kubernetes_version     = "1.31.2"
 enable_gitops_bridge   = true
 enable_fluxcd          = false

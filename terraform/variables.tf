@@ -16,6 +16,17 @@ variable "kubernetes_version" {
   default     = "v1.31.2"
 }
 
+variable "cloud_provider" {
+  type        = string
+  description = "Cloud provider to deploy infrastructure to"
+  default     = "local"
+
+  validation {
+    condition     = contains(["aws", "azure", "gcp", "local"], lower(var.cloud_provider))
+    error_message = "Invalid cloud provider. Must be one of 'local', 'aws', 'azure' or 'gcp'."
+  }
+}
+
 variable "enable_gitops_bridge" {
   description = "Enable gitops bridge"
   type        = bool
