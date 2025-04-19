@@ -168,6 +168,9 @@ kargo-secret: ## create kargo secret (requires apache2-utils)
 vclusters: ## list of vclusters
 	@vcluster list
 
+komoplane-ui: ## Access komoplane-ui (crossplane dashboard)
+	@kubectl port-forward svc/komoplane -n komoplane 8090:8090
+
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs
