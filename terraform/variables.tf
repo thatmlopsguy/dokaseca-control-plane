@@ -104,7 +104,6 @@ variable "addons" {
     enable_ngrok                   = false
     enable_cilium                  = false
     enable_ray_operator            = false
-    enable_promtail                = false
     enable_opencost                = false
     enable_grafana_operator        = true
     enable_polaris                 = false
