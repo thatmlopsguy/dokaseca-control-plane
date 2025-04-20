@@ -119,3 +119,7 @@ make terraform-destroy
 ## Contributing
 
 Anyone is welcome to collaborate to this project.
+
+## :bookmark: License
+ 
+Doca Seca is licensed under [Apache License, Version 2.0](LICENSE)
