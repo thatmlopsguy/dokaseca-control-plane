@@ -193,6 +193,8 @@ locals {
       enabled: false
     notifications:
       enabled: false
+    global:
+      domain: "argocd.${local.domain_name}"
     EOT
 
   argocd_apps = {
