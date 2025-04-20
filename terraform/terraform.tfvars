@@ -80,9 +80,7 @@ addons = {
   enable_polaris                 = false
   enable_connaisseur             = false
   # logging
-  enable_promtail         = false
   enable_fluentbit        = false
-  enable_fluentd          = false
   enable_alloy            = false
   enable_vector           = false
   enable_logging_operator = false
