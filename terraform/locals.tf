@@ -1,6 +1,6 @@
 locals {
   name        = "ex-${replace(basename(path.cwd), "_", "-")}"
-  environment = "dev"
+  environment = "var.environment
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version

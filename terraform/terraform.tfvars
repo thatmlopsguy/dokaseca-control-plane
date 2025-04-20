@@ -1,3 +1,4 @@
+environment            = "dev"
 cluster_name           = "control-plane"
 domain_name            = "k8s-home.lab"
 cloud_provider         = "local"
