@@ -9,8 +9,8 @@ repo_name: k8s-homelab
 nav:
   - Overview: index.md
   - Getting Started:
-    - Installation: install.md
-    - Architecture: architecture.md
+    - Installation: getting_started/install.md
+    - Architecture: getting_started/architecture.md
   - Identity: identity.md
   - Catalog: catalog.md
   - Repository: repository.md
