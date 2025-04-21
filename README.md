@@ -4,6 +4,10 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/commits/main)
 [![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/issues)
 [![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/k8s-homelab)](https://github.com/thatmlopsguy/k8s-homelab/pulls)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/k8s-homelab/blob/dev/LICENSE)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/k8s-homelab/)
+
+## Introduction
 
 Welcome to my homelab Kubernetes cluster repository! This project serves as both a personal learning journey and a
 resource for others interested in setting up their own Kubernetes Homelabs.
@@ -114,6 +118,10 @@ To tear down all the resources and the kind cluster, run the following command:
 make terraform-destroy
 ```
 
-## Contributing
+## :handshake: Contributing
 
-Anyone is welcome to collaborate to this project.
+Anyone is welcome to collaborate to this project. Check out our [contributing guidelines](CONTRIBUTING.md).
+
+## :bookmark: License
+ 
+Doca Seca is licensed under [Apache License, Version 2.0](LICENSE)

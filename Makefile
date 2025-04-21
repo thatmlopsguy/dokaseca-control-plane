@@ -2,6 +2,7 @@
 PROJECT_NAME := control-plane
 # Read the version from the VERSION file
 RELEASE_VERSION ?= $(shell cat VERSION)
+GIT_HASH ?= $(shell git log --format="%h" -n 1)
 
 # Setting SHELL to bash allows bash commands to be executed by recipes.
 # Options are set to exit when a recipe line exits non-zero or a piped command fails.
@@ -15,12 +16,15 @@ all: help
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: \033[36m\033[0m\n"} /^[a-zA-Z0-9_-]+:.*?##/ { printf "  \033[36m%-26s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
+release: ## Show release version
+	@echo $(RELEASE_VERSION)-$(GIT_HASH)
+
 ##@ Terraform
 terraform-init: ## Initialize terraform modules
 	@cd terraform && terraform init
 
 terraform-apply: terraform-init ## Create infra
-	@cd terraform && terraform apply -auto-approve
+	@cd terraform && terraform apply -var-file=tfvars/control-plane/terraform.tfvars -auto-approve
 
 terraform-destroy: ## Destroy infra
 	@cd terraform && terraform destroy --auto-approve
@@ -38,7 +42,7 @@ kind-delete-cluster: ## Delete kind cluster
 	fi
 
 kind-export-kubeconfig: ## Export kind kubeconfig
-	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig  kind/$(PROJECT_NAME)
+	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig kubeconfigs/$(PROJECT_NAME)
 
 kind-list-clusters: ## list kind clusters
 	@kind get clusters

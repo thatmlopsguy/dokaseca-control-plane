@@ -10,3 +10,5 @@
 - [kusion](https://github.com/KusionStack/kusion)
 - [Janus idp](https://janus-idp.io/)
 - [Harmonix](https://harmonixonaws.io/)
+- [CNOE](https://cnoe.io/)
+- [BACK Stack](https://backstack.dev/)

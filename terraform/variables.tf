@@ -1,3 +1,14 @@
+variable "environment" {
+  description = "Name of the environment"
+  type        = string
+  default     = "dev"
+
+  validation {
+    condition     = contains(["dev", "stg", "prod"], lower(var.environment))
+    error_message = "Invalid environment. Must be one of 'dev', 'stg' or 'prod'."
+  }
+}
+
 variable "cluster_name" {
   description = "Name of the Kind cluster"
   type        = string
@@ -93,7 +104,6 @@ variable "addons" {
     enable_ngrok                   = false
     enable_cilium                  = false
     enable_ray_operator            = false
-    enable_promtail                = false
     enable_opencost                = false
     enable_grafana_operator        = true
     enable_polaris                 = false

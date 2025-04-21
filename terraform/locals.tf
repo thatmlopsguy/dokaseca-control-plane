@@ -1,6 +1,6 @@
 locals {
   name        = "ex-${replace(basename(path.cwd), "_", "-")}"
-  environment = "dev"
+  environment = "var.environment
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
@@ -82,9 +82,7 @@ locals {
     enable_pyroscope                  = try(var.addons.enable_pyroscope, false)
     enable_alloy                      = try(var.addons.enable_alloy, false)
     enable_vector                     = try(var.addons.enable_vector, false)
-    enable_promtail                   = try(var.addons.enable_promtail, false)
     enable_fluentbit                  = try(var.addons.enable_fluentbit, false)
-    enable_fluentd                    = try(var.addons.enable_fluentd, false)
     enable_zipkin                     = try(var.addons.enable_zipkin, false)
     enable_loki                       = try(var.addons.enable_loki, false)
     enable_pyrra                      = try(var.addons.enable_pyrra, false)
@@ -195,6 +193,8 @@ locals {
       enabled: false
     notifications:
       enabled: false
+    global:
+      domain: "argocd.${local.domain_name}"
     EOT
 
   argocd_apps = {
