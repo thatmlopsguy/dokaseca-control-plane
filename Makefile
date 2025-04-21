@@ -40,9 +40,14 @@ kind-delete-cluster: ## Delete kind cluster
 kind-export-kubeconfig: ## Export kind kubeconfig
 	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig  kind/$(PROJECT_NAME)
 
+kind-list-clusters: ## list kind clusters
+	@kind get clusters
+
 ##@ Cluster API
-cluster-spoke-dev: ## Create manifest spoke-dev
-	clusterctl init --infrastructure docker
+cluster-api-status: ## get status of clusters from cluster api
+	@kubectl get kubeadmcontrolplane
+
+cluster-team-a: ## Create manifest spoke-dev
 	clusterctl generate cluster spoke-dev \
 		--flavor development \
 		--infrastructure docker \
