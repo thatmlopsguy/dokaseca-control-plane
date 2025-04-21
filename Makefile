@@ -38,7 +38,7 @@ kind-delete-cluster: ## Delete kind cluster
 	fi
 
 kind-export-kubeconfig: ## Export kind kubeconfig
-	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig  kind/$(PROJECT_NAME)
+	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig kubeconfigs/$(PROJECT_NAME)
 
 ##@ Cluster API
 cluster-spoke-dev: ## Create manifest spoke-dev

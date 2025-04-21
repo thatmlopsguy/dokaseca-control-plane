@@ -39,3 +39,4 @@ terraform/*config
 
 # secrets
 secret.yaml
+kubeconfigs/
