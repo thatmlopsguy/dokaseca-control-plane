@@ -123,7 +123,7 @@ variable "addons" {
 }
 
 # Addons Git
-variable "gitops_addons_org" {
+variable "gitops_org" {
   description = "Git repository org/user contains for addons"
   type        = string
   default     = "https://github.com/gitops-bridge-dev"
@@ -154,12 +154,6 @@ variable "gitops_addons_path" {
 }
 
 # Addon Resources Git
-variable "gitops_resources_org" {
-  description = "Git repository org/user contains for addon resources"
-  type        = string
-  default     = "https://github.com/gitops-bridge-dev"
-}
-
 variable "gitops_resources_repo" {
   description = "Git repository contains for addon resources"
   type        = string
@@ -179,12 +173,6 @@ variable "gitops_resources_revision" {
 }
 
 # Workloads Git
-variable "gitops_workload_org" {
-  description = "Git repository org/user contains for workload"
-  type        = string
-  default     = "https://github.com/gitops-bridge-dev"
-}
-
 variable "gitops_workload_repo" {
   description = "Git repository contains for workload"
   type        = string
@@ -210,12 +198,6 @@ variable "gitops_workload_revision" {
 }
 
 # Clusters Git
-variable "gitops_cluster_org" {
-  description = "Git repository org/user contains for clusters"
-  type        = string
-  default     = "https://github.com/gitops-bridge-dev"
-}
-
 variable "gitops_cluster_repo" {
   description = "Git repository contains for clusters"
   type        = string

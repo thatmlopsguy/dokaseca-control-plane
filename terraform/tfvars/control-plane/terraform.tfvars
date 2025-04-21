@@ -7,7 +7,8 @@ enable_gitops_bridge   = true
 enable_fluxcd          = false
 fluxcd_namespace       = "flux-system"
 fluxcd_chart_version   = "2.15.0"
-gitops_addons_org      = "https://github.com/thatmlopsguy"
+gitops_org             = "https://github.com/thatmlopsguy"
+# Addons
 gitops_addons_repo     = "k8s-homelab"
 gitops_addons_basepath = "gitops/argocd"
 gitops_addons_path     = "addons"
@@ -118,16 +119,16 @@ addons = {
   # aws
   # gcp
 }
-gitops_resources_org      = "https://github.com/thatmlopsguy"
+# Resources
 gitops_resources_repo     = "k8s-homelab"
 gitops_resources_basepath = "charts"
 gitops_resources_revision = "dev"
-gitops_workload_org       = "https://github.com/thatmlopsguy"
+# Workloads
 gitops_workload_repo      = "k8s-homelab"
 gitops_workload_basepath  = "gitops/argocd"
 gitops_workload_path      = "workloads"
 gitops_workload_revision  = "dev"
-gitops_cluster_org        = "https://github.com/thatmlopsguy"
+# Clusters
 gitops_cluster_repo       = "k8s-homelab"
 gitops_cluster_basepath   = "gitops/argocd"
 gitops_cluster_path       = "clusters"

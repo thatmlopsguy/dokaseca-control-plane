@@ -6,7 +6,6 @@ resource "kind_cluster" "main" {
   kind_config {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
-
     node {
       role = "control-plane"
 
@@ -68,7 +67,7 @@ module "fluxcd" {
   namespace     = var.fluxcd_namespace
   chart_version = var.fluxcd_chart_version
 
-  repository_url     = "${var.gitops_addons_org}/${var.gitops_addons_repo}"
+  repository_url     = "${var.gitops_org}/${var.gitops_addons_repo}"
   repository_branch  = var.gitops_addons_revision
   kustomization_path = "./gitops/fluxcd/addons/"
 

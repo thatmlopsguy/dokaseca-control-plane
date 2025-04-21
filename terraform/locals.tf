@@ -1,6 +1,6 @@
 locals {
   name        = "ex-${replace(basename(path.cwd), "_", "-")}"
-  environment = "var.environment
+  environment = var.environment
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
@@ -8,21 +8,21 @@ locals {
   cloud_provider = var.cloud_provider
   domain_name    = var.domain_name
 
-  gitops_addons_url      = "${var.gitops_addons_org}/${var.gitops_addons_repo}"
+  gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
 
-  gitops_resources_url      = "${var.gitops_resources_org}/${var.gitops_resources_repo}"
+  gitops_resources_url      = "${var.gitops_org}/${var.gitops_resources_repo}"
   gitops_resources_basepath = var.gitops_resources_basepath
   gitops_resources_revision = var.gitops_resources_revision
 
-  gitops_workload_url      = "${var.gitops_workload_org}/${var.gitops_workload_repo}"
+  gitops_workload_url      = "${var.gitops_org}/${var.gitops_workload_repo}"
   gitops_workload_basepath = var.gitops_workload_basepath
   gitops_workload_path     = var.gitops_workload_path
   gitops_workload_revision = var.gitops_workload_revision
 
-  gitops_cluster_url      = "${var.gitops_cluster_org}/${var.gitops_cluster_repo}"
+  gitops_cluster_url      = "${var.gitops_org}/${var.gitops_cluster_repo}"
   gitops_cluster_basepath = var.gitops_cluster_basepath
   gitops_cluster_path     = var.gitops_cluster_path
   gitops_cluster_revision = var.gitops_cluster_revision
@@ -193,8 +193,6 @@ locals {
       enabled: false
     notifications:
       enabled: false
-    global:
-      domain: "argocd.${local.domain_name}"
     EOT
 
   argocd_apps = {
