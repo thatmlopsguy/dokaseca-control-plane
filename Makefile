@@ -20,7 +20,7 @@ terraform-init: ## Initialize terraform modules
 	@cd terraform && terraform init
 
 terraform-apply: terraform-init ## Create infra
-	@cd terraform && terraform apply -auto-approve
+	@cd terraform && terraform apply -var-file=tfvars/control-plane/terraform.tfvars -auto-approve
 
 terraform-destroy: ## Destroy infra
 	@cd terraform && terraform destroy --auto-approve

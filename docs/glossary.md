@@ -8,3 +8,4 @@ This glossary is a collection of terms related to Doca Seca. The glossary is int
 ## Reference
 
 - [Mirantis Glossary](https://docs.mirantis.com/glossary/mcp/#)
+- [Devtron Glossary](https://docs.devtron.ai/resources/glossary)
