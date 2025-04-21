@@ -1,9 +1,11 @@
 locals {
   name        = "ex-${replace(basename(path.cwd), "_", "-")}"
   environment = var.environment
+  region      = var.region
 
   cluster_name    = var.cluster_name
   cluster_version = var.kubernetes_version
+  kubeconfig_path = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
 
   cloud_provider = var.cloud_provider
   domain_name    = var.domain_name

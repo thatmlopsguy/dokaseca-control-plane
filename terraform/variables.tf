@@ -9,6 +9,17 @@ variable "environment" {
   }
 }
 
+variable "region" {
+  description = "region of the kubernetes cluster"
+  type = string
+  default = "north-america"
+
+  validation {
+    condition     = contains(["north-america", "europe", "asia-pacific"], lower(var.region))
+    error_message = "Invalid environment. Must be one of 'north-america', 'europe' or 'asia-pacific'."
+  }
+}
+
 variable "cluster_name" {
   description = "Name of the Kind cluster"
   type        = string
