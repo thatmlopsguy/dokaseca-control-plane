@@ -1,5 +1,6 @@
 resource "kind_cluster" "main" {
-  name = var.cluster_name
+  name            = var.cluster_name
+  kubeconfig_path = local.kubeconfig_path
   #node_image     = "kindest/node:v${var.kubernetes_version}"
   wait_for_ready = true
 
@@ -20,12 +21,12 @@ resource "kind_cluster" "main" {
 
       extra_port_mappings {
         container_port = 80
-        host_port      = 80
+        host_port      = 81
       }
 
       extra_port_mappings {
         container_port = 443
-        host_port      = 443
+        host_port      = 444
       }
     }
 
