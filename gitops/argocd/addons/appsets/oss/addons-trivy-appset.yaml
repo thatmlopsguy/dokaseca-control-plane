@@ -13,9 +13,10 @@ spec:
         generators:
           - clusters:
               values:
-                addonChart: trivy
-                addonChartVersion: 0.11.1
+                addonChart: trivy-operator
+                addonChartVersion: 0.27.0
                 addonChartRepository: https://aquasecurity.github.io/helm-charts
+                addonChartNamespace: trivy-system
               selector:
                 matchExpressions:
                   - key: enable_trivy
@@ -26,13 +27,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 0.11.1
+                addonChartVersion: 0.27.0
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 0.11.1
+                addonChartVersion: 0.27.0
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
@@ -53,7 +54,7 @@ spec:
               - $values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
       destination:
-        namespace: '{{values.addonChart}}'
+        namespace: '{{values.addonChartNamespace}}'
         name: '{{name}}'
       syncPolicy:
         automated: {}
