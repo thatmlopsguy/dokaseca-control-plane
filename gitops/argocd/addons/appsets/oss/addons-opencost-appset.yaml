@@ -14,7 +14,7 @@ spec:
           - clusters:
               values:
                 addonChart: opencost
-                addonChartVersion: 1.43.2
+                addonChartVersion: 2.1.1
                 addonChartRepository: https://opencost.github.io/opencost-helm-chart
               selector:
                 matchExpressions:
@@ -26,13 +26,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 1.43.2
+                addonChartVersion: 2.1.1
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 1.43.2
+                addonChartVersion: 2.1.1
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}
@@ -52,6 +52,8 @@ spec:
               - $values/environments/default/addons/{{values.addonChart}}/values.yaml
               - $values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml
               - $values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml
+            values: |
+              clusterName: {{metadata.annotations.cluster_name}}
       destination:
         namespace: '{{values.addonChart}}'
         name: '{{name}}'
