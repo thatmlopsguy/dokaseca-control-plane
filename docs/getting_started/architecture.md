@@ -1,3 +1,3 @@
 # Architecture
 
-Documentation coming soon!
+![](../assets/figures/diagrams/architecture.drawio.png)
