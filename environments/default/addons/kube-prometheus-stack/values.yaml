@@ -3,6 +3,8 @@ alertmanager:
 
 grafana:
   enabled: true
+  plugins:
+    - victoriametrics-logs-datasource
 
 kubeEtcd:
   enabled: false

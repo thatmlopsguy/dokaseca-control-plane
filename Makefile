@@ -111,6 +111,9 @@ jaeger-ui: ## Access jaeger ui
 kiali-ui: ## Access kiali ui
 	@kubectl port-forward -n istio-system svc/kiali 20001:20001
 
+restart-monitoring-stack: ## Restart monitoring stack
+	@kubectl rollout restart deploy,sts -n monitoring
+
 ##@ Security
 kubescape-scan: ## scan kubernetes
 	@kubescape scan
