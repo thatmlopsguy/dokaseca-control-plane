@@ -35,6 +35,7 @@ locals {
     enable_helm_dashboard = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane      = try(var.addons.enable_komoplane, false)
     # identity
+    enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik = try(var.addons.enable_authentik, false)
     enable_keycloak  = try(var.addons.enable_keycloak, false)
     enable_authelia  = try(var.addons.enable_authelia, false)
