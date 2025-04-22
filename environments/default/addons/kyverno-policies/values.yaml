@@ -1,0 +1,3 @@
+# -- API server behavior if the webhook fails to respond ('Ignore', 'Fail')
+# For more info: https://kyverno.io/docs/writing-policies/policy-settings/
+failurePolicy: Ignore
