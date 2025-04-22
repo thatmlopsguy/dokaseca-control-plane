@@ -26,6 +26,8 @@ opencost:
       namespaceName: monitoring
       # -- Service name of in-cluster Prometheus
       serviceName: kube-prometheus-stack-prometheus
+      # -- Service port of in-cluster Prometheus
+      port: 9090
 
   ui:
     # -- Enable OpenCost UI
