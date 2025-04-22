@@ -18,7 +18,12 @@ grafana:
       # <string> Sets the pre-selected datasource for new panels.
       # You can set only one default data source per organization.
       isDefault: true
-
+    - name: Tempo
+      type: tempo
+      access: proxy
+      url: "http://tempo.monitoring:3100"
+      version: 1
+      isDefault: false
 
 kubeEtcd:
   enabled: false
