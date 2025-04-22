@@ -19,16 +19,6 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
-##@ Terraform
-terraform-init: ## Initialize terraform modules
-	@cd terraform && terraform init
-
-terraform-apply: terraform-init ## Create infra
-	@cd terraform && terraform apply -var-file=tfvars/control-plane/terraform.tfvars -auto-approve
-
-terraform-destroy: ## Destroy infra
-	@cd terraform && terraform destroy -var-file=tfvars/control-plane/terraform.tfvars --auto-approve
-
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
