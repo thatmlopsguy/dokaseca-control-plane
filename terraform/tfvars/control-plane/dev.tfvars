@@ -1,19 +1,24 @@
-environment            = "dev"
-cluster_name           = "control-plane"
-domain_name            = "k8s-home.lab"
-cloud_provider         = "local"
-kubernetes_version     = "1.31.2"
-enable_gitops_bridge   = true
-enable_fluxcd          = false
-fluxcd_namespace       = "flux-system"
-fluxcd_chart_version   = "2.15.0"
-gitops_org             = "https://github.com/thatmlopsguy"
+environment          = "dev"
+cluster_name         = "control-plane"
+domain_name          = "k8s-home.lab"
+cloud_provider       = "local"
+kubernetes_version   = "1.31.2"
+enable_gitops_bridge = true
+enable_fluxcd        = false
+fluxcd_namespace     = "flux-system"
+fluxcd_chart_version = "2.15.0"
+gitops_org           = "https://github.com/thatmlopsguy"
 # Addons
 gitops_addons_repo     = "k8s-homelab"
 gitops_addons_basepath = "gitops/argocd"
 gitops_addons_path     = "addons"
 gitops_addons_revision = "dev"
 argocd_chart_version   = "7.8.26"
+argocd_files_config = {
+  load_addons    = true
+  load_workloads = true
+  load_clusters  = false
+}
 addons = {
   # dashboard
   enable_headlamp       = false
@@ -49,7 +54,7 @@ addons = {
   enable_kro    = false
   # monitoring
   enable_metrics_server             = false
-  enable_kube_prometheus_stack      = false
+  enable_kube_prometheus_stack      = true
   enable_victoria_metrics_k8s_stack = false
   enable_victoria_logs              = false
   enable_grafana_operator           = false
@@ -63,21 +68,21 @@ addons = {
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
-  enable_trivy            = false
+  enable_trivy            = true
   enable_kubescape        = false
   # networking
   enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false
   enable_calico        = false
-  enable_ingress_nginx = false
+  enable_ingress_nginx = true
   enable_traefik       = false
   enable_ngrok         = false
   enable_istio         = false
   # compliance
-  enable_kyverno                 = false
-  enable_kyverno_policies        = false
-  enable_kyverno_policy_reporter = false
+  enable_kyverno                 = true
+  enable_kyverno_policies        = true
+  enable_kyverno_policy_reporter = true
   enable_polaris                 = false
   enable_connaisseur             = false
   # logging
@@ -124,12 +129,12 @@ gitops_resources_repo     = "k8s-homelab"
 gitops_resources_basepath = "charts"
 gitops_resources_revision = "dev"
 # Workloads
-gitops_workload_repo      = "k8s-homelab"
-gitops_workload_basepath  = "gitops/argocd"
-gitops_workload_path      = "workloads"
-gitops_workload_revision  = "dev"
+gitops_workload_repo     = "k8s-homelab"
+gitops_workload_basepath = "gitops/argocd"
+gitops_workload_path     = "workloads"
+gitops_workload_revision = "dev"
 # Clusters
-gitops_cluster_repo       = "k8s-homelab"
-gitops_cluster_basepath   = "gitops/argocd"
-gitops_cluster_path       = "clusters"
-gitops_cluster_revision   = "dev"
+gitops_cluster_repo     = "k8s-homelab"
+gitops_cluster_basepath = "gitops/argocd"
+gitops_cluster_path     = "clusters"
+gitops_cluster_revision = "dev"

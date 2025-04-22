@@ -4,3 +4,10 @@ kyverno-plugin:
   enabled: true
 metrics:
   enabled: true
+monitoring:
+  enabled: true
+  grafana:
+    namespace: monitoring
+  serviceMonitor:
+    labels:
+      release: kube-prometheus-stack
