@@ -36,9 +36,9 @@ locals {
     enable_komoplane      = try(var.addons.enable_komoplane, false)
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
-    enable_authentik = try(var.addons.enable_authentik, false)
-    enable_keycloak  = try(var.addons.enable_keycloak, false)
-    enable_authelia  = try(var.addons.enable_authelia, false)
+    enable_authentik    = try(var.addons.enable_authentik, false)
+    enable_keycloak     = try(var.addons.enable_keycloak, false)
+    enable_authelia     = try(var.addons.enable_authelia, false)
     # pipelines
     enable_argo_cd               = try(var.addons.enable_argo_cd, false)
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
@@ -199,9 +199,9 @@ locals {
     EOT
 
   argocd_apps = {
-    addons    = file("${path.module}/bootstrap/argocd/addons.yaml")
-    workloads = file("${path.module}/bootstrap/argocd/workloads.yaml")
-    clusters  = file("${path.module}/bootstrap/argocd/clusters.yaml")
+    addons    = var.argocd_files_config.load_addons ? file("${path.module}/bootstrap/argocd/addons.yaml") : ""
+    workloads = var.argocd_files_config.load_workloads ? file("${path.module}/bootstrap/argocd/workloads.yaml") : ""
+    clusters  = var.argocd_files_config.load_clusters ? file("${path.module}/bootstrap/argocd/clusters.yaml") : ""
   }
 
   tags = {

@@ -11,8 +11,8 @@ variable "environment" {
 
 variable "region" {
   description = "region of the kubernetes cluster"
-  type = string
-  default = "north-america"
+  type        = string
+  default     = "north-america"
 
   validation {
     condition     = contains(["north-america", "europe", "asia-pacific"], lower(var.region))
@@ -59,6 +59,19 @@ variable "enable_fluxcd" {
   description = "Enable fluxcd"
   type        = bool
   default     = false
+}
+
+variable "argocd_files_config" {
+  type = object({
+    load_addons    = bool
+    load_workloads = bool
+    load_clusters  = bool
+  })
+  default = {
+    load_addons    = true
+    load_workloads = true
+    load_clusters  = true
+  }
 }
 
 variable "fluxcd_namespace" {
