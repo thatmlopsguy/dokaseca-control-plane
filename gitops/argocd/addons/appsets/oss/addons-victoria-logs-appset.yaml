@@ -15,7 +15,7 @@ spec:
               values:
                 addonChart: victoria-logs-single
                 # helm search repo vm/victoria-logs-single -l
-                addonChartVersion: 0.9.2
+                addonChartVersion: 0.9.6
                 addonChartRepository: https://victoriametrics.github.io/helm-charts
                 addonChartNamespace: monitoring
               selector:
@@ -28,13 +28,13 @@ spec:
                 matchLabels:
                   environment: dev
               values:
-                addonChartVersion: 0.9.2
+                addonChartVersion: 0.9.6
           - clusters:
               selector:
                 matchLabels:
                   environment: prod
               values:
-                addonChartVersion: 0.9.2
+                addonChartVersion: 0.9.6
   template:
     metadata:
       name: addon-{{name}}-{{values.addonChart}}

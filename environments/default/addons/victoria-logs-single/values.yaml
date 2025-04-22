@@ -362,7 +362,7 @@ server:
 # -- Values for [vector helm chart](https://github.com/vectordotdev/helm-charts/tree/develop/charts/vector)
 vector:
   # -- Enable deployment of vector
-  enabled: false
+  enabled: true
   role: Agent
   dataDir: /vector-data-dir
   resources: {}
@@ -440,4 +440,3 @@ dashboards:
         matchLabels:
           dashboards: "grafana"
       allowCrossNamespaceImport: false
-
