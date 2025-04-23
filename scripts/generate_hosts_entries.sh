@@ -19,6 +19,7 @@ SERVICE_PREFIXES=(
     "prometheus"
     "zipkin"
     "opencost"
+    "vlogs"
 )
 
 # Generate hosts entries

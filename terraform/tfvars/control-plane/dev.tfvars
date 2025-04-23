@@ -54,13 +54,13 @@ addons = {
   enable_kro    = false
   # monitoring
   enable_metrics_server             = false
-  enable_kube_prometheus_stack      = true
+  enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_victoria_logs              = true
+  enable_victoria_logs              = false
   enable_grafana_operator           = false
   enable_cortex                     = false
   enable_thanos                     = false
-  enable_tempo                      = true
+  enable_tempo                      = false
   enable_zipkin                     = false
   enable_jaeger                     = false
   enable_opentelemetry_operator     = false
@@ -68,10 +68,10 @@ addons = {
   # security
   enable_cert_manager     = true
   enable_external_secrets = true
-  enable_trivy            = true
+  enable_trivy            = false
   enable_kubescape        = false
   # networking
-  enable_skupper = true
+  enable_skupper       = true
   enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false
@@ -81,18 +81,18 @@ addons = {
   enable_ngrok         = false
   enable_istio         = false
   # compliance
-  enable_kyverno                 = true
+  enable_kyverno                 = false
   enable_kyverno_policies        = true
   enable_kyverno_policy_reporter = true
   enable_polaris                 = false
   enable_connaisseur             = false
-  # logging
+  # collector agent
   enable_fluentbit        = false
   enable_alloy            = false
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = true
+  enable_opencost = false
   # disaster recovery
   enable_velero = false
   # storage

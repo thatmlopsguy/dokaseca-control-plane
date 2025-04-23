@@ -1,8 +1,8 @@
 resource "kind_cluster" "main" {
-  name            = var.cluster_name
+  name            = "${var.cluster_name}-${var.environment}"
   kubeconfig_path = local.kubeconfig_path
-  #node_image     = "kindest/node:v${var.kubernetes_version}"
-  wait_for_ready = true
+  node_image      = "kindest/node:v${var.kubernetes_version}"
+  wait_for_ready  = true
 
   kind_config {
     kind        = "Cluster"
@@ -19,15 +19,15 @@ resource "kind_cluster" "main" {
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
       ]
 
-      extra_port_mappings {
-        container_port = 80
-        host_port      = 80
-      }
+      # extra_port_mappings {
+      #   container_port = 80
+      #   host_port      = 80
+      # }
 
-      extra_port_mappings {
-        container_port = 443
-        host_port      = 443
-      }
+      # extra_port_mappings {
+      #   container_port = 443
+      #   host_port      = 443
+      # }
     }
 
     node {
@@ -75,107 +75,108 @@ module "fluxcd" {
   depends_on = [kind_cluster.main]
 }
 
-resource "kubernetes_secret" "kro_helm_oci" {
-  count = var.addons.enable_kro && var.enable_gitops_bridge ? 1 : 0
+# ArgoCD has support for OCI repos
+# resource "kubernetes_secret" "kro_helm_oci" {
+#   count = var.addons.enable_kro && var.enable_gitops_bridge ? 1 : 0
 
-  metadata {
-    name      = "kro-helm-oci"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
+#   metadata {
+#     name      = "kro-helm-oci"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repository"
+#     }
+#   }
 
-  data = {
-    url       = "ghcr.io/kro-run/kro/kro"
-    name      = "kro"
-    type      = "helm"
-    enableOCI = "true"
-  }
+#   data = {
+#     url       = "ghcr.io/kro-run/kro/kro"
+#     name      = "kro"
+#     type      = "helm"
+#     enableOCI = "true"
+#   }
 
-  depends_on = [module.gitops_bridge_bootstrap]
-}
+#   depends_on = [module.gitops_bridge_bootstrap]
+# }
 
-resource "kubernetes_secret" "grafana_helm_oci" {
-  count = var.addons.enable_grafana_operator && var.enable_gitops_bridge ? 1 : 0
+# resource "kubernetes_secret" "grafana_helm_oci" {
+#   count = var.addons.enable_grafana_operator && var.enable_gitops_bridge ? 1 : 0
 
-  metadata {
-    name      = "grafana-helm-oci"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
+#   metadata {
+#     name      = "grafana-helm-oci"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repository"
+#     }
+#   }
 
-  data = {
-    url       = "ghcr.io/grafana/helm-charts"
-    name      = "grafana"
-    type      = "helm"
-    enableOCI = "true"
-  }
+#   data = {
+#     url       = "ghcr.io/grafana/helm-charts"
+#     name      = "grafana"
+#     type      = "helm"
+#     enableOCI = "true"
+#   }
 
-  depends_on = [module.gitops_bridge_bootstrap]
-}
+#   depends_on = [module.gitops_bridge_bootstrap]
+# }
 
-resource "kubernetes_secret" "logging_operator_helm_oci" {
-  count = var.addons.enable_logging_operator && var.enable_gitops_bridge ? 1 : 0
+# resource "kubernetes_secret" "logging_operator_helm_oci" {
+#   count = var.addons.enable_logging_operator && var.enable_gitops_bridge ? 1 : 0
 
-  metadata {
-    name      = "logging-operator-helm-oci"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
+#   metadata {
+#     name      = "logging-operator-helm-oci"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repository"
+#     }
+#   }
 
-  data = {
-    url       = "ghcr.io/kube-logging/helm-charts"
-    name      = "logging-operator"
-    type      = "helm"
-    enableOCI = "true"
-  }
+#   data = {
+#     url       = "ghcr.io/kube-logging/helm-charts"
+#     name      = "logging-operator"
+#     type      = "helm"
+#     enableOCI = "true"
+#   }
 
-  depends_on = [module.gitops_bridge_bootstrap]
-}
+#   depends_on = [module.gitops_bridge_bootstrap]
+# }
 
-resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
-  count = var.addons.enable_strimzi && var.enable_gitops_bridge ? 1 : 0
+# resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
+#   count = var.addons.enable_strimzi && var.enable_gitops_bridge ? 1 : 0
 
-  metadata {
-    name      = "strimzi-kafka-operator-helm-oci"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
+#   metadata {
+#     name      = "strimzi-kafka-operator-helm-oci"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repository"
+#     }
+#   }
 
-  data = {
-    url       = "quay.io/strimzi-helm"
-    name      = "strimzi-kafka-operator"
-    type      = "helm"
-    enableOCI = "true"
-  }
+#   data = {
+#     url       = "quay.io/strimzi-helm"
+#     name      = "strimzi-kafka-operator"
+#     type      = "helm"
+#     enableOCI = "true"
+#   }
 
-  depends_on = [module.gitops_bridge_bootstrap]
-}
+#   depends_on = [module.gitops_bridge_bootstrap]
+# }
 
-resource "kubernetes_secret" "kargo_helm_oci" {
-  count = var.addons.enable_kargo && var.enable_gitops_bridge ? 1 : 0
+# resource "kubernetes_secret" "kargo_helm_oci" {
+#   count = var.addons.enable_kargo && var.enable_gitops_bridge ? 1 : 0
 
-  metadata {
-    name      = "kargo-helm-oci"
-    namespace = "argocd"
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
+#   metadata {
+#     name      = "kargo-helm-oci"
+#     namespace = "argocd"
+#     labels = {
+#       "argocd.argoproj.io/secret-type" = "repository"
+#     }
+#   }
 
-  data = {
-    url       = "ghcr.io/akuity/kargo-charts"
-    name      = "kargo"
-    type      = "helm"
-    enableOCI = "true"
-  }
+#   data = {
+#     url       = "ghcr.io/akuity/kargo-charts"
+#     name      = "kargo"
+#     type      = "helm"
+#     enableOCI = "true"
+#   }
 
-  depends_on = [module.gitops_bridge_bootstrap]
-}
+#   depends_on = [module.gitops_bridge_bootstrap]
+# }

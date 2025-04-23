@@ -9,3 +9,4 @@ This glossary is a collection of terms related to Doca Seca. The glossary is int
 
 - [Mirantis Glossary](https://docs.mirantis.com/glossary/mcp/#)
 - [Devtron Glossary](https://docs.devtron.ai/resources/glossary)
+- [External Secrets Glossary](https://external-secrets.io/latest/introduction/glossary/)
