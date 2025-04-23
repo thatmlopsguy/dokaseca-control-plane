@@ -3,7 +3,7 @@ locals {
   environment = var.environment
   region      = var.region
 
-  cluster_name    = var.cluster_name
+  cluster_name    = "${var.cluster_name}-${var.environment}"
   cluster_version = var.kubernetes_version
   kubeconfig_path = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
 
