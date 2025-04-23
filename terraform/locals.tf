@@ -65,6 +65,7 @@ locals {
     enable_kro    = try(var.addons.enable_kro, false)
     enable_dapr   = try(var.addons.enable_dapr, false)
     # networking
+    enable_skupper       = try(var.addons.enable_skupper, false)
     enable_metallb       = try(var.addons.enable_metallb, false)
     enable_kubevip       = try(var.addons.enable_kubevip, false)
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false)
@@ -196,6 +197,12 @@ locals {
       enabled: false
     notifications:
       enabled: false
+    global:
+      addPrometheusAnnotations: true
+    controller:
+      logFormat: json
+      metrics:
+        enabled: true
     EOT
 
   argocd_apps = {

@@ -56,21 +56,22 @@ addons = {
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = true
   enable_victoria_metrics_k8s_stack = false
-  enable_victoria_logs              = false
+  enable_victoria_logs              = true
   enable_grafana_operator           = false
   enable_cortex                     = false
   enable_thanos                     = false
-  enable_tempo                      = false
+  enable_tempo                      = true
   enable_zipkin                     = false
   enable_jaeger                     = false
   enable_opentelemetry_operator     = false
   enable_kiali                      = false
   # security
   enable_cert_manager     = true
-  enable_external_secrets = false
+  enable_external_secrets = true
   enable_trivy            = true
   enable_kubescape        = false
   # networking
+  enable_skupper = true
   enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false
@@ -91,7 +92,7 @@ addons = {
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = false
+  enable_opencost = true
   # disaster recovery
   enable_velero = false
   # storage

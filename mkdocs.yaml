@@ -25,6 +25,7 @@ nav:
   - Cost Management: cost.md
   - Chaos Engineering: chaos_engineering.md
   - Disaster Recovery: backup.md
+  - Multi cluster: multicluster.md
   - Resources:
     - Glossary: glossary.md
     - Contributing: contributing.md
