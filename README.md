@@ -22,6 +22,10 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 * [kustomize](https://kustomize.io/)
 * [k9s](https://k9scli.io/) or [freelens](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
+## Optional tools
+
+* [falcoctl](https://github.com/falcosecurity/falcoctl)
+
 ```sh
 $ kubectl version
 Client Version: v1.30.1
@@ -123,5 +127,5 @@ make terraform-destroy
 Anyone is welcome to collaborate to this project. Check out our [contributing guidelines](CONTRIBUTING.md).
 
 ## :bookmark: License
- 
+
 Doca Seca is licensed under [Apache License, Version 2.0](LICENSE)
