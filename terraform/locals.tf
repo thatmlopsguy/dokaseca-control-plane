@@ -101,7 +101,9 @@ locals {
     enable_sealed_secrets   = try(var.addons.enable_sealed_secrets, false)
     enable_external_secrets = try(var.addons.enable_external_secrets, false)
     enable_vault            = try(var.addons.enable_vault, false)
-    enable_kubescape        = try(var.addons.enable_kubescape, false)
+    enable_kubearmor        = try(var.addons.enable_kubearmor, false)
+    enable_falco            = try(var.addons.enable_falco, false)
+    enable_tetragon         = try(var.addons.enable_tetragon, false)
     # cost
     enable_opencost = try(var.addons.enable_opencost, false)
     enable_kepler   = try(var.addons.enable_kepler, false)
@@ -138,6 +140,7 @@ locals {
   # Enterprise
   enterprise_addons = {
     enable_codefresh = try(var.addons.enable_codefresh, false)
+    enable_kubescape = try(var.addons.enable_kubescape, false)
   }
 
   # Azure
