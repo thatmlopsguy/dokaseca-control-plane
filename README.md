@@ -25,6 +25,7 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 ## Optional tools
 
 * [falcoctl](https://github.com/falcosecurity/falcoctl)
+* [karmor](https://kubearmor.io/)
 
 ```sh
 $ kubectl version
