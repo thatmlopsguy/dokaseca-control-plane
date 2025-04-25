@@ -113,14 +113,14 @@ main() {
 
     # Workspace management
     echo "Checking workspace '$WORKSPACE'"
-    if ! terraform workspace show | grep -q "$WORKSPACE"; then
+    if terraform workspace select "$WORKSPACE" >/dev/null 2>&1; then
+        echo "Workspace '$WORKSPACE' already exists"
+    else
         echo "Workspace '$WORKSPACE' doesn't exist, creating..."
         terraform workspace new "$WORKSPACE" || {
             echo "Error: Failed to create workspace '$WORKSPACE'"
             exit 1
         }
-    else
-        echo "Workspace '$WORKSPACE' already exists"
     fi
 
     # Switch to workspace

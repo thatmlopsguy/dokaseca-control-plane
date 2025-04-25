@@ -104,9 +104,11 @@ locals {
     enable_kubearmor        = try(var.addons.enable_kubearmor, false)
     enable_falco            = try(var.addons.enable_falco, false)
     enable_tetragon         = try(var.addons.enable_tetragon, false)
+    enable_tracee           = try(var.addons.enable_tracee, false)
     # cost
-    enable_opencost = try(var.addons.enable_opencost, false)
-    enable_kepler   = try(var.addons.enable_kepler, false)
+    enable_opencost   = try(var.addons.enable_opencost, false)
+    enable_kepler     = try(var.addons.enable_kepler, false)
+    enable_kube_green = try(var.addons.enable_kube_green, false)
     # compliance
     enable_kyverno                 = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
@@ -121,10 +123,11 @@ locals {
     enable_minio          = try(var.addons.enable_minio, false)
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
-    # misc
+    # utilities
     enable_reloader  = try(var.addons.enable_reloader, false)
     enable_reflector = try(var.addons.enable_reflector, false)
     enable_headlamp  = try(var.addons.enable_headlamp, false)
+    enable_kured     = try(var.addons.enable_kured, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # machine learning

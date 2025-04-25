@@ -1,0 +1,4 @@
+metrics:
+  create: true
+  labels:
+    release: kube-prometheus-stack

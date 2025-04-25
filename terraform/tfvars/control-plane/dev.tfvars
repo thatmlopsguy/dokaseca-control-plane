@@ -25,9 +25,10 @@ addons = {
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
   # identity
-  enable_authentik = false
-  enable_keycloak  = false
-  enable_authelia  = false
+  enable_authentik    = false
+  enable_keycloak     = false
+  enable_authelia     = false
+  enable_oauth2_proxy = false
   # continuos delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
@@ -48,7 +49,6 @@ addons = {
   # gitops promoter
   enable_kargo           = false
   enable_gitops_promoter = false
-  enable_codefresh       = false
   # platform engineering
   enable_karpor = false
   enable_kro    = false
@@ -64,12 +64,15 @@ addons = {
   enable_zipkin                     = false
   enable_jaeger                     = false
   enable_opentelemetry_operator     = false
-  enable_kiali                      = false
+  enable_kiali                      = false # requires enable_istio
   # security
   enable_cert_manager     = true
   enable_external_secrets = true
   enable_trivy            = false
-  enable_kubescape        = false
+  enable_tracee           = false
+  enable_falco            = true
+  enable_kubearmor        = true
+  enable_tetragon         = true
   # networking
   enable_skupper       = true
   enable_kubevip       = false
@@ -92,7 +95,9 @@ addons = {
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = false
+  enable_opencost   = false
+  enable_kepler     = false
+  enable_kube_green = true # requires enable_cert_manager
   # disaster recovery
   enable_velero = false
   # storage
@@ -110,6 +115,7 @@ addons = {
   # utils
   enable_reloader  = false
   enable_reflector = false
+  enable_kured     = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
@@ -120,6 +126,9 @@ addons = {
   enable_litellm      = false
   enable_milvus       = false
   enable_ollama       = false
+  # enterprise
+  enable_codefresh = false
+  enable_kubescape = false
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws

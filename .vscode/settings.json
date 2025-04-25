@@ -20,11 +20,13 @@
         "komoplane",
         "kubearmor",
         "kubescape",
+        "kured",
         "litellm",
         "metallb",
         "openfunction",
         "seldon",
         "statusbadge",
+        "tracee",
         "traefik",
         "vmalert"
     ],
