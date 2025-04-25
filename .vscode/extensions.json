@@ -2,6 +2,7 @@
     "recommendations": [
         "ms-kubernetes-tools.kind-vscode",
         "hashicorp.terraform",
-        "kubescape.kubescape"
+        "kubescape.kubescape",
+        "inercia.vscode-k3d"
     ]
 }

@@ -16,7 +16,7 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 
 * [Docker](https://www.docker.com/)
 * [Terraform](https://www.terraform.io/)
-* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
+* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) and/or [k3d](https://k3d.io/stable/)
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [kustomize](https://kustomize.io/)
@@ -29,15 +29,19 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 
 ```sh
 $ kubectl version
-Client Version: v1.30.1
-Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+Client Version: v1.31.0
+Kustomize Version: v5.4.2
 Server Version: v1.30.0
 
 $ kind version
-kind v0.23.0 go1.22.5 linux/amd64
+kind v0.27.0 go1.23.6 linux/amd64
+
+$ k3d --version
+k3d version v5.8.3
+k3s version v1.31.5-k3s1 (default)
 
 $ helm version
-version.BuildInfo{Version:"v3.15.2", GitCommit:"v3.15.2", GitTreeState:"", GoVersion:"go1.22.5"}
+version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVersion:"go1.22.7"}
 ```
 
 To increase these limits temporarily run the following commands on the host:
