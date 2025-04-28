@@ -1,5 +1,5 @@
 # Project Setup
-PROJECT_NAME := control-plane
+PROJECT_NAME := control-plane-dev
 # Read the version from the VERSION file
 RELEASE_VERSION ?= $(shell cat VERSION)
 GIT_HASH ?= $(shell git log --format="%h" -n 1)
@@ -22,7 +22,7 @@ release: ## Show release version
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
-		kind create cluster --name=$(PROJECT_NAME) --config kind/simple.yaml --wait 180s; \
+		kind create cluster --name=$(PROJECT_NAME) --config distros/kind/simple.yaml --wait 180s; \
 		kubectl wait pod --all -n kube-system --for condition=Ready --timeout 180s; \
 	fi
 
@@ -36,6 +36,16 @@ kind-export-kubeconfig: ## Export kind kubeconfig
 
 kind-list-clusters: ## list kind clusters
 	@kind get clusters
+
+##@ K3s
+k3d-create-cluster: ## Create k3d cluster
+	@k3d cluster create --config=distros/k3d/simple.yml
+
+k3d-list-clusters: ## list k3d clusters
+	@k3d cluster list
+
+autok3s-serve: ## run autok3s serve
+	@autok3s serve &
 
 ##@ Cluster API
 cluster-api-status: ## get status of clusters from cluster api
@@ -95,6 +105,9 @@ prometheus-ui: ## Access prometheus ui
 
 vm-ui: ## Access victoria metrics ui
 	@kubectl port-forward svc/vmsingle-victoria-metrics-k8s-stack -n monitoring 8429:8429
+
+vm-logs-ui: ## Access victoria metrics logs ui
+	@kubectl port-forward svc/victoria-logs-single-server -n monitoring 9428:9428
 
 alertmanager-vm-ui: ## Access alertmanager ui
 	@kubectl port-forward svc/vmalertmanager-victoria-metrics-k8s-stack -n monitoring 9093:9093
