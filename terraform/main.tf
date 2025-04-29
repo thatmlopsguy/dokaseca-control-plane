@@ -1,5 +1,5 @@
 resource "kind_cluster" "main" {
-  count = var.kubernetes_distro == "kind" ? 1 : 0
+  # count = var.kubernetes_distro == "kind" ? 1 : 0
 
   name            = "${var.cluster_name}-${var.environment}"
   kubeconfig_path = local.kubeconfig_path
@@ -38,13 +38,23 @@ resource "kind_cluster" "main" {
   }
 }
 
+# module "kind_cluster" {
+#   source = "./modules/kind"
+
+#   cluster_name       = var.cluster_name
+#   environment        = var.environment
+#   kubernetes_version = var.kubernetes_version
+#   kubeconfig_path    = local.kubeconfig_path
+# }
+
+
 module "gitops_bridge_bootstrap" {
   source = "git::https://github.com/gitops-bridge-dev/terraform-helm-gitops-bridge?ref=33c09eb68af1ee673040bde58c3188383c46c288"
 
   count = var.enable_gitops_bridge ? 1 : 0
 
   cluster = {
-    cluster_name = kind_cluster.main.name
+    cluster_name = local.cluster_name
     environment  = local.environment
     metadata     = local.addons_metadata
     addons       = local.addons

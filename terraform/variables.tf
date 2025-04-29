@@ -21,7 +21,7 @@ variable "region" {
 }
 
 variable "cluster_name" {
-  description = "Name of the Kind cluster"
+  description = "Name of the kubernetes cluster"
   type        = string
   default     = "main"
 }
