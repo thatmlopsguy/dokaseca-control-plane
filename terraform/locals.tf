@@ -3,9 +3,10 @@ locals {
   environment = var.environment
   region      = var.region
 
-  cluster_name    = "${var.cluster_name}-${var.environment}"
-  cluster_version = var.kubernetes_version
-  kubeconfig_path = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
+  cluster_name      = "${var.cluster_name}-${var.environment}"
+  kubernetes_distro = var.kubernetes_distro
+  cluster_version   = var.kubernetes_version
+  kubeconfig_path   = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
 
   cloud_provider = var.cloud_provider
   domain_name    = var.domain_name
@@ -75,6 +76,8 @@ locals {
     enable_ngrok         = try(var.addons.enable_ngrok, false)
     enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
+    # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
+    enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false)
     enable_grafana_operator           = try(var.addons.enable_grafana_operator, false)
     enable_metrics_server             = try(var.addons.enable_metrics_server, false)
     enable_cortex                     = try(var.addons.enable_cortex, false)
@@ -119,6 +122,7 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
+    enable_openebs        = try(var.addons.enable_openebs, false)
     enable_cloudnative_pg = try(var.addons.enable_cloudnative_pg, false)
     enable_minio          = try(var.addons.enable_minio, false)
     # dora metrics

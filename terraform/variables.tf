@@ -32,6 +32,17 @@ variable "domain_name" {
   default     = "k8s-home.lab"
 }
 
+variable "kubernetes_distro" {
+  description = "Name of the kubernetes distro"
+  type        = string
+  default     = "kind"
+
+  validation {
+    condition     = contains(["kind", "k3d", "k0s"], lower(var.kubernetes_distro))
+    error_message = "Invalid kubernetes distro. Must be one of 'kind', 'k3d' or 'k0s'."
+  }
+}
+
 variable "kubernetes_version" {
   description = "Version of the Kind node image"
   type        = string

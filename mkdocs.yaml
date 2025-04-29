@@ -29,6 +29,7 @@ nav:
   - Resources:
     - Glossary: glossary.md
     - Contributing: contributing.md
+    - Documentation: documentation.md
     - Release Notes: releases.md
     - Roadmap: roadmap.md
     - References: references.md
