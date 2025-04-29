@@ -1,0 +1,6 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- https://raw.githubusercontent.com/gimlet-io/gimlet/main/deploy/gimlet.yaml
+# resources are installed in the default namespace
