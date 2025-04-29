@@ -3,7 +3,7 @@ locals {
   environment = var.environment
   region      = var.region
 
-  cluster_name      = "${var.cluster_name}-${var.environment}"
+  kubernetes_name   = "${var.cluster_name}-${var.environment}"
   kubernetes_distro = var.kubernetes_distro
   cluster_version   = var.kubernetes_version
   kubeconfig_path   = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
@@ -168,7 +168,7 @@ locals {
     local.aws_addons,
     local.gcp_addons,
     { kubernetes_version = local.cluster_version },
-    { k8s_cluster_name = local.cluster_name },
+    { k8s_cluster_name = local.kubernetes_name },
     { k8s_domain_name = local.domain_name },
     { cloud_provider = local.cloud_provider }
   )

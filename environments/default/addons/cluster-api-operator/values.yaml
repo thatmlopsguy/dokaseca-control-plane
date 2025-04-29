@@ -1,3 +1,5 @@
-infrastructure: docker
+infrastructure:
+  docker:
+    version: v1.4.2
 cert-manager:
   enabled: true

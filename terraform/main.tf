@@ -54,7 +54,7 @@ module "gitops_bridge_bootstrap" {
   count = var.enable_gitops_bridge ? 1 : 0
 
   cluster = {
-    cluster_name = local.cluster_name
+    cluster_name = local.kubernetes_name
     environment  = local.environment
     metadata     = local.addons_metadata
     addons       = local.addons
