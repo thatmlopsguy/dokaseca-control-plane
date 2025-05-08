@@ -24,3 +24,12 @@ repos:
         always_run: false
         args:
           - --chart-search-root=charts
+  - repo: local
+    hooks:
+      - id: terraform-docs
+        name: Terraform Docs Generator
+        entry: scripts/hooks/terraform-docs.sh
+        language: system
+        types: [terraform]
+        stages: [pre-commit]
+        files: '^terraform/modules/'

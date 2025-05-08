@@ -32,16 +32,19 @@ locals {
 
   oss_addons = {
     # dashboard
-    enable_headlamp       = try(var.addons.enable_headlamp, false)
-    enable_helm_dashboard = try(var.addons.enable_helm_dashboard, false)
-    enable_komoplane      = try(var.addons.enable_komoplane, false)
+    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # TODO
+    enable_headlamp             = try(var.addons.enable_headlamp, false)
+    enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
+    enable_komoplane            = try(var.addons.enable_komoplane, false)
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)
     enable_keycloak     = try(var.addons.enable_keycloak, false)
     enable_authelia     = try(var.addons.enable_authelia, false)
     # pipelines
-    enable_argo_cd               = try(var.addons.enable_argo_cd, false)
+    enable_argo_cd = try(var.addons.enable_argo_cd, false)
+    # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
+    enable_argo_cd_agent         = try(var.addons.enable_argo_cd_agent, false) # TODO
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events           = try(var.addons.enable_argo_events, false)
@@ -51,9 +54,16 @@ locals {
     enable_open_feature          = try(var.addons.enable_open_feature, false)
     enable_openfunction          = try(var.addons.enable_openfunction, false)
     enable_sloth                 = try(var.addons.enable_sloth, false)
+    # fleet managers
+    # https://kubefleet-dev.github.io/website/
+    enable_kubefleet_hub_agent    = try(var.addons.enable_kubefleet_hub_agent, false)    # TODO
+    enable_kubefleet_member_agent = try(var.addons.enable_kubefleet_member_agent, false) # TODO
+    # https://open-cluster-management.io/
+    enable_open_cluster_management = try(var.addons.enable_open_cluster_management, false) # TODO
     # orchestration
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
+    enable_koreo         = try(var.addons.enable_koreo, false)
     enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
     enable_kargo           = try(var.addons.enable_kargo, false)

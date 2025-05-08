@@ -16,7 +16,8 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 
 * [Docker](https://www.docker.com/)
 * [Terraform](https://www.terraform.io/)
-* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) and/or [k3d](https://k3d.io/stable/)
+* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), [k0s](https://docs.k0sproject.io/stable/) and/or [k3d](https://k3d.io/stable/)
+* [jq](https://jqlang.github.io/jq/)
 * [Helm](https://helm.sh/docs/intro/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 * [kustomize](https://kustomize.io/)
@@ -24,8 +25,11 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 
 ## Optional tools
 
+* [argocd](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
+* [vcluster](https://www.vcluster.com/docs/platform/install/quick-start-guide)
 * [falcoctl](https://github.com/falcosecurity/falcoctl)
 * [karmor](https://kubearmor.io/)
+* [clusteradm](https://github.com/open-cluster-management-io/clusteradm)
 
 ```sh
 $ kubectl version
@@ -39,6 +43,9 @@ kind v0.27.0 go1.23.6 linux/amd64
 $ k3d --version
 k3d version v5.8.3
 k3s version v1.31.5-k3s1 (default)
+
+$ k0s version
+v1.32.4+k0s.0
 
 $ helm version
 version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVersion:"go1.22.7"}
