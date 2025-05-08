@@ -37,7 +37,7 @@ resource "kubectl_manifest" "kustomization" {
       namespace = "flux-system"
     }
     spec = {
-      interval        = "10m"
+      interval = "10m"
       sourceRef = {
         kind      = "GitRepository"
         name      = "addons"

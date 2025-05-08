@@ -3,6 +3,7 @@
         "ms-kubernetes-tools.kind-vscode",
         "hashicorp.terraform",
         "kubescape.kubescape",
-        "inercia.vscode-k3d"
+        "inercia.vscode-k3d",
+        "openclustermanagement.ocm-vscode-extension"
     ]
 }
