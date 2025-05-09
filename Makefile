@@ -131,6 +131,9 @@ restart-monitoring-stack: ## Restart monitoring stack
 kubescape-scan: ## scan kubernetes
 	@kubescape scan
 
+cosign-gen-keys: ## generate cosign key pair
+	@cosign generate-key-pair
+
 ##@ Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 	@kubectl port-forward service/policy-reporter-ui 8082:8080 -n policy-reporter
@@ -141,6 +144,9 @@ polaris-ui: ## Access polaris dashboard
 ##@ Cost
 opencost-ui: ## Access opencost ui
 	@kubectl port-forward -n opencost service/opencost 9092:9090
+
+goldilocks-ui: ## Access goldilocks ui
+	@kubectl -n goldilocks port-forward svc/goldilocks-dashboard 8080:80
 
 ##@ Chaos Engineering
 litmus-ui: ## Access Litmus ui
@@ -185,6 +191,9 @@ vclusters: ## list of vclusters
 
 komoplane-ui: ## Access komoplane-ui (crossplane dashboard)
 	@kubectl port-forward svc/komoplane -n komoplane 8090:8090
+
+cyclops-ui: ## Access cyclops-ui
+	@kubectl port-forward svc/cyclops-ui 3001:3000 -n cyclops
 
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build

@@ -30,6 +30,8 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 * [falcoctl](https://github.com/falcosecurity/falcoctl)
 * [karmor](https://kubearmor.io/)
 * [clusteradm](https://github.com/open-cluster-management-io/clusteradm)
+* [cosign](https://github.com/sigstore/cosign)
+* [velero](https://github.com/vmware-tanzu/velero)
 
 ```sh
 $ kubectl version
