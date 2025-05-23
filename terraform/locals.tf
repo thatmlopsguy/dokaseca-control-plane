@@ -36,6 +36,7 @@ locals {
     enable_headlamp             = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane            = try(var.addons.enable_komoplane, false)
+    enable_altinity_dashboard   = try(var.addons.enable_altinity_dashboard, false)
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)
@@ -132,9 +133,11 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
-    enable_openebs        = try(var.addons.enable_openebs, false)
-    enable_cloudnative_pg = try(var.addons.enable_cloudnative_pg, false)
-    enable_minio          = try(var.addons.enable_minio, false)
+    enable_openebs             = try(var.addons.enable_openebs, false)
+    enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
+    enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false)
+    enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)
+    enable_minio               = try(var.addons.enable_minio, false)
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
