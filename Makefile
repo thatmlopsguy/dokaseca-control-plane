@@ -195,6 +195,9 @@ komoplane-ui: ## Access komoplane-ui (crossplane dashboard)
 cyclops-ui: ## Access cyclops-ui
 	@kubectl port-forward svc/cyclops-ui 3001:3000 -n cyclops
 
+dapr-ui: ## Access dapr dashboard
+	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
+
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs

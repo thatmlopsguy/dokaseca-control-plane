@@ -37,12 +37,13 @@ locals {
     enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane            = try(var.addons.enable_komoplane, false)
     enable_altinity_dashboard   = try(var.addons.enable_altinity_dashboard, false)
+    enable_dapr_dashboard       = try(var.addons.enable_dapr_dashboard, false)
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)
     enable_keycloak     = try(var.addons.enable_keycloak, false)
     enable_authelia     = try(var.addons.enable_authelia, false)
-    # pipelines
+    # delivery
     enable_argo_cd = try(var.addons.enable_argo_cd, false)
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
     enable_argo_cd_agent         = try(var.addons.enable_argo_cd_agent, false) # TODO
@@ -137,14 +138,13 @@ locals {
     enable_minio   = try(var.addons.enable_minio, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
-    enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false)
-    enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)
+    enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
+    enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)         # TODO
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
     enable_reloader  = try(var.addons.enable_reloader, false)
     enable_reflector = try(var.addons.enable_reflector, false)
-    enable_headlamp  = try(var.addons.enable_headlamp, false)
     enable_kured     = try(var.addons.enable_kured, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)

@@ -108,9 +108,16 @@ variable "addons" {
   type        = any
   default = {
     # dashboard
-    enable_headlamp                = false
-    enable_helm_dashboard          = false
-    enable_komoplane               = false
+    enable_headlamp             = false
+    enable_helm_dashboard       = false
+    enable_komoplane            = false
+    enable_dapr_dashboard       = false
+    enable_kubernetes_dashboard = false
+    enable_altinity_dashboard   = false
+
+    # identity
+
+    # delivery
     enable_argo_cd                 = true
     enable_argo_cd_image_updater   = true
     enable_gitops_promoter         = false
