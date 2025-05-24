@@ -1,11 +1,11 @@
 # Doka Seca Terraform
 
-[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/k8s-homelab?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/k8s-homelab)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/issues)
-[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/k8s-homelab)](https://github.com/thatmlopsguy/k8s-homelab/pulls)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/k8s-homelab/blob/dev/LICENSE)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/k8s-homelab/)
+[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-terraform?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-terraform)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/issues)
+[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-terraform)](https://github.com/thatmlopsguy/dokaseca-terraform/pulls)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/blob/dev/LICENSE)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-terraform/)
 
 ## Introduction
 
@@ -67,7 +67,7 @@ Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/d
 The following command with create a kind cluster.
 
 ```sh
-make terraform-apply
+./scripts/terraform.sh control-plane dev apply
 ```
 
 You can inspect the deployed clusters by typing:
@@ -146,7 +146,7 @@ The output looks like the following:
 To tear down all the resources and the kind cluster, run the following command:
 
 ```sh
-make terraform-destroy
+./scripts/terraform.sh control-plane dev destroy
 ```
 
 ## :handshake: Contributing
