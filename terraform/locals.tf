@@ -16,9 +16,9 @@ locals {
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
 
-  gitops_resources_url      = "${var.gitops_org}/${var.gitops_resources_repo}"
-  gitops_resources_basepath = var.gitops_resources_basepath
-  gitops_resources_revision = var.gitops_resources_revision
+  gitops_addons_extras_url      = "${var.gitops_org}/${var.gitops_resources_repo}"
+  gitops_addons_extras_basepath = var.gitops_resources_basepath
+  gitops_addons_extras_revision = var.gitops_resources_revision
 
   gitops_workload_url      = "${var.gitops_org}/${var.gitops_workload_repo}"
   gitops_workload_basepath = var.gitops_workload_basepath
@@ -133,11 +133,12 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
-    enable_openebs             = try(var.addons.enable_openebs, false)
+    enable_openebs = try(var.addons.enable_openebs, false)
+    enable_minio   = try(var.addons.enable_minio, false)
+    # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false)
     enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)
-    enable_minio               = try(var.addons.enable_minio, false)
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
@@ -147,6 +148,10 @@ locals {
     enable_kured     = try(var.addons.enable_kured, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
+    # workload manager TODO
+    enable_temporal = try(var.addons.enable_temporal, false)
+    enable_airflow  = try(var.addons.enable_airflow, false)
+    enable_flyte    = try(var.addons.enable_flyte, false)
     # machine learning
     enable_ray_operator = try(var.addons.enable_ray_operator, false)
     enable_mlflow       = try(var.addons.enable_mlflow, false)
@@ -155,6 +160,7 @@ locals {
     enable_litellm      = try(var.addons.enable_litellm, false)
     enable_milvus       = try(var.addons.enable_milvus, false)
     enable_ollama       = try(var.addons.enable_ollama, false)
+    enable_langfuse     = try(var.addons.enable_langfuse, false)
   }
 
   # Enterprise
@@ -166,13 +172,20 @@ locals {
   # Azure
   azure_addons = {
     enable_azure_service_operator = try(var.addons.enable_azure_service_operator, false)
+    enable_azure_external_secrets = try(var.addons.enable_azure_external_secrets, false)
   }
 
   # AWS
-  aws_addons = {}
+  aws_addons = {
+    enable_aws_karpenter        = try(var.addons.enable_aws_karpenter, false)
+    enable_aws_external_secrets = try(var.addons.enable_aws_external_secrets, false)
+  }
 
   # GCP
-  gcp_addons = {}
+  gcp_addons = {
+    enable_gcp_keda             = try(var.addons.enable_gcp_keda, false)
+    enable_gcp_external_secrets = try(var.addons.enable_gcp_external_secrets, false)
+  }
 
   addons = merge(
     local.oss_addons,
@@ -194,9 +207,9 @@ locals {
       addons_repo_revision = local.gitops_addons_revision
     },
     {
-      resources_repo_url      = local.gitops_resources_url
-      resources_repo_basepath = local.gitops_resources_basepath
-      resources_repo_revision = local.gitops_resources_revision
+      addons_extras_repo_url      = local.gitops_addons_extras_url
+      addons_extras_repo_basepath = local.gitops_addons_extras_basepath
+      addons_extras_repo_revision = local.gitops_addons_extras_revision
     },
     {
       workload_repo_url      = local.gitops_workload_url
@@ -236,6 +249,6 @@ locals {
 
   tags = {
     Blueprint  = local.name
-    GithubRepo = "github.com/thatmlopsguy/k8s-homelab"
+    GithubRepo = "github.com/thatmlopsguy/dokaseca-terraform"
   }
 }

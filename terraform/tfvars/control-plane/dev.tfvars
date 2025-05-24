@@ -10,21 +10,23 @@ fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"
 gitops_org           = "https://github.com/thatmlopsguy"
 # Addons
-gitops_addons_repo     = "k8s-homelab"
-gitops_addons_basepath = "gitops/argocd"
-gitops_addons_path     = "addons"
-gitops_addons_revision = "dev"
+gitops_addons_repo     = "dokaseca-addons"
+gitops_addons_basepath = "argocd"
+gitops_addons_path     = "appsets"
+gitops_addons_revision = "main"
 argocd_chart_version   = "7.8.26"
 argocd_files_config = {
   load_addons    = true
-  load_workloads = true
+  load_workloads = false
   load_clusters  = false
 }
 addons = {
   # dashboard
-  enable_headlamp       = false
-  enable_helm_dashboard = false
-  enable_komoplane      = false # requires enable_crossplane
+  enable_kubernetes_dashboard = false
+  enable_headlamp             = false
+  enable_helm_dashboard       = false
+  enable_komoplane            = false # requires enable_crossplane
+  enable_altinity_dashboard   = false
   # identity
   enable_authentik    = false
   enable_keycloak     = false
@@ -44,12 +46,13 @@ addons = {
   # feature flags
   enable_open_feature = false
   # orchestration
-  enable_capi_operator = false # requires enable_cert_manager
+  enable_capi_operator = true # requires enable_cert_manager
   enable_crossplane    = false
   enable_vcluster      = false
+  enable_koreo         = false
   # gitops promoter
   enable_kargo           = false
-  enable_gitops_promoter = false
+  enable_gitops_promoter = true
   # platform engineering
   enable_karpor = false
   enable_kro    = false
@@ -68,14 +71,14 @@ addons = {
   enable_kiali                      = false # requires enable_istio
   # security
   enable_cert_manager     = true
-  enable_external_secrets = true
+  enable_external_secrets = false
   enable_trivy            = false
   enable_tracee           = false
-  enable_falco            = true
-  enable_kubearmor        = true
-  enable_tetragon         = true
+  enable_falco            = false
+  enable_kubearmor        = false
+  enable_tetragon         = false
   # networking
-  enable_skupper       = true
+  enable_skupper       = false
   enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false
@@ -86,8 +89,8 @@ addons = {
   enable_istio         = false
   # compliance
   enable_kyverno                 = false
-  enable_kyverno_policies        = true
-  enable_kyverno_policy_reporter = true
+  enable_kyverno_policies        = false
+  enable_kyverno_policy_reporter = false
   enable_polaris                 = false
   enable_connaisseur             = false
   # collector agent
@@ -98,10 +101,11 @@ addons = {
   # cost
   enable_opencost   = false
   enable_kepler     = false
-  enable_kube_green = true # requires enable_cert_manager
+  enable_kube_green = false # requires enable_cert_manager
   # disaster recovery
   enable_velero = false
   # storage
+  enable_openebs        = true
   enable_minio          = false
   enable_cloudnative_pg = false
   enable_atlas_operator = false
@@ -125,6 +129,7 @@ addons = {
   enable_kuberay      = false
   enable_seldon       = false
   enable_litellm      = false
+  enable_langfuse     = false
   enable_milvus       = false
   enable_ollama       = false
   # enterprise
@@ -133,12 +138,15 @@ addons = {
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
+  enable_aws_karpenter = false
   # gcp
+  enable_gcp_keda             = false
+  enable_gcp_external_secrets = false
 }
 # Resources
-gitops_resources_repo     = "k8s-homelab"
-gitops_resources_basepath = "charts"
-gitops_resources_revision = "dev"
+gitops_resources_repo     = "helm-charts"
+gitops_resources_basepath = "stable"
+gitops_resources_revision = "main"
 # Workloads
 gitops_workload_repo     = "k8s-homelab"
 gitops_workload_basepath = "gitops/argocd"

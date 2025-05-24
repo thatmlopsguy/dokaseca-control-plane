@@ -20,4 +20,3 @@ spec:
       kind: '*'
   sourceRepos:
     - '*'
-status: {}

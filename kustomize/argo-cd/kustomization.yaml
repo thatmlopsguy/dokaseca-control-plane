@@ -11,6 +11,7 @@ resources:
   #- argocd-repo-creds.yaml
   # authorized to manage Cluster API objects
   #- rbac-cluster-admin.yaml
+  # https://github.com/open-cluster-management-io/argocd-pull-integration
 
 # https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#_helmchartinflationgenerator_
 helmCharts:

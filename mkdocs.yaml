@@ -1,9 +1,9 @@
-site_name: Kubernetes homelab
+site_name: Doka Seca
 site_description: A kubernetes homelab to test some applications
 
 # Repository
-repo_url: https://github.com/thatmlopsguy/k8s-homelab
-repo_name: k8s-homelab
+repo_url: https://github.com/thatmlopsguy/dokaseca-terraform
+repo_name: dokaseca-terraform
 
 # Navigation
 nav:

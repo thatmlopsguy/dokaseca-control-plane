@@ -12,10 +12,11 @@ resource "kind_cluster" "main" {
     node {
       role = "control-plane"
 
-      # extra_mounts {
-      #   host_path      = "/var/run/docker.sock"
-      #   container_path = "/var/run/docker.sock"
-      # }
+      # required for capd
+      extra_mounts {
+        host_path      = "/var/run/docker.sock"
+        container_path = "/var/run/docker.sock"
+      }
 
       kubeadm_config_patches = [
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"

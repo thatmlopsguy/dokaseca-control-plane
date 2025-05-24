@@ -1,4 +1,4 @@
-# k8s-homelab
+# Doka Seca Terraform
 
 [![GitHub](https://img.shields.io/github/stars/thatmlopsguy/k8s-homelab?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/k8s-homelab)
 [![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/commits/main)
@@ -74,7 +74,7 @@ You can inspect the deployed clusters by typing:
 
 ```sh
 $ kind get clusters
-main
+control-plane-dev
 ```
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
@@ -89,12 +89,23 @@ The output looks like the following:
 
 ```json
 {
-  "addons_repo_basepath": "gitops",
-  "addons_repo_path": "addons",
-  "addons_repo_revision": "dev",
-  "addons_repo_url": "https://github.com/thatmlopsguy/k8s-homelab",
-  "cluster_name": "main",
-  "environment": "prod"
+  "addons_extras_repo_basepath": "stable",
+  "addons_extras_repo_revision": "main",
+  "addons_extras_repo_url": "https://github.com/thatmlopsguy/helm-charts",
+  "addons_repo_basepath": "argocd",
+  "addons_repo_path": "appsets",
+  "addons_repo_revision": "main",
+  "addons_repo_url": "https://github.com/thatmlopsguy/dokaseca-addons",
+  "cluster_name": "control-plane-dev",
+  "cluster_repo_basepath": "gitops/argocd",
+  "cluster_repo_path": "clusters",
+  "cluster_repo_revision": "dev",
+  "cluster_repo_url": "https://github.com/thatmlopsguy/k8s-homelab",
+  "environment": "dev",
+  "workload_repo_basepath": "gitops/argocd",
+  "workload_repo_path": "workloads",
+  "workload_repo_revision": "dev",
+  "workload_repo_url": "https://github.com/thatmlopsguy/k8s-homelab"
 }
 ```
 
@@ -109,7 +120,8 @@ The output looks like the following:
 ```json
 {
   "argocd.argoproj.io/secret-type": "cluster",
-  "cluster_name": "main",
+  "cloud_provider": "local",
+  "cluster_name": "control-plane-dev",
   "enable_alloy": "false",
   "enable_argo_cd": "true",
   "enable_argo_cd_image_updater": "false",
@@ -122,8 +134,9 @@ The output looks like the following:
   "enable_vector": "false",
   "enable_victoria_metrics_k8s_stack": "true",
   "enable_zipkin": "false",
-  "environment": "prod",
-  "k8s_cluster_name": "main",
+  "environment": "dev",
+  "k8s_cluster_name": "control-plane-dev",
+  "k8s_domain_name": "k8s-home.lab",
   "kubernetes_version": "1.31.2"
 }
 ```
