@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+resources:
+  - namespace.yaml
+  #- argocd-cmd.yaml
+  #- argocd-cm.yaml
+  #- secret-oci.yaml
+  #- https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+  # see https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-repo-creds.yaml
+  #- argocd-repo-creds.yaml
+  # authorized to manage Cluster API objects
+  #- rbac-cluster-admin.yaml
+  # https://github.com/open-cluster-management-io/argocd-pull-integration
+
+# https://kubectl.docs.kubernetes.io/references/kustomize/builtins/#_helmchartinflationgenerator_
+helmCharts:
+  - name: argo-cd
+    namespace: argocd
+    releaseName: argocd
+    repo: https://argoproj.github.io/argo-helm
+    version: 7.7.0
+    valuesFile: values.yaml

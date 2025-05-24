@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: simple-app
+  namespace: argocd
+spec:
+  project: workloads
+  source:
+    repoURL: https://github.com/thatmlopsguy/k8s-homelab
+    targetRevision: dev
+    path: examples/simple-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: echo
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

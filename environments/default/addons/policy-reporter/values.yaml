@@ -1,0 +1,18 @@
+ui:
+  enabled: true
+  displayMode: light # available options: dark / light
+  plugins:
+    kyverno: true
+kyverno-plugin:
+  enabled: true
+metrics:
+  enabled: true
+monitoring:
+  enabled: true
+  grafana:
+    namespace: monitoring
+  serviceMonitor:
+    labels:
+      release: kube-prometheus-stack
+  plugins:
+    kyverno: true

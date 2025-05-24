@@ -1,0 +1,5 @@
+serviceMonitor:
+  # -- Specifies whether to create a ServiceMonitor resource for collecting Prometheus metrics
+  enabled: true
+  additionalLabels:
+    release: kube-prometheus-stack

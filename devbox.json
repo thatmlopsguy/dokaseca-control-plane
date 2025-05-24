@@ -1,7 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/jetify-com/devbox/0.13.7/.schema/devbox.schema.json",
   "packages": [
-    "terraform@1.10.4"
+    "terraform@1.10.4",
+    "adrgen@latest"
   ],
   "shell": {
     "init_hook": [

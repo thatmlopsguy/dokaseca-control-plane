@@ -1,0 +1,24 @@
+formatter: markdown table
+
+recursive:
+  enabled: true
+  path: terraform/modules
+  include-main: false
+
+output:
+  file: README.md
+
+sections:
+  hide: []
+  show: []
+
+settings:
+  anchor: true
+  color: true
+  description: true
+  escape: true
+  hide-empty: false
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true

@@ -2,7 +2,7 @@ terraform {
   required_providers {
     kind = {
       source  = "tehcyx/kind"
-      version = "0.7.0"
+      version = "0.8.0"
     }
 
     helm = {
@@ -13,6 +13,11 @@ terraform {
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "2.35.1"
+    }
+
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = "1.19.0"
     }
   }
 }
@@ -28,4 +33,7 @@ provider "helm" {
   kubernetes {
     config_path = kind_cluster.main.kubeconfig_path
   }
+}
+
+provider "kubectl" {
 }

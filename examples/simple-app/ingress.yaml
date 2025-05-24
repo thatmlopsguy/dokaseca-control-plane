@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: echo-ingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: k8s-home.lab
+    http:
+      paths:
+      - path: /test
+        pathType: Exact
+        backend:
+          service:
+            name: http-echo-service
+            port:
+              number: 80

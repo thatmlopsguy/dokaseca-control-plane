@@ -1,0 +1,41 @@
+networkPolicies:
+  # -- Specifies whether networkpolicies should be created
+  enabled: false
+
+  # -- Internal Prometheus settings related to NetworkPolicies
+  prometheus:
+    # -- Namespace where internal Prometheus is installed
+    namespace: monitoring
+
+
+opencost:
+  carbonCost:
+    # -- Enable carbon cost exposed in the API
+    enabled: false
+
+  customPricing:
+    enabled: true
+
+  metrics:
+    serviceMonitor:
+      enabled: true
+
+  prometheus:
+    internal:
+      enabled: true
+      namespaceName: monitoring
+      # -- Service name of in-cluster Prometheus
+      serviceName: kube-prometheus-stack-prometheus
+      # -- Service port of in-cluster Prometheus
+      port: 9090
+
+  ui:
+    # -- Enable OpenCost UI
+    enabled: true
+    ingress:
+      enabled: true
+      ingressClassName: nginx
+      hosts:
+        - host: opencost.k8s-homelab
+          paths:
+            - /

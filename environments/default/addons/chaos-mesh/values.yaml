@@ -1,0 +1,4 @@
+dashboard:
+  create: true
+  # securityMode requires user to provide credentials on Chaos Dashboard, instead of using chaos-dashboard service account
+  securityMode: false

@@ -1,0 +1,18 @@
+{
+    "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+    "features": {
+        "ghcr.io/devcontainers/features/go:1": {
+            "version": "1.21"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+    },
+    "postCreateCommand": ".devcontainer/scripts/postCreateCommand.sh",
+    "workspaceFolder": "/home/vscode/k8s-homelab",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/k8s-homelab,type=bind",
+    "hostRequirements": {
+        "cpus": 4
+    },
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/vscode/k8s-homelab"
+    }
+}

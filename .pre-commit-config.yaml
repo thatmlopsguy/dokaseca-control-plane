@@ -8,7 +8,28 @@ repos:
         args: ["--markdown-linebreak-ext=md"]
       - id: detect-private-key
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.369
+    rev: 3.2.413
     hooks:
       - id: checkov
         name: checkov
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.6.0
+    hooks:
+      - id: commitizen
+        stages: [commit-msg]
+  - repo: https://github.com/norwoodj/helm-docs
+    rev: v1.14.2
+    hooks:
+      - id: helm-docs
+        always_run: false
+        args:
+          - --chart-search-root=charts
+  - repo: local
+    hooks:
+      - id: terraform-docs
+        name: Terraform Docs Generator
+        entry: scripts/hooks/terraform-docs.sh
+        language: system
+        types: [terraform]
+        stages: [pre-commit]
+        files: '^terraform/modules/'

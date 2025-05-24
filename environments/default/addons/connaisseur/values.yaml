@@ -1,0 +1,3 @@
+kubernetes:
+  deployment:
+    replicasCount: 1

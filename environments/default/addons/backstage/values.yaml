@@ -1,0 +1,65 @@
+catalog:
+  demoCatalogLocation: "https://github.com/thatmlopsguy/backstage-helm-chart/blob/main/demo-catalog/all.yaml"
+  customCatalogLocation: "None"
+
+appConfig: |
+  organization:
+    name: MLOps Community
+
+  app:
+    title: MLOps Community Backstage
+
+  backend:
+    baseUrl: ${BASE_URL}:7007
+    listen: ':7007'
+
+    database:
+      client: pg
+      connection:
+        host: ${POSTGRES_HOST}
+        port: ${POSTGRES_PORT}
+        user: ${POSTGRES_USER}
+        password: ${POSTGRES_PASSWORD}
+
+  integrations:
+    github:
+      - host: github.com
+        token: ${GITHUB_TOKEN}
+  auth:
+    # see https://backstage.io/docs/auth/ to learn about auth providers
+    providers: {}
+
+  scaffolder:
+
+  techdocs:
+    builder: 'local'
+    generator:
+      runIn: 'local'
+    publisher:
+      type: 'local'
+
+  scorecards:
+    test: none
+
+  catalog:
+    locations:
+    - type: url
+      target: ${DEMO_CATALOG_LOCATION}
+      rules:
+      - allow: [Component, System, API, Resource, Location]
+    - type: url
+      target: ${CUSTOM_CATALOG_LOCATION}
+      rules:
+      - allow: [Component, System, API, Resource, Location]
+
+  kubernetes:
+    serviceLocatorMethod:
+      type: 'multiTenant'
+    clusterLocatorMethods:
+      - type: 'config'
+        clusters:
+          - url: kubernetes.default.svc.cluster.local:443
+            name: local
+            authProvider: 'serviceAccount'
+            skipTLSVerify: false
+            skipMetricsLookup: true

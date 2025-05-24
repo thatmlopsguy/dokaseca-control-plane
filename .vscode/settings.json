@@ -1,14 +1,49 @@
 {
     "[terraform]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "hashicorp.terraform"
     },
     "cSpell.words": [
         "admissionregistration",
+        "authelia",
+        "authentik",
+        "capi",
+        "cloudbeaver",
+        "codefresh",
         "crds",
+        "falco",
+        "freelens",
+        "healthcheck",
         "homelab",
+        "htpasswd",
+        "karmada",
+        "karpor",
+        "keyclock",
+        "komoplane",
+        "koreo",
+        "kubearmor",
+        "kubescape",
+        "kured",
+        "litellm",
         "metallb",
+        "mkdocs",
         "openfunction",
+        "seldon",
+        "statusbadge",
+        "tracee",
         "traefik",
+        "vclusters",
         "vmalert"
-    ]
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/terraform.tfstate*": false,
+        "**/.terraform.lock.hcl": true
+    },
+    "editor.formatOnSave": true,
 }

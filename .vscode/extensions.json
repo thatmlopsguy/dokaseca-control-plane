@@ -1,5 +1,9 @@
 {
     "recommendations": [
-        "ms-kubernetes-tools.kind-vscode"
+        "ms-kubernetes-tools.kind-vscode",
+        "hashicorp.terraform",
+        "kubescape.kubescape",
+        "inercia.vscode-k3d",
+        "openclustermanagement.ocm-vscode-extension"
     ]
 }
