@@ -3,10 +3,10 @@ locals {
   environment = var.environment
   region      = var.region
 
-  kubernetes_name   = "${var.cluster_name}-${var.environment}"
-  kubernetes_distro = var.kubernetes_distro
-  cluster_version   = var.kubernetes_version
-  kubeconfig_path   = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
+  kubernetes_name    = "${var.cluster_name}-${var.environment}"
+  kubernetes_distro  = var.kubernetes_distro
+  kubernetes_version = var.kubernetes_version
+  kubeconfig_path    = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
 
   cloud_provider = var.cloud_provider
   domain_name    = var.domain_name
@@ -16,19 +16,19 @@ locals {
   gitops_addons_path     = var.gitops_addons_path
   gitops_addons_revision = var.gitops_addons_revision
 
-  gitops_addons_extras_url      = "${var.gitops_org}/${var.gitops_resources_repo}"
-  gitops_addons_extras_basepath = var.gitops_resources_basepath
-  gitops_addons_extras_revision = var.gitops_resources_revision
+  gitops_addons_extras_url      = "${var.gitops_org}/${var.gitops_addons_extras_repo}"
+  gitops_addons_extras_basepath = var.gitops_addons_extras_basepath
+  gitops_addons_extras_revision = var.gitops_addons_extras_revision
 
-  gitops_workload_url      = "${var.gitops_org}/${var.gitops_workload_repo}"
-  gitops_workload_basepath = var.gitops_workload_basepath
-  gitops_workload_path     = var.gitops_workload_path
-  gitops_workload_revision = var.gitops_workload_revision
+  gitops_workloads_url      = "${var.gitops_org}/${var.gitops_workloads_repo}"
+  gitops_workloads_basepath = var.gitops_workloads_basepath
+  gitops_workloads_path     = var.gitops_workloads_path
+  gitops_workloads_revision = var.gitops_workloads_revision
 
-  gitops_cluster_url      = "${var.gitops_org}/${var.gitops_cluster_repo}"
-  gitops_cluster_basepath = var.gitops_cluster_basepath
-  gitops_cluster_path     = var.gitops_cluster_path
-  gitops_cluster_revision = var.gitops_cluster_revision
+  gitops_clusters_url      = "${var.gitops_org}/${var.gitops_clusters_repo}"
+  gitops_clusters_basepath = var.gitops_clusters_basepath
+  gitops_clusters_path     = var.gitops_clusters_path
+  gitops_clusters_revision = var.gitops_clusters_revision
 
   oss_addons = {
     # dashboard
@@ -71,8 +71,9 @@ locals {
     enable_kargo           = try(var.addons.enable_kargo, false)
     enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
     # messaging
-    enable_strimzi = try(var.addons.enable_strimzi, false)
-    enable_nats    = try(var.addons.enable_nats, false)
+    enable_strimzi           = try(var.addons.enable_strimzi, false)
+    enable_nats              = try(var.addons.enable_nats, false)
+    enable_rabbitmq_operator = try(var.addons.enable_rabbitmq_operator, false)
     # platform engineering
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
@@ -193,9 +194,9 @@ locals {
     local.azure_addons,
     local.aws_addons,
     local.gcp_addons,
-    { kubernetes_version = local.cluster_version },
+    { k8s_version = local.kubernetes_version },
     { k8s_cluster_name = local.kubernetes_name },
-    { k8s_domain_name = local.domain_name },
+    { domain_name = local.domain_name },
     { cloud_provider = local.cloud_provider }
   )
 
@@ -212,16 +213,16 @@ locals {
       addons_extras_repo_revision = local.gitops_addons_extras_revision
     },
     {
-      workload_repo_url      = local.gitops_workload_url
-      workload_repo_basepath = local.gitops_workload_basepath
-      workload_repo_path     = local.gitops_workload_path
-      workload_repo_revision = local.gitops_workload_revision
+      workloads_repo_url      = local.gitops_workloads_url
+      workloads_repo_basepath = local.gitops_workloads_basepath
+      workloads_repo_path     = local.gitops_workloads_path
+      workloads_repo_revision = local.gitops_workloads_revision
     },
     {
-      cluster_repo_url      = local.gitops_cluster_url
-      cluster_repo_basepath = local.gitops_cluster_basepath
-      cluster_repo_path     = local.gitops_cluster_path
-      cluster_repo_revision = local.gitops_cluster_revision
+      clusters_repo_url      = local.gitops_clusters_url
+      clusters_repo_basepath = local.gitops_clusters_basepath
+      clusters_repo_path     = local.gitops_clusters_path
+      clusters_repo_revision = local.gitops_clusters_revision
     },
     {
       backstage_github_token = var.backstage_github_token

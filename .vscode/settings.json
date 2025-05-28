@@ -27,6 +27,7 @@
         "litellm",
         "metallb",
         "mkdocs",
+        "openebs",
         "openfunction",
         "seldon",
         "statusbadge",

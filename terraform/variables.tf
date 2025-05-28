@@ -107,6 +107,8 @@ variable "addons" {
   description = "Kubernetes addons"
   type        = any
   default = {
+    # portal
+    enable_backstage = false
     # dashboard
     enable_headlamp             = false
     enable_helm_dashboard       = false
@@ -150,17 +152,19 @@ variable "addons" {
     enable_grafana_operator        = true
     enable_polaris                 = false
     enable_devlake                 = false
-    enable_strimzi                 = false
-    enable_open_feature            = false
-    enable_istio                   = false
-    enable_reloader                = false
-    enable_karpor                  = false
-    enable_backstage               = false
-    enable_kubescape               = false
-    enable_victoria_logs           = false
-    enable_mlflow                  = false
-    enable_kuberay                 = false
-    enable_seldon                  = false
+    # messaging
+    enable_strimzi           = false
+    enable_rabbitmq_operator = false
+    enable_nats              = false
+    enable_open_feature      = false
+    enable_istio             = false
+    enable_reloader          = false
+    enable_karpor            = false
+    enable_kubescape         = false
+    enable_victoria_logs     = false
+    enable_mlflow            = false
+    enable_kuberay           = false
+    enable_seldon            = false
   }
 }
 
@@ -168,7 +172,7 @@ variable "addons" {
 variable "gitops_org" {
   description = "Git repository org/user contains for addons"
   type        = string
-  default     = "https://github.com/gitops-bridge-dev"
+  default     = "https://github.com/thatmlopsguy"
 }
 
 variable "gitops_addons_repo" {
@@ -195,70 +199,70 @@ variable "gitops_addons_path" {
   default     = "addons"
 }
 
-# Addon Resources Git
-variable "gitops_resources_repo" {
+# Addons Extra Git
+variable "gitops_addons_extras_repo" {
   description = "Git repository contains for addon resources"
   type        = string
   default     = "gitops-bridge-argocd-control-plane-template"
 }
 
-variable "gitops_resources_basepath" {
+variable "gitops_addons_extras_basepath" {
   description = "Git repository base path for addon resources"
   type        = string
   default     = "gitops"
 }
 
-variable "gitops_resources_revision" {
+variable "gitops_addons_extras_revision" {
   description = "Git repository revision/branch/ref for addon resources"
   type        = string
   default     = "main"
 }
 
 # Workloads Git
-variable "gitops_workload_repo" {
+variable "gitops_workloads_repo" {
   description = "Git repository contains for workload"
   type        = string
   default     = "gitops-bridge"
 }
 
-variable "gitops_workload_basepath" {
+variable "gitops_workloads_basepath" {
   description = "Git repository base path for workload"
   type        = string
   default     = "argocd/iac/terraform/examples/eks/"
 }
 
-variable "gitops_workload_path" {
+variable "gitops_workloads_path" {
   description = "Git repository path for workload"
   type        = string
   default     = "karpenter/k8s"
 }
 
-variable "gitops_workload_revision" {
+variable "gitops_workloads_revision" {
   description = "Git repository revision/branch/ref for workload"
   type        = string
   default     = "main"
 }
 
 # Clusters Git
-variable "gitops_cluster_repo" {
+variable "gitops_clusters_repo" {
   description = "Git repository contains for clusters"
   type        = string
   default     = "gitops-bridge"
 }
 
-variable "gitops_cluster_basepath" {
+variable "gitops_clusters_basepath" {
   description = "Git repository base path for clusters"
   type        = string
   default     = "argocd/iac/terraform/examples/eks/"
 }
 
-variable "gitops_cluster_path" {
+variable "gitops_clusters_path" {
   description = "Git repository path for clusters"
   type        = string
   default     = "karpenter/k8s"
 }
 
-variable "gitops_cluster_revision" {
+variable "gitops_clusters_revision" {
   description = "Git repository revision/branch/ref for clusters"
   type        = string
   default     = "main"
@@ -267,5 +271,6 @@ variable "gitops_cluster_revision" {
 variable "backstage_github_token" {
   description = "Backstage github token"
   type        = string
+  sensitive   = true
   default     = "TODO"
 }

@@ -17,16 +17,17 @@ gitops_addons_revision = "main"
 argocd_chart_version   = "7.8.26"
 argocd_files_config = {
   load_addons    = true
-  load_workloads = false
+  load_workloads = true
   load_clusters  = false
 }
 addons = {
   # dashboard
-  enable_kubernetes_dashboard = false
-  enable_headlamp             = false
-  enable_helm_dashboard       = false
-  enable_komoplane            = false # requires enable_crossplane
+  enable_kubernetes_dashboard = true
+  enable_headlamp             = true
+  enable_helm_dashboard       = true
+  enable_komoplane            = true # requires enable_crossplane
   enable_altinity_dashboard   = false
+  enable_dapr_dashboard       = true # requires enable_dapr
   # identity
   enable_authentik    = false
   enable_keycloak     = false
@@ -35,14 +36,14 @@ addons = {
   # continuos delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
-  enable_argo_cd_image_updater = false
-  enable_argo_rollouts         = false
+  enable_argo_cd_image_updater = true
+  enable_argo_rollouts         = true
   enable_argo_workflows        = false
   enable_argo_events           = false
   enable_keptn                 = false
   # developer experience
-  enable_keda = false
-  enable_dapr = false
+  enable_keda = true
+  enable_dapr = true
   # feature flags
   enable_open_feature = false
   # orchestration
@@ -51,7 +52,7 @@ addons = {
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
-  enable_kargo           = false
+  enable_kargo           = true
   enable_gitops_promoter = true
   # platform engineering
   enable_karpor = false
@@ -72,7 +73,7 @@ addons = {
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
-  enable_trivy            = false
+  enable_trivy            = true
   enable_tracee           = false
   enable_falco            = false
   enable_kubearmor        = false
@@ -88,7 +89,7 @@ addons = {
   enable_ngrok         = false
   enable_istio         = false
   # compliance
-  enable_kyverno                 = false
+  enable_kyverno                 = true
   enable_kyverno_policies        = false
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
@@ -105,13 +106,17 @@ addons = {
   # disaster recovery
   enable_velero = false
   # storage
-  enable_openebs        = true
-  enable_minio          = false
-  enable_cloudnative_pg = false
-  enable_atlas_operator = false
+  enable_openebs = true
+  enable_minio   = false
+  # databases
+  enable_cloudnative_pg      = false
+  enable_atlas_operator      = false
+  enable_cloudbeaver         = true
+  enable_clickhouse_operator = true
   # messaging
-  enable_strimzi = false
-  enable_nats    = false
+  enable_strimzi           = false
+  enable_nats              = false
+  enable_rabbitmq_operator = false
   # dora
   enable_devlake = false
   # chaos engineering
@@ -144,16 +149,16 @@ addons = {
   enable_gcp_external_secrets = false
 }
 # Resources
-gitops_resources_repo     = "helm-charts"
-gitops_resources_basepath = "stable"
-gitops_resources_revision = "main"
+gitops_addons_extras_repo     = "helm-charts"
+gitops_addons_extras_basepath = "stable"
+gitops_addons_extras_revision = "main"
 # Workloads
-gitops_workload_repo     = "k8s-homelab"
-gitops_workload_basepath = "gitops/argocd"
-gitops_workload_path     = "workloads"
-gitops_workload_revision = "dev"
+gitops_workloads_repo     = "dokaseca-workloads"
+gitops_workloads_basepath = "argocd"
+gitops_workloads_path     = "workloads"
+gitops_workloads_revision = "main"
 # Clusters
-gitops_cluster_repo     = "k8s-homelab"
-gitops_cluster_basepath = "gitops/argocd"
-gitops_cluster_path     = "clusters"
-gitops_cluster_revision = "dev"
+gitops_clusters_repo     = "k8s-homelab"
+gitops_clusters_basepath = "gitops/argocd"
+gitops_clusters_path     = "clusters"
+gitops_clusters_revision = "dev"
