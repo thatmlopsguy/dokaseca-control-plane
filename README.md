@@ -15,7 +15,7 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 ## Prerequisite
 
 * [Docker](https://www.docker.com/)
-* [Terraform](https://www.terraform.io/)
+* [Terraform](https://www.terraform.io/) or [opentofu](https://opentofu.org/)
 * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), [k0s](https://docs.k0sproject.io/stable/) and/or [k3d](https://k3d.io/stable/)
 * [jq](https://jqlang.github.io/jq/)
 * [Helm](https://helm.sh/docs/intro/install/)
@@ -97,15 +97,15 @@ The output looks like the following:
   "addons_repo_revision": "main",
   "addons_repo_url": "https://github.com/thatmlopsguy/dokaseca-addons",
   "cluster_name": "control-plane-dev",
-  "cluster_repo_basepath": "gitops/argocd",
+  "cluster_repo_basepath": "argocd",
   "cluster_repo_path": "clusters",
   "cluster_repo_revision": "dev",
-  "cluster_repo_url": "https://github.com/thatmlopsguy/k8s-homelab",
+  "cluster_repo_url": "https://github.com/thatmlopsguy/dokaseca-clusters",
   "environment": "dev",
-  "workload_repo_basepath": "gitops/argocd",
+  "workload_repo_basepath": "argocd",
   "workload_repo_path": "workloads",
   "workload_repo_revision": "dev",
-  "workload_repo_url": "https://github.com/thatmlopsguy/k8s-homelab"
+  "workload_repo_url": "https://github.com/thatmlopsguy/dokaseca-workloads"
 }
 ```
 

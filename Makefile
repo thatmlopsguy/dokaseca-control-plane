@@ -19,6 +19,10 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
+##@ Terraform
+terraform-rm-state: ## remove all terraform states
+	@rm -rf terraform/terraform.tfstate.d
+
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
@@ -172,6 +176,12 @@ headlamp-ui: ## Access headlamp ui
 
 headlamp-token: ## Get headlamp token
 	@kubectl create token headlamp -n kube-system
+
+k8s-dashboard-ui: ## Get k8s-dashboard ui
+	@kubectl port-forward -n kube-system svc/kubernetes-dashboard-web 8001:8000
+
+k8s-dashboard-token: ## Get k8s-dashboard token
+	@kubectl create token admin-user -n kube-system
 
 backstage-ui: ## Access backstage ui
 	@kubectl port-forward svc/backstage -n backstage 7007:7007
