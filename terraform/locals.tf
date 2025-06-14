@@ -38,6 +38,8 @@ locals {
     enable_komoplane            = try(var.addons.enable_komoplane, false)
     enable_altinity_dashboard   = try(var.addons.enable_altinity_dashboard, false)
     enable_dapr_dashboard       = try(var.addons.enable_dapr_dashboard, false)
+    enable_velero_ui            = try(var.addons.enable_velero_ui, false)
+    enable_ocm_dashboard        = try(var.addons.enable_ocm_dashboard, false) # TODO
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)
@@ -78,6 +80,7 @@ locals {
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
     enable_dapr   = try(var.addons.enable_dapr, false)
+    enable_choreo = try(var.addons.enable_choreo, false) # TODO
     # networking
     enable_skupper       = try(var.addons.enable_skupper, false)
     enable_metallb       = try(var.addons.enable_metallb, false)
@@ -162,6 +165,7 @@ locals {
     enable_milvus       = try(var.addons.enable_milvus, false)
     enable_ollama       = try(var.addons.enable_ollama, false)
     enable_langfuse     = try(var.addons.enable_langfuse, false)
+    enable_kgateway     = try(var.addons.enable_kgateway, false)
   }
 
   # Enterprise

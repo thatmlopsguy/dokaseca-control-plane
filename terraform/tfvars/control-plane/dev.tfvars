@@ -22,12 +22,13 @@ argocd_files_config = {
 }
 addons = {
   # dashboard
-  enable_kubernetes_dashboard = true
-  enable_headlamp             = true
-  enable_helm_dashboard       = true
-  enable_komoplane            = true # requires enable_crossplane
+  enable_kubernetes_dashboard = false
+  enable_headlamp             = false
+  enable_helm_dashboard       = false
+  enable_komoplane            = false # requires enable_crossplane
   enable_altinity_dashboard   = false
-  enable_dapr_dashboard       = true # requires enable_dapr
+  enable_dapr_dashboard       = false # requires enable_dapr
+  enable_ocm_dashboard        = false
   # identity
   enable_authentik    = false
   enable_keycloak     = false
@@ -41,13 +42,14 @@ addons = {
   enable_argo_workflows        = false
   enable_argo_events           = false
   enable_keptn                 = false
+  enable_tekton                = false # TODO
   # developer experience
-  enable_keda = true
-  enable_dapr = true
+  enable_keda = false
+  enable_dapr = false
   # feature flags
   enable_open_feature = false
   # orchestration
-  enable_capi_operator = true # requires enable_cert_manager
+  enable_capi_operator = false # requires enable_cert_manager
   enable_crossplane    = false
   enable_vcluster      = false
   enable_koreo         = false
@@ -73,7 +75,7 @@ addons = {
   # security
   enable_cert_manager     = true
   enable_external_secrets = false
-  enable_trivy            = true
+  enable_trivy            = false
   enable_tracee           = false
   enable_falco            = false
   enable_kubearmor        = false
@@ -89,7 +91,7 @@ addons = {
   enable_ngrok         = false
   enable_istio         = false
   # compliance
-  enable_kyverno                 = true
+  enable_kyverno                 = false
   enable_kyverno_policies        = false
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
@@ -106,13 +108,13 @@ addons = {
   # disaster recovery
   enable_velero = false
   # storage
-  enable_openebs = true
+  enable_openebs = false
   enable_minio   = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false
-  enable_cloudbeaver         = true
-  enable_clickhouse_operator = true
+  enable_cloudbeaver         = false
+  enable_clickhouse_operator = false
   # messaging
   enable_strimzi           = false
   enable_nats              = false
