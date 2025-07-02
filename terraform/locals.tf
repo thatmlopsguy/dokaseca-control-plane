@@ -52,7 +52,6 @@ locals {
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events           = try(var.addons.enable_argo_events, false)
-    enable_argo_workflows        = try(var.addons.enable_argo_workflows, false)
     enable_keda                  = try(var.addons.enable_keda, false)
     enable_keptn                 = try(var.addons.enable_keptn, false)
     enable_open_feature          = try(var.addons.enable_open_feature, false)
@@ -152,10 +151,11 @@ locals {
     enable_kured     = try(var.addons.enable_kured, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
-    # workload manager TODO
-    enable_temporal = try(var.addons.enable_temporal, false)
-    enable_airflow  = try(var.addons.enable_airflow, false)
-    enable_flyte    = try(var.addons.enable_flyte, false)
+    # workload manager
+    enable_temporal       = try(var.addons.enable_temporal, false)
+    enable_airflow        = try(var.addons.enable_airflow, false)
+    enable_flyte          = try(var.addons.enable_flyte, false)
+    enable_argo_workflows = try(var.addons.enable_argo_workflows, false)
     # machine learning
     enable_ray_operator = try(var.addons.enable_ray_operator, false)
     enable_mlflow       = try(var.addons.enable_mlflow, false)

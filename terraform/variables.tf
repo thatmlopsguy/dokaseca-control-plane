@@ -116,9 +116,8 @@ variable "addons" {
     enable_dapr_dashboard       = false
     enable_kubernetes_dashboard = false
     enable_altinity_dashboard   = false
-
+    enable_ocm_dashboard        = false
     # identity
-
     # delivery
     enable_argo_cd                 = true
     enable_argo_cd_image_updater   = true
