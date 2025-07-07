@@ -14,10 +14,10 @@ gitops_addons_repo     = "dokaseca-addons"
 gitops_addons_basepath = "argocd"
 gitops_addons_path     = "appsets"
 gitops_addons_revision = "main"
-argocd_chart_version   = "7.8.26"
+argocd_chart_version   = "8.0.17"
 argocd_files_config = {
   load_addons    = true
-  load_workloads = false
+  load_workloads = true
   load_clusters  = false
 }
 addons = {
@@ -27,6 +27,8 @@ addons = {
   enable_helm_dashboard       = false
   enable_komoplane            = false # requires enable_crossplane
   enable_altinity_dashboard   = false
+  enable_dapr_dashboard       = false # requires enable_dapr
+  enable_ocm_dashboard        = false
   # identity
   enable_authentik    = false
   enable_keycloak     = false
@@ -35,23 +37,24 @@ addons = {
   # continuos delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
-  enable_argo_cd_image_updater = false
-  enable_argo_rollouts         = false
+  enable_argo_cd_image_updater = true
+  enable_argo_rollouts         = true
   enable_argo_workflows        = false
   enable_argo_events           = false
   enable_keptn                 = false
+  enable_tekton                = false # TODO
   # developer experience
   enable_keda = false
   enable_dapr = false
   # feature flags
   enable_open_feature = false
   # orchestration
-  enable_capi_operator = true # requires enable_cert_manager
+  enable_capi_operator = false # requires enable_cert_manager
   enable_crossplane    = false
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
-  enable_kargo           = false
+  enable_kargo           = true
   enable_gitops_promoter = true
   # platform engineering
   enable_karpor = false
@@ -105,13 +108,17 @@ addons = {
   # disaster recovery
   enable_velero = false
   # storage
-  enable_openebs        = true
-  enable_minio          = false
-  enable_cloudnative_pg = false
-  enable_atlas_operator = false
+  enable_openebs = false
+  enable_minio   = false
+  # databases
+  enable_cloudnative_pg      = false
+  enable_atlas_operator      = false
+  enable_cloudbeaver         = false
+  enable_clickhouse_operator = false
   # messaging
-  enable_strimzi = false
-  enable_nats    = false
+  enable_strimzi           = false
+  enable_nats              = false
+  enable_rabbitmq_operator = false
   # dora
   enable_devlake = false
   # chaos engineering
@@ -144,16 +151,16 @@ addons = {
   enable_gcp_external_secrets = false
 }
 # Resources
-gitops_resources_repo     = "helm-charts"
-gitops_resources_basepath = "stable"
-gitops_resources_revision = "main"
+gitops_addons_extras_repo     = "helm-charts"
+gitops_addons_extras_basepath = "stable"
+gitops_addons_extras_revision = "main"
 # Workloads
-gitops_workload_repo     = "k8s-homelab"
-gitops_workload_basepath = "gitops/argocd"
-gitops_workload_path     = "workloads"
-gitops_workload_revision = "dev"
+gitops_workloads_repo     = "dokaseca-workloads"
+gitops_workloads_basepath = "argocd"
+gitops_workloads_path     = "workloads"
+gitops_workloads_revision = "main"
 # Clusters
-gitops_cluster_repo     = "k8s-homelab"
-gitops_cluster_basepath = "gitops/argocd"
-gitops_cluster_path     = "clusters"
-gitops_cluster_revision = "dev"
+gitops_clusters_repo     = "k8s-homelab"
+gitops_clusters_basepath = "gitops/argocd"
+gitops_clusters_path     = "clusters"
+gitops_clusters_revision = "dev"

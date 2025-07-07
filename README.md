@@ -1,21 +1,26 @@
-# Doka Seca Terraform
+# Doka Seca Control Plane
 
-[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/k8s-homelab?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/k8s-homelab)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/k8s-homelab.svg)](https://github.com/thatmlopsguy/k8s-homelab/issues)
-[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/k8s-homelab)](https://github.com/thatmlopsguy/k8s-homelab/pulls)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/k8s-homelab/blob/dev/LICENSE)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/k8s-homelab/)
+[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-terraform?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-terraform)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/issues)
+[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-terraform)](https://github.com/thatmlopsguy/dokaseca-terraform/pulls)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/blob/dev/LICENSE)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-terraform/)
 
 ## Introduction
 
-Welcome to my homelab Kubernetes cluster repository! This project serves as both a personal learning journey and a
-resource for others interested in setting up their own Kubernetes Homelabs.
+Welcome to **DoKa Seca** - a comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)! The name "DoKa Seca" is a playful Portuguese phrase where "DoKa" incorporates the "K" from Kubernetes (representing the containerized orchestration at the heart of this project), and "Seca" means "dry" - drawing inspiration from the concept of a **dry dock**.
+
+Just as ships are built, repaired, and maintained in dry docks - controlled, isolated environments where all the necessary infrastructure and tooling are readily available - DoKa Seca provides a "dry dock" for Kubernetes platforms. It creates an isolated, controlled environment where entire cloud-native platforms can be rapidly assembled, configured, and tested before being deployed to production waters.
+
+DoKa Seca provides an opinionated, production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.
+
+This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.
 
 ## Prerequisite
 
 * [Docker](https://www.docker.com/)
-* [Terraform](https://www.terraform.io/)
+* [Terraform](https://www.terraform.io/) or [opentofu](https://opentofu.org/)
 * [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), [k0s](https://docs.k0sproject.io/stable/) and/or [k3d](https://k3d.io/stable/)
 * [jq](https://jqlang.github.io/jq/)
 * [Helm](https://helm.sh/docs/intro/install/)
@@ -32,6 +37,7 @@ resource for others interested in setting up their own Kubernetes Homelabs.
 * [clusteradm](https://github.com/open-cluster-management-io/clusteradm)
 * [cosign](https://github.com/sigstore/cosign)
 * [velero](https://github.com/vmware-tanzu/velero)
+* [vault](https://developer.hashicorp.com/vault/docs/install)
 
 ```sh
 $ kubectl version
@@ -67,7 +73,7 @@ Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/d
 The following command with create a kind cluster.
 
 ```sh
-make terraform-apply
+./scripts/terraform.sh control-plane dev apply
 ```
 
 You can inspect the deployed clusters by typing:
@@ -97,15 +103,15 @@ The output looks like the following:
   "addons_repo_revision": "main",
   "addons_repo_url": "https://github.com/thatmlopsguy/dokaseca-addons",
   "cluster_name": "control-plane-dev",
-  "cluster_repo_basepath": "gitops/argocd",
+  "cluster_repo_basepath": "argocd",
   "cluster_repo_path": "clusters",
   "cluster_repo_revision": "dev",
-  "cluster_repo_url": "https://github.com/thatmlopsguy/k8s-homelab",
+  "cluster_repo_url": "https://github.com/thatmlopsguy/dokaseca-clusters",
   "environment": "dev",
-  "workload_repo_basepath": "gitops/argocd",
+  "workload_repo_basepath": "argocd",
   "workload_repo_path": "workloads",
   "workload_repo_revision": "dev",
-  "workload_repo_url": "https://github.com/thatmlopsguy/k8s-homelab"
+  "workload_repo_url": "https://github.com/thatmlopsguy/dokaseca-workloads"
 }
 ```
 
@@ -146,7 +152,7 @@ The output looks like the following:
 To tear down all the resources and the kind cluster, run the following command:
 
 ```sh
-make terraform-destroy
+./scripts/terraform.sh control-plane dev destroy
 ```
 
 ## :handshake: Contributing
