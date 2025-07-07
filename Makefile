@@ -218,3 +218,6 @@ docs-install: ## Install the requirements for starting the local web server for 
 
 docs-serve: docs-install ## Start a local web server for serving documentation
 	@mkdocs serve || echo "Error running mkserve. Have you run make install?"
+
+docs-build: docs-install ## Build the documentation site
+	@mkdocs build
