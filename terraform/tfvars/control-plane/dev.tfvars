@@ -49,7 +49,7 @@ addons = {
   enable_open_feature = false
   # orchestration
   enable_capi_operator = false # requires enable_cert_manager
-  enable_crossplane    = true
+  enable_crossplane    = false
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
