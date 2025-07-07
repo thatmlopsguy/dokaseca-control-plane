@@ -39,7 +39,6 @@ addons = {
   enable_argo_cd               = false
   enable_argo_cd_image_updater = true
   enable_argo_rollouts         = true
-  enable_argo_workflows        = false
   enable_argo_events           = false
   enable_keptn                 = false
   enable_tekton                = false # TODO
@@ -50,7 +49,7 @@ addons = {
   enable_open_feature = false
   # orchestration
   enable_capi_operator = false # requires enable_cert_manager
-  enable_crossplane    = false
+  enable_crossplane    = true
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
@@ -139,6 +138,11 @@ addons = {
   enable_langfuse     = false
   enable_milvus       = false
   enable_ollama       = false
+  # workload manager
+  enable_temporal       = false
+  enable_airflow        = false
+  enable_flyte          = false
+  enable_argo_workflows = false
   # enterprise
   enable_codefresh = false
   enable_kubescape = false
