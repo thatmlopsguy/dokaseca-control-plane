@@ -19,6 +19,10 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
+##@ Terraform
+terraform-rm-state: ## remove all terraform states
+	@rm -rf terraform/terraform.tfstate.d
+
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
@@ -168,10 +172,16 @@ karpor-ui: ## Access karpor ui
 	@kubectl -n karpor port-forward service/karpor-server 7443:7443
 
 headlamp-ui: ## Access headlamp ui
-	@kubectl port-forward -n kube-system service/headlamp 8080:80
+	@kubectl port-forward -n kube-system service/headlamp 8087:80
 
 headlamp-token: ## Get headlamp token
-	@kubectl create token headlamp-admin -n kube-system
+	@kubectl create token headlamp -n kube-system
+
+k8s-dashboard-ui: ## Get k8s-dashboard ui
+	@kubectl port-forward -n kube-system svc/kubernetes-dashboard-web 8001:8000
+
+k8s-dashboard-token: ## Get k8s-dashboard token
+	@kubectl create token admin-user -n kube-system
 
 backstage-ui: ## Access backstage ui
 	@kubectl port-forward svc/backstage -n backstage 7007:7007
@@ -179,7 +189,7 @@ backstage-ui: ## Access backstage ui
 kargo-ui: ## Access kargo ui (password: oFUvUWUmelWqEIZ6ppHQrkEfFaPgvvJx)
 	@kubectl port-forward svc/kargo-api -n kargo 8081:80
 
-kargo-secret: ## create kargo secret (requires apache2-utils)
+kargo-secret: ## Create kargo secret (requires apache2-utils)
 	@echo "Generating credentials..."
 	@pass=$$(openssl rand -base64 48 | tr -d "=+/" | head -c 32); \
 	echo "Password: $$pass"; \
@@ -194,6 +204,9 @@ komoplane-ui: ## Access komoplane-ui (crossplane dashboard)
 
 cyclops-ui: ## Access cyclops-ui
 	@kubectl port-forward svc/cyclops-ui 3001:3000 -n cyclops
+
+dapr-ui: ## Access dapr dashboard
+	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
 
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
