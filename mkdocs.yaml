@@ -1,9 +1,9 @@
 site_name: Doka Seca
-site_description: A kubernetes homelab to test some applications
+site_description: A comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)
 
 # Repository
-repo_url: https://github.com/thatmlopsguy/dokaseca-terraform
-repo_name: dokaseca-terraform
+repo_url: https://github.com/thatmlopsguy/dokaseca-control-plane
+repo_name: dokaseca-control-plane
 
 # Navigation
 nav:
@@ -33,6 +33,9 @@ nav:
     - Release Notes: releases.md
     - Roadmap: roadmap.md
     - References: references.md
+  - Architecture Decisions:
+    - Overview: adr/index.md
+    - Use ADRs: adr/001-use-architecture-decision-records.md
 
 # Configuration
 theme:
