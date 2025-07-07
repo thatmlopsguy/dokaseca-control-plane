@@ -19,9 +19,9 @@ spec:
     spec:
       project: default
       source:
-        repoURL: '{{metadata.annotations.cluster_repo_url}}'
-        path: '{{metadata.annotations.cluster_repo_basepath}}/{{metadata.annotations.cluster_repo_path}}'
-        targetRevision: '{{metadata.annotations.cluster_repo_revision}}'
+        repoURL: '{{metadata.annotations.clusters_repo_url}}'
+        path: '{{metadata.annotations.clusters_repo_basepath}}/{{metadata.annotations.clusters_repo_path}}'
+        targetRevision: '{{metadata.annotations.clusters_repo_revision}}'
         directory:
           recurse: true
           exclude: exclude/*
