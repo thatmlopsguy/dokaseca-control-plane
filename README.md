@@ -1,11 +1,12 @@
 # Doka Seca Control Plane
 
-[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-terraform?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-terraform)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-terraform.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/issues)
-[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-terraform)](https://github.com/thatmlopsguy/dokaseca-terraform/pulls)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-terraform/blob/dev/LICENSE)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-terraform/)
+[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-control-plane)
+[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main)
+[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/issues)
+[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane)](https://github.com/thatmlopsguy/dokaseca-control-plane/pulls)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE)
+[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-control-plane/)
+
 
 ## Introduction
 
