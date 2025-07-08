@@ -40,13 +40,18 @@ locals {
     enable_dapr_dashboard       = try(var.addons.enable_dapr_dashboard, false)
     enable_velero_ui            = try(var.addons.enable_velero_ui, false)
     enable_ocm_dashboard        = try(var.addons.enable_ocm_dashboard, false) # TODO
+    # fleet manager
+    enable_gardener        = try(var.addons.enable_gardener, false)        # TODO
+    enable_project_sveltos = try(var.addons.enable_project_sveltos, false) # TODO
+    # observability
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)
     enable_keycloak     = try(var.addons.enable_keycloak, false)
     enable_authelia     = try(var.addons.enable_authelia, false)
     # delivery
-    enable_argo_cd = try(var.addons.enable_argo_cd, false)
+    enable_argo_cd               = try(var.addons.enable_argo_cd, false)
+    enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false)
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
     enable_argo_cd_agent         = try(var.addons.enable_argo_cd_agent, false) # TODO
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)

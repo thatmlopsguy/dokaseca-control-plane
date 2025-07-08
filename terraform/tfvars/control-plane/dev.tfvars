@@ -37,6 +37,8 @@ addons = {
   # continuos delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
+  enable_argo_cd_rbac_operator = false
+  enable_argo_cd_agent         = false # TODO
   enable_argo_cd_image_updater = true
   enable_argo_rollouts         = true
   enable_argo_events           = false
