@@ -3,8 +3,33 @@ name: Pre-commit Checks
 on:
   push:
     branches: [ main, develop ]
+    paths:
+      - '**.sh'
+      - '**.py'
+      - '**.tf'
+      - '**.yaml'
+      - '**.yml'
+      - '**.md'
+      - '.pre-commit-config.yaml'
+      - '.shellcheckrc'
+      - 'requirements/**'
+      - 'scripts/**'
+      - 'terraform/**'
+
   pull_request:
     branches: [ main, develop ]
+    paths:
+      - '**.sh'
+      - '**.py'
+      - '**.tf'
+      - '**.yaml'
+      - '**.yml'
+      - '**.md'
+      - '.pre-commit-config.yaml'
+      - '.shellcheckrc'
+      - 'requirements/**'
+      - 'scripts/**'
+      - 'terraform/**'
 
 permissions:
   contents: read
@@ -59,7 +84,7 @@ jobs:
         pip install pre-commit
 
     - name: Run pre-commit
-      run: pre-commit run --all-files --show-diff-on-failure
+      run: pre-commit run --all-files
 
     - name: Upload pre-commit cache
       if: failure()
