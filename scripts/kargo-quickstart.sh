@@ -29,7 +29,7 @@ EOF
 
 helm install cert-manager cert-manager \
   --repo https://charts.jetstack.io \
-  --version $cert_manager_chart_version \
+  --version "${cert_manager_chart_version}" \
   --namespace cert-manager \
   --create-namespace \
   --set crds.enabled=true \
@@ -37,10 +37,10 @@ helm install cert-manager cert-manager \
 
 helm install argocd argo-cd \
   --repo https://argoproj.github.io/argo-helm \
-  --version $argo_cd_chart_version \
+  --version "${argo_cd_chart_version}" \
   --namespace argocd \
   --create-namespace \
-  --set 'configs.secret.argocdServerAdminPassword=$2a$10$5vm8wXaSdbuff0m9l21JdevzXBzJFPCi8sy6OOnpZMAG.fOXL7jvO' \
+  --set "configs.secret.argocdServerAdminPassword=\$2a\$10\$5vm8wXaSdbuff0m9l21JdevzXBzJFPCi8sy6OOnpZMAG.fOXL7jvO" \
   --set dex.enabled=false \
   --set notifications.enabled=false \
   --set server.service.type=NodePort \
@@ -52,7 +52,7 @@ helm install argocd argo-cd \
 
 helm install argo-rollouts argo-rollouts \
   --repo https://argoproj.github.io/argo-helm \
-  --version $argo_rollouts_chart_version \
+  --version "${argo_rollouts_chart_version}" \
   --create-namespace \
   --namespace argo-rollouts \
   --wait
@@ -64,6 +64,6 @@ helm install kargo \
   --create-namespace \
   --set api.service.type=NodePort \
   --set api.service.nodePort=31444 \
-  --set api.adminAccount.passwordHash='$2a$10$Zrhhie4vLz5ygtVSaif6o.qN36jgs6vjtMBdM6yrU1FOeiAAMMxOm' \
+  --set "api.adminAccount.passwordHash=\$2a\$10\$Zrhhie4vLz5ygtVSaif6o.qN36jgs6vjtMBdM6yrU1FOeiAAMMxOm" \
   --set api.adminAccount.tokenSigningKey=iwishtowashmyirishwristwatch \
   --wait

@@ -24,7 +24,7 @@ show_usage() {
 validate_environment() {
     local env=$1
     for allowed_env in "${ALLOWED_ENVIRONMENTS[@]}"; do
-        if [ "$env" = "$allowed_env" ]; then
+        if [ "${env}" = "${allowed_env}" ]; then
             return 0
         fi
     done
@@ -35,7 +35,7 @@ validate_environment() {
 validate_cluster() {
     local cluster=$1
     for allowed_cluster in "${ALLOWED_CLUSTERS[@]}"; do
-        if [ "$cluster" = "$allowed_cluster" ]; then
+        if [ "${cluster}" = "${allowed_cluster}" ]; then
             return 0
         fi
     done
@@ -46,7 +46,7 @@ validate_cluster() {
 validate_action() {
     local action=$1
     for allowed_action in "${ALLOWED_ACTIONS[@]}"; do
-        if [ "$action" = "$allowed_action" ]; then
+        if [ "${action}" = "${allowed_action}" ]; then
             return 0
         fi
     done
@@ -55,10 +55,10 @@ validate_action() {
 
 # Confirm destructive action
 confirm_destructive_action() {
-    echo "WARNING: This will destroy all resources in workspace '$WORKSPACE'"
-    read -p "Are you sure you want to continue? (yes/no): " confirmation
+    echo "WARNING: This will destroy all resources in workspace '${WORKSPACE}'"
+    read -r -p "Are you sure you want to continue? (yes/no): " confirmation
 
-    if [[ ! "$confirmation" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
+    if [[ ! "${confirmation}" =~ ^([yY][eE][sS]|[yY])+$ ]]; then
         echo "Operation cancelled"
         exit 0
     fi
@@ -77,20 +77,20 @@ main() {
     ACTION=$3
 
     # Validate inputs
-    if ! validate_cluster "$CLUSTER"; then
-        echo "Error: Invalid cluster type '$CLUSTER'"
+    if ! validate_cluster "${CLUSTER}"; then
+        echo "Error: Invalid cluster type '${CLUSTER}'"
         echo "Cluster must be one of: ${ALLOWED_CLUSTERS[*]}"
         exit 1
     fi
 
-    if ! validate_environment "$ENV"; then
-        echo "Error: Invalid environment '$ENV'"
+    if ! validate_environment "${ENV}"; then
+        echo "Error: Invalid environment '${ENV}'"
         echo "Environment must be one of: ${ALLOWED_ENVIRONMENTS[*]}"
         exit 1
     fi
 
-    if ! validate_action "$ACTION"; then
-        echo "Error: Invalid action '$ACTION'"
+    if ! validate_action "${ACTION}"; then
+        echo "Error: Invalid action '${ACTION}'"
         echo "Action must be one of: ${ALLOWED_ACTIONS[*]}"
         exit 1
     fi
@@ -99,13 +99,13 @@ main() {
 
     # Get project root directory
     PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
-    if [ $? -ne 0 ]; then
+    if ! git rev-parse --show-toplevel >/dev/null 2>&1; then
         echo "Error: Not in a git repository"
         exit 1
     fi
 
     # Change directory and initialize terraform
-    cd "$PROJECT_ROOT/terraform" || {
+    cd "${PROJECT_ROOT}/terraform" || {
         echo "Error: Could not change to terraform directory"
         exit 1
     }
@@ -117,37 +117,37 @@ main() {
     }
 
     # Workspace management
-    echo "Checking workspace '$WORKSPACE'"
-    if terraform workspace select "$WORKSPACE" >/dev/null 2>&1; then
-        echo "Workspace '$WORKSPACE' already exists"
+    echo "Checking workspace '${WORKSPACE}'"
+    if terraform workspace select "${WORKSPACE}" >/dev/null 2>&1; then
+        echo "Workspace '${WORKSPACE}' already exists"
     else
-        echo "Workspace '$WORKSPACE' doesn't exist, creating..."
-        terraform workspace new "$WORKSPACE" || {
-            echo "Error: Failed to create workspace '$WORKSPACE'"
+        echo "Workspace '${WORKSPACE}' doesn't exist, creating..."
+        terraform workspace new "${WORKSPACE}" || {
+            echo "Error: Failed to create workspace '${WORKSPACE}'"
             exit 1
         }
     fi
 
     # Switch to workspace
-    echo "Switching to workspace '$WORKSPACE'..."
-    terraform workspace select "$WORKSPACE" || {
-        echo "Error: Failed to switch to workspace '$WORKSPACE'"
+    echo "Switching to workspace '${WORKSPACE}'..."
+    terraform workspace select "${WORKSPACE}" || {
+        echo "Error: Failed to switch to workspace '${WORKSPACE}'"
         exit 1
     }
 
     # Perform requested action
-    if [ "$ACTION" = "destroy" ]; then
+    if [ "${ACTION}" = "destroy" ]; then
         confirm_destructive_action
 
         echo "Destroying terraform configuration..."
-        terraform destroy -var-file=tfvars/$CLUSTER/$ENV.tfvars -auto-approve || {
+        terraform destroy -var-file="tfvars/${CLUSTER}/${ENV}.tfvars" -auto-approve || {
             echo "Error: Failed to destroy terraform configuration"
             exit 1
         }
         echo "Successfully destroyed!"
-    elif [ "$ACTION" = "apply" ]; then
+    elif [ "${ACTION}" = "apply" ]; then
         echo "Applying terraform configuration..."
-        terraform apply -var-file=tfvars/$CLUSTER/$ENV.tfvars -auto-approve || {
+        terraform apply -var-file="tfvars/${CLUSTER}/${ENV}.tfvars" -auto-approve || {
             echo "Error: Failed to apply terraform configuration"
             exit 1
         }

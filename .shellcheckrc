@@ -1,0 +1,29 @@
+# Shellcheck configuration for DoKa Seca
+# https://github.com/koalaman/shellcheck/blob/master/shellcheck.1.md#rc-files
+
+# Disable specific checks that are not relevant for our use case
+disable=SC1091  # Not following sourced files that may not exist during linting
+disable=SC2034  # Unused variables (common in scripts with environment setup)
+disable=SC2086  # Double quote to prevent globbing (intentionally allow word splitting in some cases)
+
+# Enable additional checks
+enable=require-variable-braces  # Require ${var} instead of $var for clarity
+enable=quote-safe-variables     # Require quoting of variables in safe contexts
+
+# Set shell dialect (bash by default for our scripts)
+shell=bash
+
+# External sources that shellcheck should ignore
+external-sources=true
+
+# Check sourced files if available
+check-sourced=true
+
+# Severity level (error, warning, info, style)
+severity=warning
+
+# Format for output (default: tty)
+format=tty
+
+# Color output
+color=auto
