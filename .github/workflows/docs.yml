@@ -4,6 +4,19 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - 'mkdocs.yaml'
+      - 'requirements/docs.txt'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - '*.md'
+      - 'mkdocs.yaml'
+      - 'requirements/docs.txt'
 
 permissions:
   contents: write
