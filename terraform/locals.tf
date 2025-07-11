@@ -259,6 +259,6 @@ locals {
 
   tags = {
     Blueprint  = local.name
-    GithubRepo = "github.com/thatmlopsguy/dokaseca-terraform"
+    GithubRepo = "github.com/thatmlopsguy/dokaseca-control-plane"
   }
 }

@@ -120,16 +120,16 @@ addons = {
   # gcp
 }
 # Resources
-gitops_resources_repo     = "k8s-homelab"
-gitops_resources_basepath = "charts"
-gitops_resources_revision = "dev"
+gitops_addons_extras_repo     = "helm-charts"
+gitops_addons_extras_basepath = "stable"
+gitops_addons_extras_revision = "main"
 # Workloads
-gitops_workload_repo     = "k8s-homelab"
-gitops_workload_basepath = "gitops/argocd"
-gitops_workload_path     = "workloads"
-gitops_workload_revision = "dev"
+gitops_workloads_repo     = "dokaseca-workloads"
+gitops_workloads_basepath = "argocd"
+gitops_workloads_path     = "workloads"
+gitops_workloads_revision = "main"
 # Clusters
-gitops_cluster_repo     = "k8s-homelab"
-gitops_cluster_basepath = "gitops/argocd"
-gitops_cluster_path     = "clusters"
-gitops_cluster_revision = "dev"
+gitops_clusters_repo     = "dokaseca-clusters"
+gitops_clusters_basepath = "argocd"
+gitops_clusters_path     = "clusters"
+gitops_clusters_revision = "dev"

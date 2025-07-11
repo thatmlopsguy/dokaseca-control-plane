@@ -17,7 +17,7 @@ gitops_addons_revision = "main"
 argocd_chart_version   = "8.0.17"
 argocd_files_config = {
   load_addons    = true
-  load_workloads = true
+  load_workloads = false
   load_clusters  = false
 }
 addons = {
@@ -166,7 +166,7 @@ gitops_workloads_basepath = "argocd"
 gitops_workloads_path     = "workloads"
 gitops_workloads_revision = "main"
 # Clusters
-gitops_clusters_repo     = "k8s-homelab"
-gitops_clusters_basepath = "gitops/argocd"
+gitops_clusters_repo     = "dokaseca-clusters"
+gitops_clusters_basepath = "argocd"
 gitops_clusters_path     = "clusters"
 gitops_clusters_revision = "dev"
