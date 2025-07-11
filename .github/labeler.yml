@@ -1,8 +1,60 @@
-# Add 'Documentation' label to any changes within 'docs' folder or any subfolders
-Documentation:
-- changed-files:
-  - any-glob-to-any-file: docs/**
+# Configuration for actions/labeler - https://github.com/actions/labeler
 
-# Add 'release' label to any PR that is opened against the `main` branch
+# Documentation
+documentation:
+  - changed-files:
+    - any-glob-to-any-file: ['docs/**/*', '*.md', 'mkdocs.yaml']
+
+# Infrastructure & Terraform
+infrastructure:
+  - changed-files:
+    - any-glob-to-any-file: ['terraform/**/*', '*.tf', '*.tfvars']
+
+# Kubernetes & Manifests
+kubernetes:
+  - changed-files:
+    - any-glob-to-any-file: ['kubernetes/**/*', 'kustomize/**/*', 'charts/**/*']
+
+# GitOps & ArgoCD
+gitops:
+  - changed-files:
+    - any-glob-to-any-file: ['gitops/**/*']
+
+# Crossplane
+crossplane:
+  - changed-files:
+    - any-glob-to-any-file: ['crossplane/**/*']
+
+# Scripts & Automation
+scripts:
+  - changed-files:
+    - any-glob-to-any-file: ['scripts/**/*']
+
+# CI/CD & Workflows
+ci-cd:
+  - changed-files:
+    - any-glob-to-any-file: ['.github/**/*', '.pre-commit-config.yaml', '.shellcheckrc']
+
+# Configuration
+configuration:
+  - changed-files:
+    - any-glob-to-any-file: ['configs/**/*', '*.yaml', '*.yml', '*.json']
+
+# Security & Policies
+security:
+  - changed-files:
+    - any-glob-to-any-file: ['kyverno/**/*', 'SECURITY.md', 'cosign.*']
+
+# Dependencies
+dependencies:
+  - changed-files:
+    - any-glob-to-any-file: ['requirements/**/*', 'devbox.*', 'package*.json']
+
+# Examples
+examples:
+  - changed-files:
+    - any-glob-to-any-file: ['examples/**/*']
+
+# Release label for PRs targeting main
 release:
- - base-branch: 'main'
+  - base-branch: 'main'
