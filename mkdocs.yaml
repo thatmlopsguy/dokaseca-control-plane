@@ -37,8 +37,9 @@ nav:
     - References: references.md
   - Architecture Decisions:
     - Overview: adr/index.md
-    - Use ADRs: adr/001-use-architecture-decision-records.md
-    - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
+    - 0001 - Use ADRs: adr/001-use-architecture-decision-records.md
+    - 0002 - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
+    - 0003 - GitOps with ArgoCD: adr/003-argocd-hub-and-spoke-configuration.md
 
 # Configuration
 theme:
