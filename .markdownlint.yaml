@@ -1,0 +1,27 @@
+# Markdownlint configuration for DoKa Seca
+# https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+
+# Ignore files that are not markdown
+"**/.shellcheckrc": true
+"**/*.conf": true
+"**/*.ini": true
+"**/*.json": true
+"**/*.yaml": true
+"**/*.yml": true
+"**/*.sh": true
+"**/LICENSE": true
+"**/Makefile": true
+"**/VERSION": true
+
+# Configure specific rules
+MD013:
+  line_length: 120
+  code_blocks: false
+  tables: false
+
+MD033:
+  allowed_elements:
+    - "details"
+    - "summary"
+
+MD041: false  # Allow files to not start with H1

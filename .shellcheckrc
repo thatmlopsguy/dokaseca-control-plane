@@ -24,6 +24,3 @@ severity=warning
 
 # Format for output (default: tty)
 format=tty
-
-# Color output
-color=auto
