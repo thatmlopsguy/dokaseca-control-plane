@@ -45,6 +45,8 @@ theme:
   name: "material"
   locale: en
   font: false
+  favicon: assets/favicon.svg
+  logo: assets/logo.svg
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
