@@ -6,7 +6,7 @@
 [![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane)](https://github.com/thatmlopsguy/dokaseca-control-plane/pulls)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE)
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-control-plane/)
-
+[![Pre-commit](https://github.com/your-org/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg)](https://github.com/your-org/k8s-homelab/actions/workflows/pre-commit.yml)
 
 ## Introduction
 
