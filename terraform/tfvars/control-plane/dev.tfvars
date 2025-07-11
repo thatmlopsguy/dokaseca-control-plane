@@ -1,5 +1,5 @@
 environment          = "dev"
-cluster_name         = "control-plane"
+cluster_type         = "control-plane"
 domain_name          = "k8s-home.lab"
 cloud_provider       = "local"
 kubernetes_distro    = "kind"

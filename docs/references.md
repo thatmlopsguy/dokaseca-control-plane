@@ -24,6 +24,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 - **[CNOE (Cloud Native Operational Excellence)](https://cnoe.io/)** - Open-source reference implementation for cloud-native platform engineering
 - **[BACK Stack](https://backstack.dev/)** - Modern infrastructure stack combining Backstage, ArgoCD, Crossplane, and Kubernetes
 - **[Harmonix](https://harmonixonaws.io/)** - AWS-native platform engineering framework for building developer platforms
+- **[Krateo PlatformOps](https://krateo.io/)** - Cloud-native platform for managing infrastructure and applications through a unified control plane with strong GitOps practices
 
 ### Configuration and Automation
 

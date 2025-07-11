@@ -3,20 +3,21 @@
 # Constants
 ALLOWED_ENVIRONMENTS=("dev" "stg" "prod")
 ALLOWED_ACTIONS=("apply" "destroy")
+ALLOWED_CLUSTERS=("control-plane" "workloads")
 SCRIPT_NAME="${0##*/}"
 
 # Display usage information
 show_usage() {
-    echo "Usage: ${SCRIPT_NAME} <TEAM> <ENVIRONMENT> <ACTION>"
+    echo "Usage: ${SCRIPT_NAME} <CLUSTER> <ENVIRONMENT> <ACTION>"
     echo ""
     echo "Arguments:"
-    echo "  TEAM      Team identifier"
+    echo "  CLUSTER     Cluster type (control-plane/workloads)"
     echo "  ENVIRONMENT Environment type (dev/stg/prod)"
-    echo "  ACTION    Action to perform (apply/destroy)"
+    echo "  ACTION      Action to perform (apply/destroy)"
     echo ""
     echo "Example:"
     echo "  ${SCRIPT_NAME} control-plane dev apply"
-    echo "  ${SCRIPT_NAME} control-plane dev destroy"
+    echo "  ${SCRIPT_NAME} workloads prod destroy"
 }
 
 # Validate environment value
@@ -30,11 +31,15 @@ validate_environment() {
     return 1
 }
 
-# Validate team value
-validate_team() {
-    local team=$1
-    # Team must start with a letter and contain only alphanumeric characters, underscores, and hyphens
-    [[ "$team" =~ ^[a-zA-Z][a-zA-Z0-9_-]{1,}$ ]]
+# Validate cluster value
+validate_cluster() {
+    local cluster=$1
+    for allowed_cluster in "${ALLOWED_CLUSTERS[@]}"; do
+        if [ "$cluster" = "$allowed_cluster" ]; then
+            return 0
+        fi
+    done
+    return 1
 }
 
 # Validate action value
@@ -67,14 +72,14 @@ main() {
         exit 1
     fi
 
-    TEAM=$1
+    CLUSTER=$1
     ENV=$2
     ACTION=$3
 
     # Validate inputs
-    if ! validate_team "$TEAM"; then
-        echo "Error: Invalid team identifier '$TEAM'"
-        echo "Team must start with a letter and contain only alphanumeric characters and underscores"
+    if ! validate_cluster "$CLUSTER"; then
+        echo "Error: Invalid cluster type '$CLUSTER'"
+        echo "Cluster must be one of: ${ALLOWED_CLUSTERS[*]}"
         exit 1
     fi
 
@@ -90,7 +95,7 @@ main() {
         exit 1
     fi
 
-    WORKSPACE="${TEAM}-${ENV}"
+    WORKSPACE="${CLUSTER}-${ENV}"
 
     # Get project root directory
     PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
@@ -135,14 +140,14 @@ main() {
         confirm_destructive_action
 
         echo "Destroying terraform configuration..."
-        terraform destroy -var-file=tfvars/$TEAM/$ENV.tfvars -auto-approve || {
+        terraform destroy -var-file=tfvars/$CLUSTER/$ENV.tfvars -auto-approve || {
             echo "Error: Failed to destroy terraform configuration"
             exit 1
         }
         echo "Successfully destroyed!"
     elif [ "$ACTION" = "apply" ]; then
         echo "Applying terraform configuration..."
-        terraform apply -var-file=tfvars/$TEAM/$ENV.tfvars -auto-approve || {
+        terraform apply -var-file=tfvars/$CLUSTER/$ENV.tfvars -auto-approve || {
             echo "Error: Failed to apply terraform configuration"
             exit 1
         }

@@ -41,3 +41,6 @@ terraform/*config
 secret.yaml
 kubeconfigs/
 cosign*
+
+# Mkdocs site
+site/*

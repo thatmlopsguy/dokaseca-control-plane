@@ -1,3 +1,0 @@
-# Pipelines
-
-Documentation coming soon!

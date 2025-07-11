@@ -17,13 +17,6 @@ repos:
     hooks:
       - id: commitizen
         stages: [commit-msg]
-  - repo: https://github.com/norwoodj/helm-docs
-    rev: v1.14.2
-    hooks:
-      - id: helm-docs
-        always_run: false
-        args:
-          - --chart-search-root=charts
   - repo: local
     hooks:
       - id: terraform-docs

@@ -3,10 +3,10 @@ locals {
   environment = var.environment
   region      = var.region
 
-  kubernetes_name    = "${var.cluster_name}-${var.environment}"
+  kubernetes_name    = "${var.cluster_type}-${var.environment}"
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
-  kubeconfig_path    = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_name}-${var.environment}"
+  kubeconfig_path    = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_type}-${var.environment}"
 
   cloud_provider = var.cloud_provider
   domain_name    = var.domain_name

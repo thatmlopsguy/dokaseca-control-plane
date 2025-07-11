@@ -27,13 +27,14 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_agents"></a> [agents](#input\_agents) | Number of agent nodes | `number` | `2` | no |
-| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Name of the k3d cluster | `string` | n/a | yes |
-| <a name="input_disabled_components"></a> [disabled\_components](#input\_disabled\_components) | Components to disable in k3s | `list(string)` | <pre>[<br>  "traefik",<br>  "metrics-server"<br>]</pre> | no |
+| <a name="input_cluster_type"></a> [cluster\_type](#input\_cluster\_type) | Type of the k3d cluster | `string` | `"control-plane"` | no |
+| <a name="input_disabled_components"></a> [disabled\_components](#input\_disabled\_components) | Components to disable in k3s | `list(string)` | <pre>[<br/>  "traefik",<br/>  "metrics-server"<br/>]</pre> | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Environment for the k3d cluster (e.g., dev, staging, prod) | `string` | `"dev"` | no |
 | <a name="input_k3d_version"></a> [k3d\_version](#input\_k3d\_version) | Version of k3d to install | `string` | `"latest"` | no |
 | <a name="input_k3s_version"></a> [k3s\_version](#input\_k3s\_version) | Version of k3s to use | `string` | `"v1.31.5-k3s1"` | no |
-| <a name="input_ports"></a> [ports](#input\_ports) | List of port mappings | <pre>list(object({<br>    host_port      = number<br>    container_port = number<br>    protocol       = string<br>  }))</pre> | `[]` | no |
+| <a name="input_ports"></a> [ports](#input\_ports) | List of port mappings | <pre>list(object({<br/>    host_port      = number<br/>    container_port = number<br/>    protocol       = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_servers"></a> [servers](#input\_servers) | Number of server nodes | `number` | `1` | no |
-| <a name="input_volume_mounts"></a> [volume\_mounts](#input\_volume\_mounts) | List of volume mounts | <pre>list(object({<br>    host_path      = string<br>    container_path = string<br>  }))</pre> | `[]` | no |
+| <a name="input_volume_mounts"></a> [volume\_mounts](#input\_volume\_mounts) | List of volume mounts | <pre>list(object({<br/>    host_path      = string<br/>    container_path = string<br/>  }))</pre> | `[]` | no |
 
 ## Outputs
 

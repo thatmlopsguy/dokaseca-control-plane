@@ -1,7 +1,7 @@
 resource "kind_cluster" "main" {
   # count = var.kubernetes_distro == "kind" ? 1 : 0
 
-  name            = "${var.cluster_name}-${var.environment}"
+  name            = "${var.cluster_type}-${var.environment}"
   kubeconfig_path = local.kubeconfig_path
   node_image      = "kindest/node:v${var.kubernetes_version}"
   wait_for_ready  = true

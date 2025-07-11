@@ -17,7 +17,7 @@ nav:
   - Catalog: catalog.md
   - Repository: repository.md
   - Portal: portal.md
-  - CI/CD: pipelines.md
+  - GitOps: gitops.md
   - Networking: networking.md
   - Observability: observability.md
   - Compliance: compliance.md
@@ -38,6 +38,7 @@ nav:
   - Architecture Decisions:
     - Overview: adr/index.md
     - Use ADRs: adr/001-use-architecture-decision-records.md
+    - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
 
 # Configuration
 theme:

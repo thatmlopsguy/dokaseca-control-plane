@@ -1,5 +1,5 @@
-environment          = "stg"
-cluster_name         = "team-b"
+environment          = "dev"
+cluster_type         = "workloads"
 domain_name          = "k8s-home.lab"
 cloud_provider       = "local"
 kubernetes_version   = "1.31.2"

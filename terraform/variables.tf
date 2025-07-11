@@ -20,10 +20,14 @@ variable "region" {
   }
 }
 
-variable "cluster_name" {
-  description = "Name of the kubernetes cluster"
+variable "cluster_type" {
+  description = "Type of the kubernetes cluster"
   type        = string
-  default     = "main"
+  default     = "control-plane"
+  validation {
+    condition     = contains(["control-plane", "workloads"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'control-plane' or 'workloads'."
+  }
 }
 
 variable "domain_name" {

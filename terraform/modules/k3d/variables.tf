@@ -1,6 +1,21 @@
-variable "cluster_name" {
-  description = "Name of the k3d cluster"
+variable "environment" {
+  description = "Environment for the k3d cluster (e.g., dev, staging, prod)"
   type        = string
+  default     = "dev"
+  validation {
+    condition     = contains(["dev", "staging", "prod"], lower(var.environment))
+    error_message = "Invalid environment. Must be one of 'dev', 'staging', or 'prod'."
+  }
+}
+
+variable "cluster_type" {
+  description = "Type of the k3d cluster"
+  type        = string
+  default     = "control-plane"
+  validation {
+    condition     = contains(["control-plane", "workloads"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'control-plane' or 'workloads'."
+  }
 }
 
 variable "k3d_version" {
