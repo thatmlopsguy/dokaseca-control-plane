@@ -1,5 +1,11 @@
 # Doka Seca Control Plane
 
+<div align="center">
+  <img src="docs/assets/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
+</div>
+
+<div align="center">
+
 [![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-control-plane)
 [![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main)
 [![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/issues)
@@ -7,6 +13,8 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE)
 [![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-control-plane/)
 [![Pre-commit](https://github.com/thatmlopsguy/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg)](https://github.com/thatmlopsguy/k8s-homelab/actions/workflows/pre-commit.yml)
+
+</div>
 
 ## Introduction
 
