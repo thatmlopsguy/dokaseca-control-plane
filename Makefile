@@ -74,13 +74,23 @@ ingress-lb-ip: ## Get ingress-nginx load balancer ip
 flux-check: ## Check prerequisites
 	@flux check --pre
 
+##@ Kubectl
+kubectl-current-context: ## Get current kubectl context
+	@kubectl config current-context
+
+kubectl-get-contexts: ## List kubectl contexts
+	@kubectl config get-contexts -o name
+
 ##@ Argo
 argo-cd-kustomize-install: ## Install argocd with kustomize
 	@kustomize build --enable-helm kustomize/argo-cd | kubectl apply -f -
 	@rm -rf kustomize/argo-cd/charts
 
 argo-cd-login: ## Login to argocd
-	@argocd login --insecure localhost:8088
+	@argocd login --insecure localhost:8088 --username admin --password $(shell kubectl get secret -n argocd argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
+
+argo-cd-cluster-list: ## List argocd clusters
+	@argocd cluster list
 
 argo-cd-ui: ## Access argocd ui
 	@kubectl port-forward svc/argo-cd-argocd-server -n argocd 8088:443

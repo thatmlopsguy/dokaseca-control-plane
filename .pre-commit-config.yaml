@@ -24,13 +24,13 @@ repos:
     hooks:
       - id: commitizen
         stages: [commit-msg]
-  - repo: local
-    hooks:
-      - id: terraform-docs
-        name: Terraform Docs Generator
-        description: Generate Terraform documentation using terraform-docs
-        entry: scripts/hooks/terraform-docs.sh
-        language: system
-        types: [terraform]
-        stages: [pre-commit]
-        files: '^terraform/modules/'
+  # - repo: local
+  #   hooks:
+  #     - id: terraform-docs
+  #       name: Terraform Docs Generator
+  #       description: Generate Terraform documentation using terraform-docs
+  #       entry: scripts/hooks/terraform-docs.sh
+  #       language: system
+  #       types: [terraform]
+  #       stages: [pre-commit]
+  #       files: '^terraform/modules/'

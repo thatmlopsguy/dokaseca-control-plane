@@ -80,6 +80,9 @@ You can inspect the deployed clusters by typing:
 ```sh
 $ kind get clusters
 control-plane-dev
+workloads-dev
+workloads-prod
+workloads-stg
 ```
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also

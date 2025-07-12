@@ -13,6 +13,36 @@ This directory contains automation scripts and utilities for developing, deployi
 
 ### Infrastructure & Deployment
 
+- **`argocd-add-cluster.sh`** - Add Kind clusters to ArgoCD hub cluster with proper network configuration
+
+  **Purpose**: Automates the process of registering Kind clusters with ArgoCD, handling the Docker network configuration issues that prevent direct cluster-to-cluster communication. Creates internal kubeconfigs with proper IP addressing for seamless cluster management.
+
+  **Usage**:
+
+  ```bash
+  # Add a workloads cluster
+  ./argocd-add-cluster.sh -c workloads-dev
+
+  # Force re-add an existing cluster
+  ./argocd-add-cluster.sh --cluster team-a-dev --force
+
+  # Use custom kubeconfig directory
+  ./argocd-add-cluster.sh -c workloads-prod -k /tmp/kubeconfigs
+
+  # Show help
+  ./argocd-add-cluster.sh --help
+  ```
+
+  **Features**:
+  - Automatic Docker network IP resolution
+  - Internal kubeconfig generation
+  - Prerequisite validation
+  - Force re-registration option
+  - Colored output for better UX
+  - Comprehensive error handling
+
+  **Prerequisites**: `argocd` CLI, `kind`, `kubectl`, `jq`, Docker network access
+
 - **`terraform.sh`** - Terraform automation script for applying/destroying infrastructure configurations
 
   ```bash

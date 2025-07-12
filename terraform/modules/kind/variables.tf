@@ -1,7 +1,7 @@
-variable "cluster_name" {
-  description = "Name of the Kind cluster"
+variable "cluster_type" {
+  description = "Type of the cluster, used in naming"
   type        = string
-  default     = "main"
+  default     = "control-plane"
 }
 
 variable "environment" {
@@ -20,7 +20,6 @@ variable "kubernetes_version" {
   type        = string
   default     = "v1.31.2"
 }
-
 
 variable "kubeconfig_path" {
   description = "Path to save the kubeconfig"

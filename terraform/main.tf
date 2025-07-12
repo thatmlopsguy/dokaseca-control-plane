@@ -13,10 +13,10 @@ resource "kind_cluster" "main" {
       role = "control-plane"
 
       # required for capd
-      extra_mounts {
-        host_path      = "/var/run/docker.sock"
-        container_path = "/var/run/docker.sock"
-      }
+      # extra_mounts {
+      #   host_path      = "/var/run/docker.sock"
+      #   container_path = "/var/run/docker.sock"
+      # }
 
       kubeadm_config_patches = [
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
@@ -87,109 +87,3 @@ module "fluxcd" {
 
   depends_on = [kind_cluster.main]
 }
-
-# ArgoCD has support for OCI repos
-# resource "kubernetes_secret" "kro_helm_oci" {
-#   count = var.addons.enable_kro && var.enable_gitops_bridge ? 1 : 0
-
-#   metadata {
-#     name      = "kro-helm-oci"
-#     namespace = "argocd"
-#     labels = {
-#       "argocd.argoproj.io/secret-type" = "repository"
-#     }
-#   }
-
-#   data = {
-#     url       = "ghcr.io/kro-run/kro/kro"
-#     name      = "kro"
-#     type      = "helm"
-#     enableOCI = "true"
-#   }
-
-#   depends_on = [module.gitops_bridge_bootstrap]
-# }
-
-# resource "kubernetes_secret" "grafana_helm_oci" {
-#   count = var.addons.enable_grafana_operator && var.enable_gitops_bridge ? 1 : 0
-
-#   metadata {
-#     name      = "grafana-helm-oci"
-#     namespace = "argocd"
-#     labels = {
-#       "argocd.argoproj.io/secret-type" = "repository"
-#     }
-#   }
-
-#   data = {
-#     url       = "ghcr.io/grafana/helm-charts"
-#     name      = "grafana"
-#     type      = "helm"
-#     enableOCI = "true"
-#   }
-
-#   depends_on = [module.gitops_bridge_bootstrap]
-# }
-
-# resource "kubernetes_secret" "logging_operator_helm_oci" {
-#   count = var.addons.enable_logging_operator && var.enable_gitops_bridge ? 1 : 0
-
-#   metadata {
-#     name      = "logging-operator-helm-oci"
-#     namespace = "argocd"
-#     labels = {
-#       "argocd.argoproj.io/secret-type" = "repository"
-#     }
-#   }
-
-#   data = {
-#     url       = "ghcr.io/kube-logging/helm-charts"
-#     name      = "logging-operator"
-#     type      = "helm"
-#     enableOCI = "true"
-#   }
-
-#   depends_on = [module.gitops_bridge_bootstrap]
-# }
-
-# resource "kubernetes_secret" "strimzi_kafka_operator_helm_oci" {
-#   count = var.addons.enable_strimzi && var.enable_gitops_bridge ? 1 : 0
-
-#   metadata {
-#     name      = "strimzi-kafka-operator-helm-oci"
-#     namespace = "argocd"
-#     labels = {
-#       "argocd.argoproj.io/secret-type" = "repository"
-#     }
-#   }
-
-#   data = {
-#     url       = "quay.io/strimzi-helm"
-#     name      = "strimzi-kafka-operator"
-#     type      = "helm"
-#     enableOCI = "true"
-#   }
-
-#   depends_on = [module.gitops_bridge_bootstrap]
-# }
-
-# resource "kubernetes_secret" "kargo_helm_oci" {
-#   count = var.addons.enable_kargo && var.enable_gitops_bridge ? 1 : 0
-
-#   metadata {
-#     name      = "kargo-helm-oci"
-#     namespace = "argocd"
-#     labels = {
-#       "argocd.argoproj.io/secret-type" = "repository"
-#     }
-#   }
-
-#   data = {
-#     url       = "ghcr.io/akuity/kargo-charts"
-#     name      = "kargo"
-#     type      = "helm"
-#     enableOCI = "true"
-#   }
-
-#   depends_on = [module.gitops_bridge_bootstrap]
-# }

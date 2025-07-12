@@ -2,18 +2,23 @@ environment          = "prod"
 cluster_type         = "workloads"
 domain_name          = "k8s-home.lab"
 cloud_provider       = "local"
-kubernetes_version   = "1.31.2"
+kubernetes_version   = "1.33.1"
 enable_gitops_bridge = false
 enable_fluxcd        = false
 fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"
 gitops_org           = "https://github.com/thatmlopsguy"
 # Addons
-gitops_addons_repo     = "k8s-homelab"
-gitops_addons_basepath = "gitops/argocd"
-gitops_addons_path     = "addons"
+gitops_addons_repo     = "dokaseca-addons"
+gitops_addons_basepath = "argocd"
+gitops_addons_path     = "appsets"
 gitops_addons_revision = "main"
-argocd_chart_version   = "7.8.26"
+argocd_chart_version   = "8.0.17"
+argocd_files_config = {
+  load_addons    = false
+  load_workloads = false
+  load_clusters  = false
+}
 addons = {
   # dashboard
   enable_headlamp       = false

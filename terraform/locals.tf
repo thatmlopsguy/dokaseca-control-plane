@@ -46,22 +46,21 @@ locals {
     # observability
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
-    enable_authentik    = try(var.addons.enable_authentik, false)
-    enable_keycloak     = try(var.addons.enable_keycloak, false)
-    enable_authelia     = try(var.addons.enable_authelia, false)
+    enable_authentik    = try(var.addons.enable_authentik, false)    # TODO
+    enable_keycloak     = try(var.addons.enable_keycloak, false)     # TODO
+    enable_authelia     = try(var.addons.enable_authelia, false)     # TODO
     # delivery
     enable_argo_cd               = try(var.addons.enable_argo_cd, false)
     enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false)
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
-    enable_argo_cd_agent         = try(var.addons.enable_argo_cd_agent, false) # TODO
-    enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
-    enable_argo_rollouts         = try(var.addons.enable_argo_rollouts, false)
-    enable_argo_events           = try(var.addons.enable_argo_events, false)
-    enable_keda                  = try(var.addons.enable_keda, false)
-    enable_keptn                 = try(var.addons.enable_keptn, false)
-    enable_open_feature          = try(var.addons.enable_open_feature, false)
-    enable_openfunction          = try(var.addons.enable_openfunction, false)
-    enable_sloth                 = try(var.addons.enable_sloth, false)
+    enable_argo_cd_agent = try(var.addons.enable_argo_cd_agent, false) # TODO
+    enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
+    enable_argo_events   = try(var.addons.enable_argo_events, false)
+    enable_keda          = try(var.addons.enable_keda, false)
+    enable_keptn         = try(var.addons.enable_keptn, false)
+    enable_open_feature  = try(var.addons.enable_open_feature, false)
+    enable_openfunction  = try(var.addons.enable_openfunction, false)
+    enable_sloth         = try(var.addons.enable_sloth, false)
     # fleet managers
     # https://kubefleet-dev.github.io/website/
     enable_kubefleet_hub_agent    = try(var.addons.enable_kubefleet_hub_agent, false)    # TODO
@@ -71,11 +70,12 @@ locals {
     # orchestration
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
-    enable_koreo         = try(var.addons.enable_koreo, false)
+    enable_koreo         = try(var.addons.enable_koreo, false) # TODO
     enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
-    enable_kargo           = try(var.addons.enable_kargo, false)
-    enable_gitops_promoter = try(var.addons.enable_gitops_promoter, true)
+    enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
+    enable_kargo                 = try(var.addons.enable_kargo, false)
+    enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, false)
     # messaging
     enable_strimzi           = try(var.addons.enable_strimzi, false)
     enable_nats              = try(var.addons.enable_nats, false)
@@ -85,6 +85,7 @@ locals {
     enable_kro    = try(var.addons.enable_kro, false)
     enable_dapr   = try(var.addons.enable_dapr, false)
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
+    enable_krateo = try(var.addons.enable_krateo, false) # TODO
     # networking
     enable_skupper       = try(var.addons.enable_skupper, false)
     enable_metallb       = try(var.addons.enable_metallb, false)

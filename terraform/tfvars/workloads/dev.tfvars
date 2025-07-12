@@ -2,35 +2,32 @@ environment          = "dev"
 cluster_type         = "workloads"
 domain_name          = "k8s-home.lab"
 cloud_provider       = "local"
-kubernetes_version   = "1.31.2"
-enable_gitops_bridge = false
-enable_fluxcd        = false
-fluxcd_namespace     = "flux-system"
-fluxcd_chart_version = "2.15.0"
+kubernetes_version   = "1.33.1"
+enable_gitops_bridge = true
 gitops_org           = "https://github.com/thatmlopsguy"
 # Addons
-gitops_addons_repo     = "k8s-homelab"
-gitops_addons_basepath = "gitops/argocd"
-gitops_addons_path     = "addons"
-gitops_addons_revision = "dev"
-argocd_chart_version   = "7.8.26"
+gitops_addons_repo     = "dokaseca-addons"
+gitops_addons_basepath = "argocd"
+gitops_addons_path     = "appsets"
+gitops_addons_revision = "main"
+argocd_chart_version   = "8.1.3"
+argocd_files_config = {
+  load_addons    = false
+  load_workloads = false
+  load_clusters  = false
+}
 addons = {
   # dashboard
   enable_headlamp       = false
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
-  # identity
-  enable_authentik = false
-  enable_keycloak  = false
-  enable_authelia  = false
   # continuos delivery
   # gitops bridge create enable_argocd variable
-  enable_argo_cd               = false
-  enable_argo_cd_image_updater = false
-  enable_argo_rollouts         = false
-  enable_argo_workflows        = false
-  enable_argo_events           = false
-  enable_keptn                 = false
+  enable_argo_cd        = false
+  enable_argo_rollouts  = false
+  enable_argo_workflows = false
+  enable_argo_events    = false
+  enable_keptn          = false
   # developer experience
   enable_keda = false
   enable_dapr = false
@@ -40,10 +37,6 @@ addons = {
   enable_capi_operator = false # requires enable_cert_manager
   enable_crossplane    = false
   enable_vcluster      = false
-  # gitops promoter
-  enable_kargo           = false
-  enable_gitops_promoter = false
-  enable_codefresh       = false
   # platform engineering
   enable_karpor = false
   enable_kro    = false
