@@ -79,52 +79,8 @@ Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/d
 
 ## 🚀 Quick Start
 
-DoKa Seca provides multiple deployment methods depending on your needs:
-
-### Automated Cluster Deployment (Recommended)
-
-Deploy the complete DoKa Seca platform with a single command:
-
-```bash
-# 1. Review and customize configuration
-cp cluster-config.yaml cluster-config.local.yaml
-# Edit cluster-config.local.yaml as needed
-
-# 2. Deploy all clusters (control-plane + workloads)
-./scripts/deploy-clusters.sh deploy --config cluster-config.local.yaml
-
-# 3. Setup ArgoCD and register clusters
-./scripts/setup-argocd.sh setup --config cluster-config.local.yaml
-
-# 4. Verify deployment
-./scripts/deploy-clusters.sh status
-```
-
-This creates:
-- **1 Control Plane**: Management cluster with ArgoCD, Crossplane, Vault
-- **3 Workload Clusters**: dev, staging, production environments
-- **Team Namespaces**: Isolated spaces for team-a, team-b, team-c
-- **GitOps Integration**: Ready for application deployment
-
-### Manual Terraform Deployment
-
-For fine-grained control, use the traditional Terraform approach:
-
 ```bash
 # Deploy control plane cluster
-./scripts/terraform.sh control-plane dev apply
-
-# Verify cluster creation
-kind get clusters
-```
-
-See the [Deployment Guide](DEPLOYMENT.md) for detailed instructions and customization options.
-
-## Installation
-
-The following command with create a kind cluster.
-
-```sh
 ./scripts/terraform.sh control-plane dev apply
 ```
 
