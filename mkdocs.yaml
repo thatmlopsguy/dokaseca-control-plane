@@ -1,9 +1,14 @@
+# Site configuration
+site_url: https://thatmlopsguy.github.io/dokaseca-control-plane
+site_author: That MLOps Guy
 site_name: Doka Seca
 site_description: A comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)
+site_version: 1.0.0
 
 # Repository
 repo_url: https://github.com/thatmlopsguy/dokaseca-control-plane
 repo_name: dokaseca-control-plane
+repo_type: github
 
 # Navigation
 nav:
