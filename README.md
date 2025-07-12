@@ -1,8 +1,10 @@
-# Doka Seca Control Plane
+# Doka Seca
 
 <div align="center">
   <img src="docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
 </div>
+
+### "Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
 
 <div align="center">
 
