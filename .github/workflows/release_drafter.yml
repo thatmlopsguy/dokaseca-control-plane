@@ -1,8 +1,5 @@
 name: Release Drafter
 
-permissions:
-  contents: read
-
 on:
   # push:
   #   # branches to consider in the event; optional, defaults to all
