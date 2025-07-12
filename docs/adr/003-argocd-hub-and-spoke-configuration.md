@@ -154,6 +154,8 @@ spec:
 ## References
 
 - [Distribute Your Argo CD Applications to Different Kubernetes Clusters Using Application Sets](https://codefresh.io/blog/argocd-clusters-labels-with-apps/)
+- [Amazon EKS multi-cluster gitops-bridge](https://www.slideshare.net/slideshow/amazon-eks-multicluster-gitopsbridgepdf/263198295)
+- [Multi-Cluster centralized hub-spoke topology](https://aws-ia.github.io/terraform-aws-eks-blueprints/patterns/gitops/gitops-multi-cluster-hub-spoke-argocd/)
 - [DoKa Seca GitOps Documentation](../gitops.md)
 - [DoKa Seca Multi-Cluster Architecture](../getting_started/architecture.md)
 

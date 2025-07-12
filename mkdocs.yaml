@@ -3,12 +3,10 @@ site_url: https://thatmlopsguy.github.io/dokaseca-control-plane
 site_author: That MLOps Guy
 site_name: Doka Seca
 site_description: A comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)
-site_version: 1.0.0
 
 # Repository
 repo_url: https://github.com/thatmlopsguy/dokaseca-control-plane
 repo_name: dokaseca-control-plane
-repo_type: github
 
 # Navigation
 nav:
@@ -29,6 +27,7 @@ nav:
   - Security: security.md
   - Data Streams: streams.md
   - Data Storage: storage.md
+  - Machine Learning: machine_learning.md
   - Cost Management: cost.md
   - Chaos Engineering: chaos_engineering.md
   - Disaster Recovery: backup.md
@@ -45,6 +44,7 @@ nav:
     - 0001 - Use ADRs: adr/001-use-architecture-decision-records.md
     - 0002 - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
     - 0003 - GitOps with ArgoCD: adr/003-argocd-hub-and-spoke-configuration.md
+    - 0004 - Preview Environments: adr/004-preview-env-argocd-vcluster.md
 
 # Configuration
 theme:
@@ -68,7 +68,14 @@ theme:
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
+  features:
+    - navigation.footer
 
+# Plugins
+plugins:
+  - search
+
+# Markdown Extensions
 markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
@@ -76,3 +83,23 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.snippets:
       check_paths: true
+  - admonition
+
+# Copyright
+copyright: Copyright &copy; 2025 That MLOps Guy
+
+# Extra configuration
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/thatmlopsguy/dokaseca-control-plane
+    - icon: fontawesome/solid/globe
+      link: https://thatmlopsguy.github.io/
+
+# Custom CSS
+# extra_css:
+#   - "assets/css/custom.css"
+
+# # Custom JS
+# extra_javascript:
+#   - "assets/js/custom.js"
