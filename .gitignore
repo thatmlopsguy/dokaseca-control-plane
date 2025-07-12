@@ -44,3 +44,6 @@ cosign*
 
 # Mkdocs site
 site/*
+
+# docker compose data
+data/*
