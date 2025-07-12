@@ -1,9 +1,9 @@
-environment          = "stg"
-cluster_type         = "workloads"
+environment          = "prod"
+cluster_type         = "spokes"
 domain_name          = "k8s-home.lab"
 cloud_provider       = "local"
 kubernetes_version   = "1.33.1"
-enable_gitops_bridge = true
+enable_gitops_bridge = false
 enable_fluxcd        = false
 fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"

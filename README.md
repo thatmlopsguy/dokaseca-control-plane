@@ -72,17 +72,17 @@ version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVer
 
 ```bash
 # Deploy control plane cluster
-./scripts/terraform.sh control-plane dev apply
+./scripts/terraform.sh hub dev apply
 ```
 
 You can inspect the deployed clusters by typing:
 
 ```sh
 $ kind get clusters
-control-plane-dev
-workloads-dev
-workloads-prod
-workloads-stg
+hub-dev
+spokes-dev
+spokes-prod
+spokes-stg
 ```
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
@@ -104,7 +104,7 @@ The output looks like the following:
   "addons_repo_path": "appsets",
   "addons_repo_revision": "main",
   "addons_repo_url": "https://github.com/thatmlopsguy/dokaseca-addons",
-  "cluster_name": "control-plane-dev",
+  "cluster_name": "hub-dev",
   "cluster_repo_basepath": "argocd",
   "cluster_repo_path": "clusters",
   "cluster_repo_revision": "dev",
@@ -129,7 +129,7 @@ The output looks like the following:
 {
   "argocd.argoproj.io/secret-type": "cluster",
   "cloud_provider": "local",
-  "cluster_name": "control-plane-dev",
+  "cluster_name": "hub-dev",
   "enable_alloy": "false",
   "enable_argo_cd": "true",
   "enable_argo_cd_image_updater": "false",
@@ -143,7 +143,7 @@ The output looks like the following:
   "enable_victoria_metrics_k8s_stack": "true",
   "enable_zipkin": "false",
   "environment": "dev",
-  "k8s_cluster_name": "control-plane-dev",
+  "k8s_cluster_name": "hub-dev",
   "k8s_domain_name": "k8s-home.lab",
   "kubernetes_version": "1.31.2"
 }
@@ -154,7 +154,7 @@ The output looks like the following:
 To tear down all the resources and the kind cluster, run the following command:
 
 ```sh
-./scripts/terraform.sh control-plane dev destroy
+./scripts/terraform.sh hub dev destroy
 ```
 
 ## FAQ

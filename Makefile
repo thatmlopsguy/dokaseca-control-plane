@@ -19,9 +19,13 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
+clean-infra: kind-delete-all-clusters terraform-rm-state ## Clean all infrastructure
+
 ##@ Terraform
 terraform-rm-state: ## remove all terraform states
+	@echo "Removing terraform state files..."
 	@rm -rf terraform/terraform.tfstate.d
+	@echo "Terraform state files removed."
 
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
@@ -34,6 +38,11 @@ kind-delete-cluster: ## Delete kind cluster
 	@if [ "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
 		kind delete cluster --name=$(PROJECT_NAME) || true; \
 	fi
+
+kind-delete-all-clusters: ## Delete all kind clusters
+	@echo "Deleting all KinD clusters..."
+	@kind get clusters | xargs -r -I {} kind delete cluster --name {}
+	@echo "All KinD clusters deleted."
 
 kind-export-kubeconfig: ## Export kind kubeconfig
 	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig kubeconfigs/$(PROJECT_NAME)
