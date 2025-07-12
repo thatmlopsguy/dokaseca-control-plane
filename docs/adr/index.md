@@ -9,6 +9,9 @@ Architecture Decision Records are short text documents that capture an important
 ## ADR List
 
 - [Use Architecture Decision Records](001-use-architecture-decision-records.md)
+- [External Secrets Operator Multi-tenancy](002-external-secrets-operator-multi-tenancy.md)
+- [ArgoCD Hub and Spoke Configuration](003-argocd-hub-and-spoke-configuration.md)
+- [Use ArgoCD, vCluster, and GitHub Actions for Preview Environments](004-preview-env-argocd-vcluster.md)
 
 ## ADR Template
 
