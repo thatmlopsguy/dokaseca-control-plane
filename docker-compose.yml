@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  vault:
+    image: hashicorp/vault:1.20
+    container_name: vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_LOCAL_CONFIG: |
+        {
+          "backend": {
+            "file": {
+              "path": "/vault/file"
+            }
+          },
+          "listener": [{
+            "tcp": {
+              "address": "0.0.0.0:8200",
+              "tls_disable": true
+            }
+          }],
+          "default_lease_ttl": "168h",
+          "max_lease_ttl": "720h",
+          "ui": true,
+          "log_level": "INFO"
+        }
+    cap_add:
+      - IPC_LOCK
+    command: vault server -config=/vault/config/local.json
+    volumes:
+      - vault-data:/vault/file
+      - vault-logs:/vault/logs
+      - ./configs/vault:/vault/config
+    healthcheck:
+      test: ["CMD", "vault", "status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  vault-data:
+  vault-logs:
