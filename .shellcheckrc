@@ -5,6 +5,7 @@
 disable=SC1091  # Not following sourced files that may not exist during linting
 disable=SC2034  # Unused variables (common in scripts with environment setup)
 disable=SC2086  # Double quote to prevent globbing (intentionally allow word splitting in some cases)
+disable=SC2250  #
 
 # Enable additional checks
 enable=require-variable-braces  # Require ${var} instead of $var for clarity

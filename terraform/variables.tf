@@ -181,7 +181,7 @@ variable "gitops_org" {
 variable "gitops_addons_repo" {
   description = "Git repository contains for addons"
   type        = string
-  default     = "gitops-bridge-argocd-control-plane-template"
+  default     = "dokaseca-addons"
 }
 
 variable "gitops_addons_revision" {
@@ -206,13 +206,13 @@ variable "gitops_addons_path" {
 variable "gitops_addons_extras_repo" {
   description = "Git repository contains for addon resources"
   type        = string
-  default     = "gitops-bridge-argocd-control-plane-template"
+  default     = "helm-charts"
 }
 
 variable "gitops_addons_extras_basepath" {
   description = "Git repository base path for addon resources"
   type        = string
-  default     = "gitops"
+  default     = "charts"
 }
 
 variable "gitops_addons_extras_revision" {
@@ -231,13 +231,13 @@ variable "gitops_workloads_repo" {
 variable "gitops_workloads_basepath" {
   description = "Git repository base path for workload"
   type        = string
-  default     = "argocd/iac/terraform/examples/eks/"
+  default     = "dokaseca-workloads"
 }
 
 variable "gitops_workloads_path" {
   description = "Git repository path for workload"
   type        = string
-  default     = "karpenter/k8s"
+  default     = "argocd/workloads"
 }
 
 variable "gitops_workloads_revision" {
@@ -250,19 +250,19 @@ variable "gitops_workloads_revision" {
 variable "gitops_clusters_repo" {
   description = "Git repository contains for clusters"
   type        = string
-  default     = "gitops-bridge"
+  default     = "dokaseca-clusters"
 }
 
 variable "gitops_clusters_basepath" {
   description = "Git repository base path for clusters"
   type        = string
-  default     = "argocd/iac/terraform/examples/eks/"
+  default     = "argocd"
 }
 
 variable "gitops_clusters_path" {
   description = "Git repository path for clusters"
   type        = string
-  default     = "karpenter/k8s"
+  default     = "clusters"
 }
 
 variable "gitops_clusters_revision" {

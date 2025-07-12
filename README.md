@@ -68,15 +68,6 @@ $ helm version
 version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVersion:"go1.22.7"}
 ```
 
-To increase these limits temporarily run the following commands on the host:
-
-```sh
-sudo sysctl fs.inotify.max_user_watches=1048576
-sudo sysctl fs.inotify.max_user_instances=8192
-```
-
-Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
-
 ## 🚀 Quick Start
 
 ```bash
@@ -162,6 +153,19 @@ To tear down all the resources and the kind cluster, run the following command:
 ```sh
 ./scripts/terraform.sh control-plane dev destroy
 ```
+
+## FAQ
+
+`ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"`
+
+To increase these limits temporarily run the following commands on the host:
+
+```sh
+sudo sysctl fs.inotify.max_user_watches=1048576
+sudo sysctl fs.inotify.max_user_instances=8192
+```
+
+Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
 
 ## :handshake: Contributing
 
