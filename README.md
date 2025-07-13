@@ -4,7 +4,7 @@
   <img src="docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
 </div>
 
-### "Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
+## "Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
 
 <div align="center">
 
@@ -82,9 +82,9 @@ You can inspect the deployed clusters by typing:
 ```sh
 $ kind get clusters
 hub-dev
-spokes-dev
-spokes-prod
-spokes-stg
+spoke-dev
+spoke-prod
+spoke-stg
 ```
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
@@ -146,7 +146,7 @@ The output looks like the following:
   "enable_zipkin": "false",
   "environment": "dev",
   "k8s_cluster_name": "hub-dev",
-  "k8s_domain_name": "k8s-home.lab",
+  "k8s_domain_name": "dokaseca.local",
   "kubernetes_version": "1.31.2"
 }
 ```

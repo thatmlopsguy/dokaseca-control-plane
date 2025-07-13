@@ -1,3 +1,4 @@
 # Release Notes
 
-Documentation coming soon!
+!!! warning "Warning"
+    Documentation coming soon!

@@ -78,6 +78,10 @@ plugins:
       type: timeago
       fallback_to_build_date: true
   - git-authors
+  # TODO: Enable these plugins when ready
+  # This plugin is used to generate the ADR index page
+  # mkdocs-material-adr/adr
+  # mkdocs-asciinema-player
 
 # Markdown Extensions
 markdown_extensions:

@@ -3,7 +3,7 @@
 # Constants
 ALLOWED_ENVIRONMENTS=("dev" "stg" "prod")
 ALLOWED_ACTIONS=("apply" "destroy")
-ALLOWED_CLUSTERS=("hub" "spokes")
+ALLOWED_CLUSTERS=("hub" "spoke")
 SCRIPT_NAME="${0##*/}"
 
 # Display usage information
@@ -11,13 +11,13 @@ show_usage() {
     echo "Usage: ${SCRIPT_NAME} <CLUSTER> <ENVIRONMENT> <ACTION>"
     echo ""
     echo "Arguments:"
-    echo "  CLUSTER     Cluster type (hub/spokes)"
+    echo "  CLUSTER     Cluster type (hub/spoke)"
     echo "  ENVIRONMENT Environment type (dev/stg/prod)"
     echo "  ACTION      Action to perform (apply/destroy)"
     echo ""
     echo "Example:"
     echo "  ${SCRIPT_NAME} hub dev apply"
-    echo "  ${SCRIPT_NAME} spokes prod destroy"
+    echo "  ${SCRIPT_NAME} spoke prod destroy"
 }
 
 # Validate environment value
