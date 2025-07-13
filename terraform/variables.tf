@@ -23,17 +23,17 @@ variable "region" {
 variable "cluster_type" {
   description = "Type of the kubernetes cluster"
   type        = string
-  default     = "control-plane"
+  default     = "hub"
   validation {
-    condition     = contains(["control-plane", "workloads"], lower(var.cluster_type))
-    error_message = "Invalid cluster type. Must be one of 'control-plane' or 'workloads'."
+    condition     = contains(["hub", "spoke"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'hub' or 'spoke'."
   }
 }
 
 variable "domain_name" {
   description = "Domain name"
   type        = string
-  default     = "k8s-home.lab"
+  default     = "dokaseca.local"
 }
 
 variable "kubernetes_distro" {

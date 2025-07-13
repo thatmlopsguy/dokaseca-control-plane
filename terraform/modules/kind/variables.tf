@@ -1,7 +1,11 @@
 variable "cluster_type" {
   description = "Type of the cluster, used in naming"
   type        = string
-  default     = "control-plane"
+  default     = "hub"
+  validation {
+    condition     = contains(["hub", "spoke"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'hub' or 'spoke'."
+  }
 }
 
 variable "environment" {
