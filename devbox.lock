@@ -52,6 +52,54 @@
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/1750f3c1c89488e2ffdd47cab9d05454dddfb734?lastModified=1742800061&narHash=sha256-oDJGK1UMArK52vcW9S5S2apeec4rbfNELgc50LqiPNs%3D"
     },
+    "minio-client@latest": {
+      "last_modified": "2025-06-20T02:24:11Z",
+      "resolved": "github:NixOS/nixpkgs/076e8c6678d8c54204abcb4b1b14c366835a58bb#minio-client",
+      "source": "devbox-search",
+      "version": "2025-05-21T01-59-54Z",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/n631fnn0kq07wm2gcpa19bxjlibs3jh4-minio-client-2025-05-21T01-59-54Z",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/n631fnn0kq07wm2gcpa19bxjlibs3jh4-minio-client-2025-05-21T01-59-54Z"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2wg06hpi8pax1314ylz3a92yhy13dj45-minio-client-2025-05-21T01-59-54Z",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2wg06hpi8pax1314ylz3a92yhy13dj45-minio-client-2025-05-21T01-59-54Z"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/nq0yni68yavvh4q5kfk5blw9mlndzjby-minio-client-2025-05-21T01-59-54Z",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/nq0yni68yavvh4q5kfk5blw9mlndzjby-minio-client-2025-05-21T01-59-54Z"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/2n6bfbr26qfplq48bywdspaw86vrnj2q-minio-client-2025-05-21T01-59-54Z",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/2n6bfbr26qfplq48bywdspaw86vrnj2q-minio-client-2025-05-21T01-59-54Z"
+        }
+      }
+    },
     "terraform@1.10.4": {
       "last_modified": "2025-01-19T08:16:51Z",
       "resolved": "github:NixOS/nixpkgs/50165c4f7eb48ce82bd063e1fb8047a0f515f8ce#terraform",
