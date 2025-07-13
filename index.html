@@ -1353,7 +1353,7 @@
   <img src="docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
 </div>
 
-<h3 id="just-as-ships-are-built-in-dry-docks-platforms-are-crafted-in-doka-seca">"Just as ships are built in dry docks, platforms are crafted in DoKa Seca"</h3>
+<h2 id="just-as-ships-are-built-in-dry-docks-platforms-are-crafted-in-doka-seca">"Just as ships are built in dry docks, platforms are crafted in DoKa Seca"</h2>
 <div align="center">
 
 [![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-control-plane)
@@ -1418,9 +1418,9 @@ version.BuildInfo<span class="o">{</span>Version:<span class="s2">&quot;v3.16.1&
 <p>You can inspect the deployed clusters by typing:</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kind<span class="w"> </span>get<span class="w"> </span>clusters
 hub-dev
-spokes-dev
-spokes-prod
-spokes-stg
+spoke-dev
+spoke-prod
+spoke-stg
 </code></pre></div>
 <p>If you enable in <code>terraform.tfvars</code> the gitops bridge by setting <code>enable_gitops_bridge = true</code>, then argocd will be also
 installed and all the enabled addons. You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.
@@ -1470,7 +1470,7 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
 <span class="w">  </span><span class="nt">&quot;enable_zipkin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;k8s_cluster_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hub-dev&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;k8s_domain_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;k8s-home.lab&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;k8s_domain_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dokaseca.local&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;kubernetes_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.31.2&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
