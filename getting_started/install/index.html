@@ -48,6 +48,8 @@
     
       <link rel="stylesheet" href="../../css/timeago.css">
     
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -418,9 +420,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
+  <a href="#1-fork-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Clone the Repository
+      1. Fork the Repository
     </span>
   </a>
   
@@ -808,6 +810,28 @@
   
   
     <li class="md-nav__item">
+      <a href="../../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../streams/" class="md-nav__link">
         
   
@@ -970,10 +994,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
         
           
-          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
             
   
   
@@ -986,8 +1010,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_19">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             Resources
           </label>
@@ -1153,10 +1177,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
         
           
-          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
             
   
   
@@ -1169,8 +1193,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_20">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             Architecture Decisions
           </label>
@@ -1377,9 +1401,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
+  <a href="#1-fork-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Clone the Repository
+      1. Fork the Repository
     </span>
   </a>
   
@@ -1527,17 +1551,17 @@
 </ul>
 <h2 id="quick-start-installation">Quick Start Installation</h2>
 <p>DoKa Seca provides a streamlined installation process that bootstraps your entire platform with a single command:</p>
-<h3 id="1-clone-the-repository">1. Clone the Repository</h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/thatmlopsguy/dokaseca-control-plane.git
+<h3 id="1-fork-the-repository">1. Fork the Repository</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/org/dokaseca-control-plane.git
 <span class="nb">cd</span><span class="w"> </span>dokaseca-control-plane
 </code></pre></div>
 <h3 id="2-bootstrap-your-platform">2. Bootstrap Your Platform</h3>
 <p>Create a Kind cluster with the complete DoKa Seca platform stack:</p>
-<div class="highlight"><pre><span></span><code>./scripts/terraform.sh<span class="w"> </span>control-plane<span class="w"> </span>dev<span class="w"> </span>apply
+<div class="highlight"><pre><span></span><code>./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>apply
 </code></pre></div>
 <p>This command will:</p>
 <ul>
-<li>Create a Kind cluster named <code>control-plane-dev</code></li>
+<li>Create a Kind cluster named <code>hub-dev</code></li>
 <li>Install the core platform components</li>
 <li>Configure GitOps workflows with ArgoCD (if enabled)</li>
 <li>Set up observability stack</li>
@@ -1546,7 +1570,7 @@
 <h3 id="3-verify-installation">3. Verify Installation</h3>
 <p>Check that your cluster is running:</p>
 <div class="highlight"><pre><span></span><code>kind<span class="w"> </span>get<span class="w"> </span>clusters
-<span class="c1"># Output: control-plane-dev</span>
+<span class="c1"># Output: hub-dev</span>
 
 kubectl<span class="w"> </span>cluster-info
 kubectl<span class="w"> </span>get<span class="w"> </span>nodes
@@ -1554,7 +1578,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>nodes
 <h3 id="4-access-platform-components">4. Access Platform Components</h3>
 <p>If GitOps is enabled (<code>enable_gitops_bridge = true</code> in terraform.tfvars), you can access various platform components:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Get ArgoCD admin password</span>
-./scripts/argocd-password.sh
+make<span class="w"> </span>argo-cd-password
 
 <span class="c1"># Port-forward to access ArgoCD UI</span>
 kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/argocd-server<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span><span class="m">8080</span>:443
@@ -1566,7 +1590,7 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/argocd-se
 <span class="na">enable_gitops_bridge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 
 <span class="c1"># Configure cluster settings</span>
-<span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;control-plane-dev&quot;</span>
+<span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hub-dev&quot;</span>
 <span class="na">environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span>
 
 <span class="c1"># Enable specific addons</span>
@@ -1593,9 +1617,9 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_in
 </code></pre></div>
 <h3 id="clean-installation">Clean Installation</h3>
 <p>To completely remove and reinstall:</p>
-<div class="highlight"><pre><span></span><code>./scripts/terraform.sh<span class="w"> </span>control-plane<span class="w"> </span>dev<span class="w"> </span>destroy
+<div class="highlight"><pre><span></span><code>./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>destroy
 <span class="c1"># Wait for cleanup to complete</span>
-./scripts/terraform.sh<span class="w"> </span>control-plane<span class="w"> </span>dev<span class="w"> </span>apply
+./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>apply
 </code></pre></div>
 <h2 id="next-steps">Next Steps</h2>
 <p>After installation:</p>
@@ -1627,7 +1651,7 @@ sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_in
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 7, 2025 21:23:02 UTC"><span class="timeago" datetime="2025-07-07T21:23:02+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 7, 2025 21:23:02 UTC">2025-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 14, 2025 21:05:32 UTC"><span class="timeago" datetime="2025-07-14T21:05:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 14, 2025 21:05:32 UTC">2025-07-14</span>
   </span>
 
     
