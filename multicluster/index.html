@@ -820,9 +820,96 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#skupper" class="md-nav__link">
+  <a href="#cluster-creation-and-management" class="md-nav__link">
     <span class="md-ellipsis">
-      Skupper
+      Cluster Creation and Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Creation and Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-api-capi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster API (CAPI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster API (CAPI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kro-kubernetes-resource-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      KRO (Kubernetes Resource Orchestration)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KRO (Kubernetes Resource Orchestration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crossplane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crossplane
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crossplane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategy
     </span>
   </a>
   
@@ -1242,9 +1329,96 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#skupper" class="md-nav__link">
+  <a href="#cluster-creation-and-management" class="md-nav__link">
     <span class="md-ellipsis">
-      Skupper
+      Cluster Creation and Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster Creation and Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cluster-api-capi" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster API (CAPI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cluster API (CAPI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Implementation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kro-kubernetes-resource-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      KRO (Kubernetes Resource Orchestration)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="KRO (Kubernetes Resource Orchestration)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crossplane" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crossplane
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Crossplane">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#planned-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Planned Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Strategy
     </span>
   </a>
   
@@ -1297,18 +1471,53 @@
 <li><strong>Standalone/Distributed GitOps:</strong> Each cluster has its own GitOps controller (e.g., Argo CD or Flux), managing only its resources. This matches our current topology and is simple to operate.</li>
 <li><strong>Centralized (Hub/Spoke) GitOps:</strong> A central GitOps controller manages resources across multiple clusters. This can enable global policies, shared services, and easier cross-cluster coordination, but requires careful RBAC and security design.</li>
 </ul>
-<h2 id="skupper">Skupper</h2>
-<p>Install cli</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://skupper.io/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-$<span class="w"> </span>skupper<span class="w"> </span>version
-client<span class="w"> </span>version<span class="w">                 </span><span class="m">1</span>.8.3
-transport<span class="w"> </span>version<span class="w">              </span>not-found<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>configuration<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>provided<span class="o">)</span>
-controller<span class="w"> </span>version<span class="w">             </span>not-found<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>configuration<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>provided<span class="o">)</span>
-</code></pre></div>
+<h2 id="cluster-creation-and-management">Cluster Creation and Management</h2>
+<p>DoKa Seca is planning to enhance multi-cluster capabilities through automated cluster provisioning and management using
+two complementary approaches: Cluster API with KRO, and Crossplane.</p>
+<h3 id="cluster-api-capi">Cluster API (CAPI)</h3>
+<p><a href="https://cluster-api.sigs.k8s.io/">Cluster API</a> provides declarative APIs and tooling to simplify provisioning, upgrading,
+and operating multiple Kubernetes clusters.</p>
+<h4 id="planned-implementation">Planned Implementation</h4>
+<p>DoKa Seca will utilize Cluster API for:</p>
+<ul>
+<li><strong>Infrastructure-agnostic cluster creation:</strong> Using CAPI providers for AWS, Azure, GCP, and on-premises (via vSphere and bare metal)</li>
+<li><strong>Standardized cluster templates:</strong> Creating reusable cluster blueprints with pre-configured settings for each environment</li>
+<li><strong>Lifecycle management:</strong> Enabling seamless upgrades and scaling operations across clusters</li>
+</ul>
+<h3 id="kro-kubernetes-resource-orchestration">KRO (Kubernetes Resource Orchestration)</h3>
+<p><a href="https://github.com/kro-project">KRO</a> will be used to simplify cross-cluster resource management, enabling DoKa Seca to:</p>
+<ul>
+<li><strong>Coordinate multi-cluster deployments:</strong> Manage application lifecycles across cluster boundaries</li>
+<li><strong>Handle dependencies between clusters:</strong> Ensure proper sequencing of resource creation</li>
+<li><strong>Implement advanced rollout strategies:</strong> Control the deployment flow across multiple environments</li>
+</ul>
+<h4 id="planned-integration">Planned Integration</h4>
+<p>KRO will work alongside ArgoCD to provide more sophisticated orchestration between clusters, especially for complex application
+topologies spanning multiple clusters.</p>
+<h3 id="crossplane">Crossplane</h3>
+<p><a href="https://www.crossplane.io/">Crossplane</a> will enable DoKa Seca to define and use higher-level abstractions for both
+infrastructure and applications, making it easier to manage complex deployments.</p>
+<h4 id="planned-capabilities">Planned Capabilities</h4>
+<ul>
+<li><strong>Infrastructure provisioning:</strong> Create cloud resources (VPCs, databases, etc.) alongside Kubernetes clusters</li>
+<li><strong>Composition of complex resources:</strong> Define reusable templates for complete application stacks</li>
+<li><strong>Self-service platform:</strong> Allow teams to provision environments via simple custom resources</li>
+</ul>
+<h2 id="integration-strategy">Integration Strategy</h2>
+<p>DoKa Seca plans to integrate these tools in a complementary fashion:</p>
+<ol>
+<li><strong>Cluster API</strong> will handle the core cluster provisioning and lifecycle management</li>
+<li><strong>KRO</strong> will manage application deployment orchestration across clusters</li>
+<li><strong>Crossplane</strong> will provide higher-level abstractions and additional infrastructure resources</li>
+</ol>
+<p>The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
+using Cluster API, with KRO and Crossplane capabilities being integrated in subsequent phases.</p>
 <h2 id="references">References</h2>
 <ul>
-<li><a href="https://piotrminkowski.com/2023/08/04/kubernetes-multicluster-load-balancing-with-skupper/">Kubernetes Multicluster Load Balancing with Skupper</a></li>
 <li><a href="https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd">Building a Bridge between Terraform and ArgoCD</a></li>
+<li><a href="https://cluster-api.sigs.k8s.io/introduction.html">Cluster API Documentation</a></li>
+<li><a href="https://github.com/kro-project">KRO Project</a></li>
+<li><a href="https://docs.crossplane.io/">Crossplane Documentation</a></li>
 </ul>
 
 
@@ -1330,7 +1539,7 @@ controller<span class="w"> </span>version<span class="w">             </span>not
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 12, 2025 21:50:14 UTC"><span class="timeago" datetime="2025-07-12T21:50:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 12, 2025 21:50:14 UTC">2025-07-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 14, 2025 17:41:23 UTC"><span class="timeago" datetime="2025-07-14T17:41:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 14, 2025 17:41:23 UTC">2025-07-14</span>
   </span>
 
     

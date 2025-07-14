@@ -313,13 +313,14 @@
         <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      👋 Introduction
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="👋 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisite" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisite
@@ -327,13 +328,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#optional-tools" class="md-nav__link">
     <span class="md-ellipsis">
       Optional tools
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -347,9 +353,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#destroy-kind-cluster" class="md-nav__link">
+  <a href="#destroy-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
-      Destroy kind Cluster
+      💥 Destroy Infrastructure
     </span>
   </a>
   
@@ -358,25 +364,34 @@
         <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
-      FAQ
+      ⚒️ FAQ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#handshake-contributing" class="md-nav__link">
+  <a href="#contributing" class="md-nav__link">
     <span class="md-ellipsis">
-      :handshake: Contributing
+      🤝 Contributing
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bookmark-license" class="md-nav__link">
+  <a href="#roadmap" class="md-nav__link">
     <span class="md-ellipsis">
-      :bookmark: License
+      🗺️ ROADMAP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔖 License
     </span>
   </a>
   
@@ -1260,13 +1275,14 @@
         <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      👋 Introduction
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="👋 Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#prerequisite" class="md-nav__link">
     <span class="md-ellipsis">
       Prerequisite
@@ -1274,13 +1290,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#optional-tools" class="md-nav__link">
     <span class="md-ellipsis">
       Optional tools
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1294,9 +1315,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#destroy-kind-cluster" class="md-nav__link">
+  <a href="#destroy-infrastructure" class="md-nav__link">
     <span class="md-ellipsis">
-      Destroy kind Cluster
+      💥 Destroy Infrastructure
     </span>
   </a>
   
@@ -1305,25 +1326,34 @@
         <li class="md-nav__item">
   <a href="#faq" class="md-nav__link">
     <span class="md-ellipsis">
-      FAQ
+      ⚒️ FAQ
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#handshake-contributing" class="md-nav__link">
+  <a href="#contributing" class="md-nav__link">
     <span class="md-ellipsis">
-      :handshake: Contributing
+      🤝 Contributing
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bookmark-license" class="md-nav__link">
+  <a href="#roadmap" class="md-nav__link">
     <span class="md-ellipsis">
-      :bookmark: License
+      🗺️ ROADMAP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔖 License
     </span>
   </a>
   
@@ -1366,12 +1396,12 @@
 
 </div>
 
-<h2 id="introduction">Introduction</h2>
+<h2 id="introduction">👋 Introduction</h2>
 <p>Welcome to <strong>DoKa Seca</strong> - a comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)! The name "DoKa Seca" is a playful Portuguese phrase where "DoKa" incorporates the "K" from Kubernetes (representing the containerized orchestration at the heart of this project), and "Seca" means "dry" - drawing inspiration from the concept of a <strong>dry dock</strong>.</p>
 <p>Just as ships are built, repaired, and maintained in dry docks - controlled, isolated environments where all the necessary infrastructure and tooling are readily available - DoKa Seca provides a "dry dock" for Kubernetes platforms. It creates an isolated, controlled environment where entire cloud-native platforms can be rapidly assembled, configured, and tested before being deployed to production waters.</p>
 <p>DoKa Seca provides an opinionated, production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.</p>
 <p>This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.</p>
-<h2 id="prerequisite">Prerequisite</h2>
+<h3 id="prerequisite">Prerequisite</h3>
 <ul>
 <li><a href="https://www.docker.com/">Docker</a></li>
 <li><a href="https://www.terraform.io/">Terraform</a> or <a href="https://opentofu.org/">opentofu</a></li>
@@ -1382,7 +1412,7 @@
 <li><a href="https://kustomize.io/">kustomize</a></li>
 <li><a href="https://k9scli.io/">k9s</a> or <a href="https://github.com/freelensapp/freelens">freelens</a> (optional, if you'd like to inspect your cluster visually)</li>
 </ul>
-<h2 id="optional-tools">Optional tools</h2>
+<h3 id="optional-tools">Optional tools</h3>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/cli_installation/">argocd</a></li>
 <li><a href="https://www.vcluster.com/docs/platform/install/quick-start-guide">vcluster</a></li>
@@ -1392,6 +1422,7 @@
 <li><a href="https://github.com/sigstore/cosign">cosign</a></li>
 <li><a href="https://github.com/vmware-tanzu/velero">velero</a></li>
 <li><a href="https://developer.hashicorp.com/vault/docs/install">vault</a></li>
+<li><a href="https://github.com/minio/mc">minio client (mc)</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>version
 Client<span class="w"> </span>Version:<span class="w"> </span>v1.31.0
@@ -1474,21 +1505,24 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
 <span class="w">  </span><span class="nt">&quot;kubernetes_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.31.2&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="destroy-kind-cluster">Destroy kind Cluster</h2>
-<p>To tear down all the resources and the kind cluster, run the following command:</p>
-<div class="highlight"><pre><span></span><code>./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>destroy
+<h2 id="destroy-infrastructure">💥 Destroy Infrastructure</h2>
+<p>To tear down all the resources and the kind cluster(s), run the following command:</p>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>clean-infra
 </code></pre></div>
-<h2 id="faq">FAQ</h2>
+<h2 id="faq">⚒️ FAQ</h2>
 <p><code>ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"</code></p>
 <p>To increase these limits temporarily run the following commands on the host:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_watches<span class="o">=</span><span class="m">1048576</span>
 sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_instances<span class="o">=</span><span class="m">8192</span>
 </code></pre></div>
 <p>Source: <a href="https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files">Pod errors due to “too many open files”</a></p>
-<h2 id="handshake-contributing">:handshake: Contributing</h2>
-<p>Anyone is welcome to collaborate to this project. Check out our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
-<h2 id="bookmark-license">:bookmark: License</h2>
-<p>Doca Seca is licensed under <a href="LICENSE">Apache License, Version 2.0</a></p>
+<h2 id="contributing">🤝 Contributing</h2>
+<p>All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
+read our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
+<h2 id="roadmap">🗺️ ROADMAP</h2>
+<p>Want to know about the features to come? Check out the project <a href="docs/roadmap.md">ROADMAP</a> for more information.</p>
+<h2 id="license">🔖 License</h2>
+<p>DoKa Seca is licensed under <a href="LICENSE">Apache License, Version 2.0</a></p>
 
 
 
