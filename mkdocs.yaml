@@ -25,6 +25,7 @@ nav:
   - Observability: observability.md
   - Compliance: compliance.md
   - Security: security.md
+  - Databases: database.md
   - Data Streams: streams.md
   - Data Storage: storage.md
   - Machine Learning: machine_learning.md
@@ -92,6 +93,8 @@ markdown_extensions:
   - pymdownx.snippets:
       check_paths: true
   - admonition
+  - attr_list
+  - md_in_html
 
 # Copyright
 copyright: Copyright &copy; 2025 That MLOps Guy
@@ -105,8 +108,8 @@ extra:
       link: https://thatmlopsguy.github.io/
 
 # Custom CSS
-# extra_css:
-#   - "assets/css/custom.css"
+extra_css:
+  - "assets/css/custom.css"
 
 # # Custom JS
 # extra_javascript:

@@ -35,10 +35,10 @@ Before installing DoKa Seca, ensure you have the following prerequisites install
 
 DoKa Seca provides a streamlined installation process that bootstraps your entire platform with a single command:
 
-### 1. Clone the Repository
+### 1. Fork the Repository
 
 ```bash
-git clone https://github.com/thatmlopsguy/dokaseca-control-plane.git
+git clone https://github.com/org/dokaseca-control-plane.git
 cd dokaseca-control-plane
 ```
 
@@ -47,12 +47,12 @@ cd dokaseca-control-plane
 Create a Kind cluster with the complete DoKa Seca platform stack:
 
 ```bash
-./scripts/terraform.sh control-plane dev apply
+./scripts/terraform.sh hub dev apply
 ```
 
 This command will:
 
-* Create a Kind cluster named `control-plane-dev`
+* Create a Kind cluster named `hub-dev`
 * Install the core platform components
 * Configure GitOps workflows with ArgoCD (if enabled)
 * Set up observability stack
@@ -64,7 +64,7 @@ Check that your cluster is running:
 
 ```bash
 kind get clusters
-# Output: control-plane-dev
+# Output: hub-dev
 
 kubectl cluster-info
 kubectl get nodes
@@ -76,7 +76,7 @@ If GitOps is enabled (`enable_gitops_bridge = true` in terraform.tfvars), you ca
 
 ```bash
 # Get ArgoCD admin password
-./scripts/argocd-password.sh
+make argo-cd-password
 
 # Port-forward to access ArgoCD UI
 kubectl port-forward svc/argocd-server -n argocd 8080:443
@@ -92,7 +92,7 @@ DoKa Seca supports various configuration options through `terraform.tfvars`:
 enable_gitops_bridge = true
 
 # Configure cluster settings
-cluster_name = "control-plane-dev"
+cluster_name = "hub-dev"
 environment = "dev"
 
 # Enable specific addons
@@ -129,9 +129,9 @@ sudo sysctl fs.inotify.max_user_instances=8192
 To completely remove and reinstall:
 
 ```bash
-./scripts/terraform.sh control-plane dev destroy
+./scripts/terraform.sh hub dev destroy
 # Wait for cleanup to complete
-./scripts/terraform.sh control-plane dev apply
+./scripts/terraform.sh hub dev apply
 ```
 
 ## Next Steps

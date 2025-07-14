@@ -284,4 +284,5 @@ DoKa Seca provides tools and patterns to support effective team collaboration:
 4. **Iterate Quickly**: Rapid iteration based on user needs and feedback
 5. **Celebrate Success**: Recognize and celebrate platform adoption wins
 
-The success of platform engineering initiatives depends on effective collaboration between these roles, clear communication, and a shared commitment to improving developer productivity and operational excellence.
+The success of platform engineering initiatives depends on effective collaboration between these roles, clear
+communication, and a shared commitment to improving developer productivity and operational excellence.

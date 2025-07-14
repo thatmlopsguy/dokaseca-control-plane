@@ -101,7 +101,7 @@ Located at project root, contains:
 - Volume mounts for data persistence
 - Network configuration
 
-### configs/vault/local.json
+### docker/vault/local.json
 
 Vault configuration file with:
 

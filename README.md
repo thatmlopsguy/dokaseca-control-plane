@@ -1,21 +1,23 @@
-# Doka Seca
-
 <div align="center">
-  <img src="docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
+
+<img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
+
 </div>
 
-## "Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
-
 <div align="center">
 
-[![GitHub](https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90)](https://github.com/thatmlopsguy/dokaseca-control-plane)
-[![GitHub last commit](https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/issues)
-[![GitHub PRs](https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane)](https://github.com/thatmlopsguy/dokaseca-control-plane/pulls)
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE)
-[![Website](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://thatmlopsguy.github.io/dokaseca-control-plane/)
-[![Pre-commit](https://github.com/thatmlopsguy/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg)](https://github.com/thatmlopsguy/k8s-homelab/actions/workflows/pre-commit.yml)
+"Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
 
+</div>
+
+<div align="center">
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane"><img src="https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90" alt="GitHub"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main"><img src="https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub last commit"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/issues"><img src="https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub issues"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/pulls"><img src="https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane" alt="GitHub PRs"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
+  <a href="https://thatmlopsguy.github.io/dokaseca-control-plane/"><img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg" alt="Website"></a>
+  <a href="https://github.com/thatmlopsguy/k8s-homelab/actions/workflows/pre-commit.yml"><img src="https://github.com/thatmlopsguy/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg" alt="Pre-commit"></a>
 </div>
 
 ## 👋 Introduction
@@ -28,7 +30,7 @@ DoKa Seca provides an opinionated, production-ready framework that automates the
 
 This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.
 
-### Prerequisite
+**Prerequisites**
 
 * [Docker](https://www.docker.com/)
 * [Terraform](https://www.terraform.io/) or [opentofu](https://opentofu.org/)
@@ -39,7 +41,7 @@ This project serves as both a personal learning journey into modern DevOps pract
 * [kustomize](https://kustomize.io/)
 * [k9s](https://k9scli.io/) or [freelens](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
-### Optional tools
+**Optional tools**
 
 * [argocd](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 * [vcluster](https://www.vcluster.com/docs/platform/install/quick-start-guide)
