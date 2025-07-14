@@ -12,13 +12,9 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/security/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/database/">
       
       
-        <link rel="prev" href="../compliance/">
-      
-      
-        <link rel="next" href="../streams/">
       
       
       <link rel="icon" href="../assets/logos/favicon.svg">
@@ -26,7 +22,7 @@
     
     
       
-        <title>Security - Doka Seca</title>
+        <title>Database Setup for DoKa Seca Platform Services - Doka Seca</title>
       
     
     
@@ -74,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#security" class="md-skip">
+        <a href="#database-setup-for-doka-seca-platform-services" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +105,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Security
+              Database Setup for DoKa Seca Platform Services
             
           </span>
         </div>
@@ -586,32 +582,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Security
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
         
   
   
@@ -622,77 +596,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#trivy-vulnerability-misconfiguration-scanning" class="md-nav__link">
-    <span class="md-ellipsis">
-      Trivy: Vulnerability &amp; Misconfiguration Scanning
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#falco-runtime-threat-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Falco: Runtime Threat Detection
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Falco: Runtime Threat Detection">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#example-view-falco-alerts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Example: View Falco alerts
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-best-practices" class="md-nav__link">
-    <span class="md-ellipsis">
-      Security Best Practices
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1221,28 +1124,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#trivy-vulnerability-misconfiguration-scanning" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Trivy: Vulnerability &amp; Misconfiguration Scanning
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#falco-runtime-threat-detection" class="md-nav__link">
+  <a href="#database-structure" class="md-nav__link">
     <span class="md-ellipsis">
-      Falco: Runtime Threat Detection
+      Database Structure
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Falco: Runtime Threat Detection">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection Information
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-view-falco-alerts" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Example: View Falco alerts
+      Environment Variables
     </span>
   </a>
   
@@ -1254,18 +1175,51 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#security-best-practices" class="md-nav__link">
+  <a href="#accessing-postgresql" class="md-nav__link">
     <span class="md-ellipsis">
-      Security Best Practices
+      Accessing PostgreSQL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing PostgreSQL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#via-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      Via Command Line
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#via-external-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Via External Tool
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Vault
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#backup-and-recovery" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Backup and Recovery
     </span>
   </a>
   
@@ -1290,56 +1244,121 @@
   
 
 
-<h1 id="security">Security</h1>
-<p>The DoKa Seca platform implements a defense-in-depth approach to Kubernetes security, leveraging both vulnerability
-scanning and runtime threat detection.</p>
-<h2 id="trivy-vulnerability-misconfiguration-scanning">Trivy: Vulnerability &amp; Misconfiguration Scanning</h2>
-<p><a href="https://aquasecurity.github.io/trivy/">Trivy</a> is used for:</p>
+<h1 id="database-setup-for-doka-seca-platform-services">Database Setup for DoKa Seca Platform Services</h1>
+<p>This document outlines the database configuration for platform services in the DoKa Seca project.</p>
+<h2 id="overview">Overview</h2>
+<p>The platform uses a single PostgreSQL database container with multiple databases for different platform services:</p>
 <ul>
-<li>Scanning container images for vulnerabilities (CVEs)</li>
-<li>Auditing Kubernetes manifests for misconfigurations</li>
-<li>Integrating with CI/CD pipelines for early detection</li>
-<li>Generating <code>ConfigAuditReports</code> and <code>VulnerabilityReports</code> in-cluster</li>
+<li><strong>Keycloak</strong>: Identity and access management</li>
+<li><strong>DevLake</strong>: DevOps metrics platform</li>
+<li><strong>Temporal</strong>: Workflow orchestration</li>
+<li><strong>Backstage</strong>: Developer portal</li>
+<li><strong>LiteLLM</strong>: LLM proxy service</li>
+<li><strong>Langfuse</strong>: LLM observability service</li>
 </ul>
-<p><strong>Example: Scan a running deployment</strong></p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>deployment<span class="w"> </span>nginx<span class="w"> </span>--image<span class="w"> </span>nginx:1.16
-kubectl<span class="w"> </span>get<span class="w"> </span>configauditreports<span class="w"> </span>-o<span class="w"> </span>wide
+<h2 id="database-structure">Database Structure</h2>
+<p>Each service has:</p>
+<ul>
+<li>Its own dedicated database</li>
+<li>A unique user with appropriate permissions</li>
+<li>Password-based authentication</li>
+</ul>
+<h2 id="connection-information">Connection Information</h2>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Database</th>
+<th>Username</th>
+<th>Default Password</th>
+<th>Connection String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keycloak</td>
+<td>keycloak</td>
+<td>keycloak</td>
+<td>keycloak_password</td>
+<td>jdbc:postgresql://postgres:5432/keycloak</td>
+</tr>
+<tr>
+<td>DevLake</td>
+<td>devlake</td>
+<td>devlake</td>
+<td>devlake_password</td>
+<td>jdbc:postgresql://postgres:5432/devlake</td>
+</tr>
+<tr>
+<td>Temporal</td>
+<td>temporal</td>
+<td>temporal</td>
+<td>temporal_password</td>
+<td>jdbc:postgresql://postgres:5432/temporal</td>
+</tr>
+<tr>
+<td>Backstage</td>
+<td>backstage</td>
+<td>backstage</td>
+<td>backstage_password</td>
+<td>jdbc:postgresql://postgres:5432/backstage</td>
+</tr>
+<tr>
+<td>LiteLLM</td>
+<td>litellm</td>
+<td>litellm</td>
+<td>litellm_password</td>
+<td>jdbc:postgresql://postgres:5432/litellm</td>
+</tr>
+<tr>
+<td>Langfuse</td>
+<td>langfuse</td>
+<td>langfuse</td>
+<td>langfuse_password</td>
+<td>jdbc:postgresql://postgres:5432/langfuse</td>
+</tr>
+</tbody>
+</table>
+<h2 id="configuration">Configuration</h2>
+<p>Database credentials are configured via environment variables in the <code>.env</code> file. Copy <code>.env.example</code> to <code>.env</code> and adjust as needed:</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div>
-<p>Sample output:</p>
-<div class="highlight"><pre><span></span><code>NAME<span class="w">                          </span>SCANNER<span class="w">   </span>AGE<span class="w">     </span>CRITICAL<span class="w">   </span>HIGH<span class="w">   </span>MEDIUM<span class="w">   </span>LOW
-replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     </span>3m16s<span class="w">   </span><span class="m">0</span><span class="w">          </span><span class="m">2</span><span class="w">      </span><span class="m">3</span><span class="w">        </span><span class="m">10</span>
+<h3 id="environment-variables">Environment Variables</h3>
+<ul>
+<li><code>PG_USER</code> &amp; <code>PG_PASSWORD</code>: PostgreSQL admin credentials</li>
+<li>Service-specific credentials:</li>
+<li><code>KC_DB_USERNAME</code> &amp; <code>KC_DB_PASSWORD</code> (Keycloak)</li>
+<li><code>DL_DB_USERNAME</code> &amp; <code>DL_DB_PASSWORD</code> (DevLake)</li>
+<li>etc.</li>
+</ul>
+<h2 id="accessing-postgresql">Accessing PostgreSQL</h2>
+<h3 id="via-command-line">Via Command Line</h3>
+<p>Connect to the PostgreSQL container:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>postgres
 </code></pre></div>
-<p><strong>Trivy is integrated via the <a href="https://github.com/aquasecurity/trivy-operator">KubeSec Operator</a> for continuous cluster scanning.</strong></p>
-<h2 id="falco-runtime-threat-detection">Falco: Runtime Threat Detection</h2>
-<p><a href="https://falco.org/">Falco</a> is used for:</p>
-<ul>
-<li>Real-time detection of suspicious activity in Kubernetes nodes and containers</li>
-<li>Alerting on unexpected process execution, file access, privilege escalation, and network activity</li>
-<li>Enforcing runtime security policies with custom rules</li>
-<li>Integrating with alerting systems (Slack, Prometheus, etc)</li>
-</ul>
-<h3 id="example-view-falco-alerts">Example: View Falco alerts</h3>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>falco<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>falco
+<p>List databases:</p>
+<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="n">l</span>
 </code></pre></div>
-<p><strong>Common Falco rules include:</strong></p>
+<p>Connect to a specific database:</p>
+<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">keycloak</span>
+</code></pre></div>
+<h3 id="via-external-tool">Via External Tool</h3>
+<p>Connect using your preferred database client:</p>
 <ul>
-<li>Detecting shell in a container</li>
-<li>Detecting changes to sensitive files</li>
-<li>Detecting privilege escalation attempts</li>
+<li>Host: localhost</li>
+<li>Port: 5432</li>
+<li>User/Password: As specified in .env file</li>
 </ul>
-<h2 id="security-best-practices">Security Best Practices</h2>
-<ul>
-<li>All images are scanned before deployment</li>
-<li>Cluster is continuously monitored for runtime threats</li>
-<li>Alerts are integrated with platform observability</li>
-<li>Security events are audited and reviewed regularly</li>
-</ul>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://aquasecurity.github.io/trivy/">Trivy Documentation</a></li>
-<li><a href="https://falco.org/docs/">Falco Documentation</a></li>
-<li><a href="https://kubernetes.io/docs/concepts/security/overview/">Kubernetes Security Best Practices</a></li>
-</ul>
+<h2 id="integration-with-vault">Integration with Vault</h2>
+<p>Database credentials are stored in Vault following the pattern described in the <a href="/docs/secrets.md">secrets documentation</a>:</p>
+<div class="highlight"><pre><span></span><code>vault/platform/postgres/common/backstage
+vault/platform/postgres/common/keycloak
+vault/platform/postgres/common/devlake
+vault/platform/postgres/common/litellm
+vault/platform/postgres/common/langfuse
+</code></pre></div>
+<h2 id="backup-and-recovery">Backup and Recovery</h2>
+<p>Database data is persisted in the <code>postgres-data</code> Docker volume.</p>
 
 
 
@@ -1400,44 +1419,6 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../compliance/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compliance">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Compliance
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../streams/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Streams">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Data Streams
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
