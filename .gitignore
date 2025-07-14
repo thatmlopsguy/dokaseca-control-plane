@@ -40,6 +40,9 @@ terraform/*config
 # secrets
 secret.yaml
 kubeconfigs/
+!kubeconfigs/README.md
+
+# Cosign Keys
 cosign*
 
 # Mkdocs site
@@ -47,3 +50,6 @@ site/*
 
 # docker compose data
 data/*
+
+# Co-pilot instructions
+.github/copilot-instructions.md

@@ -18,7 +18,7 @@
 
 </div>
 
-## Introduction
+## 👋 Introduction
 
 Welcome to **DoKa Seca** - a comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)! The name "DoKa Seca" is a playful Portuguese phrase where "DoKa" incorporates the "K" from Kubernetes (representing the containerized orchestration at the heart of this project), and "Seca" means "dry" - drawing inspiration from the concept of a **dry dock**.
 
@@ -28,7 +28,7 @@ DoKa Seca provides an opinionated, production-ready framework that automates the
 
 This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.
 
-## Prerequisite
+### Prerequisite
 
 * [Docker](https://www.docker.com/)
 * [Terraform](https://www.terraform.io/) or [opentofu](https://opentofu.org/)
@@ -39,7 +39,7 @@ This project serves as both a personal learning journey into modern DevOps pract
 * [kustomize](https://kustomize.io/)
 * [k9s](https://k9scli.io/) or [freelens](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
-## Optional tools
+### Optional tools
 
 * [argocd](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 * [vcluster](https://www.vcluster.com/docs/platform/install/quick-start-guide)
@@ -49,6 +49,7 @@ This project serves as both a personal learning journey into modern DevOps pract
 * [cosign](https://github.com/sigstore/cosign)
 * [velero](https://github.com/vmware-tanzu/velero)
 * [vault](https://developer.hashicorp.com/vault/docs/install)
+* [minio client (mc)](https://github.com/minio/mc)
 
 ```sh
 $ kubectl version
@@ -151,15 +152,15 @@ The output looks like the following:
 }
 ```
 
-## Destroy kind Cluster
+## 💥 Destroy Infrastructure
 
-To tear down all the resources and the kind cluster, run the following command:
+To tear down all the resources and the kind cluster(s), run the following command:
 
 ```sh
-./scripts/terraform.sh hub dev destroy
+make clean-infra
 ```
 
-## FAQ
+## ⚒️ FAQ
 
 `ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"`
 
@@ -172,10 +173,15 @@ sudo sysctl fs.inotify.max_user_instances=8192
 
 Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
 
-## :handshake: Contributing
+## 🤝 Contributing
 
-Anyone is welcome to collaborate to this project. Check out our [contributing guidelines](CONTRIBUTING.md).
+All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
+read our [contributing guidelines](CONTRIBUTING.md).
 
-## :bookmark: License
+## 🗺️ ROADMAP
 
-Doca Seca is licensed under [Apache License, Version 2.0](LICENSE)
+Want to know about the features to come? Check out the project [ROADMAP](docs/roadmap.md) for more information.
+
+## 🔖 License
+
+DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE)

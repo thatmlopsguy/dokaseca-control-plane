@@ -22,19 +22,62 @@ When using GitOps to manage multiple clusters, there are two main approaches:
 - **Standalone/Distributed GitOps:** Each cluster has its own GitOps controller (e.g., Argo CD or Flux), managing only its resources. This matches our current topology and is simple to operate.
 - **Centralized (Hub/Spoke) GitOps:** A central GitOps controller manages resources across multiple clusters. This can enable global policies, shared services, and easier cross-cluster coordination, but requires careful RBAC and security design.
 
-## Skupper
+## Cluster Creation and Management
 
-Install cli
+DoKa Seca is planning to enhance multi-cluster capabilities through automated cluster provisioning and management using
+two complementary approaches: Cluster API with KRO, and Crossplane.
 
-```sh
-$ curl https://skupper.io/install.sh | sh
-$ skupper version
-client version                 1.8.3
-transport version              not-found (no configuration has been provided)
-controller version             not-found (no configuration has been provided)
-```
+### Cluster API (CAPI)
+
+[Cluster API](https://cluster-api.sigs.k8s.io/) provides declarative APIs and tooling to simplify provisioning, upgrading,
+and operating multiple Kubernetes clusters.
+
+#### Planned Implementation
+
+DoKa Seca will utilize Cluster API for:
+
+- **Infrastructure-agnostic cluster creation:** Using CAPI providers for AWS, Azure, GCP, and on-premises (via vSphere and bare metal)
+- **Standardized cluster templates:** Creating reusable cluster blueprints with pre-configured settings for each environment
+- **Lifecycle management:** Enabling seamless upgrades and scaling operations across clusters
+
+### KRO (Kubernetes Resource Orchestration)
+
+[KRO](https://github.com/kro-project) will be used to simplify cross-cluster resource management, enabling DoKa Seca to:
+
+- **Coordinate multi-cluster deployments:** Manage application lifecycles across cluster boundaries
+- **Handle dependencies between clusters:** Ensure proper sequencing of resource creation
+- **Implement advanced rollout strategies:** Control the deployment flow across multiple environments
+
+#### Planned Integration
+
+KRO will work alongside ArgoCD to provide more sophisticated orchestration between clusters, especially for complex application
+topologies spanning multiple clusters.
+
+### Crossplane
+
+[Crossplane](https://www.crossplane.io/) will enable DoKa Seca to define and use higher-level abstractions for both
+infrastructure and applications, making it easier to manage complex deployments.
+
+#### Planned Capabilities
+
+- **Infrastructure provisioning:** Create cloud resources (VPCs, databases, etc.) alongside Kubernetes clusters
+- **Composition of complex resources:** Define reusable templates for complete application stacks
+- **Self-service platform:** Allow teams to provision environments via simple custom resources
+
+## Integration Strategy
+
+DoKa Seca plans to integrate these tools in a complementary fashion:
+
+1. **Cluster API** will handle the core cluster provisioning and lifecycle management
+2. **KRO** will manage application deployment orchestration across clusters
+3. **Crossplane** will provide higher-level abstractions and additional infrastructure resources
+
+The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
+using Cluster API, with KRO and Crossplane capabilities being integrated in subsequent phases.
 
 ## References
 
-- [Kubernetes Multicluster Load Balancing with Skupper](https://piotrminkowski.com/2023/08/04/kubernetes-multicluster-load-balancing-with-skupper/)
 - [Building a Bridge between Terraform and ArgoCD](https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd)
+- [Cluster API Documentation](https://cluster-api.sigs.k8s.io/introduction.html)
+- [KRO Project](https://github.com/kro-project)
+- [Crossplane Documentation](https://docs.crossplane.io/)

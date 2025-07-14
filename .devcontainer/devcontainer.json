@@ -7,12 +7,12 @@
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
     "postCreateCommand": ".devcontainer/scripts/postCreateCommand.sh",
-    "workspaceFolder": "/home/vscode/k8s-homelab",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/k8s-homelab,type=bind",
+    "workspaceFolder": "/home/vscode/doka-seca",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/vscode/doka-seca,type=bind",
     "hostRequirements": {
         "cpus": 4
     },
     "remoteEnv": {
-        "PATH": "${containerEnv:PATH}:/home/vscode/k8s-homelab"
+        "PATH": "${containerEnv:PATH}:/home/vscode/doka-seca"
     }
 }

@@ -29,7 +29,7 @@ services:
     volumes:
       - vault-data:/vault/file
       - vault-logs:/vault/logs
-      - ./configs/vault:/vault/config
+      - ./docker/vault:/vault/config
     healthcheck:
       test: ["CMD", "vault", "status"]
       interval: 30s
@@ -111,7 +111,7 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./configs/prometheus:/etc/prometheus
+      - ./docker/prometheus:/etc/prometheus
 
   grafana:
     image: grafana/grafana:latest
@@ -123,8 +123,8 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_DASHBOARDS_MIN_REFRESH_INTERVAL: "5s"
     volumes:
-      - ./configs/grafana/dashboards:/etc/grafana/provisioning/dashboards
-      - ./configs/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
       - grafana-data:/var/lib/grafana
     depends_on:
       prometheus:

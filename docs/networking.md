@@ -164,6 +164,18 @@ For connecting multiple clusters:
 2. Configure service discovery with multi-cluster services
 3. Implement cross-cluster load balancing with Skupper or similar tools
 
+### Skupper
+
+Install cli
+
+```sh
+$ curl https://skupper.io/install.sh | sh
+$ skupper version
+client version                 1.8.3
+transport version              not-found (no configuration has been provided)
+controller version             not-found (no configuration has been provided)
+```
+
 ## References
 
 - [Cilium Documentation](https://docs.cilium.io/)
@@ -173,3 +185,5 @@ For connecting multiple clusters:
 - [Istio Documentation](https://istio.io/latest/docs/)
 - [chmodshubham/cilium](https://github.com/chmodshubham/cilium)
 - [Kubernetes Multicluster with Kind and Cilium](https://piotrminkowski.com/2021/10/25/kubernetes-multicluster-with-kind-and-cilium/)
+- [Kubernetes Multicluster Load Balancing with Skupper](https://piotrminkowski.com/2023/08/04/kubernetes-multicluster-load-balancing-with-skupper/)
+- [Simplifying multi-clusters in Kubernetes](https://www.cncf.io/blog/2021/04/12/simplifying-multi-clusters-in-kubernetes/)

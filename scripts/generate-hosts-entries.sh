@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Base domain configuration
-BASE_DOMAIN="k8s-home.lab"
+BASE_DOMAIN="dokaseca.local"
+
 # Get the ingress load balancer IP
 INGRESS_LB_IP=$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 
@@ -20,6 +21,10 @@ SERVICE_PREFIXES=(
     "zipkin"
     "opencost"
     "vlogs"
+    "kiali"
+    "jaeger"
+    "keycloak"
+    "devlake"
 )
 
 # Generate hosts entries
