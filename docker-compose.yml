@@ -37,19 +37,19 @@ services:
       retries: 5
     restart: unless-stopped
 
-  keycloak-postgres:
+  postgres:
     image: postgres:16
-    container_name: keycloak-postgres
+    container_name: postgres
     environment:
-      POSTGRES_DB: ${KC_DB_NAME:-keycloak}
-      POSTGRES_USER: ${KC_DB_USERNAME:-keycloak}
-      POSTGRES_PASSWORD: ${KC_DB_PASSWORD:-keycloak_password}
+      POSTGRES_PASSWORD: ${PG_PASSWORD:-postgres_password}
+      POSTGRES_USER: ${PG_USER:-postgres}
     ports:
       - "5432:5432"
     volumes:
-      - keycloak-postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U keycloak"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -60,7 +60,7 @@ services:
     container_name: keycloak
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://keycloak-postgres:5432/keycloak
+      KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
       KC_DB_USERNAME: ${KC_DB_USERNAME:-keycloak}
       KC_DB_PASSWORD: ${KC_DB_PASSWORD:-keycloak_password}
       KC_HOSTNAME: localhost
@@ -75,7 +75,7 @@ services:
       - "8443:8443"
     command: start-dev
     depends_on:
-      keycloak-postgres:
+      postgres:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/health/ready"]
@@ -139,7 +139,7 @@ services:
 volumes:
   vault-data:
   vault-logs:
-  keycloak-postgres-data:
+  postgres-data:
   grafana-data:
   minio-data:
     driver: local

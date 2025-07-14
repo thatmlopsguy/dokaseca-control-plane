@@ -21,7 +21,7 @@ kubectl get configauditreports -o wide
 
 Sample output:
 
-```
+```sh
 NAME                          SCANNER   AGE     CRITICAL   HIGH   MEDIUM   LOW
 replicaset-nginx-599c4f6679   Trivy     3m16s   0          2      3        10
 ```
