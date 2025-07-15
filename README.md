@@ -175,6 +175,10 @@ sudo sysctl fs.inotify.max_user_instances=8192
 
 Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
 
+## 📚 Resources
+
+User documentation can be found on our [user docs site](https://thatmlopsguy.github.io/dokaseca-control-plane/).
+
 ## 🤝 Contributing
 
 All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
@@ -182,8 +186,12 @@ read our [contributing guidelines](CONTRIBUTING.md).
 
 ## 🗺️ ROADMAP
 
-Want to know about the features to come? Check out the project [ROADMAP](docs/roadmap.md) for more information.
+Want to know about the features to come? Check out the project [ROADMAP](ROADMAP.md) for more information.
 
 ## 🔖 License
 
 DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE)
+
+## ⚠️ Note
+
+DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.
