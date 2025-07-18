@@ -39,7 +39,17 @@ jobs:
           python-version: 3.x
 
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v4
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('**/requirements/docs.txt') }}
+          restore-keys: |
+            pip-
+
+      - name: Cache mkdocs material
+        uses: actions/cache@v4
         with:
           key: mkdocs-material-${{ env.cache_id }}
           path: .cache
@@ -47,5 +57,6 @@ jobs:
             mkdocs-material-
 
       - run: |
+          mkdir -p .cache
           pip install -r requirements/docs.txt
           mkdocs gh-deploy --force
