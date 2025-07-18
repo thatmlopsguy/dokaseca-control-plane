@@ -184,9 +184,9 @@ User documentation can be found on our [user docs site](https://thatmlopsguy.git
 All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
 read our [contributing guidelines](CONTRIBUTING.md).
 
-## 🗺️ ROADMAP
+## 🗺️ Roadmap
 
-Want to know about the features to come? Check out the project [ROADMAP](ROADMAP.md) for more information.
+Want to know about the features to come? Check out the project [roadmap](ROADMAP.md) for more information.
 
 ## 🔖 License
 
