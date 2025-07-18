@@ -158,20 +158,24 @@ locals {
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager
-    enable_temporal       = try(var.addons.enable_temporal, false)
-    enable_airflow        = try(var.addons.enable_airflow, false)
-    enable_flyte          = try(var.addons.enable_flyte, false)
+    enable_temporal       = try(var.addons.enable_temporal, false) # TODO
+    enable_airflow        = try(var.addons.enable_airflow, false)  # TODO
+    enable_flyte          = try(var.addons.enable_flyte, false)    # TODO
     enable_argo_workflows = try(var.addons.enable_argo_workflows, false)
     # machine learning
-    enable_ray_operator = try(var.addons.enable_ray_operator, false)
-    enable_mlflow       = try(var.addons.enable_mlflow, false)
-    enable_kuberay      = try(var.addons.enable_kuberay, false)
-    enable_seldon       = try(var.addons.enable_seldon, false)
-    enable_litellm      = try(var.addons.enable_litellm, false)
-    enable_milvus       = try(var.addons.enable_milvus, false)
-    enable_ollama       = try(var.addons.enable_ollama, false)
-    enable_langfuse     = try(var.addons.enable_langfuse, false)
-    enable_kgateway     = try(var.addons.enable_kgateway, false)
+    enable_feast        = try(var.addons.enable_feast, false)        # TODO
+    enable_kserve       = try(var.addons.enable_kserve, false)       # TODO
+    enable_kubeflow     = try(var.addons.enable_kubeflow, false)     # TODO
+    enable_ray_operator = try(var.addons.enable_ray_operator, false) # TODO
+    enable_mlflow       = try(var.addons.enable_mlflow, false)       # TODO
+    enable_kuberay      = try(var.addons.enable_kuberay, false)      # TODO
+    enable_seldon       = try(var.addons.enable_seldon, false)       # TODO
+    enable_litellm      = try(var.addons.enable_litellm, false)      # TODO
+    enable_weaviate     = try(var.addons.enable_weaviate, false)     # TODO
+    enable_milvus       = try(var.addons.enable_milvus, false)       # TODO
+    enable_ollama       = try(var.addons.enable_ollama, false)       # TODO
+    enable_langfuse     = try(var.addons.enable_langfuse, false)     # TODO
+    enable_kgateway     = try(var.addons.enable_kgateway, false)     # TODO
   }
 
   # Enterprise
