@@ -1416,9 +1416,9 @@
   
 
 
-<h1 id="database-setup-for-doka-seca-platform-services">Database Setup for DoKa Seca Platform Services</h1>
+<h1 id="database-setup-for-doka-seca-platform-services">Database Setup for DoKa Seca Platform Services<a class="headerlink" href="#database-setup-for-doka-seca-platform-services" title="Permanent link">&para;</a></h1>
 <p>This document outlines the database configuration for platform services in the DoKa Seca project.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The platform uses a single PostgreSQL database container with multiple databases for different platform services:</p>
 <ul>
 <li><strong>Keycloak</strong>: Identity and access management</li>
@@ -1428,14 +1428,14 @@
 <li><strong>LiteLLM</strong>: LLM proxy service</li>
 <li><strong>Langfuse</strong>: LLM observability service</li>
 </ul>
-<h2 id="database-structure">Database Structure</h2>
+<h2 id="database-structure">Database Structure<a class="headerlink" href="#database-structure" title="Permanent link">&para;</a></h2>
 <p>Each service has:</p>
 <ul>
 <li>Its own dedicated database</li>
 <li>A unique user with appropriate permissions</li>
 <li>Password-based authentication</li>
 </ul>
-<h2 id="connection-information">Connection Information</h2>
+<h2 id="connection-information">Connection Information<a class="headerlink" href="#connection-information" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1491,11 +1491,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration</h2>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <p>Database credentials are configured via environment variables in the <code>.env</code> file. Copy <code>.env.example</code> to <code>.env</code> and adjust as needed:</p>
 <div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
 </code></pre></div>
-<h3 id="environment-variables">Environment Variables</h3>
+<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>PG_USER</code> &amp; <code>PG_PASSWORD</code>: PostgreSQL admin credentials</li>
 <li>Service-specific credentials:</li>
@@ -1503,8 +1503,8 @@
 <li><code>DL_DB_USERNAME</code> &amp; <code>DL_DB_PASSWORD</code> (DevLake)</li>
 <li>etc.</li>
 </ul>
-<h2 id="accessing-postgresql">Accessing PostgreSQL</h2>
-<h3 id="via-command-line">Via Command Line</h3>
+<h2 id="accessing-postgresql">Accessing PostgreSQL<a class="headerlink" href="#accessing-postgresql" title="Permanent link">&para;</a></h2>
+<h3 id="via-command-line">Via Command Line<a class="headerlink" href="#via-command-line" title="Permanent link">&para;</a></h3>
 <p>Connect to the PostgreSQL container:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>postgres
 </code></pre></div>
@@ -1514,14 +1514,14 @@
 <p>Connect to a specific database:</p>
 <div class="highlight"><pre><span></span><code><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">keycloak</span>
 </code></pre></div>
-<h3 id="via-external-tool">Via External Tool</h3>
+<h3 id="via-external-tool">Via External Tool<a class="headerlink" href="#via-external-tool" title="Permanent link">&para;</a></h3>
 <p>Connect using your preferred database client:</p>
 <ul>
 <li>Host: localhost</li>
 <li>Port: 5432</li>
 <li>User/Password: As specified in .env file</li>
 </ul>
-<h2 id="integration-with-vault">Integration with Vault</h2>
+<h2 id="integration-with-vault">Integration with Vault<a class="headerlink" href="#integration-with-vault" title="Permanent link">&para;</a></h2>
 <p>Database credentials are stored in Vault following the pattern described in the <a href="/docs/secrets.md">secrets documentation</a>:</p>
 <div class="highlight"><pre><span></span><code>vault/platform/postgres/common/backstage
 vault/platform/postgres/common/keycloak
@@ -1529,7 +1529,7 @@ vault/platform/postgres/common/devlake
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
 </code></pre></div>
-<h2 id="backup-and-recovery">Backup and Recovery</h2>
+<h2 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
 <p>Database data is persisted in the <code>postgres-data</code> Docker volume.</p>
 
 
@@ -1693,6 +1693,8 @@ vault/platform/postgres/common/langfuse
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

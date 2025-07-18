@@ -1302,13 +1302,13 @@
   
 
 
-<h1 id="use-argocd-vcluster-and-github-actions-for-preview-environments">Use ArgoCD, vCluster, and GitHub Actions for Preview Environments</h1>
+<h1 id="use-argocd-vcluster-and-github-actions-for-preview-environments">Use ArgoCD, vCluster, and GitHub Actions for Preview Environments<a class="headerlink" href="#use-argocd-vcluster-and-github-actions-for-preview-environments" title="Permanent link">&para;</a></h1>
 <p>Date: 2025-07-12</p>
-<h2 id="status">Status</h2>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>Proposed</p>
-<h2 id="context">Context</h2>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>We want to provide on-demand preview environments for every pull request (PR) to improve testing, validation, and feedback cycles. The preview environment should be isolated, ephemeral, and closely match production. Manual setup is slow and error-prone, and static environments are limited and can cause conflicts between PRs.</p>
-<h2 id="decision">Decision</h2>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p>We will use the following approach for preview environments:</p>
 <ul>
 <li><strong>ArgoCD Pull Request Generator</strong>: Detects new PRs and generates ArgoCD Application manifests for each PR.</li>
@@ -1316,7 +1316,7 @@
 <li><strong>GitHub Actions</strong>: Automates the workflow, triggering on PR events to provision the vCluster, deploy the application using ArgoCD, and clean up resources when the PR is closed or merged.</li>
 </ul>
 <p>This setup ensures that every PR gets a fresh, isolated environment for testing, and the process is fully automated.</p>
-<h2 id="consequences">Consequences</h2>
+<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Easier to test PRs</strong>: Developers and reviewers can validate changes in a realistic environment before merging.</li>
 <li><strong>Automated lifecycle</strong>: Environments are created and destroyed automatically, reducing manual work and resource waste.</li>
@@ -1324,7 +1324,7 @@
 <li><strong>Increased resource usage</strong>: Running multiple vClusters may increase resource consumption, so cluster sizing and quotas must be considered.</li>
 <li><strong>Complexity</strong>: The workflow introduces more moving parts (ArgoCD, vCluster, GitHub Actions), requiring maintenance and monitoring.</li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/">ArgoCD Pull Request Generator</a></li>
 <li><a href="https://www.vcluster.com/">vCluster</a></li>
@@ -1476,6 +1476,8 @@
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

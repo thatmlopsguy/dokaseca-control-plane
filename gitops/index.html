@@ -2088,11 +2088,11 @@
   
 
 
-<h1 id="gitops">GitOps</h1>
+<h1 id="gitops">GitOps<a class="headerlink" href="#gitops" title="Permanent link">&para;</a></h1>
 <p>DoKa Seca implements a comprehensive GitOps strategy that provides automated deployment, promotion, and lifecycle management
 for cloud-native applications. The platform integrates multiple GitOps tools to create a robust, scalable, and secure
 deployment pipeline that follows GitOps principles and best practices.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>GitOps is a operational framework that takes DevOps best practices used for application development such as version control,
 collaboration, compliance, and CI/CD, and applies them to infrastructure automation. DoKa Seca's GitOps implementation provides:</p>
 <ul>
@@ -2102,35 +2102,38 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Security and Compliance</strong>: Policy-driven deployments with audit trails</li>
 <li><strong>Observability</strong>: Comprehensive monitoring and alerting for deployment pipelines</li>
 </ul>
-<h2 id="gitops-bridge-architecture">GitOps Bridge Architecture</h2>
+<h2 id="gitops-bridge-architecture">GitOps Bridge Architecture<a class="headerlink" href="#gitops-bridge-architecture" title="Permanent link">&para;</a></h2>
 <p>The GitOps Bridge is a key component that enables automated deployment and management of both cluster addons and workloads using ArgoCD.</p>
 <p>Here's how it works:</p>
-<div class="highlight"><pre><span></span><code>graph TB
-    subgraph &quot;Infrastructure Layer&quot;
+<pre class="mermaid"><code>graph TB
+    subgraph "Infrastructure Layer"
         TF[Terraform]
         k8s[k8s Cluster]
         TF --&gt; k8s
     end
 
-    subgraph &quot;GitOps Bridge Bootstrap&quot;
+    subgraph "GitOps Bridge Bootstrap"
         GB[GitOps Bridge Module]
         ArgoCD[ArgoCD Installation]
         GB --&gt; ArgoCD
     end
 
-    subgraph &quot;Git Repositories&quot;
+    subgraph "Git Repositories"
         AddonsRepo[Addons Repository]
         WorkloadsRepo[Workloads Repository]
+        ClustersRepo[Clusters Repository]
     end
 
-    subgraph &quot;ArgoCD Applications&quot;
+    subgraph "ArgoCD Applications"
         AddonsAppSet[Addons ApplicationSet]
         WorkloadsAppSet[Workloads ApplicationSet]
+        ClustersAppSet[Clusters ApplicationSet]
     end
 
-    subgraph &quot;Kubernetes Resources&quot;
+    subgraph "Kubernetes Resources"
         Addons[Cluster Addons&lt;br/&gt;- Metrics Server&lt;br/&gt;- Nginx Controller&lt;br/&gt;- etc.]
-        Workloads[Application Workloads&lt;br/&gt;- Team A&lt;br/&gt;- Team B]
+        Workloads[Application Workloads&lt;br/&gt;- Team A&lt;br/&gt;- Team B&lt;br/&gt;- Team C]
+        Clusters[Application Clusters&lt;br/&gt;- dev&lt;br/&gt;- stg&lt;br/&gt;- prod]
     end
 
     TF --&gt; GB
@@ -2138,15 +2141,19 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 
     ArgoCD --&gt; AddonsAppSet
     ArgoCD --&gt; WorkloadsAppSet
+    ArgoCD --&gt; ClustersAppSet
 
     AddonsAppSet --&gt; AddonsRepo
     WorkloadsAppSet --&gt; WorkloadsRepo
+    ClustersAppSet --&gt; ClustersRepo
 
     AddonsAppSet --&gt; Addons
     WorkloadsAppSet --&gt; Workloads
+    ClustersAppSet --&gt; Clusters
 
     AddonsRepo -.-&gt;|Watches for changes| AddonsAppSet
     WorkloadsRepo -.-&gt;|Watches for changes| WorkloadsAppSet
+    ClustersRepo -.-&gt;|Watches for changes| ClustersAppSet
 
     classDef terraform fill:#623CE4,stroke:#333,stroke-width:2px,color:#fff
     classDef gitops fill:#FF6B35,stroke:#333,stroke-width:2px,color:#fff
@@ -2154,11 +2161,10 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
     classDef k8s fill:#326CE5,stroke:#333,stroke-width:2px,color:#fff
 
     class TF terraform
-    class GB,AddonsRepo,WorkloadsRepo gitops
-    class ArgoCD,AddonsAppSet,WorkloadsAppSet argocd
-    class k8s,Addons,Workloads k8s
-</code></pre></div>
-<h3 id="gitops-bridge-workflow">GitOps Bridge Workflow</h3>
+    class GB,AddonsRepo,WorkloadsRepo,ClustersRepo gitops
+    class ArgoCD,AddonsAppSet,WorkloadsAppSet,ClustersAppSet argocd
+    class k8s,Addons,Workloads,Clusters k8s</code></pre>
+<h3 id="gitops-bridge-workflow">GitOps Bridge Workflow<a class="headerlink" href="#gitops-bridge-workflow" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Bootstrap Phase</strong>:</li>
 <li>Terraform deploys the kubernetes cluster</li>
@@ -2183,15 +2189,22 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <p>Supports environment-specific configurations</p>
 </li>
 <li>
+<p><strong>Clusters Management</strong>:</p>
+</li>
+<li><code>clusters.yaml</code> ApplicationSet monitors the clusters repository</li>
+<li>
+<p>Deploys application clusters (dev, stg, prod)</p>
+</li>
+<li>
 <p><strong>Continuous Sync</strong>:</p>
 </li>
 <li>ArgoCD continuously monitors Git repositories for changes</li>
 <li>Automatically applies updates to the cluster</li>
 <li>Provides drift detection and self-healing capabilities</li>
 </ol>
-<h2 id="gitops-architecture">GitOps Architecture</h2>
+<h2 id="gitops-architecture">GitOps Architecture<a class="headerlink" href="#gitops-architecture" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca implements GitOps through a multi-tool approach that provides comprehensive coverage of the deployment lifecycle:</p>
-<div class="highlight"><pre><span></span><code>graph TB
+<pre class="mermaid"><code>graph TB
     Git[Git Repository] --&gt; ArgoCD[ArgoCD]
     Git --&gt; Kargo[Kargo]
     Git --&gt; Promoter[GitOps Promoter]
@@ -2199,25 +2212,24 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
     ArgoCD --&gt; ImageUpdater[ArgoCD Image Updater]
     ImageUpdater --&gt; Registry[Container Registry]
 
-    subgraph &quot;Promotion Pipeline&quot;
+    subgraph "Promotion Pipeline"
         Dev[Development] --&gt; Kargo
         Kargo --&gt; Staging[Staging]
         Kargo --&gt; Prod[Production]
     end
 
-    subgraph &quot;Deployment Engine&quot;
+    subgraph "Deployment Engine"
         ArgoCD --&gt; K8s[Kubernetes Clusters]
         Promoter --&gt; K8s
     end
 
     Registry --&gt; ImageUpdater
     Kargo --&gt; ArgoCD
-    Promoter --&gt; ArgoCD
-</code></pre></div>
-<h2 id="core-gitops-components-for-team-workloads">Core GitOps Components for Team Workloads</h2>
-<h3 id="argocd-continuous-deployment"><strong>ArgoCD - Continuous Deployment</strong></h3>
+    Promoter --&gt; ArgoCD</code></pre>
+<h2 id="core-gitops-components-for-team-workloads">Core GitOps Components for Team Workloads<a class="headerlink" href="#core-gitops-components-for-team-workloads" title="Permanent link">&para;</a></h2>
+<h3 id="argocd-continuous-deployment"><strong>ArgoCD - Continuous Deployment</strong><a class="headerlink" href="#argocd-continuous-deployment" title="Permanent link">&para;</a></h3>
 <p><a href="https://argo-cd.readthedocs.io/">ArgoCD</a> serves as the primary GitOps continuous deployment tool in DoKa Seca:</p>
-<h4 id="argocd-features">ArgoCD Features</h4>
+<h4 id="argocd-features">ArgoCD Features<a class="headerlink" href="#argocd-features" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Application Deployment</strong>: Declarative GitOps application management</li>
 <li><strong>Multi-Cluster Support</strong>: Deploy to multiple Kubernetes clusters</li>
@@ -2225,7 +2237,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Sync Policies</strong>: Automated and manual synchronization strategies</li>
 <li><strong>Health Monitoring</strong>: Application health status and drift detection</li>
 </ul>
-<h4 id="argocd-configuration-example">ArgoCD Configuration Example</h4>
+<h4 id="argocd-configuration-example">ArgoCD Configuration Example<a class="headerlink" href="#argocd-configuration-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2247,9 +2259,9 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="w">    </span><span class="nt">syncOptions</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CreateNamespace=true</span>
 </code></pre></div>
-<h3 id="argocd-image-updater-automated-image-updates"><strong>ArgoCD Image Updater - Automated Image Updates</strong></h3>
+<h3 id="argocd-image-updater-automated-image-updates"><strong>ArgoCD Image Updater - Automated Image Updates</strong><a class="headerlink" href="#argocd-image-updater-automated-image-updates" title="Permanent link">&para;</a></h3>
 <p><a href="https://argocd-image-updater.readthedocs.io/">ArgoCD Image Updater</a> automates container image updates in GitOps workflows:</p>
-<h4 id="image-updater-features">Image Updater Features</h4>
+<h4 id="image-updater-features">Image Updater Features<a class="headerlink" href="#image-updater-features" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Automatic Image Updates</strong>: Monitor registries for new image versions</li>
 <li><strong>Semantic Versioning</strong>: Intelligent version constraint handling</li>
@@ -2257,7 +2269,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Webhook Support</strong>: Trigger updates via registry webhooks</li>
 <li><strong>Multi-Registry Support</strong>: Works with various container registries</li>
 </ul>
-<h4 id="image-updater-configuration-example">Image Updater Configuration Example</h4>
+<h4 id="image-updater-configuration-example">Image Updater Configuration Example<a class="headerlink" href="#image-updater-configuration-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2271,9 +2283,9 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ... application specification</span>
 </code></pre></div>
-<h3 id="kargo-progressive-delivery"><strong>Kargo - Progressive Delivery</strong></h3>
+<h3 id="kargo-progressive-delivery"><strong>Kargo - Progressive Delivery</strong><a class="headerlink" href="#kargo-progressive-delivery" title="Permanent link">&para;</a></h3>
 <p><a href="https://kargo.io/">Kargo</a> provides sophisticated promotion workflows and progressive delivery capabilities:</p>
-<h4 id="key-features">Key Features</h4>
+<h4 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Multi-Stage Promotions</strong>: Complex promotion pipelines across environments</li>
 <li><strong>Approval Workflows</strong>: Human and automated approval gates</li>
@@ -2281,7 +2293,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Canary Deployments</strong>: Gradual traffic shifting strategies</li>
 <li><strong>Integration Points</strong>: Works with ArgoCD and other GitOps tools</li>
 </ul>
-<h4 id="configuration-example">Configuration Example</h4>
+<h4 id="configuration-example">Configuration Example<a class="headerlink" href="#configuration-example" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kargo.akuity.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Project</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2311,9 +2323,9 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/org/web-app</span>
 <span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">applications/web-app/production</span>
 </code></pre></div>
-<h3 id="gitops-promoter-environment-promotion"><strong>GitOps Promoter - Environment Promotion</strong></h3>
+<h3 id="gitops-promoter-environment-promotion"><strong>GitOps Promoter - Environment Promotion</strong><a class="headerlink" href="#gitops-promoter-environment-promotion" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/argoproj-labs/gitops-promoter">GitOps Promoter</a> handles automated promotion between environments:</p>
-<h4 id="key-features_1">Key Features</h4>
+<h4 id="key-features_1">Key Features<a class="headerlink" href="#key-features_1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Environment Progression</strong>: Automated promotion through environment stages</li>
 <li><strong>Policy-Based Promotion</strong>: Promotion rules and constraints</li>
@@ -2321,7 +2333,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Audit Trail</strong>: Complete promotion history and rollback capabilities</li>
 <li><strong>Custom Promotion Logic</strong>: Extensible promotion strategies</li>
 </ul>
-<h4 id="configuration-example_1">Configuration Example</h4>
+<h4 id="configuration-example_1">Configuration Example<a class="headerlink" href="#configuration-example_1" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">promoter.argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PromotionStrategy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2347,40 +2359,40 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security-scan</span>
 <span class="w">      </span><span class="nt">successCondition</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;securityScan.passed</span><span class="nv"> </span><span class="s">==</span><span class="nv"> </span><span class="s">true&quot;</span>
 </code></pre></div>
-<h2 id="doka-seca-gitops-implementation">DoKa Seca GitOps Implementation</h2>
-<h3 id="multi-repository-gitops-structure"><strong>Multi-Repository GitOps Structure</strong></h3>
+<h2 id="doka-seca-gitops-implementation">DoKa Seca GitOps Implementation<a class="headerlink" href="#doka-seca-gitops-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="multi-repository-gitops-structure"><strong>Multi-Repository GitOps Structure</strong><a class="headerlink" href="#multi-repository-gitops-structure" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca implements GitOps across multiple repositories for separation of concerns:</p>
-<h4 id="control-plane-repository">Control Plane Repository</h4>
+<h4 id="control-plane-repository">Control Plane Repository<a class="headerlink" href="#control-plane-repository" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Platform infrastructure configurations</li>
 <li>ArgoCD application definitions</li>
 <li>Bootstrap configurations</li>
 <li>Cross-environment policies</li>
 </ul>
-<h4 id="addons-repository">Addons Repository</h4>
+<h4 id="addons-repository">Addons Repository<a class="headerlink" href="#addons-repository" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Platform addon ApplicationSets</li>
 <li>Addon-specific configurations</li>
 <li>Environment-specific value overrides</li>
 <li>Addon promotion workflows</li>
 </ul>
-<h4 id="workloads-repository">Workloads Repository</h4>
+<h4 id="workloads-repository">Workloads Repository<a class="headerlink" href="#workloads-repository" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Application deployment manifests</li>
 <li>Application-specific configurations</li>
 <li>Environment progression definitions</li>
 <li>Application promotion pipelines</li>
 </ul>
-<h4 id="clusters-repository">Clusters Repository</h4>
+<h4 id="clusters-repository">Clusters Repository<a class="headerlink" href="#clusters-repository" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Cluster-specific configurations</li>
 <li>Environment definitions</li>
 <li>Resource quotas and limits</li>
 <li>Cluster policies and governance</li>
 </ul>
-<h3 id="gitops-promotion-workflows"><strong>GitOps Promotion Workflows</strong></h3>
+<h3 id="gitops-promotion-workflows"><strong>GitOps Promotion Workflows</strong><a class="headerlink" href="#gitops-promotion-workflows" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca implements sophisticated promotion workflows using the integrated toolchain:</p>
-<h4 id="development-to-staging-promotion"><strong>Development to Staging Promotion</strong></h4>
+<h4 id="development-to-staging-promotion"><strong>Development to Staging Promotion</strong><a class="headerlink" href="#development-to-staging-promotion" title="Permanent link">&para;</a></h4>
 <ol>
 <li><strong>Image Update Detection</strong>: ArgoCD Image Updater monitors for new images</li>
 <li><strong>Automatic Deployment</strong>: New images automatically deployed to development</li>
@@ -2388,7 +2400,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Kargo Promotion</strong>: Automatic promotion to staging upon successful validation</li>
 <li><strong>GitOps Promoter</strong>: Updates staging environment configurations</li>
 </ol>
-<h4 id="staging-to-production-promotion"><strong>Staging to Production Promotion</strong></h4>
+<h4 id="staging-to-production-promotion"><strong>Staging to Production Promotion</strong><a class="headerlink" href="#staging-to-production-promotion" title="Permanent link">&para;</a></h4>
 <ol>
 <li><strong>Manual Approval</strong>: Human approval required for production promotion</li>
 <li><strong>Security Validation</strong>: Additional security scans and compliance checks</li>
@@ -2396,8 +2408,8 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Progressive Deployment</strong>: Canary or blue-green deployment strategies</li>
 <li><strong>Monitoring Integration</strong>: Continuous monitoring during promotion</li>
 </ol>
-<h3 id="configuration-examples"><strong>Configuration Examples</strong></h3>
-<h4 id="argocd-applicationset-for-multi-environment-deployment"><strong>ArgoCD ApplicationSet for Multi-Environment Deployment</strong></h4>
+<h3 id="configuration-examples"><strong>Configuration Examples</strong><a class="headerlink" href="#configuration-examples" title="Permanent link">&para;</a></h3>
+<h4 id="argocd-applicationset-for-multi-environment-deployment"><strong>ArgoCD ApplicationSet for Multi-Environment Deployment</strong><a class="headerlink" href="#argocd-applicationset-for-multi-environment-deployment" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ApplicationSet</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2430,7 +2442,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="w">          </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">          </span><span class="nt">selfHeal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h4 id="kargo-project-configuration"><strong>Kargo Project Configuration</strong></h4>
+<h4 id="kargo-project-configuration"><strong>Kargo Project Configuration</strong><a class="headerlink" href="#kargo-project-configuration" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kargo.akuity.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Project</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2451,8 +2463,8 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">stagingSuccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">complianceCheck</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h3 id="integration-with-platform-components"><strong>Integration with Platform Components</strong></h3>
-<h4 id="observability-integration"><strong>Observability Integration</strong></h4>
+<h3 id="integration-with-platform-components"><strong>Integration with Platform Components</strong><a class="headerlink" href="#integration-with-platform-components" title="Permanent link">&para;</a></h3>
+<h4 id="observability-integration"><strong>Observability Integration</strong><a class="headerlink" href="#observability-integration" title="Permanent link">&para;</a></h4>
 <p>GitOps operations are fully integrated with DoKa Seca's observability stack:</p>
 <ul>
 <li><strong>Grafana Dashboards</strong>: GitOps deployment metrics and trends</li>
@@ -2460,7 +2472,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Alert Manager</strong>: Automated alerts for deployment failures</li>
 <li><strong>Victoria Metrics</strong>: Long-term storage of GitOps metrics</li>
 </ul>
-<h4 id="security-integration"><strong>Security Integration</strong></h4>
+<h4 id="security-integration"><strong>Security Integration</strong><a class="headerlink" href="#security-integration" title="Permanent link">&para;</a></h4>
 <p>GitOps workflows incorporate security best practices:</p>
 <ul>
 <li><strong>Kyverno Policies</strong>: Policy validation for GitOps deployments</li>
@@ -2468,7 +2480,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>RBAC Controls</strong>: Fine-grained access control for GitOps operations</li>
 <li><strong>Audit Logging</strong>: Complete audit trail of all GitOps activities</li>
 </ul>
-<h4 id="compliance-integration"><strong>Compliance Integration</strong></h4>
+<h4 id="compliance-integration"><strong>Compliance Integration</strong><a class="headerlink" href="#compliance-integration" title="Permanent link">&para;</a></h4>
 <p>Automated compliance checking throughout the GitOps pipeline:</p>
 <ul>
 <li><strong>Policy Validation</strong>: Automated policy compliance checking</li>
@@ -2476,8 +2488,8 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Approval Workflows</strong>: Required approvals for sensitive environments</li>
 <li><strong>Documentation</strong>: Automated documentation of promotion decisions</li>
 </ul>
-<h2 id="best-practices">Best Practices</h2>
-<h3 id="repository-management"><strong>Repository Management</strong></h3>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="repository-management"><strong>Repository Management</strong><a class="headerlink" href="#repository-management" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Clear Structure</strong>: Organize repositories with clear separation of concerns</li>
 <li><strong>Branch Strategy</strong>: Use appropriate branching strategies for environments</li>
@@ -2485,7 +2497,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Backup Strategy</strong>: Regular backups of Git repositories</li>
 <li><strong>Documentation</strong>: Maintain comprehensive GitOps documentation</li>
 </ol>
-<h3 id="deployment-strategies"><strong>Deployment Strategies</strong></h3>
+<h3 id="deployment-strategies"><strong>Deployment Strategies</strong><a class="headerlink" href="#deployment-strategies" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Progressive Delivery</strong>: Use progressive deployment strategies</li>
 <li><strong>Health Checks</strong>: Implement comprehensive health validation</li>
@@ -2493,7 +2505,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Monitoring</strong>: Continuous monitoring during deployments</li>
 <li><strong>Testing</strong>: Automated testing at each stage</li>
 </ol>
-<h3 id="security-practices"><strong>Security Practices</strong></h3>
+<h3 id="security-practices"><strong>Security Practices</strong><a class="headerlink" href="#security-practices" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Image Scanning</strong>: Automated vulnerability scanning</li>
 <li><strong>Policy Enforcement</strong>: Automated policy validation</li>
@@ -2501,8 +2513,8 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li><strong>Access Logging</strong>: Complete audit trails</li>
 <li><strong>Approval Gates</strong>: Required approvals for production</li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="common-issues"><strong>Common Issues</strong></h3>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues"><strong>Common Issues</strong><a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Application Sync Failures</strong>:</p>
 <ul>
 <li>Check Git repository accessibility</li>
@@ -2524,7 +2536,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 <li>Review approval requirements</li>
 <li>Validate target environment health</li>
 </ul>
-<h3 id="monitoring-and-alerting"><strong>Monitoring and Alerting</strong></h3>
+<h3 id="monitoring-and-alerting"><strong>Monitoring and Alerting</strong><a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca provides comprehensive monitoring for GitOps operations:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Example Prometheus alert for GitOps failures</span>
 <span class="nt">groups</span><span class="p">:</span>
@@ -2567,7 +2579,7 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 18, 2025 20:58:10 UTC"><span class="timeago" datetime="2025-07-18T20:58:10+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 18, 2025 20:58:10 UTC">2025-07-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 18, 2025 21:25:41 UTC"><span class="timeago" datetime="2025-07-18T21:25:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 18, 2025 21:25:41 UTC">2025-07-18</span>
   </span>
 
     
@@ -2709,6 +2721,8 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

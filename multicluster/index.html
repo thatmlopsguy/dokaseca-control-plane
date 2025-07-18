@@ -1476,11 +1476,11 @@
   
 
 
-<h1 id="multi-cluster">Multi cluster</h1>
+<h1 id="multi-cluster">Multi cluster<a class="headerlink" href="#multi-cluster" title="Permanent link">&para;</a></h1>
 <p>Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience. In this project, we use one cluster per environment: <strong>dev</strong>, <strong>stg</strong>, and <strong>prod</strong>. This approach provides clear separation and reduces blast radius between environments.</p>
-<h2 id="pets-vs-cattle">Pets vs Cattle</h2>
+<h2 id="pets-vs-cattle">Pets vs Cattle<a class="headerlink" href="#pets-vs-cattle" title="Permanent link">&para;</a></h2>
 <p>When managing clusters, it's important to treat them as <strong>cattle, not pets</strong>. This means clusters should be reproducible, disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable. This mindset enables automation, scalability, and reliability.</p>
-<h2 id="multi-cluster-topologies">Multi-Cluster Topologies</h2>
+<h2 id="multi-cluster-topologies">Multi-Cluster Topologies<a class="headerlink" href="#multi-cluster-topologies" title="Permanent link">&para;</a></h2>
 <p>There are several ways to organize and connect multiple Kubernetes clusters:</p>
 <ul>
 <li><strong>Standalone/Distributed:</strong> Each cluster operates independently, with its own control plane and management. This is simple and works well for clear environment separation (as in our current setup).</li>
@@ -1489,45 +1489,45 @@
 <blockquote>
 <p><strong>Note:</strong> Currently, we use the standalone/distributed topology with one cluster per environment. Future enhancements may explore centralized management for advanced use cases.</p>
 </blockquote>
-<h2 id="gitops-bridge-topologies">GitOps Bridge Topologies</h2>
+<h2 id="gitops-bridge-topologies">GitOps Bridge Topologies<a class="headerlink" href="#gitops-bridge-topologies" title="Permanent link">&para;</a></h2>
 <p>When using GitOps to manage multiple clusters, there are two main approaches:</p>
 <ul>
 <li><strong>Standalone/Distributed GitOps:</strong> Each cluster has its own GitOps controller (e.g., Argo CD or Flux), managing only its resources. This matches our current topology and is simple to operate.</li>
 <li><strong>Centralized (Hub/Spoke) GitOps:</strong> A central GitOps controller manages resources across multiple clusters. This can enable global policies, shared services, and easier cross-cluster coordination, but requires careful RBAC and security design.</li>
 </ul>
-<h2 id="cluster-creation-and-management">Cluster Creation and Management</h2>
+<h2 id="cluster-creation-and-management">Cluster Creation and Management<a class="headerlink" href="#cluster-creation-and-management" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca is planning to enhance multi-cluster capabilities through automated cluster provisioning and management using
 two complementary approaches: Cluster API with KRO, and Crossplane.</p>
-<h3 id="cluster-api-capi">Cluster API (CAPI)</h3>
+<h3 id="cluster-api-capi">Cluster API (CAPI)<a class="headerlink" href="#cluster-api-capi" title="Permanent link">&para;</a></h3>
 <p><a href="https://cluster-api.sigs.k8s.io/">Cluster API</a> provides declarative APIs and tooling to simplify provisioning, upgrading,
 and operating multiple Kubernetes clusters.</p>
-<h4 id="planned-implementation">Planned Implementation</h4>
+<h4 id="planned-implementation">Planned Implementation<a class="headerlink" href="#planned-implementation" title="Permanent link">&para;</a></h4>
 <p>DoKa Seca will utilize Cluster API for:</p>
 <ul>
 <li><strong>Infrastructure-agnostic cluster creation:</strong> Using CAPI providers for AWS, Azure, GCP, and on-premises (via vSphere and bare metal)</li>
 <li><strong>Standardized cluster templates:</strong> Creating reusable cluster blueprints with pre-configured settings for each environment</li>
 <li><strong>Lifecycle management:</strong> Enabling seamless upgrades and scaling operations across clusters</li>
 </ul>
-<h3 id="kro-kubernetes-resource-orchestration">KRO (Kubernetes Resource Orchestration)</h3>
+<h3 id="kro-kubernetes-resource-orchestration">KRO (Kubernetes Resource Orchestration)<a class="headerlink" href="#kro-kubernetes-resource-orchestration" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/kro-project">KRO</a> will be used to simplify cross-cluster resource management, enabling DoKa Seca to:</p>
 <ul>
 <li><strong>Coordinate multi-cluster deployments:</strong> Manage application lifecycles across cluster boundaries</li>
 <li><strong>Handle dependencies between clusters:</strong> Ensure proper sequencing of resource creation</li>
 <li><strong>Implement advanced rollout strategies:</strong> Control the deployment flow across multiple environments</li>
 </ul>
-<h4 id="planned-integration">Planned Integration</h4>
+<h4 id="planned-integration">Planned Integration<a class="headerlink" href="#planned-integration" title="Permanent link">&para;</a></h4>
 <p>KRO will work alongside ArgoCD to provide more sophisticated orchestration between clusters, especially for complex application
 topologies spanning multiple clusters.</p>
-<h3 id="crossplane">Crossplane</h3>
+<h3 id="crossplane">Crossplane<a class="headerlink" href="#crossplane" title="Permanent link">&para;</a></h3>
 <p><a href="https://www.crossplane.io/">Crossplane</a> will enable DoKa Seca to define and use higher-level abstractions for both
 infrastructure and applications, making it easier to manage complex deployments.</p>
-<h4 id="planned-capabilities">Planned Capabilities</h4>
+<h4 id="planned-capabilities">Planned Capabilities<a class="headerlink" href="#planned-capabilities" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Infrastructure provisioning:</strong> Create cloud resources (VPCs, databases, etc.) alongside Kubernetes clusters</li>
 <li><strong>Composition of complex resources:</strong> Define reusable templates for complete application stacks</li>
 <li><strong>Self-service platform:</strong> Allow teams to provision environments via simple custom resources</li>
 </ul>
-<h2 id="integration-strategy">Integration Strategy</h2>
+<h2 id="integration-strategy">Integration Strategy<a class="headerlink" href="#integration-strategy" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca plans to integrate these tools in a complementary fashion:</p>
 <ol>
 <li><strong>Cluster API</strong> will handle the core cluster provisioning and lifecycle management</li>
@@ -1536,7 +1536,7 @@ infrastructure and applications, making it easier to manage complex deployments.
 </ol>
 <p>The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
 using Cluster API, with KRO and Crossplane capabilities being integrated in subsequent phases.</p>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd">Building a Bridge between Terraform and ArgoCD</a></li>
 <li><a href="https://cluster-api.sigs.k8s.io/introduction.html">Cluster API Documentation</a></li>
@@ -1705,6 +1705,8 @@ using Cluster API, with KRO and Crossplane capabilities being integrated in subs
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

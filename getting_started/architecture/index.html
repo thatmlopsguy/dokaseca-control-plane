@@ -1544,34 +1544,34 @@
   
 
 
-<h1 id="doka-seca-architecture">DoKa Seca Architecture</h1>
+<h1 id="doka-seca-architecture">DoKa Seca Architecture<a class="headerlink" href="#doka-seca-architecture" title="Permanent link">&para;</a></h1>
 <p><img alt="DoKa Seca Architecture" src="../../assets/figures/diagrams/architecture.drawio.png" /></p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a controlled, isolated environment where complete cloud-native platforms can be rapidly assembled, configured, and tested. The architecture follows modern platform engineering principles with a strong emphasis on GitOps, Infrastructure as Code, and automated platform bootstrapping.</p>
-<h2 id="core-architecture-principles">Core Architecture Principles</h2>
-<h3 id="1-dry-dock-pattern">1. <strong>Dry Dock Pattern</strong></h3>
+<h2 id="core-architecture-principles">Core Architecture Principles<a class="headerlink" href="#core-architecture-principles" title="Permanent link">&para;</a></h2>
+<h3 id="1-dry-dock-pattern">1. <strong>Dry Dock Pattern</strong><a class="headerlink" href="#1-dry-dock-pattern" title="Permanent link">&para;</a></h3>
 <p>Just as ships are built and maintained in dry docks, DoKa Seca creates isolated local environments where entire Kubernetes platforms can be constructed with all necessary tooling and infrastructure readily available.</p>
-<h3 id="2-gitops-first-design">2. <strong>GitOps-First Design</strong></h3>
+<h3 id="2-gitops-first-design">2. <strong>GitOps-First Design</strong><a class="headerlink" href="#2-gitops-first-design" title="Permanent link">&para;</a></h3>
 <p>All platform configuration, application deployments, and infrastructure changes are managed through Git repositories, ensuring reproducibility, auditability, and collaborative development.</p>
-<h3 id="3-opinionated-platform-stack">3. <strong>Opinionated Platform Stack</strong></h3>
+<h3 id="3-opinionated-platform-stack">3. <strong>Opinionated Platform Stack</strong><a class="headerlink" href="#3-opinionated-platform-stack" title="Permanent link">&para;</a></h3>
 <p>Provides curated, production-ready components that work together seamlessly, reducing decision fatigue and accelerating time-to-productivity.</p>
-<h2 id="high-level-architecture">High-Level Architecture</h2>
+<h2 id="high-level-architecture">High-Level Architecture<a class="headerlink" href="#high-level-architecture" title="Permanent link">&para;</a></h2>
 <p>The DoKa Seca platform consists of several interconnected layers:</p>
-<div class="highlight"><pre><span></span><code>graph TB
+<pre class="mermaid"><code>graph TB
     Dev[Developer Workstation] --&gt; TF[Terraform/OpenTofu]
     TF --&gt; Kind[Kind Cluster]
     Kind --&gt; GB[GitOps Bridge]
     GB --&gt; ArgoCD[ArgoCD]
     ArgoCD --&gt; Apps[Platform Applications]
 
-    subgraph &quot;Local Environment&quot;
+    subgraph "Local Environment"
         Kind
         GB
         ArgoCD
         Apps
     end
 
-    subgraph &quot;GitOps Repositories&quot;
+    subgraph "GitOps Repositories"
         AR[Addons Repo]
         CR[Clusters Repo]
         WR[Workloads Repo]
@@ -1581,11 +1581,10 @@
     ArgoCD --&gt; AR
     ArgoCD --&gt; CR
     ArgoCD --&gt; WR
-    ArgoCD --&gt; RR
-</code></pre></div>
-<h2 id="platform-components">Platform Components</h2>
-<h3 id="infrastructure-layer">Infrastructure Layer</h3>
-<h4 id="kind-kubernetes-in-docker"><strong>Kind (Kubernetes in Docker)</strong></h4>
+    ArgoCD --&gt; RR</code></pre>
+<h2 id="platform-components">Platform Components<a class="headerlink" href="#platform-components" title="Permanent link">&para;</a></h2>
+<h3 id="infrastructure-layer">Infrastructure Layer<a class="headerlink" href="#infrastructure-layer" title="Permanent link">&para;</a></h3>
+<h4 id="kind-kubernetes-in-docker"><strong>Kind (Kubernetes in Docker)</strong><a class="headerlink" href="#kind-kubernetes-in-docker" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Purpose</strong>: Provides the foundational Kubernetes runtime</li>
 <li><strong>Configuration</strong>: Multi-node clusters with custom networking</li>
@@ -1595,20 +1594,20 @@
 <li>Ingress controller support</li>
 <li>Load balancer simulation</li>
 </ul>
-<h4 id="terraformopentofu"><strong>Terraform/OpenTofu</strong></h4>
+<h4 id="terraformopentofu"><strong>Terraform/OpenTofu</strong><a class="headerlink" href="#terraformopentofu" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Purpose</strong>: Infrastructure as Code orchestration</li>
 <li><strong>Scope</strong>: Cluster provisioning, GitOps bridge configuration, addon management</li>
 <li><strong>Workspaces</strong>: Environment-specific configurations (dev, staging, prod)</li>
 </ul>
-<h3 id="gitops-layer">GitOps Layer</h3>
-<h4 id="gitops-bridge"><strong>GitOps Bridge</strong></h4>
+<h3 id="gitops-layer">GitOps Layer<a class="headerlink" href="#gitops-layer" title="Permanent link">&para;</a></h3>
+<h4 id="gitops-bridge"><strong>GitOps Bridge</strong><a class="headerlink" href="#gitops-bridge" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Purpose</strong>: Connects infrastructure provisioning with GitOps workflows</li>
 <li><strong>Function</strong>: Injects cluster metadata and addon configurations into ArgoCD</li>
 <li><strong>Metadata</strong>: Cluster information, addon enablement flags, repository references</li>
 </ul>
-<h4 id="argocd"><strong>ArgoCD</strong></h4>
+<h4 id="argocd"><strong>ArgoCD</strong><a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Purpose</strong>: GitOps continuous delivery engine</li>
 <li><strong>Pattern</strong>: App of Apps pattern for hierarchical application management</li>
@@ -1618,8 +1617,8 @@
 <li>Environment-specific application sets</li>
 <li>Drift detection and remediation</li>
 </ul>
-<h3 id="application-layer">Application Layer</h3>
-<h4 id="platform-applications"><strong>Platform Applications</strong></h4>
+<h3 id="application-layer">Application Layer<a class="headerlink" href="#application-layer" title="Permanent link">&para;</a></h3>
+<h4 id="platform-applications"><strong>Platform Applications</strong><a class="headerlink" href="#platform-applications" title="Permanent link">&para;</a></h4>
 <p>The platform includes several categories of applications:</p>
 <p><strong>Observability Stack</strong></p>
 <ul>
@@ -1811,6 +1810,8 @@
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

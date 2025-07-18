@@ -1892,11 +1892,11 @@
   
 
 
-<h1 id="external-secrets-operator-multi-tenancy-configuration">External Secrets Operator Multi-Tenancy Configuration</h1>
+<h1 id="external-secrets-operator-multi-tenancy-configuration">External Secrets Operator Multi-Tenancy Configuration<a class="headerlink" href="#external-secrets-operator-multi-tenancy-configuration" title="Permanent link">&para;</a></h1>
 <p>Date: 2025-07-11</p>
-<h2 id="status">Status</h2>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>Proposed</p>
-<h2 id="context">Context</h2>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca requires a secure and scalable secret management solution that supports multi-tenancy across different teams and environments. The current challenges include:</p>
 <ul>
 <li><strong>Secret Management Complexity</strong>: Manual secret management across multiple namespaces and environments</li>
@@ -1907,23 +1907,23 @@
 <li><strong>Compliance</strong>: Need for proper audit trails and access controls for secret access</li>
 </ul>
 <p>The platform needs a solution that provides tenant isolation while solving the bootstrap problem of initial secret provisioning.</p>
-<h2 id="decision">Decision</h2>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p>We will implement External Secrets Operator (ESO) with a multi-tenancy configuration using the following architecture:</p>
-<h3 id="1-cluster-level-bootstrap-configuration"><strong>1. Cluster-Level Bootstrap Configuration</strong></h3>
+<h3 id="1-cluster-level-bootstrap-configuration"><strong>1. Cluster-Level Bootstrap Configuration</strong><a class="headerlink" href="#1-cluster-level-bootstrap-configuration" title="Permanent link">&para;</a></h3>
 <p>Deploy a single <strong>Cluster Secret Store</strong> (<code>vault-infra</code>) that has elevated privileges to:</p>
 <ul>
 <li>Access a dedicated bootstrap path in Vault (<code>/secret/platform/bootstrap/</code>)</li>
 <li>Create and manage initial authentication secrets for tenant-specific Secret Stores</li>
 <li>Provide the initial secrets needed to solve the zero secret problem</li>
 </ul>
-<h3 id="2-namespace-level-tenant-isolation"><strong>2. Namespace-Level Tenant Isolation</strong></h3>
+<h3 id="2-namespace-level-tenant-isolation"><strong>2. Namespace-Level Tenant Isolation</strong><a class="headerlink" href="#2-namespace-level-tenant-isolation" title="Permanent link">&para;</a></h3>
 <p>Deploy a <strong>Secret Store</strong> (<code>vault-{tenant-name}</code>) in each tenant namespace that:</p>
 <ul>
 <li>Has access only to tenant-specific paths in Vault (<code>/secret/tenants/{namespace}/</code>)</li>
 <li>Uses authentication credentials provided by the Cluster Secret Store</li>
 <li>Provides isolated secret management for each tenant</li>
 </ul>
-<h3 id="3-vault-path-structure"><strong>3. Vault Path Structure</strong></h3>
+<h3 id="3-vault-path-structure"><strong>3. Vault Path Structure</strong><a class="headerlink" href="#3-vault-path-structure" title="Permanent link">&para;</a></h3>
 <p>Organize Vault secrets with clear tenant boundaries:</p>
 <div class="highlight"><pre><span></span><code>/secret/
 ├── tenants/
@@ -1951,7 +1951,7 @@
 </code></pre></div>
 <p><strong>Note</strong>: The <code>bootstrap/</code> folder is nested under the <code>platform/</code> path, ensuring that only the platform team has access
 to tenant authentication credentials. This maintains the security boundary between platform operations and tenant operations.</p>
-<h3 id="4-naming-conventions"><strong>4. Naming Conventions</strong></h3>
+<h3 id="4-naming-conventions"><strong>4. Naming Conventions</strong><a class="headerlink" href="#4-naming-conventions" title="Permanent link">&para;</a></h3>
 <p>The multi-tenancy configuration uses a consistent naming scheme:</p>
 <ul>
 <li><strong>Cluster Secret Store</strong>: <code>vault-infra</code> - Manages platform-level infrastructure secrets and bootstrap credentials</li>
@@ -1964,8 +1964,8 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <li>Tenant: <code>{tenant-namespace}-role</code> (for tenant-specific access)</li>
 </ul>
 <p>This naming convention ensures clear separation between infrastructure and tenant resources while maintaining consistency across the platform.</p>
-<h3 id="5-implementation-components"><strong>5. Implementation Components</strong></h3>
-<h4 id="cluster-secret-store-configuration"><strong>Cluster Secret Store Configuration</strong></h4>
+<h3 id="5-implementation-components"><strong>5. Implementation Components</strong><a class="headerlink" href="#5-implementation-components" title="Permanent link">&para;</a></h3>
+<h4 id="cluster-secret-store-configuration"><strong>Cluster Secret Store Configuration</strong><a class="headerlink" href="#cluster-secret-store-configuration" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterSecretStore</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1984,7 +1984,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets-infra&quot;</span>
 <span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets&quot;</span>
 </code></pre></div>
-<h4 id="namespace-secret-store-template"><strong>Namespace Secret Store Template</strong></h4>
+<h4 id="namespace-secret-store-template"><strong>Namespace Secret Store Template</strong><a class="headerlink" href="#namespace-secret-store-template" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretStore</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2004,8 +2004,8 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets-${TENANT_NAME}&quot;</span>
 <span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TENANT_NAMESPACE}</span>
 </code></pre></div>
-<h3 id="6-vault-policies-and-roles"><strong>6. Vault Policies and Roles</strong></h3>
-<h4 id="platform-team-policy"><strong>Platform Team Policy</strong></h4>
+<h3 id="6-vault-policies-and-roles"><strong>6. Vault Policies and Roles</strong><a class="headerlink" href="#6-vault-policies-and-roles" title="Permanent link">&para;</a></h3>
+<h4 id="platform-team-policy"><strong>Platform Team Policy</strong><a class="headerlink" href="#platform-team-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Platform team policy for full Vault access</span>
 <span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
@@ -2017,7 +2017,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="bootstrap-policy"><strong>Bootstrap Policy</strong></h4>
+<h4 id="bootstrap-policy"><strong>Bootstrap Policy</strong><a class="headerlink" href="#bootstrap-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bootstrap policy for cluster-wide secret store</span>
 <span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">]</span>
@@ -2026,7 +2026,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="tenant-policy-template"><strong>Tenant Policy Template</strong></h4>
+<h4 id="tenant-policy-template"><strong>Tenant Policy Template</strong><a class="headerlink" href="#tenant-policy-template" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Policy for tenant-specific access</span>
 <span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/tenants/{{identity.entity.aliases.MOUNT_ACCESSOR.metadata.service_account_namespace}}/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
@@ -2035,7 +2035,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="shared-services-policy"><strong>Shared Services Policy</strong></h4>
+<h4 id="shared-services-policy"><strong>Shared Services Policy</strong><a class="headerlink" href="#shared-services-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Policy for shared services (platform team exclusive)</span>
 <span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
@@ -2056,15 +2056,15 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="7-automated-deployment-process"><strong>7. Automated Deployment Process</strong></h3>
+<h3 id="7-automated-deployment-process"><strong>7. Automated Deployment Process</strong><a class="headerlink" href="#7-automated-deployment-process" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Bootstrap Phase</strong>: Deploy <code>vault-infra</code> Cluster Secret Store with elevated Vault access to platform paths</li>
 <li><strong>Credential Generation</strong>: <code>vault-infra</code> creates authentication credentials for each tenant in <code>/secret/platform/bootstrap/</code></li>
 <li><strong>Tenant Deployment</strong>: Deploy namespace-specific <code>vault-{tenant-name}</code> Secret Stores using bootstrap credentials</li>
 <li><strong>Secret Synchronization</strong>: External Secrets begin syncing tenant-specific secrets from <code>/secret/tenants/{namespace}/</code></li>
 </ol>
-<h2 id="consequences">Consequences</h2>
-<h3 id="positive-consequences"><strong>Positive Consequences</strong></h3>
+<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
+<h3 id="positive-consequences"><strong>Positive Consequences</strong><a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Security Isolation</strong>: Each tenant can only access their designated Vault paths</li>
 <li><strong>Zero Secret Resolution</strong>: Bootstrap mechanism solves the initial secret problem</li>
@@ -2074,14 +2074,14 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <li><strong>Disaster Recovery</strong>: Secrets can be restored from Vault during cluster rebuilds</li>
 <li><strong>Compliance</strong>: Proper separation of concerns meets security compliance requirements</li>
 </ul>
-<h3 id="negative-consequences"><strong>Negative Consequences</strong></h3>
+<h3 id="negative-consequences"><strong>Negative Consequences</strong><a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Vault Dependency</strong>: Strong dependency on Vault availability for secret operations</li>
 <li><strong>Bootstrap Security</strong>: Bootstrap credentials become a critical security component</li>
 <li><strong>Monitoring Overhead</strong>: Need to monitor multiple Secret Stores across namespaces</li>
 </ul>
-<h2 id="configuration-examples">Configuration Examples</h2>
-<h3 id="bootstrap-external-secret"><strong>Bootstrap External Secret</strong></h3>
+<h2 id="configuration-examples">Configuration Examples<a class="headerlink" href="#configuration-examples" title="Permanent link">&para;</a></h2>
+<h3 id="bootstrap-external-secret"><strong>Bootstrap External Secret</strong><a class="headerlink" href="#bootstrap-external-secret" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalSecret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2101,7 +2101,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">platform/bootstrap/tenant-a-auth</span>
 <span class="w">      </span><span class="nt">property</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
 </code></pre></div>
-<h3 id="tenant-external-secret"><strong>Tenant External Secret</strong></h3>
+<h3 id="tenant-external-secret"><strong>Tenant External Secret</strong><a class="headerlink" href="#tenant-external-secret" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ExternalSecret</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2125,15 +2125,15 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">      </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tenants/tenant-a/database-credentials</span>
 <span class="w">      </span><span class="nt">property</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
 </code></pre></div>
-<h2 id="monitoring-and-alerting">Monitoring and Alerting</h2>
-<h3 id="key-metrics"><strong>Key Metrics</strong></h3>
+<h2 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h2>
+<h3 id="key-metrics"><strong>Key Metrics</strong><a class="headerlink" href="#key-metrics" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Secret Store connection status</li>
 <li>Secret synchronization success/failure rates</li>
 <li>Vault authentication errors</li>
 <li>Secret refresh latency</li>
 </ul>
-<h3 id="alert-rules"><strong>Alert Rules</strong></h3>
+<h3 id="alert-rules"><strong>Alert Rules</strong><a class="headerlink" href="#alert-rules" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">groups</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets</span>
 <span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
@@ -2153,8 +2153,8 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">secret</span><span class="nv"> </span><span class="s">synchronization&quot;</span>
 </code></pre></div>
-<h2 id="security-considerations">Security Considerations</h2>
-<h3 id="access-control"><strong>Access Control</strong></h3>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
+<h3 id="access-control"><strong>Access Control</strong><a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Platform Team</strong>: Full administrative access to all Vault paths for platform management and operations, including:</li>
 <li>Bootstrap credentials (<code>/secret/platform/bootstrap/</code>) for tenant Secret Store authentication</li>
@@ -2165,35 +2165,35 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <li><strong>Service Accounts</strong>: Minimal required permissions for tenant-specific operations</li>
 <li><strong>Bootstrap Isolation</strong>: Bootstrap credentials stored under platform namespace ensure only the platform team can manage tenant onboarding</li>
 </ul>
-<h3 id="secret-rotation"><strong>Secret Rotation</strong></h3>
+<h3 id="secret-rotation"><strong>Secret Rotation</strong><a class="headerlink" href="#secret-rotation" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Automated rotation of Vault authentication tokens</li>
 <li>Regular rotation of bootstrap credentials</li>
 <li>Monitoring for expired or expiring secrets</li>
 </ul>
-<h3 id="audit-and-compliance"><strong>Audit and Compliance</strong></h3>
+<h3 id="audit-and-compliance"><strong>Audit and Compliance</strong><a class="headerlink" href="#audit-and-compliance" title="Permanent link">&para;</a></h3>
 <ul>
 <li>All secret access logged in Vault audit logs</li>
 <li>External Secrets Operator provides operation metrics</li>
 <li>Regular security reviews of access patterns</li>
 <li>Platform team actions audited through Vault's comprehensive logging</li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="hhttps://external-secrets.io/latest/guides/multi-tenancy/">External Secrets Operator Multi Tenancy Documentation</a></li>
 <li><a href="https://www.vaultproject.io/docs/auth/kubernetes">HashiCorp Vault Kubernetes Auth Method</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/security/multi-tenancy/">Kubernetes Multi-Tenancy Best Practices</a></li>
 </ul>
-<h2 id="related-adrs">Related ADRs</h2>
+<h2 id="related-adrs">Related ADRs<a class="headerlink" href="#related-adrs" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../001-use-architecture-decision-records/">ADR-001: Use Architecture Decision Records</a></li>
 </ul>
-<h2 id="authors">Authors</h2>
+<h2 id="authors">Authors<a class="headerlink" href="#authors" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Platform Engineering Team</li>
 <li>Security Team</li>
 </ul>
-<h2 id="review-history">Review History</h2>
+<h2 id="review-history">Review History<a class="headerlink" href="#review-history" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -2374,6 +2374,8 @@ to tenant authentication credentials. This maintains the security boundary betwe
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

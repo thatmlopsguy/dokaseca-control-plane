@@ -1644,9 +1644,9 @@
   
 
 
-<h1 id="artifact-repositories">Artifact Repositories</h1>
+<h1 id="artifact-repositories">Artifact Repositories<a class="headerlink" href="#artifact-repositories" title="Permanent link">&para;</a></h1>
 <p>DoKa Seca leverages GitHub Container Registry (GHCR) as the default artifact repository for storing and distributing container images, Helm charts, and other platform artifacts. This integration provides seamless CI/CD workflows with built-in security scanning, access control, and package management capabilities.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Artifact repositories are essential components of modern platform engineering, providing centralized storage for container images, Helm charts, and other deployment artifacts. DoKa Seca's integration with GitHub Container Registry offers:</p>
 <ul>
 <li><strong>Unified Platform</strong>: Single platform for source code and artifacts</li>
@@ -1655,8 +1655,8 @@
 <li><strong>Cost Effective</strong>: Free tier for public repositories and competitive pricing for private</li>
 <li><strong>GitOps Ready</strong>: Native integration with GitOps workflows and ArgoCD</li>
 </ul>
-<h2 id="authentication-and-security">Authentication and Security</h2>
-<h3 id="github-personal-access-tokens"><strong>GitHub Personal Access Tokens</strong></h3>
+<h2 id="authentication-and-security">Authentication and Security<a class="headerlink" href="#authentication-and-security" title="Permanent link">&para;</a></h2>
+<h3 id="github-personal-access-tokens"><strong>GitHub Personal Access Tokens</strong><a class="headerlink" href="#github-personal-access-tokens" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca uses GitHub Personal Access Tokens for registry authentication:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create token with required scopes</span>
 <span class="c1"># - read:packages</span>
@@ -1666,7 +1666,7 @@
 <span class="c1"># Login to GHCR</span>
 <span class="nb">echo</span><span class="w"> </span><span class="nv">$GITHUB_TOKEN</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>ghcr.io<span class="w"> </span>-u<span class="w"> </span>USERNAME<span class="w"> </span>--password-stdin
 </code></pre></div>
-<h3 id="kubernetes-secret-management"><strong>Kubernetes Secret Management</strong></h3>
+<h3 id="kubernetes-secret-management"><strong>Kubernetes Secret Management</strong><a class="headerlink" href="#kubernetes-secret-management" title="Permanent link">&para;</a></h3>
 <p>Registry credentials are managed as Kubernetes secrets:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Secret</span>
@@ -1686,8 +1686,8 @@
 <span class="w">      </span><span class="no">}</span>
 <span class="w">    </span><span class="no">}</span>
 </code></pre></div>
-<h2 id="cicd-integration">CI/CD Integration</h2>
-<h3 id="github-actions-workflow"><strong>GitHub Actions Workflow</strong></h3>
+<h2 id="cicd-integration">CI/CD Integration<a class="headerlink" href="#cicd-integration" title="Permanent link">&para;</a></h2>
+<h3 id="github-actions-workflow"><strong>GitHub Actions Workflow</strong><a class="headerlink" href="#github-actions-workflow" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca includes GitHub Actions workflows for automated image building and publishing:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build and Push Container Images</span>
 
@@ -1733,7 +1733,7 @@
 <span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.meta.outputs.labels }}</span>
 <span class="w">        </span><span class="nt">platforms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux/amd64,linux/arm64</span>
 </code></pre></div>
-<h3 id="argocd-image-updater-integration"><strong>ArgoCD Image Updater Integration</strong></h3>
+<h3 id="argocd-image-updater-integration"><strong>ArgoCD Image Updater Integration</strong><a class="headerlink" href="#argocd-image-updater-integration" title="Permanent link">&para;</a></h3>
 <p>Automated image updates in GitOps workflows:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Application</span>
@@ -1746,15 +1746,15 @@
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># ... application specification</span>
 </code></pre></div>
-<h2 id="package-management">Package Management</h2>
-<h3 id="package-visibility-and-access"><strong>Package Visibility and Access</strong></h3>
+<h2 id="package-management">Package Management<a class="headerlink" href="#package-management" title="Permanent link">&para;</a></h2>
+<h3 id="package-visibility-and-access"><strong>Package Visibility and Access</strong><a class="headerlink" href="#package-visibility-and-access" title="Permanent link">&para;</a></h3>
 <p>GHCR supports different visibility levels:</p>
 <ul>
 <li><strong>Public</strong>: Accessible to everyone</li>
 <li><strong>Private</strong>: Restricted to organization members</li>
 <li><strong>Internal</strong>: Accessible to organization and enterprise members</li>
 </ul>
-<h3 id="package-metadata"><strong>Package Metadata</strong></h3>
+<h3 id="package-metadata"><strong>Package Metadata</strong><a class="headerlink" href="#package-metadata" title="Permanent link">&para;</a></h3>
 <p>Rich metadata support for better package management:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Dockerfile with metadata labels</span>
 <span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.title<span class="o">=</span><span class="s2">&quot;DoKa Seca Control Plane&quot;</span>
@@ -1763,7 +1763,7 @@
 <span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.documentation<span class="o">=</span><span class="s2">&quot;https://dokaseca.dev/docs&quot;</span>
 <span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.version<span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span>
 </code></pre></div>
-<h3 id="vulnerability-scanning"><strong>Vulnerability Scanning</strong></h3>
+<h3 id="vulnerability-scanning"><strong>Vulnerability Scanning</strong><a class="headerlink" href="#vulnerability-scanning" title="Permanent link">&para;</a></h3>
 <p>GHCR provides built-in security scanning:</p>
 <ul>
 <li><strong>Automatic Scanning</strong>: All pushed images are automatically scanned</li>
@@ -1771,8 +1771,8 @@
 <li><strong>Security Advisories</strong>: Integration with GitHub security advisories</li>
 <li><strong>Policy Enforcement</strong>: Block deployments of vulnerable images</li>
 </ul>
-<h2 id="best-practices">Best Practices</h2>
-<h3 id="image-management"><strong>Image Management</strong></h3>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="image-management"><strong>Image Management</strong><a class="headerlink" href="#image-management" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Immutable Tags</strong>: Use semantic versioning for production images</li>
 <li><strong>Security Scanning</strong>: Enable vulnerability scanning for all images</li>
@@ -1780,7 +1780,7 @@
 <li><strong>Base Image Updates</strong>: Regularly update base images for security patches</li>
 <li><strong>Image Signing</strong>: Use Cosign for image signing and verification</li>
 </ol>
-<h3 id="repository-organization"><strong>Repository Organization</strong></h3>
+<h3 id="repository-organization"><strong>Repository Organization</strong><a class="headerlink" href="#repository-organization" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Naming Conventions</strong>: Follow consistent naming patterns</li>
 <li><strong>Visibility Settings</strong>: Set appropriate visibility levels for packages</li>
@@ -1788,7 +1788,7 @@
 <li><strong>Documentation</strong>: Maintain comprehensive package documentation</li>
 <li><strong>Lifecycle Policies</strong>: Implement retention policies for old packages</li>
 </ol>
-<h3 id="cicd-integration_1"><strong>CI/CD Integration</strong></h3>
+<h3 id="cicd-integration_1"><strong>CI/CD Integration</strong><a class="headerlink" href="#cicd-integration_1" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Automated Builds</strong>: Trigger builds on code changes</li>
 <li><strong>Testing</strong>: Include security and functionality testing in pipelines</li>
@@ -1796,8 +1796,8 @@
 <li><strong>Rollback</strong>: Maintain rollback capabilities for failed deployments</li>
 <li><strong>Monitoring</strong>: Monitor registry usage and performance</li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="common-issues"><strong>Common Issues</strong></h3>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues"><strong>Common Issues</strong><a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Authentication Failures</strong>:</p>
 <ul>
 <li>Verify GitHub token has required scopes</li>
@@ -1816,15 +1816,15 @@
 <li>Verify disk space for image building</li>
 <li>Validate Dockerfile syntax</li>
 </ul>
-<h3 id="getting-help"><strong>Getting Help</strong></h3>
+<h3 id="getting-help"><strong>Getting Help</strong><a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Review GitHub Container Registry documentation</li>
 <li>Check DoKa Seca registry configuration examples</li>
 <li>Examine platform logs for registry-related errors</li>
 <li>Engage with the platform engineering team for support</li>
 </ul>
-<h2 id="migration-guide">Migration Guide</h2>
-<h3 id="migrating-from-other-registries"><strong>Migrating from Other Registries</strong></h3>
+<h2 id="migration-guide">Migration Guide<a class="headerlink" href="#migration-guide" title="Permanent link">&para;</a></h2>
+<h3 id="migrating-from-other-registries"><strong>Migrating from Other Registries</strong><a class="headerlink" href="#migrating-from-other-registries" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca provides migration tools for transitioning from other container registries:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Migration script example</span>
 <span class="c1">#!/bin/bash</span>
@@ -2000,6 +2000,8 @@
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

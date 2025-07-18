@@ -1718,115 +1718,115 @@
   
 
 
-<h1 id="doka-seca-roadmap">DoKa Seca Roadmap</h1>
+<h1 id="doka-seca-roadmap">DoKa Seca Roadmap<a class="headerlink" href="#doka-seca-roadmap" title="Permanent link">&para;</a></h1>
 <p>This roadmap outlines the planned features, improvements, and integrations for the DoKa Seca platform.
 Items are organized by category and priority, with completed tasks marked with green checkmark.</p>
-<h2 id="platform-infrastructure">Platform Infrastructure</h2>
-<h3 id="observability-monitoring">Observability &amp; Monitoring</h3>
-<ul>
-<li>[ ] <strong>Victoria Logs Integration</strong> - Deploy Victoria Logs via ArgoCD for centralized log aggregation and analysis</li>
-<li>[ ] <strong>Enhanced Metrics Collection</strong> - Expand Prometheus metrics collection for platform components</li>
-<li>[ ] <strong>Custom Dashboards</strong> - Develop additional Grafana dashboards for platform-specific monitoring</li>
+<h2 id="platform-infrastructure">Platform Infrastructure<a class="headerlink" href="#platform-infrastructure" title="Permanent link">&para;</a></h2>
+<h3 id="observability-monitoring">Observability &amp; Monitoring<a class="headerlink" href="#observability-monitoring" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Victoria Logs Integration</strong> - Deploy Victoria Logs via ArgoCD for centralized log aggregation and analysis</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Enhanced Metrics Collection</strong> - Expand Prometheus metrics collection for platform components</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Custom Dashboards</strong> - Develop additional Grafana dashboards for platform-specific monitoring</li>
 </ul>
-<h3 id="gitops-deployment">GitOps &amp; Deployment</h3>
-<ul>
+<h3 id="gitops-deployment">GitOps &amp; Deployment<a class="headerlink" href="#gitops-deployment" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
 <li>✅ <strong>GitOps Promoter</strong> - Automated promotion workflows between environments via Kustomize</li>
 <li>✅ <strong>Atlas Operator</strong> - Database schema management and migrations via GitOps</li>
-<li>[ ] <strong>Advanced GitOps Workflows</strong> - Enhanced promotion strategies and rollback mechanisms</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Advanced GitOps Workflows</strong> - Enhanced promotion strategies and rollback mechanisms</li>
 </ul>
-<h3 id="progressive-delivery">Progressive Delivery</h3>
-<ul>
+<h3 id="progressive-delivery">Progressive Delivery<a class="headerlink" href="#progressive-delivery" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
 <li>✅ <strong>Flagger Integration</strong> - Automated canary deployments and progressive delivery via FluxCD</li>
-<li>[ ] <strong>Traffic Management</strong> - Advanced traffic splitting and A/B testing capabilities</li>
-<li>[ ] <strong>Deployment Strategies</strong> - Blue/green and canary deployment patterns</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Traffic Management</strong> - Advanced traffic splitting and A/B testing capabilities</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Deployment Strategies</strong> - Blue/green and canary deployment patterns</li>
 </ul>
-<h2 id="networking-connectivity">Networking &amp; Connectivity</h2>
-<h3 id="container-network-interface-cni">Container Network Interface (CNI)</h3>
-<ul>
-<li>[ ] <strong>Cilium CNI</strong> - Deploy Cilium for advanced networking, security, and observability</li>
-<li>[ ] <strong>Linkerd Service Mesh</strong> - Install Linkerd via FluxCD for service-to-service communication</li>
-<li>[ ] <strong>Network Policies</strong> - Implement comprehensive network security policies</li>
+<h2 id="networking-connectivity">Networking &amp; Connectivity<a class="headerlink" href="#networking-connectivity" title="Permanent link">&para;</a></h2>
+<h3 id="container-network-interface-cni">Container Network Interface (CNI)<a class="headerlink" href="#container-network-interface-cni" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cilium CNI</strong> - Deploy Cilium for advanced networking, security, and observability</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Linkerd Service Mesh</strong> - Install Linkerd via FluxCD for service-to-service communication</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Network Policies</strong> - Implement comprehensive network security policies</li>
 </ul>
-<h3 id="load-balancing-ingress">Load Balancing &amp; Ingress</h3>
-<ul>
+<h3 id="load-balancing-ingress">Load Balancing &amp; Ingress<a class="headerlink" href="#load-balancing-ingress" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
 <li>✅ <strong>KubeVIP</strong> - Load balancer for Kubernetes control plane via Helm chart</li>
-<li>[ ] <strong>Gateway API</strong> - Install and configure Kubernetes Gateway API for next-generation ingress management</li>
-<li>[ ] <strong>Traefik Gateway</strong> - Install and configure Traefik to test Gateway API functionality</li>
-<li>[ ] <strong>Ingress Optimization</strong> - Performance tuning and SSL/TLS automation</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Gateway API</strong> - Install and configure Kubernetes Gateway API for next-generation ingress management</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Traefik Gateway</strong> - Install and configure Traefik to test Gateway API functionality</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Ingress Optimization</strong> - Performance tuning and SSL/TLS automation</li>
 </ul>
-<h3 id="multi-cluster-networking">Multi-Cluster Networking</h3>
-<ul>
-<li>[ ] <strong>Submariner Integration</strong> - Connect multiple Kind clusters with different CNI configurations</li>
-<li>[ ] <strong>Cross-Cluster Service Discovery</strong> - Enable service discovery across cluster boundaries</li>
-<li>[ ] <strong>Multi-Cluster Security</strong> - Implement security policies for cross-cluster communication</li>
+<h3 id="multi-cluster-networking">Multi-Cluster Networking<a class="headerlink" href="#multi-cluster-networking" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Submariner Integration</strong> - Connect multiple Kind clusters with different CNI configurations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cross-Cluster Service Discovery</strong> - Enable service discovery across cluster boundaries</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Multi-Cluster Security</strong> - Implement security policies for cross-cluster communication</li>
 </ul>
-<h2 id="platform-integrations">Platform Integrations</h2>
-<h3 id="developer-experience">Developer Experience</h3>
-<ul>
-<li>[ ] <strong>Enhanced Backstage Integration</strong> - Improved developer portal with additional plugins</li>
-<li>[ ] <strong>Self-Service Capabilities</strong> - Automated resource provisioning and management</li>
+<h2 id="platform-integrations">Platform Integrations<a class="headerlink" href="#platform-integrations" title="Permanent link">&para;</a></h2>
+<h3 id="developer-experience">Developer Experience<a class="headerlink" href="#developer-experience" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Enhanced Backstage Integration</strong> - Improved developer portal with additional plugins</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Self-Service Capabilities</strong> - Automated resource provisioning and management</li>
 </ul>
-<h3 id="security-compliance">Security &amp; Compliance</h3>
-<ul>
-<li>[ ] <strong>Enhanced Policy Management</strong> - Advanced Kyverno policies for security and compliance</li>
-<li>[ ] <strong>Secret Management</strong> - Implementation of External Secrets Operator with Vault integration</li>
-<li>[ ] <strong>Image Security</strong> - Enhanced container image scanning and vulnerability management</li>
+<h3 id="security-compliance">Security &amp; Compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Enhanced Policy Management</strong> - Advanced Kyverno policies for security and compliance</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Secret Management</strong> - Implementation of External Secrets Operator with Vault integration</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Image Security</strong> - Enhanced container image scanning and vulnerability management</li>
 </ul>
-<h3 id="data-storage">Data &amp; Storage</h3>
-<ul>
-<li>[ ] <strong>Persistent Storage Solutions</strong> - Enhanced storage classes and backup strategies</li>
-<li>[ ] <strong>Database Management</strong> - Automated database provisioning and lifecycle management</li>
-<li>[ ] <strong>Data Pipeline Integration</strong> - Support for data processing and analytics workloads</li>
+<h3 id="data-storage">Data &amp; Storage<a class="headerlink" href="#data-storage" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Persistent Storage Solutions</strong> - Enhanced storage classes and backup strategies</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Database Management</strong> - Automated database provisioning and lifecycle management</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Data Pipeline Integration</strong> - Support for data processing and analytics workloads</li>
 </ul>
-<h2 id="platform-engineering">Platform Engineering</h2>
-<h3 id="infrastructure-as-code">Infrastructure as Code</h3>
-<ul>
-<li>[ ] <strong>Terraform Modules</strong> - Additional reusable Terraform modules for cloud resources</li>
-<li>[ ] <strong>Infrastructure Testing</strong> - Automated testing for infrastructure changes</li>
+<h2 id="platform-engineering">Platform Engineering<a class="headerlink" href="#platform-engineering" title="Permanent link">&para;</a></h2>
+<h3 id="infrastructure-as-code">Infrastructure as Code<a class="headerlink" href="#infrastructure-as-code" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Terraform Modules</strong> - Additional reusable Terraform modules for cloud resources</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Infrastructure Testing</strong> - Automated testing for infrastructure changes</li>
 </ul>
-<h3 id="automation-tooling">Automation &amp; Tooling</h3>
-<ul>
-<li>[ ] <strong>CI/CD Enhancements</strong> - Improved build and deployment pipelines</li>
-<li>[ ] <strong>Quality Gates</strong> - Automated quality checks and security scanning</li>
-<li>[ ] <strong>Documentation Automation</strong> - Automated documentation generation and updates</li>
+<h3 id="automation-tooling">Automation &amp; Tooling<a class="headerlink" href="#automation-tooling" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>CI/CD Enhancements</strong> - Improved build and deployment pipelines</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Quality Gates</strong> - Automated quality checks and security scanning</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Documentation Automation</strong> - Automated documentation generation and updates</li>
 </ul>
-<h3 id="monitoring-operations">Monitoring &amp; Operations</h3>
-<ul>
-<li>[ ] <strong>Enhanced Alerting</strong> - Intelligent alerting with reduced noise and better correlation</li>
-<li>[ ] <strong>Capacity Planning</strong> - Automated resource planning and optimization</li>
-<li>[ ] <strong>Performance Optimization</strong> - Platform performance tuning and optimization</li>
+<h3 id="monitoring-operations">Monitoring &amp; Operations<a class="headerlink" href="#monitoring-operations" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Enhanced Alerting</strong> - Intelligent alerting with reduced noise and better correlation</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Capacity Planning</strong> - Automated resource planning and optimization</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Performance Optimization</strong> - Platform performance tuning and optimization</li>
 </ul>
-<h2 id="future-enhancements">Future Enhancements</h2>
-<h3 id="advanced-features">Advanced Features</h3>
-<ul>
-<li>[ ] <strong>Multi-Tenancy</strong> - Enhanced tenant isolation and resource management</li>
-<li>[ ] <strong>Cost Optimization</strong> - Advanced cost tracking and optimization recommendations</li>
-<li>[ ] <strong>AI/ML Integration</strong> - Support for machine learning workloads and model serving</li>
+<h2 id="future-enhancements">Future Enhancements<a class="headerlink" href="#future-enhancements" title="Permanent link">&para;</a></h2>
+<h3 id="advanced-features">Advanced Features<a class="headerlink" href="#advanced-features" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Multi-Tenancy</strong> - Enhanced tenant isolation and resource management</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cost Optimization</strong> - Advanced cost tracking and optimization recommendations</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>AI/ML Integration</strong> - Support for machine learning workloads and model serving</li>
 </ul>
-<h3 id="ecosystem-integration">Ecosystem Integration</h3>
-<ul>
-<li>[ ] <strong>Cloud Native Tools</strong> - Integration with additional CNCF projects</li>
-<li>[ ] <strong>Vendor Solutions</strong> - Integration with enterprise-grade solutions</li>
-<li>[ ] <strong>Custom Extensions</strong> - Framework for custom platform extensions</li>
+<h3 id="ecosystem-integration">Ecosystem Integration<a class="headerlink" href="#ecosystem-integration" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cloud Native Tools</strong> - Integration with additional CNCF projects</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Vendor Solutions</strong> - Integration with enterprise-grade solutions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Custom Extensions</strong> - Framework for custom platform extensions</li>
 </ul>
-<h2 id="contributing-to-the-roadmap">Contributing to the Roadmap</h2>
+<h2 id="contributing-to-the-roadmap">Contributing to the Roadmap<a class="headerlink" href="#contributing-to-the-roadmap" title="Permanent link">&para;</a></h2>
 <p>We welcome community input on our roadmap! Here's how you can contribute:</p>
-<h3 id="vote-on-features">🗳️ <strong>Vote on Features</strong></h3>
+<h3 id="vote-on-features">🗳️ <strong>Vote on Features</strong><a class="headerlink" href="#vote-on-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Comment on GitHub issues to express interest in specific features</li>
 <li>Participate in community discussions about priorities</li>
 </ul>
-<h3 id="suggest-new-features">💡 <strong>Suggest New Features</strong></h3>
+<h3 id="suggest-new-features">💡 <strong>Suggest New Features</strong><a class="headerlink" href="#suggest-new-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Open GitHub issues with feature requests</li>
 <li>Provide detailed use cases and requirements</li>
 </ul>
-<h3 id="contribute-implementation">🤝 <strong>Contribute Implementation</strong></h3>
+<h3 id="contribute-implementation">🤝 <strong>Contribute Implementation</strong><a class="headerlink" href="#contribute-implementation" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Pick up roadmap items and submit pull requests</li>
 <li>Review the <a href="../contributing/">Contributing Guide</a> for development guidelines</li>
 </ul>
-<h3 id="roadmap-process">📋 <strong>Roadmap Process</strong></h3>
+<h3 id="roadmap-process">📋 <strong>Roadmap Process</strong><a class="headerlink" href="#roadmap-process" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Community Input</strong> - Gather feedback and requirements from users</li>
 <li><strong>Technical Design</strong> - Create Architecture Decision Records (ADRs) for major features</li>
@@ -2000,6 +2000,8 @@ Check back regularly for updates!</p>
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

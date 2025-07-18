@@ -1668,11 +1668,11 @@
   
 
 
-<h1 id="message-streaming-and-event-brokers">Message Streaming and Event Brokers</h1>
+<h1 id="message-streaming-and-event-brokers">Message Streaming and Event Brokers<a class="headerlink" href="#message-streaming-and-event-brokers" title="Permanent link">&para;</a></h1>
 <p>This document provides an overview of the message streaming and event broker options supported in the DoKa Seca.
 We support three major messaging systems via their respective Kubernetes operators: Strimzi (for Apache Kafka),
 NATS, and RabbitMQ.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Messaging systems play a critical role in modern distributed architectures, enabling asynchronous communication, event-driven patterns, and data streaming. DoKa Seca provides support for three complementary messaging systems, each with different strengths:</p>
 <table>
 <thead>
@@ -1704,9 +1704,9 @@ NATS, and RabbitMQ.</p>
 </tr>
 </tbody>
 </table>
-<h2 id="strimzi-apache-kafka">Strimzi (Apache Kafka)</h2>
+<h2 id="strimzi-apache-kafka">Strimzi (Apache Kafka)<a class="headerlink" href="#strimzi-apache-kafka" title="Permanent link">&para;</a></h2>
 <p><a href="https://strimzi.io/">Strimzi</a> provides a way to run an Apache Kafka cluster on Kubernetes using custom resources and operators.</p>
-<h3 id="installation">Installation</h3>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Add the Strimzi Helm repository</span>
 helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>strimzi<span class="w"> </span>https://strimzi.io/charts/
 helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -1717,7 +1717,7 @@ helm<span class="w"> </span>install<span class="w"> </span>strimzi-kafka-operato
 <span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--version<span class="w"> </span><span class="m">0</span>.39.0
 </code></pre></div>
-<h3 id="deploying-a-kafka-cluster">Deploying a Kafka Cluster</h3>
+<h3 id="deploying-a-kafka-cluster">Deploying a Kafka Cluster<a class="headerlink" href="#deploying-a-kafka-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a Kafka cluster using the following Custom Resource:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kafka.strimzi.io/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Kafka</span>
@@ -1765,7 +1765,7 @@ helm<span class="w"> </span>install<span class="w"> </span>strimzi-kafka-operato
 <span class="w">    </span><span class="nt">topicOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">    </span><span class="nt">userOperator</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </code></pre></div>
-<h3 id="creating-topics">Creating Topics</h3>
+<h3 id="creating-topics">Creating Topics<a class="headerlink" href="#creating-topics" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kafka.strimzi.io/v1beta2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KafkaTopic</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1780,7 +1780,7 @@ helm<span class="w"> </span>install<span class="w"> </span>strimzi-kafka-operato
 <span class="w">    </span><span class="nt">retention.ms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">604800000</span>
 <span class="w">    </span><span class="nt">segment.bytes</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1073741824</span>
 </code></pre></div>
-<h3 id="accessing-kafka">Accessing Kafka</h3>
+<h3 id="accessing-kafka">Accessing Kafka<a class="headerlink" href="#accessing-kafka" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Port forward the Kafka service</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>kafka<span class="w"> </span>port-forward<span class="w"> </span>svc/my-kafka-cluster-kafka-bootstrap<span class="w"> </span><span class="m">9092</span>:9092
 
@@ -1790,10 +1790,10 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>kafka<span class="w"> <
 <span class="c1"># Consume messages</span>
 kcat<span class="w"> </span>-b<span class="w"> </span>localhost:9092<span class="w"> </span>-t<span class="w"> </span>my-topic<span class="w"> </span>-C
 </code></pre></div>
-<h2 id="nats">NATS</h2>
+<h2 id="nats">NATS<a class="headerlink" href="#nats" title="Permanent link">&para;</a></h2>
 <p><a href="https://nats.io/">NATS</a> is a simple, secure and high-performance messaging system designed for cloud native applications,
 IoT messaging, and microservices architectures.</p>
-<h3 id="installing-nats-operator">Installing NATS Operator</h3>
+<h3 id="installing-nats-operator">Installing NATS Operator<a class="headerlink" href="#installing-nats-operator" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Add the NATS Helm repository</span>
 helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>nats<span class="w"> </span>https://nats-io.github.io/k8s/helm/charts/
 helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -1803,7 +1803,7 @@ helm<span class="w"> </span>install<span class="w"> </span>nats-operator<span cl
 <span class="w">  </span>--namespace<span class="w"> </span>nats-system<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--create-namespace
 </code></pre></div>
-<h3 id="deploying-a-nats-cluster">Deploying a NATS Cluster</h3>
+<h3 id="deploying-a-nats-cluster">Deploying a NATS Cluster<a class="headerlink" href="#deploying-a-nats-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a NATS cluster with the following manifest:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nats.io/v1alpha2</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NatsCluster</span>
@@ -1827,7 +1827,7 @@ helm<span class="w"> </span>install<span class="w"> </span>nats-operator<span cl
 <span class="w">      </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">standard</span>
 <span class="w">      </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10Gi</span>
 </code></pre></div>
-<h3 id="creating-streams-and-consumers">Creating Streams and Consumers</h3>
+<h3 id="creating-streams-and-consumers">Creating Streams and Consumers<a class="headerlink" href="#creating-streams-and-consumers" title="Permanent link">&para;</a></h3>
 <p>With JetStream enabled, you can create streams and consumers:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Port forward the NATS service</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </span>port-forward<span class="w"> </span>svc/nats-cluster<span class="w"> </span><span class="m">4222</span>:4222
@@ -1853,9 +1853,9 @@ nats<span class="w"> </span>consumer<span class="w"> </span>add<span class="w"> 
 <span class="w">  </span>--max-deliver<span class="o">=</span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--replay<span class="o">=</span>instant
 </code></pre></div>
-<h2 id="rabbitmq">RabbitMQ</h2>
+<h2 id="rabbitmq">RabbitMQ<a class="headerlink" href="#rabbitmq" title="Permanent link">&para;</a></h2>
 <p><a href="https://www.rabbitmq.com/">RabbitMQ</a> is a widely deployed open source message broker that implements several messaging protocols.</p>
-<h3 id="installing-rabbitmq-operator">Installing RabbitMQ Operator</h3>
+<h3 id="installing-rabbitmq-operator">Installing RabbitMQ Operator<a class="headerlink" href="#installing-rabbitmq-operator" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Add the RabbitMQ Helm repository</span>
 helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>bitnami<span class="w"> </span>https://charts.bitnami.com/bitnami
 helm<span class="w"> </span>repo<span class="w"> </span>update
@@ -1863,7 +1863,7 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
 <span class="c1"># Install the RabbitMQ Cluster Operator</span>
 kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml&quot;</span>
 </code></pre></div>
-<h3 id="deploying-a-rabbitmq-cluster">Deploying a RabbitMQ Cluster</h3>
+<h3 id="deploying-a-rabbitmq-cluster">Deploying a RabbitMQ Cluster<a class="headerlink" href="#deploying-a-rabbitmq-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a RabbitMQ cluster using the following manifest:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rabbitmq.com/v1beta1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RabbitmqCluster</span>
@@ -1890,7 +1890,7 @@ kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> <
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterIP</span>
 <span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180</span>
 </code></pre></div>
-<h3 id="creating-vhosts-queues-and-exchanges">Creating Vhosts, Queues, and Exchanges</h3>
+<h3 id="creating-vhosts-queues-and-exchanges">Creating Vhosts, Queues, and Exchanges<a class="headerlink" href="#creating-vhosts-queues-and-exchanges" title="Permanent link">&para;</a></h3>
 <p>After the cluster is deployed, you can create vhosts, queues, exchanges, and bindings using the RabbitMQ management UI or the CLI:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Port forward the RabbitMQ management UI</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>port-forward<span class="w"> </span>svc/rabbitmq-cluster<span class="w"> </span><span class="m">15672</span>:15672
@@ -1914,8 +1914,8 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"
 <span class="w">  </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_USER</span><span class="s2">&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nb">declare</span><span class="w"> </span>exchange<span class="w"> </span><span class="nv">name</span><span class="o">=</span>my-exchange<span class="w"> </span><span class="nv">type</span><span class="o">=</span>topic<span class="w"> </span><span class="nv">vhost</span><span class="o">=</span>my-vhost<span class="w"> </span><span class="nv">durable</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
-<h2 id="integration-with-applications">Integration with Applications</h2>
-<h3 id="application-example-using-kafka">Application Example Using Kafka</h3>
+<h2 id="integration-with-applications">Integration with Applications<a class="headerlink" href="#integration-with-applications" title="Permanent link">&para;</a></h2>
+<h3 id="application-example-using-kafka">Application Example Using Kafka<a class="headerlink" href="#application-example-using-kafka" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1940,7 +1940,7 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KAFKA_TOPIC</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-topic</span>
 </code></pre></div>
-<h3 id="application-example-using-nats">Application Example Using NATS</h3>
+<h3 id="application-example-using-nats">Application Example Using NATS<a class="headerlink" href="#application-example-using-nats" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1965,7 +1965,7 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NATS_SUBJECT</span>
 <span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders.created</span>
 </code></pre></div>
-<h3 id="application-example-using-rabbitmq">Application Example Using RabbitMQ</h3>
+<h3 id="application-example-using-rabbitmq">Application Example Using RabbitMQ<a class="headerlink" href="#application-example-using-rabbitmq" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1998,15 +1998,15 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"
 <span class="w">              </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">rabbitmq-cluster-default-user</span>
 <span class="w">              </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
 </code></pre></div>
-<h2 id="monitoring-and-management">Monitoring and Management</h2>
-<h3 id="accessing-management-uis">Accessing Management UIs</h3>
+<h2 id="monitoring-and-management">Monitoring and Management<a class="headerlink" href="#monitoring-and-management" title="Permanent link">&para;</a></h2>
+<h3 id="accessing-management-uis">Accessing Management UIs<a class="headerlink" href="#accessing-management-uis" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Access RabbitMQ management UI</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>port-forward<span class="w"> </span>svc/rabbitmq-cluster<span class="w"> </span><span class="m">15672</span>:15672
 
 <span class="c1"># Access NATS Dashboard</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </span>port-forward<span class="w"> </span>svc/nats-cluster<span class="w"> </span><span class="m">8222</span>:8222
 </code></pre></div>
-<h2 id="best-practices">Best Practices</h2>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong>Selecting the Right Messaging System</strong>:</li>
 <li>For high-throughput data pipelines: Kafka</li>
@@ -2037,7 +2037,7 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </
 <li>Create Grafana dashboards to monitor throughput, latency, and errors</li>
 <li>Configure alerts for queue depth, consumer lag, and broker health</li>
 </ol>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://strimzi.io/documentation/">Strimzi Documentation</a></li>
 <li><a href="https://kafka.apache.org/documentation/">Apache Kafka Documentation</a></li>
@@ -2209,6 +2209,8 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -1390,7 +1390,7 @@
   <a href="https://github.com/thatmlopsguy/k8s-homelab/actions/workflows/pre-commit.yml"><img src="https://github.com/thatmlopsguy/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg" alt="Pre-commit"></a>
 </div>
 
-<h2 id="introduction">👋 Introduction</h2>
+<h2 id="introduction">👋 Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p>Welcome to <strong>DoKa Seca</strong> - a comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)! The name "DoKa Seca" is a playful Portuguese phrase where "DoKa" incorporates the "K" from Kubernetes (representing the containerized orchestration at the heart of this project), and "Seca" means "dry" - drawing inspiration from the concept of a <strong>dry dock</strong>.</p>
 <p>Just as ships are built, repaired, and maintained in dry docks - controlled, isolated environments where all the necessary infrastructure and tooling are readily available - DoKa Seca provides a "dry dock" for Kubernetes platforms. It creates an isolated, controlled environment where entire cloud-native platforms can be rapidly assembled, configured, and tested before being deployed to production waters.</p>
 <p>DoKa Seca provides an opinionated, production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.</p>
@@ -1436,7 +1436,7 @@ v1.32.4+k0s.0
 $<span class="w"> </span>helm<span class="w"> </span>version
 version.BuildInfo<span class="o">{</span>Version:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitCommit:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitTreeState:<span class="s2">&quot;&quot;</span>,<span class="w"> </span>GoVersion:<span class="s2">&quot;go1.22.7&quot;</span><span class="o">}</span>
 </code></pre></div>
-<h2 id="quick-start">🚀 Quick Start</h2>
+<h2 id="quick-start">🚀 Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deploy control plane cluster</span>
 ./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>apply
 </code></pre></div>
@@ -1499,27 +1499,27 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
 <span class="w">  </span><span class="nt">&quot;kubernetes_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.31.2&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="destroy-infrastructure">💥 Destroy Infrastructure</h2>
+<h2 id="destroy-infrastructure">💥 Destroy Infrastructure<a class="headerlink" href="#destroy-infrastructure" title="Permanent link">&para;</a></h2>
 <p>To tear down all the resources and the kind cluster(s), run the following command:</p>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>clean-infra
 </code></pre></div>
-<h2 id="faq">⚒️ FAQ</h2>
+<h2 id="faq">⚒️ FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
 <p><code>ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"</code></p>
 <p>To increase these limits temporarily run the following commands on the host:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_watches<span class="o">=</span><span class="m">1048576</span>
 sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_instances<span class="o">=</span><span class="m">8192</span>
 </code></pre></div>
 <p>Source: <a href="https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files">Pod errors due to “too many open files”</a></p>
-<h2 id="resources">📚 Resources</h2>
+<h2 id="resources">📚 Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
 <p>User documentation can be found on our <a href="https://thatmlopsguy.github.io/dokaseca-control-plane/">user docs site</a>.</p>
-<h2 id="contributing">🤝 Contributing</h2>
+<h2 id="contributing">🤝 Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <p>All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
 read our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
-<h2 id="roadmap">🗺️ Roadmap</h2>
+<h2 id="roadmap">🗺️ Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
 <p>Want to know about the features to come? Check out the project <a href="ROADMAP.md">roadmap</a> for more information.</p>
-<h2 id="license">🔖 License</h2>
+<h2 id="license">🔖 License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca is licensed under <a href="LICENSE">Apache License, Version 2.0</a></p>
-<h2 id="note">⚠️ Note</h2>
+<h2 id="note">⚠️ Note<a class="headerlink" href="#note" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca is still in relatively early development. At this time, <strong>do not use</strong> Doka Seca for critical production systems.</p>
 
 
@@ -1667,6 +1667,8 @@ read our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
         <script src="js/timeago.min.js"></script>
       
         <script src="js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -1556,11 +1556,11 @@
   
 
 
-<h1 id="argocd-hub-and-spoke-configuration-for-multi-cluster-gitops">ArgoCD Hub and Spoke Configuration for Multi-Cluster GitOps</h1>
+<h1 id="argocd-hub-and-spoke-configuration-for-multi-cluster-gitops">ArgoCD Hub and Spoke Configuration for Multi-Cluster GitOps<a class="headerlink" href="#argocd-hub-and-spoke-configuration-for-multi-cluster-gitops" title="Permanent link">&para;</a></h1>
 <p>Date: 2025-07-11</p>
-<h2 id="status">Status</h2>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
 <p>Accepted</p>
-<h2 id="context">Context</h2>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca requires a scalable GitOps solution to manage applications and configurations across multiple Kubernetes clusters in different environments (dev, staging, production) and serving different teams. The platform needs to support:</p>
 <ul>
 <li><strong>Multi-Cluster Management</strong>: Centralized management of multiple Kubernetes clusters</li>
@@ -1576,9 +1576,9 @@
 <li><strong>Hub and Spoke</strong>: Central ArgoCD hub with satellite clusters registered as remote targets</li>
 </ol>
 <p>Each approach has different trade-offs in terms of complexity, security, and operational overhead.</p>
-<h2 id="decision">Decision</h2>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca will implement ArgoCD in a <strong>hub and spoke configuration</strong> with the following architecture:</p>
-<h3 id="1-hub-cluster-control-plane"><strong>1. Hub Cluster (Control Plane)</strong></h3>
+<h3 id="1-hub-cluster-control-plane"><strong>1. Hub Cluster (Control Plane)</strong><a class="headerlink" href="#1-hub-cluster-control-plane" title="Permanent link">&para;</a></h3>
 <p>Deploy a central ArgoCD instance in the control-plane cluster that acts as the management hub:</p>
 <ul>
 <li><strong>Central GitOps Controller</strong>: Single point of GitOps orchestration</li>
@@ -1586,7 +1586,7 @@
 <li><strong>Application Catalog</strong>: Centralized application definitions and policies</li>
 <li><strong>Monitoring Dashboard</strong>: Unified view of all cluster deployments</li>
 </ul>
-<h3 id="2-spoke-clusters-workload-clusters"><strong>2. Spoke Clusters (Workload Clusters)</strong></h3>
+<h3 id="2-spoke-clusters-workload-clusters"><strong>2. Spoke Clusters (Workload Clusters)</strong><a class="headerlink" href="#2-spoke-clusters-workload-clusters" title="Permanent link">&para;</a></h3>
 <p>Register workload clusters as remote targets with the hub:</p>
 <ul>
 <li><strong>workloads-dev</strong>: Development environment cluster with team-specific namespaces</li>
@@ -1600,7 +1600,7 @@
 <li><strong>team-c</strong>: Team C's namespaces across environments</li>
 <li><strong>Namespace-level RBAC</strong>: Team isolation through Kubernetes RBAC and network policies</li>
 </ul>
-<h3 id="3-gitops-repository-structure"><strong>3. GitOps Repository Structure</strong></h3>
+<h3 id="3-gitops-repository-structure"><strong>3. GitOps Repository Structure</strong><a class="headerlink" href="#3-gitops-repository-structure" title="Permanent link">&para;</a></h3>
 <p>Organize Git repositories to support the hub and spoke model with namespace-based team isolation:</p>
 <p><strong>Workloads Repository (DoKa-seca-workloads):</strong></p>
 <div class="highlight"><pre><span></span><code>├── environments/
@@ -1621,7 +1621,7 @@
 │
 └── kustomize/                   # Kustomize overlays for environments
 </code></pre></div>
-<h3 id="4-security-model"><strong>4. Security Model</strong></h3>
+<h3 id="4-security-model"><strong>4. Security Model</strong><a class="headerlink" href="#4-security-model" title="Permanent link">&para;</a></h3>
 <p>Implement proper security boundaries:</p>
 <ul>
 <li><strong>Service Accounts</strong>: Dedicated service accounts per cluster with minimal required permissions</li>
@@ -1629,15 +1629,15 @@
 <li><strong>Network Policies</strong>: Secure communication between hub and spokes</li>
 <li><strong>Secret Management</strong>: External Secrets Operator with Vault integration</li>
 </ul>
-<h3 id="5-application-management"><strong>5. Application Management</strong></h3>
+<h3 id="5-application-management"><strong>5. Application Management</strong><a class="headerlink" href="#5-application-management" title="Permanent link">&para;</a></h3>
 <p>Use the "App of Apps" pattern for scalable application management:</p>
 <ul>
 <li><strong>Root Applications</strong>: Hub manages high-level application definitions</li>
 <li><strong>Team Applications</strong>: Teams manage their specific application configurations</li>
 <li><strong>Platform Applications</strong>: Shared infrastructure components managed centrally</li>
 </ul>
-<h2 id="consequences">Consequences</h2>
-<h3 id="positive-consequences"><strong>Positive Consequences</strong></h3>
+<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
+<h3 id="positive-consequences"><strong>Positive Consequences</strong><a class="headerlink" href="#positive-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Centralized Management</strong>: Single pane of glass for all GitOps operations across clusters</li>
 <li><strong>Operational Efficiency</strong>: Reduced operational overhead compared to multiple ArgoCD instances</li>
@@ -1648,7 +1648,7 @@
 <li><strong>Disaster Recovery</strong>: Hub cluster can be restored independently of workload clusters</li>
 <li><strong>Cost Optimization</strong>: Single ArgoCD deployment reduces resource overhead</li>
 </ul>
-<h3 id="negative-consequences"><strong>Negative Consequences</strong></h3>
+<h3 id="negative-consequences"><strong>Negative Consequences</strong><a class="headerlink" href="#negative-consequences" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Single Point of Failure</strong>: Hub cluster failure affects GitOps operations across all clusters</li>
 <li><strong>Network Dependency</strong>: Requires stable network connectivity between hub and spokes</li>
@@ -1657,7 +1657,7 @@
 <li><strong>Security Scope</strong>: Compromise of hub cluster could affect all managed clusters</li>
 <li><strong>Troubleshooting</strong>: Cross-cluster issues may be more complex to diagnose</li>
 </ul>
-<h3 id="mitigation-strategies"><strong>Mitigation Strategies</strong></h3>
+<h3 id="mitigation-strategies"><strong>Mitigation Strategies</strong><a class="headerlink" href="#mitigation-strategies" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Hub High Availability</strong>: Deploy ArgoCD hub in HA configuration with multiple replicas</li>
 <li><strong>Network Resilience</strong>: Implement robust networking with failover mechanisms</li>
@@ -1666,8 +1666,8 @@
 <li><strong>Documentation</strong>: Maintain detailed runbooks for troubleshooting cross-cluster issues</li>
 <li><strong>Backup Strategy</strong>: Regular backups of ArgoCD configurations and Git repositories</li>
 </ul>
-<h2 id="implementation-details">Implementation Details</h2>
-<h3 id="team-project-configuration"><strong>Team Project Configuration</strong></h3>
+<h2 id="implementation-details">Implementation Details<a class="headerlink" href="#implementation-details" title="Permanent link">&para;</a></h2>
+<h3 id="team-project-configuration"><strong>Team Project Configuration</strong><a class="headerlink" href="#team-project-configuration" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AppProject</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1687,7 +1687,7 @@
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">group</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
 </code></pre></div>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://codefresh.io/blog/argocd-clusters-labels-with-apps/">Distribute Your Argo CD Applications to Different Kubernetes Clusters Using Application Sets</a></li>
 <li><a href="https://www.slideshare.net/slideshow/amazon-eks-multicluster-gitopsbridgepdf/263198295">Amazon EKS multi-cluster gitops-bridge</a></li>
@@ -1695,12 +1695,12 @@
 <li><a href="../../gitops/">DoKa Seca GitOps Documentation</a></li>
 <li><a href="../../getting_started/architecture/">DoKa Seca Multi-Cluster Architecture</a></li>
 </ul>
-<h2 id="authors">Authors</h2>
+<h2 id="authors">Authors<a class="headerlink" href="#authors" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Platform Engineering Team</li>
 <li>DevOps Team</li>
 </ul>
-<h2 id="review-history">Review History</h2>
+<h2 id="review-history">Review History<a class="headerlink" href="#review-history" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -1881,6 +1881,8 @@
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

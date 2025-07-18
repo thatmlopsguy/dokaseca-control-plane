@@ -1596,9 +1596,9 @@
   
 
 
-<h1 id="identity-and-access-management">Identity and Access Management</h1>
+<h1 id="identity-and-access-management">Identity and Access Management<a class="headerlink" href="#identity-and-access-management" title="Permanent link">&para;</a></h1>
 <p>This document describes the identity and access management (IAM) setup for the DoKa Seca platform, including Keycloak integration with various platform components.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The DoKa Seca platform uses Keycloak as the central identity provider (IdP) to provide:</p>
 <ul>
 <li><strong>Single Sign-On (SSO)</strong> across all platform components</li>
@@ -1607,8 +1607,8 @@
 <li><strong>Identity federation</strong> with external providers</li>
 <li><strong>Audit logging</strong> for compliance requirements</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
-<div class="highlight"><pre><span></span><code>graph TB
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph TB
     User[User] --&gt; KC[Keycloak]
     KC --&gt; Vault[HashiCorp Vault]
     KC --&gt; ArgoCD[ArgoCD]
@@ -1618,7 +1618,7 @@
 
     KC --&gt; DB[(PostgreSQL)]
 
-    subgraph &quot;Identity Sources&quot;
+    subgraph "Identity Sources"
         LDAP[LDAP/AD]
         GitHub[GitHub]
         Google[Google]
@@ -1628,16 +1628,15 @@
     GitHub --&gt; KC
     Google --&gt; KC
 
-    subgraph &quot;Platform Services&quot;
+    subgraph "Platform Services"
         Vault
         ArgoCD
         Kargo
         Grafana
         Backstage
-    end
-</code></pre></div>
-<h2 id="authentication">Authentication</h2>
-<h3 id="keycloak-setup">Keycloak Setup</h3>
+    end</code></pre>
+<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
+<h3 id="keycloak-setup">Keycloak Setup<a class="headerlink" href="#keycloak-setup" title="Permanent link">&para;</a></h3>
 <p>Keycloak serves as the central identity provider with the following configuration:</p>
 <ul>
 <li><strong>Database</strong>: PostgreSQL for persistent storage</li>
@@ -1645,14 +1644,14 @@
 <li><strong>Protocols</strong>: OIDC/OAuth2 and SAML 2.0 support</li>
 <li><strong>Federation</strong>: Integration with external identity providers</li>
 </ul>
-<h3 id="getting-started">Getting Started</h3>
+<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
 <p><strong>Access admin console</strong>: <a href="http://localhost:8080">http://localhost:8080</a></p>
 <ul>
 <li>Username: <code>admin</code></li>
 <li>Password: <code>admin_password</code></li>
 </ul>
-<h2 id="authorization">Authorization</h2>
-<h3 id="user-roles">User Roles</h3>
+<h2 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
+<h3 id="user-roles">User Roles<a class="headerlink" href="#user-roles" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
 <tr>
@@ -1684,7 +1683,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="groups-and-multi-tenancy">Groups and Multi-Tenancy</h3>
+<h3 id="groups-and-multi-tenancy">Groups and Multi-Tenancy<a class="headerlink" href="#groups-and-multi-tenancy" title="Permanent link">&para;</a></h3>
 <p>Groups provide the primary mechanism for multi-tenancy:</p>
 <ul>
 <li><strong><code>platform-team</code></strong>: Platform engineering team with <code>platform-admin</code> role</li>
@@ -1692,8 +1691,8 @@
 <li><strong><code>tenant-b</code></strong>: Tenant B team members with <code>tenant-admin</code> and <code>developer</code> roles</li>
 <li><strong><code>tenant-c</code></strong>: Tenant C team members with <code>tenant-admin</code> and <code>developer</code> roles</li>
 </ul>
-<h2 id="service-integration">Service Integration</h2>
-<h3 id="hashicorp-vault">HashiCorp Vault</h3>
+<h2 id="service-integration">Service Integration<a class="headerlink" href="#service-integration" title="Permanent link">&para;</a></h2>
+<h3 id="hashicorp-vault">HashiCorp Vault<a class="headerlink" href="#hashicorp-vault" title="Permanent link">&para;</a></h3>
 <p>Vault integrates with Keycloak using the OIDC auth method:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable OIDC auth method</span>
 vault<span class="w"> </span>auth<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>oidc
@@ -1705,7 +1704,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">    </span><span class="nv">oidc_client_secret</span><span class="o">=</span><span class="s2">&quot;vault-client-secret&quot;</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="nv">default_role</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
 </code></pre></div>
-<h3 id="argocd">ArgoCD</h3>
+<h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h3>
 <p>ArgoCD integrates with Keycloak for SSO and RBAC:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">oidc.config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">name: Keycloak</span>
@@ -1719,23 +1718,23 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">  </span><span class="no">p, role:platform-admin, clusters, *, *, allow</span>
 <span class="w">  </span><span class="no">g, platform-team, role:platform-admin</span>
 </code></pre></div>
-<h2 id="security-configuration">Security Configuration</h2>
-<h3 id="password-policies">Password Policies</h3>
+<h2 id="security-configuration">Security Configuration<a class="headerlink" href="#security-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="password-policies">Password Policies<a class="headerlink" href="#password-policies" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Minimum 12 characters</li>
 <li>Mixed case letters, numbers, and special characters</li>
 <li>Username/email restrictions</li>
 <li>Brute force protection enabled</li>
 </ul>
-<h3 id="session-management">Session Management</h3>
+<h3 id="session-management">Session Management<a class="headerlink" href="#session-management" title="Permanent link">&para;</a></h3>
 <ul>
 <li>SSO session timeout: 30 minutes</li>
 <li>Maximum session lifespan: 10 hours</li>
 <li>Access token lifespan: 5 minutes</li>
 <li>Offline session timeout: 30 days</li>
 </ul>
-<h2 id="federation-and-external-providers">Federation and External Providers</h2>
-<h3 id="github-integration">GitHub Integration</h3>
+<h2 id="federation-and-external-providers">Federation and External Providers<a class="headerlink" href="#federation-and-external-providers" title="Permanent link">&para;</a></h2>
+<h3 id="github-integration">GitHub Integration<a class="headerlink" href="#github-integration" title="Permanent link">&para;</a></h3>
 <p>Configure GitHub as an identity provider for developer authentication:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
@@ -1748,7 +1747,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="ldapactive-directory">LDAP/Active Directory</h3>
+<h3 id="ldapactive-directory">LDAP/Active Directory<a class="headerlink" href="#ldapactive-directory" title="Permanent link">&para;</a></h3>
 <p>Enterprise LDAP integration for corporate users:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap&quot;</span><span class="p">,</span>
@@ -1761,7 +1760,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.keycloak.org/documentation">Keycloak Documentation</a></li>
 <li><a href="https://openid.net/connect/">OIDC Specification</a></li>
@@ -1930,6 +1929,8 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

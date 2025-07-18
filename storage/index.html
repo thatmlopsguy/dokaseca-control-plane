@@ -1434,13 +1434,13 @@
   
 
 
-<h1 id="storage">Storage</h1>
+<h1 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h1>
 <p>This document describes the storage architecture used in the DoKa Seca, focusing on how MinIO running in Docker is used
 to provide S3-compatible object storage for various components.</p>
-<h2 id="minio-object-storage">MinIO Object Storage</h2>
+<h2 id="minio-object-storage">MinIO Object Storage<a class="headerlink" href="#minio-object-storage" title="Permanent link">&para;</a></h2>
 <p><a href="https://min.io/">MinIO</a> is a high-performance, S3-compatible object storage system that we deploy to provide persistent
 storage for several critical components.</p>
-<h3 id="architecture">Architecture</h3>
+<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
 <p>We run MinIO as a Docker container outside the Kubernetes cluster, providing S3-compatible storage that our Kubernetes services connect to:</p>
 <div class="highlight"><pre><span></span><code>┌─────────────────┐           ┌───────────────────────────┐
 │ Docker Host     │           │ Kubernetes Cluster        │
@@ -1459,7 +1459,7 @@ storage for several critical components.</p>
 │  └──────────┘ └───────┘ └───────┘ └──────┘ │
 └────────────────────────────────────────────┘
 </code></pre></div>
-<h3 id="installation">Installation</h3>
+<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <p>To install MinIO using Docker:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create directories for MinIO data</span>
 mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/velero-dev
@@ -1478,7 +1478,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> 
 <li>API endpoint: <code>http://localhost:9000</code> (for S3 clients)</li>
 <li>Web Console: <code>http://localhost:9001</code> (for administration)</li>
 </ul>
-<h3 id="creating-buckets">Creating Buckets</h3>
+<h3 id="creating-buckets">Creating Buckets<a class="headerlink" href="#creating-buckets" title="Permanent link">&para;</a></h3>
 <p>After installation, create the required buckets:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install MinIO client</span>
 curl<span class="w"> </span>https://dl.min.io/client/mc/release/linux-amd64/mc<span class="w"> </span><span class="se">\</span>
@@ -1497,7 +1497,7 @@ mc<span class="w"> </span>mb<span class="w"> </span>local/loki
 mc<span class="w"> </span>mb<span class="w"> </span>local/tempo
 mc<span class="w"> </span>mb<span class="w"> </span>local/vm
 </code></pre></div>
-<h3 id="bucket-configuration">Bucket Configuration</h3>
+<h3 id="bucket-configuration">Bucket Configuration<a class="headerlink" href="#bucket-configuration" title="Permanent link">&para;</a></h3>
 <p>MinIO is configured with dedicated buckets for each service:</p>
 <table>
 <thead>
@@ -1530,8 +1530,8 @@ mc<span class="w"> </span>mb<span class="w"> </span>local/vm
 </tr>
 </tbody>
 </table>
-<h2 id="service-integrations">Service Integrations</h2>
-<h3 id="velero-backup-and-restore">Velero Backup and Restore</h3>
+<h2 id="service-integrations">Service Integrations<a class="headerlink" href="#service-integrations" title="Permanent link">&para;</a></h2>
+<h3 id="velero-backup-and-restore">Velero Backup and Restore<a class="headerlink" href="#velero-backup-and-restore" title="Permanent link">&para;</a></h3>
 <p><a href="https://velero.io/">Velero</a> uses MinIO for storing Kubernetes cluster backups:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install Velero with MinIO storage</span>
 velero<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
@@ -1542,7 +1542,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">  </span>--use-volume-snapshots<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--backup-location-config<span class="w"> </span><span class="nv">region</span><span class="o">=</span>minio,s3ForcePathStyle<span class="o">=</span><span class="s2">&quot;true&quot;</span>,s3Url<span class="o">=</span>http://&lt;docker-host-ip&gt;:9000
 </code></pre></div>
-<h3 id="loki-log-storage">Loki Log Storage</h3>
+<h3 id="loki-log-storage">Loki Log Storage<a class="headerlink" href="#loki-log-storage" title="Permanent link">&para;</a></h3>
 <p><a href="https://grafana.com/oss/loki/">Loki</a> is configured to use MinIO for persistent log storage:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">loki</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
@@ -1559,7 +1559,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">      </span><span class="nt">s3ForcePathStyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h3 id="tempo-tracing-backend">Tempo Tracing Backend</h3>
+<h3 id="tempo-tracing-backend">Tempo Tracing Backend<a class="headerlink" href="#tempo-tracing-backend" title="Permanent link">&para;</a></h3>
 <p><a href="https://grafana.com/oss/tempo/">Tempo</a> uses MinIO for storing distributed traces:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">tempo</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
@@ -1572,7 +1572,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">        </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minioadmin</span>
 <span class="w">        </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
-<h3 id="victoria-metrics-long-term-storage">Victoria Metrics Long-term Storage</h3>
+<h3 id="victoria-metrics-long-term-storage">Victoria Metrics Long-term Storage<a class="headerlink" href="#victoria-metrics-long-term-storage" title="Permanent link">&para;</a></h3>
 <p><a href="https://victoriametrics.com/">Victoria Metrics</a> uses MinIO for long-term metrics storage:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">vmstorage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">persistentVolume</span><span class="p">:</span>
@@ -1588,7 +1588,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">    </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minioadmin&quot;</span>
 <span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minio&quot;</span>
 </code></pre></div>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.min.io/">MinIO Documentation</a></li>
 <li><a href="https://velero.io/docs/main/contributions/minio/">Velero with MinIO</a></li>
@@ -1758,6 +1758,8 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

@@ -1430,31 +1430,31 @@
   
 
 
-<h1 id="hashicorp-vault-setup-guide">HashiCorp Vault Setup Guide</h1>
+<h1 id="hashicorp-vault-setup-guide">HashiCorp Vault Setup Guide<a class="headerlink" href="#hashicorp-vault-setup-guide" title="Permanent link">&para;</a></h1>
 <p>This document provides step-by-step instructions for setting up HashiCorp Vault using Docker Compose with persistent storage.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Docker and Docker Compose installed</li>
 <li>Basic understanding of Vault concepts</li>
 <li>Terminal access</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Storage Backend</strong>: File-based storage with Docker volume persistence</li>
 <li><strong>Network</strong>: HTTP (TLS disabled for local development)</li>
 <li><strong>UI</strong>: Enabled and accessible via web browser</li>
 <li><strong>Persistence</strong>: All secrets stored in <code>vault-data</code> Docker volume</li>
 </ul>
-<h2 id="setup-instructions">Setup Instructions</h2>
-<h3 id="1-start-vault-service">1. Start Vault Service</h3>
+<h2 id="setup-instructions">Setup Instructions<a class="headerlink" href="#setup-instructions" title="Permanent link">&para;</a></h2>
+<h3 id="1-start-vault-service">1. Start Vault Service<a class="headerlink" href="#1-start-vault-service" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
 </code></pre></div>
-<h3 id="2-verify-vault-is-running">2. Verify Vault is Running</h3>
+<h3 id="2-verify-vault-is-running">2. Verify Vault is Running<a class="headerlink" href="#2-verify-vault-is-running" title="Permanent link">&para;</a></h3>
 <p>Check the logs to ensure Vault started successfully:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>vault
 </code></pre></div>
 <p>You should see logs indicating the server started, but will show "security barrier not initialized" - this is expected.</p>
-<h3 id="3-initialize-vault">3. Initialize Vault</h3>
+<h3 id="3-initialize-vault">3. Initialize Vault<a class="headerlink" href="#3-initialize-vault" title="Permanent link">&para;</a></h3>
 <p>Initialize Vault to generate unseal keys and root token:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator init&#39;</span>
 </code></pre></div>
@@ -1463,7 +1463,7 @@
 <li>5 unseal keys (need 3 to unseal)</li>
 <li>1 root token (for initial admin access)</li>
 </ul>
-<h3 id="4-unseal-vault">4. Unseal Vault</h3>
+<h3 id="4-unseal-vault">4. Unseal Vault<a class="headerlink" href="#4-unseal-vault" title="Permanent link">&para;</a></h3>
 <p>Vault needs to be unsealed with 3 of the 5 keys every time it starts:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># First unseal key</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_1&gt;&#39;</span>
@@ -1474,18 +1474,18 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <span class="c1"># Third unseal key (Vault will be unsealed after this)</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_3&gt;&#39;</span>
 </code></pre></div>
-<h3 id="5-verify-vault-status">5. Verify Vault Status</h3>
+<h3 id="5-verify-vault-status">5. Verify Vault Status<a class="headerlink" href="#5-verify-vault-status" title="Permanent link">&para;</a></h3>
 <p>Check that Vault is fully operational:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault status&#39;</span>
 </code></pre></div>
 <p>Look for <code>Sealed: false</code> in the output.</p>
-<h2 id="access-methods">Access Methods</h2>
-<h3 id="web-ui">Web UI</h3>
+<h2 id="access-methods">Access Methods<a class="headerlink" href="#access-methods" title="Permanent link">&para;</a></h2>
+<h3 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permanent link">&para;</a></h3>
 <ul>
 <li>URL: <a href="http://localhost:8200">http://localhost:8200</a></li>
 <li>Login: Use the root token from initialization</li>
 </ul>
-<h3 id="command-line">Command Line</h3>
+<h3 id="command-line">Command Line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Set environment variable for convenience</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">VAULT_ADDR</span><span class="o">=</span>http://localhost:8200
 
@@ -1495,15 +1495,15 @@ vault<span class="w"> </span>auth<span class="w"> </span>-method<span class="o">
 <span class="c1"># Or run commands directly in container</span>
 docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault &lt;COMMAND&gt;&#39;</span>
 </code></pre></div>
-<h2 id="configuration-files">Configuration Files</h2>
-<h3 id="docker-composeyml">docker-compose.yml</h3>
+<h2 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h2>
+<h3 id="docker-composeyml">docker-compose.yml<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h3>
 <p>Located at project root, contains:</p>
 <ul>
 <li>Vault service definition</li>
 <li>Volume mounts for data persistence</li>
 <li>Network configuration</li>
 </ul>
-<h3 id="dockervaultlocaljson">docker/vault/local.json</h3>
+<h3 id="dockervaultlocaljson">docker/vault/local.json<a class="headerlink" href="#dockervaultlocaljson" title="Permanent link">&para;</a></h3>
 <p>Vault configuration file with:</p>
 <ul>
 <li>File storage backend</li>
@@ -1511,26 +1511,26 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 <li>UI enabled</li>
 <li>Logging configuration</li>
 </ul>
-<h2 id="maintenance-tasks">Maintenance Tasks</h2>
-<h3 id="stop-vault">Stop Vault</h3>
+<h2 id="maintenance-tasks">Maintenance Tasks<a class="headerlink" href="#maintenance-tasks" title="Permanent link">&para;</a></h2>
+<h3 id="stop-vault">Stop Vault<a class="headerlink" href="#stop-vault" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>vault
 </code></pre></div>
-<h3 id="start-existing-vault">Start Existing Vault</h3>
+<h3 id="start-existing-vault">Start Existing Vault<a class="headerlink" href="#start-existing-vault" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
 <span class="c1"># Then unseal with 3 keys (same process as step 4 above)</span>
 </code></pre></div>
-<h3 id="view-logs">View Logs</h3>
+<h3 id="view-logs">View Logs<a class="headerlink" href="#view-logs" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>vault<span class="w"> </span>-f
 </code></pre></div>
-<h3 id="backup-vault-data">Backup Vault Data</h3>
+<h3 id="backup-vault-data">Backup Vault Data<a class="headerlink" href="#backup-vault-data" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create backup of vault data volume</span>
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>vault-data:/data<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/backup<span class="w"> </span>ubuntu<span class="w"> </span>tar<span class="w"> </span>czf<span class="w"> </span>/backup/vault-backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/data<span class="w"> </span>.
 </code></pre></div>
-<h3 id="restore-vault-data">Restore Vault Data</h3>
+<h3 id="restore-vault-data">Restore Vault Data<a class="headerlink" href="#restore-vault-data" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Restore from backup</span>
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>vault-data:/data<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/backup<span class="w"> </span>ubuntu<span class="w"> </span>tar<span class="w"> </span>xzf<span class="w"> </span>/backup/vault-backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/data
 </code></pre></div>
-<h2 id="security-considerations">Security Considerations</h2>
+<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
 <p>⚠️ <strong>Important Security Notes</strong>:</p>
 <ol>
 <li><strong>Unseal Keys</strong>: Store the 5 unseal keys securely and separately</li>
@@ -1540,8 +1540,8 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <li><strong>Backups</strong>: Regularly backup the vault data volume</li>
 <li><strong>Network</strong>: Restrict network access in production environments</li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="common-issues">Common Issues</h3>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <p><strong>Vault won't start</strong>:</p>
 <ul>
 <li>Check Docker logs: <code>docker logs vault</code></li>
@@ -1564,7 +1564,7 @@ docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </
 <li>Check Docker volume permissions</li>
 <li>Verify container user has access to mounted directories</li>
 </ul>
-<h3 id="useful-commands">Useful Commands</h3>
+<h3 id="useful-commands">Useful Commands<a class="headerlink" href="#useful-commands" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check seal status</span>
 vault<span class="w"> </span>status
 
@@ -1580,7 +1580,7 @@ vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span
 <span class="c1"># Generate new unseal keys (requires existing keys)</span>
 vault<span class="w"> </span>operator<span class="w"> </span>rekey
 </code></pre></div>
-<h2 id="production-considerations">Production Considerations</h2>
+<h2 id="production-considerations">Production Considerations<a class="headerlink" href="#production-considerations" title="Permanent link">&para;</a></h2>
 <p>For production use, consider:</p>
 <ol>
 <li><strong>TLS Configuration</strong>: Enable HTTPS with proper certificates</li>
@@ -1591,7 +1591,7 @@ vault<span class="w"> </span>operator<span class="w"> </span>rekey
 <li><strong>Regular Backups</strong>: Automated backup strategy</li>
 <li><strong>Network Security</strong>: Firewall rules and network segmentation</li>
 </ol>
-<h2 id="example-initial-setup-script">Example Initial Setup Script</h2>
+<h2 id="example-initial-setup-script">Example Initial Setup Script<a class="headerlink" href="#example-initial-setup-script" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">set</span><span class="w"> </span>-e
 
@@ -1742,6 +1742,8 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

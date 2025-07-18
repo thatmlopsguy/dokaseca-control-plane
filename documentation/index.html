@@ -1838,9 +1838,9 @@
   
 
 
-<h1 id="documentation">Documentation</h1>
+<h1 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h1>
 <p>DoKa Seca uses <a href="https://www.mkdocs.org/">MkDocs</a> with the <a href="https://squidfunk.github.io/mkdocs-material/">Material theme</a> to generate and publish comprehensive platform documentation. This guide provides detailed instructions for configuring, writing, and deploying documentation for the DoKa Seca platform.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>The documentation system in DoKa Seca provides:</p>
 <ul>
 <li><strong>Static Site Generation</strong>: Uses MkDocs to convert Markdown files into a static website</li>
@@ -1849,7 +1849,7 @@
 <li><strong>Live Development</strong>: Local development server with hot reloading</li>
 <li><strong>Enhanced Markdown</strong>: Support for advanced features like tabs, code blocks, and diagrams</li>
 </ul>
-<h2 id="architecture">Architecture</h2>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
 <p>The documentation system consists of several key components:</p>
 <div class="highlight"><pre><span></span><code>docs/                          # Documentation source files
 ├── index.md                   # Homepage
@@ -1861,7 +1861,7 @@ mkdocs.yaml                   # MkDocs configuration
 requirements/docs.txt         # Python dependencies
 .github/workflows/docs.yml    # Automated deployment
 </code></pre></div>
-<h2 id="prerequisites">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before working with documentation, ensure you have:</p>
 <ul>
 <li>Python 3.13 or higher</li>
@@ -1869,8 +1869,8 @@ requirements/docs.txt         # Python dependencies
 <li>Text editor or IDE</li>
 <li>Basic Markdown knowledge</li>
 </ul>
-<h2 id="local-development">Local Development</h2>
-<h3 id="quick-start">Quick Start</h3>
+<h2 id="local-development">Local Development<a class="headerlink" href="#local-development" title="Permanent link">&para;</a></h2>
+<h3 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Install dependencies</strong> using the provided Makefile:</li>
 </ol>
@@ -1885,7 +1885,7 @@ requirements/docs.txt         # Python dependencies
 <li><strong>Access the documentation</strong> at <code>http://localhost:8000</code></li>
 </ol>
 <p>The development server provides live reloading, so changes to Markdown files will be automatically reflected in your browser.</p>
-<h3 id="manual-installation">Manual Installation</h3>
+<h3 id="manual-installation">Manual Installation<a class="headerlink" href="#manual-installation" title="Permanent link">&para;</a></h3>
 <p>If you prefer manual installation:</p>
 <ol>
 <li><strong>Create a virtual environment</strong>:</li>
@@ -1904,17 +1904,17 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </ol>
 <div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
 </code></pre></div>
-<h2 id="writing-documentation">Writing Documentation</h2>
-<h3 id="file-organization">File Organization</h3>
+<h2 id="writing-documentation">Writing Documentation<a class="headerlink" href="#writing-documentation" title="Permanent link">&para;</a></h2>
+<h3 id="file-organization">File Organization<a class="headerlink" href="#file-organization" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Place new documentation files in the <code>docs/</code> directory</li>
 <li>Use descriptive filenames with lowercase and hyphens (e.g., <code>cluster-api.md</code>)</li>
 <li>Organize related content in subdirectories (e.g., <code>getting_started/</code>)</li>
 <li>Follow the existing naming conventions</li>
 </ul>
-<h3 id="markdown-guidelines">Markdown Guidelines</h3>
+<h3 id="markdown-guidelines">Markdown Guidelines<a class="headerlink" href="#markdown-guidelines" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca documentation uses extended Markdown with the following features:</p>
-<h4 id="code-blocks">Code Blocks</h4>
+<h4 id="code-blocks">Code Blocks<a class="headerlink" href="#code-blocks" title="Permanent link">&para;</a></h4>
 <p>Use fenced code blocks with language specification:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
@@ -1923,7 +1923,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">value</span>
 </code></pre></div>
-<h4 id="admonitions">Admonitions</h4>
+<h4 id="admonitions">Admonitions<a class="headerlink" href="#admonitions" title="Permanent link">&para;</a></h4>
 <p>Use admonitions for important information:</p>
 <div class="highlight"><pre><span></span><code>!!! note &quot;Installation Note&quot;
     This requires administrative privileges.
@@ -1934,7 +1934,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 !!! tip &quot;Pro Tip&quot;
     Use the Makefile for consistent commands.
 </code></pre></div>
-<h4 id="tabs">Tabs</h4>
+<h4 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">&para;</a></h4>
 <p>Group related content using tabs:</p>
 <div class="highlight"><pre><span></span><code>=== &quot;Kubernetes&quot;
 <span class="sb">    ```yaml</span>
@@ -1947,14 +1947,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <span class="w">    </span>docker<span class="w"> </span>run<span class="w"> </span>nginx
 <span class="sb">    ```</span>
 </code></pre></div>
-<h4 id="tables">Tables</h4>
+<h4 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h4>
 <p>Use standard Markdown tables:</p>
 <div class="highlight"><pre><span></span><code>| Component | Purpose    | Port |
 |-----------|------------|------|
 | Grafana   | Monitoring | 3000 |
 | ArgoCD    | GitOps     | 8080 |
 </code></pre></div>
-<h3 id="navigation-structure">Navigation Structure</h3>
+<h3 id="navigation-structure">Navigation Structure<a class="headerlink" href="#navigation-structure" title="Permanent link">&para;</a></h3>
 <p>Update the navigation in <code>mkdocs.yaml</code> when adding new pages:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Overview</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
@@ -1962,7 +1962,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Installation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting_started/install.md</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Your New Page</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">getting_started/new-page.md</span>
 </code></pre></div>
-<h3 id="page-metadata">Page Metadata</h3>
+<h3 id="page-metadata">Page Metadata<a class="headerlink" href="#page-metadata" title="Permanent link">&para;</a></h3>
 <p>Include frontmatter for better organization:</p>
 <div class="highlight"><pre><span></span><code>---
 title: Page Title
@@ -1973,8 +1973,8 @@ title: Page Title
 
 Content starts here...
 </code></pre></div>
-<h2 id="configuration">Configuration</h2>
-<h3 id="mkdocs-configuration">MkDocs Configuration</h3>
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="mkdocs-configuration">MkDocs Configuration<a class="headerlink" href="#mkdocs-configuration" title="Permanent link">&para;</a></h3>
 <p>The main configuration is in <code>mkdocs.yaml</code>:</p>
 <ul>
 <li><strong>Site Information</strong>: Name, description, and repository links</li>
@@ -2001,15 +2001,15 @@ Content starts here...
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.tabbed</span><span class="w">      </span><span class="c1"># Tab support</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span><span class="w">     </span><span class="c1"># Collapsible sections</span>
 </code></pre></div>
-<h3 id="dependencies">Dependencies</h3>
+<h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
 <p>Documentation dependencies are managed in <code>requirements/docs.txt</code>:</p>
 <ul>
 <li><code>mkdocs</code>: Core static site generator</li>
 <li><code>mkdocs-material</code>: Material Design theme</li>
 <li><code>mkdocs-material-extensions</code>: Additional theme features</li>
 </ul>
-<h2 id="deployment">Deployment</h2>
-<h3 id="automatic-deployment">Automatic Deployment</h3>
+<h2 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h2>
+<h3 id="automatic-deployment">Automatic Deployment<a class="headerlink" href="#automatic-deployment" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca uses GitHub Actions for automatic documentation deployment:</p>
 <ol>
 <li><strong>Trigger</strong>: Pushes to the <code>main</code> branch automatically trigger deployment</li>
@@ -2024,7 +2024,7 @@ Content starts here...
 <li>Site building with <code>mkdocs gh-deploy</code></li>
 <li>Caching for faster builds</li>
 </ul>
-<h3 id="manual-deployment">Manual Deployment</h3>
+<h3 id="manual-deployment">Manual Deployment<a class="headerlink" href="#manual-deployment" title="Permanent link">&para;</a></h3>
 <p>For manual deployment:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Build the site locally</span>
 mkdocs<span class="w"> </span>build
@@ -2032,7 +2032,7 @@ mkdocs<span class="w"> </span>build
 <span class="c1"># Deploy to GitHub Pages</span>
 mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 </code></pre></div>
-<h3 id="build-output">Build Output</h3>
+<h3 id="build-output">Build Output<a class="headerlink" href="#build-output" title="Permanent link">&para;</a></h3>
 <p>The built documentation is generated in the <code>site/</code> directory:</p>
 <div class="highlight"><pre><span></span><code>site/
 ├── index.html
@@ -2040,8 +2040,8 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 ├── assets/
 └── ...
 </code></pre></div>
-<h2 id="best-practices">Best Practices</h2>
-<h3 id="content-guidelines">Content Guidelines</h3>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="content-guidelines">Content Guidelines<a class="headerlink" href="#content-guidelines" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Clear Structure</strong>: Use descriptive headings and logical organization</li>
 <li><strong>Consistent Style</strong>: Follow established patterns and terminology</li>
@@ -2049,7 +2049,7 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 <li><strong>Cross-References</strong>: Link to related documentation sections</li>
 <li><strong>Regular Updates</strong>: Keep documentation current with platform changes</li>
 </ol>
-<h3 id="writing-style">Writing Style</h3>
+<h3 id="writing-style">Writing Style<a class="headerlink" href="#writing-style" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Use active voice and clear, concise language</li>
 <li>Include prerequisites and assumptions</li>
@@ -2057,15 +2057,15 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 <li>Use consistent terminology across documents</li>
 <li>Include troubleshooting sections where appropriate</li>
 </ul>
-<h3 id="version-control">Version Control</h3>
+<h3 id="version-control">Version Control<a class="headerlink" href="#version-control" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Make atomic commits for documentation changes</li>
 <li>Use descriptive commit messages</li>
 <li>Review changes in pull requests</li>
 <li>Test locally before committing</li>
 </ul>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="common-issues">Common Issues</h3>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <p><strong>MkDocs server won't start</strong>:</p>
 <ul>
 <li>Check Python version (3.7+ required)</li>
@@ -2090,14 +2090,14 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
 <li>Verify repository settings for GitHub Pages</li>
 <li>Ensure proper branch permissions</li>
 </ul>
-<h3 id="getting-help">Getting Help</h3>
+<h3 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Check <a href="https://www.mkdocs.org/">MkDocs documentation</a></li>
 <li>Review <a href="https://squidfunk.github.io/mkdocs-material/">Material theme docs</a></li>
 <li>Examine existing DoKa Seca documentation for patterns</li>
 <li>Open issues in the project repository for platform-specific questions</li>
 </ul>
-<h2 id="contributing">Contributing</h2>
+<h2 id="contributing">Contributing<a class="headerlink" href="#contributing" title="Permanent link">&para;</a></h2>
 <p>When contributing to documentation:</p>
 <ol>
 <li><strong>Fork</strong> the repository</li>
@@ -2269,6 +2269,8 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

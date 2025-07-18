@@ -1980,11 +1980,11 @@
   
 
 
-<h1 id="chaos-engineering">Chaos Engineering</h1>
+<h1 id="chaos-engineering">Chaos Engineering<a class="headerlink" href="#chaos-engineering" title="Permanent link">&para;</a></h1>
 <p>DoKa Seca provides comprehensive chaos engineering capabilities to help teams build resilient cloud-native applications
 and validate system reliability through controlled failure injection. The platform integrates with industry-leading chaos
 engineering tools to enable systematic resilience testing.</p>
-<h2 id="overview">Overview</h2>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
 <p>Chaos engineering is the practice of experimenting on a system to build confidence in its capability to withstand turbulent
 conditions in production. DoKa Seca implements chaos engineering through two powerful platforms:</p>
 <ul>
@@ -1992,7 +1992,7 @@ conditions in production. DoKa Seca implements chaos engineering through two pow
 <li><strong><a href="https://litmuschaos.io/">Litmus</a></strong> - Open-source chaos engineering framework</li>
 </ul>
 <p>These tools enable teams to proactively identify weaknesses in their systems before they manifest as outages in production.</p>
-<h2 id="chaos-engineering-principles">Chaos Engineering Principles</h2>
+<h2 id="chaos-engineering-principles">Chaos Engineering Principles<a class="headerlink" href="#chaos-engineering-principles" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca's chaos engineering implementation follows core principles:</p>
 <ol>
 <li><strong>Hypothesis-Driven</strong>: Define clear hypotheses about system behavior under failure conditions</li>
@@ -2001,10 +2001,10 @@ conditions in production. DoKa Seca implements chaos engineering through two pow
 <li><strong>Measurable</strong>: Monitor system behavior and collect meaningful metrics</li>
 <li><strong>Gradual</strong>: Start with small experiments and gradually increase complexity</li>
 </ol>
-<h2 id="chaos-mesh-integration">Chaos Mesh Integration</h2>
+<h2 id="chaos-mesh-integration">Chaos Mesh Integration<a class="headerlink" href="#chaos-mesh-integration" title="Permanent link">&para;</a></h2>
 <p><a href="https://chaos-mesh.org/">Chaos Mesh</a> is DoKa Seca's primary chaos engineering platform, providing a rich set of fault
 injection capabilities specifically designed for Kubernetes environments.</p>
-<h3 id="key-features">Key Features</h3>
+<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Native Kubernetes Integration</strong>: Chaos experiments defined as Kubernetes CRDs</li>
 <li><strong>Rich Fault Types</strong>: Network, Pod, IO, Kernel, and Time chaos experiments</li>
@@ -2012,14 +2012,14 @@ injection capabilities specifically designed for Kubernetes environments.</p>
 <li><strong>Safety Controls</strong>: Built-in safeguards to prevent excessive damage</li>
 <li><strong>Observability</strong>: Integration with monitoring systems for experiment tracking</li>
 </ul>
-<h3 id="supported-chaos-experiments">Supported Chaos Experiments</h3>
-<h4 id="pod-chaos">Pod Chaos</h4>
+<h3 id="supported-chaos-experiments">Supported Chaos Experiments<a class="headerlink" href="#supported-chaos-experiments" title="Permanent link">&para;</a></h3>
+<h4 id="pod-chaos">Pod Chaos<a class="headerlink" href="#pod-chaos" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>PodKill</strong>: Randomly kill pods to test recovery mechanisms</li>
 <li><strong>PodFailure</strong>: Make pods fail for specified durations</li>
 <li><strong>Container Kill</strong>: Target specific containers within pods</li>
 </ul>
-<h4 id="network-chaos">Network Chaos</h4>
+<h4 id="network-chaos">Network Chaos<a class="headerlink" href="#network-chaos" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Network Partition</strong>: Simulate network splits and partitions</li>
 <li><strong>Network Delay</strong>: Introduce network latency</li>
@@ -2027,18 +2027,18 @@ injection capabilities specifically designed for Kubernetes environments.</p>
 <li><strong>Network Corrupt</strong>: Corrupt network packets</li>
 <li><strong>Bandwidth Limit</strong>: Restrict network bandwidth</li>
 </ul>
-<h4 id="stress-testing">Stress Testing</h4>
+<h4 id="stress-testing">Stress Testing<a class="headerlink" href="#stress-testing" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Stress CPU</strong>: Generate CPU load on target pods</li>
 <li><strong>Stress Memory</strong>: Consume memory resources</li>
 <li><strong>Stress IO</strong>: Generate disk I/O stress</li>
 </ul>
-<h4 id="time-chaos">Time Chaos</h4>
+<h4 id="time-chaos">Time Chaos<a class="headerlink" href="#time-chaos" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Time Skew</strong>: Modify system time on target pods</li>
 <li><strong>Clock Drift</strong>: Simulate clock synchronization issues</li>
 </ul>
-<h3 id="example-chaos-mesh-experiment">Example Chaos Mesh Experiment</h3>
+<h3 id="example-chaos-mesh-experiment">Example Chaos Mesh Experiment<a class="headerlink" href="#example-chaos-mesh-experiment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">chaos-mesh.org/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PodChaos</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2057,10 +2057,10 @@ injection capabilities specifically designed for Kubernetes environments.</p>
 <span class="w">  </span><span class="nt">scheduler</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;@every</span><span class="nv"> </span><span class="s">10m&quot;</span>
 </code></pre></div>
-<h2 id="litmus-integration">Litmus Integration</h2>
+<h2 id="litmus-integration">Litmus Integration<a class="headerlink" href="#litmus-integration" title="Permanent link">&para;</a></h2>
 <p><a href="https://litmuschaos.io/">Litmus</a> complements Chaos Mesh by providing a comprehensive chaos engineering framework with
 extensive experiment libraries and GitOps integration.</p>
-<h3 id="litmus-features">Litmus Features</h3>
+<h3 id="litmus-features">Litmus Features<a class="headerlink" href="#litmus-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>ChaosHub</strong>: Extensive library of pre-built chaos experiments</li>
 <li><strong>Workflow Engine</strong>: Orchestrate complex chaos scenarios</li>
@@ -2068,29 +2068,29 @@ extensive experiment libraries and GitOps integration.</p>
 <li><strong>Multi-Cloud</strong>: Support for various cloud providers and platforms</li>
 <li><strong>Analytics</strong>: Advanced experiment analytics and reporting</li>
 </ul>
-<h3 id="litmus-components">Litmus Components</h3>
-<h4 id="chaoscenter">ChaosCenter</h4>
+<h3 id="litmus-components">Litmus Components<a class="headerlink" href="#litmus-components" title="Permanent link">&para;</a></h3>
+<h4 id="chaoscenter">ChaosCenter<a class="headerlink" href="#chaoscenter" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Centralized Management</strong>: Single pane of glass for chaos experiments</li>
 <li><strong>User Management</strong>: Role-based access control</li>
 <li><strong>Team Collaboration</strong>: Multi-tenant experiment management</li>
 <li><strong>Visualization</strong>: Real-time experiment monitoring and analytics</li>
 </ul>
-<h4 id="chaoshub">ChaosHub</h4>
+<h4 id="chaoshub">ChaosHub<a class="headerlink" href="#chaoshub" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Experiment Library</strong>: Ready-to-use chaos experiments</li>
 <li><strong>Custom Experiments</strong>: Create and share custom chaos scenarios</li>
 <li><strong>Community Contributions</strong>: Access to community-maintained experiments</li>
 <li><strong>Version Control</strong>: Git-based experiment management</li>
 </ul>
-<h4 id="chaosengine">ChaosEngine</h4>
+<h4 id="chaosengine">ChaosEngine<a class="headerlink" href="#chaosengine" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Experiment Execution</strong>: Kubernetes-native experiment runner</li>
 <li><strong>Safety Controls</strong>: Steady-state hypothesis validation</li>
 <li><strong>Result Analysis</strong>: Automated verdict generation</li>
 <li><strong>Integration</strong>: Works with existing monitoring and alerting systems</li>
 </ul>
-<h3 id="example-litmus-experiment">Example Litmus Experiment</h3>
+<h3 id="example-litmus-experiment">Example Litmus Experiment<a class="headerlink" href="#example-litmus-experiment" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">litmuschaos.io/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChaosEngine</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -2115,37 +2115,37 @@ extensive experiment libraries and GitOps integration.</p>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FORCE</span>
 <span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;false&#39;</span>
 </code></pre></div>
-<h2 id="doka-seca-implementation">DoKa Seca Implementation</h2>
-<h3 id="installation-and-setup">Installation and Setup</h3>
+<h2 id="doka-seca-implementation">DoKa Seca Implementation<a class="headerlink" href="#doka-seca-implementation" title="Permanent link">&para;</a></h2>
+<h3 id="installation-and-setup">Installation and Setup<a class="headerlink" href="#installation-and-setup" title="Permanent link">&para;</a></h3>
 <p>DoKa Seca includes both Chaos Mesh and Litmus as optional components that can be enabled during platform bootstrap by configuring Terraform variables:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># terraform/tfvars/dev.tfvars</span>
 <span class="na">enable_chaos_mesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="na">enable_litmus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 </code></pre></div>
-<h3 id="integration-with-platform-components">Integration with Platform Components</h3>
-<h4 id="gitops-integration">GitOps Integration</h4>
+<h3 id="integration-with-platform-components">Integration with Platform Components<a class="headerlink" href="#integration-with-platform-components" title="Permanent link">&para;</a></h3>
+<h4 id="gitops-integration">GitOps Integration<a class="headerlink" href="#gitops-integration" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Chaos experiments stored in Git repositories</li>
 <li>ArgoCD manages experiment lifecycle</li>
 <li>Version-controlled experiment definitions</li>
 <li>Automated experiment deployment</li>
 </ul>
-<h4 id="observability-integration">Observability Integration</h4>
+<h4 id="observability-integration">Observability Integration<a class="headerlink" href="#observability-integration" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Grafana dashboards for chaos experiment monitoring</li>
 <li>Prometheus metrics collection during experiments</li>
 <li>Alert integration for experiment failures</li>
 <li>Victoria Metrics for long-term experiment data storage</li>
 </ul>
-<h4 id="security-integration">Security Integration</h4>
+<h4 id="security-integration">Security Integration<a class="headerlink" href="#security-integration" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Kyverno policies for chaos experiment validation</li>
 <li>RBAC controls for experiment execution</li>
 <li>Admission controllers for safety enforcement</li>
 <li>Cosign verification for experiment artifacts</li>
 </ul>
-<h3 id="best-practices">Best Practices</h3>
-<h4 id="experiment-design">Experiment Design</h4>
+<h3 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h3>
+<h4 id="experiment-design">Experiment Design<a class="headerlink" href="#experiment-design" title="Permanent link">&para;</a></h4>
 <ol>
 <li><strong>Start Small</strong>: Begin with low-impact experiments</li>
 <li><strong>Clear Hypotheses</strong>: Define expected system behavior</li>
@@ -2153,7 +2153,7 @@ extensive experiment libraries and GitOps integration.</p>
 <li><strong>Safety Nets</strong>: Implement automatic experiment termination</li>
 <li><strong>Documentation</strong>: Record experiment procedures and results</li>
 </ol>
-<h4 id="safety-measures">Safety Measures</h4>
+<h4 id="safety-measures">Safety Measures<a class="headerlink" href="#safety-measures" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Blast Radius Control</strong>: Limit experiment scope</li>
 <li><strong>Time Bounds</strong>: Set maximum experiment duration</li>
@@ -2161,7 +2161,7 @@ extensive experiment libraries and GitOps integration.</p>
 <li><strong>Rollback Procedures</strong>: Define quick recovery mechanisms</li>
 <li><strong>Approval Workflows</strong>: Require approvals for high-impact experiments</li>
 </ul>
-<h4 id="team-practices">Team Practices</h4>
+<h4 id="team-practices">Team Practices<a class="headerlink" href="#team-practices" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>Regular Game Days</strong>: Schedule chaos engineering exercises</li>
 <li><strong>Cross-Team Collaboration</strong>: Include development and operations teams</li>
@@ -2169,15 +2169,15 @@ extensive experiment libraries and GitOps integration.</p>
 <li><strong>Continuous Improvement</strong>: Iterate based on experiment results</li>
 <li><strong>Knowledge Sharing</strong>: Document and share findings</li>
 </ul>
-<h2 id="getting-started">Getting Started</h2>
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
 <ul>
 <li>DoKa Seca platform deployed and configured</li>
 <li>Kubernetes cluster with appropriate permissions</li>
 <li>Monitoring and observability stack operational</li>
 <li>Team training on chaos engineering principles</li>
 </ul>
-<h3 id="basic-workflow">Basic Workflow</h3>
+<h3 id="basic-workflow">Basic Workflow<a class="headerlink" href="#basic-workflow" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Hypothesis Formation</strong>: Define what you expect to happen</li>
 <li><strong>Experiment Design</strong>: Create chaos experiment specifications</li>
@@ -2188,30 +2188,30 @@ extensive experiment libraries and GitOps integration.</p>
 <li><strong>Documentation</strong>: Record findings and lessons learned</li>
 <li><strong>Iteration</strong>: Improve systems based on learnings</li>
 </ol>
-<h3 id="example-scenarios">Example Scenarios</h3>
-<h4 id="microservices-resilience">Microservices Resilience</h4>
+<h3 id="example-scenarios">Example Scenarios<a class="headerlink" href="#example-scenarios" title="Permanent link">&para;</a></h3>
+<h4 id="microservices-resilience">Microservices Resilience<a class="headerlink" href="#microservices-resilience" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Test service mesh fault tolerance</li>
 <li>Validate circuit breaker functionality</li>
 <li>Verify graceful degradation patterns</li>
 <li>Test load balancing under failures</li>
 </ul>
-<h4 id="data-layer-testing">Data Layer Testing</h4>
+<h4 id="data-layer-testing">Data Layer Testing<a class="headerlink" href="#data-layer-testing" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Database failover scenarios</li>
 <li>Cache invalidation testing</li>
 <li>Storage failure simulation</li>
 <li>Backup and recovery validation</li>
 </ul>
-<h4 id="infrastructure-resilience">Infrastructure Resilience</h4>
+<h4 id="infrastructure-resilience">Infrastructure Resilience<a class="headerlink" href="#infrastructure-resilience" title="Permanent link">&para;</a></h4>
 <ul>
 <li>Node failure simulation</li>
 <li>Network partition testing</li>
 <li>Resource exhaustion scenarios</li>
 <li>Security policy validation</li>
 </ul>
-<h2 id="monitoring-and-metrics">Monitoring and Metrics</h2>
-<h3 id="key-metrics-to-track">Key Metrics to Track</h3>
+<h2 id="monitoring-and-metrics">Monitoring and Metrics<a class="headerlink" href="#monitoring-and-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="key-metrics-to-track">Key Metrics to Track<a class="headerlink" href="#key-metrics-to-track" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>System Availability</strong>: Uptime during chaos experiments</li>
 <li><strong>Recovery Time</strong>: Time to restore normal operations</li>
@@ -2381,6 +2381,8 @@ extensive experiment libraries and GitOps integration.</p>
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

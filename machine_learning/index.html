@@ -1410,25 +1410,25 @@
   
 
 
-<h1 id="machine-learning">Machine Learning</h1>
+<h1 id="machine-learning">Machine Learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
 <p>Doka Seca provides a robust machine learning platform built on Kubernetes, integrating best-in-class tools for distributed training, LLM request routing, and observability.</p>
-<h2 id="components-overview">Components Overview</h2>
+<h2 id="components-overview">Components Overview<a class="headerlink" href="#components-overview" title="Permanent link">&para;</a></h2>
 <p>Doka Seca's machine learning stack consists of three core components:</p>
 <ol>
 <li><strong>Ray Operator</strong> - For distributed training workloads</li>
 <li><strong>LiteLLM</strong> - For routing LLM requests</li>
 <li><strong>Langfuse</strong> - For LLM observability</li>
 </ol>
-<h2 id="ray-operator">Ray Operator</h2>
+<h2 id="ray-operator">Ray Operator<a class="headerlink" href="#ray-operator" title="Permanent link">&para;</a></h2>
 <p><a href="https://ray.io/">Ray</a> is an open-source unified framework for scaling AI and Python applications. Doka Seca leverages the <a href="https://docs.ray.io/en/latest/cluster/kubernetes/index.html">Ray Operator for Kubernetes</a> to manage distributed training workloads.</p>
-<h3 id="ray-capabilities">Ray Capabilities</h3>
+<h3 id="ray-capabilities">Ray Capabilities<a class="headerlink" href="#ray-capabilities" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Distributed Training</strong>: Scale machine learning workloads across multiple nodes</li>
 <li><strong>Resource Management</strong>: Efficiently allocate CPU, GPU, and memory resources</li>
 <li><strong>Fault Tolerance</strong>: Automatically recover from node failures</li>
 <li><strong>Dynamic Scaling</strong>: Scale resources up or down based on workload demands</li>
 </ul>
-<h3 id="usage">Usage</h3>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ray.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RayCluster</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -1460,17 +1460,17 @@
 <span class="w">              </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
 <span class="w">              </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2Gi&quot;</span>
 </code></pre></div>
-<h2 id="litellm">LiteLLM</h2>
+<h2 id="litellm">LiteLLM<a class="headerlink" href="#litellm" title="Permanent link">&para;</a></h2>
 <p><a href="https://github.com/BerriAI/litellm">LiteLLM</a> provides a unified interface for working with various LLM providers.
 Doka Seca uses LiteLLM to standardize API calls across different LLM services and implement intelligent request routing.</p>
-<h3 id="litellm-capabilities">LiteLLM Capabilities</h3>
+<h3 id="litellm-capabilities">LiteLLM Capabilities<a class="headerlink" href="#litellm-capabilities" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Provider Agnostic</strong>: Seamless switching between OpenAI, Anthropic, HuggingFace, and other LLM providers</li>
 <li><strong>Load Balancing</strong>: Distribute requests across multiple models and providers</li>
 <li><strong>Fallbacks</strong>: Automatically retry failed requests with alternative models</li>
 <li><strong>Cost Management</strong>: Track and optimize LLM usage costs</li>
 </ul>
-<h3 id="configuration">Configuration</h3>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
 <p>LiteLLM is deployed as a proxy service in Kubernetes:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
@@ -1502,10 +1502,10 @@ Doka Seca uses LiteLLM to standardize API calls across different LLM services an
 <span class="w">        </span><span class="nt">configMap</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">litellm-config</span>
 </code></pre></div>
-<h2 id="langfuse">Langfuse</h2>
+<h2 id="langfuse">Langfuse<a class="headerlink" href="#langfuse" title="Permanent link">&para;</a></h2>
 <p><a href="https://langfuse.com/">Langfuse</a> is an open-source observability and analytics platform for LLM applications.
 Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of LLM requests.</p>
-<h3 id="langfuse-capabilities">Langfuse Capabilities</h3>
+<h3 id="langfuse-capabilities">Langfuse Capabilities<a class="headerlink" href="#langfuse-capabilities" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Request Tracing</strong>: Track the flow of requests through your LLM application</li>
 <li><strong>Performance Monitoring</strong>: Measure latency, token usage, and cost metrics</li>
@@ -1674,6 +1674,8 @@ Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

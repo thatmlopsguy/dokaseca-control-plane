@@ -1314,10 +1314,10 @@
   
 
 
-<h1 id="security">Security</h1>
+<h1 id="security">Security<a class="headerlink" href="#security" title="Permanent link">&para;</a></h1>
 <p>The DoKa Seca platform implements a defense-in-depth approach to Kubernetes security, leveraging both vulnerability
 scanning and runtime threat detection.</p>
-<h2 id="trivy-vulnerability-misconfiguration-scanning">Trivy: Vulnerability &amp; Misconfiguration Scanning</h2>
+<h2 id="trivy-vulnerability-misconfiguration-scanning">Trivy: Vulnerability &amp; Misconfiguration Scanning<a class="headerlink" href="#trivy-vulnerability-misconfiguration-scanning" title="Permanent link">&para;</a></h2>
 <p><a href="https://aquasecurity.github.io/trivy/">Trivy</a> is used for:</p>
 <ul>
 <li>Scanning container images for vulnerabilities (CVEs)</li>
@@ -1334,7 +1334,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>configauditreports<spa
 replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     </span>3m16s<span class="w">   </span><span class="m">0</span><span class="w">          </span><span class="m">2</span><span class="w">      </span><span class="m">3</span><span class="w">        </span><span class="m">10</span>
 </code></pre></div>
 <p><strong>Trivy is integrated via the <a href="https://github.com/aquasecurity/trivy-operator">KubeSec Operator</a> for continuous cluster scanning.</strong></p>
-<h2 id="falco-runtime-threat-detection">Falco: Runtime Threat Detection</h2>
+<h2 id="falco-runtime-threat-detection">Falco: Runtime Threat Detection<a class="headerlink" href="#falco-runtime-threat-detection" title="Permanent link">&para;</a></h2>
 <p><a href="https://falco.org/">Falco</a> is used for:</p>
 <ul>
 <li>Real-time detection of suspicious activity in Kubernetes nodes and containers</li>
@@ -1342,7 +1342,7 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
 <li>Enforcing runtime security policies with custom rules</li>
 <li>Integrating with alerting systems (Slack, Prometheus, etc)</li>
 </ul>
-<h3 id="example-view-falco-alerts">Example: View Falco alerts</h3>
+<h3 id="example-view-falco-alerts">Example: View Falco alerts<a class="headerlink" href="#example-view-falco-alerts" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>logs<span class="w"> </span>-n<span class="w"> </span>falco<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>falco
 </code></pre></div>
 <p><strong>Common Falco rules include:</strong></p>
@@ -1351,14 +1351,14 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
 <li>Detecting changes to sensitive files</li>
 <li>Detecting privilege escalation attempts</li>
 </ul>
-<h2 id="security-best-practices">Security Best Practices</h2>
+<h2 id="security-best-practices">Security Best Practices<a class="headerlink" href="#security-best-practices" title="Permanent link">&para;</a></h2>
 <ul>
 <li>All images are scanned before deployment</li>
 <li>Cluster is continuously monitored for runtime threats</li>
 <li>Alerts are integrated with platform observability</li>
 <li>Security events are audited and reviewed regularly</li>
 </ul>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://aquasecurity.github.io/trivy/">Trivy Documentation</a></li>
 <li><a href="https://falco.org/docs/">Falco Documentation</a></li>
@@ -1526,6 +1526,8 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>

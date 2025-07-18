@@ -1686,13 +1686,13 @@
   
 
 
-<h1 id="networking">Networking</h1>
+<h1 id="networking">Networking<a class="headerlink" href="#networking" title="Permanent link">&para;</a></h1>
 <p>This document provides an overview of the networking components used in our Kubernetes homelab setup, including Container Network Interfaces (CNIs), load balancers, ingress controllers, API gateways, and service meshes.</p>
-<h2 id="container-network-interfaces-cni">Container Network Interfaces (CNI)</h2>
+<h2 id="container-network-interfaces-cni">Container Network Interfaces (CNI)<a class="headerlink" href="#container-network-interfaces-cni" title="Permanent link">&para;</a></h2>
 <p>CNIs provide networking for pod-to-pod communication within the cluster.</p>
-<h3 id="cilium">Cilium</h3>
+<h3 id="cilium">Cilium<a class="headerlink" href="#cilium" title="Permanent link">&para;</a></h3>
 <p><a href="https://cilium.io/">Cilium</a> is our primary CNI, leveraging eBPF for high-performance, secure networking with additional observability features.</p>
-<h4 id="installation">Installation</h4>
+<h4 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h4>
 <p>For KinD clusters:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install Cilium CLI</span>
 make<span class="w"> </span>install-cilium-cli
@@ -1703,25 +1703,25 @@ cilium<span class="w"> </span>install<span class="w"> </span>--version<span clas
 <span class="w">  </span>--set<span class="w"> </span><span class="nv">k8sServiceHost</span><span class="o">=</span>control-plane-dev-control-plane<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--set<span class="w"> </span><span class="nv">k8sServicePort</span><span class="o">=</span><span class="m">6443</span>
 </code></pre></div>
-<h4 id="validation">Validation</h4>
+<h4 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check Cilium status</span>
 cilium<span class="w"> </span>status
 
 <span class="c1"># Run connectivity test</span>
 cilium<span class="w"> </span>connectivity<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
-<h4 id="multi-cluster">Multi-cluster</h4>
+<h4 id="multi-cluster">Multi-cluster<a class="headerlink" href="#multi-cluster" title="Permanent link">&para;</a></h4>
 <p>For multi-cluster networking with Cilium:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Enable cluster mesh</span>
 cilium<span class="w"> </span>clustermesh<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--service-type<span class="w"> </span>NodePort
 </code></pre></div>
-<h2 id="load-balancer">Load Balancer</h2>
-<h3 id="metallb">MetalLB</h3>
+<h2 id="load-balancer">Load Balancer<a class="headerlink" href="#load-balancer" title="Permanent link">&para;</a></h2>
+<h3 id="metallb">MetalLB<a class="headerlink" href="#metallb" title="Permanent link">&para;</a></h3>
 <p><a href="https://metallb.universe.tf/">MetalLB</a> provides a network load balancer implementation for bare-metal Kubernetes clusters.</p>
-<h4 id="installing-metallb">Installing MetalLB</h4>
+<h4 id="installing-metallb">Installing MetalLB<a class="headerlink" href="#installing-metallb" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
 </code></pre></div>
-<h4 id="configuration">Configuration</h4>
+<h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
 <p>To complete the layer2 configuration, you need to provide MetalLB with a range of IP addresses it controls, which should be on the docker kind network. To find the IP address range, run:</p>
 <div class="highlight"><pre><span></span><code>docker<span class="w"> </span>network<span class="w"> </span>inspect<span class="w"> </span>-f<span class="w"> </span><span class="s1">&#39;{{.IPAM.Config}}&#39;</span><span class="w"> </span>kind
 </code></pre></div>
@@ -1741,30 +1741,30 @@ cilium<span class="w"> </span>clustermesh<span class="w"> </span><span class="nb
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">l2-advert</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metallb-system</span>
 </code></pre></div>
-<h3 id="kube-vip">Kube-vip</h3>
+<h3 id="kube-vip">Kube-vip<a class="headerlink" href="#kube-vip" title="Permanent link">&para;</a></h3>
 <p><a href="https://kube-vip.io/">Kube-vip</a> provides high availability for Kubernetes control plane and services.</p>
-<h4 id="installing-kube-vip">Installing Kube-vip</h4>
+<h4 id="installing-kube-vip">Installing Kube-vip<a class="headerlink" href="#installing-kube-vip" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deploy as DaemonSet for control plane HA</span>
 kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kube-vip/kube-vip-manifests/main/control-plane/daemonset.yaml
 </code></pre></div>
-<h2 id="ingress-controllers">Ingress Controllers</h2>
+<h2 id="ingress-controllers">Ingress Controllers<a class="headerlink" href="#ingress-controllers" title="Permanent link">&para;</a></h2>
 <p>Ingress controllers manage external access to services within the cluster.</p>
-<h3 id="nginx-ingress-controller">NGINX Ingress Controller</h3>
+<h3 id="nginx-ingress-controller">NGINX Ingress Controller<a class="headerlink" href="#nginx-ingress-controller" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install NGINX Ingress Controller</span>
 kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>kubernetes/ingress-nginx/deploy.yaml
 
 <span class="c1"># Verify installation</span>
 kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>ingress-nginx
 </code></pre></div>
-<h3 id="traefik">Traefik</h3>
+<h3 id="traefik">Traefik<a class="headerlink" href="#traefik" title="Permanent link">&para;</a></h3>
 <p><a href="https://traefik.io/traefik/">Traefik</a> is a modern HTTP reverse proxy and load balancer.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install Traefik using Helm</span>
 helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>traefik<span class="w"> </span>https://helm.traefik.io/traefik
 helm<span class="w"> </span>install<span class="w"> </span>traefik<span class="w"> </span>traefik/traefik<span class="w"> </span>-n<span class="w"> </span>traefik<span class="w"> </span>--create-namespace
 </code></pre></div>
-<h2 id="service-mesh">Service Mesh</h2>
+<h2 id="service-mesh">Service Mesh<a class="headerlink" href="#service-mesh" title="Permanent link">&para;</a></h2>
 <p>Service meshes provide advanced networking features like traffic management, security, and observability.</p>
-<h3 id="istio">Istio</h3>
+<h3 id="istio">Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h3>
 <p><a href="https://istio.io/">Istio</a> is a popular service mesh that enhances security, observability, and traffic management.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install Istio using istioctl</span>
 istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class="w"> </span><span class="nv">profile</span><span class="o">=</span>demo<span class="w"> </span>-y
@@ -1772,8 +1772,8 @@ istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class=
 <span class="c1"># Enable automatic sidecar injection for a namespace</span>
 kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class="w"> </span>default<span class="w"> </span>istio-injection<span class="o">=</span>enabled
 </code></pre></div>
-<h2 id="advanced-networking-patterns">Advanced Networking Patterns</h2>
-<h3 id="east-west-traffic-control">East-West Traffic Control</h3>
+<h2 id="advanced-networking-patterns">Advanced Networking Patterns<a class="headerlink" href="#advanced-networking-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="east-west-traffic-control">East-West Traffic Control<a class="headerlink" href="#east-west-traffic-control" title="Permanent link">&para;</a></h3>
 <p>Implement network policies to control pod-to-pod communication:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.k8s.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NetworkPolicy</span>
@@ -1789,14 +1789,14 @@ kubectl<span class="w"> </span>label<span class="w"> </span>namespace<span class
 <span class="w">        </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">frontend</span>
 </code></pre></div>
-<h3 id="multi-cluster-networking">Multi-cluster Networking</h3>
+<h3 id="multi-cluster-networking">Multi-cluster Networking<a class="headerlink" href="#multi-cluster-networking" title="Permanent link">&para;</a></h3>
 <p>For connecting multiple clusters:</p>
 <ol>
 <li>Use Cilium Cluster Mesh for direct pod-to-pod communication across clusters</li>
 <li>Configure service discovery with multi-cluster services</li>
 <li>Implement cross-cluster load balancing with Skupper or similar tools</li>
 </ol>
-<h3 id="skupper">Skupper</h3>
+<h3 id="skupper">Skupper<a class="headerlink" href="#skupper" title="Permanent link">&para;</a></h3>
 <p>Install cli</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://skupper.io/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
 $<span class="w"> </span>skupper<span class="w"> </span>version
@@ -1804,7 +1804,7 @@ client<span class="w"> </span>version<span class="w">                 </span><sp
 transport<span class="w"> </span>version<span class="w">              </span>not-found<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>configuration<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>provided<span class="o">)</span>
 controller<span class="w"> </span>version<span class="w">             </span>not-found<span class="w"> </span><span class="o">(</span>no<span class="w"> </span>configuration<span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>provided<span class="o">)</span>
 </code></pre></div>
-<h2 id="references">References</h2>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.cilium.io/">Cilium Documentation</a></li>
 <li><a href="https://metallb.universe.tf/configuration/">MetalLB Configuration</a></li>
@@ -1978,6 +1978,8 @@ controller<span class="w"> </span>version<span class="w">             </span>not
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
     
   </body>
