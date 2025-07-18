@@ -38,16 +38,19 @@ graph TB
     subgraph "Git Repositories"
         AddonsRepo[Addons Repository]
         WorkloadsRepo[Workloads Repository]
+        ClustersRepo[Clusters Repository]
     end
 
     subgraph "ArgoCD Applications"
         AddonsAppSet[Addons ApplicationSet]
         WorkloadsAppSet[Workloads ApplicationSet]
+        ClustersAppSet[Clusters ApplicationSet]
     end
 
     subgraph "Kubernetes Resources"
         Addons[Cluster Addons<br/>- Metrics Server<br/>- Nginx Controller<br/>- etc.]
-        Workloads[Application Workloads<br/>- Team A<br/>- Team B]
+        Workloads[Application Workloads<br/>- Team A<br/>- Team B<br/>- Team C]
+        Clusters[Application Clusters<br/>- dev<br/>- stg<br/>- prod]
     end
 
     TF --> GB
@@ -55,15 +58,19 @@ graph TB
 
     ArgoCD --> AddonsAppSet
     ArgoCD --> WorkloadsAppSet
+    ArgoCD --> ClustersAppSet
 
     AddonsAppSet --> AddonsRepo
     WorkloadsAppSet --> WorkloadsRepo
+    ClustersAppSet --> ClustersRepo
 
     AddonsAppSet --> Addons
     WorkloadsAppSet --> Workloads
+    ClustersAppSet --> Clusters
 
     AddonsRepo -.->|Watches for changes| AddonsAppSet
     WorkloadsRepo -.->|Watches for changes| WorkloadsAppSet
+    ClustersRepo -.->|Watches for changes| ClustersAppSet
 
     classDef terraform fill:#623CE4,stroke:#333,stroke-width:2px,color:#fff
     classDef gitops fill:#FF6B35,stroke:#333,stroke-width:2px,color:#fff
@@ -71,9 +78,9 @@ graph TB
     classDef k8s fill:#326CE5,stroke:#333,stroke-width:2px,color:#fff
 
     class TF terraform
-    class GB,AddonsRepo,WorkloadsRepo gitops
-    class ArgoCD,AddonsAppSet,WorkloadsAppSet argocd
-    class k8s,Addons,Workloads k8s
+    class GB,AddonsRepo,WorkloadsRepo,ClustersRepo gitops
+    class ArgoCD,AddonsAppSet,WorkloadsAppSet,ClustersAppSet argocd
+    class k8s,Addons,Workloads,Clusters k8s
 ```
 
 ### GitOps Bridge Workflow
@@ -92,6 +99,10 @@ graph TB
    - `workloads.yaml` ApplicationSet monitors the workloads repository
    - Deploys application workloads (Team A, Team-b, Team-c)
    - Supports environment-specific configurations
+
+3. **Clusters Management**:
+   - `clusters.yaml` ApplicationSet monitors the clusters repository
+   - Deploys application clusters (dev, stg, prod)
 
 4. **Continuous Sync**:
    - ArgoCD continuously monitors Git repositories for changes
