@@ -15,6 +15,89 @@ collaboration, compliance, and CI/CD, and applies them to infrastructure automat
 - **Security and Compliance**: Policy-driven deployments with audit trails
 - **Observability**: Comprehensive monitoring and alerting for deployment pipelines
 
+## GitOps Bridge Architecture
+
+The GitOps Bridge is a key component that enables automated deployment and management of both cluster addons and workloads using ArgoCD.
+
+Here's how it works:
+
+```mermaid
+graph TB
+    subgraph "Infrastructure Layer"
+        TF[Terraform]
+        k8s[k8s Cluster]
+        TF --> k8s
+    end
+
+    subgraph "GitOps Bridge Bootstrap"
+        GB[GitOps Bridge Module]
+        ArgoCD[ArgoCD Installation]
+        GB --> ArgoCD
+    end
+
+    subgraph "Git Repositories"
+        AddonsRepo[Addons Repository]
+        WorkloadsRepo[Workloads Repository]
+    end
+
+    subgraph "ArgoCD Applications"
+        AddonsAppSet[Addons ApplicationSet]
+        WorkloadsAppSet[Workloads ApplicationSet]
+    end
+
+    subgraph "Kubernetes Resources"
+        Addons[Cluster Addons<br/>- Metrics Server<br/>- Nginx Controller<br/>- etc.]
+        Workloads[Application Workloads<br/>- Team A<br/>- Team B]
+    end
+
+    TF --> GB
+    k8s --> ArgoCD
+
+    ArgoCD --> AddonsAppSet
+    ArgoCD --> WorkloadsAppSet
+
+    AddonsAppSet --> AddonsRepo
+    WorkloadsAppSet --> WorkloadsRepo
+
+    AddonsAppSet --> Addons
+    WorkloadsAppSet --> Workloads
+
+    AddonsRepo -.->|Watches for changes| AddonsAppSet
+    WorkloadsRepo -.->|Watches for changes| WorkloadsAppSet
+
+    classDef terraform fill:#623CE4,stroke:#333,stroke-width:2px,color:#fff
+    classDef gitops fill:#FF6B35,stroke:#333,stroke-width:2px,color:#fff
+    classDef argocd fill:#00D2FF,stroke:#333,stroke-width:2px,color:#fff
+    classDef k8s fill:#326CE5,stroke:#333,stroke-width:2px,color:#fff
+
+    class TF terraform
+    class GB,AddonsRepo,WorkloadsRepo gitops
+    class ArgoCD,AddonsAppSet,WorkloadsAppSet argocd
+    class k8s,Addons,Workloads k8s
+```
+
+### GitOps Bridge Workflow
+
+1. **Bootstrap Phase**:
+   - Terraform deploys the kubernetes cluster
+   - GitOps Bridge module installs ArgoCD on the cluster
+   - Creates initial ApplicationSets for addons and workloads
+
+2. **Addons Management**:
+   - `addons.yaml` ApplicationSet monitors the addons repository
+   - Automatically deploys cluster-level components (metrics-server, Metallb, etc.)
+   - Uses cluster annotations to determine which addons to deploy
+
+3. **Workloads Management**:
+   - `workloads.yaml` ApplicationSet monitors the workloads repository
+   - Deploys application workloads (Team A, Team-b, Team-c)
+   - Supports environment-specific configurations
+
+4. **Continuous Sync**:
+   - ArgoCD continuously monitors Git repositories for changes
+   - Automatically applies updates to the cluster
+   - Provides drift detection and self-healing capabilities
+
 ## GitOps Architecture
 
 DoKa Seca implements GitOps through a multi-tool approach that provides comprehensive coverage of the deployment lifecycle:
@@ -44,7 +127,7 @@ graph TB
     Promoter --> ArgoCD
 ```
 
-## Core GitOps Components
+## Core GitOps Components for Team Workloads
 
 ### **ArgoCD - Continuous Deployment**
 
