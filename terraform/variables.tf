@@ -36,6 +36,12 @@ variable "domain_name" {
   default     = "dokaseca.local"
 }
 
+variable "enable_vault" {
+  description = "Enable vault"
+  type        = bool
+  default     = false
+}
+
 variable "kubernetes_distro" {
   description = "Name of the kubernetes distro"
   type        = string
@@ -165,9 +171,20 @@ variable "addons" {
     enable_karpor            = false
     enable_kubescape         = false
     enable_victoria_logs     = false
-    enable_mlflow            = false
-    enable_kuberay           = false
-    enable_seldon            = false
+    # machine learning
+    enable_mlflow  = false
+    enable_kuberay = false
+    enable_seldon  = false
+    enable_feast   = false
+    # platform
+    enable_teams = false
+    # cloud provider specific
+    # azure
+    enable_azure_external_secrets = false
+    # aws
+    enable_aws_external_secrets = false
+    # gcp
+    enable_gcp_external_secrets = false
   }
 }
 

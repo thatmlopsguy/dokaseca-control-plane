@@ -202,12 +202,18 @@ locals {
     enable_gcp_external_secrets = try(var.addons.enable_gcp_external_secrets, false)
   }
 
+  # Platform
+  platform_addons = {
+    enable_teams = try(var.addons.enable_teams, false)
+  }
+
   addons = merge(
     local.oss_addons,
     local.enterprise_addons,
     local.azure_addons,
     local.aws_addons,
     local.gcp_addons,
+    local.platform_addons,
     { k8s_version = local.kubernetes_version },
     { k8s_cluster_name = local.kubernetes_name },
     { domain_name = local.domain_name },

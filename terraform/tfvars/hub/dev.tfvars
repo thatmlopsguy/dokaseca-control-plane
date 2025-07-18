@@ -1,7 +1,11 @@
-environment          = "dev"
-cluster_type         = "hub"
-domain_name          = "k8s-home.lab"
-cloud_provider       = "local"
+# Core variables
+environment    = "dev"
+cluster_type   = "hub"
+domain_name    = "k8s-home.lab"
+cloud_provider = "local"
+# Vault
+enable_vault = true
+# Kubernetes
 kubernetes_distro    = "kind"
 kubernetes_version   = "1.33.1"
 enable_gitops_bridge = true
