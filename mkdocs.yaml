@@ -87,7 +87,11 @@ plugins:
 # Markdown Extensions
 markdown_extensions:
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.snippets:
@@ -95,6 +99,12 @@ markdown_extensions:
   - admonition
   - attr_list
   - md_in_html
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji
+  - pymdownx.highlight
+  - toc:
+      permalink: true
 
 # Copyright
 copyright: Copyright &copy; 2025 That MLOps Guy
@@ -111,6 +121,6 @@ extra:
 extra_css:
   - "assets/css/custom.css"
 
-# # Custom JS
-# extra_javascript:
-#   - "assets/js/custom.js"
+# Custom JS
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
