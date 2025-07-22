@@ -15,7 +15,7 @@ repos:
         args: ["--rcfile=.shellcheckrc"]
         files: ^scripts/.*\.sh$
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.450
+    rev: 3.2.451
     hooks:
       - id: checkov
         name: checkov
@@ -24,6 +24,11 @@ repos:
     hooks:
       - id: commitizen
         stages: [commit-msg]
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.11.0
+    hooks:
+      - id: zizmor
+
   # - repo: local
   #   hooks:
   #     - id: terraform-docs

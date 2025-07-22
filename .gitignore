@@ -47,9 +47,13 @@ cosign*
 
 # Mkdocs site
 site/*
+docs/test/github-markdown-test.md
 
 # docker compose data
 data/*
 
 # Co-pilot instructions
 .github/copilot-instructions.md
+
+# argocd
+.argocd/*

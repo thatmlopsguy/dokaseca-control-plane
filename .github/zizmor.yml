@@ -1,0 +1,13 @@
+rules:
+  artipacked:
+    ignore:
+      # ignore line 44, column 7 on pre-commit.yml
+      - pre-commit.yml:44:7
+      - label-pull-request.yml:21:9
+      - docs.yml:28:9
+
+  dangerous-triggers:
+    ignore:
+      # ignore line 11, column 1 on label-pull-request.yml
+      - label-pull-request.yml:11:1
+      - check-semantic-prs.yml:3:1

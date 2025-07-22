@@ -1,0 +1,2 @@
+# Configuration for the actionlint tool, which we run via pre-commit
+# to verify the correctness of the syntax in our GitHub Actions workflows.
