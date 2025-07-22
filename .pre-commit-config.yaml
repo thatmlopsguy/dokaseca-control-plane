@@ -34,6 +34,12 @@ repos:
       - id: actionlint
         name: actionlint
         description: Lint GitHub Actions workflow files
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.33.2
+    hooks:
+      - id: check-github-workflows
+      - id: check-dependabot
+      # - id: check-github-actions
   # - repo: local
   #   hooks:
   #     - id: terraform-docs
