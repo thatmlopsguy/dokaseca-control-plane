@@ -2136,13 +2136,13 @@ in the platform ecosystem. This approach provides clear separation of concerns, 
 </ol>
 <h2 id="data-flow">Data Flow<a class="headerlink" href="#data-flow" title="Permanent link">&para;</a></h2>
 <h3 id="1-bootstrap-process">1. <strong>Bootstrap Process</strong><a class="headerlink" href="#1-bootstrap-process" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Developer → terraform apply → Kind cluster creation → GitOps Bridge → ArgoCD installation → App of Apps deployment
+<div class="highlight"><pre><span></span><code>Developer<span class="w"> </span>→<span class="w"> </span>terraform<span class="w"> </span>apply<span class="w"> </span>→<span class="w"> </span>Kind<span class="w"> </span>cluster<span class="w"> </span>creation<span class="w"> </span>→<span class="w"> </span>GitOps<span class="w"> </span>Bridge<span class="w"> </span>→<span class="w"> </span>ArgoCD<span class="w"> </span>installation<span class="w"> </span>→<span class="w"> </span>App<span class="w"> </span>of<span class="w"> </span>Apps<span class="w"> </span>deployment
 </code></pre></div>
 <h3 id="2-gitops-sync-process">2. <strong>GitOps Sync Process</strong><a class="headerlink" href="#2-gitops-sync-process" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Git commit → ArgoCD detection → Manifest retrieval → Kubernetes API → Resource creation/update
+<div class="highlight"><pre><span></span><code>Git<span class="w"> </span>commit<span class="w"> </span>→<span class="w"> </span>ArgoCD<span class="w"> </span>detection<span class="w"> </span>→<span class="w"> </span>Manifest<span class="w"> </span>retrieval<span class="w"> </span>→<span class="w"> </span>Kubernetes<span class="w"> </span>API<span class="w"> </span>→<span class="w"> </span>Resource<span class="w"> </span>creation/update
 </code></pre></div>
 <h3 id="3-addon-management">3. <strong>Addon Management</strong><a class="headerlink" href="#3-addon-management" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>Terraform variables → GitOps Bridge metadata → ArgoCD cluster secret → ApplicationSet evaluation → Addon deployment
+<div class="highlight"><pre><span></span><code>Terraform<span class="w"> </span>variables<span class="w"> </span>→<span class="w"> </span>GitOps<span class="w"> </span>Bridge<span class="w"> </span>metadata<span class="w"> </span>→<span class="w"> </span>ArgoCD<span class="w"> </span>cluster<span class="w"> </span>secret<span class="w"> </span>→<span class="w"> </span>ApplicationSet<span class="w"> </span>evaluation<span class="w"> </span>→<span class="w"> </span>Addon<span class="w"> </span>deployment
 </code></pre></div>
 <h2 id="configuration-management">Configuration Management<a class="headerlink" href="#configuration-management" title="Permanent link">&para;</a></h2>
 <h3 id="environment-strategy"><strong>Environment Strategy</strong><a class="headerlink" href="#environment-strategy" title="Permanent link">&para;</a></h3>
@@ -2202,7 +2202,7 @@ in the platform ecosystem. This approach provides clear separation of concerns, 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 8, 2025 17:18:19 UTC"><span class="timeago" datetime="2025-07-08T17:18:19+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 8, 2025 17:18:19 UTC">2025-07-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 28, 2025 20:22:15 UTC"><span class="timeago" datetime="2025-07-28T20:22:15+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 28, 2025 20:22:15 UTC">2025-07-28</span>
   </span>
 
     

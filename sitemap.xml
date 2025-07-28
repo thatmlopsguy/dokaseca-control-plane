@@ -2,142 +2,142 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/backup/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/catalog/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/chaos_engineering/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/compliance/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/contributing/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/cost/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/database/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/documentation/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/gitops/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/glossary/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/identity/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/machine_learning/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/multicluster/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/networking/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/portal/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/references/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/releases/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/repository/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/roadmap/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/security/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/storage/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/streams/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/vault-setup/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/001-use-architecture-decision-records/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/002-external-secrets-operator-multi-tenancy/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/003-argocd-hub-and-spoke-configuration/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/004-preview-env-argocd-vcluster/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/adr/adr_template/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/getting_started/architecture/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/getting_started/install/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/getting_started/repo_structure/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/getting_started/teams/</loc>
-         <lastmod>2025-07-22</lastmod>
+         <lastmod>2025-07-28</lastmod>
     </url>
 </urlset>
