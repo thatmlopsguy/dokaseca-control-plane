@@ -100,11 +100,11 @@ graph TB
    - Deploys application workloads (Team A, Team-b, Team-c)
    - Supports environment-specific configurations
 
-3. **Clusters Management**:
+4. **Clusters Management**:
    - `clusters.yaml` ApplicationSet monitors the clusters repository
    - Deploys application clusters (dev, stg, prod)
 
-4. **Continuous Sync**:
+5. **Continuous Sync**:
    - ArgoCD continuously monitors Git repositories for changes
    - Automatically applies updates to the cluster
    - Provides drift detection and self-healing capabilities
@@ -255,7 +255,7 @@ spec:
 
 [GitOps Promoter](https://github.com/argoproj-labs/gitops-promoter) handles automated promotion between environments:
 
-#### Key Features
+Key Features
 
 - **Environment Progression**: Automated promotion through environment stages
 - **Policy-Based Promotion**: Promotion rules and constraints
@@ -263,7 +263,7 @@ spec:
 - **Audit Trail**: Complete promotion history and rollback capabilities
 - **Custom Promotion Logic**: Extensible promotion strategies
 
-#### Configuration Example
+Configuration Example
 
 ```yaml
 apiVersion: promoter.argoproj.io/v1alpha1

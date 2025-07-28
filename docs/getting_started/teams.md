@@ -48,26 +48,6 @@ Platform engineers are responsible for building and maintaining the underlying p
 - Create platform roadmaps and technical decision records
 - Ensure platform scalability and maintainability
 
-### Required Skills
-
-#### Technical Skills
-
-- Deep Kubernetes and container technology expertise
-- Infrastructure as Code (Terraform, Crossplane, Helm)
-- Cloud platform knowledge (AWS, Azure, GCP)
-- GitOps and CI/CD pipeline design
-- Observability and monitoring systems
-- Security and compliance frameworks
-- Programming skills (Go, Python, shell scripting)
-
-#### Soft Skills
-
-- System thinking and architectural design
-- Cross-team collaboration and communication
-- Product mindset for internal platforms
-- Technical writing and documentation
-- Mentoring and knowledge sharing
-
 ### DoKa Seca Platform Engineer Workflow
 
 ```mermaid
@@ -85,7 +65,7 @@ graph TD
 
 DevOps engineers focus on automating delivery pipelines, ensuring system reliability, and bridging the gap between development and operations teams.
 
-### Core Responsibilities
+Responsibilities
 
 **Automation and Tooling**
 
@@ -119,26 +99,6 @@ DevOps engineers focus on automating delivery pipelines, ensuring system reliabi
 - Provide training on DevOps tools and practices
 - Participate in architecture and design reviews
 
-### Required Skills
-
-**Technical Skills**
-
-- CI/CD pipeline tools (Jenkins, GitLab CI, GitHub Actions)
-- Configuration management (Ansible, Chef, Puppet)
-- Monitoring and observability (Prometheus, Grafana, ELK stack)
-- Scripting and automation (Python, Bash, PowerShell)
-- Container technologies and orchestration
-- Cloud services and APIs
-- Security tools and practices
-
-**Soft Skills**
-
-- Problem-solving and analytical thinking
-- Collaboration across development and operations teams
-- Process improvement and optimization mindset
-- Incident management and crisis communication
-- Continuous learning and adaptation
-
 ### DoKa Seca DevOps Engineer Workflow
 
 ```mermaid
@@ -157,7 +117,7 @@ graph TD
 
 Developers focus on building applications and services using the platform's capabilities, following established patterns and practices.
 
-### Core Responsibilities
+Responsibilities
 
 **Application Development**
 
@@ -190,26 +150,6 @@ Developers focus on building applications and services using the platform's capa
 - Share knowledge and best practices with team members
 - Participate in code reviews and technical discussions
 - Contribute to platform documentation and examples
-
-### Required Skills
-
-**Technical Skills**
-
-- Programming languages and frameworks
-- Application architecture and design patterns
-- Testing frameworks and methodologies
-- API design and integration
-- Database technologies and data modeling
-- Frontend and/or backend development expertise
-- Basic understanding of containers and Kubernetes
-
-**Soft Skills**
-
-- Problem-solving and debugging abilities
-- Collaboration and teamwork
-- User-focused thinking and empathy
-- Adaptability to new tools and processes
-- Communication of technical concepts
 
 ### DoKa Seca Developer Workflow
 
@@ -254,7 +194,7 @@ DoKa Seca provides tools and patterns to support effective team collaboration:
 
 ### For DevOps Engineers
 
-- **CI/CD templates** with GitHub Actions and GitLab CI
+- **CI/CD templates** with GitHub Actions
 - **Security scanning** with Cosign and policy enforcement
 - **Observability tools** for monitoring and troubleshooting
 - **Infrastructure automation** with Terraform and Helm

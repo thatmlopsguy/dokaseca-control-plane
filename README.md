@@ -13,12 +13,18 @@
 <div align="center">
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane"><img src="https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90" alt="GitHub"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main"><img src="https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub last commit"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/graphs/commit-activity"><img src="https://img.shields.io/github/commit-activity/w/thatmlopsguy/dokaseca-control-plane" alt="Commit activity"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/issues"><img src="https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub issues"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/pulls"><img src="https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane" alt="GitHub PRs"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
   <a href="https://thatmlopsguy.github.io/dokaseca-control-plane/"><img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg" alt="Website"></a>
-  <a href="https://github.com/thatmlopsguy/k8s-homelab/actions/workflows/pre-commit.yml"><img src="https://github.com/thatmlopsguy/k8s-homelab/workflows/Pre-commit%20Checks/badge.svg" alt="Pre-commit"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/actions/workflows/pre-commit.yml"><img src="https://github.com/thatmlopsguy/dokaseca-control-plane/workflows/Pre-commit%20Checks/badge.svg" alt="Pre-commit"></a>
+  <a href="https://scorecard.dev/viewer/?uri=github.com/thatmlopsguy/dokaseca-control-plane"><img src="https://img.shields.io/ossf-scorecard/github.com/thatmlopsguy/dokaseca-control-plane?label=openssf+scorecard&style=flat" alt="Pre-commit"></a>
 </div>
+
+>⚠️ Note
+>
+> DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.
 
 ## 👋 Introduction
 
@@ -191,7 +197,3 @@ Want to know about the features to come? Check out the project [roadmap](ROADMAP
 ## 🔖 License
 
 DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE)
-
-## ⚠️ Note
-
-DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.

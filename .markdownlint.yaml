@@ -1,0 +1,13 @@
+# .markdownlint.yaml
+MD004: false
+# Allow HTML
+MD033: false
+# Allow headings to skip levels
+MD001: false
+# Allow first line to not be heading
+MD041: false
+# Allow long lines
+MD013: false
+# to fix
+MD040: false
+MD036: false

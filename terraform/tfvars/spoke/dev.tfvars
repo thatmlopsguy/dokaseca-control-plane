@@ -21,7 +21,7 @@ addons = {
   enable_headlamp       = false
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
-  # continuos delivery
+  # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd        = false
   enable_argo_rollouts  = false

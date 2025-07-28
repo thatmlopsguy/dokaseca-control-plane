@@ -17,4 +17,4 @@ Add multiple kubeconfigs
 export KUBECONFIG="./kubeconfigs/hub-dev:./kubeconfigs/spoke-dev:./kubeconfigs/spoke-stg:./kubeconfigs/spoke-prod"
 ```
 
-Use [kubectx](https://github.com/ahmetb/kubectx) to swtich between kuberntes contexts
+Use [kubectx](https://github.com/ahmetb/kubectx) to switch between kubernetes contexts

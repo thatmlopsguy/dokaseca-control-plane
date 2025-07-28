@@ -130,7 +130,6 @@ dokaseca-addons/
 - Chart testing and quality assurance
 - Chart distribution and packaging
 
-
 #### **4. Cluster Configuration Repository** (`dokaseca-clusters`)
 
 **Purpose**: Cluster-specific configuration and policies
@@ -293,19 +292,19 @@ gitops_templates_revision = "main"
 
 ### 1. **Bootstrap Process**
 
-```
+```sh
 Developer → terraform apply → Kind cluster creation → GitOps Bridge → ArgoCD installation → App of Apps deployment
 ```
 
 ### 2. **GitOps Sync Process**
 
-```
+```sh
 Git commit → ArgoCD detection → Manifest retrieval → Kubernetes API → Resource creation/update
 ```
 
 ### 3. **Addon Management**
 
-```
+```sh
 Terraform variables → GitOps Bridge metadata → ArgoCD cluster secret → ApplicationSet evaluation → Addon deployment
 ```
 

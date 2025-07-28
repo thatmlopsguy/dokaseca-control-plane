@@ -38,13 +38,13 @@ addons = {
   enable_keycloak     = false
   enable_authelia     = false
   enable_oauth2_proxy = false
-  # continuos delivery
+  # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
   enable_argo_cd_rbac_operator = false
   enable_argo_cd_agent         = false # TODO
-  enable_argo_cd_image_updater = true
-  enable_argo_rollouts         = true
+  enable_argo_cd_image_updater = false
+  enable_argo_rollouts         = false
   enable_argo_events           = false
   enable_keptn                 = false
   enable_tekton                = false # TODO
@@ -59,8 +59,8 @@ addons = {
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
-  enable_kargo           = true
-  enable_gitops_promoter = true
+  enable_kargo           = false
+  enable_gitops_promoter = false
   # platform engineering
   enable_karpor = false
   enable_kro    = false

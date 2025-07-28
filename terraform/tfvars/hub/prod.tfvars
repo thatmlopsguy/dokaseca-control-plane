@@ -34,7 +34,7 @@ addons = {
   enable_keycloak     = false
   enable_authelia     = false
   enable_oauth2_proxy = false
-  # continuos delivery
+  # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
   enable_argo_cd_rbac_operator = false

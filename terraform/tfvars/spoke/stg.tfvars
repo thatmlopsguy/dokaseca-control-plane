@@ -28,7 +28,7 @@ addons = {
   enable_authentik = false
   enable_keycloak  = false
   enable_authelia  = false
-  # continuos delivery
+  # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
   enable_argo_cd_image_updater = false

@@ -336,7 +336,7 @@ groups:
 
 ## References
 
-- [External Secrets Operator Multi Tenancy Documentation](hhttps://external-secrets.io/latest/guides/multi-tenancy/)
+- [External Secrets Operator Multi Tenancy Documentation](https://external-secrets.io/latest/guides/multi-tenancy/)
 - [HashiCorp Vault Kubernetes Auth Method](https://www.vaultproject.io/docs/auth/kubernetes)
 - [Kubernetes Multi-Tenancy Best Practices](https://kubernetes.io/docs/concepts/security/multi-tenancy/)
 
