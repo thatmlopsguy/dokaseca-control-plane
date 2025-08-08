@@ -149,6 +149,7 @@ locals {
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
     enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)         # TODO
+    enable_mariadb_operator    = try(var.addons.enable_mariadb_operator, false)    # TODO
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities

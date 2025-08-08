@@ -86,6 +86,12 @@ addons = {
   enable_minio          = false
   enable_cloudnative_pg = false
   enable_atlas_operator = false
+  # databases
+  enable_cloudnative_pg      = false
+  enable_atlas_operator      = false
+  enable_cloudbeaver         = false
+  enable_clickhouse_operator = false
+  enable_mariadb_operator    = false
   # messaging
   enable_strimzi = false
   enable_nats    = false
