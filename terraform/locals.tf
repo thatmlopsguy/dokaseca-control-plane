@@ -155,6 +155,7 @@ locals {
     enable_reloader  = try(var.addons.enable_reloader, false)
     enable_reflector = try(var.addons.enable_reflector, false)
     enable_kured     = try(var.addons.enable_kured, false)
+    enable_eraser    = try(var.addons.enable_eraser, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager

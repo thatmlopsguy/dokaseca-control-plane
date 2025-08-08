@@ -133,6 +133,7 @@ addons = {
   enable_reloader  = false
   enable_reflector = false
   enable_kured     = false
+  enable_eraser    = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
