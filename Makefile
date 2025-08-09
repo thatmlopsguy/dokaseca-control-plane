@@ -91,6 +91,10 @@ kubectl-get-contexts: ## List kubectl contexts
 	@kubectl config get-contexts -o name
 
 ##@ Argo
+argo-cd-install: ## Install argocd
+	@kubectl create namespace argocd || true
+	@kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
 argo-cd-kustomize-install: ## Install argocd with kustomize
 	@kustomize build --enable-helm kustomize/argo-cd | kubectl apply -f -
 	@rm -rf kustomize/argo-cd/charts
