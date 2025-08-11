@@ -39,6 +39,7 @@ terraform/*config
 
 # secrets
 secret.yaml
+.secrets
 kubeconfigs/
 !kubeconfigs/README.md
 
