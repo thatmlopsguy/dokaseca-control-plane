@@ -38,26 +38,28 @@ This project serves as both a personal learning journey into modern DevOps pract
 
 **Prerequisites**
 
-* [Docker](https://www.docker.com/)
-* [Terraform](https://www.terraform.io/) or [opentofu](https://opentofu.org/)
-* [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/), [k0s](https://docs.k0sproject.io/stable/) and/or [k3d](https://k3d.io/stable/)
-* [jq](https://jqlang.github.io/jq/)
-* [Helm](https://helm.sh/docs/intro/install/)
-* [Kubectl](https://kubernetes.io/docs/tasks/tools/)
-* [kustomize](https://kustomize.io/)
-* [k9s](https://k9scli.io/) or [freelens](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
+* [`docker`](https://www.docker.com/)
+* [`terraform`](https://www.terraform.io/) or [`opentofu`](https://opentofu.org/)
+* [`Kind`](https://kind.sigs.k8s.io/docs/user/quick-start/), [`k0s`](https://docs.k0sproject.io/stable/) and/or [`k3d`](https://k3d.io/stable/)
+* [`jq`](https://jqlang.github.io/jq/)
+* [`helm`](https://helm.sh/docs/intro/install/)
+* [`Kubectl`](https://kubernetes.io/docs/tasks/tools/)
+* `base64`
+* [`kustomize`](https://kustomize.io/)
+* [`k9s`](https://k9scli.io/) or [`freelens`](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
 **Optional tools**
 
-* [argocd](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
-* [vcluster](https://www.vcluster.com/docs/platform/install/quick-start-guide)
-* [falcoctl](https://github.com/falcosecurity/falcoctl)
-* [karmor](https://kubearmor.io/)
-* [clusteradm](https://github.com/open-cluster-management-io/clusteradm)
-* [cosign](https://github.com/sigstore/cosign)
-* [velero](https://github.com/vmware-tanzu/velero)
-* [vault](https://developer.hashicorp.com/vault/docs/install)
-* [minio client (mc)](https://github.com/minio/mc)
+* [`argocd`](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
+* [`kargo`](https://docs.kargo.io/user-guide/installing-the-cli/)
+* [`vcluster`](https://www.vcluster.com/docs/platform/install/quick-start-guide)
+* [`falcoctl`](https://github.com/falcosecurity/falcoctl)
+* [`karmor`](https://kubearmor.io/)
+* [`clusteradm`](https://github.com/open-cluster-management-io/clusteradm)
+* [`cosign`](https://github.com/sigstore/cosign)
+* [`velero`](https://github.com/vmware-tanzu/velero)
+* [`vault`](https://developer.hashicorp.com/vault/docs/install)
+* [`minio client (mc)`](https://github.com/minio/mc)
 
 ```sh
 $ kubectl version

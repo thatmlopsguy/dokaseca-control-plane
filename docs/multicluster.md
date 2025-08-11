@@ -1,17 +1,23 @@
 # Multi cluster
 
-Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience. In this project, we use one cluster per environment: **dev**, **stg**, and **prod**. This approach provides clear separation and reduces blast radius between environments.
+Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience.
+In this project, we use one cluster per environment: **dev**, **stg**, and **prod**. This approach provides clear separation
+and reduces blast radius between environments.
 
 ## Pets vs Cattle
 
-When managing clusters, it's important to treat them as **cattle, not pets**. This means clusters should be reproducible, disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable. This mindset enables automation, scalability, and reliability.
+When managing clusters, it's important to treat them as **cattle, not pets**. This means clusters should be reproducible,
+disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable.
+This mindset enables automation, scalability, and reliability.
 
 ## Multi-Cluster Topologies
 
 There are several ways to organize and connect multiple Kubernetes clusters:
 
-- **Standalone/Distributed:** Each cluster operates independently, with its own control plane and management. This is simple and works well for clear environment separation (as in our current setup).
-- **Centralized (Hub/Spoke):** A central "hub" cluster manages or coordinates multiple "spoke" clusters. This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.
+- **Standalone/Distributed:** Each cluster operates independently, with its own control plane and management.
+This is simple and works well for clear environment separation (as in our current setup).
+- **Centralized (Hub/Spoke):** A central "hub" cluster manages or coordinates multiple "spoke" clusters.
+This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.
 
 ![hub-spoke](assets/figures/diagrams/hup-spoke.drawio.png)
 
@@ -66,6 +72,36 @@ infrastructure and applications, making it easier to manage complex deployments.
 - **Composition of complex resources:** Define reusable templates for complete application stacks
 - **Self-service platform:** Allow teams to provision environments via simple custom resources
 
+### Kubefleet
+
+!!! warning "Warning"
+    Documentation coming soon!
+
+### Kordent
+
+!!! warning "Warning"
+    Documentation coming soon!
+
+### Open Cluster Management (OCM)
+
+[Open Cluster Management](https://open-cluster-management.io/) is a CNCF project that provides a comprehensive
+multi-cluster management platform with strong governance and policy capabilities.
+
+#### OCM Capabilities
+
+OCM will complement our cluster management strategy by offering:
+
+- **Cluster lifecycle management:** Automated cluster provisioning, upgrading, and decommissioning
+- **Policy governance:** Centralized policy definition and enforcement across all managed clusters
+- **Application lifecycle:** Advanced application deployment and management across multiple clusters
+- **Observability integration:** Unified monitoring and alerting across the entire cluster fleet
+- **Security posture management:** Centralized security scanning and compliance reporting
+
+#### Integration with DoKa Seca
+
+OCM's hub-spoke architecture aligns well with potential future centralized management requirements while maintaining
+compatibility with our current distributed approach.
+
 ## Integration Strategy
 
 DoKa Seca plans to integrate these tools in a complementary fashion:
@@ -73,9 +109,10 @@ DoKa Seca plans to integrate these tools in a complementary fashion:
 1. **Cluster API** will handle the core cluster provisioning and lifecycle management
 2. **KRO** will manage application deployment orchestration across clusters
 3. **Crossplane** will provide higher-level abstractions and additional infrastructure resources
+4. **Open Cluster Management (OCM)** will provide comprehensive governance and security posture management
 
 The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
-using Cluster API, with KRO and Crossplane capabilities being integrated in subsequent phases.
+using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being integrated in subsequent phases.
 
 ## References
 
@@ -83,3 +120,5 @@ using Cluster API, with KRO and Crossplane capabilities being integrated in subs
 - [Cluster API Documentation](https://cluster-api.sigs.k8s.io/introduction.html)
 - [KRO Project](https://github.com/kro-project)
 - [Crossplane Documentation](https://docs.crossplane.io/)
+- [KubeFleet](https://kubefleet.dev/)
+- [Kordent](https://k0rdent.io/)
