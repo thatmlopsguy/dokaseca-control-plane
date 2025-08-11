@@ -91,6 +91,10 @@ kubectl-get-contexts: ## List kubectl contexts
 	@kubectl config get-contexts -o name
 
 ##@ Argo
+argo-cd-install: ## Install argocd
+	@kubectl create namespace argocd || true
+	@kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
 argo-cd-kustomize-install: ## Install argocd with kustomize
 	@kustomize build --enable-helm kustomize/argo-cd | kubectl apply -f -
 	@rm -rf kustomize/argo-cd/charts
@@ -236,7 +240,7 @@ docs-install: ## Install the requirements for starting the local web server for 
 	pip install -r requirements/docs.txt
 
 docs-serve: docs-install ## Start a local web server for serving documentation
-	@mkdocs serve || echo "Error running mkserve. Have you run make install?"
+	@. .venv/bin/activate && mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
 docs-build: docs-install ## Build the documentation site
-	@mkdocs build
+	@. .venv/bin/activate && mkdocs build

@@ -6,7 +6,7 @@
 
 <div align="center">
 
-"Just as ships are built in dry docks, platforms are crafted in DoKa Seca"
+*Just as ships are built in dry docks, platforms are crafted in DoKa Seca*
 
 </div>
 

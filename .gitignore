@@ -57,3 +57,9 @@ data/*
 
 # argocd
 .argocd/*
+
+# kubernetes
+kubernetes/*
+
+# kustomize
+kustomize/*
