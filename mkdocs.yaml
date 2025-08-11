@@ -34,12 +34,12 @@ nav:
   - Disaster Recovery: backup.md
   - Multi cluster: multicluster.md
   - Resources:
-    - Glossary: glossary.md
-    - Contributing: contributing.md
-    - Documentation: documentation.md
-    - Release Notes: releases.md
-    - Roadmap: roadmap.md
-    - References: references.md
+    - Glossary: resources/glossary.md
+    - Contributing: resources/contributing.md
+    - Documentation: resources/documentation.md
+    - Release Notes: resources/releases.md
+    - Roadmap: resources/roadmap.md
+    - References: resources/references.md
   - Architecture Decisions:
     - Overview: adr/index.md
     - 0001 - Use ADRs: adr/001-use-architecture-decision-records.md
