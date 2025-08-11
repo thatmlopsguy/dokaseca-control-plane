@@ -12,6 +12,9 @@ declare -A tools=(
   [kubectl]="kubectl version --client"
   [kustomize]="kustomize version"
   [k9s]="k9s version"
+  [kargo]="kargo version"
+  [clusteradm]="clusteradm version"
+  [autok3s]="autok3s version"
 )
 
 # Check each tool and display its version
