@@ -925,6 +925,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kubefleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubefleet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kordent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kordent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-cluster-management-ocm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Cluster Management (OCM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Cluster Management (OCM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ocm-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      OCM Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-doka-seca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with DoKa Seca
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1434,6 +1485,57 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#kubefleet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubefleet
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kordent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kordent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-cluster-management-ocm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open Cluster Management (OCM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Open Cluster Management (OCM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ocm-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      OCM Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-with-doka-seca" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with DoKa Seca
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1477,14 +1579,20 @@
 
 
 <h1 id="multi-cluster">Multi cluster<a class="headerlink" href="#multi-cluster" title="Permanent link">&para;</a></h1>
-<p>Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience. In this project, we use one cluster per environment: <strong>dev</strong>, <strong>stg</strong>, and <strong>prod</strong>. This approach provides clear separation and reduces blast radius between environments.</p>
+<p>Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience.
+In this project, we use one cluster per environment: <strong>dev</strong>, <strong>stg</strong>, and <strong>prod</strong>. This approach provides clear separation
+and reduces blast radius between environments.</p>
 <h2 id="pets-vs-cattle">Pets vs Cattle<a class="headerlink" href="#pets-vs-cattle" title="Permanent link">&para;</a></h2>
-<p>When managing clusters, it's important to treat them as <strong>cattle, not pets</strong>. This means clusters should be reproducible, disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable. This mindset enables automation, scalability, and reliability.</p>
+<p>When managing clusters, it's important to treat them as <strong>cattle, not pets</strong>. This means clusters should be reproducible,
+disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable.
+This mindset enables automation, scalability, and reliability.</p>
 <h2 id="multi-cluster-topologies">Multi-Cluster Topologies<a class="headerlink" href="#multi-cluster-topologies" title="Permanent link">&para;</a></h2>
 <p>There are several ways to organize and connect multiple Kubernetes clusters:</p>
 <ul>
-<li><strong>Standalone/Distributed:</strong> Each cluster operates independently, with its own control plane and management. This is simple and works well for clear environment separation (as in our current setup).</li>
-<li><strong>Centralized (Hub/Spoke):</strong> A central "hub" cluster manages or coordinates multiple "spoke" clusters. This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.</li>
+<li><strong>Standalone/Distributed:</strong> Each cluster operates independently, with its own control plane and management.
+This is simple and works well for clear environment separation (as in our current setup).</li>
+<li><strong>Centralized (Hub/Spoke):</strong> A central "hub" cluster manages or coordinates multiple "spoke" clusters.
+This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.</li>
 </ul>
 <p><img alt="hub-spoke" src="../assets/figures/diagrams/hup-spoke.drawio.png" /></p>
 <blockquote>
@@ -1528,21 +1636,49 @@ infrastructure and applications, making it easier to manage complex deployments.
 <li><strong>Composition of complex resources:</strong> Define reusable templates for complete application stacks</li>
 <li><strong>Self-service platform:</strong> Allow teams to provision environments via simple custom resources</li>
 </ul>
+<h3 id="kubefleet">Kubefleet<a class="headerlink" href="#kubefleet" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Documentation coming soon!</p>
+</div>
+<h3 id="kordent">Kordent<a class="headerlink" href="#kordent" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Documentation coming soon!</p>
+</div>
+<h3 id="open-cluster-management-ocm">Open Cluster Management (OCM)<a class="headerlink" href="#open-cluster-management-ocm" title="Permanent link">&para;</a></h3>
+<p><a href="https://open-cluster-management.io/">Open Cluster Management</a> is a CNCF project that provides a comprehensive
+multi-cluster management platform with strong governance and policy capabilities.</p>
+<h4 id="ocm-capabilities">OCM Capabilities<a class="headerlink" href="#ocm-capabilities" title="Permanent link">&para;</a></h4>
+<p>OCM will complement our cluster management strategy by offering:</p>
+<ul>
+<li><strong>Cluster lifecycle management:</strong> Automated cluster provisioning, upgrading, and decommissioning</li>
+<li><strong>Policy governance:</strong> Centralized policy definition and enforcement across all managed clusters</li>
+<li><strong>Application lifecycle:</strong> Advanced application deployment and management across multiple clusters</li>
+<li><strong>Observability integration:</strong> Unified monitoring and alerting across the entire cluster fleet</li>
+<li><strong>Security posture management:</strong> Centralized security scanning and compliance reporting</li>
+</ul>
+<h4 id="integration-with-doka-seca">Integration with DoKa Seca<a class="headerlink" href="#integration-with-doka-seca" title="Permanent link">&para;</a></h4>
+<p>OCM's hub-spoke architecture aligns well with potential future centralized management requirements while maintaining
+compatibility with our current distributed approach.</p>
 <h2 id="integration-strategy">Integration Strategy<a class="headerlink" href="#integration-strategy" title="Permanent link">&para;</a></h2>
 <p>DoKa Seca plans to integrate these tools in a complementary fashion:</p>
 <ol>
 <li><strong>Cluster API</strong> will handle the core cluster provisioning and lifecycle management</li>
 <li><strong>KRO</strong> will manage application deployment orchestration across clusters</li>
 <li><strong>Crossplane</strong> will provide higher-level abstractions and additional infrastructure resources</li>
+<li><strong>Open Cluster Management (OCM)</strong> will provide comprehensive governance and security posture management</li>
 </ol>
 <p>The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
-using Cluster API, with KRO and Crossplane capabilities being integrated in subsequent phases.</p>
+using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being integrated in subsequent phases.</p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd">Building a Bridge between Terraform and ArgoCD</a></li>
 <li><a href="https://cluster-api.sigs.k8s.io/introduction.html">Cluster API Documentation</a></li>
 <li><a href="https://github.com/kro-project">KRO Project</a></li>
 <li><a href="https://docs.crossplane.io/">Crossplane Documentation</a></li>
+<li><a href="https://kubefleet.dev/">KubeFleet</a></li>
+<li><a href="https://k0rdent.io/">Kordent</a></li>
 </ul>
 
 
@@ -1564,7 +1700,7 @@ using Cluster API, with KRO and Crossplane capabilities being integrated in subs
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 18, 2025 21:35:39 UTC"><span class="timeago" datetime="2025-07-18T21:35:39+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 18, 2025 21:35:39 UTC">2025-07-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 11, 2025 14:49:04 UTC"><span class="timeago" datetime="2025-08-11T14:49:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 11, 2025 14:49:04 UTC">2025-08-11</span>
   </span>
 
     

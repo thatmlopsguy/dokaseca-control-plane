@@ -1385,26 +1385,28 @@
 <p>This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.</p>
 <p><strong>Prerequisites</strong></p>
 <ul>
-<li><a href="https://www.docker.com/">Docker</a></li>
-<li><a href="https://www.terraform.io/">Terraform</a> or <a href="https://opentofu.org/">opentofu</a></li>
-<li><a href="https://kind.sigs.k8s.io/docs/user/quick-start/">Kind</a>, <a href="https://docs.k0sproject.io/stable/">k0s</a> and/or <a href="https://k3d.io/stable/">k3d</a></li>
-<li><a href="https://jqlang.github.io/jq/">jq</a></li>
-<li><a href="https://helm.sh/docs/intro/install/">Helm</a></li>
-<li><a href="https://kubernetes.io/docs/tasks/tools/">Kubectl</a></li>
-<li><a href="https://kustomize.io/">kustomize</a></li>
-<li><a href="https://k9scli.io/">k9s</a> or <a href="https://github.com/freelensapp/freelens">freelens</a> (optional, if you'd like to inspect your cluster visually)</li>
+<li><a href="https://www.docker.com/"><code>docker</code></a></li>
+<li><a href="https://www.terraform.io/"><code>terraform</code></a> or <a href="https://opentofu.org/"><code>opentofu</code></a></li>
+<li><a href="https://kind.sigs.k8s.io/docs/user/quick-start/"><code>Kind</code></a>, <a href="https://docs.k0sproject.io/stable/"><code>k0s</code></a> and/or <a href="https://k3d.io/stable/"><code>k3d</code></a></li>
+<li><a href="https://jqlang.github.io/jq/"><code>jq</code></a></li>
+<li><a href="https://helm.sh/docs/intro/install/"><code>helm</code></a></li>
+<li><a href="https://kubernetes.io/docs/tasks/tools/"><code>Kubectl</code></a></li>
+<li><code>base64</code></li>
+<li><a href="https://kustomize.io/"><code>kustomize</code></a></li>
+<li><a href="https://k9scli.io/"><code>k9s</code></a> or <a href="https://github.com/freelensapp/freelens"><code>freelens</code></a> (optional, if you'd like to inspect your cluster visually)</li>
 </ul>
 <p><strong>Optional tools</strong></p>
 <ul>
-<li><a href="https://argo-cd.readthedocs.io/en/stable/cli_installation/">argocd</a></li>
-<li><a href="https://www.vcluster.com/docs/platform/install/quick-start-guide">vcluster</a></li>
-<li><a href="https://github.com/falcosecurity/falcoctl">falcoctl</a></li>
-<li><a href="https://kubearmor.io/">karmor</a></li>
-<li><a href="https://github.com/open-cluster-management-io/clusteradm">clusteradm</a></li>
-<li><a href="https://github.com/sigstore/cosign">cosign</a></li>
-<li><a href="https://github.com/vmware-tanzu/velero">velero</a></li>
-<li><a href="https://developer.hashicorp.com/vault/docs/install">vault</a></li>
-<li><a href="https://github.com/minio/mc">minio client (mc)</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/cli_installation/"><code>argocd</code></a></li>
+<li><a href="https://docs.kargo.io/user-guide/installing-the-cli/"><code>kargo</code></a></li>
+<li><a href="https://www.vcluster.com/docs/platform/install/quick-start-guide"><code>vcluster</code></a></li>
+<li><a href="https://github.com/falcosecurity/falcoctl"><code>falcoctl</code></a></li>
+<li><a href="https://kubearmor.io/"><code>karmor</code></a></li>
+<li><a href="https://github.com/open-cluster-management-io/clusteradm"><code>clusteradm</code></a></li>
+<li><a href="https://github.com/sigstore/cosign"><code>cosign</code></a></li>
+<li><a href="https://github.com/vmware-tanzu/velero"><code>velero</code></a></li>
+<li><a href="https://developer.hashicorp.com/vault/docs/install"><code>vault</code></a></li>
+<li><a href="https://github.com/minio/mc"><code>minio client (mc)</code></a></li>
 </ul>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>version
 Client<span class="w"> </span>Version:<span class="w"> </span>v1.31.0
