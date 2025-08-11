@@ -57,6 +57,11 @@ k3d-create-cluster: ## Create k3d cluster
 k3d-list-clusters: ## list k3d clusters
 	@k3d cluster list
 
+k3d-delete-all-clusters: ## Delete all k3d clusters
+	@echo "Deleting all k3d clusters..."
+	@k3d cluster list --output json | jq -r '.[].name' | xargs -r -I {} k3d cluster delete {}
+	@echo "All k3d clusters deleted."
+
 autok3s-serve: ## run autok3s serve
 	@autok3s serve &
 
