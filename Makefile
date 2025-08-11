@@ -240,7 +240,7 @@ docs-install: ## Install the requirements for starting the local web server for 
 	pip install -r requirements/docs.txt
 
 docs-serve: docs-install ## Start a local web server for serving documentation
-	@mkdocs serve || echo "Error running mkserve. Have you run make install?"
+	@. .venv/bin/activate && mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
 docs-build: docs-install ## Build the documentation site
-	@mkdocs build
+	@. .venv/bin/activate && mkdocs build
