@@ -28,12 +28,10 @@ graph TB
     subgraph "Identity Sources"
         LDAP[LDAP/AD]
         GitHub[GitHub]
-        Google[Google]
     end
 
     LDAP --> KC
     GitHub --> KC
-    Google --> KC
 
     subgraph "Platform Services"
         Vault
