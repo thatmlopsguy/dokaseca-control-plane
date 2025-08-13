@@ -37,6 +37,9 @@ override.tf.json
 terraform.rc
 terraform/*config
 
+# Checkov
+.external_modules/
+
 # secrets
 secret.yaml
 .secrets
