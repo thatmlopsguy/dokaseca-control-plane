@@ -9,6 +9,7 @@ resource "kind_cluster" "main" {
   kind_config {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
+
     node {
       role = "control-plane"
 
@@ -22,15 +23,15 @@ resource "kind_cluster" "main" {
         "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n"
       ]
 
-      # extra_port_mappings {
-      #   container_port = 80
-      #   host_port      = 80
-      # }
+      extra_port_mappings {
+        container_port = 80
+        host_port      = 80
+      }
 
-      # extra_port_mappings {
-      #   container_port = 443
-      #   host_port      = 443
-      # }
+      extra_port_mappings {
+        container_port = 443
+        host_port      = 443
+      }
     }
 
     node {
@@ -56,12 +57,13 @@ module "gitops_bridge_bootstrap" {
 
   cluster = {
     cluster_name = local.kubernetes_name
-    environment  = local.environment
-    metadata     = local.addons_metadata
-    addons       = local.addons
+    environment  = local.env
+    metadata     = local.addons_metadata # metadata annotations
+    addons       = local.addons          # metadata labels
   }
 
   argocd = {
+    namespace     = "argocd"
     chart         = "argo-cd"
     chart_version = var.argocd_chart_version
 
@@ -87,3 +89,10 @@ module "fluxcd" {
 
   depends_on = [kind_cluster.main]
 }
+
+# module "vault" {
+#   source = "./modules/vault"
+
+#   count = var.enable_vault ? 1 : 0
+
+# }

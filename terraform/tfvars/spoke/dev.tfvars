@@ -5,6 +5,12 @@ cloud_provider       = "local"
 kubernetes_version   = "1.33.1"
 enable_gitops_bridge = true
 gitops_org           = "https://github.com/thatmlopsguy"
+# Teams
+teams = {
+  "team-a" = "true"
+  "team-b" = "true"
+  "team-c" = "false"
+}
 # Addons
 gitops_addons_repo     = "dokaseca-addons"
 gitops_addons_basepath = "argocd"

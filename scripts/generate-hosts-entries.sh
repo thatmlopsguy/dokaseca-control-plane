@@ -15,6 +15,7 @@ fi
 # Define the domains array
 SERVICE_PREFIXES=(
     "argocd"
+    "kargo"
     "grafana"
     "alertmanager"
     "prometheus"

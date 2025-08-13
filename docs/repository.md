@@ -1,10 +1,15 @@
 # Artifact Repositories
 
-DoKa Seca leverages GitHub Container Registry (GHCR) as the default artifact repository for storing and distributing container images, Helm charts, and other platform artifacts. This integration provides seamless CI/CD workflows with built-in security scanning, access control, and package management capabilities.
+DoKa Seca leverages GitHub Container Registry (GHCR) as the default artifact repository for storing and distributing
+container images, Helm charts, and other platform artifacts. This integration provides seamless CI/CD workflows with
+built-in security scanning, access control, and package management capabilities.
 
 ## Overview
 
-Artifact repositories are essential components of modern platform engineering, providing centralized storage for container images, Helm charts, and other deployment artifacts. DoKa Seca's integration with GitHub Container Registry offers:
+Artifact repositories are essential components of modern platform engineering, providing centralized storage for
+container images, Helm charts, and other deployment artifacts.
+
+DoKa Seca's integration with GitHub Container Registry offers:
 
 - **Unified Platform**: Single platform for source code and artifacts
 - **Integrated Security**: Built-in vulnerability scanning and security policies

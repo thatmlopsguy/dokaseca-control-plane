@@ -113,6 +113,16 @@ variable "argocd_chart_version" {
   default     = "7.8.2"
 }
 
+variable "teams" {
+  description = "List of teams that can deploy workloads in the cluster"
+  type        = map(string)
+  default = {
+    "team-a" = "true"
+    "team-b" = "true"
+    "team-c" = "false" # Example team, set to false to not deploy workloads
+  }
+}
+
 variable "addons" {
   description = "Kubernetes addons"
   type        = any

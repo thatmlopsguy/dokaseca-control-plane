@@ -1,15 +1,16 @@
 locals {
-  name        = "ex-${replace(basename(path.cwd), "_", "-")}"
-  environment = var.environment
-  region      = var.region
+  name   = "ex-${replace(basename(path.cwd), "_", "-")}"
+  env    = var.environment
+  region = var.region
+  teams  = var.teams
+  cloud  = var.cloud_provider
+  domain = var.domain_name
+  type   = var.cluster_type
 
   kubernetes_name    = "${var.cluster_type}-${var.environment}"
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = "${dirname(path.cwd)}/kubeconfigs/${var.cluster_type}-${var.environment}"
-
-  cloud_provider = var.cloud_provider
-  domain_name    = var.domain_name
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -29,6 +30,17 @@ locals {
   gitops_clusters_basepath = var.gitops_clusters_basepath
   gitops_clusters_path     = var.gitops_clusters_path
   gitops_clusters_revision = var.gitops_clusters_revision
+
+  # Cluster labels
+  # Argocd secret labels for cluster selector
+  argocd_cluster_labels = merge({
+    cloud   = local.cloud
+    region  = local.region
+    env     = local.env
+    type    = local.type
+    version = local.kubernetes_version
+    distro  = local.kubernetes_distro
+  }, var.teams)
 
   oss_addons = {
     # dashboard
@@ -216,12 +228,10 @@ locals {
     local.aws_addons,
     local.gcp_addons,
     local.platform_addons,
-    { k8s_version = local.kubernetes_version },
-    { k8s_cluster_name = local.kubernetes_name },
-    { domain_name = local.domain_name },
-    { cloud_provider = local.cloud_provider }
+    local.argocd_cluster_labels
   )
 
+  # Secret Metadata Annotations
   addons_metadata = merge(
     {
       addons_repo_url      = local.gitops_addons_url

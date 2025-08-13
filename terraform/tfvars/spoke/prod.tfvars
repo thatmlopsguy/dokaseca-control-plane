@@ -8,6 +8,12 @@ enable_fluxcd        = false
 fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"
 gitops_org           = "https://github.com/thatmlopsguy"
+# Teams
+teams = {
+  "team-a" = "true"
+  "team-b" = "true"
+  "team-c" = "false"
+}
 # Addons
 gitops_addons_repo     = "dokaseca-addons"
 gitops_addons_basepath = "argocd"

@@ -12,7 +12,13 @@ enable_gitops_bridge = true
 enable_fluxcd        = false
 fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"
-gitops_org           = "https://github.com/thatmlopsguy"
+# Teams
+teams = {
+  "team-a" = "true"
+  "team-b" = "true"
+  "team-c" = "true"
+}
+gitops_org = "https://github.com/thatmlopsguy"
 # Addons
 gitops_addons_repo     = "dokaseca-addons"
 gitops_addons_basepath = "argocd"
@@ -40,7 +46,7 @@ addons = {
   enable_authelia     = false
   enable_oauth2_proxy = false
   # fleet management
-  enable_kubefleet_hub = false
+  enable_kubefleet_hub    = false
   enable_kubefleet_member = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
