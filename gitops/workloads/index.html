@@ -12,13 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/resources/glossary/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/gitops/workloads/">
       
       
-        <link rel="prev" href="../../multicluster/">
+        <link rel="prev" href="../addons/">
       
       
-        <link rel="next" href="../contributing/">
+        <link rel="next" href="../../networking/">
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Glossary - Doka Seca</title>
+        <title>Workloads - Doka Seca</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#glossary" class="md-skip">
+        <a href="#gitops-kubernetes-workflows" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Glossary
+              Workloads
             
           </span>
         </div>
@@ -500,18 +500,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
@@ -527,7 +529,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             GitOps
@@ -541,7 +543,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gitops/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -564,7 +566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../gitops/addons/" class="md-nav__link">
+      <a href="../addons/" class="md-nav__link">
         
   
   
@@ -584,10 +586,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../gitops/workloads/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Workloads
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -598,6 +622,101 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-structure-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Structure Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applicationset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ApplicationSet Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ApplicationSet Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationset-key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      ApplicationSet Key Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-labeling-for-team-targeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Labeling for Team Targeting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -878,20 +997,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
         
           
           <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
@@ -907,7 +1024,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             Resources
@@ -918,32 +1035,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Glossary
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -954,35 +1049,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      Reference
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -995,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
+      <a href="../../resources/contributing/" class="md-nav__link">
         
   
   
@@ -1018,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -1041,7 +1107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -1064,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1087,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1297,9 +1363,75 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Reference
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Repository Structure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Repository Structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-structure-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Structure Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applicationset-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      ApplicationSet Example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ApplicationSet Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#applicationset-key-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      ApplicationSet Key Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cluster-labeling-for-team-targeting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cluster Labeling for Team Targeting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1324,17 +1456,158 @@
   
 
 
-<h1 id="glossary">Glossary<a class="headerlink" href="#glossary" title="Permanent link">&para;</a></h1>
-<p>This glossary is a collection of terms related to Doca Seca. The glossary is intended to assist in consistency in usage of terminology across all documentation and represents the meanings accepted by the majority of the community and overall high tech industry. This glossary includes only some most-commonly used terms from these fields.</p>
+<h1 id="gitops-kubernetes-workflows">GitOps Kubernetes Workflows<a class="headerlink" href="#gitops-kubernetes-workflows" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca provides flexibility in choosing the right GitOps promotion strategy for your workloads through three complementary tools: <a href="https://kargo.io/">Kargo</a> is the <strong>default and recommended</strong> promotion tool for DoKa Seca workloads, <a href="https://argocd-image-updater.readthedocs.io/">ArgoCD Image Updater</a> or <a href="https://github.com/argoproj-labs/gitops-promoter">GitOps Promoter</a>.</p>
+<p>These three tools work in conjunction with ArgoCD to provide a complete GitOps workflow for continuous delivery. While ArgoCD handles the core GitOps functionality of synchronizing Git repository state with Kubernetes clusters, Kargo, ArgoCD Image Updater, and GitOps Promoter extend this capability by automating the promotion of applications across environments. They integrate seamlessly with ArgoCD's declarative approach, automatically updating Git repositories with new image versions or configuration changes, which ArgoCD then detects and deploys according to its synchronization policies.</p>
+<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca uses an external repository to organize the workloads, see <a href="https://github.com/thatmlopsguy/dokaseca-workloads"><code>dokaseca-workloads</code></a>, for each team, following a structured approach that separates platform configuration from workload definitions. The repository structure is designed to support multi-team environments with clear separation of concerns:</p>
+<div class="highlight"><pre><span></span><code>├── README.md
+├── argocd
+│   ├── platform
+│   │   ├── exclude
+│   │   └── team-a
+│   │       ├── project-a
+│   │       │   └── kargo
+│   │       │       ├── kargo-secret.yaml #
+│   │       │       ├── project.yaml
+│   │       │       ├── promotiontasks.yaml
+│   │       │       ├── stages
+│   │       │       │   ├── dev.yaml
+│   │       │       │   ├── prod.yaml
+│   │       │       │   └── stg.yaml
+│   │       │       └── warehouse.yaml
+│   │       └── project-b
+│   │           └── project.yaml
+│   └── workloads
+│       ├── exclude
+│       ├── team-a
+│       │   ├── project-a
+│       │   │   └── applicationset.yaml
+│       │   ├── project-b
+│       │   │   └── applicationset.yaml
+│       │   └── project.yaml
+│       ├── team-b
+│       │   ├── project-a
+│       │   ├── project-b
+│       │   └── project.yaml
+│       └── team-c
+│           ├── project-a
+│           ├── project-b
+│           └── project.yaml
+</code></pre></div>
+<h3 id="key-structure-components">Key Structure Components<a class="headerlink" href="#key-structure-components" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Recovery point objective (RPO)</li>
-<li>Recovery time objective (RTO)</li>
+<li><strong><code>argocd/platform/</code></strong>: Contains Kargo-specific configurations for GitOps promotion workflows, including stages (dev, stg, prod), promotion tasks, and warehouse definitions</li>
+<li><strong><code>argocd/workloads/</code></strong>: Contains ArgoCD ApplicationSets and project configurations that define how applications are deployed across environments</li>
+<li><strong>Team Organization</strong>: Each team has its own directory structure under both platform and workloads, enabling team-specific configurations while maintaining consistency</li>
+<li><strong>Project Isolation</strong>: Individual projects within teams have their own subdirectories, allowing for project-specific deployment strategies and configurations</li>
 </ul>
-<h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<h2 id="applicationset-example">ApplicationSet Example<a class="headerlink" href="#applicationset-example" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca leverages ArgoCD ApplicationSets to deploy workloads across multiple environments and clusters.</p>
+<p>Below is an example ApplicationSet that demonstrates how to deploy a Python API application across different environments with environment-specific configurations:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argoproj.io/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ApplicationSet</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kargo-python-api</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">goTemplate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">goTemplateOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;missingkey=error&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">generators</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">merge</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">mergeKeys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">server</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">generators</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;workload&quot;</span>
+<span class="w">                  </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4.0&quot;</span><span class="w"> </span><span class="c1"># Default helm chart version for dev</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stg</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.3.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version for staging</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
+<span class="w">              </span><span class="nt">values</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.2.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version for production</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python-api-helm-{{.name}}</span>
+<span class="w">      </span><span class="c1"># annotations:</span>
+<span class="w">      </span><span class="c1"># https://docs.kargo.io/user-guide/how-to-guides/argo-cd-integration#authorizing-updates</span>
+<span class="w">      </span><span class="c1">#  kargo.akuity.io/authorized-stage: kargo-simple-python-demo:{{.metadata.labels.env}} # &quot;&lt;project-name&gt;:&lt;stage-name&gt;&quot;</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/write-back-method: git</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/write-back-target: kustomization</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/image-list: python-app=ghcr.io/thatmlopsguy/python-demo-api</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/python-app.update-strategy: latest</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/python-app.allow-tags: regexp:^{{.metadata.labels.env}}.[0-9a-f]{7}$</span>
+<span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/python-app.ignore-tags: latest, master</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workloads-team-a</span>
+<span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/thatmlopsguy/python-api.git</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HEAD</span>
+<span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/&lt;org&gt;/charts</span><span class="w"> </span><span class="c1"># helm chart repository</span>
+<span class="w">          </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span><span class="w"> </span><span class="c1"># helm chart used for all applications</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{.values.chartVersion}}&#39;</span>
+<span class="w">          </span><span class="nt">helm</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">valueFiles</span><span class="p">:</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/common.yaml&#39;</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/envs/{{.metadata.labels.env}}.yaml&#39;</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/regions/{{.metadata.labels.region}}.yaml&#39;</span>
+<span class="w">      </span><span class="nt">destination</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{.server}}&#39;</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;python-demo-{{.metadata.labels.env}}&#39;</span>
+<span class="w">      </span><span class="nt">syncPolicy</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">automated</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">selfHeal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">        </span><span class="nt">syncOptions</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Validate=true</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CreateNamespace=true</span>
+</code></pre></div>
+<h3 id="applicationset-key-features">ApplicationSet Key Features<a class="headerlink" href="#applicationset-key-features" title="Permanent link">&para;</a></h3>
+<p>This example ApplicationSet demonstrates several important patterns used in DoKa Seca:</p>
 <ul>
-<li><a href="https://docs.mirantis.com/glossary/mcp/#">Mirantis Glossary</a></li>
-<li><a href="https://docs.devtron.ai/resources/glossary">Devtron Glossary</a></li>
-<li><a href="https://external-secrets.io/latest/introduction/glossary/">External Secrets Glossary</a></li>
+<li><strong>Multi-Environment Deployment</strong>: Uses merge generators to deploy across different environments (dev, stg, prod) with environment-specific configurations</li>
+<li><strong>Team-Based Targeting</strong>: Targets clusters labeled with <code>team-a: "true"</code> to ensure workloads are deployed only to appropriate team clusters</li>
+<li><strong>Version Management</strong>: Different chart versions per environment, allowing for controlled rollouts and testing</li>
+<li><strong>Global Helm Chart Stability</strong>: The global helm chart referenced in the ApplicationSet is designed for stability and is not upgraded frequently. This approach ensures consistency across all applications while minimizing disruption from chart-level changes, allowing teams to focus on application-specific updates rather than infrastructure changes</li>
+<li><strong>Multiple Sources</strong>: Combines Git repository sources with OCI Helm chart registries for flexible deployment strategies</li>
+<li><strong>Value File Hierarchies</strong>: Uses environment and region-specific value files for fine-grained configuration management</li>
+<li><strong>GitOps Integration</strong>: Commented annotations show integration points for Kargo and ArgoCD Image Updater workflows</li>
+<li><strong>Automated Sync</strong>: Configured for automated synchronization with pruning and self-healing capabilities</li>
+</ul>
+<h2 id="cluster-labeling-for-team-targeting">Cluster Labeling for Team Targeting<a class="headerlink" href="#cluster-labeling-for-team-targeting" title="Permanent link">&para;</a></h2>
+<p>To enable team-based targeting as shown in the ApplicationSet example above, you need to add the appropriate team labels to the ArgoCD cluster secrets. The <code>team-a: "true"</code> label in the cluster selector ensures that workloads are deployed only to clusters belonging to that specific team.</p>
+<p>To add this label to an ArgoCD cluster secret, you can either modify the existing cluster secret directly or use the DoKa Seca Terraform configuration. In the cluster secret, add the label under the <code>metadata.labels</code> section:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;workload&quot;</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span><span class="w">  </span><span class="c1"># or stg, prod</span>
+<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span><span class="w">  </span><span class="c1"># your specific region</span>
+<span class="w">    </span><span class="nt">cloud</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;local&quot;</span>
+</code></pre></div>
+<p>This labeling strategy allows ApplicationSets to precisely target the right clusters based on team ownership, environment, and geographical region, ensuring proper workload isolation and deployment control across your multi-cluster setup.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://codefresh.io/blog/argocd-clusters-labels-with-apps/">Distribute Your Argo CD Applications to Different Kubernetes Clusters Using Application Sets</a></li>
+<li><a href="https://codefresh.io/blog/argocd-application-target-revision-field/">Abusing the Target Revision Field for Argo CD Promotions</a></li>
 </ul>
 
 
@@ -1356,7 +1629,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 11, 2025 14:20:11 UTC"><span class="timeago" datetime="2025-08-11T14:20:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 11, 2025 14:20:11 UTC">2025-08-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 13, 2025 10:48:25 UTC"><span class="timeago" datetime="2025-08-13T10:48:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 13, 2025 10:48:25 UTC">2025-08-13</span>
   </span>
 
     
@@ -1401,7 +1674,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../multicluster/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Multi cluster">
+          <a href="../addons/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Addons">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1411,20 +1684,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Multi cluster
+                Addons
               </div>
             </div>
           </a>
         
         
           
-          <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing">
+          <a href="../../networking/" class="md-footer__link md-footer__link--next" aria-label="Next: Networking">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Contributing
+                Networking
               </div>
             </div>
             <div class="md-footer__button md-icon">
