@@ -117,9 +117,9 @@ variable "teams" {
   description = "List of teams that can deploy workloads in the cluster"
   type        = map(string)
   default = {
-    "team-a" = "true"
-    "team-b" = "true"
-    "team-c" = "false" # Example team, set to false to not deploy workloads
+    team-a = "true"
+    team-b = "true"
+    team-c = "false" # Example team, set to false to not deploy workloads
   }
 }
 

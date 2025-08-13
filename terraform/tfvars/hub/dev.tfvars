@@ -14,9 +14,9 @@ fluxcd_namespace     = "flux-system"
 fluxcd_chart_version = "2.15.0"
 # Teams
 teams = {
-  "team-a" = "true"
-  "team-b" = "true"
-  "team-c" = "true"
+  team-a = "true"
+  team-b = "true"
+  team-c = "true"
 }
 gitops_org = "https://github.com/thatmlopsguy"
 # Addons
