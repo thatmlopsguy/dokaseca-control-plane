@@ -11,3 +11,4 @@ rules:
       # ignore line 11, column 1 on label-pull-request.yml
       - label-pull-request.yml:11:1
       - check-semantic-prs.yml:3:1
+      - release_drafter.yml:3:1
