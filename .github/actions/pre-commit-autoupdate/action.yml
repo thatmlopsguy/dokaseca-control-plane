@@ -1,0 +1,24 @@
+name: 'Pre-commit autoupdate'
+description: 'Run pre-commit autoupdate and run them on all files using uv'
+branding:
+  icon: chevrons-up
+  color: yellow
+runs:
+  using: "composite"
+  steps:
+    - name: Install uv
+      uses: astral-sh/setup-uv@d9e0f98d3fc6adb07d1e3d37f3043649ddad06a1 # v6.5.0
+      with:
+        version: "latest"
+
+    - name: Install pre-commit with uv
+      run: uv tool install pre-commit
+      shell: bash
+
+    - name: Run pre-commit autoupdate
+      run: pre-commit autoupdate
+      shell: bash
+
+    - name: Run pre-commit on all files
+      run: pre-commit run --all-files
+      shell: bash
