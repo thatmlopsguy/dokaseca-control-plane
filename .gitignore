@@ -43,7 +43,8 @@ secret.yaml
 kubeconfigs/
 !kubeconfigs/README.md
 
-# Cosign Keys
+# Keys
+keys/*
 cosign*
 
 # Mkdocs site
