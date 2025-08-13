@@ -26,18 +26,22 @@ argocd_files_config = {
 }
 addons = {
   # dashboard
-  enable_kubernetes_dashboard = false
+  enable_kubernetes_dashboard = true
   enable_headlamp             = false
   enable_helm_dashboard       = false
   enable_komoplane            = false # requires enable_crossplane
   enable_altinity_dashboard   = false
   enable_dapr_dashboard       = false # requires enable_dapr
   enable_ocm_dashboard        = false
+  enable_portainer            = true
   # identity
   enable_authentik    = false
   enable_keycloak     = false
   enable_authelia     = false
   enable_oauth2_proxy = false
+  # fleet management
+  enable_kubefleet_hub = false
+  enable_kubefleet_member = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd               = false
@@ -59,7 +63,7 @@ addons = {
   enable_vcluster      = false
   enable_koreo         = false
   # gitops promoter
-  enable_kargo           = false
+  enable_kargo           = true
   enable_gitops_promoter = false
   # platform engineering
   enable_karpor = false
@@ -134,7 +138,7 @@ addons = {
   enable_reloader  = false
   enable_reflector = false
   enable_kured     = false
-  enable_eraser    = false
+  enable_eraser    = true
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning

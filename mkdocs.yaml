@@ -20,7 +20,10 @@ nav:
   - Catalog: catalog.md
   - Repository: repository.md
   - Portal: portal.md
-  - GitOps: gitops.md
+  - GitOps:
+    - Overview: gitops/overview.md
+    - Addons: gitops/addons.md
+    - Workloads: gitops/workloads.md
   - Networking: networking.md
   - Observability: observability.md
   - Compliance: compliance.md

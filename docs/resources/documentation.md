@@ -1,6 +1,8 @@
 # Documentation
 
-DoKa Seca uses [MkDocs](https://www.mkdocs.org/) with the [Material theme](https://squidfunk.github.io/mkdocs-material/) to generate and publish comprehensive platform documentation. This guide provides detailed instructions for configuring, writing, and deploying documentation for the DoKa Seca platform.
+DoKa Seca uses [MkDocs](https://www.mkdocs.org/) with the [Material theme](https://squidfunk.github.io/mkdocs-material/)
+to generate and publish comprehensive platform documentation. This guide provides detailed instructions for configuring,
+writing, and deploying documentation for the DoKa Seca platform.
 
 ## Overview
 
