@@ -43,6 +43,9 @@ nav:
     - Release Notes: resources/releases.md
     - Roadmap: resources/roadmap.md
     - References: resources/references.md
+  - RFCs:
+    - Overview: rfc/index.md
+    - 0001 - GitOps Promotion with Kargo: rfc/0001-gitops-promotion-with-kargo.md
   - Architecture Decisions:
     - Overview: adr/index.md
     - 0001 - Use ADRs: adr/001-use-architecture-decision-records.md

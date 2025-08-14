@@ -8,7 +8,9 @@ Proposed
 
 ## Context
 
-DoKa Seca requires a secure and scalable secret management solution that supports multi-tenancy across different teams and environments. The current challenges include:
+DoKa Seca requires a secure and scalable secret management solution that supports multi-tenancy across different teams and environments.
+
+The current challenges include:
 
 - **Secret Management Complexity**: Manual secret management across multiple namespaces and environments
 - **Security Isolation**: Need for proper tenant isolation to prevent cross-namespace secret access
