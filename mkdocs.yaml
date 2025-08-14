@@ -46,7 +46,7 @@ nav:
   - RFCs:
     - Overview: rfc/index.md
     - 0001 - GitOps Promotion with Kargo: rfc/0001-gitops-promotion-with-kargo.md
-  - Architecture Decisions:
+  - Architecture Decisions (ADRs):
     - Overview: adr/index.md
     - 0001 - Use ADRs: adr/001-use-architecture-decision-records.md
     - 0002 - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
