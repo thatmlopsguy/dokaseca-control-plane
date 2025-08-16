@@ -14,6 +14,10 @@ TODO
 
 TODO
 
+## Centralized/Hub-spoke (shared with CAPI)
+
+TODO
+
 ## Centralized/Hub-spoke (agent)
 
 TODO

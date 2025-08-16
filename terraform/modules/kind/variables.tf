@@ -34,3 +34,12 @@ variable "kubeconfig_path" {
   description = "Path to save the kubeconfig"
   type        = string
 }
+
+variable "extra_mounts" {
+  description = "List of extra mounts to add to the control-plane node"
+  type = list(object({
+    host_path      = string
+    container_path = string
+  }))
+  default = []
+}

@@ -86,10 +86,12 @@ variable "argocd_files_config" {
   type = object({
     load_addons    = bool
     load_workloads = bool
+    load_clusters  = bool
   })
   default = {
     load_addons    = true
     load_workloads = true
+    load_clusters  = true
   }
 }
 

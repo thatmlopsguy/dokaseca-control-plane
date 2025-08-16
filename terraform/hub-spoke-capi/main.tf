@@ -1,11 +1,18 @@
 module "kind_cluster" {
-  source = "./../modules/kind"
+  source = "./../../modules/kind"
 
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
   environment        = var.environment
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
+
+  extra_mounts = [
+    {
+      host_path      = "/var/run/docker.sock"
+      container_path = "/var/run/docker.sock"
+    },
+  ]
 }
 
 module "gitops_bridge_bootstrap" {

@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clusters
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: true
+  generators:
+    - clusters:
+        selector:
+          matchExpressions:
+            - key: cluster_name
+              operator: NotIn
+              values: [in-cluster]
+  template:
+    metadata:
+      name: 'clusters'
+    spec:
+      project: default
+      source:
+        repoURL: '{{metadata.annotations.clusters_repo_url}}'
+        path: '{{metadata.annotations.clusters_repo_basepath}}/{{metadata.annotations.clusters_repo_path}}'
+        targetRevision: '{{metadata.annotations.clusters_repo_revision}}'
+        directory:
+          recurse: true
+          exclude: exclude/*
+      destination:
+        namespace: 'argocd'
+        name: '{{name}}'
+      syncPolicy:
+        automated: {}
