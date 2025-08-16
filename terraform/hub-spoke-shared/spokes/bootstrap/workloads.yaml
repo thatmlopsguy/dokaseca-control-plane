@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: workloads
+  namespace: argocd
+spec:
+  syncPolicy:
+    preserveResourcesOnDeletion: false # in production environments should be true
+  generators:
+    - clusters:
+        selector:
+          matchExpressions:
+            - key: cluster_name
+              operator: NotIn
+              values: [in-cluster]
+  template:
+    metadata:
+      name: 'workloads'
+    spec:
+      project: default
+      source:
+        repoURL: '{{metadata.annotations.workloads_repo_url}}'
+        path: '{{metadata.annotations.workloads_repo_basepath}}/{{metadata.annotations.workloads_repo_path}}'
+        targetRevision: '{{metadata.annotations.workloads_repo_revision}}'
+        directory:
+          recurse: true
+          exclude: exclude/*
+      destination:
+        namespace: 'argocd'
+        name: '{{name}}'
+      syncPolicy:
+        automated: {}
+        preserveResourcesOnDeletion: false  # Should be true in production

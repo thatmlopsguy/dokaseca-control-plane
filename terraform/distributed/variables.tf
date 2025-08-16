@@ -25,8 +25,8 @@ variable "cluster_type" {
   type        = string
   default     = "spoke"
   validation {
-    condition     = contains(["hub", "spoke"], lower(var.cluster_type))
-    error_message = "Invalid cluster type. Must be one of 'hub' or 'spoke'."
+    condition     = contains(["spoke"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'spoke'."
   }
 }
 
@@ -56,7 +56,7 @@ variable "kubernetes_distro" {
 variable "kubernetes_version" {
   description = "Version of the Kind node image"
   type        = string
-  default     = "v1.31.2"
+  default     = "1.31.2"
 }
 
 variable "cloud_provider" {
