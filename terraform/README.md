@@ -4,6 +4,8 @@ Deploys kind clusters in a multi-cluster setup.
 
 ## Standalone/Distributed
 
+![distributed](../docs/assets/figures/images/argocd-distributed.svg)
+
 Deploys kind clusters in a standalone or distributed manner. Each cluster manages addons and workloads.
 
 ```bash
@@ -14,6 +16,8 @@ cd distributed
 ```
 
 ## Centralized/Hub-spoke
+
+![hub-spoke](../docs/assets/figures/images/hub-spoke.svg)
 
 Deploys kind clusters in a centralized manner, with a hub cluster managing multiple spoke clusters.
 The spoke clusters are registered as remote clusters in the Hub Cluster's ArgoCD.
@@ -49,11 +53,11 @@ spoke-prod                        Opaque               3      5m32s
 
 ## Centralized/Hub-spoke (shared)
 
+![hub-spoke-shared](../docs/assets/figures/images/hub-spoke-shared.svg)
+
 Deploys kind clusters in a centralized manner, with a hub cluster managing multiple spoke clusters.
 The spoke clusters are registered as remote clusters in the Hub Cluster's ArgoCD.
 The hub cluster is responsible for managing shared addons, while spoke clusters handle their own specific workloads.
-
-Same as Centralized/Hub-spoke.
 
 ## Centralized/Hub-spoke (shared with CAPI)
 
@@ -67,10 +71,10 @@ terraform apply -auto-approve
 
 ## Centralized/Hub-spoke (agent)
 
-Deploys kind clusters in a centralized manner, with a hub cluster managing multiple spoke clusters.
-The hub cluster is responsible for managing shared addons, while spoke clusters handle their own specific workloads via argocd agent.
+![agent](../docs/assets/figures/images/hub-spoke-agent.svg)
 
-Same as Centralized/Hub-spoke.
+Deploys kind clusters in a centralized manner, with a hub cluster managing multiple spoke clusters.
+The hub cluster is responsible for managing shared addons, while spoke clusters handle their own specific workloads via [argocd agent](https://argocd-agent.readthedocs.io/latest/).
 
 ## References
 
