@@ -28,11 +28,12 @@ locals {
 
   # Cluster labels
   # Argocd secret labels for cluster selector
+  # see example https://github.com/thatmlopsguy/dokaseca-workloads/blob/main/argocd/workloads/team-a/project-a/applicationset.yaml
   argocd_cluster_labels = merge({
     cloud   = local.cloud
     region  = local.region
     env     = local.env
-    type    = local.type
+    type    = "workload"
     version = local.kubernetes_version
     distro  = local.kubernetes_distro
   }, var.teams)
@@ -238,13 +239,24 @@ locals {
       addons_extras_repo_url      = local.gitops_addons_extras_url
       addons_extras_repo_basepath = local.gitops_addons_extras_basepath
       addons_extras_repo_revision = local.gitops_addons_extras_revision
-    },
+    }
+  )
+
+  workloads_metadata = merge(
     {
       workloads_repo_url      = local.gitops_workloads_url
       workloads_repo_basepath = local.gitops_workloads_basepath
       workloads_repo_path     = local.gitops_workloads_path
       workloads_repo_revision = local.gitops_workloads_revision
     },
+    local.argocd_cluster_labels
+  )
+
+  addons_spoke = merge(
+    {
+      enable_argocd = false # ArgoCD is deploy from Hub Cluster
+    },
+    local.argocd_cluster_labels
   )
 
   argocd_helm_values = <<-EOT

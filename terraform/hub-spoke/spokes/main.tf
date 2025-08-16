@@ -27,6 +27,11 @@ provider "kubernetes" {
   alias = "hub"
 }
 
+# Get the container IP for the spoke cluster using external data source
+data "external" "spoke_container_ip" {
+  program = ["sh", "-c", "docker inspect ${module.kind_cluster.cluster_name}-control-plane --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' | jq -R '{ip: .}'"]
+}
+
 # GitOps Bridge: Bootstrap for Hub Cluster
 # The ArgoCD remote cluster secret is deploy on hub cluster not on spoke clusters
 module "gitops_bridge_bootstrap_hub" {
@@ -42,16 +47,14 @@ module "gitops_bridge_bootstrap_hub" {
     environment  = local.env
     metadata     = local.addons_metadata
     addons       = local.addons
-    server       = module.kind_cluster.cluster_endpoint
-    config       = <<-EOT
-      {
-        "tlsClientConfig": {
-          "insecure": false,
-          "caData": "${module.kind_cluster.cluster_ca_certificate}",
-          "certData": "${module.kind_cluster.client_certificate}",
-          "keyData": "${module.kind_cluster.client_key}"
-        }
+    server       = "https://${data.external.spoke_container_ip.result.ip}:6443"
+    config = jsonencode({
+      "tlsClientConfig" = {
+        "insecure" = false
+        "caData"   = base64encode(module.kind_cluster.cluster_ca_certificate)
+        "certData" = base64encode(module.kind_cluster.client_certificate)
+        "keyData"  = base64encode(module.kind_cluster.client_key)
       }
-    EOT
+    })
   }
 }

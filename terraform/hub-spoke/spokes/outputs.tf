@@ -27,3 +27,13 @@ output "cluster_ca_certificate" {
   description = "The cluster CA certificate data for this cluster"
   value       = module.kind_cluster.cluster_ca_certificate
 }
+
+output "argocd_cluster_server" {
+  description = "The internal container IP address used by ArgoCD hub to connect to this cluster"
+  value       = "https://${data.external.spoke_container_ip.result.ip}:6443"
+}
+
+output "container_ip" {
+  description = "The internal Docker container IP address of the cluster control plane"
+  value       = data.external.spoke_container_ip.result.ip
+}

@@ -28,7 +28,8 @@ addons = {
   enable_komoplane      = false # requires enable_crossplane
   # continuous delivery
   # gitops bridge create enable_argocd variable
-  enable_argo_cd        = false
+  enable_argocd         = true
+  enable_argo_cd        = true
   enable_argo_rollouts  = false
   enable_argo_workflows = false
   enable_argo_events    = false

@@ -32,6 +32,7 @@ addons = {
   enable_authelia  = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
+  enable_argocd                = true
   enable_argo_cd               = false
   enable_argo_cd_image_updater = false
   enable_argo_rollouts         = false

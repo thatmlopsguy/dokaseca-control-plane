@@ -76,31 +76,15 @@ variable "enable_gitops_bridge" {
   default     = true
 }
 
-variable "enable_fluxcd" {
-  description = "Enable fluxcd"
-  type        = bool
-  default     = false
-}
-
 variable "argocd_files_config" {
   type = object({
-    load_addons = bool
+    load_addons    = bool
+    load_workloads = bool
   })
   default = {
-    load_addons = true
+    load_addons    = true
+    load_workloads = true
   }
-}
-
-variable "fluxcd_namespace" {
-  description = "Kubernetes namespace to deploy Flux2 in"
-  type        = string
-  default     = "flux-system"
-}
-
-variable "fluxcd_chart_version" {
-  description = "fluxcd helm chart version"
-  type        = string
-  default     = "2.15.0"
 }
 
 variable "argocd_chart_version" {
@@ -135,27 +119,27 @@ variable "addons" {
     enable_ocm_dashboard        = false
     # identity
     # delivery
-    enable_argo_cd                 = true
-    enable_argo_cd_image_updater   = true
+    enable_argo_cd                 = false
+    enable_argo_cd_image_updater   = false
     enable_gitops_promoter         = false
-    enable_argo_rollouts           = true
-    enable_argo_workflows          = true
+    enable_argo_rollouts           = false
+    enable_argo_workflows          = false
     enable_argo_events             = false
-    enable_kargo                   = false
+    enable_kargo                   = true
     enable_keptn                   = false
     enable_cert_manager            = true
-    enable_external_secrets        = true
-    enable_velero                  = true
-    enable_kube_prometheus_stack   = true
-    enable_metrics_server          = true
-    enable_keda                    = true
-    enable_dapr                    = true
-    enable_trivy                   = true
+    enable_external_secrets        = false
+    enable_velero                  = false
+    enable_kube_prometheus_stack   = false
+    enable_metrics_server          = false
+    enable_keda                    = false
+    enable_dapr                    = false
+    enable_trivy                   = false
     enable_kro                     = false
     enable_kyverno                 = false
     enable_kyverno_policies        = false
     enable_kyverno_policy_reporter = false
-    enable_capi_operator           = true # requires enable_cert_manager
+    enable_capi_operator           = false # requires enable_cert_manager
     enable_cilium                  = false
     enable_calico                  = false
     enable_metallb                 = false
@@ -164,7 +148,7 @@ variable "addons" {
     enable_cilium                  = false
     enable_ray_operator            = false
     enable_opencost                = false
-    enable_grafana_operator        = true
+    enable_grafana_operator        = false
     enable_polaris                 = false
     enable_devlake                 = false
     # messaging
@@ -216,13 +200,13 @@ variable "gitops_addons_revision" {
 variable "gitops_addons_basepath" {
   description = "Git repository base path for addons"
   type        = string
-  default     = "gitops"
+  default     = "argocd"
 }
 
 variable "gitops_addons_path" {
   description = "Git repository path for addons"
   type        = string
-  default     = "addons"
+  default     = "appsets"
 }
 
 # Addons Extra Git
@@ -248,19 +232,19 @@ variable "gitops_addons_extras_revision" {
 variable "gitops_workloads_repo" {
   description = "Git repository contains for workload"
   type        = string
-  default     = "gitops-bridge"
+  default     = "dokaseca-workloads"
 }
 
 variable "gitops_workloads_basepath" {
   description = "Git repository base path for workload"
   type        = string
-  default     = "dokaseca-workloads"
+  default     = "argocd"
 }
 
 variable "gitops_workloads_path" {
   description = "Git repository path for workload"
   type        = string
-  default     = "argocd/workloads"
+  default     = "platform"
 }
 
 variable "gitops_workloads_revision" {

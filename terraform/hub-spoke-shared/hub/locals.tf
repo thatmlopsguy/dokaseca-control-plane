@@ -261,7 +261,8 @@ locals {
     EOT
 
   argocd_apps = {
-    addons = var.argocd_files_config.load_addons ? file("${path.module}/bootstrap/addons.yaml") : ""
+    addons    = var.argocd_files_config.load_addons ? file("${path.module}/bootstrap/addons.yaml") : ""
+    workloads = var.argocd_files_config.load_workloads ? file("${path.module}/bootstrap/workloads.yaml") : ""
   }
 
   tags = {

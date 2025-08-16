@@ -73,7 +73,7 @@ variable "cloud_provider" {
 variable "enable_gitops_bridge" {
   description = "Enable gitops bridge"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "argocd_files_config" {

@@ -32,7 +32,7 @@ locals {
     cloud   = local.cloud
     region  = local.region
     env     = local.env
-    type    = local.type
+    type    = "workload"
     version = local.kubernetes_version
     distro  = local.kubernetes_distro
   }, var.teams)
