@@ -12,23 +12,23 @@ DEBUG=false
 
 # Debug logging
 log_debug() {
-    if [[ "${DEBUG}" == true ]]; then
-        echo "[DEBUG] $*"
-    fi
+	if [[ "${DEBUG}" == true ]]; then
+		echo "[DEBUG] $*"
+	fi
 }
 
 # Check if terraform-docs is installed
-if ! command -v "${TFDOCS_CMD}" &> /dev/null; then
-    log_debug "terraform-docs not found in PATH"
-    echo "Error: terraform-docs is not installed or not in PATH"
-    exit 1
+if ! command -v "${TFDOCS_CMD}" &>/dev/null; then
+	log_debug "terraform-docs not found in PATH"
+	echo "Error: terraform-docs is not installed or not in PATH"
+	exit 1
 fi
 
 # Check if config file exists
 if [ ! -f "${TFDOCS_CONFIG}" ]; then
-    log_debug "Config file ${TFDOCS_CONFIG} not found"
-    echo "Error: terraform-docs configuration file '${TFDOCS_CONFIG}' not found"
-    exit 1
+	log_debug "Config file ${TFDOCS_CONFIG} not found"
+	echo "Error: terraform-docs configuration file '${TFDOCS_CONFIG}' not found"
+	exit 1
 fi
 
 # Generate documentation

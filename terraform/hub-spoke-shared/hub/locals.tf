@@ -10,7 +10,7 @@ locals {
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
   kubernetes_name    = var.cluster_type
-  kubeconfig_path    = "${dirname(dirname(dirname(path.cwd)))}/kubeconfigs/hub-spoke-capi/hub"
+  kubeconfig_path    = "${dirname(dirname(dirname(path.cwd)))}/kubeconfigs/hub-spoke-shared/${local.kubernetes_name}"
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -259,12 +259,6 @@ locals {
       metrics:
         enabled: true
     EOT
-
-  argocd_apps = {
-    addons    = var.argocd_files_config.load_addons ? file("${path.module}/bootstrap/addons.yaml") : ""
-    workloads = var.argocd_files_config.load_workloads ? file("${path.module}/bootstrap/workloads.yaml") : ""
-    clusters  = var.argocd_files_config.load_clusters ? file("${path.module}/bootstrap/clusters.yaml") : ""
-  }
 
   tags = {
     Blueprint  = local.name
