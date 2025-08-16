@@ -76,12 +76,6 @@ variable "enable_gitops_bridge" {
   default     = false
 }
 
-variable "enable_fluxcd" {
-  description = "Enable fluxcd"
-  type        = bool
-  default     = false
-}
-
 variable "argocd_files_config" {
   type = object({
     load_addons    = bool
@@ -89,20 +83,8 @@ variable "argocd_files_config" {
   })
   default = {
     load_addons    = false
-    load_workloads = false
+    load_workloads = true
   }
-}
-
-variable "fluxcd_namespace" {
-  description = "Kubernetes namespace to deploy Flux2 in"
-  type        = string
-  default     = "flux-system"
-}
-
-variable "fluxcd_chart_version" {
-  description = "fluxcd helm chart version"
-  type        = string
-  default     = "2.15.0"
 }
 
 variable "argocd_chart_version" {

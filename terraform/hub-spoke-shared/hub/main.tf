@@ -1,5 +1,5 @@
 module "kind_cluster" {
-  source = "./../modules/kind"
+  source = "./../../modules/kind"
 
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type

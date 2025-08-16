@@ -134,8 +134,4 @@ gitops_workloads_repo     = "dokaseca-workloads"
 gitops_workloads_basepath = "argocd"
 gitops_workloads_path     = "workloads"
 gitops_workloads_revision = "main"
-# Clusters
-gitops_clusters_repo     = "dokaseca-clusters"
-gitops_clusters_basepath = "argocd"
-gitops_clusters_path     = "clusters"
-gitops_clusters_revision = "dev"
+

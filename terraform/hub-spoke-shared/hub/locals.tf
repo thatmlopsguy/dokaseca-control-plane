@@ -260,6 +260,10 @@ locals {
         enabled: true
     EOT
 
+  argocd_apps = {
+    addons = var.argocd_files_config.load_addons ? file("${path.module}/bootstrap/addons.yaml") : ""
+  }
+
   tags = {
     Blueprint  = local.name
     GithubRepo = "github.com/thatmlopsguy/dokaseca-control-plane"

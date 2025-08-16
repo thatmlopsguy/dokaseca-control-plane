@@ -84,12 +84,10 @@ variable "enable_fluxcd" {
 
 variable "argocd_files_config" {
   type = object({
-    load_addons    = bool
-    load_workloads = bool
+    load_addons = bool
   })
   default = {
-    load_addons    = true
-    load_workloads = true
+    load_addons = true
   }
 }
 
@@ -115,8 +113,8 @@ variable "teams" {
   description = "List of teams that can deploy workloads in the cluster"
   type        = map(string)
   default = {
-    team-a = "true"
-    team-b = "true"
+    team-a = "false"
+    team-b = "false"
     team-c = "false" # Example team, set to false to not deploy workloads
   }
 }
