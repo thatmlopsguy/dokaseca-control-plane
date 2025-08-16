@@ -21,7 +21,7 @@ gitops_addons_path     = "appsets"
 gitops_addons_revision = "main"
 argocd_chart_version   = "8.0.17"
 argocd_files_config = {
-  load_addons    = true
+  load_addons    = false
   load_workloads = false
 }
 addons = {

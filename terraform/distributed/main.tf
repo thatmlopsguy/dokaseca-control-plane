@@ -1,6 +1,7 @@
 module "kind_cluster" {
   source = "./../modules/kind"
 
+  cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
   environment        = var.environment
   kubernetes_version = var.kubernetes_version

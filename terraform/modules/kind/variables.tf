@@ -1,3 +1,8 @@
+variable "cluster_name" {
+  description = "Name of the cluster"
+  type        = string
+}
+
 variable "cluster_type" {
   description = "Type of the cluster, used in naming"
   type        = string
@@ -22,7 +27,7 @@ variable "environment" {
 variable "kubernetes_version" {
   description = "Version of the Kind node image"
   type        = string
-  default     = "v1.31.2"
+  default     = "1.31.2"
 }
 
 variable "kubeconfig_path" {
