@@ -37,6 +37,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 - **[Akamai App Platform](https://apl-docs.net/docs/akamai-app-platform/introduction)** - Cloud-native application platform providing edge computing capabilities
 - **[Data on EKS](https://awslabs.github.io/data-on-eks/)** - AWS Labs' comprehensive guide and patterns for running data workloads on Amazon EKS, including big data, analytics, and machine learning platforms
 - **[AI on EKS](https://awslabs.github.io/ai-on-eks/)** - AWS Labs' reference implementations and best practices for deploying artificial intelligence and machine learning workloads on Amazon EKS
+- **[AI Platform Engineering](https://cnoe-io.github.io/ai-platform-engineering/)** - CNOE's comprehensive guide to building AI-focused platform engineering solutions with cloud-native technologies and best practices
 
 ## Technical References
 
