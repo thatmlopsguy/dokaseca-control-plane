@@ -775,6 +775,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#github-actions-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pin-action-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Action Versions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -1470,6 +1494,30 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#github-actions-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Security
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions Security">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pin-action-versions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Action Versions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#references" class="md-nav__link">
     <span class="md-ellipsis">
       References
@@ -1541,11 +1589,38 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
 <li>Alerts are integrated with platform observability</li>
 <li>Security events are audited and reviewed regularly</li>
 </ul>
+<h2 id="github-actions-security">GitHub Actions Security<a class="headerlink" href="#github-actions-security" title="Permanent link">&para;</a></h2>
+<h3 id="pin-action-versions">Pin Action Versions<a class="headerlink" href="#pin-action-versions" title="Permanent link">&para;</a></h3>
+<p>All GitHub Actions used in CI/CD workflows <strong>must use pinned versions (commit SHA)</strong> instead of tags or branches to prevent
+supply chain attacks. This ensures immutable references to specific action versions.</p>
+<p><img alt="github-actions" src="../assets/figures/images/github-policy-actions.png" /></p>
+<p><strong>❌ Avoid using tags or branches:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@main</span>
+</code></pre></div>
+<p><strong>✅ Use pinned SHA versions:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332</span><span class="w">  </span><span class="c1"># v4.1.7</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8</span><span class="w">  </span><span class="c1"># v4.0.2</span>
+</code></pre></div>
+<p><strong>Benefits of pinning:</strong></p>
+<ul>
+<li><strong>Immutability</strong>: Actions cannot be modified after deployment</li>
+<li><strong>Supply Chain Security</strong>: Prevents compromised tags from affecting workflows</li>
+<li><strong>Reproducibility</strong>: Ensures consistent behavior across workflow runs</li>
+<li><strong>Audit Trail</strong>: Clear visibility into exact versions being used</li>
+</ul>
+<p><strong>Implementation Guidelines:</strong></p>
+<ol>
+<li>Always include version comment for human readability</li>
+<li>Regularly update pinned versions and review changes</li>
+<li>Monitor security advisories for actions in use</li>
+</ol>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://aquasecurity.github.io/trivy/">Trivy Documentation</a></li>
 <li><a href="https://falco.org/docs/">Falco Documentation</a></li>
 <li><a href="https://kubernetes.io/docs/concepts/security/overview/">Kubernetes Security Best Practices</a></li>
+<li><a href="https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/">GitHub Actions Policy</a></li>
 </ul>
 
 
@@ -1567,7 +1642,7 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 14, 2025 20:44:59 UTC"><span class="timeago" datetime="2025-07-14T20:44:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 14, 2025 20:44:59 UTC">2025-07-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 17, 2025 21:05:39 UTC"><span class="timeago" datetime="2025-08-17T21:05:39+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 17, 2025 21:05:39 UTC">2025-08-17</span>
   </span>
 
     
