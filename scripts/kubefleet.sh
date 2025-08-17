@@ -14,18 +14,18 @@ export MEMBER_CLUSTER=member-1
 
 # Create hub cluster if it doesn't exist
 if ! kind get clusters | grep -q "^${HUB_CLUSTER}$"; then
-    echo "Creating hub cluster: ${HUB_CLUSTER}"
-    kind create cluster --name "${HUB_CLUSTER}"
+	echo "Creating hub cluster: ${HUB_CLUSTER}"
+	kind create cluster --name "${HUB_CLUSTER}"
 else
-    echo "Hub cluster ${HUB_CLUSTER} already exists, skipping creation"
+	echo "Hub cluster ${HUB_CLUSTER} already exists, skipping creation"
 fi
 
 # Create member cluster if it doesn't exist
 if ! kind get clusters | grep -q "^${MEMBER_CLUSTER}$"; then
-    echo "Creating member cluster: ${MEMBER_CLUSTER}"
-    kind create cluster --name "${MEMBER_CLUSTER}"
+	echo "Creating member cluster: ${MEMBER_CLUSTER}"
+	kind create cluster --name "${MEMBER_CLUSTER}"
 else
-    echo "Member cluster ${MEMBER_CLUSTER} already exists, skipping creation"
+	echo "Member cluster ${MEMBER_CLUSTER} already exists, skipping creation"
 fi
 
 kubectl config use-context "kind-${HUB_CLUSTER}"

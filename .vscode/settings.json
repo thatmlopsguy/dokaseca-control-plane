@@ -18,6 +18,7 @@
         "devlake",
         "distro",
         "doka",
+        "dokaseca",
         "falco",
         "freelens",
         "healthcheck",
@@ -45,6 +46,7 @@
         "tracee",
         "traefik",
         "vclusters",
+        "velero",
         "vmalert"
     ],
     "files.exclude": {
