@@ -72,13 +72,6 @@ spoke-stg   Opaque   3      5m32s
 spoke-prod  Opaque   3      2m15s
 ```
 
-Get kind cluster Internal container IP
-
-```bash
-docker inspect spoke-dev-control-plane --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
-echo -n "https://172.18.0.3:6443" | base64
-```
-
 ## Centralized/Hub-spoke (shared)
 
 ![hub-spoke-shared](../docs/assets/figures/images/hub-spoke-shared.svg)
