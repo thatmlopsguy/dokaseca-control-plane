@@ -46,10 +46,10 @@ This project serves as both a personal learning journey into modern DevOps pract
 * [`Kubectl`](https://kubernetes.io/docs/tasks/tools/)
 * `base64`
 * [`kustomize`](https://kustomize.io/)
-* [`k9s`](https://k9scli.io/) or [`freelens`](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 
 **Optional tools**
 
+* [`k9s`](https://k9scli.io/) or [`freelens`](https://github.com/freelensapp/freelens) (optional, if you'd like to inspect your cluster visually)
 * [`argocd`](https://argo-cd.readthedocs.io/en/stable/cli_installation/)
 * [`kargo`](https://docs.kargo.io/user-guide/installing-the-cli/)
 * [`vcluster`](https://www.vcluster.com/docs/platform/install/quick-start-guide)
@@ -83,20 +83,83 @@ version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVer
 
 ## 🚀 Quick Start
 
+DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs:
+
+### Option 1: Hub-Spoke Topology (Recommended)
+
+This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.
+
+**Step 1: Deploy the Hub Cluster**
+
 ```bash
 # Deploy control plane cluster
-./scripts/terraform.sh hub dev apply
+cd terraform/hub-spoke/hub
+terraform init
+terraform apply -auto-approve
 ```
 
-You can inspect the deployed clusters by typing:
+**Step 2: Deploy Spoke Clusters (Optional)**
 
-```sh
-$ kind get clusters
-hub-dev
-spoke-dev
-spoke-prod
-spoke-stg
+```bash
+cd terraform/hub-spoke/spoke
+# Deploy spoke clusters for different environments
+./scripts/terraform.sh spoke dev apply
+./scripts/terraform.sh spoke stg apply
+./scripts/terraform.sh spoke prod apply
 ```
+
+**Step 3: Verify Deployment**
+
+```bash
+# Check deployed clusters
+kind get clusters
+
+# Verify spoke clusters are registered with hub ArgoCD
+kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
+```
+
+### Option 2: Distributed Topology
+
+```bash
+cd terraform/distributed
+Each cluster manages its own addons and workloads independently.
+
+```bash
+# Navigate to distributed configuration
+cd terraform/distributed
+
+# Deploy clusters for each environment
+./deploy.sh dev
+./deploy.sh stg
+./deploy.sh prod
+```
+
+### Accessing Your Platform
+
+After deployment, you can inspect the deployed clusters:
+
+```bash
+# List all kind clusters (Hub-Spoke Topology)
+kind get clusters
+# Expected output:
+# hub-dev
+# spoke-dev
+# spoke-prod  
+# spoke-stg
+```
+
+**Access ArgoCD UI:**
+
+```bash
+# Get ArgoCD admin password
+make argo-cd-password
+
+# Forward ArgoCD port
+make argo-cd-ui
+# Access at: http://localhost:8088
+```
+
+For detailed deployment options and advanced configurations, see [terraform/README.md](terraform/README.md).
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
 installed and all the enabled addons. You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.
