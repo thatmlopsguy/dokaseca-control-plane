@@ -315,6 +315,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🚀 Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-hub-spoke-topology-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Hub-Spoke Topology (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-distributed-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Distributed Topology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Your Platform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1456,6 +1489,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🚀 Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-hub-spoke-topology-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 1: Hub-Spoke Topology (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-distributed-topology" class="md-nav__link">
+    <span class="md-ellipsis">
+      Option 2: Distributed Topology
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-your-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Your Platform
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1576,10 +1642,10 @@
 <li><a href="https://kubernetes.io/docs/tasks/tools/"><code>Kubectl</code></a></li>
 <li><code>base64</code></li>
 <li><a href="https://kustomize.io/"><code>kustomize</code></a></li>
-<li><a href="https://k9scli.io/"><code>k9s</code></a> or <a href="https://github.com/freelensapp/freelens"><code>freelens</code></a> (optional, if you'd like to inspect your cluster visually)</li>
 </ul>
 <p><strong>Optional tools</strong></p>
 <ul>
+<li><a href="https://k9scli.io/"><code>k9s</code></a> or <a href="https://github.com/freelensapp/freelens"><code>freelens</code></a> (optional, if you'd like to inspect your cluster visually)</li>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/cli_installation/"><code>argocd</code></a></li>
 <li><a href="https://docs.kargo.io/user-guide/installing-the-cli/"><code>kargo</code></a></li>
 <li><a href="https://www.vcluster.com/docs/platform/install/quick-start-guide"><code>vcluster</code></a></li>
@@ -1610,16 +1676,61 @@ $<span class="w"> </span>helm<span class="w"> </span>version
 version.BuildInfo<span class="o">{</span>Version:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitCommit:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitTreeState:<span class="s2">&quot;&quot;</span>,<span class="w"> </span>GoVersion:<span class="s2">&quot;go1.22.7&quot;</span><span class="o">}</span>
 </code></pre></div>
 <h2 id="quick-start">🚀 Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs:</p>
+<h3 id="option-1-hub-spoke-topology-recommended">Option 1: Hub-Spoke Topology (Recommended)<a class="headerlink" href="#option-1-hub-spoke-topology-recommended" title="Permanent link">&para;</a></h3>
+<p>This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.</p>
+<p><strong>Step 1: Deploy the Hub Cluster</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deploy control plane cluster</span>
-./scripts/terraform.sh<span class="w"> </span>hub<span class="w"> </span>dev<span class="w"> </span>apply
+<span class="nb">cd</span><span class="w"> </span>terraform/hub-spoke/hub
+terraform<span class="w"> </span>init
+terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div>
-<p>You can inspect the deployed clusters by typing:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kind<span class="w"> </span>get<span class="w"> </span>clusters
-hub-dev
-spoke-dev
-spoke-prod
-spoke-stg
+<p><strong>Step 2: Deploy Spoke Clusters (Optional)</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/hub-spoke/spoke
+<span class="c1"># Deploy spoke clusters for different environments</span>
+./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>dev<span class="w"> </span>apply
+./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>stg<span class="w"> </span>apply
+./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>prod<span class="w"> </span>apply
 </code></pre></div>
+<p><strong>Step 3: Verify Deployment</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check deployed clusters</span>
+kind<span class="w"> </span>get<span class="w"> </span>clusters
+
+<span class="c1"># Verify spoke clusters are registered with hub ArgoCD</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-l<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>cluster
+</code></pre></div>
+<h3 id="option-2-distributed-topology">Option 2: Distributed Topology<a class="headerlink" href="#option-2-distributed-topology" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/distributed
+Each<span class="w"> </span>cluster<span class="w"> </span>manages<span class="w"> </span>its<span class="w"> </span>own<span class="w"> </span>addons<span class="w"> </span>and<span class="w"> </span>workloads<span class="w"> </span>independently.
+
+<span class="sb">```</span>bash
+<span class="c1"># Navigate to distributed configuration</span>
+<span class="nb">cd</span><span class="w"> </span>terraform/distributed
+
+<span class="c1"># Deploy clusters for each environment</span>
+./deploy.sh<span class="w"> </span>dev
+./deploy.sh<span class="w"> </span>stg
+./deploy.sh<span class="w"> </span>prod
+</code></pre></div>
+<h3 id="accessing-your-platform">Accessing Your Platform<a class="headerlink" href="#accessing-your-platform" title="Permanent link">&para;</a></h3>
+<p>After deployment, you can inspect the deployed clusters:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># List all kind clusters (Hub-Spoke Topology)</span>
+kind<span class="w"> </span>get<span class="w"> </span>clusters
+<span class="c1"># Expected output:</span>
+<span class="c1"># hub-dev</span>
+<span class="c1"># spoke-dev</span>
+<span class="c1"># spoke-prod  </span>
+<span class="c1"># spoke-stg</span>
+</code></pre></div>
+<p><strong>Access ArgoCD UI:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Get ArgoCD admin password</span>
+make<span class="w"> </span>argo-cd-password
+
+<span class="c1"># Forward ArgoCD port</span>
+make<span class="w"> </span>argo-cd-ui
+<span class="c1"># Access at: http://localhost:8088</span>
+</code></pre></div>
+<p>For detailed deployment options and advanced configurations, see <a href="terraform/README.md">terraform/README.md</a>.</p>
 <p>If you enable in <code>terraform.tfvars</code> the gitops bridge by setting <code>enable_gitops_bridge = true</code>, then argocd will be also
 installed and all the enabled addons. You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.
 The annotations contain metadata for the addons' Helm charts and ArgoCD ApplicationSets.</p>
