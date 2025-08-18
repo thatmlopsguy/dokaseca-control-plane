@@ -360,9 +360,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#faq" class="md-nav__link">
+  <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚒️ FAQ
+      ⚒️ Troubleshooting
     </span>
   </a>
   
@@ -1534,9 +1534,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#faq" class="md-nav__link">
+  <a href="#troubleshooting" class="md-nav__link">
     <span class="md-ellipsis">
-      ⚒️ FAQ
+      ⚒️ Troubleshooting
     </span>
   </a>
   
@@ -1700,12 +1700,9 @@ kind<span class="w"> </span>get<span class="w"> </span>clusters
 kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-l<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>cluster
 </code></pre></div>
 <h3 id="option-2-distributed-topology">Option 2: Distributed Topology<a class="headerlink" href="#option-2-distributed-topology" title="Permanent link">&para;</a></h3>
+<p>Each cluster manages its own addons and workloads independently.
+Navigate to distributed configuration.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/distributed
-Each<span class="w"> </span>cluster<span class="w"> </span>manages<span class="w"> </span>its<span class="w"> </span>own<span class="w"> </span>addons<span class="w"> </span>and<span class="w"> </span>workloads<span class="w"> </span>independently.
-
-<span class="sb">```</span>bash
-<span class="c1"># Navigate to distributed configuration</span>
-<span class="nb">cd</span><span class="w"> </span>terraform/distributed
 
 <span class="c1"># Deploy clusters for each environment</span>
 ./deploy.sh<span class="w"> </span>dev
@@ -1787,7 +1784,7 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
 <p>To tear down all the resources and the kind cluster(s), run the following command:</p>
 <div class="highlight"><pre><span></span><code>make<span class="w"> </span>clean-infra
 </code></pre></div>
-<h2 id="faq">⚒️ FAQ<a class="headerlink" href="#faq" title="Permanent link">&para;</a></h2>
+<h2 id="troubleshooting">⚒️ Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p><code>ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"</code></p>
 <p>To increase these limits temporarily run the following commands on the host:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>sysctl<span class="w"> </span>fs.inotify.max_user_watches<span class="o">=</span><span class="m">1048576</span>
