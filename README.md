@@ -120,12 +120,10 @@ kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
 
 ### Option 2: Distributed Topology
 
-```bash
-cd terraform/distributed
 Each cluster manages its own addons and workloads independently.
+Navigate to distributed configuration.
 
 ```bash
-# Navigate to distributed configuration
 cd terraform/distributed
 
 # Deploy clusters for each environment
@@ -233,7 +231,7 @@ To tear down all the resources and the kind cluster(s), run the following comman
 make clean-infra
 ```
 
-## ⚒️ FAQ
+## ⚒️ Troubleshooting
 
 `ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"`
 

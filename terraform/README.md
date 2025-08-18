@@ -27,7 +27,6 @@ Note: The Hub cluster is deployed first, followed by the Spoke clusters.
 
 ```bash
 cd hub-spoke/hub
-cd hub
 terraform init
 terraform apply -auto-approve
 ```
@@ -49,6 +48,35 @@ $ kubectl get secrets -n argocd | grep spoke
 spoke-dev                         Opaque               3      6m47s
 spoke-stg                         Opaque               3      110s
 spoke-prod                        Opaque               3      5m32s
+```
+
+Joining spoke clusters to hub.
+
+```bash
+$ make argo-cd-ui
+Forwarding from 127.0.0.1:8088 -> 8080
+
+$ make argo-cd-login
+'admin:login' logged in successfully
+Context 'localhost:8088' updated
+
+$ make argo-cd-cluster-list
+SERVER                          NAME  VERSION  STATUS      MESSAGE  PROJECT
+https://kubernetes.default.svc  hub   1.31     Successful
+
+$ kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
+NAME        TYPE     DATA   AGE
+hub         Opaque   3      11m
+spoke-dev   Opaque   3      9m8s
+spoke-stg   Opaque   3      5m32s
+spoke-prod  Opaque   3      2m15s
+```
+
+Get kind cluster Internal container IP
+
+```bash
+docker inspect spoke-dev-control-plane --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'
+echo -n "https://172.18.0.3:6443" | base64
 ```
 
 ## Centralized/Hub-spoke (shared)
