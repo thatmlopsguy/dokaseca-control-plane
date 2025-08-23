@@ -41,9 +41,8 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 
 ## Technical References
 
-### Backup and Disaster Recovery
-
 - **[Integrate Velero to back up and restore Karmada resources](https://karmada.io/docs/administrator/backup/working-with-velero)** - Best practices for implementing backup strategies in multi-cluster environments
+- **[GitOps Patterns](https://github.com/cloudogu/gitops-patterns)** - Collection of GitOps patterns and best practices for implementing GitOps workflows in cloud-native environments
 
 ### Platform Engineering Talks and Presentations
 
