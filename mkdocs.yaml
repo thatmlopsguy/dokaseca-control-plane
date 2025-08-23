@@ -11,13 +11,12 @@ repo_name: dokaseca-control-plane
 # Navigation
 nav:
   - Overview: index.md
+  - Architecture: architecture.md
   - Getting Started:
     - Installation: getting_started/install.md
-    - Architecture: getting_started/architecture.md
     - Repo Structure: getting_started/repo_structure.md
     - Teams and Roles: getting_started/teams.md
   - Identity: identity.md
-  - Catalog: catalog.md
   - Repository: repository.md
   - Portal: portal.md
   - GitOps:

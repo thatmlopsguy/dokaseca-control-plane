@@ -1,22 +1,21 @@
 # DoKa Seca Architecture
 
-![DoKa Seca Architecture](../assets/figures/diagrams/architecture.drawio.png)
+![DoKa Seca Architecture](assets/figures/diagrams/architecture.drawio.png)
 
 ## Overview
 
-DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a controlled, isolated environment where complete cloud-native platforms can be rapidly assembled, configured, and tested. The architecture follows modern platform engineering principles with a strong emphasis on GitOps, Infrastructure as Code, and automated platform bootstrapping.
+DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a controlled, isolated environment
+where complete cloud-native platforms can be rapidly assembled, configured, and tested.
+
+The architecture follows modern platform engineering principles with a strong emphasis on GitOps, Infrastructure as Code, and automated platform bootstrapping.
 
 ## Core Architecture Principles
 
-### 1. **Dry Dock Pattern**
-
-Just as ships are built and maintained in dry docks, DoKa Seca creates isolated local environments where entire Kubernetes platforms can be constructed with all necessary tooling and infrastructure readily available.
-
-### 2. **GitOps-First Design**
+### 1. **GitOps-First Design**
 
 All platform configuration, application deployments, and infrastructure changes are managed through Git repositories, ensuring reproducibility, auditability, and collaborative development.
 
-### 3. **Opinionated Platform Stack**
+### 2. **Opinionated Platform Stack**
 
 Provides curated, production-ready components that work together seamlessly, reducing decision fatigue and accelerating time-to-productivity.
 
@@ -113,9 +112,8 @@ The platform includes several categories of applications:
 **Developer Experience**
 
 * Backstage for developer portal
-* ArgoCD Image Updater for automated image updates
+* kargo and ArgoCD Image Updater for automated image updates
 * Argo Rollouts for progressive delivery
-* Argo Workflows for pipeline orchestration
 
 **Platform Utilities**
 

@@ -26,6 +26,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 - **[Harmonix](https://harmonixonaws.io/)** - AWS-native platform engineering framework for building developer platforms
 - **[Krateo PlatformOps](https://krateo.io/)** - Cloud-native platform for managing infrastructure and applications through a unified control plane with strong GitOps practices
 - **[Azure AKS Platform Engineering](https://github.com/Azure-Samples/aks-platform-engineering)** - Microsoft's reference implementation for building platform engineering solutions on Azure Kubernetes Service with GitOps and developer self-service capabilities
+- **[kubriX](https://github.com/suxess-it/kubriX)** - Cloud-native platform framework providing comprehensive tooling and patterns for building production-ready Kubernetes platforms
 
 ### Configuration and Automation
 
