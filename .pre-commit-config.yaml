@@ -26,7 +26,7 @@ repos:
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.461
+    rev: 3.2.464
     hooks:
       - id: checkov
         name: checkov
@@ -52,7 +52,7 @@ repos:
         args: ["--ignore-words", ".codespell-ignore"]
         exclude: ".*\\.svg$"
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.2
+    rev: 0.33.3
     hooks:
       - id: check-github-workflows
       - id: check-dependabot
