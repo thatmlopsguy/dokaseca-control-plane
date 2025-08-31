@@ -26,7 +26,7 @@ repos:
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.464
+    rev: 3.2.467
     hooks:
       - id: checkov
         name: checkov
