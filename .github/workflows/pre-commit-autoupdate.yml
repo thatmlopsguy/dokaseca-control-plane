@@ -26,6 +26,6 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           branch: update/pre-commit-hooks
-          title: Update pre-commit hooks
+          title: "ci: update pre-commit hooks"
           commit-message: "ci: update pre-commit hooks"
           body: Update versions of pre-commit hooks to latest version.
