@@ -26,12 +26,12 @@ repos:
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.470
+    rev: 3.2.471
     hooks:
       - id: checkov
         name: checkov
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.9.0
+    rev: v4.9.1
     hooks:
       - id: commitizen
         stages: [commit-msg]
@@ -52,7 +52,7 @@ repos:
         args: ["--ignore-words", ".codespell-ignore"]
         exclude: ".*\\.svg$"
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.33.3
+    rev: 0.34.0
     hooks:
       - id: check-github-workflows
       - id: check-dependabot
