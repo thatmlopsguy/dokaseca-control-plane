@@ -26,7 +26,7 @@ repos:
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
   - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.471
+    rev: 3.2.473
     hooks:
       - id: checkov
         name: checkov
@@ -36,7 +36,7 @@ repos:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.14.1
+    rev: v1.14.2
     hooks:
       - id: zizmor
   - repo: https://github.com/rhysd/actionlint
