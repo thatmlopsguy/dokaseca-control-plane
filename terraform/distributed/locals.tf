@@ -106,26 +106,36 @@ locals {
     # monitoring
     # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false)
-    enable_grafana_operator           = try(var.addons.enable_grafana_operator, false)
-    enable_metrics_server             = try(var.addons.enable_metrics_server, false)
-    enable_cortex                     = try(var.addons.enable_cortex, false)
-    enable_prometheus_adapter         = try(var.addons.enable_prometheus_adapter, false)
-    enable_logging_operator           = try(var.addons.enable_logging_operator, false)
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
-    enable_victoria_logs              = try(var.addons.enable_victoria_logs, false)
-    enable_pyroscope                  = try(var.addons.enable_pyroscope, false)
-    enable_alloy                      = try(var.addons.enable_alloy, false)
-    enable_vector                     = try(var.addons.enable_vector, false)
-    enable_fluentbit                  = try(var.addons.enable_fluentbit, false)
-    enable_zipkin                     = try(var.addons.enable_zipkin, false)
-    enable_loki                       = try(var.addons.enable_loki, false)
-    enable_pyrra                      = try(var.addons.enable_pyrra, false)
-    enable_tempo                      = try(var.addons.enable_tempo, false)
-    enable_thanos                     = try(var.addons.enable_thanos, false)
-    enable_opentelemetry_operator     = try(var.addons.enable_opentelemetry_operator, false)
     enable_kiali                      = try(var.addons.enable_kiali, false)
-    enable_jaeger                     = try(var.addons.enable_jaeger, false)
+    # agents
+    enable_alloy                  = try(var.addons.enable_alloy, false)
+    enable_vector                 = try(var.addons.enable_vector, false)
+    enable_fluentbit              = try(var.addons.enable_fluentbit, false)
+    enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
+    # metrics
+    enable_prometheus_adapter = try(var.addons.enable_prometheus_adapter, false)
+    enable_thanos             = try(var.addons.enable_thanos, false)
+    enable_metrics_server     = try(var.addons.enable_metrics_server, false)
+    enable_cortex             = try(var.addons.enable_cortex, false)
+    enable_mimir              = try(var.addons.enable_mimir, false)
+    # logs
+    enable_loki             = try(var.addons.enable_loki, false)
+    enable_victoria_logs    = try(var.addons.enable_victoria_logs, false)
+    enable_logging_operator = try(var.addons.enable_logging_operator, false)
+    enable_opensearch       = try(var.addons.enable_opensearch, false)
+    # dashboarding
+    enable_grafana_operator = try(var.addons.enable_grafana_operator, false)
+    enable_pyrra            = try(var.addons.enable_pyrra, false)
+    # tracing
+    enable_tempo           = try(var.addons.enable_tempo, false)
+    enable_jaeger          = try(var.addons.enable_jaeger, false)
+    enable_zipkin          = try(var.addons.enable_zipkin, false)
+    enable_victoria_traces = try(var.addons.enable_victoria_traces, false)
+    # profiling
+    enable_pyroscope = try(var.addons.enable_pyroscope, false)
+    enable_parca     = try(var.addons.enable_parca, false)
     # security
     enable_cert_manager     = try(var.addons.enable_cert_manager, false)
     enable_trivy            = try(var.addons.enable_trivy, false)
@@ -160,10 +170,14 @@ locals {
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
-    enable_reloader  = try(var.addons.enable_reloader, false)
-    enable_reflector = try(var.addons.enable_reflector, false)
-    enable_kured     = try(var.addons.enable_kured, false)
-    enable_eraser    = try(var.addons.enable_eraser, false)
+    enable_reloader                 = try(var.addons.enable_reloader, false)
+    enable_reflector                = try(var.addons.enable_reflector, false)
+    enable_k8s_replicator           = try(var.addons.enable_k8s_replicator, false)
+    enable_kured                    = try(var.addons.enable_kured, false)
+    enable_eraser                   = try(var.addons.enable_eraser, false)
+    enable_k8s_image_swapper        = try(var.addons.enable_k8s_image_swapper, false)
+    enable_spegel                   = try(var.addons.enable_spegel, false)
+    enable_harbor_container_webhook = try(var.addons.enable_harbor_container_webhook, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager
@@ -185,12 +199,18 @@ locals {
     enable_ollama       = try(var.addons.enable_ollama, false)       # TODO
     enable_langfuse     = try(var.addons.enable_langfuse, false)     # TODO
     enable_kgateway     = try(var.addons.enable_kgateway, false)     # TODO
+    # disaster recovery
+    enable_velero = try(var.addons.enable_velero, false) # TODO
+    enable_kahu   = try(var.addons.enable_kahu, false)   # TODO
   }
 
   # Enterprise
   enterprise_addons = {
-    enable_codefresh = try(var.addons.enable_codefresh, false)
-    enable_kubescape = try(var.addons.enable_kubescape, false)
+    enable_codefresh  = try(var.addons.enable_codefresh, false)  # TODO
+    enable_kubescape  = try(var.addons.enable_kubescape, false)  # TODO
+    enable_clickstack = try(var.addons.enable_clickstack, false) # TODO
+    enable_stash      = try(var.addons.enable_stash, false)      # TODO
+    enable_castai     = try(var.addons.enable_castai, false)     # TODO
   }
 
   # Azure
