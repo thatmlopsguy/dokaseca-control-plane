@@ -12,6 +12,7 @@ Architecture Decision Records are short text documents that capture an important
 - [External Secrets Operator Multi-tenancy](002-external-secrets-operator-multi-tenancy.md)
 - [ArgoCD Hub and Spoke Configuration](003-argocd-hub-and-spoke-configuration.md)
 - [Use ArgoCD, vCluster, and GitHub Actions for Preview Environments](004-preview-env-argocd-vcluster.md)
+- [Use kube-green for Energy Optimization with ArgoCD Sync Windows](005-kubegreen-energy-optimization.md)
 
 ## ADR Template
 
