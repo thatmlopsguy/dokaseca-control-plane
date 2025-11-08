@@ -12,13 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/resources/references/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/observability/monitoring/">
       
       
-        <link rel="prev" href="../roadmap/">
+        <link rel="prev" href="../logging/">
       
       
-        <link rel="next" href="../../rfc/">
+        <link rel="next" href="../tracing/">
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
@@ -26,7 +26,7 @@
     
     
       
-        <title>References - Doka Seca</title>
+        <title>Monitoring - Doka Seca</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#references" class="md-skip">
+        <a href="#monitoring-and-alerting" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              References
+              Monitoring
             
           </span>
         </div>
@@ -613,18 +613,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -640,7 +642,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Observability
@@ -654,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -677,7 +679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/visualization/" class="md-nav__link">
+      <a href="../visualization/" class="md-nav__link">
         
   
   
@@ -700,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/logging/" class="md-nav__link">
+      <a href="../logging/" class="md-nav__link">
         
   
   
@@ -720,10 +722,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../observability/monitoring/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Monitoring
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -734,6 +758,359 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-monitoring-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Monitoring Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Monitoring Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-and-spoke-metrics-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub-and-Spoke Metrics Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Backends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-victoria-metrics-primarydefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Victoria Metrics (Primary/Default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Victoria Metrics (Primary/Default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-prometheus-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Prometheus (Alternative)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Prometheus (Alternative)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-collection-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Collection Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics Collection Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vmagent-hub-and-spoke-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VMAgent Hub-and-Spoke (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. VMAgent Hub-and-Spoke (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-cluster-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub Cluster Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoke-cluster-vmagent-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spoke Cluster VMAgent Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-opentelemetry-collector-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenTelemetry Collector Alternative
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenTelemetry Collector Alternative">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel-collector-metrics-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector Metrics Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-collector-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerting-with-vmalert-and-vmalertmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting with VMAlert and VMAlertmanager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alerting with VMAlert and VMAlertmanager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmalert-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlert Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VMAlert Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmalert-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlert Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmalertmanager-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlertmanager Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VMAlertmanager Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alertmanager Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-cluster-monitoring-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Cluster Monitoring Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Cluster Monitoring Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-centralized-hub-and-spoke-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Centralized Hub-and-Spoke (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Centralized Hub-and-Spoke (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub Cluster Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoke-cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spoke Cluster Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-federated-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Federated Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -746,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/tracing/" class="md-nav__link">
+      <a href="../tracing/" class="md-nav__link">
         
   
   
@@ -993,20 +1370,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
         
           
           <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
@@ -1022,7 +1397,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             Resources
@@ -1036,7 +1411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -1059,7 +1434,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
+      <a href="../../resources/contributing/" class="md-nav__link">
         
   
   
@@ -1082,7 +1457,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -1105,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../techradar/" class="md-nav__link">
+      <a href="../../resources/techradar/" class="md-nav__link">
         
   
   
@@ -1128,7 +1503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -1151,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1171,32 +1546,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    References
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1207,128 +1560,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#platform-engineering-inspirations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform Engineering Inspirations
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Platform Engineering Inspirations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#internal-developer-platforms-idps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Internal Developer Platforms (IDPs)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-native-operating-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud-Native Operating Systems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#platform-frameworks-and-stacks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform Frameworks and Stacks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration-and-automation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration and Automation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-provider-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Provider Platforms
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#technical-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Technical References
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Technical References">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#platform-engineering-talks-and-presentations" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform Engineering Talks and Presentations
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Acknowledgments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing-references" class="md-nav__link">
-    <span class="md-ellipsis">
-      Contributing References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1642,55 +1873,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#platform-engineering-inspirations" class="md-nav__link">
+  <a href="#default-monitoring-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform Engineering Inspirations
+      Default Monitoring Architecture
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Platform Engineering Inspirations">
+    <nav class="md-nav" aria-label="Default Monitoring Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#internal-developer-platforms-idps" class="md-nav__link">
+  <a href="#hub-and-spoke-metrics-architecture" class="md-nav__link">
     <span class="md-ellipsis">
-      Internal Developer Platforms (IDPs)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-native-operating-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud-Native Operating Systems
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#platform-frameworks-and-stacks" class="md-nav__link">
-    <span class="md-ellipsis">
-      Platform Frameworks and Stacks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration-and-automation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configuration and Automation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-provider-platforms" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cloud Provider Platforms
+      Hub-and-Spoke Metrics Architecture
     </span>
   </a>
   
@@ -1702,19 +1897,56 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#technical-references" class="md-nav__link">
+  <a href="#metrics-backends" class="md-nav__link">
     <span class="md-ellipsis">
-      Technical References
+      Metrics Backends
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Technical References">
+    <nav class="md-nav" aria-label="Metrics Backends">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform-engineering-talks-and-presentations" class="md-nav__link">
+  <a href="#1-victoria-metrics-primarydefault" class="md-nav__link">
     <span class="md-ellipsis">
-      Platform Engineering Talks and Presentations
+      1. Victoria Metrics (Primary/Default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Victoria Metrics (Primary/Default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Access
     </span>
   </a>
   
@@ -1724,22 +1956,252 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-prometheus-alternative" class="md-nav__link">
     <span class="md-ellipsis">
-      Acknowledgments
+      2. Prometheus (Alternative)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Prometheus (Alternative)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Configuration
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#contributing-references" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-features" class="md-nav__link">
     <span class="md-ellipsis">
-      Contributing References
+      Prometheus Features
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-collection-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Collection Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics Collection Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-vmagent-hub-and-spoke-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. VMAgent Hub-and-Spoke (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. VMAgent Hub-and-Spoke (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-cluster-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub Cluster Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoke-cluster-vmagent-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spoke Cluster VMAgent Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-opentelemetry-collector-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenTelemetry Collector Alternative
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenTelemetry Collector Alternative">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel-collector-metrics-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector Metrics Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-collector-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Collector Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerting-with-vmalert-and-vmalertmanager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting with VMAlert and VMAlertmanager
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alerting with VMAlert and VMAlertmanager">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmalert-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlert Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VMAlert Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vmalert-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlert Rules
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vmalertmanager-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      VMAlertmanager Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VMAlertmanager Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alertmanager-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alertmanager Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-cluster-monitoring-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Cluster Monitoring Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Cluster Monitoring Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-centralized-hub-and-spoke-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Centralized Hub-and-Spoke (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Centralized Hub-and-Spoke (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hub-cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hub Cluster Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spoke-cluster-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spoke Cluster Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-federated-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Federated Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1762,58 +2224,150 @@
   
 
 
-<h1 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h1>
-<p>DoKa Seca draws inspiration from numerous cloud-native platform engineering projects and initiatives.
-This page acknowledges the innovative work that has influenced the design and implementation of our platform bootstrapping framework.</p>
-<h2 id="platform-engineering-inspirations">Platform Engineering Inspirations<a class="headerlink" href="#platform-engineering-inspirations" title="Permanent link">&para;</a></h2>
-<p>DoKa Seca is inspired by the following projects and platforms that have shaped modern cloud-native platform engineering:</p>
-<h3 id="internal-developer-platforms-idps">Internal Developer Platforms (IDPs)<a class="headerlink" href="#internal-developer-platforms-idps" title="Permanent link">&para;</a></h3>
+<h1 id="monitoring-and-alerting">Monitoring and Alerting<a class="headerlink" href="#monitoring-and-alerting" title="Permanent link">&para;</a></h1>
+<p>DoKa Seca provides comprehensive metrics collection, storage, and alerting capabilities to monitor your Kubernetes infrastructure and applications.
+The platform uses a <strong>hub-and-spoke architecture</strong> with <strong>Victoria Metrics</strong> as the default metrics backend and <strong>VMAlert/VMAlertmanager</strong> for alerting.</p>
+<h2 id="default-monitoring-architecture">Default Monitoring Architecture<a class="headerlink" href="#default-monitoring-architecture" title="Permanent link">&para;</a></h2>
+<p>The <strong>default and recommended</strong> monitoring solution in DoKa Seca uses <strong>Victoria Metrics</strong> in the central hub cluster
+with <strong>VMAgent</strong> in spoke clusters for efficient metrics collection and aggregation.</p>
+<h3 id="hub-and-spoke-metrics-architecture">Hub-and-Spoke Metrics Architecture<a class="headerlink" href="#hub-and-spoke-metrics-architecture" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Spoke Cluster │    │                  │    │   Hub Cluster   │
+│                 │    │                  │    │                 │
+│   ┌─────────────┤    │                  │    │ ┌─────────────┐ │
+│   │  VMAgent    │───▶│    Network       │───▶│ │  Victoria   │ │
+│   │ (Collection)│    │                  │    │ │  Metrics    │ │
+│   └─────────────┤    │                  │    │ │ (Storage)   │ │
+│                 │    │                  │    │ └─────────────┘ │
+└─────────────────┘    └──────────────────┘    │ ┌─────────────┐ │
+                                               │ │  VMAlert    │ │
+┌─────────────────┐                            │ │ (Alerting)  │ │
+│   Spoke Cluster │                            │ └─────────────┘ │
+│                 │                            │ ┌─────────────┐ │
+│   ┌─────────────┤                            │ │ Grafana     │ │
+│   │  VMAgent    │──────────────────────────▶│ │(Visualization)│ │
+│   │ (Collection)│                            │ └─────────────┘ │
+│   └─────────────┤                            └─────────────────┘
+│                 │
+└─────────────────┘
+</code></pre></div>
+<h2 id="metrics-backends">Metrics Backends<a class="headerlink" href="#metrics-backends" title="Permanent link">&para;</a></h2>
+<h3 id="1-victoria-metrics-primarydefault">1. Victoria Metrics (Primary/Default)<a class="headerlink" href="#1-victoria-metrics-primarydefault" title="Permanent link">&para;</a></h3>
+<p><strong>Victoria Metrics</strong> is DoKa Seca's <strong>primary and recommended</strong> metrics backend, providing high-performance metrics storage and querying.</p>
+<h4 id="victoria-metrics-configuration">Victoria Metrics Configuration<a class="headerlink" href="#victoria-metrics-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Hub cluster configuration</span>
+<span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_metrics_k8s_stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+
+<span class="c1"># Spoke cluster configuration</span>
+<span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_vmagent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # For spoke clusters</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="victoria-metrics-features">Victoria Metrics Features<a class="headerlink" href="#victoria-metrics-features" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong><a href="https://janus-idp.io/">Janus IDP</a></strong> - Red Hat's open-source Internal Developer Platform built on Backstage, providing enterprise-ready developer portal capabilities</li>
-<li><strong><a href="https://github.com/choreo-idp/choreo">choreo-idp</a></strong> - Cloud-native platform for building and deploying applications with strong GitOps integration</li>
-<li><strong><a href="https://docs.mia-platform.eu/">Mia-Platform</a></strong> - Comprehensive platform for fast software delivery with microservices architecture</li>
-<li><strong><a href="https://docs.devtron.ai/">Devtron</a></strong> - Open-source software delivery workflow for Kubernetes with CI/CD and GitOps</li>
+<li><strong>PromQL Compatibility</strong>: Full compatibility with Prometheus query language</li>
+<li><strong>High Performance</strong>: Optimized for high ingestion rates and fast queries</li>
+<li><strong>Cost-Effective</strong>: Excellent compression ratios reduce storage costs</li>
+<li><strong>Long-term Storage</strong>: Efficient storage for metric retention policies</li>
+<li><strong>Multi-tenancy</strong>: Support for multiple tenants and environments</li>
+<li><strong>Horizontal Scaling</strong>: Can scale to handle massive metric volumes</li>
 </ul>
-<h3 id="cloud-native-operating-systems">Cloud-Native Operating Systems<a class="headerlink" href="#cloud-native-operating-systems" title="Permanent link">&para;</a></h3>
+<h4 id="victoria-metrics-components">Victoria Metrics Components<a class="headerlink" href="#victoria-metrics-components" title="Permanent link">&para;</a></h4>
+<p><strong>Hub Cluster Components:</strong></p>
 <ul>
-<li><strong><a href="https://github.com/deckhouse/deckhouse">Deckhouse</a></strong> - Kubernetes platform that provides a seamless experience for deploying and managing containerized applications</li>
-<li><strong><a href="https://github.com/sighupio/distribution">SIGHUP Distribution</a></strong> - Production-ready Kubernetes distribution focused on security, observability, and disaster recovery</li>
+<li><strong>Victoria Metrics Single</strong>: Centralized metrics storage and query engine</li>
+<li><strong>VMAlert</strong>: Alerting engine compatible with Prometheus alerting rules</li>
+<li><strong>VMAlertmanager</strong>: Alert management and notification routing</li>
+<li><strong>Grafana</strong>: Visualization and dashboard platform</li>
 </ul>
-<h3 id="platform-frameworks-and-stacks">Platform Frameworks and Stacks<a class="headerlink" href="#platform-frameworks-and-stacks" title="Permanent link">&para;</a></h3>
+<p><strong>Spoke Cluster Components:</strong></p>
 <ul>
-<li><strong><a href="https://cnoe.io/">CNOE (Cloud Native Operational Excellence)</a></strong> - Open-source reference implementation for cloud-native platform engineering</li>
-<li><strong><a href="https://backstack.dev/">BACK Stack</a></strong> - Modern infrastructure stack combining Backstage, ArgoCD, Crossplane, and Kubernetes</li>
-<li><strong><a href="https://harmonixonaws.io/">Harmonix</a></strong> - AWS-native platform engineering framework for building developer platforms</li>
-<li><strong><a href="https://krateo.io/">Krateo PlatformOps</a></strong> - Cloud-native platform for managing infrastructure and applications through a unified control plane with strong GitOps practices</li>
-<li><strong><a href="https://github.com/Azure-Samples/aks-platform-engineering">Azure AKS Platform Engineering</a></strong> - Microsoft's reference implementation for building platform engineering solutions on Azure Kubernetes Service with GitOps and developer self-service capabilities</li>
-<li><strong><a href="https://github.com/suxess-it/kubriX">kubriX</a></strong> - Cloud-native platform framework providing comprehensive tooling and patterns for building production-ready Kubernetes platforms</li>
+<li><strong>VMAgent</strong>: Lightweight metrics collection and forwarding agent</li>
+<li><strong>Node Exporter</strong>: System and hardware metrics collection</li>
+<li><strong>Kube State Metrics</strong>: Kubernetes object state metrics</li>
 </ul>
-<h3 id="configuration-and-automation">Configuration and Automation<a class="headerlink" href="#configuration-and-automation" title="Permanent link">&para;</a></h3>
+<h4 id="victoria-metrics-access">Victoria Metrics Access<a class="headerlink" href="#victoria-metrics-access" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Victoria Metrics UI (Hub cluster)</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/vmsingle-victoria-metrics-k8s-stack<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">8429</span>:8429
+
+<span class="c1"># VMAgent UI (Spoke cluster)  </span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/vmagent-victoria-metrics-k8s-stack<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">8429</span>:8429
+
+<span class="c1"># Grafana (Hub cluster)</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/victoria-metrics-k8s-stack-grafana<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">3000</span>:80
+</code></pre></div>
+<h3 id="2-prometheus-alternative">2. Prometheus (Alternative)<a class="headerlink" href="#2-prometheus-alternative" title="Permanent link">&para;</a></h3>
+<p><strong>Prometheus</strong> provides the industry-standard metrics collection and storage solution.</p>
+<h4 id="prometheus-configuration">Prometheus Configuration<a class="headerlink" href="#prometheus-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_kube_prometheus_stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_metrics_server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_prometheus_adapter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="prometheus-features">Prometheus Features<a class="headerlink" href="#prometheus-features" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong><a href="https://github.com/KusionStack/kusion">Kusion</a></strong> - Programmable configuration techstack for building reliable applications at scale</li>
-<li><strong><a href="https://mlinfra.io/latest/">mlinfra</a></strong> - Infrastructure-as-code platform specifically designed for machine learning workloads</li>
+<li><strong>Industry Standard</strong>: Widely adopted metrics solution</li>
+<li><strong>Rich Ecosystem</strong>: Extensive exporter and integration ecosystem</li>
+<li><strong>Native Alerting</strong>: Built-in alerting with Alertmanager</li>
+<li><strong>Service Discovery</strong>: Automatic target discovery</li>
+<li><strong>Recording Rules</strong>: Pre-computed metric aggregations</li>
 </ul>
-<h3 id="cloud-provider-platforms">Cloud Provider Platforms<a class="headerlink" href="#cloud-provider-platforms" title="Permanent link">&para;</a></h3>
+<h4 id="prometheus-components">Prometheus Components<a class="headerlink" href="#prometheus-components" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong><a href="https://apl-docs.net/docs/akamai-app-platform/introduction">Akamai App Platform</a></strong> - Cloud-native application platform providing edge computing capabilities</li>
-<li><strong><a href="https://awslabs.github.io/data-on-eks/">Data on EKS</a></strong> - AWS Labs' comprehensive guide and patterns for running data workloads on Amazon EKS, including big data, analytics, and machine learning platforms</li>
-<li><strong><a href="https://awslabs.github.io/ai-on-eks/">AI on EKS</a></strong> - AWS Labs' reference implementations and best practices for deploying artificial intelligence and machine learning workloads on Amazon EKS</li>
-<li><strong><a href="https://cnoe-io.github.io/ai-platform-engineering/">AI Platform Engineering</a></strong> - CNOE's comprehensive guide to building AI-focused platform engineering solutions with cloud-native technologies and best practices</li>
+<li><strong>Prometheus Server</strong>: Metrics storage and query engine</li>
+<li><strong>Alertmanager</strong>: Alert management and notification</li>
+<li><strong>Node Exporter</strong>: Node-level metrics</li>
+<li><strong>Kube State Metrics</strong>: Kubernetes metrics</li>
+<li><strong>Grafana</strong>: Visualization platform</li>
 </ul>
-<h2 id="technical-references">Technical References<a class="headerlink" href="#technical-references" title="Permanent link">&para;</a></h2>
-<ul>
-<li><strong><a href="https://karmada.io/docs/administrator/backup/working-with-velero">Integrate Velero to back up and restore Karmada resources</a></strong> - Best practices for implementing backup strategies in multi-cluster environments</li>
-<li><strong><a href="https://github.com/cloudogu/gitops-patterns">GitOps Patterns</a></strong> - Collection of GitOps patterns and best practices for implementing GitOps workflows in cloud-native environments</li>
-</ul>
-<h3 id="platform-engineering-talks-and-presentations">Platform Engineering Talks and Presentations<a class="headerlink" href="#platform-engineering-talks-and-presentations" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="https://www.youtube.com/watch?v=eLxBnGoBltc">AWS re:Invent 2023 - Platform engineering with Amazon EKS (CON311)</a></strong> (<a href="https://d1.awsstatic.com/events/Summits/reinvent2023/CON311_Platform-engineering-with-Amazon-EKS.pdf">Presentation</a>) - Comprehensive session on building developer platforms using Amazon EKS, covering best practices for platform team organization, standardized infrastructure patterns, and developer self-service capabilities</li>
-</ul>
-<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
-<p>We extend our gratitude to the maintainers and contributors of these projects. Their innovative approaches to platform engineering, developer experience, and cloud-native operations have significantly influenced DoKa Seca's architecture and implementation.</p>
-<p>The cloud-native ecosystem thrives on collaboration and shared knowledge. DoKa Seca aims to contribute back to this ecosystem by providing a practical, production-ready platform bootstrapping framework that incorporates lessons learned from these exemplary projects.</p>
-<h2 id="contributing-references">Contributing References<a class="headerlink" href="#contributing-references" title="Permanent link">&para;</a></h2>
-<p>If you know of other projects or resources that have influenced platform engineering practices and should be included in this list, please <a href="../contributing/">contribute</a> by submitting a pull request or opening an issue.</p>
+<h2 id="metrics-collection-strategies">Metrics Collection Strategies<a class="headerlink" href="#metrics-collection-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="1-vmagent-hub-and-spoke-recommended">1. VMAgent Hub-and-Spoke (Recommended)<a class="headerlink" href="#1-vmagent-hub-and-spoke-recommended" title="Permanent link">&para;</a></h3>
+<p>The <strong>recommended approach</strong> for multi-cluster environments using VMAgent for efficient metrics collection.</p>
+<h4 id="hub-cluster-configuration">Hub Cluster Configuration<a class="headerlink" href="#hub-cluster-configuration" title="Permanent link">&para;</a></h4>
+<p>TODO</p>
+<h4 id="spoke-cluster-vmagent-configuration">Spoke Cluster VMAgent Configuration<a class="headerlink" href="#spoke-cluster-vmagent-configuration" title="Permanent link">&para;</a></h4>
+<p>TODO</p>
+<h3 id="2-opentelemetry-collector-alternative">2. OpenTelemetry Collector Alternative<a class="headerlink" href="#2-opentelemetry-collector-alternative" title="Permanent link">&para;</a></h3>
+<p>Use <strong>OpenTelemetry Collector</strong> as an alternative metrics collection method.</p>
+<h4 id="otel-collector-metrics-configuration">OTel Collector Metrics Configuration<a class="headerlink" href="#otel-collector-metrics-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_opentelemetry_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_victoria_metrics_k8s_stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # Hub cluster</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="otel-collector-pipeline">OTel Collector Pipeline<a class="headerlink" href="#otel-collector-pipeline" title="Permanent link">&para;</a></h4>
+<p>TODO</p>
+<h2 id="alerting-with-vmalert-and-vmalertmanager">Alerting with VMAlert and VMAlertmanager<a class="headerlink" href="#alerting-with-vmalert-and-vmalertmanager" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca uses <strong>VMAlert</strong> for alert rule evaluation and <strong>VMAlertmanager</strong> for alert management and notifications.</p>
+<h3 id="vmalert-configuration">VMAlert Configuration<a class="headerlink" href="#vmalert-configuration" title="Permanent link">&para;</a></h3>
+<p>VMAlert is compatible with Prometheus alerting rules and provides enhanced performance.</p>
+<h4 id="vmalert-rules">VMAlert Rules<a class="headerlink" href="#vmalert-rules" title="Permanent link">&para;</a></h4>
+<h3 id="vmalertmanager-configuration">VMAlertmanager Configuration<a class="headerlink" href="#vmalertmanager-configuration" title="Permanent link">&para;</a></h3>
+<p>VMAlertmanager handles alert routing, grouping, and notifications.</p>
+<h4 id="alertmanager-configuration">Alertmanager Configuration<a class="headerlink" href="#alertmanager-configuration" title="Permanent link">&para;</a></h4>
+<h2 id="multi-cluster-monitoring-strategies">Multi-Cluster Monitoring Strategies<a class="headerlink" href="#multi-cluster-monitoring-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="1-centralized-hub-and-spoke-recommended">1. Centralized Hub-and-Spoke (Recommended)<a class="headerlink" href="#1-centralized-hub-and-spoke-recommended" title="Permanent link">&para;</a></h3>
+<p>All metrics flow to a central Victoria Metrics instance in the hub cluster.</p>
+<h4 id="hub-cluster-setup">Hub Cluster Setup<a class="headerlink" href="#hub-cluster-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Hub cluster - Victoria Metrics stack</span>
+<span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_metrics_k8s_stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_grafana_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # For advanced dashboard management</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="spoke-cluster-setup">Spoke Cluster Setup<a class="headerlink" href="#spoke-cluster-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Spoke clusters - VMAgent only</span>
+<span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_vmagent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_node_exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_kube_state_metrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2-federated-monitoring">2. Federated Monitoring<a class="headerlink" href="#2-federated-monitoring" title="Permanent link">&para;</a></h3>
+<p>Each cluster has its own Victoria Metrics instance with federation to the hub.</p>
 
 
 
@@ -1834,7 +2388,7 @@ This page acknowledges the innovative work that has influenced the design and im
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 23, 2025 18:19:56 UTC"><span class="timeago" datetime="2025-08-23T18:19:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 23, 2025 18:19:56 UTC">2025-08-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 8, 2025 13:29:12 UTC"><span class="timeago" datetime="2025-11-08T13:29:12+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 8, 2025 13:29:12 UTC">2025-11-08</span>
   </span>
 
     
@@ -1879,7 +2433,7 @@ This page acknowledges the innovative work that has influenced the design and im
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../roadmap/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Roadmap">
+          <a href="../logging/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Logging">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1889,20 +2443,20 @@ This page acknowledges the innovative work that has influenced the design and im
                 Previous
               </span>
               <div class="md-ellipsis">
-                Roadmap
+                Logging
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../rfc/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
+          <a href="../tracing/" class="md-footer__link md-footer__link--next" aria-label="Next: Tracing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Overview
+                Tracing
               </div>
             </div>
             <div class="md-footer__button md-icon">

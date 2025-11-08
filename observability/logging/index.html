@@ -1,0 +1,3275 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)">
+      
+      
+        <meta name="author" content="That MLOps Guy">
+      
+      
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/observability/logging/">
+      
+      
+        <link rel="prev" href="../visualization/">
+      
+      
+        <link rel="next" href="../monitoring/">
+      
+      
+      <link rel="icon" href="../../assets/logos/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Logging - Doka Seca</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../assets/css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#logging-solutions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+      
+  <img src="../../assets/logos/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Doka Seca
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Logging
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/thatmlopsguy/dokaseca-control-plane" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dokaseca-control-plane
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+      
+  <img src="../../assets/logos/logo.svg" alt="logo">
+
+    </a>
+    Doka Seca
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/thatmlopsguy/dokaseca-control-plane" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dokaseca-control-plane
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repo Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/teams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Teams and Roles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Identity
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../repository/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Portal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    GitOps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            GitOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitops/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitops/addons/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Addons
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../gitops/workloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workloads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Observability
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../visualization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Visualization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Logging
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Logging
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-logging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Logging Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Logging Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-stack-victoria-logs-collection-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Stack: Victoria Logs + Collection Agents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Backends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-victoria-logs-primarydefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Victoria Logs (Primary/Default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Victoria Logs (Primary/Default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-grafana-loki-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Grafana Loki (Alternative)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Grafana Loki (Alternative)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loki-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loki Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-collection-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Collection Agents
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Collection Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grafana-alloy-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Grafana Alloy (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Grafana Alloy (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alloy-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alloy-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alloy-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-opentelemetry-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenTelemetry Collector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenTelemetry Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fluent-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Fluent Bit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Fluent Bit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fluent-bit-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluent Bit Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-bit-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluent Bit Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Vector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Architecture Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Architecture Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-single-agent-pattern-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Single Agent Pattern (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-specialized-agent-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Specialized Agent Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-management-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Management Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Management Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-log-structure-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Log Structure and Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-retention-and-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Retention and Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-security-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Security and Compliance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-and-data-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance and Data Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliance and Data Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdpr-compliance-general-data-protection-regulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDPR Compliance (General Data Protection Regulation)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GDPR Compliance (General Data Protection Regulation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdpr-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDPR Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personal-data-masking-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Data Masking Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hipaa-compliance-health-insurance-portability-and-accountability-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA Compliance (Health Insurance Portability and Accountability Act)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HIPAA Compliance (Health Insurance Portability and Accountability Act)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hipaa-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phi-redaction-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHI Redaction Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-compliance-payment-card-industry-data-security-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Compliance (Payment Card Industry Data Security Standard)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PCI DSS Compliance (Payment Card Industry Data Security Standard)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-redaction-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Redaction Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-compliance-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Compliance Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-validation-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Validation and Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliance Validation and Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-compliance-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Compliance Checks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tracing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tracing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compliance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compliance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Databases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../streams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Streams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Storage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../machine_learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Machine Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cost/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cost Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chaos_engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chaos Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disaster Recovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multicluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi cluster
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Resources
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
+            <span class="md-nav__icon md-icon"></span>
+            Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/techradar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tech Radar
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release Notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
+        
+          
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    RFCs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
+            <span class="md-nav__icon md-icon"></span>
+            RFCs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 - GitOps Promotion with Kargo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decisions (ADRs)
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture Decisions (ADRs)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/001-use-architecture-decision-records/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0001 - Use ADRs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0002 - External Secrets Multi-Tenancy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0003 - GitOps with ArgoCD
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0004 - Preview Environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    0005 - KubeGreen for Energy Optimization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-logging-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Logging Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Logging Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-stack-victoria-logs-collection-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Stack: Victoria Logs + Collection Agents
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-backends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Backends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Backends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-victoria-logs-primarydefault" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Victoria Logs (Primary/Default)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Victoria Logs (Primary/Default)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Access
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-grafana-loki-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Grafana Loki (Alternative)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Grafana Loki (Alternative)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#loki-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loki Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-collection-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Collection Agents
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Collection Agents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grafana-alloy-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Grafana Alloy (Recommended)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Grafana Alloy (Recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alloy-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alloy-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alloy-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alloy Capabilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-opentelemetry-collector" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. OpenTelemetry Collector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. OpenTelemetry Collector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#otel-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#otel-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      OTel Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-fluent-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Fluent Bit
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Fluent Bit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fluent-bit-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluent Bit Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fluent-bit-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fluent Bit Features
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-vector" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Vector
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Vector">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vector-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Features
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vector-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vector Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logging-architecture-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging Architecture Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logging Architecture Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-single-agent-pattern-recommended" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Single Agent Pattern (Recommended)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-specialized-agent-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Specialized Agent Pattern
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#log-management-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Log Management Best Practices
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Log Management Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-log-structure-and-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Log Structure and Standards
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Performance Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-retention-and-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Retention and Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-security-and-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Security and Compliance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compliance-and-data-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance and Data Privacy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliance and Data Privacy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdpr-compliance-general-data-protection-regulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDPR Compliance (General Data Protection Regulation)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GDPR Compliance (General Data Protection Regulation)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gdpr-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      GDPR Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#personal-data-masking-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Personal Data Masking Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hipaa-compliance-health-insurance-portability-and-accountability-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA Compliance (Health Insurance Portability and Accountability Act)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HIPAA Compliance (Health Insurance Portability and Accountability Act)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hipaa-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      HIPAA Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phi-redaction-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      PHI Redaction Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-compliance-payment-card-industry-data-security-standard" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Compliance (Payment Card Industry Data Security Standard)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PCI DSS Compliance (Payment Card Industry Data Security Standard)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-requirements-for-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Requirements for Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-dss-redaction-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      PCI DSS Redaction Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-compliance-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Compliance Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compliance-validation-and-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compliance Validation and Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Compliance Validation and Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-compliance-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Compliance Checks
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="logging-solutions">Logging Solutions<a class="headerlink" href="#logging-solutions" title="Permanent link">&para;</a></h1>
+<p>DoKa Seca provides comprehensive logging solutions to collect, store, process, and analyze logs from your Kubernetes clusters and applications.
+The platform supports multiple logging backends and collection agents to meet different requirements and use cases.</p>
+<h2 id="default-logging-architecture">Default Logging Architecture<a class="headerlink" href="#default-logging-architecture" title="Permanent link">&para;</a></h2>
+<p>The <strong>default and recommended</strong> logging solution in DoKa Seca uses <strong>Victoria Logs</strong> as the logging backend with various agent options for log collection and shipping.</p>
+<h3 id="default-stack-victoria-logs-collection-agents">Default Stack: Victoria Logs + Collection Agents<a class="headerlink" href="#default-stack-victoria-logs-collection-agents" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Applications  │───▶│  Collection      │───▶│ Victoria Logs  │
+│   &amp; Kubernetes  │    │  Agents          │    │   (Storage)     │
+│     Logs        │    │ (Alloy/OTel/FB)  │    │                 │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+                                                          │
+                                                          ▼
+                                               ┌─────────────────┐
+                                               │    Grafana      │
+                                               │ (Visualization) │
+                                               └─────────────────┘
+</code></pre></div>
+<h2 id="logging-backends">Logging Backends<a class="headerlink" href="#logging-backends" title="Permanent link">&para;</a></h2>
+<h3 id="1-victoria-logs-primarydefault">1. Victoria Logs (Primary/Default)<a class="headerlink" href="#1-victoria-logs-primarydefault" title="Permanent link">&para;</a></h3>
+<p><strong>Victoria Logs</strong> is DoKa Seca's <strong>primary and recommended</strong> logging backend, providing high-performance log management.</p>
+<h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>LogQL Compatibility</strong>: Full compatibility with Grafana Loki's LogQL query language</li>
+<li><strong>High Performance</strong>: Optimized for high ingestion rates and fast queries</li>
+<li><strong>Cost-Effective</strong>: Excellent compression ratios reduce storage costs</li>
+<li><strong>Grafana Integration</strong>: Native integration with Grafana for log visualization</li>
+<li><strong>Long-term Storage</strong>: Efficient storage for log retention policies</li>
+</ul>
+<h4 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Victoria Logs Single Server</strong>: Centralized log storage and query engine</li>
+<li><strong>Vector Integration</strong>: Pre-configured Vector for log collection</li>
+<li><strong>Grafana Datasource</strong>: Automatic Grafana configuration</li>
+</ul>
+<h4 id="access">Access<a class="headerlink" href="#access" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Victoria Logs UI</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/victoria-logs-single-server<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">9428</span>:9428
+</code></pre></div>
+<h3 id="2-grafana-loki-alternative">2. Grafana Loki (Alternative)<a class="headerlink" href="#2-grafana-loki-alternative" title="Permanent link">&para;</a></h3>
+<p>While not explicitly mentioned in the configuration, Loki can be used as an alternative backend.</p>
+<h4 id="loki-features">Loki Features<a class="headerlink" href="#loki-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>LogQL</strong>: Native query language for log exploration</li>
+<li><strong>Multi-tenancy</strong>: Support for multiple tenants</li>
+<li><strong>Object Storage</strong>: Integration with cloud object storage</li>
+<li><strong>Horizontal Scaling</strong>: Distributed architecture support</li>
+</ul>
+<h2 id="log-collection-agents">Log Collection Agents<a class="headerlink" href="#log-collection-agents" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca provides multiple options for collecting and shipping logs to the backend systems. Choose the agent that best fits your requirements.</p>
+<h3 id="1-grafana-alloy-recommended">1. Grafana Alloy (Recommended)<a class="headerlink" href="#1-grafana-alloy-recommended" title="Permanent link">&para;</a></h3>
+<p><strong>Alloy</strong> is Grafana's distribution of the OpenTelemetry Collector, optimized for the Grafana ecosystem.</p>
+<h4 id="alloy-configuration">Alloy Configuration<a class="headerlink" href="#alloy-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_alloy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="alloy-features">Alloy Features<a class="headerlink" href="#alloy-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Multi-Signal Collection</strong>: Collects metrics, logs, and traces</li>
+<li><strong>Low Resource Footprint</strong>: Optimized for efficiency</li>
+<li><strong>Data Transformation</strong>: Built-in data processing and routing</li>
+<li><strong>Multi-Destination</strong>: Can ship to multiple backends simultaneously</li>
+<li><strong>Grafana Optimized</strong>: Native integration with Grafana ecosystem</li>
+</ul>
+<h4 id="alloy-capabilities">Alloy Capabilities<a class="headerlink" href="#alloy-capabilities" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Log Sources</strong>:</li>
+<li>Container logs</li>
+<li>Application logs</li>
+<li>System logs</li>
+<li>Custom log files</li>
+<li><strong>Data Processing</strong>:</li>
+<li>Log parsing and structuring</li>
+<li>Filtering and routing</li>
+<li>Label extraction</li>
+<li>Format transformation</li>
+</ul>
+<h4 id="example-configuration">Example Configuration<a class="headerlink" href="#example-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Alloy configuration for log collection</span>
+<span class="nt">logs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">receivers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes_logs</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">syslog</span>
+<span class="w">  </span><span class="nt">processors</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parser</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filter</span>
+<span class="w">  </span><span class="nt">exporters</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">victoria_logs</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
+</code></pre></div>
+<h3 id="2-opentelemetry-collector">2. OpenTelemetry Collector<a class="headerlink" href="#2-opentelemetry-collector" title="Permanent link">&para;</a></h3>
+<p>The <strong>OpenTelemetry Collector</strong> provides vendor-neutral observability data collection.</p>
+<h4 id="otel-configuration">OTel Configuration<a class="headerlink" href="#otel-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_opentelemetry_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="otel-features">OTel Features<a class="headerlink" href="#otel-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Vendor Neutral</strong>: Standard OpenTelemetry implementation</li>
+<li><strong>Extensible</strong>: Rich ecosystem of receivers, processors, and exporters</li>
+<li><strong>Multi-Backend</strong>: Send logs to multiple destinations</li>
+<li><strong>Cloud Native</strong>: Kubernetes-native deployment and management</li>
+</ul>
+<h4 id="otel-components">OTel Components<a class="headerlink" href="#otel-components" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>OpenTelemetry Operator</strong>: Kubernetes operator for managing collectors</li>
+<li><strong>Collector Instances</strong>: DaemonSet for node-level collection</li>
+<li><strong>Custom Resources</strong>: OpenTelemetryCollector CRDs</li>
+</ul>
+<h3 id="3-fluent-bit">3. Fluent Bit<a class="headerlink" href="#3-fluent-bit" title="Permanent link">&para;</a></h3>
+<p><strong>Fluent Bit</strong> is a lightweight log processor and forwarder.</p>
+<h4 id="fluent-bit-configuration">Fluent Bit Configuration<a class="headerlink" href="#fluent-bit-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_fluent_bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="fluent-bit-features">Fluent Bit Features<a class="headerlink" href="#fluent-bit-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Lightweight</strong>: Minimal resource consumption</li>
+<li><strong>High Performance</strong>: Optimized for high-throughput log processing</li>
+<li><strong>Kubernetes Native</strong>: Deep Kubernetes integration</li>
+<li><strong>Flexible Routing</strong>: Advanced log routing capabilities</li>
+<li><strong>Built-in Parsers</strong>: Support for various log formats</li>
+</ul>
+<h3 id="4-vector">4. Vector<a class="headerlink" href="#4-vector" title="Permanent link">&para;</a></h3>
+<p><strong>Vector</strong> is a high-performance log and metrics router.</p>
+<h4 id="vector-configuration">Vector Configuration<a class="headerlink" href="#vector-configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="vector-features">Vector Features<a class="headerlink" href="#vector-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>High Performance</strong>: Built in Rust for maximum efficiency</li>
+<li><strong>Real-time Processing</strong>: Stream processing capabilities</li>
+<li><strong>Data Transformation</strong>: Rich set of transformation functions</li>
+<li><strong>Memory Efficient</strong>: Optimized memory usage</li>
+<li><strong>Built-in Error Handling</strong>: Robust error handling and retry logic</li>
+</ul>
+<h4 id="vector-setup">Vector Setup<a class="headerlink" href="#vector-setup" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vector configuration for log collection</span>
+<span class="nt">sources</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">kubernetes_logs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes_logs</span>
+<span class="w">    </span><span class="nt">include_paths</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/var/log/pods/*/*/*.log&quot;</span>
+
+<span class="nt">transforms</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">parse_logs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;kubernetes_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">.timestamp = parse_timestamp!(.timestamp, &quot;%Y-%m-%dT%H:%M:%S%.fZ&quot;)</span>
+<span class="w">      </span><span class="no">.level = parse_regex!(.message, r&#39;level=(?P&lt;level&gt;\w+)&#39;)</span>
+
+<span class="nt">sinks</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">victoria_logs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;parse_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://victoria-logs:9428&quot;</span>
+</code></pre></div>
+<h2 id="logging-architecture-patterns">Logging Architecture Patterns<a class="headerlink" href="#logging-architecture-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="1-single-agent-pattern-recommended">1. Single Agent Pattern (Recommended)<a class="headerlink" href="#1-single-agent-pattern-recommended" title="Permanent link">&para;</a></h3>
+<p>Use one collection agent per node for simplicity and efficiency:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_alloy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # Single agent for logs, metrics, and traces</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="2-specialized-agent-pattern">2. Specialized Agent Pattern<a class="headerlink" href="#2-specialized-agent-pattern" title="Permanent link">&para;</a></h3>
+<p>Use different agents for different purposes:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">enable_alloy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">          # For metrics and traces</span>
+<span class="w">  </span><span class="na">enable_vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">         # For high-performance log processing</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="log-management-best-practices">Log Management Best Practices<a class="headerlink" href="#log-management-best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="1-log-structure-and-standards">1. Log Structure and Standards<a class="headerlink" href="#1-log-structure-and-standards" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Structured Logging</strong>: Use JSON format for application logs</li>
+<li><strong>Consistent Fields</strong>: Standardize timestamp, level, and message fields</li>
+<li><strong>Correlation IDs</strong>: Include trace/request IDs for correlation</li>
+<li><strong>Kubernetes Labels</strong>: Leverage pod labels for log routing</li>
+</ul>
+<h3 id="2-performance-optimization">2. Performance Optimization<a class="headerlink" href="#2-performance-optimization" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Log Sampling</strong>: Sample high-volume logs to reduce costs</li>
+<li><strong>Efficient Queries</strong>: Use time ranges and filters in LogQL</li>
+<li><strong>Resource Limits</strong>: Configure appropriate resource limits for agents</li>
+<li><strong>Batch Processing</strong>: Use batching for log shipping</li>
+</ul>
+<h3 id="3-retention-and-storage">3. Retention and Storage<a class="headerlink" href="#3-retention-and-storage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Retention Policies</strong>: Configure appropriate log retention periods</li>
+<li><strong>Storage Tiering</strong>: Use object storage for long-term retention</li>
+<li><strong>Compression</strong>: Enable compression to reduce storage costs</li>
+<li><strong>Backup Strategy</strong>: Implement backup for critical logs</li>
+</ul>
+<h3 id="4-security-and-compliance">4. Security and Compliance<a class="headerlink" href="#4-security-and-compliance" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Log Sanitization</strong>: Remove sensitive data from logs</li>
+<li><strong>Access Control</strong>: Implement RBAC for log access</li>
+<li><strong>Audit Trails</strong>: Maintain audit logs for compliance</li>
+<li><strong>Encryption</strong>: Enable encryption for log transmission and storage</li>
+</ul>
+<h2 id="compliance-and-data-privacy">Compliance and Data Privacy<a class="headerlink" href="#compliance-and-data-privacy" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca logging solutions support comprehensive data privacy and compliance requirements for highly regulated environments. Personal data, sensitive information, and regulated data must be properly masked or redacted before being sent to storage backends.</p>
+<h3 id="gdpr-compliance-general-data-protection-regulation">GDPR Compliance (General Data Protection Regulation)<a class="headerlink" href="#gdpr-compliance-general-data-protection-regulation" title="Permanent link">&para;</a></h3>
+<p>GDPR requires organizations to protect personal data of EU citizens and implement privacy by design principles.</p>
+<h4 id="gdpr-requirements-for-logging">GDPR Requirements for Logging<a class="headerlink" href="#gdpr-requirements-for-logging" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Data Minimization</strong>: Log only necessary data for operational purposes</li>
+<li><strong>Purpose Limitation</strong>: Use logs only for defined purposes (monitoring, debugging, security)</li>
+<li><strong>Storage Limitation</strong>: Implement appropriate retention periods</li>
+<li><strong>Right to Erasure</strong>: Capability to delete personal data from logs</li>
+<li><strong>Data Protection by Design</strong>: Built-in privacy protection mechanisms</li>
+</ul>
+<h4 id="personal-data-masking-configuration">Personal Data Masking Configuration<a class="headerlink" href="#personal-data-masking-configuration" title="Permanent link">&para;</a></h4>
+<p><strong>Alloy Configuration for GDPR:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Alloy GDPR-compliant log processing</span>
+<span class="nt">processors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">redact</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">fields</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">email</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_address</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_id</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session_id</span>
+<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[REDACTED]&quot;</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">regex_replace</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">patterns</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># Email addresses</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[EMAIL_REDACTED]&#39;</span>
+<span class="w">        </span><span class="c1"># IP addresses</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[IP_REDACTED]&#39;</span>
+<span class="w">        </span><span class="c1"># Phone numbers</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b\d{3}-\d{3}-\d{4}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[PHONE_REDACTED]&#39;</span>
+</code></pre></div>
+<p><strong>Vector Configuration for GDPR:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">transforms</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">gdpr_redaction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;application_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no"># Redact email addresses</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;, &quot;[EMAIL_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Redact IP addresses</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;, &quot;[IP_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Redact credit card numbers</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b&#39;, &quot;[CARD_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Remove sensitive fields</span>
+<span class="w">      </span><span class="no">del(.user_email)</span>
+<span class="w">      </span><span class="no">del(.client_ip)</span>
+<span class="w">      </span><span class="no">del(.personal_id)</span>
+</code></pre></div>
+<h3 id="hipaa-compliance-health-insurance-portability-and-accountability-act">HIPAA Compliance (Health Insurance Portability and Accountability Act)<a class="headerlink" href="#hipaa-compliance-health-insurance-portability-and-accountability-act" title="Permanent link">&para;</a></h3>
+<p>HIPAA protects Protected Health Information (PHI) in healthcare environments.</p>
+<h4 id="hipaa-requirements-for-logging">HIPAA Requirements for Logging<a class="headerlink" href="#hipaa-requirements-for-logging" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>PHI Protection</strong>: All 18 HIPAA identifiers must be removed or encrypted</li>
+<li><strong>Access Controls</strong>: Role-based access to log data</li>
+<li><strong>Audit Logs</strong>: Comprehensive audit trails for PHI access</li>
+<li><strong>Data Integrity</strong>: Ensure log data hasn't been tampered with</li>
+<li><strong>Transmission Security</strong>: Encrypt logs in transit and at rest</li>
+</ul>
+<h4 id="phi-redaction-configuration">PHI Redaction Configuration<a class="headerlink" href="#phi-redaction-configuration" title="Permanent link">&para;</a></h4>
+<p><strong>OpenTelemetry Collector HIPAA Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">transform/hipaa</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">log_statements</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="w">        </span><span class="nt">statements</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># Redact medical record numbers</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;MRN[:\\s]*\\d+&quot;, &quot;MRN:[MRN_REDACTED]&quot;)</span>
+
+<span class="w">          </span><span class="c1"># Redact social security numbers</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;\\b\\d{3}-\\d{2}-\\d{4}\\b&quot;, &quot;[SSN_REDACTED]&quot;)</span>
+
+<span class="w">          </span><span class="c1"># Redact dates of birth</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;\\b\\d{1,2}/\\d{1,2}/\\d{4}\\b&quot;, &quot;[DOB_REDACTED]&quot;)</span>
+
+<span class="w">          </span><span class="c1"># Redact patient names (basic pattern)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;Patient[:\\s]+[A-Za-z\\s]+&quot;, &quot;Patient</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">NAME_REDACTED</span><span class="p p-Indicator">]</span><span class="s">&quot;)</span>
+
+<span class="w">          </span><span class="s">#</span><span class="nv"> </span><span class="s">Remove</span><span class="nv"> </span><span class="s">PHI</span><span class="nv"> </span><span class="s">attributes</span>
+<span class="w">          </span><span class="s">-</span><span class="nv"> </span><span class="s">delete_key(attributes,</span><span class="nv"> </span><span class="s">&quot;</span><span class="l l-Scalar l-Scalar-Plain">patient_id&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, &quot;ssn&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, &quot;dob&quot;)</span>
+
+<span class="w">  </span><span class="nt">batch</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1s</span>
+<span class="w">    </span><span class="nt">send_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1024</span>
+</code></pre></div>
+<p><strong>Fluent Bit HIPAA Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fluent-bit-hipaa-config</span>
+<span class="nt">data</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">fluent-bit.conf</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="no">[FILTER]</span>
+<span class="w">        </span><span class="no">Name    modify</span>
+<span class="w">        </span><span class="no">Match   kube.*</span>
+<span class="w">        </span><span class="no">Remove  patient_id</span>
+<span class="w">        </span><span class="no">Remove  ssn</span>
+<span class="w">        </span><span class="no">Remove  medical_record_number</span>
+
+<span class="w">    </span><span class="no">[FILTER]</span>
+<span class="w">        </span><span class="no">Name    grep</span>
+<span class="w">        </span><span class="no">Match   kube.*</span>
+<span class="w">        </span><span class="no">Regex   log ^(?!.*(?:SSN|DOB|MRN)).*$</span>
+
+<span class="w">    </span><span class="no">[FILTER]</span>
+<span class="w">        </span><span class="no">Name    lua</span>
+<span class="w">        </span><span class="no">Match   kube.*</span>
+<span class="w">        </span><span class="no">Script  /fluent-bit/scripts/hipaa_redact.lua</span>
+<span class="w">        </span><span class="no">Call    redact_phi</span>
+</code></pre></div>
+<p><strong>HIPAA Redaction Lua Script:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- /fluent-bit/scripts/hipaa_redact.lua</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">redact_phi</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">timestamp</span><span class="p">,</span><span class="w"> </span><span class="nv">record</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">record</span><span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="kr">then</span>
+<span class="w">        </span><span class="c1">-- Redact SSN patterns</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;%d%d%d%-%d%d%-%d%d%d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;[SSN_REDACTED]&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Redact MRN patterns</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MRN[:%s]*%d+&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MRN:[MRN_REDACTED]&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c1">-- Redact phone numbers</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;%(%d%d%d%)%s*%d%d%d%-%d%d%d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;[PHONE_REDACTED]&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="nv">record</span><span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">log</span>
+<span class="w">    </span><span class="kr">end</span>
+<span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">timestamp</span><span class="p">,</span><span class="w"> </span><span class="nv">record</span>
+<span class="kr">end</span>
+</code></pre></div>
+<h3 id="pci-dss-compliance-payment-card-industry-data-security-standard">PCI DSS Compliance (Payment Card Industry Data Security Standard)<a class="headerlink" href="#pci-dss-compliance-payment-card-industry-data-security-standard" title="Permanent link">&para;</a></h3>
+<p>PCI DSS protects cardholder data in payment processing environments.</p>
+<h4 id="pci-dss-requirements-for-logging">PCI DSS Requirements for Logging<a class="headerlink" href="#pci-dss-requirements-for-logging" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Cardholder Data Protection</strong>: Primary Account Numbers (PAN) must be masked</li>
+<li><strong>Sensitive Authentication Data</strong>: Never store in logs</li>
+<li><strong>Access Controls</strong>: Restrict access to cardholder data in logs</li>
+<li><strong>Log Monitoring</strong>: Real-time monitoring for security events</li>
+<li><strong>Log Integrity</strong>: Protect logs from unauthorized modification</li>
+</ul>
+<h4 id="pci-dss-redaction-configuration">PCI DSS Redaction Configuration<a class="headerlink" href="#pci-dss-redaction-configuration" title="Permanent link">&para;</a></h4>
+<p><strong>Vector PCI DSS Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">transforms</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pci_redaction</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;payment_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no"># Redact credit card numbers (PAN)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b4\d{15}\b&#39;, &quot;4***-****-****-[VISA_REDACTED]&quot;)  # Visa</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b5[1-5]\d{14}\b&#39;, &quot;5***-****-****-[MC_REDACTED]&quot;)  # MasterCard</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b3[47]\d{13}\b&#39;, &quot;3***-******-*[AMEX_REDACTED]&quot;)  # AmEx</span>
+
+<span class="w">      </span><span class="no"># Redact CVV codes</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\bCVV[:\s]*\d{3,4}\b&#39;, &quot;CVV:[CVV_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Redact track data</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;%[^?]+\?[^?]+\?&#39;, &quot;[TRACK_DATA_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Remove sensitive fields</span>
+<span class="w">      </span><span class="no">del(.pan)</span>
+<span class="w">      </span><span class="no">del(.cvv)</span>
+<span class="w">      </span><span class="no">del(.expiry_date)</span>
+<span class="w">      </span><span class="no">del(.cardholder_name)</span>
+
+<span class="w">      </span><span class="no"># Mask account numbers (show only last 4 digits)</span>
+<span class="w">      </span><span class="no">if exists(.account_number) {</span>
+<span class="w">        </span><span class="no">.account_number = replace(.account_number, r&#39;\b\d{12,19}\b&#39;) do |match|</span>
+<span class="w">          </span><span class="no">&quot;**** **** **** &quot; + slice(match, -4)</span>
+<span class="w">        </span><span class="no">end</span>
+<span class="w">      </span><span class="no">}</span>
+</code></pre></div>
+<p><strong>Alloy PCI DSS Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">processors</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">redact</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Credit card patterns</span>
+<span class="w">      </span><span class="nt">patterns</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b4[0-9]{15}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4***-****-****-[VISA]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b5[1-5][0-9]{14}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5***-****-****-[MC]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b3[47][0-9]{13}\b&#39;</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3***-******-*[AMEX]&#39;</span>
+
+<span class="w">      </span><span class="c1"># Sensitive authentication data</span>
+<span class="w">      </span><span class="nt">fields</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cvv</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cvv2</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cvc</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pin</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">track_data</span>
+
+<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[PCI_REDACTED]&quot;</span>
+</code></pre></div>
+<h3 id="multi-compliance-architecture">Multi-Compliance Architecture<a class="headerlink" href="#multi-compliance-architecture" title="Permanent link">&para;</a></h3>
+<p>For environments requiring multiple compliance standards:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Comprehensive compliance pipeline</span>
+<span class="nt">transforms</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">compliance_processor</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;raw_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no"># GDPR - Personal data redaction</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;, &quot;[EMAIL_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;, &quot;[IP_REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># HIPAA - PHI redaction</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b\d{3}-\d{2}-\d{4}\b&#39;, &quot;[SSN_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;MRN[:\s]*\d+&#39;, &quot;MRN:[REDACTED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># PCI DSS - Payment data redaction</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b4\d{15}\b&#39;, &quot;4***-****-****-[MASKED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b5[1-5]\d{14}\b&#39;, &quot;5***-****-****-[MASKED]&quot;)</span>
+
+<span class="w">      </span><span class="no"># Add compliance tags</span>
+<span class="w">      </span><span class="no">.compliance_processed = true</span>
+<span class="w">      </span><span class="no">.redaction_timestamp = now()</span>
+</code></pre></div>
+<h3 id="compliance-validation-and-monitoring">Compliance Validation and Monitoring<a class="headerlink" href="#compliance-validation-and-monitoring" title="Permanent link">&para;</a></h3>
+<h4 id="automated-compliance-checks">Automated Compliance Checks<a class="headerlink" href="#automated-compliance-checks" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vector compliance validation</span>
+<span class="nt">transforms</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">compliance_validator</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;processed_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no"># Check for potential data leaks</span>
+<span class="w">      </span><span class="no">if match(.message, r&#39;\b\d{3}-\d{2}-\d{4}\b&#39;) {</span>
+<span class="w">        </span><span class="no">log(&quot;COMPLIANCE_VIOLATION: Potential SSN found in logs&quot;, level: &quot;error&quot;)</span>
+<span class="w">        </span><span class="no">.compliance_violation = &quot;SSN_DETECTED&quot;</span>
+<span class="w">      </span><span class="no">}</span>
+
+<span class="w">      </span><span class="no">if match(.message, r&#39;\b4\d{15}\b&#39;) {</span>
+<span class="w">        </span><span class="no">log(&quot;COMPLIANCE_VIOLATION: Potential credit card found in logs&quot;, level: &quot;error&quot;)</span>
+<span class="w">        </span><span class="no">.compliance_violation = &quot;CARD_DETECTED&quot;</span>
+<span class="w">      </span><span class="no">}</span>
+</code></pre></div>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.victoriametrics.com/victorialogs/">Victoria Logs Documentation</a></li>
+<li><a href="https://grafana.com/docs/alloy/latest/">Grafana Alloy Documentation</a></li>
+<li><a href="https://opentelemetry.io/docs/collector/">OpenTelemetry Collector Documentation</a></li>
+<li><a href="https://docs.fluentbit.io/manual/">Fluent Bit Documentation</a></li>
+<li><a href="https://vector.dev/docs/">Vector Documentation</a></li>
+<li><a href="https://gdpr.eu/">GDPR Compliance Guidelines</a></li>
+<li><a href="https://www.hhs.gov/hipaa/index.html">HIPAA Compliance Overview</a></li>
+<li><a href="https://www.pcisecuritystandards.org/standards/pci-dss/">PCI DSS Standards</a></li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 8, 2025 13:29:12 UTC"><span class="timeago" datetime="2025-11-08T13:29:12+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 8, 2025 13:29:12 UTC">2025-11-08</span>
+  </span>
+
+    
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:165834479+thatmlopsguy@users.noreply.github.com">thatmlopsguy</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../visualization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Visualization">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Visualization
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../monitoring/" class="md-footer__link md-footer__link--next" aria-label="Next: Monitoring">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Monitoring
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 That MLOps Guy
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/thatmlopsguy/dokaseca-control-plane" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://thatmlopsguy.github.io/" target="_blank" rel="noopener" title="thatmlopsguy.github.io" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

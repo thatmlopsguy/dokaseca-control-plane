@@ -49,10 +49,6 @@
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>
-         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/</loc>
-         <lastmod>2025-11-08</lastmod>
-    </url>
-    <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/portal/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
@@ -126,6 +122,26 @@
     </url>
     <url>
          <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/gitops/workloads/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/logging/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/monitoring/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/overview/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/tracing/</loc>
+         <lastmod>2025-11-08</lastmod>
+    </url>
+    <url>
+         <loc>https://thatmlopsguy.github.io/dokaseca-control-plane/observability/visualization/</loc>
          <lastmod>2025-11-08</lastmod>
     </url>
     <url>

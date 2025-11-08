@@ -12,28 +12,28 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/backup/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/observability/visualization/">
       
       
-        <link rel="prev" href="../chaos_engineering/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../multicluster/">
+        <link rel="next" href="../logging/">
       
       
-      <link rel="icon" href="../assets/logos/favicon.svg">
+      <link rel="icon" href="../../assets/logos/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Disaster Recovery - Doka Seca</title>
+        <title>Visualization - Doka Seca</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,11 +46,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#backup" class="md-skip">
+        <a href="#visualization-and-dashboards" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Disaster Recovery
+              Visualization
             
           </span>
         </div>
@@ -227,9 +227,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     Doka Seca
@@ -256,7 +256,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -278,7 +278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         
   
   
@@ -338,7 +338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/install/" class="md-nav__link">
+      <a href="../../getting_started/install/" class="md-nav__link">
         
   
   
@@ -361,7 +361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/repo_structure/" class="md-nav__link">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
         
   
   
@@ -384,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/teams/" class="md-nav__link">
+      <a href="../../getting_started/teams/" class="md-nav__link">
         
   
   
@@ -414,7 +414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../identity/" class="md-nav__link">
+      <a href="../../identity/" class="md-nav__link">
         
   
   
@@ -436,7 +436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../repository/" class="md-nav__link">
         
   
   
@@ -458,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../portal/" class="md-nav__link">
+      <a href="../../portal/" class="md-nav__link">
         
   
   
@@ -518,7 +518,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/overview/" class="md-nav__link">
+      <a href="../../gitops/overview/" class="md-nav__link">
         
   
   
@@ -541,7 +541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/addons/" class="md-nav__link">
+      <a href="../../gitops/addons/" class="md-nav__link">
         
   
   
@@ -564,7 +564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/workloads/" class="md-nav__link">
+      <a href="../../gitops/workloads/" class="md-nav__link">
         
   
   
@@ -594,7 +594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+      <a href="../../networking/" class="md-nav__link">
         
   
   
@@ -613,18 +613,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
         
           
           <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
@@ -640,7 +642,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             Observability
@@ -654,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -674,10 +676,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../observability/visualization/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Visualization
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -688,6 +712,254 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#grafana-the-central-visualization-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana: The Central Visualization Platform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Grafana: The Central Visualization Platform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-grafana-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Grafana Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafana-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Grafana
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metrics-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Metrics Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#default-metrics-datasources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Default Metrics Datasources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Metrics Datasources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Datasource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prometheus-datasource-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prometheus Datasource (Alternative)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-metrics-dashboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-built Metrics Dashboards
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pre-built Metrics Dashboards">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubernetes-cluster-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubernetes Cluster Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Application Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#argocd-gitops-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      ArgoCD GitOps Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logs-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logs Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs-datasource-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logs Datasource Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs Datasource Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-logs-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Logs Datasource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traces-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traces Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traces Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traces-datasource-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traces Datasource Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traces Datasource Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tempo-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tempo Datasource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jaeger-datasource-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jaeger Datasource (Alternative)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -700,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/logging/" class="md-nav__link">
+      <a href="../logging/" class="md-nav__link">
         
   
   
@@ -723,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/monitoring/" class="md-nav__link">
+      <a href="../monitoring/" class="md-nav__link">
         
   
   
@@ -746,7 +1018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/tracing/" class="md-nav__link">
+      <a href="../tracing/" class="md-nav__link">
         
   
   
@@ -776,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compliance/" class="md-nav__link">
+      <a href="../../compliance/" class="md-nav__link">
         
   
   
@@ -798,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
+      <a href="../../security/" class="md-nav__link">
         
   
   
@@ -820,7 +1092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../../database/" class="md-nav__link">
         
   
   
@@ -842,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../streams/" class="md-nav__link">
+      <a href="../../streams/" class="md-nav__link">
         
   
   
@@ -864,7 +1136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage/" class="md-nav__link">
+      <a href="../../storage/" class="md-nav__link">
         
   
   
@@ -886,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_learning/" class="md-nav__link">
+      <a href="../../machine_learning/" class="md-nav__link">
         
   
   
@@ -908,7 +1180,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cost/" class="md-nav__link">
+      <a href="../../cost/" class="md-nav__link">
         
   
   
@@ -930,7 +1202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chaos_engineering/" class="md-nav__link">
+      <a href="../../chaos_engineering/" class="md-nav__link">
         
   
   
@@ -949,32 +1221,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Disaster Recovery
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../backup/" class="md-nav__link">
         
   
   
@@ -985,152 +1235,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#velero-kubernetes-backup-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      Velero: Kubernetes Backup &amp; Restore
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Velero: Kubernetes Backup &amp; Restore">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key Features
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Installation
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Installation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      CLI
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#helm-recommended" class="md-nav__link">
-    <span class="md-ellipsis">
-      Helm (Recommended)
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      Storage Configuration
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#create-a-backup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Create a Backup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#list-backups" class="md-nav__link">
-    <span class="md-ellipsis">
-      List Backups
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restore-from-backup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Restore from Backup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#schedule-regular-backups" class="md-nav__link">
-    <span class="md-ellipsis">
-      Schedule Regular Backups
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1142,7 +1246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../multicluster/" class="md-nav__link">
+      <a href="../../multicluster/" class="md-nav__link">
         
   
   
@@ -1202,7 +1306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -1225,7 +1329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/contributing/" class="md-nav__link">
+      <a href="../../resources/contributing/" class="md-nav__link">
         
   
   
@@ -1248,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -1271,7 +1375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/techradar/" class="md-nav__link">
+      <a href="../../resources/techradar/" class="md-nav__link">
         
   
   
@@ -1294,7 +1398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -1317,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1340,7 +1444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1408,7 +1512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/" class="md-nav__link">
+      <a href="../../rfc/" class="md-nav__link">
         
   
   
@@ -1431,7 +1535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
         
   
   
@@ -1499,7 +1603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -1522,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/001-use-architecture-decision-records/" class="md-nav__link">
+      <a href="../../adr/001-use-architecture-decision-records/" class="md-nav__link">
         
   
   
@@ -1545,7 +1649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+      <a href="../../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
         
   
   
@@ -1568,7 +1672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+      <a href="../../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
         
   
   
@@ -1591,7 +1695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
+      <a href="../../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
         
   
   
@@ -1614,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
+      <a href="../../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
         
   
   
@@ -1664,19 +1768,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#velero-kubernetes-backup-restore" class="md-nav__link">
+  <a href="#grafana-the-central-visualization-platform" class="md-nav__link">
     <span class="md-ellipsis">
-      Velero: Kubernetes Backup &amp; Restore
+      Grafana: The Central Visualization Platform
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Velero: Kubernetes Backup &amp; Restore">
+    <nav class="md-nav" aria-label="Grafana: The Central Visualization Platform">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#default-grafana-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Features
+      Default Grafana Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grafana-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Grafana Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-grafana" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Grafana
     </span>
   </a>
   
@@ -1688,28 +1810,38 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#metrics-visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      Installation
+      Metrics Visualization
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installation">
+    <nav class="md-nav" aria-label="Metrics Visualization">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cli" class="md-nav__link">
+  <a href="#default-metrics-datasources" class="md-nav__link">
     <span class="md-ellipsis">
-      CLI
+      Default Metrics Datasources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Metrics Datasources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-metrics-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Metrics Datasource
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#helm-recommended" class="md-nav__link">
+  <a href="#prometheus-datasource-alternative" class="md-nav__link">
     <span class="md-ellipsis">
-      Helm (Recommended)
+      Prometheus Datasource (Alternative)
     </span>
   </a>
   
@@ -1719,57 +1851,48 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#storage-configuration" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-metrics-dashboards" class="md-nav__link">
     <span class="md-ellipsis">
-      Storage Configuration
+      Pre-built Metrics Dashboards
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Usage
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Usage">
+    <nav class="md-nav" aria-label="Pre-built Metrics Dashboards">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-a-backup" class="md-nav__link">
+  <a href="#kubernetes-cluster-overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Create a Backup
+      Kubernetes Cluster Overview
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#list-backups" class="md-nav__link">
+  <a href="#application-performance-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
-      List Backups
+      Application Performance Monitoring
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#restore-from-backup" class="md-nav__link">
+  <a href="#infrastructure-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
-      Restore from Backup
+      Infrastructure Monitoring
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#schedule-regular-backups" class="md-nav__link">
+  <a href="#argocd-gitops-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
-      Schedule Regular Backups
+      ArgoCD GitOps Dashboard
     </span>
   </a>
   
@@ -1779,13 +1902,96 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#logs-visualization" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Logs Visualization
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Logs Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logs-datasource-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logs Datasource Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logs Datasource Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#victoria-logs-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Victoria Logs Datasource
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traces-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traces Visualization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traces Visualization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#traces-datasource-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Traces Datasource Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Traces Datasource Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tempo-datasource" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tempo Datasource
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jaeger-datasource-alternative" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jaeger Datasource (Alternative)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1808,72 +2014,128 @@
   
 
 
-<h1 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h1>
-<h2 id="velero-kubernetes-backup-restore">Velero: Kubernetes Backup &amp; Restore<a class="headerlink" href="#velero-kubernetes-backup-restore" title="Permanent link">&para;</a></h2>
-<p><a href="https://velero.io/">Velero</a> is an open source tool to back up and restore Kubernetes cluster resources and persistent volumes.
-It supports public cloud platforms and on-premises environments.</p>
-<h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
+<h1 id="visualization-and-dashboards">Visualization and Dashboards<a class="headerlink" href="#visualization-and-dashboards" title="Permanent link">&para;</a></h1>
+<p>DoKa Seca provides unified observability visualization through <strong>Grafana</strong>, serving as the central platform for monitoring logs, metrics, and traces across your Kubernetes infrastructure. Grafana acts as the single pane of glass for all observability data, providing comprehensive dashboards, alerting, and analysis capabilities.</p>
+<h2 id="grafana-the-central-visualization-platform">Grafana: The Central Visualization Platform<a class="headerlink" href="#grafana-the-central-visualization-platform" title="Permanent link">&para;</a></h2>
+<p><strong>Grafana</strong> is DoKa Seca's primary visualization platform, automatically configured and integrated with all observability backends to provide seamless data correlation and analysis.</p>
+<h3 id="default-grafana-integration">Default Grafana Integration<a class="headerlink" href="#default-grafana-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│ Victoria Metrics│───▶│                  │    │                 │
+│  (Metrics)      │    │                  │    │   Dashboards    │
+├─────────────────┤    │     Grafana      │───▶│   &amp; Alerts      │
+│ Victoria Logs   │───▶│   (Central Hub)  │    │                 │
+│   (Logs)        │    │                  │    │                 │
+├─────────────────┤    │                  │    │                 │
+│     Tempo       │───▶│                  │    │                 │
+│   (Traces)      │    └──────────────────┘    └─────────────────┘
+└─────────────────┘
+</code></pre></div>
+<h3 id="grafana-configuration">Grafana Configuration<a class="headerlink" href="#grafana-configuration" title="Permanent link">&para;</a></h3>
+<p>Grafana is automatically deployed and configured when you enable the observability stack:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic Grafana deployment with observability stack</span>
+<span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_victoria_metrics_k8s_stack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">  # Includes Grafana</span>
+<span class="w">  </span><span class="na">enable_victoria_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">               # Auto-configured datasource</span>
+<span class="w">  </span><span class="na">enable_tempo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span><span class="c1">                       # Auto-configured datasource</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="accessing-grafana">Accessing Grafana<a class="headerlink" href="#accessing-grafana" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Port forward to Grafana</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/victoria-metrics-k8s-stack-grafana<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">3000</span>:80
+
+<span class="c1"># Get admin password</span>
+kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span>victoria-metrics-k8s-stack-grafana<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">&quot;{.data.admin-password}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
+
+<span class="c1"># Default credentials</span>
+<span class="c1"># Username: admin</span>
+<span class="c1"># Password: [decoded from secret above]</span>
+</code></pre></div>
+<h2 id="metrics-visualization">Metrics Visualization<a class="headerlink" href="#metrics-visualization" title="Permanent link">&para;</a></h2>
+<p>DoKa Seca automatically configures Grafana with comprehensive metrics dashboards for infrastructure and application monitoring.</p>
+<h3 id="default-metrics-datasources">Default Metrics Datasources<a class="headerlink" href="#default-metrics-datasources" title="Permanent link">&para;</a></h3>
+<h4 id="victoria-metrics-datasource">Victoria Metrics Datasource<a class="headerlink" href="#victoria-metrics-datasource" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Automatically configured datasource</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">datasources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VictoriaMetrics</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://vmsingle-victoria-metrics-k8s-stack:8429</span>
+<span class="w">    </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+<span class="w">    </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">    </span><span class="nt">jsonData</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">httpMethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POST</span>
+<span class="w">      </span><span class="nt">timeInterval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30s</span>
+</code></pre></div>
+<h4 id="prometheus-datasource-alternative">Prometheus Datasource (Alternative)<a class="headerlink" href="#prometheus-datasource-alternative" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># When using Prometheus stack</span>
+<span class="nt">datasources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prometheus</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prometheus</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://kube-prometheus-stack-prometheus:9090</span>
+<span class="w">    </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+<span class="w">    </span><span class="nt">isDefault</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<h3 id="pre-built-metrics-dashboards">Pre-built Metrics Dashboards<a class="headerlink" href="#pre-built-metrics-dashboards" title="Permanent link">&para;</a></h3>
+<p>DoKa Seca includes comprehensive pre-configured dashboards:</p>
+<h4 id="kubernetes-cluster-overview"><strong>Kubernetes Cluster Overview</strong><a class="headerlink" href="#kubernetes-cluster-overview" title="Permanent link">&para;</a></h4>
 <ul>
-<li>Take scheduled or on-demand backups of your cluster and restore in case of loss</li>
-<li>Migrate cluster resources to other clusters</li>
-<li>Replicate production clusters to development/testing</li>
-<li>Back up both Kubernetes resources and persistent volumes</li>
+<li>Cluster resource utilization (CPU, Memory, Storage)</li>
+<li>Node health and capacity</li>
+<li>Pod distribution and status</li>
+<li>Network traffic patterns</li>
 </ul>
-<hr />
-<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
-<h3 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h3>
-<p>Install the Velero CLI:</p>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/vmware-tanzu/velero/releases/latest/download/velero-linux-amd64.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>-xz
-sudo<span class="w"> </span>mv<span class="w"> </span>velero-linux-amd64/velero<span class="w"> </span>/usr/local/bin/
-</code></pre></div>
-<h3 id="helm-recommended">Helm (Recommended)<a class="headerlink" href="#helm-recommended" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>vmware-tanzu<span class="w"> </span>https://vmware-tanzu.github.io/helm-charts
-helm<span class="w"> </span>repo<span class="w"> </span>update
-</code></pre></div>
-<hr />
-<h2 id="storage-configuration">Storage Configuration<a class="headerlink" href="#storage-configuration" title="Permanent link">&para;</a></h2>
-<p>Velero supports S3-compatible storage (AWS S3, MinIO, etc). Example: MinIO (self-hosted S3):</p>
-<ol>
-<li>Deploy MinIO</li>
-<li>Create a bucket for Velero backups</li>
-<li>Create a Kubernetes secret with your S3 credentials:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>velero-creds<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="w"> </span>velero<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;MINIO_ACCESS_KEY&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;MINIO_SECRET_KEY&gt;
-</code></pre></div>
-<ol>
-<li>Install Velero with Helm:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>helm<span class="w"> </span>install<span class="w"> </span>velero<span class="w"> </span>vmware-tanzu/velero<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--namespace<span class="w"> </span>velero<span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.provider<span class="o">=</span>aws<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.backupStorageLocation.name<span class="o">=</span>default<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.backupStorageLocation.bucket<span class="o">=</span>&lt;YOUR_BUCKET&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.backupStorageLocation.config.region<span class="o">=</span>minio<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.backupStorageLocation.config.s3ForcePathStyle<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>configuration.backupStorageLocation.config.s3Url<span class="o">=</span>http://minio.minio.svc:9000<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--set<span class="w"> </span>credentials.existingSecret<span class="o">=</span>velero-creds
-</code></pre></div>
-<hr />
-<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<h3 id="create-a-backup">Create a Backup<a class="headerlink" href="#create-a-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>backup<span class="w"> </span>create<span class="w"> </span>my-backup<span class="w"> </span>--include-namespaces<span class="w"> </span>my-namespace
-</code></pre></div>
-<h3 id="list-backups">List Backups<a class="headerlink" href="#list-backups" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>backup<span class="w"> </span>get
-</code></pre></div>
-<h3 id="restore-from-backup">Restore from Backup<a class="headerlink" href="#restore-from-backup" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>restore<span class="w"> </span>create<span class="w"> </span>--from-backup<span class="w"> </span>my-backup
-</code></pre></div>
-<h3 id="schedule-regular-backups">Schedule Regular Backups<a class="headerlink" href="#schedule-regular-backups" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>velero<span class="w"> </span>schedule<span class="w"> </span>create<span class="w"> </span>daily-backup<span class="w"> </span>--schedule<span class="o">=</span><span class="s2">&quot;0 2 * * *&quot;</span><span class="w"> </span>--include-namespaces<span class="w"> </span>my-namespace
-</code></pre></div>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h4 id="application-performance-monitoring"><strong>Application Performance Monitoring</strong><a class="headerlink" href="#application-performance-monitoring" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://velero.io/docs/">Velero Documentation</a></li>
+<li>Application response times and throughput</li>
+<li>Error rates and success rates</li>
+<li>Custom business metrics</li>
+<li>SLA/SLO tracking</li>
 </ul>
+<h4 id="infrastructure-monitoring"><strong>Infrastructure Monitoring</strong><a class="headerlink" href="#infrastructure-monitoring" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Node exporter metrics</li>
+<li>Container runtime metrics</li>
+<li>Storage performance</li>
+<li>Network performance</li>
+</ul>
+<h4 id="argocd-gitops-dashboard"><strong>ArgoCD GitOps Dashboard</strong><a class="headerlink" href="#argocd-gitops-dashboard" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Application sync status</li>
+<li>Deployment frequency</li>
+<li>Sync performance metrics</li>
+<li>Git repository health</li>
+</ul>
+<h2 id="logs-visualization">Logs Visualization<a class="headerlink" href="#logs-visualization" title="Permanent link">&para;</a></h2>
+<p>Grafana provides powerful log analysis capabilities through integration with Victoria Logs and other log backends.</p>
+<h3 id="logs-datasource-configuration">Logs Datasource Configuration<a class="headerlink" href="#logs-datasource-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="victoria-logs-datasource">Victoria Logs Datasource<a class="headerlink" href="#victoria-logs-datasource" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Automatically configured for Victoria Logs</span>
+<span class="nt">datasources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VictoriaLogs</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://victoria-logs-single-server:9428</span>
+<span class="w">    </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</code></pre></div>
+<h2 id="traces-visualization">Traces Visualization<a class="headerlink" href="#traces-visualization" title="Permanent link">&para;</a></h2>
+<p>Grafana provides comprehensive trace analysis capabilities through integration with Tempo, Jaeger, and other tracing backends.</p>
+<h3 id="traces-datasource-configuration">Traces Datasource Configuration<a class="headerlink" href="#traces-datasource-configuration" title="Permanent link">&para;</a></h3>
+<h4 id="tempo-datasource">Tempo Datasource<a class="headerlink" href="#tempo-datasource" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Automatically configured Tempo datasource</span>
+<span class="nt">datasources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tempo</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tempo</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://tempo-query-frontend:3200</span>
+<span class="w">    </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</code></pre></div>
+<h4 id="jaeger-datasource-alternative">Jaeger Datasource (Alternative)<a class="headerlink" href="#jaeger-datasource-alternative" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># When using Jaeger</span>
+<span class="nt">datasources</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jaeger</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jaeger</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://jaeger-query:16686</span>
+<span class="w">    </span><span class="nt">access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">proxy</span>
+</code></pre></div>
 
 
 
@@ -1894,7 +2156,7 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 12, 2025 16:14:32 UTC"><span class="timeago" datetime="2025-07-12T16:14:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 12, 2025 16:14:32 UTC">2025-07-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 8, 2025 13:29:12 UTC"><span class="timeago" datetime="2025-11-08T13:29:12+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 8, 2025 13:29:12 UTC">2025-11-08</span>
   </span>
 
     
@@ -1939,7 +2201,7 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../chaos_engineering/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chaos Engineering">
+          <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1949,20 +2211,20 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
                 Previous
               </span>
               <div class="md-ellipsis">
-                Chaos Engineering
+                Introduction
               </div>
             </div>
           </a>
         
         
           
-          <a href="../multicluster/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi cluster">
+          <a href="../logging/" class="md-footer__link md-footer__link--next" aria-label="Next: Logging">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Multi cluster
+                Logging
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2029,14 +2291,14 @@ helm<span class="w"> </span>repo<span class="w"> </span>update
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
