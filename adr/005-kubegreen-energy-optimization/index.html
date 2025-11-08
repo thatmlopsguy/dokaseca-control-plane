@@ -12,28 +12,24 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/adr/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/adr/005-kubegreen-energy-optimization/">
       
       
-        <link rel="prev" href="../rfc/0001-gitops-promotion-with-kargo/">
       
       
-        <link rel="next" href="001-use-architecture-decision-records/">
-      
-      
-      <link rel="icon" href="../assets/logos/favicon.svg">
+      <link rel="icon" href="../../assets/logos/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Overview - Doka Seca</title>
+        <title>Use kube-green for Energy Optimization with ArgoCD Sync Windows - Doka Seca</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,11 +42,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#architecture-decision-records-adrs" class="md-skip">
+        <a href="#use-kube-green-for-energy-optimization-with-argocd-sync-windows" class="md-skip">
           Skip to content
         </a>
       
@@ -92,9 +88,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -111,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Overview
+              Use kube-green for Energy Optimization with ArgoCD Sync Windows
             
           </span>
         </div>
@@ -227,9 +223,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     Doka Seca
@@ -256,7 +252,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -278,7 +274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         
   
   
@@ -338,7 +334,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/install/" class="md-nav__link">
+      <a href="../../getting_started/install/" class="md-nav__link">
         
   
   
@@ -361,7 +357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/repo_structure/" class="md-nav__link">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
         
   
   
@@ -384,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/teams/" class="md-nav__link">
+      <a href="../../getting_started/teams/" class="md-nav__link">
         
   
   
@@ -414,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../identity/" class="md-nav__link">
+      <a href="../../identity/" class="md-nav__link">
         
   
   
@@ -436,7 +432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../repository/" class="md-nav__link">
         
   
   
@@ -458,7 +454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../portal/" class="md-nav__link">
+      <a href="../../portal/" class="md-nav__link">
         
   
   
@@ -518,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/overview/" class="md-nav__link">
+      <a href="../../gitops/overview/" class="md-nav__link">
         
   
   
@@ -541,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/addons/" class="md-nav__link">
+      <a href="../../gitops/addons/" class="md-nav__link">
         
   
   
@@ -564,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/workloads/" class="md-nav__link">
+      <a href="../../gitops/workloads/" class="md-nav__link">
         
   
   
@@ -594,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+      <a href="../../networking/" class="md-nav__link">
         
   
   
@@ -616,7 +612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/" class="md-nav__link">
+      <a href="../../observability/" class="md-nav__link">
         
   
   
@@ -638,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compliance/" class="md-nav__link">
+      <a href="../../compliance/" class="md-nav__link">
         
   
   
@@ -660,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
+      <a href="../../security/" class="md-nav__link">
         
   
   
@@ -682,7 +678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../../database/" class="md-nav__link">
         
   
   
@@ -704,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../streams/" class="md-nav__link">
+      <a href="../../streams/" class="md-nav__link">
         
   
   
@@ -726,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../storage/" class="md-nav__link">
+      <a href="../../storage/" class="md-nav__link">
         
   
   
@@ -748,7 +744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_learning/" class="md-nav__link">
+      <a href="../../machine_learning/" class="md-nav__link">
         
   
   
@@ -770,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cost/" class="md-nav__link">
+      <a href="../../cost/" class="md-nav__link">
         
   
   
@@ -792,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chaos_engineering/" class="md-nav__link">
+      <a href="../../chaos_engineering/" class="md-nav__link">
         
   
   
@@ -814,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup/" class="md-nav__link">
+      <a href="../../backup/" class="md-nav__link">
         
   
   
@@ -836,7 +832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../multicluster/" class="md-nav__link">
+      <a href="../../multicluster/" class="md-nav__link">
         
   
   
@@ -896,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -919,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/contributing/" class="md-nav__link">
+      <a href="../../resources/contributing/" class="md-nav__link">
         
   
   
@@ -942,7 +938,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -965,7 +961,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -988,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1011,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1079,7 +1075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/" class="md-nav__link">
+      <a href="../../rfc/" class="md-nav__link">
         
   
   
@@ -1102,7 +1098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
         
   
   
@@ -1129,20 +1125,18 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
         
           
           <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
@@ -1158,7 +1152,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_22">
             <span class="md-nav__icon md-icon"></span>
             Architecture Decisions (ADRs)
@@ -1169,32 +1163,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Overview
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
         
   
   
@@ -1205,62 +1177,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-are-adrs" class="md-nav__link">
-    <span class="md-ellipsis">
-      What are ADRs?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adr-list" class="md-nav__link">
-    <span class="md-ellipsis">
-      ADR List
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adr-template" class="md-nav__link">
-    <span class="md-ellipsis">
-      ADR Template
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guidelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guidelines
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1273,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="001-use-architecture-decision-records/" class="md-nav__link">
+      <a href="../001-use-architecture-decision-records/" class="md-nav__link">
         
   
   
@@ -1296,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+      <a href="../002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
         
   
   
@@ -1319,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+      <a href="../003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
         
   
   
@@ -1342,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="004-preview-env-argocd-vcluster/" class="md-nav__link">
+      <a href="../004-preview-env-argocd-vcluster/" class="md-nav__link">
         
   
   
@@ -1392,36 +1308,111 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-are-adrs" class="md-nav__link">
+  <a href="#status" class="md-nav__link">
     <span class="md-ellipsis">
-      What are ADRs?
+      Status
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#adr-list" class="md-nav__link">
+  <a href="#context" class="md-nav__link">
     <span class="md-ellipsis">
-      ADR List
+      Context
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#adr-template" class="md-nav__link">
+  <a href="#decision" class="md-nav__link">
     <span class="md-ellipsis">
-      ADR Template
+      Decision
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Decision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-solution-kube-green-with-argocd-sync-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary Solution: kube-green with ArgoCD Sync Windows
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#alternative-solution-keda-cron-scaler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alternative Solution: KEDA Cron Scaler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#guidelines" class="md-nav__link">
+  <a href="#consequences" class="md-nav__link">
     <span class="md-ellipsis">
-      Guidelines
+      Consequences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Consequences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-becomes-easier" class="md-nav__link">
+    <span class="md-ellipsis">
+      What becomes easier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-becomes-more-difficult" class="md-nav__link">
+    <span class="md-ellipsis">
+      What becomes more difficult
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs-accepted" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-offs accepted
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#risks-and-mitigations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Risks and mitigations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
     </span>
   </a>
   
@@ -1446,51 +1437,161 @@
   
 
 
-<h1 id="architecture-decision-records-adrs">Architecture Decision Records (ADRs)<a class="headerlink" href="#architecture-decision-records-adrs" title="Permanent link">&para;</a></h1>
-<p>This directory contains Architecture Decision Records (ADRs) for the DoKa Seca project.</p>
-<h2 id="what-are-adrs">What are ADRs?<a class="headerlink" href="#what-are-adrs" title="Permanent link">&para;</a></h2>
-<p>Architecture Decision Records are short text documents that capture an important architectural decision made along with its context and consequences. They help teams understand why certain decisions were made and provide historical context for future changes.</p>
-<h2 id="adr-list">ADR List<a class="headerlink" href="#adr-list" title="Permanent link">&para;</a></h2>
+<h1 id="use-kube-green-for-energy-optimization-with-argocd-sync-windows">Use kube-green for Energy Optimization with ArgoCD Sync Windows<a class="headerlink" href="#use-kube-green-for-energy-optimization-with-argocd-sync-windows" title="Permanent link">&para;</a></h1>
+<p>Date: 2025-11-07</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<p>Proposed</p>
+<h2 id="context">Context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h2>
+<p>DokaSeca Kubernetes operates 24/7, consuming energy even during periods when development and testing activities are minimal (evenings, weekends, holidays). Many development and preview workloads remain active unnecessarily during these periods, leading to:</p>
 <ul>
-<li><a href="001-use-architecture-decision-records/">Use Architecture Decision Records</a></li>
-<li><a href="002-external-secrets-operator-multi-tenancy/">External Secrets Operator Multi-tenancy</a></li>
-<li><a href="003-argocd-hub-and-spoke-configuration/">ArgoCD Hub and Spoke Configuration</a></li>
-<li><a href="004-preview-env-argocd-vcluster/">Use ArgoCD, vCluster, and GitHub Actions for Preview Environments</a></li>
-<li><a href="005-kubegreen-energy-optimization/">Use kube-green for Energy Optimization with ArgoCD Sync Windows</a></li>
+<li>Increased energy consumption and environmental impact</li>
+<li>Higher operational costs</li>
+<li>Inefficient resource utilization</li>
+<li>Carbon footprint concerns in alignment with sustainable cloud computing practices</li>
 </ul>
-<h2 id="adr-template">ADR Template<a class="headerlink" href="#adr-template" title="Permanent link">&para;</a></h2>
-<p>When creating new ADRs, use the following template:</p>
-<div class="highlight"><pre><span></span><code><span class="gh"># {title}</span>
-
-Date: {date}
-
-<span class="gu">## Status</span>
-
-{status}
-
-<span class="gu">## Context</span>
-
-What is the issue that we&#39;re seeing that is motivating this decision or change?
-
-<span class="gu">## Decision</span>
-
-What is the change that we&#39;re proposing and/or doing?
-
-<span class="gu">## Consequences</span>
-
-What becomes easier or more difficult to do because of this change?
-
-<span class="gu">## References</span>
-</code></pre></div>
-<h2 id="guidelines">Guidelines<a class="headerlink" href="#guidelines" title="Permanent link">&para;</a></h2>
+<p>The CNCF Environmental Sustainability TAG and initiatives like the Green Software Foundation are promoting more sustainable cloud-native practices.</p>
+<p>Additionally, there's a fundamental conflict between kube-green (which modifies deployment replicas) and ArgoCD's GitOps reconciliation loop. When kube-green sets replicas to 0, ArgoCD detects this as drift from the desired state in Git and will attempt to restore the original replica count, defeating the energy optimization purpose.</p>
+<h2 id="decision">Decision<a class="headerlink" href="#decision" title="Permanent link">&para;</a></h2>
+<p>We will implement kube-green to automatically scale down Kubernetes deployments to zero replicas during non-working hours, combined with ArgoCD Sync Windows to prevent conflicts during sleep periods.</p>
+<h3 id="primary-solution-kube-green-with-argocd-sync-windows">Primary Solution: kube-green with ArgoCD Sync Windows<a class="headerlink" href="#primary-solution-kube-green-with-argocd-sync-windows" title="Permanent link">&para;</a></h3>
+<p><strong>Implementation approach:</strong></p>
 <ol>
-<li>ADRs should be numbered sequentially (001, 002, etc.) in the filename</li>
-<li>Titles should be descriptive and action-oriented</li>
-<li>Include the date when the decision was made</li>
-<li>Keep ADRs concise but complete</li>
-<li>Update the index when adding new ADRs</li>
-<li>ADRs are immutable once accepted - create new ADRs to supersede old ones</li>
+<li><strong>Deploy kube-green controller</strong> in the cluster with appropriate RBAC permissions</li>
+<li><strong>Configure SleepInfo resources</strong> for target namespaces with sleep/wake schedules:</li>
+<li>Sleep: Weekdays 19:00 - 07:00 (next day)</li>
+<li>Sleep: Weekends (Friday 19:00 - Monday 07:00)</li>
+<li><strong>Implement ArgoCD Sync Windows strategy</strong> (Solution 2 from Akuity blog) rather than ignoreDifferences approach:</li>
+<li>Configure sync windows that encompass kube-green sleep periods</li>
+<li>Offset sync windows by 1 minute before/after SleepInfo timeframes</li>
+<li>Apply to development and staging AppProjects</li>
+<li><strong>Target workloads:</strong></li>
+<li>Development environment deployments</li>
+<li>Staging/preview environments</li>
+<li>Non-critical testing applications</li>
+<li><strong>Exclude:</strong> Production workloads, monitoring systems, security tools</li>
 </ol>
+<p><strong>ArgoCD Configuration:</strong></p>
+<ul>
+<li>Use Sync Windows instead of ignoreDifferences to maintain ability to sync legitimate changes</li>
+<li>Configure manual selective sync capability for emergency changes during sleep periods</li>
+<li>Accept that applications will show as "OutOfSync" during sleep periods</li>
+</ul>
+<h3 id="alternative-solution-keda-cron-scaler">Alternative Solution: KEDA Cron Scaler<a class="headerlink" href="#alternative-solution-keda-cron-scaler" title="Permanent link">&para;</a></h3>
+<p>As an alternative to kube-green, KEDA's Cron scaler can achieve similar energy optimization goals with a different approach:</p>
+<p><strong>KEDA Cron Implementation:</strong></p>
+<ol>
+<li><strong>Deploy KEDA operator</strong> in the cluster</li>
+<li><strong>Create ScaledObject resources</strong> for each deployment with cron triggers:</li>
+<li>Set <code>minReplicaCount: 0</code> to enable scaling to zero</li>
+<li>Configure <code>start: 0 7 * * *</code> (7:00 AM) and <code>end: 0 19 * * *</code> (7:00 PM)</li>
+<li>Set appropriate timezone (e.g., <code>timezone: Europe/Lisbon</code>)</li>
+<li>Define <code>desiredReplicas</code> for working hours</li>
+<li><strong>GitOps compatibility</strong>: KEDA modifies HPA resources, not deployment replicas directly</li>
+<li><strong>Per-deployment configuration</strong> allows fine-grained control</li>
+</ol>
+<p><strong>Example KEDA ScaledObject:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">keda.sh/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ScaledObject</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev-app-scaler</span>
+<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">development</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">scaleTargetRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-dev-app</span>
+<span class="w">  </span><span class="nt">minReplicaCount</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">  </span><span class="nt">cooldownPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">triggers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cron</span>
+<span class="w">      </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Europe/Lisbon</span>
+<span class="w">        </span><span class="nt">start</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 7 * * *</span><span class="w">    </span><span class="c1"># 7:00 AM</span>
+<span class="w">        </span><span class="nt">end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0 19 * * *</span><span class="w">     </span><span class="c1"># 7:00 PM</span>
+<span class="w">        </span><span class="nt">desiredReplicas</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+</code></pre></div>
+<p><strong>KEDA vs kube-green comparison:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>KEDA Cron</th>
+<th>kube-green</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ArgoCD Compatibility</td>
+<td>✅ Better (uses HPA)</td>
+<td>⚠️ Requires Sync Windows</td>
+</tr>
+<tr>
+<td>Granularity</td>
+<td>Per-deployment</td>
+<td>Namespace-based</td>
+</tr>
+<tr>
+<td>Setup Complexity</td>
+<td>Medium (per-deployment config)</td>
+<td>Lower (namespace SleepInfo)</td>
+</tr>
+<tr>
+<td>Scheduling Flexibility</td>
+<td>High (cron expressions)</td>
+<td>Medium (time ranges)</td>
+</tr>
+<tr>
+<td>GitOps Integration</td>
+<td>Native</td>
+<td>Requires workarounds</td>
+</tr>
+<tr>
+<td>Resource Overhead</td>
+<td>Higher (HPA per deployment)</td>
+<td>Lower (single controller)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation:</strong> We choose kube-green as the primary solution due to its simplicity and namespace-level configuration, with KEDA Cron as a future alternative for workloads requiring more granular control.</p>
+<h2 id="consequences">Consequences<a class="headerlink" href="#consequences" title="Permanent link">&para;</a></h2>
+<h3 id="what-becomes-easier">What becomes easier<a class="headerlink" href="#what-becomes-easier" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Reduced energy consumption</strong> during non-working hours (estimated 60-70% reduction for targeted workloads)</li>
+<li><strong>Lower operational costs</strong> for compute resources</li>
+<li><strong>Environmental sustainability</strong> alignment with green computing practices</li>
+<li><strong>Resource optimization</strong> allowing better utilization during working hours</li>
+<li><strong>Manual wake-up capability</strong> through ArgoCD manual sync if needed during sleep periods</li>
+</ul>
+<h3 id="what-becomes-more-difficult">What becomes more difficult<a class="headerlink" href="#what-becomes-more-difficult" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Monitoring complexity</strong> - applications will show as OutOfSync during sleep periods</li>
+<li><strong>Emergency deployments</strong> require manual selective sync during sleep windows</li>
+<li><strong>Debugging complexity</strong> - need awareness of sleep schedules when troubleshooting</li>
+<li><strong>Initial setup overhead</strong> for configuring SleepInfo and Sync Windows</li>
+<li><strong>Documentation requirements</strong> for team awareness of sleep schedules</li>
+<li><strong>Coordination needed</strong> between kube-green schedules and ArgoCD sync windows</li>
+</ul>
+<h3 id="trade-offs-accepted">Trade-offs accepted<a class="headerlink" href="#trade-offs-accepted" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Applications appearing as OutOfSync during sleep periods (visual noise in ArgoCD UI)</li>
+<li>Need for manual intervention for urgent changes during sleep windows</li>
+<li>Additional operational complexity for the benefit of sustainability</li>
+</ul>
+<h3 id="risks-and-mitigations">Risks and mitigations<a class="headerlink" href="#risks-and-mitigations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Risk:</strong> Accidental application of sleep schedules to production workloads</li>
+<li><strong>Mitigation:</strong> Namespace-based targeting, explicit exclusion lists, thorough testing</li>
+<li><strong>Risk:</strong> Sync window misconfiguration causing permanent sync prevention</li>
+<li><strong>Mitigation:</strong> Regular review of sync windows, monitoring, documentation</li>
+<li><strong>Risk:</strong> Team confusion about application states during sleep periods</li>
+<li><strong>Mitigation:</strong> Training, documentation, ArgoCD notifications/labels</li>
+</ul>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://akuity.io/blog/argo-cd-kube-green">Akuity Blog: Sustainable GitOps with Argo CD and kube-green</a></li>
+<li><a href="https://kube-green.dev/">kube-green Official Documentation</a></li>
+<li><a href="https://keda.sh/docs/2.15/scalers/cron/#scale-to-0-during-off-hours">KEDA Cron Scaler Documentation</a></li>
+<li><a href="https://github.com/cncf/tag-env-sustainability">CNCF Environmental Sustainability TAG</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/sync_windows/">ArgoCD Sync Windows Documentation</a></li>
+</ul>
 
 
 
@@ -1552,44 +1653,6 @@ What becomes easier or more difficult to do because of this change?
         <footer class="md-footer">
   
     
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 0001 - GitOps Promotion with Kargo">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                0001 - GitOps Promotion with Kargo
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="001-use-architecture-decision-records/" class="md-footer__link md-footer__link--next" aria-label="Next: 0001 - Use ADRs">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                0001 - Use ADRs
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1646,14 +1709,14 @@ What becomes easier or more difficult to do because of this change?
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
