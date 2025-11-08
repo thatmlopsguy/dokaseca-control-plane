@@ -88,15 +88,16 @@ addons = {
   # disaster recovery
   enable_velero = false
   # storage
-  enable_minio          = false
-  enable_cloudnative_pg = false
-  enable_atlas_operator = false
+  enable_minio     = false
+  enable_rook_ceph = false
+  enable_longhorn  = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false
   enable_cloudbeaver         = false
   enable_clickhouse_operator = false
   enable_mariadb_operator    = false
+  enable_documentdb_operator = false
   # messaging
   enable_strimzi = false
   enable_nats    = false
@@ -106,10 +107,13 @@ addons = {
   enable_litmus     = false
   enable_chaos_mesh = false
   # utils
-  enable_reloader  = false
-  enable_reflector = false
-  enable_kured     = false
-  enable_eraser    = false
+  enable_reloader                 = false
+  enable_reflector                = false
+  enable_kured                    = false
+  enable_eraser                   = false
+  enable_k8s_image_swapper        = false
+  enable_spegel                   = false
+  enable_harbor_container_webhook = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning

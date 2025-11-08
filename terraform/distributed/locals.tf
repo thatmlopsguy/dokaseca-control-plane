@@ -104,8 +104,8 @@ locals {
     enable_ngrok         = try(var.addons.enable_ngrok, false)
     enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
-    # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
-    enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false)
+    enable_signoz                     = try(var.addons.enable_signoz, false)
+    enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
     enable_kiali                      = try(var.addons.enable_kiali, false)
@@ -160,13 +160,16 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
-    enable_openebs = try(var.addons.enable_openebs, false)
-    enable_minio   = try(var.addons.enable_minio, false)
+    enable_openebs   = try(var.addons.enable_openebs, false)
+    enable_minio     = try(var.addons.enable_minio, false)
+    enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
+    enable_longhorn  = try(var.addons.enable_longhorn, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
     enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)         # TODO
     enable_mariadb_operator    = try(var.addons.enable_mariadb_operator, false)    # TODO
+    enable_documentdb_operator = try(var.addons.enable_documentdb_operator, false) # TODO
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
@@ -211,6 +214,7 @@ locals {
     enable_clickstack = try(var.addons.enable_clickstack, false) # TODO
     enable_stash      = try(var.addons.enable_stash, false)      # TODO
     enable_castai     = try(var.addons.enable_castai, false)     # TODO
+    enable_datadog    = try(var.addons.enable_datadog, false)    # TODO
   }
 
   # Azure
