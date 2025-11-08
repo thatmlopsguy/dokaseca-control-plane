@@ -49,6 +49,7 @@
         "pyrra",
         "rollouts",
         "seldon",
+        "signoz",
         "spegel",
         "statusbadge",
         "strimzi",

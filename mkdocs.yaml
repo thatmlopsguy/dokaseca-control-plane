@@ -24,7 +24,12 @@ nav:
     - Addons: gitops/addons.md
     - Workloads: gitops/workloads.md
   - Networking: networking.md
-  - Observability: observability.md
+  - Observability:
+    - Introduction: observability/overview.md
+    - Visualization: observability/visualization.md
+    - Logging: observability/logging.md
+    - Monitoring: observability/monitoring.md
+    - Tracing: observability/tracing.md
   - Compliance: compliance.md
   - Security: security.md
   - Databases: database.md

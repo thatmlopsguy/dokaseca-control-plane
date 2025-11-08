@@ -115,3 +115,10 @@ Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of
 - **Performance Monitoring**: Measure latency, token usage, and cost metrics
 - **Quality Evaluation**: Evaluate responses against defined criteria
 - **Analytics Dashboard**: Visualize patterns and identify optimization opportunities
+
+## References
+
+- [Ray Documentation](https://docs.ray.io/en/latest/)
+- [LiteLLM GitHub Repository](https://github.com/BerriAI/litellm)
+- [Langfuse Documentation](https://docs.langfuse.com/)
+- [Open Source LLMOps Stack](https://oss-llmops-stack.com/)
