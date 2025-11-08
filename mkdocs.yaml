@@ -39,6 +39,7 @@ nav:
     - Glossary: resources/glossary.md
     - Contributing: resources/contributing.md
     - Documentation: resources/documentation.md
+    - Tech Radar: resources/techradar.md
     - Release Notes: resources/releases.md
     - Roadmap: resources/roadmap.md
     - References: resources/references.md
@@ -51,6 +52,7 @@ nav:
     - 0002 - External Secrets Multi-Tenancy: adr/002-external-secrets-operator-multi-tenancy.md
     - 0003 - GitOps with ArgoCD: adr/003-argocd-hub-and-spoke-configuration.md
     - 0004 - Preview Environments: adr/004-preview-env-argocd-vcluster.md
+    - 0005 - KubeGreen for Energy Optimization: adr/005-kubegreen-energy-optimization.md
 
 # Configuration
 theme:
