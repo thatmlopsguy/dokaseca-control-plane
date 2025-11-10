@@ -249,3 +249,11 @@ docs-serve: docs-install ## Start a local web server for serving documentation
 
 docs-build: docs-install ## Build the documentation site
 	@. .venv/bin/activate && mkdocs build
+
+##@ Development
+.PHONY: pre-commit-install pre-commit-run
+pre-commit-run: ## Execute pre-commit git-hooks
+	@uvx prek run -a
+
+pre-commit-install: ## Install pre-commit git-hooks
+	@uvx prek install
