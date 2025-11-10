@@ -241,8 +241,8 @@ dapr-ui: ## Access dapr dashboard
 docs-install: ## Install the requirements for starting the local web server for serving docs
 	@python -m venv .venv && \
 	. .venv/bin/activate && \
-	pip install -U pip && \
-	pip install -r requirements/docs.txt
+	pip install -U pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org && \
+	pip install -r requirements/docs.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org
 
 docs-serve: docs-install ## Start a local web server for serving documentation
 	@. .venv/bin/activate && mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
@@ -257,3 +257,6 @@ pre-commit-run: ## Execute pre-commit git-hooks
 
 pre-commit-install: ## Install pre-commit git-hooks
 	@uvx prek install
+
+pre-commit-update: ## Update pre-commit git-hooks
+	@uvx prek autoupdate
