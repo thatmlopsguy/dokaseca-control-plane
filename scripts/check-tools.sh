@@ -8,6 +8,7 @@ declare -A tools=(
 	[k0s]="k0s version"
 	[k3d]="k3d --version"
 	[jq]="jq --version"
+    [yq]="yq --version"
 	[helm]="helm version --short"
 	[kubectl]="kubectl version --client"
 	[kustomize]="kustomize version"
@@ -15,6 +16,7 @@ declare -A tools=(
 	[kargo]="kargo version"
 	[clusteradm]="clusteradm version"
 	[autok3s]="autok3s version"
+	[mkcert]="mkcert --version"
 )
 
 # Check each tool and display its version

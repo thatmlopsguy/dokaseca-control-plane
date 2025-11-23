@@ -68,3 +68,6 @@ kubernetes/*
 
 # kustomize
 kustomize/*
+
+# .env
+.env
