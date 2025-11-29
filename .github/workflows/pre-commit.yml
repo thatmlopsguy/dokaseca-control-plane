@@ -31,10 +31,6 @@ on:
       - "scripts/**"
       - "terraform/**"
 
-permissions:
-  contents: read
-  pull-requests: read
-
 jobs:
   pre-commit:
     name: Pre-commit
