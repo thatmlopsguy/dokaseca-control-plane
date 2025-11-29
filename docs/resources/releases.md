@@ -10,6 +10,8 @@ Docka Seca follows a release schedule that targets the **N-1 version** of the cu
 - **Compatibility**: Gives time for the ecosystem and third-party tools to mature and stabilize
 - **Reliability**: Allows for thorough testing and validation of all components
 
+For the most up-to-date information on current and upcoming releases, visit the [official Kubernetes release schedule](https://kubernetes.io/releases/).
+
 ### Testing Strategy
 
 For each supported Kubernetes version, all addons and configurations undergo comprehensive testing:
