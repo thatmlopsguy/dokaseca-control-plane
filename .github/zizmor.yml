@@ -4,7 +4,7 @@ rules:
       # ignore line 44, column 7 on pre-commit.yml
       - pre-commit.yml:44:7
       - label-pull-request.yml:21:9
-      - docs.yml:28:9
+      - docs.yml:30:9
 
   dangerous-triggers:
     ignore:
