@@ -5,18 +5,18 @@ on:
     branches:
       - main
     paths:
-      - 'docs/**'
-      - '*.md'
-      - 'mkdocs.yaml'
-      - 'requirements/docs.txt'
+      - "docs/**"
+      - "*.md"
+      - "mkdocs.yaml"
+      - "requirements/docs.txt"
   pull_request:
     branches:
       - main
     paths:
-      - 'docs/**'
-      - '*.md'
-      - 'mkdocs.yaml'
-      - 'requirements/docs.txt'
+      - "docs/**"
+      - "*.md"
+      - "mkdocs.yaml"
+      - "requirements/docs.txt"
 
 permissions:
   contents: write
@@ -25,6 +25,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@b25f731bf2f9eb9748c2e9757d366c3e72fa2109 # v1.0.2-beta8
+
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 0
