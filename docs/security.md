@@ -92,9 +92,26 @@ supply chain attacks. This ensures immutable references to specific action versi
 2. Regularly update pinned versions and review changes
 3. Monitor security advisories for actions in use
 
+### Zizmor Linting
+
+All GitHub Actions workflows **must pass [Zizmor](https://github.com/woodruffw/zizmor) linting rules**. Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.
+
+**Required checks:**
+
+- No use of untrusted input in dangerous contexts
+- Proper secret handling and masking
+- Correct permissions configuration (principle of least privilege)
+- Safe use of pull request triggers
+- Validation of artifact integrity
+
+## Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions
+
+![github-actions-workflows](assets/figures/images/github-actions-workflows.png)
+
 ## References
 
 - [Trivy Documentation](https://aquasecurity.github.io/trivy/)
 - [Falco Documentation](https://falco.org/docs/)
 - [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/overview/)
 - [GitHub Actions Policy](https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/)
+- [How to Harden GitHub Actions: The Unofficial Guide](https://www.wiz.io/blog/github-actions-security-guide)
