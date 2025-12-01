@@ -64,6 +64,7 @@ addons = {
   enable_trivy            = false
   enable_kubescape        = false
   # networking
+  enable_gateway_api   = true
   enable_kubevip       = false
   enable_metallb       = true
   enable_cilium        = false

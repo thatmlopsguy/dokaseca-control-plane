@@ -94,10 +94,11 @@ locals {
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
     enable_krateo = try(var.addons.enable_krateo, false) # TODO
     # networking
+    enable_gateway_api   = try(var.addons.enable_gateway_api, true)
     enable_skupper       = try(var.addons.enable_skupper, false)
     enable_metallb       = try(var.addons.enable_metallb, false)
     enable_kubevip       = try(var.addons.enable_kubevip, false)
-    enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false)
+    enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
     enable_cilium        = try(var.addons.enable_cilium, false)
     enable_calico        = try(var.addons.enable_calico, false)
