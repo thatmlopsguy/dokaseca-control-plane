@@ -1,0 +1,135 @@
+# Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
+# Version: 1.33.0
+# Generated on: 2025-12-01 10:45:23 UTC
+# Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
+# Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
+# License: Apache License 2.0
+
+## Description
+This SBOM lists all the tools, dependencies, and components required to run the
+Doka Seca project. This includes core Kubernetes tools, infrastructure as code
+tools, GitOps tools, observability stack components, security tools, and development
+dependencies.
+
+The project provides a comprehensive framework for bootstrapping cloud-native
+platforms using Kubernetes in Docker (Kind), including GitOps workflows,
+infrastructure as code, observability stacks, and cloud-native security practices.
+
+
+## 1. Core System Requirements
+
+### Essential Unix Tools
+- bash >= 4.0 (shell scripting)
+- curl (HTTP client for downloads)
+- base64 (encoding/decoding utility)
+- jq (JSON processor)
+- git (version control)
+
+### System Dependencies
+- base64: base64 (GNU coreutils) 8.32
+- git: git version 2.52.0
+- bash: GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+- jq: jq-1.7.1
+- curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.19
+
+## 2. Container Runtime & Kubernetes Tools
+
+### Container Platform
+- podman: NOT INSTALLED
+- docker: Docker version 27.2.1, build 9e34c9b
+
+### Kubernetes Distribution Tools
+- k0s: v1.32.4+k0s.0
+- k3d: v5.8.3
+- kind: v0.29.0
+
+### Kubernetes Client Tools
+- kubectl: v1.33.1
+- kustomize: 5.6.0
+- helm: v3.17.3+gv3.17.3
+
+## 3. Infrastructure as Code (IaC)
+
+### Terraform/OpenTofu
+- tofu: v1.9.1
+- terraform: v1.12.1
+
+## 4. GitOps & Deployment Tools
+
+### ArgoCD Ecosystem
+- argocd: v2.14.11
+- kargo: Installed (version check failed)
+
+### FluxCD Tools
+- flux: 2.5.1
+
+### Cluster Management
+- clusterctl: v1.9.7
+- vcluster: 0.24.1
+
+## 5. Security Tools
+
+### Image Signing & Vulnerability Scanning
+- cosign: v2.5.0
+- trivy: 0.62.1
+- falcoctl: 0.11.2
+
+### Certificate Management
+- mkcert: v1.4.4
+- openssl: OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
+
+## 6. Backup & Storage Tools
+
+### Backup Solutions
+- velero: v1.16.0
+- mc: RELEASE.2025-05-21T01-59-54Z
+- vault: v1.19.4
+
+## 7. Observability & Monitoring Tools
+
+### Kubernetes Dashboards
+- flux9s: Installed (version check failed)
+- k9s: 0.50.5
+
+## 8. Development Tools
+
+### Build Tools
+- node: v23.10.0
+- just: 1.40.0
+- make: 4.3
+- python: 3.10.12
+- npm: 11.5.2
+- go: go1.24.0
+
+## 9. Verification
+
+After installation, verify your setup by running:
+
+```bash
+# Run the tool checker script
+./scripts/check-tools.sh
+
+# Or generate this SBOM to see what's missing
+./scripts/sbom-generator.sh
+```
+
+## 10. Security Considerations
+
+- Regularly update all tools to their latest versions for security patches
+- Use signed container images when available (cosign verification)
+- Follow principle of least privilege for tool access
+- Store sensitive data (passwords, tokens) in secure vaults
+- Regularly scan dependencies for vulnerabilities using trivy/kubescape
+- Enable audit logging in Kubernetes clusters
+- Use network policies to restrict cluster communication
+
+## 11. Support & Maintenance
+
+- **Project Repository**: https://github.com/thatmlopsguy/dokaseca-control-plane
+- **Documentation**: https://thatmlopsguy.github.io/dokaseca-control-plane/
+- **Issue Tracking**: Report issues via GitHub Issues
+- **License**: Apache License 2.0
+
+For detailed installation instructions and troubleshooting, refer to the project
+documentation at: https://thatmlopsguy.github.io/dokaseca-control-plane/
+
