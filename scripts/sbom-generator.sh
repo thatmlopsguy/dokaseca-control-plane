@@ -241,6 +241,7 @@ EOF
         [cosign]="cosign version | grep GitVersion | cut -d':' -f2 | tr -d ' '"
         [trivy]="trivy --version | awk 'NR==1 {print \$2}'"
         [falcoctl]="falcoctl version | awk '{print \$3}'"
+        [gitleaks]="gitleaks --version | awk 'NR==1 {print \$3}'"
     )
 
     for tool in "${!security_tools[@]}"; do
