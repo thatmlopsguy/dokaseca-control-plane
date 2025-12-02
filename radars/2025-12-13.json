@@ -1,0 +1,199 @@
+{
+  "date": "2025-12-13",
+  "quadrants": [
+    {"name": "Frameworks"},
+    {"name": "Tools"},
+    {"name": "Platforms"},
+    {"name": "Techniques"}
+  ],
+  "rings": [
+    {"name": "ADOPT", "color": "#5ba300", "description": "Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our production environment, low risk and recommended to be widely used."},
+    {"name": "TRIAL", "color": "#009eb0", "description": "Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations."},
+    {"name": "ASSESS", "color": "#c7ba00", "description": "Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact."},
+    {"name": "HOLD", "color": "#e09b96", "description": "Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in."}
+  ],
+  "entries": [
+    {
+      "label": "Python",
+      "quadrant": 0,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Programming language that lets you work quickly and integrate systems",
+      "link": "https://www.python.org/"
+    },
+    {
+      "label": "Go",
+      "quadrant": 0,
+      "ring": 1,
+      "moved": 0,
+      "active": true,
+      "description": "Open source programming language that makes it easy to build simple software",
+      "link": "https://golang.org/"
+    },
+    {
+      "label": "Docker",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Platform for developing, shipping, and running applications using containers",
+      "link": "https://www.docker.com/"
+    },
+    {
+      "label": "Kubernetes",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Open-source container orchestration system",
+      "link": "https://kubernetes.io/"
+    },
+    {
+      "label": "Helm",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Package manager for Kubernetes",
+      "link": "https://helm.sh/"
+    },
+    {
+      "label": "Terraform",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Infrastructure as Code tool for building, changing, and versioning infrastructure",
+      "link": "https://www.terraform.io/"
+    },
+    {
+      "label": "Github Actions",
+      "quadrant": 1,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Continuous Integration/Continuous Deployment platform",
+      "link": "https://github.com/features/actions"
+    },
+    {
+      "label": "Prometheus",
+      "quadrant": 1,
+      "ring": 1,
+      "moved": 0,
+      "active": true,
+      "description": "Open-source monitoring system with a dimensional data model",
+      "link": "https://prometheus.io/"
+    },
+    {
+      "label": "Grafana",
+      "quadrant": 1,
+      "ring": 1,
+      "moved": 0,
+      "active": true,
+      "description": "Open source analytics and interactive visualization web application",
+      "link": "https://grafana.com/"
+    },
+    {
+      "label": "Jenkins",
+      "quadrant": 1,
+      "ring": 3,
+      "moved": 0,
+      "active": true,
+      "description": "Open source automation server for building, testing, and deploying software",
+      "link": "https://www.jenkins.io/"
+    },
+    {
+      "label": "AWS",
+      "quadrant": 2,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Amazon Web Services cloud computing platform",
+      "link": "https://aws.amazon.com/"
+    },
+    {
+      "label": "Azure",
+      "quadrant": 2,
+      "ring": 1,
+      "moved": 0,
+      "active": true,
+      "description": "Microsoft's cloud computing platform",
+      "link": "https://azure.microsoft.com/"
+    },
+    {
+      "label": "Google Cloud",
+      "quadrant": 2,
+      "ring": 1,
+      "moved": 0,
+      "active": true,
+      "description": "Google's suite of cloud computing services",
+      "link": "https://cloud.google.com/"
+    },
+    {
+      "label": "Serverless",
+      "quadrant": 2,
+      "ring": 1,
+      "moved": 1,
+      "active": true,
+      "description": "Cloud computing execution model where cloud provider manages server allocation"
+    },
+    {
+      "label": "Edge Computing",
+      "quadrant": 2,
+      "ring": 2,
+      "moved": 2,
+      "active": true,
+      "description": "Distributed computing paradigm that brings computation closer to data sources"
+    },
+    {
+      "label": "Multi-cloud",
+      "quadrant": 2,
+      "ring": 2,
+      "moved": 0,
+      "active": true,
+      "description": "Use of multiple cloud computing services in a single architecture"
+    },
+    {
+      "label": "Microservices",
+      "quadrant": 3,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Architectural approach for building applications as a collection of loosely coupled services"
+    },
+    {
+      "label": "DevOps",
+      "quadrant": 3,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Set of practices that combines software development and IT operations"
+    },
+    {
+      "label": "GitOps",
+      "quadrant": 3,
+      "ring": 0,
+      "moved": 1,
+      "active": true,
+      "description": "Operational framework that takes DevOps best practices for application development",
+      "link": "https://opengitops.dev/"
+    },
+    {
+      "label": "Infrastructure as Code",
+      "quadrant": 3,
+      "ring": 0,
+      "moved": 0,
+      "active": true,
+      "description": "Practice of managing and provisioning computing infrastructure through code"
+    },
+    {
+      "label": "Machine Learning",
+      "quadrant": 3,
+      "ring": 1,
+      "moved": 1,
+      "active": true,
+      "description": "Type of artificial intelligence that allows software applications to learn from data"
+    }
+  ]
+}

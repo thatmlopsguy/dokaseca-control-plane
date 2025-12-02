@@ -1854,7 +1854,894 @@
 
 <h1 id="doka-seca-tech-radar">Doka Seca Tech Radar<a class="headerlink" href="#doka-seca-tech-radar" title="Permanent link">&para;</a></h1>
 <p>The technology radar helps us track the technologies we use and evaluate emerging trends in our development ecosystem.</p>
-<!-- TECH_RADAR -->
+<div id="tech-radar" style="margin: 20px auto; max-width: 1000px;">
+    <style>
+        /* Light mode variables */
+        #tech-radar {
+            --radar-bg: #fff;
+            --radar-border: #ddd;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --list-bg: #f8f9fa;
+            --list-border: #e9ecef;
+            --list-border-bottom: #dee2e6;
+            --item-bg: white;
+            --tooltip-bg: rgba(0, 0, 0, 0.9);
+            --tooltip-text: white;
+            --ring-stroke: #ccc;
+            --quadrant-stroke: #ccc;
+        }
+
+        /* Dark mode variables - MkDocs Material uses [data-md-color-scheme="slate"] */
+        [data-md-color-scheme="slate"] #tech-radar {
+            --radar-bg: #2d3748;
+            --radar-border: #4a5568;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --list-bg: #374151;
+            --list-border: #4b5563;
+            --list-border-bottom: #6b7280;
+            --item-bg: #4a5568;
+            --tooltip-bg: rgba(255, 255, 255, 0.95);
+            --tooltip-text: #1a202c;
+            --ring-stroke: #6b7280;
+            --quadrant-stroke: #6b7280;
+        }
+
+        .radar-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Ensure tooltip container for default theme compatibility */
+        #tech-radar {
+            position: relative;
+            isolation: isolate;
+        }
+
+        .radar-svg {
+            width: 100%;
+            height: auto;
+            background: var(--radar-bg);
+            border: 1px solid var(--radar-border);
+            border-radius: 8px;
+        }
+
+        .radar-legend-inline {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--radar-bg);
+            border: 1px solid var(--radar-border);
+            border-radius: 8px;
+            padding: 8px 16px;
+            display: flex;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--text-primary);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        [data-md-color-scheme="slate"] .radar-legend-inline {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .legend-item-inline {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            padding: 6px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .legend-item-inline:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+        }
+
+        .legend-item-inline.active {
+            background-color: rgba(0, 123, 204, 0.2);
+            border: 1px solid rgba(0, 123, 204, 0.5);
+        }
+
+        .legend-icon-inline {
+            font-size: 12px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 12px;
+        }
+
+        .entry.highlighted {
+            stroke-width: 4px !important;
+            filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8));
+        }
+
+        .entry.dimmed {
+            opacity: 0.3;
+        }
+
+        .quadrant text {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        .ring text {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            fill: var(--text-secondary);
+            fill-opacity: 0.8;
+            text-anchor: middle;
+        }
+
+        .entry {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .entry:hover {
+            stroke: var(--text-primary);
+            stroke-width: 2px;
+        }
+
+        .entry text {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+            text-anchor: middle;
+            pointer-events: none;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 999999;
+            max-width: 250px;
+            word-wrap: break-word;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            display: none;
+            white-space: nowrap;
+        }
+
+        /* Tooltip styles */
+        .radar-tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.4;
+            pointer-events: none;
+            z-index: 10000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            max-width: 300px;
+            word-wrap: break-word;
+            white-space: normal;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .radar-tooltip.visible {
+            opacity: 1;
+        }
+
+        /* CSS-only tooltip fallback */
+        .entry {
+            position: relative;
+        }
+
+        .entry:hover::after {
+            content: attr(data-tooltip);
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            z-index: 999999;
+            max-width: 250px;
+            word-wrap: break-word;
+            white-space: pre-line;
+            pointer-events: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .radar-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .radar-title h2 {
+            margin: 0 0 5px 0;
+            color: var(--text-primary);
+        }
+
+        .radar-title .date {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .tech-lists {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .quadrant-list {
+            background: var(--list-bg);
+            border: 1px solid var(--list-border);
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 200px;
+        }
+
+        .quadrant-title {
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--list-border-bottom);
+            padding-bottom: 4px;
+        }
+
+        .ring-section {
+            margin-bottom: 12px;
+        }
+
+        .ring-title {
+            font-weight: bold;
+            font-size: 11px;
+            margin-bottom: 4px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: white;
+        }
+
+        .tech-item {
+            font-size: 11px;
+            margin: 1px 0;
+            padding: 1px 6px;
+            background: var(--item-bg);
+            border-radius: 3px;
+            border-left: 3px solid;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .tech-item a {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: rgba(128, 128, 128, 0.5);
+            transition: text-decoration-color 0.2s ease;
+        }
+
+        .tech-item a:hover {
+            text-decoration-color: currentColor;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 1200px) {
+            .tech-lists {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tech-lists {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .quadrant-list {
+                min-height: auto;
+            }
+        }
+
+        .radar-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .radar-selector {
+            padding: 8px 12px;
+            border: 1px solid var(--list-border);
+            border-radius: 4px;
+            background: var(--list-bg);
+            color: var(--text-primary);
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .radar-selector:focus {
+            outline: 2px solid #007acc;
+            outline-offset: 2px;
+        }
+
+        .radar-label {
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+    </style>
+
+    <div class="radar-title">
+        <h2>Tech Radar</h2>
+    </div>
+
+
+
+    <div class="radar-container">
+        <svg class="radar-svg" viewBox="0 0 800 800">
+            <!-- Radar will be drawn here by JavaScript -->
+        </svg>
+        <!-- Tooltip element -->
+        <div class="radar-tooltip" id="radar-tooltip"></div>
+        <div class="radar-legend-inline">
+            <div class="legend-item-inline" data-movement="-1">
+                <span class="legend-icon-inline">▼</span>
+                <span>Moved out</span>
+            </div>
+            <div class="legend-item-inline" data-movement="0">
+                <span class="legend-icon-inline">⬤</span>
+                <span>No change</span>
+            </div>
+            <div class="legend-item-inline" data-movement="1">
+                <span class="legend-icon-inline">▲</span>
+                <span>Moved in</span>
+            </div>
+            <div class="legend-item-inline" data-movement="2">
+                <span class="legend-icon-inline">★</span>
+                <span>New</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tech-lists" id="tech-lists">
+        <!-- Technology lists will be generated by JavaScript -->
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function() {
+    // Configuration - all radar files data
+    const allRadarData = {};
+    const radarFiles = [{"key": "2025-12-13", "filename": "2025-12-13.json", "data": {"date": "2025-12-13", "quadrants": [{"name": "Frameworks"}, {"name": "Tools"}, {"name": "Platforms"}, {"name": "Techniques"}], "rings": [{"name": "ADOPT", "color": "#5ba300", "description": "Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our production environment, low risk and recommended to be widely used."}, {"name": "TRIAL", "color": "#009eb0", "description": "Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations."}, {"name": "ASSESS", "color": "#c7ba00", "description": "Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact."}, {"name": "HOLD", "color": "#e09b96", "description": "Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in."}], "entries": [{"label": "Python", "quadrant": 0, "ring": 0, "moved": 0, "active": true, "description": "Programming language that lets you work quickly and integrate systems", "link": "https://www.python.org/"}, {"label": "Go", "quadrant": 0, "ring": 1, "moved": 0, "active": true, "description": "Open source programming language that makes it easy to build simple software", "link": "https://golang.org/"}, {"label": "Docker", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Platform for developing, shipping, and running applications using containers", "link": "https://www.docker.com/"}, {"label": "Kubernetes", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Open-source container orchestration system", "link": "https://kubernetes.io/"}, {"label": "Helm", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Package manager for Kubernetes", "link": "https://helm.sh/"}, {"label": "Terraform", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Infrastructure as Code tool for building, changing, and versioning infrastructure", "link": "https://www.terraform.io/"}, {"label": "Github Actions", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Continuous Integration/Continuous Deployment platform", "link": "https://github.com/features/actions"}, {"label": "Prometheus", "quadrant": 1, "ring": 1, "moved": 0, "active": true, "description": "Open-source monitoring system with a dimensional data model", "link": "https://prometheus.io/"}, {"label": "Grafana", "quadrant": 1, "ring": 1, "moved": 0, "active": true, "description": "Open source analytics and interactive visualization web application", "link": "https://grafana.com/"}, {"label": "Jenkins", "quadrant": 1, "ring": 3, "moved": 0, "active": true, "description": "Open source automation server for building, testing, and deploying software", "link": "https://www.jenkins.io/"}, {"label": "AWS", "quadrant": 2, "ring": 0, "moved": 0, "active": true, "description": "Amazon Web Services cloud computing platform", "link": "https://aws.amazon.com/"}, {"label": "Azure", "quadrant": 2, "ring": 1, "moved": 0, "active": true, "description": "Microsoft's cloud computing platform", "link": "https://azure.microsoft.com/"}, {"label": "Google Cloud", "quadrant": 2, "ring": 1, "moved": 0, "active": true, "description": "Google's suite of cloud computing services", "link": "https://cloud.google.com/"}, {"label": "Serverless", "quadrant": 2, "ring": 1, "moved": 1, "active": true, "description": "Cloud computing execution model where cloud provider manages server allocation"}, {"label": "Edge Computing", "quadrant": 2, "ring": 2, "moved": 2, "active": true, "description": "Distributed computing paradigm that brings computation closer to data sources"}, {"label": "Multi-cloud", "quadrant": 2, "ring": 2, "moved": 0, "active": true, "description": "Use of multiple cloud computing services in a single architecture"}, {"label": "Microservices", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Architectural approach for building applications as a collection of loosely coupled services"}, {"label": "DevOps", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Set of practices that combines software development and IT operations"}, {"label": "GitOps", "quadrant": 3, "ring": 0, "moved": 1, "active": true, "description": "Operational framework that takes DevOps best practices for application development", "link": "https://opengitops.dev/"}, {"label": "Infrastructure as Code", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Practice of managing and provisioning computing infrastructure through code"}, {"label": "Machine Learning", "quadrant": 3, "ring": 1, "moved": 1, "active": true, "description": "Type of artificial intelligence that allows software applications to learn from data"}]}}];
+
+    // Build the allRadarData object from the radar files
+    radarFiles.forEach(function(radar) {
+        allRadarData[radar.key] = {
+            date: radar.data.date,
+            quadrants: radar.data.quadrants,
+            rings: radar.data.rings,
+            entries: radar.data.entries || []
+        };
+    });
+
+    // Current configuration
+    let config = {
+        title: "Tech Radar",
+        date: "2025-12-13",
+        quadrants: [{'name': 'Frameworks'}, {'name': 'Tools'}, {'name': 'Platforms'}, {'name': 'Techniques'}],
+        rings: [{'name': 'ADOPT', 'color': '#5ba300', 'description': 'Technologies we have high confidence in to serve our purpose, also in large scale. Technologies with a usage culture in our production environment, low risk and recommended to be widely used.'}, {'name': 'TRIAL', 'color': '#009eb0', 'description': 'Technologies that we have seen work with success in project work to solve a real problem; first serious usage experience that confirm benefits and can uncover limitations.'}, {'name': 'ASSESS', 'color': '#c7ba00', 'description': 'Technologies that are promising and have clear potential value-add for us; technologies worth to invest some research and prototyping efforts in to see if it has impact.'}, {'name': 'HOLD', 'color': '#e09b96', 'description': 'Technologies not recommended to be used for new projects. Technologies that we think are not (yet) worth to (further) invest in.'}],
+        entries: [{"label": "Python", "quadrant": 0, "ring": 0, "moved": 0, "active": true, "description": "Programming language that lets you work quickly and integrate systems", "link": "https://www.python.org/"}, {"label": "Go", "quadrant": 0, "ring": 1, "moved": 0, "active": true, "description": "Open source programming language that makes it easy to build simple software", "link": "https://golang.org/"}, {"label": "Docker", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Platform for developing, shipping, and running applications using containers", "link": "https://www.docker.com/"}, {"label": "Kubernetes", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Open-source container orchestration system", "link": "https://kubernetes.io/"}, {"label": "Helm", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Package manager for Kubernetes", "link": "https://helm.sh/"}, {"label": "Terraform", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Infrastructure as Code tool for building, changing, and versioning infrastructure", "link": "https://www.terraform.io/"}, {"label": "Github Actions", "quadrant": 1, "ring": 0, "moved": 0, "active": true, "description": "Continuous Integration/Continuous Deployment platform", "link": "https://github.com/features/actions"}, {"label": "Prometheus", "quadrant": 1, "ring": 1, "moved": 0, "active": true, "description": "Open-source monitoring system with a dimensional data model", "link": "https://prometheus.io/"}, {"label": "Grafana", "quadrant": 1, "ring": 1, "moved": 0, "active": true, "description": "Open source analytics and interactive visualization web application", "link": "https://grafana.com/"}, {"label": "Jenkins", "quadrant": 1, "ring": 3, "moved": 0, "active": true, "description": "Open source automation server for building, testing, and deploying software", "link": "https://www.jenkins.io/"}, {"label": "AWS", "quadrant": 2, "ring": 0, "moved": 0, "active": true, "description": "Amazon Web Services cloud computing platform", "link": "https://aws.amazon.com/"}, {"label": "Azure", "quadrant": 2, "ring": 1, "moved": 0, "active": true, "description": "Microsoft's cloud computing platform", "link": "https://azure.microsoft.com/"}, {"label": "Google Cloud", "quadrant": 2, "ring": 1, "moved": 0, "active": true, "description": "Google's suite of cloud computing services", "link": "https://cloud.google.com/"}, {"label": "Serverless", "quadrant": 2, "ring": 1, "moved": 1, "active": true, "description": "Cloud computing execution model where cloud provider manages server allocation"}, {"label": "Edge Computing", "quadrant": 2, "ring": 2, "moved": 2, "active": true, "description": "Distributed computing paradigm that brings computation closer to data sources"}, {"label": "Multi-cloud", "quadrant": 2, "ring": 2, "moved": 0, "active": true, "description": "Use of multiple cloud computing services in a single architecture"}, {"label": "Microservices", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Architectural approach for building applications as a collection of loosely coupled services"}, {"label": "DevOps", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Set of practices that combines software development and IT operations"}, {"label": "GitOps", "quadrant": 3, "ring": 0, "moved": 1, "active": true, "description": "Operational framework that takes DevOps best practices for application development", "link": "https://opengitops.dev/"}, {"label": "Infrastructure as Code", "quadrant": 3, "ring": 0, "moved": 0, "active": true, "description": "Practice of managing and provisioning computing infrastructure through code"}, {"label": "Machine Learning", "quadrant": 3, "ring": 1, "moved": 1, "active": true, "description": "Type of artificial intelligence that allows software applications to learn from data"}]
+    };
+
+    // Debug: log the configuration
+    const defaultRadar = "2025-12-13";
+    let currentRadar = defaultRadar;
+
+    // Function to switch radar version
+    function switchRadar(radarKey) {
+        if (allRadarData[radarKey]) {
+            // Preserve the original title from mkdocs.yml configuration
+            const originalTitle = config.title;
+            config = allRadarData[radarKey];
+            config.title = originalTitle; // Restore the title from mkdocs.yml
+            currentRadar = radarKey;
+
+            // Reset filter state when switching radars
+            currentFilter = null;
+            const legendItems = document.querySelectorAll('.legend-item-inline');
+            legendItems.forEach(li => li.classList.remove('active'));
+
+            renderRadar();
+            generateTechLists();
+            setupLegendFiltering();
+        }
+    }
+
+    // Setup dropdown event handler if it exists
+    const radarSelector = document.getElementById('radar-selector');
+    if (radarSelector) {
+        radarSelector.addEventListener('change', function(e) {
+            switchRadar(e.target.value);
+        });
+    }
+
+    // Radar dimensions
+    const width = 800;
+    const height = 800;
+    const center = { x: width / 2, y: height / 2 };
+    const radius = Math.min(width, height) / 2 - 50;
+
+    // Select the SVG element
+    const svg = d3.select("#tech-radar .radar-svg");
+
+    // Function to render the radar
+    function renderRadar() {
+        // Clear existing content
+        svg.selectAll("*").remove();
+
+        // Create main group
+        const g = svg.append("g");
+
+        // Draw rings
+        const ringRadii = config.rings.map((_, i) =>
+            radius * (i + 1) / config.rings.length
+        );
+
+        // Get CSS variables for dark mode support
+        const radarElement = document.getElementById('tech-radar');
+        const computedStyle = getComputedStyle(radarElement);
+        const ringStroke = computedStyle.getPropertyValue('--ring-stroke').trim();
+        const quadrantStroke = computedStyle.getPropertyValue('--quadrant-stroke').trim();
+        const textPrimary = computedStyle.getPropertyValue('--text-primary').trim();
+
+        config.rings.forEach((ring, i) => {
+            const ringRadius = ringRadii[i];
+
+            // Ring circle
+            g.append("circle")
+                .attr("cx", center.x)
+                .attr("cy", center.y)
+                .attr("r", ringRadius)
+                .attr("fill", "none")
+                .attr("stroke", ringStroke)
+                .attr("stroke-width", 1);
+
+            // Ring labels - single label per ring at the top
+            g.append("text")
+                .attr("class", "ring-label")
+                .attr("x", center.x)
+                .attr("y", center.y - ringRadius + 15)
+                .text(ring.name)
+                .attr("fill", ring.color)
+                .attr("fill-opacity", 0.8)
+                .attr("font-weight", "bold")
+                .attr("font-size", "32px")
+                .attr("text-anchor", "middle");
+        });
+
+        // Draw quadrant lines
+        g.append("line")
+            .attr("x1", center.x)
+            .attr("y1", center.y - radius)
+            .attr("x2", center.x)
+            .attr("y2", center.y + radius)
+            .attr("stroke", quadrantStroke)
+            .attr("stroke-width", 1);
+
+        g.append("line")
+            .attr("x1", center.x - radius)
+            .attr("y1", center.y)
+            .attr("x2", center.x + radius)
+            .attr("y2", center.y)
+            .attr("stroke", quadrantStroke)
+            .attr("stroke-width", 1);
+
+        // Draw quadrant labels
+        const quadrantPositions = [
+            { x: center.x + radius * 0.7, y: center.y - radius * 0.7 }, // Top right
+            { x: center.x - radius * 0.7, y: center.y - radius * 0.7 }, // Top left
+            { x: center.x - radius * 0.7, y: center.y + radius * 0.7 }, // Bottom left
+            { x: center.x + radius * 0.7, y: center.y + radius * 0.7 }  // Bottom right
+        ];
+
+        config.quadrants.forEach((quadrant, i) => {
+            const pos = quadrantPositions[i];
+            g.append("text")
+                .attr("class", "quadrant")
+                .attr("x", pos.x)
+                .attr("y", pos.y)
+                .text(quadrant.name)
+                .attr("fill", textPrimary);
+        });
+
+        // Function to get position for an entry with collision detection
+        const usedPositions = [];
+        const minDistance = 30; // Minimum distance between points
+        const maxAttempts = 50; // Maximum attempts to find a non-overlapping position
+
+        function getEntryPosition(entry) {
+            const quadrantIndex = entry.quadrant;
+            const ringIndex = entry.ring;
+
+            // Calculate angle for the quadrant - properly map to radar quadrants
+            // In SVG coordinate system where Y increases downward:
+            // For quadrant positions relative to center (400, 400):
+            // Quadrant 0: Top-right (x > 400, y < 400) - cos > 0, sin < 0 - angles 270° to 360° (-90° to 0°)
+            // Quadrant 1: Top-left (x < 400, y < 400) - cos < 0, sin < 0 - angles 180° to 270°
+            // Quadrant 2: Bottom-left (x < 400, y > 400) - cos < 0, sin > 0 - angles 90° to 180°
+            // Quadrant 3: Bottom-right (x > 400, y > 400) - cos > 0, sin > 0 - angles 0° to 90°
+            const quadrantAngles = [
+                { start: -Math.PI/2, end: 0 },               // Top-right: -90° to 0°
+                { start: Math.PI, end: 3*Math.PI/2 },        // Top-left: 180° to 270°
+                { start: Math.PI/2, end: Math.PI },          // Bottom-left: 90° to 180°
+                { start: 0, end: Math.PI/2 }                 // Bottom-right: 0° to 90°
+            ];
+
+            const quadrantAngleRange = quadrantAngles[quadrantIndex];
+            const quadrantSpan = quadrantAngleRange.end - quadrantAngleRange.start;
+
+            // Calculate ring boundaries
+            const innerRadius = ringIndex > 0 ? ringRadii[ringIndex - 1] : 0;
+            const outerRadius = ringRadii[ringIndex];
+
+            let bestPosition = null;
+            let attempts = 0;
+
+            while (attempts < maxAttempts) {
+                // Generate random angle within the quadrant (80% of the quadrant to avoid edges)
+                const angleOffset = (Math.random() - 0.5) * quadrantSpan * 0.8;
+                const angle = quadrantAngleRange.start + quadrantSpan / 2 + angleOffset;
+
+                // Generate random radius within the ring
+                const entryRadius = innerRadius + (outerRadius - innerRadius) * (0.2 + Math.random() * 0.6);
+
+                const candidatePosition = {
+                    x: center.x + entryRadius * Math.cos(angle),
+                    y: center.y + entryRadius * Math.sin(angle)
+                };
+
+                // Check for collisions with existing positions
+                let hasCollision = false;
+                for (const usedPos of usedPositions) {
+                    const distance = Math.sqrt(
+                        Math.pow(candidatePosition.x - usedPos.x, 2) +
+                        Math.pow(candidatePosition.y - usedPos.y, 2)
+                    );
+                    if (distance < minDistance) {
+                        hasCollision = true;
+                        break;
+                    }
+                }
+
+                if (!hasCollision) {
+                    bestPosition = candidatePosition;
+                    break;
+                }
+
+                attempts++;
+            }
+
+            // If we couldn't find a collision-free position, use grid-based fallback
+            if (!bestPosition) {
+                bestPosition = getGridBasedPosition(quadrantIndex, ringIndex);
+            }
+
+            // Store the position for future collision detection
+            usedPositions.push(bestPosition);
+            return bestPosition;
+        }
+
+        // Fallback grid-based positioning for when collision detection fails
+        function getGridBasedPosition(quadrantIndex, ringIndex) {
+            const entriesInQuadrantRing = config.entries.filter(e =>
+                e.quadrant === quadrantIndex && e.ring === ringIndex
+            );
+            const entryIndex = entriesInQuadrantRing.length;
+
+            // Use the same quadrant angle mapping as the main positioning function
+            const quadrantAngles = [
+                { start: -Math.PI/2, end: 0 },               // Top-right: -90° to 0°
+                { start: Math.PI, end: 3*Math.PI/2 },        // Top-left: 180° to 270°
+                { start: Math.PI/2, end: Math.PI },          // Bottom-left: 90° to 180°
+                { start: 0, end: Math.PI/2 }                 // Bottom-right: 0° to 90°
+            ];
+
+            const quadrantAngleRange = quadrantAngles[quadrantIndex];
+            const quadrantSpan = quadrantAngleRange.end - quadrantAngleRange.start;
+
+            // Distribute entries evenly within the quadrant
+            const angleStep = (quadrantSpan * 0.8) / Math.max(entriesInQuadrantRing.length + 1, 4);
+            const angle = quadrantAngleRange.start + (quadrantSpan * 0.1) + angleStep * (entryIndex + 1);
+
+            // Calculate ring boundaries
+            const innerRadius = ringIndex > 0 ? ringRadii[ringIndex - 1] : 0;
+            const outerRadius = ringRadii[ringIndex];
+            const entryRadius = innerRadius + (outerRadius - innerRadius) * 0.5;
+
+            return {
+                x: center.x + entryRadius * Math.cos(angle),
+                y: center.y + entryRadius * Math.sin(angle)
+            };
+        }
+
+        // Draw entries
+        const entries = g.selectAll(".entry")
+            .data(config.entries)
+            .enter()
+            .append("g")
+            .attr("class", "entry");
+
+        entries.each(function(d, i) {
+            const pos = getEntryPosition(d);
+            const ring = config.rings[d.ring];
+            const group = d3.select(this);
+
+            // Store position data on the element for later use
+            d.calculatedPos = pos;
+
+            // Create different shapes based on movement status
+            const createShape = (moved, x, y, color) => {
+                const size = 15; // Increased size from 12 to 15
+                switch(moved) {
+                    case -1: // Moved out - Triangle pointing down
+                        return group.append("polygon")
+                            .attr("points", `${x},${y+size} ${x-size},${y-size} ${x+size},${y-size}`)
+                            .attr("fill", color)
+                            .attr("stroke", "#fff")
+                            .attr("stroke-width", 2);
+
+                    case 0: // No change - Circle
+                        return group.append("circle")
+                            .attr("cx", x)
+                            .attr("cy", y)
+                            .attr("r", size)
+                            .attr("fill", color)
+                            .attr("stroke", "#fff")
+                            .attr("stroke-width", 2);
+
+                    case 1: // Moved in - Triangle pointing up
+                        return group.append("polygon")
+                            .attr("points", `${x},${y-size} ${x-size},${y+size} ${x+size},${y+size}`)
+                            .attr("fill", color)
+                            .attr("stroke", "#fff")
+                            .attr("stroke-width", 2);
+
+                    case 2: // New - Star
+                        const starPoints = [];
+                        const outerRadius = size;
+                        const innerRadius = size * 0.4;
+                        for (let i = 0; i < 10; i++) {
+                            const radius = i % 2 === 0 ? outerRadius : innerRadius;
+                            const angle = (i * Math.PI) / 5 - Math.PI / 2;
+                            const px = x + radius * Math.cos(angle);
+                            const py = y + radius * Math.sin(angle);
+                            starPoints.push(`${px},${py}`);
+                        }
+                        return group.append("polygon")
+                            .attr("points", starPoints.join(" "))
+                            .attr("fill", color)
+                            .attr("stroke", "#fff")
+                            .attr("stroke-width", 2);
+
+                    default: // Default to circle
+                        return group.append("circle")
+                            .attr("cx", x)
+                            .attr("cy", y)
+                            .attr("r", size)
+                            .attr("fill", color)
+                            .attr("stroke", "#fff")
+                            .attr("stroke-width", 2);
+                }
+            };
+
+            // Create the shape for this entry
+            const shape = createShape(d.moved, pos.x, pos.y, ring.color);
+
+            // Add tooltip functionality using custom div
+            const ringInfo = config.rings[d.ring];
+            const quadrant = config.quadrants[d.quadrant];
+            const titleText = `${d.label}<br/>${quadrant.name} - ${ringInfo.name}${d.description ? '<br/>' + d.description : ''}`;
+
+            // Get tooltip element
+            const tooltip = document.getElementById('radar-tooltip');
+
+            // Add mouse event handlers
+            shape.on('mouseenter', function(event) {
+                tooltip.innerHTML = titleText;
+                tooltip.classList.add('visible');
+
+                // Position tooltip near cursor
+                const rect = svg.node().getBoundingClientRect();
+                const mouseX = event.clientX - rect.left;
+                const mouseY = event.clientY - rect.top;
+
+                tooltip.style.left = (mouseX + 10) + 'px';
+                tooltip.style.top = (mouseY - 40) + 'px';
+            })
+            .on('mouseleave', function() {
+                tooltip.classList.remove('visible');
+            });
+
+            // Add number label on top of the shape
+            group.append("text")
+                .attr("x", pos.x)
+                .attr("y", pos.y + 4)
+                .text(i + 1)
+                .attr("fill", "#fff")
+                .attr("font-size", "12px")
+                .attr("font-weight", "bold")
+                .attr("text-anchor", "middle")
+                .attr("pointer-events", "none");
+        });
+    }
+
+    // Legend filtering functionality
+    let currentFilter = null;
+
+    function setupLegendFiltering() {
+        const legendItems = document.querySelectorAll('.legend-item-inline');
+
+        // Remove existing event listeners by cloning and replacing nodes
+        legendItems.forEach(item => {
+            const newItem = item.cloneNode(true);
+            item.parentNode.replaceChild(newItem, item);
+        });
+
+        // Get fresh references to the legend items
+        const newLegendItems = document.querySelectorAll('.legend-item-inline');
+
+        newLegendItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const movement = parseInt(this.getAttribute('data-movement'));
+
+                // Toggle filter if clicking the same item
+                if (currentFilter === movement) {
+                    currentFilter = null;
+                    newLegendItems.forEach(li => li.classList.remove('active'));
+                    highlightEntries(null);
+                } else {
+                    currentFilter = movement;
+                    newLegendItems.forEach(li => li.classList.remove('active'));
+                    this.classList.add('active');
+                    highlightEntries(movement);
+                }
+            });
+        });
+    }
+
+    function highlightEntries(filterMovement) {
+        const entries = svg.selectAll('.entry');
+
+        if (filterMovement === null) {
+            // Remove all highlighting
+            entries.classed('highlighted', false);
+            entries.classed('dimmed', false);
+            // Reset stroke to original ring color
+            entries.each(function(d) {
+                const entry = d3.select(this);
+                const ring = config.rings[d.ring];
+                const shape = entry.select('polygon, circle');
+                shape.attr('stroke', '#fff');
+            });
+        } else {
+            // Apply highlighting based on filter
+            entries.each(function(d) {
+                const entry = d3.select(this);
+                const ring = config.rings[d.ring];
+                const shape = entry.select('polygon, circle');
+
+                if (d.moved === filterMovement) {
+                    entry.classed('highlighted', true);
+                    entry.classed('dimmed', false);
+                    // Set stroke to ring color with enhanced thickness
+                    shape.attr('stroke', ring.color);
+                    shape.attr('stroke-width', 4);
+                } else {
+                    entry.classed('highlighted', false);
+                    entry.classed('dimmed', true);
+                    // Reset to normal stroke
+                    shape.attr('stroke', '#fff');
+                    shape.attr('stroke-width', 2);
+                }
+            });
+        }
+    }
+
+    // Generate technology lists by quadrant
+    function generateTechLists() {
+        const techListsContainer = document.getElementById('tech-lists');
+
+        // Group technologies by quadrant and ring
+        const quadrantGroups = {};
+
+        config.quadrants.forEach((quadrant, qIndex) => {
+            quadrantGroups[qIndex] = {
+                name: quadrant.name,
+                rings: {}
+            };
+
+            config.rings.forEach((ring, rIndex) => {
+                quadrantGroups[qIndex].rings[rIndex] = {
+                    name: ring.name,
+                    color: ring.color,
+                    technologies: []
+                };
+            });
+        });
+
+        // Sort technologies into groups and add global index
+        config.entries.forEach((entry, globalIndex) => {
+            entry.globalIndex = globalIndex + 1; // Store the global index (1-based)
+            if (quadrantGroups[entry.quadrant] && quadrantGroups[entry.quadrant].rings[entry.ring]) {
+                quadrantGroups[entry.quadrant].rings[entry.ring].technologies.push(entry);
+            }
+        });
+
+        // Generate HTML
+        let html = '';
+        Object.keys(quadrantGroups).forEach(qIndex => {
+            const quadrant = quadrantGroups[qIndex];
+            html += `<div class="quadrant-list">`;
+            html += `<div class="quadrant-title">${quadrant.name}</div>`;
+
+            Object.keys(quadrant.rings).forEach(rIndex => {
+                const ring = quadrant.rings[rIndex];
+                if (ring.technologies.length > 0) {
+                    html += `<div class="ring-section">`;
+                    html += `<div class="ring-title" style="background-color: ${ring.color}">${ring.name}</div>`;
+
+                    ring.technologies.forEach(tech => {
+                        const getMovementIcon = (moved) => {
+                            switch(moved) {
+                                case -1: return "▼"; // Moved out
+                                case 0: return "⬤";  // No change
+                                case 1: return "▲";  // Moved in
+                                case 2: return "★";  // New
+                                default: return "⬤";
+                            }
+                        };
+                        const icon = getMovementIcon(tech.moved);
+
+                        // Create clickable link if available, otherwise just show text
+                        const techLabel = tech.link
+                            ? `<a href="${tech.link}" target="_blank" style="color: inherit; text-decoration: underline;">${tech.label}</a>`
+                            : tech.label;
+
+                        html += `<div class="tech-item" style="border-left-color: ${ring.color}"><strong>${tech.globalIndex}.</strong> ${icon} ${techLabel}</div>`;
+                    });
+
+                    html += `</div>`;
+                }
+            });
+
+            html += `</div>`;
+        });
+
+        techListsContainer.innerHTML = html;
+    }
+
+    // Initial render
+    renderRadar();
+    generateTechLists();
+    setupLegendFiltering();
+})();
+</script>
 
 <h2 id="about-the-tech-radar">About the Tech Radar<a class="headerlink" href="#about-the-tech-radar" title="Permanent link">&para;</a></h2>
 <p>The tech radar is a visual tool that categorizes technologies into four rings:</p>
