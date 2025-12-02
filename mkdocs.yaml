@@ -91,6 +91,10 @@ plugins:
       type: timeago
       fallback_to_build_date: true
   - git-authors
+  - tech-radar:
+          title_name: 'Tech Radar'
+          radars_folder: 'radars'
+          target_page: 'resources/techradar.md'
   # TODO: Enable these plugins when ready
   # This plugin is used to generate the ADR index page
   # mkdocs-material-adr/adr

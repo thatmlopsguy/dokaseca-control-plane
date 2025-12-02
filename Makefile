@@ -239,16 +239,14 @@ dapr-ui: ## Access dapr dashboard
 ##@ Documentation
 .PHONY: docs-install docs-serve docs-build
 docs-install: ## Install the requirements for starting the local web server for serving docs
-	@python -m venv .venv && \
-	. .venv/bin/activate && \
-	pip install -U pip --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org && \
-	pip install -r requirements/docs.txt --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org
+	@uv venv && \
+	uv pip install -r requirements/docs.txt
 
 docs-serve: docs-install ## Start a local web server for serving documentation
-	@. .venv/bin/activate && mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
+	@uv run mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
 docs-build: docs-install ## Build the documentation site
-	@. .venv/bin/activate && mkdocs build
+	@uv run mkdocs build
 
 ##@ Development
 .PHONY: pre-commit-install pre-commit-run

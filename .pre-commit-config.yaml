@@ -45,6 +45,7 @@ repos:
       - id: actionlint
         name: actionlint
         description: Lint GitHub Actions workflow files
+        files: ^\.github/workflows/.*\.ya?ml$
   - repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
@@ -72,3 +73,9 @@ repos:
   #       types: [terraform]
   #       stages: [pre-commit]
   #       files: '^terraform/modules/'
+  #   - id: suggestion
+  #     name: Suggestion
+  #     entry: bash -c 'echo "To bypass all the pre-commit hooks, add --no-verify to git commit. To skip a specific hook, prefix the commit command with SKIP=<hook-id>."'
+  #     language: system
+  #     verbose: true
+  #     pass_filenames: false
