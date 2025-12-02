@@ -1,11 +1,12 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.33.0
-# Generated on: 2025-12-01 10:45:23 UTC
+# Generated on: 2025-12-02 18:56:46 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
 
 ## Description
+
 This SBOM lists all the tools, dependencies, and components required to run the
 Doka Seca project. This includes core Kubernetes tools, infrastructure as code
 tools, GitOps tools, observability stack components, security tools, and development
@@ -26,9 +27,9 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - git (version control)
 
 ### System Dependencies
-- base64: base64 (GNU coreutils) 8.32
+- base64: base64 (GNU coreutils) 9.6
 - git: git version 2.52.0
-- bash: GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+- bash: GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
 - jq: jq-1.7.1
 - curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.19
 
@@ -52,7 +53,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Terraform/OpenTofu
 - tofu: v1.9.1
-- terraform: v1.12.1
+- terraform: v1.10.4
 
 ## 4. GitOps & Deployment Tools
 
@@ -96,10 +97,10 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Build Tools
 - node: v23.10.0
 - just: 1.40.0
-- make: 4.3
+- make: 4.4.1
 - python: 3.10.12
 - npm: 11.5.2
-- go: go1.24.0
+- go: go1.25.5
 
 ## 9. Verification
 
