@@ -287,11 +287,31 @@ EOF
         echo "- $tool: $version" >> "$SBOM_FILE"
     done
 
+    # Network Tools
+    print_status "Analyzing network tools..."
+    cat << 'EOF' >> "$SBOM_FILE"
+
+## 7. Network & Service Mesh Tools
+
+### Service Mesh
+EOF
+
+    declare -A network_tools=(
+        [istioctl]="istioctl version --short --remote=false | awk 'NR==1 {print \$3}'"
+        [cilium]="cilium version --client | awk '{print \$2}'"
+    )
+
+    for tool in "${!network_tools[@]}"; do
+        local version
+        version=$(get_version "$tool" "${network_tools[$tool]}")
+        echo "- $tool: $version" >> "$SBOM_FILE"
+    done
+
     # Observability and Monitoring
     print_status "Analyzing observability tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
-## 7. Observability & Monitoring Tools
+## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
 EOF
@@ -311,7 +331,7 @@ EOF
     print_status "Analyzing development tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
-## 8. Development Tools
+## 9. Development Tools
 
 ### Build Tools
 EOF
@@ -335,7 +355,7 @@ EOF
     print_status "Analyzing Python dependencies..."
     cat << 'EOF' >> "$SBOM_FILE"
 
-## 9. Verification
+## 10. Verification
 
 After installation, verify your setup by running:
 
@@ -347,7 +367,7 @@ After installation, verify your setup by running:
 ./scripts/sbom-generator.sh
 ```
 
-## 10. Security Considerations
+## 11. Security Considerations
 
 - Regularly update all tools to their latest versions for security patches
 - Use signed container images when available (cosign verification)
@@ -357,7 +377,7 @@ After installation, verify your setup by running:
 - Enable audit logging in Kubernetes clusters
 - Use network policies to restrict cluster communication
 
-## 11. Support & Maintenance
+## 12. Support & Maintenance
 
 - **Project Repository**: https://github.com/thatmlopsguy/dokaseca-control-plane
 - **Documentation**: https://thatmlopsguy.github.io/dokaseca-control-plane/

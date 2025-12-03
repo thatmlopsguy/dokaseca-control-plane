@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.33.0
-# Generated on: 2025-12-02 19:00:47 UTC
+# Generated on: 2025-12-03 10:49:45 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -27,9 +27,9 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - git (version control)
 
 ### System Dependencies
-- base64: base64 (GNU coreutils) 9.6
+- base64: base64 (GNU coreutils) 8.32
 - git: git version 2.52.0
-- bash: GNU bash, version 5.2.37(1)-release (x86_64-pc-linux-gnu)
+- bash: GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
 - jq: jq-1.7.1
 - curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.19
 
@@ -53,7 +53,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Terraform/OpenTofu
 - tofu: v1.9.1
-- terraform: v1.10.4
+- terraform: v1.12.1
 
 ## 4. GitOps & Deployment Tools
 
@@ -87,23 +87,29 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - mc: RELEASE.2025-05-21T01-59-54Z
 - vault: v1.19.4
 
-## 7. Observability & Monitoring Tools
+## 7. Network & Service Mesh Tools
+
+### Service Mesh
+- istioctl: 1.26.0
+- cilium: 0.18.3
+
+## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
 - flux9s: Installed (version check failed)
 - k9s: 0.50.5
 
-## 8. Development Tools
+## 9. Development Tools
 
 ### Build Tools
 - node: v23.10.0
 - just: 1.40.0
-- make: 4.4.1
+- make: 4.3
 - python: 3.10.12
 - npm: 11.5.2
 - go: go1.25.5
 
-## 9. Verification
+## 10. Verification
 
 After installation, verify your setup by running:
 
@@ -115,7 +121,7 @@ After installation, verify your setup by running:
 ./scripts/sbom-generator.sh
 ```
 
-## 10. Security Considerations
+## 11. Security Considerations
 
 - Regularly update all tools to their latest versions for security patches
 - Use signed container images when available (cosign verification)
@@ -125,7 +131,7 @@ After installation, verify your setup by running:
 - Enable audit logging in Kubernetes clusters
 - Use network policies to restrict cluster communication
 
-## 11. Support & Maintenance
+## 12. Support & Maintenance
 
 - **Project Repository**: https://github.com/thatmlopsguy/dokaseca-control-plane
 - **Documentation**: https://thatmlopsguy.github.io/dokaseca-control-plane/
