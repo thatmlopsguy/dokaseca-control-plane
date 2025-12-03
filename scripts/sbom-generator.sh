@@ -340,7 +340,7 @@ EOF
         [make]="make --version | awk 'NR==1 {print \$3}'"
         [just]="just --version | awk '{print \$2}'"
         [go]="go version | awk '{print \$3}'"
-        [python]="python --version | awk '{print \$2}'"
+        [python]="uv run python --version | awk '{print \$2}'"
         [node]="node --version"
         [npm]="npm --version"
     )

@@ -19,5 +19,9 @@ docs = [
     "mkdocs-tech-radar",
 ]
 
+[tool.uv]
+python-preference = "managed"
+required-version = ">=0.5.0"
+
 [tool.uv.sources]
 mkdocs-tech-radar = { git = "https://github.com/thatmlopsguy/mkdocs-tech-radar.git" }

@@ -1,4 +1,11 @@
+# Ensure kubeconfig directory exists
+resource "local_file" "kubeconfig_dir" {
+  filename = "${dirname(var.kubeconfig_path)}/.gitkeep"
+  content  = ""
+}
+
 resource "kind_cluster" "main" {
+  depends_on      = [local_file.kubeconfig_dir]
   name            = var.cluster_name
   kubeconfig_path = var.kubeconfig_path
   node_image      = "kindest/node:v${var.kubernetes_version}"
@@ -40,6 +47,14 @@ resource "kind_cluster" "main" {
     #   role = "worker"
     # }
   }
+}
+
+# Write the kubeconfig to the specified path
+resource "local_file" "kubeconfig" {
+  depends_on      = [kind_cluster.main]
+  content         = kind_cluster.main.kubeconfig
+  filename        = var.kubeconfig_path
+  file_permission = "0600"
 }
 
 # # Remove NoSchedule taint from control-plane to allow workload scheduling

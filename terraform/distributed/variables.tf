@@ -70,16 +70,14 @@ variable "cloud_provider" {
   }
 }
 
-variable "enable_gitops_bridge" {
-  description = "Enable gitops bridge"
-  type        = bool
-  default     = true
-}
-
-variable "enable_fluxcd" {
-  description = "Enable fluxcd"
-  type        = bool
-  default     = false
+variable "gitops_controller" {
+  description = "Gitops controller to use: argocd or fluxcd"
+  type        = string
+  default     = "argocd"
+  validation {
+    condition     = contains(["argocd", "fluxcd", "none"], lower(var.gitops_controller))
+    error_message = "Invalid gitops controller. Must be one of 'argocd', 'fluxcd' or 'none'."
+  }
 }
 
 variable "argocd_files_config" {
@@ -102,7 +100,7 @@ variable "fluxcd_namespace" {
 variable "fluxcd_chart_version" {
   description = "fluxcd helm chart version"
   type        = string
-  default     = "2.15.0"
+  default     = "2.17.1"
 }
 
 variable "argocd_chart_version" {

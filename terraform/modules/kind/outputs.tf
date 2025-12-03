@@ -10,7 +10,7 @@ output "cluster_endpoint" {
 
 output "kubeconfig_path" {
   description = "The path to the kubeconfig file for this cluster"
-  value       = kind_cluster.main.kubeconfig_path
+  value       = local_file.kubeconfig.filename
 }
 
 output "client_certificate" {

@@ -1,10 +1,10 @@
-environment          = "dev"
-cluster_type         = "spoke"
-domain_name          = "k8s-home.lab"
-cloud_provider       = "local"
-kubernetes_version   = "1.33.1"
-enable_gitops_bridge = true
-gitops_org           = "https://github.com/thatmlopsguy"
+environment        = "dev"
+cluster_type       = "spoke"
+domain_name        = "k8s-home.lab"
+cloud_provider     = "local"
+kubernetes_version = "1.33.1"
+gitops_controller  = "none"
+gitops_org         = "https://github.com/thatmlopsguy"
 # Teams
 teams = {
   team-a = "true"
@@ -16,7 +16,7 @@ gitops_addons_repo     = "dokaseca-addons"
 gitops_addons_basepath = "argocd"
 gitops_addons_path     = "appsets"
 gitops_addons_revision = "main"
-argocd_chart_version   = "8.1.3"
+argocd_chart_version   = "9.1.5"
 argocd_files_config = {
   load_addons    = true
   load_workloads = false

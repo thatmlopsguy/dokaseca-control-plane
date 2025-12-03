@@ -8,10 +8,10 @@ module "kind_cluster" {
   kubeconfig_path    = local.kubeconfig_path
 }
 
-module "gitops_bridge_bootstrap" {
-  source = "git::https://github.com/gitops-bridge-dev/terraform-helm-gitops-bridge?ref=33c09eb68af1ee673040bde58c3188383c46c288"
+module "gitops_bridge" {
+  source = "./../modules/gitops-bridge"
 
-  count = var.enable_gitops_bridge ? 1 : 0
+  count = var.gitops_controller == "argocd" ? 1 : 0
 
   cluster = {
     cluster_name = local.kubernetes_name

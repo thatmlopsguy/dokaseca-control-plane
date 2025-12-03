@@ -16,14 +16,17 @@ output "kubeconfig_path" {
 output "client_certificate" {
   description = "The client certificate data for this cluster"
   value       = module.kind_cluster.client_certificate
+  sensitive   = true
 }
 
 output "client_key" {
   description = "The client key data for this cluster"
   value       = module.kind_cluster.client_key
+  sensitive   = true
 }
 
 output "cluster_ca_certificate" {
   description = "The cluster CA certificate data for this cluster"
   value       = module.kind_cluster.cluster_ca_certificate
+  sensitive   = true
 }
