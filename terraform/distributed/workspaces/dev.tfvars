@@ -41,7 +41,6 @@ addons = {
   # orchestration
   enable_capi_operator = false # requires enable_cert_manager
   enable_crossplane    = false
-  enable_vcluster      = false
   # platform engineering
   enable_karpor = false
   enable_kro    = false
@@ -130,6 +129,8 @@ addons = {
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
   # gcp
+  # enterprise
+  enable_vcluster = false
 }
 # Resources
 gitops_addons_extras_repo     = "helm-charts"

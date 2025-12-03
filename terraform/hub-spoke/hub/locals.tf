@@ -78,7 +78,6 @@ locals {
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
     enable_koreo         = try(var.addons.enable_koreo, false) # TODO
-    enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
@@ -191,6 +190,7 @@ locals {
   enterprise_addons = {
     enable_codefresh = try(var.addons.enable_codefresh, false)
     enable_kubescape = try(var.addons.enable_kubescape, false)
+    enable_vcluster  = try(var.addons.enable_vcluster, false)
   }
 
   # Azure

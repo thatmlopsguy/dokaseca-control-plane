@@ -10,7 +10,7 @@ locals {
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
   kubernetes_name    = "${var.cluster_type}-${var.environment}"
-  kubeconfig_path    = "${dirname(dirname(dirname(path.cwd)))}/kubeconfigs/distributed/${var.environment}"
+  kubeconfig_path    = "${dirname(dirname(path.cwd))}/kubeconfigs/distributed/${var.environment}"
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -78,7 +78,6 @@ locals {
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
     enable_koreo         = try(var.addons.enable_koreo, false) # TODO
-    enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
@@ -216,6 +215,7 @@ locals {
     enable_stash      = try(var.addons.enable_stash, false)      # TODO
     enable_castai     = try(var.addons.enable_castai, false)     # TODO
     enable_datadog    = try(var.addons.enable_datadog, false)    # TODO
+    enable_vcluster   = try(var.addons.enable_vcluster, false)   # TODO
   }
 
   # Azure
