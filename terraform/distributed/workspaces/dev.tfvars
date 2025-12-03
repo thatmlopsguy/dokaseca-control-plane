@@ -44,6 +44,10 @@ addons = {
   # platform engineering
   enable_karpor = false
   enable_kro    = false
+  # gitops promoter
+  enable_argo_cd_image_updater = false
+  enable_kargo                 = false
+  enable_gitops_promoter       = true
   # monitoring
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false

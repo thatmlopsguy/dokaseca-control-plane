@@ -24,7 +24,7 @@ clean-infra: kind-delete-all-clusters terraform-rm-state ## Clean all infrastruc
 ##@ Terraform
 terraform-rm-state: ## remove all terraform states
 	@echo "Removing terraform state files..."
-	@rm -rf terraform/terraform.tfstate.d
+	@rm -rf terraform/distributed/terraform.tfstate.d
 	@echo "Terraform state files removed."
 
 ##@ KinD

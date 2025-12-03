@@ -3,7 +3,7 @@
 set -e
 
 # kind version
-KIND_VERSION="${KIND_VERSION:-v0.29.0}"
+KIND_VERSION="${KIND_VERSION:-v0.30.0}"
 
 # For AMD64 / x86_64
 [ "$(uname -m)" = x86_64 ] && curl -Lo ./kind-linux "https://kind.sigs.k8s.io/dl/${KIND_VERSION}/kind-linux-amd64"
