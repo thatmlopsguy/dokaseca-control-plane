@@ -3,7 +3,7 @@ cluster_type       = "spoke"
 domain_name        = "k8s-home.lab"
 cloud_provider     = "local"
 kubernetes_version = "1.33.1"
-gitops_controller  = "none"
+gitops_controller  = "argocd"
 gitops_org         = "https://github.com/thatmlopsguy"
 # Teams
 teams = {
@@ -26,6 +26,8 @@ addons = {
   enable_headlamp       = false
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
+  # ci/cd
+  enable_tekton = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
   enable_argo_cd        = false
@@ -76,7 +78,8 @@ addons = {
   enable_ingress_nginx = false
   enable_traefik       = false
   enable_ngrok         = false
-  enable_istio         = false
+  enable_istio         = true
+  enable_linkerd       = false
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false
@@ -103,6 +106,8 @@ addons = {
   enable_clickhouse_operator = false
   enable_mariadb_operator    = false
   enable_documentdb_operator = false
+  enable_weaviate            = false
+  enable_milvus              = false
   # messaging
   enable_strimzi = false
   enable_nats    = false
@@ -122,19 +127,22 @@ addons = {
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
-  enable_ray_operator = false
-  enable_mlflow       = false
-  enable_kuberay      = false
-  enable_seldon       = false
-  enable_litellm      = false
-  enable_milvus       = false
-  enable_ollama       = false
+  enable_mlflow     = false
+  enable_kuberay    = false
+  enable_seldon     = false
+  enable_litellm    = false
+  enable_langfuse   = false
+  enable_ollama     = false
+  enable_vllm_stack = false
+  enable_llm_d      = false
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
   # gcp
   # enterprise
-  enable_vcluster = false
+  enable_vcluster             = false
+  enable_nvidia_gpu_operator  = false
+  enable_nvidia_device_plugin = false
 }
 # Resources
 gitops_addons_extras_repo     = "helm-charts"

@@ -1,0 +1,7 @@
+failure-threshold: warning
+ignored:
+  - DL3008  # Pin versions in apt get install.
+  - DL3013  # Pin versions in pip.
+trustedRegistries:
+  - docker.io
+  - gcr.io
