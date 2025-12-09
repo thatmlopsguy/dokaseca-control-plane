@@ -36,6 +36,14 @@ DoKa Seca provides an opinionated, production-ready framework that automates the
 
 This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.
 
+DoKa Seca consists of 3 GitHub repositories:
+
+| Repository                                                                       | Description                                         |
+|----------------------------------------------------------------------------------|-----------------------------------------------------|
+| [dokaseca-control-plane](https://github.com/thatmlopsguy/dokaseca-control-plane) | Control plane infrastructure and cluster management |
+| [dokaseca-addons](https://github.com/thatmlopsguy/dokaseca-addons)               | Platform addons and Kubernetes extensions           |
+| [dokaseca-workloads](https://github.com/thatmlopsguy/dokaseca-workloads)         | Application workloads and deployments               |
+
 **Prerequisites**
 
 * [`docker`](https://www.docker.com/)
