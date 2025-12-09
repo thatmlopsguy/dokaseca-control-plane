@@ -4,15 +4,17 @@ Doka Seca provides a robust machine learning platform built on Kubernetes, integ
 
 ## Components Overview
 
-Doka Seca's machine learning stack consists of three core components:
+Doka Seca's machine learning stack consists of four core components:
 
 1. **Ray Operator** - For distributed training workloads
 2. **LiteLLM** - For routing LLM requests
 3. **Langfuse** - For LLM observability
+4. **vllm** - For local LLM inference
 
 ## Ray Operator
 
-[Ray](https://ray.io/) is an open-source unified framework for scaling AI and Python applications. Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) to manage distributed training workloads.
+[Ray](https://ray.io/) is an open-source unified framework for scaling AI and Python applications.
+Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) to manage distributed training workloads.
 
 ### Ray Capabilities
 
@@ -55,6 +57,11 @@ spec:
               cpu: "1"
               memory: "2Gi"
 ```
+
+## vllm
+
+[vllm](https://github.com/vllm-project/vllm) is a high-performance LLM inference engine designed for efficient local inference.
+Doka Seca utilizes vllm to run large language models locally with optimized resource usage.
 
 ## LiteLLM
 
