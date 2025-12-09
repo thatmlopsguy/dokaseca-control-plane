@@ -135,6 +135,10 @@ addons = {
   enable_ollama     = false
   enable_vllm_stack = false
   enable_llm_d      = false
+  # schedulers
+  enable_kueue    = false
+  enable_yunikorn = false
+  enable_volcano  = false
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
@@ -143,6 +147,7 @@ addons = {
   enable_vcluster             = false
   enable_nvidia_gpu_operator  = false
   enable_nvidia_device_plugin = false
+  enable_nvidia_kai_scheduler = false
 }
 # Resources
 gitops_addons_extras_repo     = "helm-charts"
