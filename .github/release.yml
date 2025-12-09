@@ -17,6 +17,7 @@ changelog:
       - renovate
       - renovate[bot]
       - github-actions[bot]
+      - dependabot[bot]
 
   categories:
     - title: Breaking Changes
