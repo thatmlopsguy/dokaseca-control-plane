@@ -51,6 +51,7 @@
         "parca",
         "pyroscope",
         "pyrra",
+        "rabbitmq",
         "rollouts",
         "seldon",
         "signoz",
@@ -65,6 +66,7 @@
         "velero",
         "vllm",
         "vmalert",
+        "yunikorn",
         "zipkin"
     ],
     "files.exclude": {

@@ -101,7 +101,6 @@ locals {
     enable_traefik       = try(var.addons.enable_traefik, false)
     enable_cilium        = try(var.addons.enable_cilium, false)
     enable_calico        = try(var.addons.enable_calico, false)
-    enable_ngrok         = try(var.addons.enable_ngrok, false)
     enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
     enable_signoz                     = try(var.addons.enable_signoz, false)
@@ -212,17 +211,22 @@ locals {
 
   # Enterprise
   enterprise_addons = {
-    enable_codefresh            = try(var.addons.enable_codefresh, false)            # TODO
-    enable_kubescape            = try(var.addons.enable_kubescape, false)            # TODO
-    enable_clickstack           = try(var.addons.enable_clickstack, false)           # TODO
-    enable_stash                = try(var.addons.enable_stash, false)                # TODO
-    enable_castai               = try(var.addons.enable_castai, false)               # TODO
-    enable_datadog              = try(var.addons.enable_datadog, false)              # TODO
-    enable_vcluster             = try(var.addons.enable_vcluster, false)             # TODO
-    enable_netbird              = try(var.addons.enable_netbird, false)              # TODO
-    enable_nvidia_gpu_operator  = try(var.addons.enable_nvidia_gpu_operator, false)  # TODO
-    enable_nvidia_device_plugin = try(var.addons.enable_nvidia_device_plugin, false) # TODO
-    enable_nvidia_kai_scheduler = try(var.addons.enable_nvidia_kai_scheduler, false) # TODO
+    enable_ngrok                         = try(var.addons.enable_ngrok, false)                         # TODO
+    enable_codefresh                     = try(var.addons.enable_codefresh, false)                     # TODO
+    enable_kubescape                     = try(var.addons.enable_kubescape, false)                     # TODO
+    enable_clickstack                    = try(var.addons.enable_clickstack, false)                    # TODO
+    enable_stash                         = try(var.addons.enable_stash, false)                         # TODO
+    enable_castai                        = try(var.addons.enable_castai, false)                        # TODO
+    enable_datadog                       = try(var.addons.enable_datadog, false)                       # TODO
+    enable_vcluster                      = try(var.addons.enable_vcluster, false)                      # TODO
+    enable_netbird                       = try(var.addons.enable_netbird, false)                       # TODO
+    enable_nvidia_gpu_operator           = try(var.addons.enable_nvidia_gpu_operator, false)           # TODO
+    enable_nvidia_device_plugin          = try(var.addons.enable_nvidia_device_plugin, false)          # TODO
+    enable_nvidia_kai_scheduler          = try(var.addons.enable_nvidia_kai_scheduler, false)          # TODO
+    enable_nvidia_dcgm_exporter          = try(var.addons.enable_nvidia_dcgm_exporter, false)          # TODO
+    enable_amd_gpu_operator              = try(var.addons.enable_amd_gpu_operator, false)              # TODO
+    enable_intel_device_plugins_operator = try(var.addons.enable_intel_device_plugins_operator, false) # TODO
+    enable_intel_device_plugins_gpu      = try(var.addons.enable_intel_device_plugins_gpu, false)      # TODO
   }
 
   # Azure
