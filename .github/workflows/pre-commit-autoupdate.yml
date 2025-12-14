@@ -15,8 +15,6 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@b25f731bf2f9eb9748c2e9757d366c3e72fa2109 # v1.0.2-beta8
-
       - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
         with:
           token: ${{ secrets.PAT_TOKEN }}
