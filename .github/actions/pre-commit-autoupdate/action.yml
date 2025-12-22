@@ -12,9 +12,5 @@ runs:
         version: "latest"
 
     - name: Run pre-commit autoupdate
-      run: uvx prek autoupdate
-      shell: bash
-
-    - name: Run pre-commit on all files
-      run: uvx prek run --all-files
+      run: uvx pre-commit-update
       shell: bash

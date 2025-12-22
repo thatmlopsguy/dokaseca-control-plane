@@ -257,4 +257,4 @@ pre-commit-install: ## Install pre-commit git-hooks
 	@uvx prek install
 
 pre-commit-update: ## Update pre-commit git-hooks
-	@uvx prek autoupdate
+	@uvx pre-commit-update
