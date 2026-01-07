@@ -1,76 +1,74 @@
-exclude: "^\
-  (third_party/.*)\
-  "
+exclude: "^(third_party/.*)"
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
+-   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-merge-conflict
-      - id: check-added-large-files
+    -   id: check-merge-conflict
+    -   id: check-added-large-files
         args: ["--maxkb=2000"]
-      - id: trailing-whitespace
+    -   id: trailing-whitespace
         args: ["--markdown-linebreak-ext=md"]
-      - id: detect-private-key
-  - repo: https://github.com/koalaman/shellcheck-precommit
+    -   id: detect-private-key
+-   repo: https://github.com/koalaman/shellcheck-precommit
     rev: v0.11.0
     hooks:
-      - id: shellcheck
+    -   id: shellcheck
         name: shellcheck
         args: ["--rcfile=.shellcheckrc"]
         files: ^scripts/.*\.sh$
-  - repo: https://github.com/openstack/bashate
+-   repo: https://github.com/openstack/bashate
     rev: 2.1.1
     hooks:
-      - id: bashate
+    -   id: bashate
         name: bashate
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
-  - repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.495
+-   repo: https://github.com/bridgecrewio/checkov
+    rev: 3.2.497
     hooks:
-      - id: checkov
+    -   id: checkov
         name: checkov
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.10.1
+-   repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.11.1
     hooks:
-      - id: commitizen
+    -   id: commitizen
         stages: [commit-msg]
-  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+-   repo: https://github.com/zizmorcore/zizmor-pre-commit
     rev: v1.19.0
     hooks:
-      - id: zizmor
-  - repo: https://github.com/rhysd/actionlint
-    rev: v1.7.9
+    -   id: zizmor
+-   repo: https://github.com/rhysd/actionlint
+    rev: v1.7.10
     hooks:
-      - id: actionlint
+    -   id: actionlint
         name: actionlint
         description: Lint GitHub Actions workflow files
         files: ^\.github/workflows/.*\.ya?ml$
-  - repo: https://github.com/codespell-project/codespell
+-   repo: https://github.com/codespell-project/codespell
     rev: v2.4.1
     hooks:
-      - id: codespell
+    -   id: codespell
         args: ["--ignore-words", ".codespell-ignore"]
         exclude: ".*\\.svg$"
-  - repo: https://github.com/python-jsonschema/check-jsonschema
+-   repo: https://github.com/python-jsonschema/check-jsonschema
     rev: 0.36.0
     hooks:
-      - id: check-github-workflows
-      - id: check-dependabot
-      - id: check-github-actions
-  - repo: https://github.com/igorshubovych/markdownlint-cli
+    -   id: check-github-workflows
+    -   id: check-dependabot
+    -   id: check-github-actions
+-   repo: https://github.com/igorshubovych/markdownlint-cli
     rev: v0.47.0
     hooks:
-      - id: markdownlint
+    -   id: markdownlint
         exclude: "(\\.github/PULL_REQUEST_TEMPLATE\\.md|CODE_OF_CONDUCT\\.md)"
-  - repo: https://github.com/gitleaks/gitleaks
+-   repo: https://github.com/gitleaks/gitleaks
     rev: v8.30.0
     hooks:
-      - id: gitleaks
-  - repo: https://github.com/abravalheri/validate-pyproject
+    -   id: gitleaks
+-   repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.24.1
     hooks:
-      - id: validate-pyproject
+    -   id: validate-pyproject
   # - repo: local
   #   hooks:
   #     - id: terraform-docs
