@@ -7,8 +7,15 @@ updates:
     open-pull-requests-limit: 10
     cooldown:
       default-days: 7
-  - package-ecosystem: pip
+  - package-ecosystem: "pip"
     directory: "/requirements"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 10
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "uv"
+    directory: "/"
     schedule:
       interval: weekly
     open-pull-requests-limit: 10
