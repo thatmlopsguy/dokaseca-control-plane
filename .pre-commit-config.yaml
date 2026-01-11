@@ -34,7 +34,7 @@ repos:
     -   id: commitizen
         stages: [commit-msg]
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.19.0
+    rev: v1.20.0
     hooks:
     -   id: zizmor
 -   repo: https://github.com/rhysd/actionlint
