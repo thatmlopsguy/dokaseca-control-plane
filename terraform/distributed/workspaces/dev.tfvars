@@ -27,6 +27,7 @@ addons = {
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
   # ci/cd
+  enable_harbor = false
   enable_tekton = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
