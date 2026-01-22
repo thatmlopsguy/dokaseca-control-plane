@@ -29,12 +29,12 @@ repos:
     -   id: checkov
         name: checkov
 -   repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.11.1
+    rev: v4.11.6
     hooks:
     -   id: commitizen
         stages: [commit-msg]
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.20.0
+    rev: v1.22.0
     hooks:
     -   id: zizmor
 -   repo: https://github.com/rhysd/actionlint
