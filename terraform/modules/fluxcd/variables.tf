@@ -4,24 +4,72 @@ variable "namespace" {
   default     = "flux-system"
 }
 
-variable "chart_version" {
-  description = "fluxcd helm chart version"
+variable "flux_version" {
+  description = "Flux version semver range"
   type        = string
-  default     = "2.15.0"
+  default     = "2.x"
 }
 
-variable "repository_url" {
-  description = "URL of the Git repository containing Kubernetes manifests"
+variable "flux_registry" {
+  description = "Flux distribution registry"
   type        = string
+  default     = "ghcr.io/fluxcd"
 }
 
-variable "repository_branch" {
-  description = "Branch to track in the Git repository"
+variable "cluster_type" {
+  description = "Cluster type, e.g. kubernetes, openshift, azure, aws, gcp"
   type        = string
-  default     = "main"
+  default     = "kubernetes"
 }
 
-variable "kustomization_path" {
-  description = "Path within the repository to look for kustomization files"
+variable "cluster_size" {
+  description = "Cluster size, e.g. small, medium, large"
   type        = string
+  default     = "small"
+}
+
+variable "git_token" {
+  description = "Git PAT"
+  sensitive   = true
+  type        = string
+  default     = ""
+}
+
+variable "github_app_id" {
+  description = "GitHub App ID"
+  type        = string
+  default     = ""
+}
+
+variable "github_app_installation_owner" {
+  description = "GitHub App Installation Owner"
+  type        = string
+  default     = ""
+}
+
+variable "github_app_pem" {
+  description = "The contents of the GitHub App private key PEM file"
+  sensitive   = true
+  type        = string
+  default     = ""
+}
+
+variable "git_url" {
+  description = "Git repository URL"
+  type        = string
+  nullable    = false
+  default     = "https://github.com/fluxcd/flux2-kustomize-helm-example.git"
+}
+
+variable "git_path" {
+  description = "Path to the cluster manifests in the Git repository"
+  type        = string
+  nullable    = false
+  default     = "clusters/production"
+}
+
+variable "git_ref" {
+  description = "Git branch or tag in the format refs/heads/main or refs/tags/v1.0.0"
+  type        = string
+  default     = "refs/heads/main"
 }

@@ -2,7 +2,7 @@
 
 set -e  # Exit on any error
 
-terraform init
+terraform init -upgrade
 
 echo "Applying terraform configuration..."
 terraform apply -auto-approve

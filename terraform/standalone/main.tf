@@ -32,3 +32,24 @@ module "gitops_bridge" {
 
   depends_on = [module.kind_cluster]
 }
+
+module "fluxcd_operator" {
+  source = "./../modules/fluxcd"
+
+  count = var.gitops_controller == "fluxcd" ? 1 : 0
+
+  namespace                     = var.fluxcd_config.namespace
+  flux_version                  = var.fluxcd_config.flux_version
+  flux_registry                 = var.fluxcd_config.flux_registry
+  cluster_type                  = var.fluxcd_config.cluster_type
+  cluster_size                  = var.fluxcd_config.cluster_size
+  git_token                     = var.fluxcd_config.git_token
+  github_app_id                 = var.fluxcd_config.github_app_id
+  github_app_installation_owner = var.fluxcd_config.github_app_installation_owner
+  github_app_pem                = var.fluxcd_config.github_app_pem
+  git_url                       = var.fluxcd_config.git_url
+  git_path                      = var.fluxcd_config.git_path
+  git_ref                       = var.fluxcd_config.git_ref
+
+  depends_on = [module.kind_cluster]
+}

@@ -3,7 +3,7 @@ cluster_type       = "spoke"
 domain_name        = "k8s-home.lab"
 cloud_provider     = "local"
 kubernetes_version = "1.33.1"
-gitops_controller  = "argocd"
+gitops_controller  = "fluxcd" # options: argocd, fluxcd
 gitops_org         = "https://github.com/thatmlopsguy"
 # Teams
 teams = {
