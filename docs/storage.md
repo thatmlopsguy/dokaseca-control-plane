@@ -28,6 +28,9 @@ We run MinIO as a Docker container outside the Kubernetes cluster, providing S3-
 │  ┌──────────┐ ┌───────┐ ┌───────┐ ┌──────┐ │
 │  │  velero  │ │ loki  │ │ tempo │ │  vm  │ │
 │  └──────────┘ └───────┘ └───────┘ └──────┘ │
+│  ┌───────────────┐                         │
+│  │ report-portal │                         │
+│  └───────────────┘                         │
 └────────────────────────────────────────────┘
 ```
 
@@ -81,12 +84,13 @@ mc mb local/vm
 
 MinIO is configured with dedicated buckets for each service:
 
-| Service          | Bucket Name  | Purpose                       |
-|------------------|--------------|-------------------------------|
-| Velero           | velero-{env} | Kubernetes backup and restore |
-| Loki             | loki         | Log storage and querying      |
-| Tempo            | tempo        | Distributed tracing storage   |
-| Victoria Metrics | vm           | Long-term metrics storage     |
+| Service          | Bucket Name   | Purpose                         |
+|------------------|---------------|---------------------------------|
+| Velero           | velero-{env}  | Kubernetes backup and restore   |
+| Loki             | loki          | Log storage and querying        |
+| Tempo            | tempo         | Distributed tracing storage     |
+| Victoria Metrics | vm            | Long-term metrics storage       |
+| ReportPortal     | report-portal | Object storage for ReportPortal |
 
 ## Service Integrations
 
@@ -163,6 +167,21 @@ vmstorage:
     region: "minio"
 ```
 
+## ReportPortal Dependencies
+
+ReportPortal relies on MinIO for object storage. You can deploy MinIO manually as described earlier in this document or use a cloud-based alternative like AWS S3 or Azure Blob Storage.
+
+Example configuration for MinIO:
+
+```yaml
+reportportal:
+  objectStorage:
+    endpoint: <your-minio-endpoint>
+    accessKey: <your-access-key>
+    secretKey: <your-secret-key>
+    bucket: <your-bucket-name>
+```
+
 ## References
 
 - [MinIO Documentation](https://docs.min.io/)
@@ -170,3 +189,4 @@ vmstorage:
 - [Loki Storage](https://grafana.com/docs/loki/latest/operations/storage/)
 - [Tempo Storage](https://grafana.com/docs/tempo/latest/configuration/s3/)
 - [Victoria Metrics Storage](https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#storage)
+- [ReportPortal Object Storage](https://reportportal.io/docs/installation-steps/DeployWithKubernetes#install-the-chart-with-dependencies)
