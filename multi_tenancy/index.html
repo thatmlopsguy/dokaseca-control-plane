@@ -12,13 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/multicluster/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/multi_tenancy/">
       
       
         <link rel="prev" href="../backup/">
       
       
-        <link rel="next" href="../resources/glossary/">
+        <link rel="next" href="../multi_cluster/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Multi cluster - Doka Seca</title>
+        <title>Multi Tenancy - Doka Seca</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#multi-cluster" class="md-skip">
+        <a href="#multi-tenancy" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi cluster
+              Multi Tenancy
             
           </span>
         </div>
@@ -1149,7 +1149,7 @@
   <span class="md-ellipsis">
     
   
-    Multi cluster
+    Multi Tenancy
   
 
     
@@ -1167,7 +1167,7 @@
   <span class="md-ellipsis">
     
   
-    Multi cluster
+    Multi Tenancy
   
 
     
@@ -1193,67 +1193,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pets-vs-cattle" class="md-nav__link">
+  <a href="#types-of-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pets vs Cattle
+        Types of Multi-Tenancy
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-cluster-topologies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-Cluster Topologies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gitops-bridge-topologies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitOps Bridge Topologies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster-creation-and-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Creation and Management
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cluster Creation and Management">
+    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster-api-capi" class="md-nav__link">
+  <a href="#soft-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster API (CAPI)
+        Soft Multi-Tenancy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cluster API (CAPI)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#planned-implementation" class="md-nav__link">
+  <a href="#hard-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planned Implementation
+        Hard Multi-Tenancy
       
     </span>
   </a>
@@ -1264,68 +1230,35 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#kro-kubernetes-resource-orchestration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#diy-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        KRO (Kubernetes Resource Orchestration)
+        DIY Approach
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="KRO (Kubernetes Resource Orchestration)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools for Multi-Tenancy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#planned-integration" class="md-nav__link">
+  <a href="#vcluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planned Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crossplane" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Crossplane
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Crossplane">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#planned-capabilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Planned Capabilities
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubefleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kubefleet
+        Vcluster
       
     </span>
   </a>
@@ -1333,52 +1266,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kordent" class="md-nav__link">
+  <a href="#capsule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kordent
+        Capsule
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#open-cluster-management-ocm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open Cluster Management (OCM)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Open Cluster Management (OCM)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ocm-capabilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OCM Capabilities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration-with-doka-seca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration with DoKa Seca
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1388,21 +1282,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integration-strategy" class="md-nav__link">
+  <a href="#comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Integration Strategy
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        Comparison
       
     </span>
   </a>
@@ -1423,6 +1306,33 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../multi_cluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     
     
     
@@ -1432,10 +1342,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
         
           
-          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
             
   
   
@@ -1453,8 +1363,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_20">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1682,10 +1592,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
         
           
-          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
             
   
   
@@ -1703,8 +1613,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_21">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_22">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1792,10 +1702,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_23" >
         
           
-          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_23" id="__nav_23_label" tabindex="0">
             
   
   
@@ -1813,8 +1723,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_22">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_23_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_23">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2026,67 +1936,33 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pets-vs-cattle" class="md-nav__link">
+  <a href="#types-of-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pets vs Cattle
+        Types of Multi-Tenancy
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#multi-cluster-topologies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Multi-Cluster Topologies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#gitops-bridge-topologies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitOps Bridge Topologies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cluster-creation-and-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cluster Creation and Management
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Cluster Creation and Management">
+    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#cluster-api-capi" class="md-nav__link">
+  <a href="#soft-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cluster API (CAPI)
+        Soft Multi-Tenancy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cluster API (CAPI)">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
-  <a href="#planned-implementation" class="md-nav__link">
+  <a href="#hard-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planned Implementation
+        Hard Multi-Tenancy
       
     </span>
   </a>
@@ -2097,68 +1973,35 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#kro-kubernetes-resource-orchestration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#diy-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        KRO (Kubernetes Resource Orchestration)
+        DIY Approach
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="KRO (Kubernetes Resource Orchestration)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools for Multi-Tenancy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#planned-integration" class="md-nav__link">
+  <a href="#vcluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Planned Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#crossplane" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Crossplane
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Crossplane">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#planned-capabilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Planned Capabilities
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kubefleet" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Kubefleet
+        Vcluster
       
     </span>
   </a>
@@ -2166,52 +2009,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#kordent" class="md-nav__link">
+  <a href="#capsule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kordent
+        Capsule
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#open-cluster-management-ocm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open Cluster Management (OCM)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Open Cluster Management (OCM)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ocm-capabilities" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        OCM Capabilities
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#integration-with-doka-seca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration with DoKa Seca
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -2221,21 +2025,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#integration-strategy" class="md-nav__link">
+  <a href="#comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Integration Strategy
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        Comparison
       
     </span>
   </a>
@@ -2262,108 +2055,100 @@
   
 
 
-<h1 id="multi-cluster">Multi cluster<a class="headerlink" href="#multi-cluster" title="Permanent link">&para;</a></h1>
-<p>Kubernetes multi-cluster setups are increasingly common for scaling, isolation, and resilience.
-In this project, we use one cluster per environment: <strong>dev</strong>, <strong>stg</strong>, and <strong>prod</strong>. This approach provides clear separation
-and reduces blast radius between environments.</p>
-<h2 id="pets-vs-cattle">Pets vs Cattle<a class="headerlink" href="#pets-vs-cattle" title="Permanent link">&para;</a></h2>
-<p>When managing clusters, it's important to treat them as <strong>cattle, not pets</strong>. This means clusters should be reproducible,
-disposable, and managed declaratively (e.g., via GitOps), rather than being unique, hand-crafted, or irreplaceable.
-This mindset enables automation, scalability, and reliability.</p>
-<h2 id="multi-cluster-topologies">Multi-Cluster Topologies<a class="headerlink" href="#multi-cluster-topologies" title="Permanent link">&para;</a></h2>
-<p>There are several ways to organize and connect multiple Kubernetes clusters:</p>
+<h1 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h1>
+<p>Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while providing isolation between them.</p>
+<h2 id="types-of-multi-tenancy">Types of Multi-Tenancy<a class="headerlink" href="#types-of-multi-tenancy" title="Permanent link">&para;</a></h2>
+<p>Multi-tenancy can be divided into two categories:</p>
+<h3 id="soft-multi-tenancy">Soft Multi-Tenancy<a class="headerlink" href="#soft-multi-tenancy" title="Permanent link">&para;</a></h3>
+<p>Soft multi-tenancy is suitable <strong>when you trust your tenants</strong> — like when you share a cluster with teams from the same company. In this model:</p>
 <ul>
-<li><strong>Standalone/Distributed:</strong> Each cluster operates independently, with its own control plane and management.
-This is simple and works well for clear environment separation (as in our current setup).</li>
-<li><strong>Centralized (Hub/Spoke):</strong> A central "hub" cluster manages or coordinates multiple "spoke" clusters.
-This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.</li>
+<li>Tenants are cooperative and don't intentionally try to breach isolation</li>
+<li>Isolation is primarily about preventing accidental interference</li>
+<li>You can use native Kubernetes constructs like Namespaces, RBAC, and Resource Quotas</li>
 </ul>
-<p><img alt="hub-spoke" src="../assets/figures/diagrams/hup-spoke.drawio.png" /></p>
-<blockquote>
-<p><strong>Note:</strong> Currently, we use the standalone/distributed topology with one cluster per environment. Future enhancements may explore centralized management for advanced use cases.</p>
-</blockquote>
-<h2 id="gitops-bridge-topologies">GitOps Bridge Topologies<a class="headerlink" href="#gitops-bridge-topologies" title="Permanent link">&para;</a></h2>
-<p>When using GitOps to manage multiple clusters, there are two main approaches:</p>
+<h3 id="hard-multi-tenancy">Hard Multi-Tenancy<a class="headerlink" href="#hard-multi-tenancy" title="Permanent link">&para;</a></h3>
+<p>Hard multi-tenancy is required <strong>when you don't trust tenants</strong> — such as in SaaS platforms where customers from different organizations share infrastructure. In this model:</p>
 <ul>
-<li><strong>Standalone/Distributed GitOps:</strong> Each cluster has its own GitOps controller (e.g., Argo CD or Flux), managing only its resources. This matches our current topology and is simple to operate.</li>
-<li><strong>Centralized (Hub/Spoke) GitOps:</strong> A central GitOps controller manages resources across multiple clusters. This can enable global policies, shared services, and easier cross-cluster coordination, but requires careful RBAC and security design.</li>
+<li>Strong isolation is mandatory</li>
+<li>Tenants may be hostile or attempt to escape their boundaries</li>
+<li>Security boundaries must be enforced at multiple levels</li>
 </ul>
-<h2 id="cluster-creation-and-management">Cluster Creation and Management<a class="headerlink" href="#cluster-creation-and-management" title="Permanent link">&para;</a></h2>
-<p>DoKa Seca is planning to enhance multi-cluster capabilities through automated cluster provisioning and management using
-two complementary approaches: Cluster API with KRO, and Crossplane.</p>
-<h3 id="cluster-api-capi">Cluster API (CAPI)<a class="headerlink" href="#cluster-api-capi" title="Permanent link">&para;</a></h3>
-<p><a href="https://cluster-api.sigs.k8s.io/">Cluster API</a> provides declarative APIs and tooling to simplify provisioning, upgrading,
-and operating multiple Kubernetes clusters.</p>
-<h4 id="planned-implementation">Planned Implementation<a class="headerlink" href="#planned-implementation" title="Permanent link">&para;</a></h4>
-<p>DoKa Seca will utilize Cluster API for:</p>
-<ul>
-<li><strong>Infrastructure-agnostic cluster creation:</strong> Using CAPI providers for AWS, Azure, GCP, and on-premises (via vSphere and bare metal)</li>
-<li><strong>Standardized cluster templates:</strong> Creating reusable cluster blueprints with pre-configured settings for each environment</li>
-<li><strong>Lifecycle management:</strong> Enabling seamless upgrades and scaling operations across clusters</li>
-</ul>
-<h3 id="kro-kubernetes-resource-orchestration">KRO (Kubernetes Resource Orchestration)<a class="headerlink" href="#kro-kubernetes-resource-orchestration" title="Permanent link">&para;</a></h3>
-<p><a href="https://github.com/kro-project">KRO</a> will be used to simplify cross-cluster resource management, enabling DoKa Seca to:</p>
-<ul>
-<li><strong>Coordinate multi-cluster deployments:</strong> Manage application lifecycles across cluster boundaries</li>
-<li><strong>Handle dependencies between clusters:</strong> Ensure proper sequencing of resource creation</li>
-<li><strong>Implement advanced rollout strategies:</strong> Control the deployment flow across multiple environments</li>
-</ul>
-<h4 id="planned-integration">Planned Integration<a class="headerlink" href="#planned-integration" title="Permanent link">&para;</a></h4>
-<p>KRO will work alongside ArgoCD to provide more sophisticated orchestration between clusters, especially for complex application
-topologies spanning multiple clusters.</p>
-<h3 id="crossplane">Crossplane<a class="headerlink" href="#crossplane" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.crossplane.io/">Crossplane</a> will enable DoKa Seca to define and use higher-level abstractions for both
-infrastructure and applications, making it easier to manage complex deployments.</p>
-<h4 id="planned-capabilities">Planned Capabilities<a class="headerlink" href="#planned-capabilities" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Infrastructure provisioning:</strong> Create cloud resources (VPCs, databases, etc.) alongside Kubernetes clusters</li>
-<li><strong>Composition of complex resources:</strong> Define reusable templates for complete application stacks</li>
-<li><strong>Self-service platform:</strong> Allow teams to provision environments via simple custom resources</li>
-</ul>
-<h3 id="kubefleet">Kubefleet<a class="headerlink" href="#kubefleet" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Documentation coming soon!</p>
+<p class="admonition-title">Hard Multi-Tenancy Recommendation</p>
+<p>If you need hard multi-tenancy, the advice is to use <strong>multiple clusters</strong> or a <strong>Cluster-as-a-Service</strong> tool instead. Kubernetes was not originally designed with strong multi-tenancy guarantees.</p>
 </div>
-<h3 id="kordent">Kordent<a class="headerlink" href="#kordent" title="Permanent link">&para;</a></h3>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Documentation coming soon!</p>
-</div>
-<h3 id="open-cluster-management-ocm">Open Cluster Management (OCM)<a class="headerlink" href="#open-cluster-management-ocm" title="Permanent link">&para;</a></h3>
-<p><a href="https://open-cluster-management.io/">Open Cluster Management</a> is a CNCF project that provides a comprehensive
-multi-cluster management platform with strong governance and policy capabilities.</p>
-<h4 id="ocm-capabilities">OCM Capabilities<a class="headerlink" href="#ocm-capabilities" title="Permanent link">&para;</a></h4>
-<p>OCM will complement our cluster management strategy by offering:</p>
+<h2 id="diy-approach">DIY Approach<a class="headerlink" href="#diy-approach" title="Permanent link">&para;</a></h2>
+<p>If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own isolation using native Kubernetes primitives:</p>
 <ul>
-<li><strong>Cluster lifecycle management:</strong> Automated cluster provisioning, upgrading, and decommissioning</li>
-<li><strong>Policy governance:</strong> Centralized policy definition and enforcement across all managed clusters</li>
-<li><strong>Application lifecycle:</strong> Advanced application deployment and management across multiple clusters</li>
-<li><strong>Observability integration:</strong> Unified monitoring and alerting across the entire cluster fleet</li>
-<li><strong>Security posture management:</strong> Centralized security scanning and compliance reporting</li>
+<li><strong>Namespaces</strong> — Logical isolation for resources</li>
+<li><strong>RBAC</strong> — Role-Based Access Control for authorization</li>
+<li><strong>Resource Quotas</strong> — Limit resource consumption per namespace</li>
+<li><strong>Network Policies</strong> — Control pod-to-pod communication</li>
+<li><strong>Pod Security Standards</strong> — Enforce security contexts</li>
 </ul>
-<h4 id="integration-with-doka-seca">Integration with DoKa Seca<a class="headerlink" href="#integration-with-doka-seca" title="Permanent link">&para;</a></h4>
-<p>OCM's hub-spoke architecture aligns well with potential future centralized management requirements while maintaining
-compatibility with our current distributed approach.</p>
-<h2 id="integration-strategy">Integration Strategy<a class="headerlink" href="#integration-strategy" title="Permanent link">&para;</a></h2>
-<p>DoKa Seca plans to integrate these tools in a complementary fashion:</p>
-<ol>
-<li><strong>Cluster API</strong> will handle the core cluster provisioning and lifecycle management</li>
-<li><strong>KRO</strong> will manage application deployment orchestration across clusters</li>
-<li><strong>Crossplane</strong> will provide higher-level abstractions and additional infrastructure resources</li>
-<li><strong>Open Cluster Management (OCM)</strong> will provide comprehensive governance and security posture management</li>
-</ol>
-<p>The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
-using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being integrated in subsequent phases.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h2 id="tools-for-multi-tenancy">Tools for Multi-Tenancy<a class="headerlink" href="#tools-for-multi-tenancy" title="Permanent link">&para;</a></h2>
+<p>There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger isolation guarantees:</p>
+<h3 id="vcluster">Vcluster<a class="headerlink" href="#vcluster" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.vcluster.com/">Vcluster</a> creates virtual Kubernetes clusters that run inside namespaces of a host cluster. Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying infrastructure.</p>
+<p><strong>Key Features:</strong></p>
 <ul>
-<li><a href="https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd">Building a Bridge between Terraform and ArgoCD</a></li>
-<li><a href="https://cluster-api.sigs.k8s.io/introduction.html">Cluster API Documentation</a></li>
-<li><a href="https://github.com/kro-project">KRO Project</a></li>
-<li><a href="https://docs.crossplane.io/">Crossplane Documentation</a></li>
-<li><a href="https://kubefleet.dev/">KubeFleet</a></li>
-<li><a href="https://k0rdent.io/">Kordent</a></li>
+<li>Full Kubernetes API compatibility</li>
+<li>Lightweight virtual clusters</li>
+<li>Tenant isolation with dedicated control planes</li>
+<li>Cost-effective alternative to multiple physical clusters</li>
 </ul>
+<h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">&para;</a></h3>
+<p><a href="https://capsule.clastix.io/">Capsule</a> implements a multi-tenant and policy-based environment in Kubernetes. It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Hierarchical namespace management</li>
+<li>Native Kubernetes experience for tenants</li>
+<li>Policy enforcement across tenant namespaces</li>
+<li>Resource quota management at tenant level</li>
+</ul>
+<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>DIY (Namespaces + RBAC)</th>
+<th>Capsule</th>
+<th>Vcluster</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Isolation Level</td>
+<td>Soft</td>
+<td>Soft</td>
+<td>Hard</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>API Compatibility</td>
+<td>Limited</td>
+<td>Full</td>
+<td>Full</td>
+</tr>
+<tr>
+<td>Control Plane</td>
+<td>Shared</td>
+<td>Shared</td>
+<td>Dedicated per tenant</td>
+</tr>
+<tr>
+<td>Use Case</td>
+<td>Trusted teams</td>
+<td>Multi-team orgs</td>
+<td>Untrusted tenants</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2384,7 +2169,7 @@ using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being i
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 11, 2025 14:49:04 UTC"><span class="timeago" datetime="2025-08-11T14:49:04+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 11, 2025 14:49:04 UTC">2025-08-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 17:32:16 UTC"><span class="timeago" datetime="2026-02-06T17:32:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 17:32:16 UTC">2026-02-06</span>
   </span>
 
     
@@ -2446,13 +2231,13 @@ using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being i
         
         
           
-          <a href="../resources/glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+          <a href="../multi_cluster/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi Cluster">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Glossary
+                Multi Cluster
               </div>
             </div>
             <div class="md-footer__button md-icon">
