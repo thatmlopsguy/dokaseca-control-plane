@@ -12,9 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/vault-setup/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/testing/">
       
       
+        <link rel="prev" href="../chaos_engineering/">
+      
+      
+        <link rel="next" href="../backup/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>HashiCorp Vault Setup Guide - Doka Seca</title>
+        <title>Testing - Doka Seca</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hashicorp-vault-setup-guide" class="md-skip">
+        <a href="#testing-in-doka-seca" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HashiCorp Vault Setup Guide
+              Testing
             
           </span>
         </div>
@@ -1099,10 +1103,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1118,6 +1149,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#report-portal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Report Portal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Report Portal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1812,10 +1946,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Prerequisites
+        Overview
       
     </span>
   </a>
@@ -1823,33 +1957,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#report-portal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture
+        Report Portal
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setup-instructions" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Setup Instructions
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setup Instructions">
+    <nav class="md-nav" aria-label="Report Portal">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-start-vault-service" class="md-nav__link">
+  <a href="#purpose" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Start Vault Service
+        Purpose
       
     </span>
   </a>
@@ -1857,10 +1980,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-verify-vault-is-running" class="md-nav__link">
+  <a href="#deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Verify Vault is Running
+        Deployment
       
     </span>
   </a>
@@ -1868,10 +1991,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-initialize-vault" class="md-nav__link">
+  <a href="#access" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Initialize Vault
+        Access
       
     </span>
   </a>
@@ -1879,10 +2002,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-unseal-vault" class="md-nav__link">
+  <a href="#configuration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Unseal Vault
+        Configuration
       
     </span>
   </a>
@@ -1890,10 +2013,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-verify-vault-status" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Verify Vault Status
+        Usage
       
     </span>
   </a>
@@ -1902,228 +2025,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-methods" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access Methods
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Access Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#web-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Web UI
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#command-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Command Line
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration Files
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration Files">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-composeyml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker-compose.yml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dockervaultlocaljson" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        docker/vault/local.json
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#maintenance-tasks" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Maintenance Tasks
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Maintenance Tasks">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#stop-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stop Vault
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#start-existing-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Start Existing Vault
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#view-logs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        View Logs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#backup-vault-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup Vault Data
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#restore-vault-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Restore Vault Data
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Considerations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshooting
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#common-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Common Issues
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#useful-commands" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Useful Commands
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#production-considerations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Production Considerations
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-initial-setup-script" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example Initial Setup Script
-      
-    </span>
-  </a>
   
 </li>
       
@@ -2147,194 +2048,45 @@
   
 
 
-<h1 id="hashicorp-vault-setup-guide">HashiCorp Vault Setup Guide<a class="headerlink" href="#hashicorp-vault-setup-guide" title="Permanent link">&para;</a></h1>
-<p>This document provides step-by-step instructions for setting up HashiCorp Vault using Docker Compose with persistent storage.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h1 id="testing-in-doka-seca">Testing in Doka Seca<a class="headerlink" href="#testing-in-doka-seca" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Doka Seca self-hosts a Report Portal Helm chart to provide a centralized platform for visualizing and managing test results from all teams. This ensures transparency, collaboration, and efficient debugging across the organization.</p>
+<h2 id="report-portal">Report Portal<a class="headerlink" href="#report-portal" title="Permanent link">&para;</a></h2>
+<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
+<p>Report Portal is used to aggregate and display test results from various teams. It supports:</p>
 <ul>
-<li>Docker and Docker Compose installed</li>
-<li>Basic understanding of Vault concepts</li>
-<li>Terminal access</li>
+<li>Centralized test result storage</li>
+<li>Real-time reporting</li>
+<li>Historical data analysis</li>
+<li>Integration with CI/CD pipelines</li>
 </ul>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
+<p>The Report Portal Helm chart is deployed in the Kubernetes cluster managed by Doka Seca. It is configured to:</p>
 <ul>
-<li><strong>Storage Backend</strong>: File-based storage with Docker volume persistence</li>
-<li><strong>Network</strong>: HTTP (TLS disabled for local development)</li>
-<li><strong>UI</strong>: Enabled and accessible via web browser</li>
-<li><strong>Persistence</strong>: All secrets stored in <code>vault-data</code> Docker volume</li>
+<li>Use persistent storage for test data</li>
+<li>Integrate with authentication mechanisms for secure access</li>
+<li>Provide dashboards for test result visualization</li>
 </ul>
-<h2 id="setup-instructions">Setup Instructions<a class="headerlink" href="#setup-instructions" title="Permanent link">&para;</a></h2>
-<h3 id="1-start-vault-service">1. Start Vault Service<a class="headerlink" href="#1-start-vault-service" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
+<h3 id="access">Access<a class="headerlink" href="#access" title="Permanent link">&para;</a></h3>
+<p>Teams can access the Report Portal via the following URL:</p>
+<div class="highlight"><pre><span></span><code>https://report-portal.dokaseca.local
 </code></pre></div>
-<h3 id="2-verify-vault-is-running">2. Verify Vault is Running<a class="headerlink" href="#2-verify-vault-is-running" title="Permanent link">&para;</a></h3>
-<p>Check the logs to ensure Vault started successfully:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>vault
-</code></pre></div>
-<p>You should see logs indicating the server started, but will show "security barrier not initialized" - this is expected.</p>
-<h3 id="3-initialize-vault">3. Initialize Vault<a class="headerlink" href="#3-initialize-vault" title="Permanent link">&para;</a></h3>
-<p>Initialize Vault to generate unseal keys and root token:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator init&#39;</span>
-</code></pre></div>
-<p><strong>Important</strong>: Save the output securely! You'll get:</p>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<p>The Helm chart is configured with the following values:</p>
 <ul>
-<li>5 unseal keys (need 3 to unseal)</li>
-<li>1 root token (for initial admin access)</li>
+<li><code>persistence.enabled</code>: true</li>
+<li><code>resources.requests.cpu</code>: "500m"</li>
+<li><code>resources.requests.memory</code>: "512Mi"</li>
+<li><code>ingress.enabled</code>: true</li>
+<li><code>ingress.hosts</code>: ["report-portal.dokaseca.local"]</li>
 </ul>
-<h3 id="4-unseal-vault">4. Unseal Vault<a class="headerlink" href="#4-unseal-vault" title="Permanent link">&para;</a></h3>
-<p>Vault needs to be unsealed with 3 of the 5 keys every time it starts:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># First unseal key</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_1&gt;&#39;</span>
-
-<span class="c1"># Second unseal key</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_2&gt;&#39;</span>
-
-<span class="c1"># Third unseal key (Vault will be unsealed after this)</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_3&gt;&#39;</span>
-</code></pre></div>
-<h3 id="5-verify-vault-status">5. Verify Vault Status<a class="headerlink" href="#5-verify-vault-status" title="Permanent link">&para;</a></h3>
-<p>Check that Vault is fully operational:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault status&#39;</span>
-</code></pre></div>
-<p>Look for <code>Sealed: false</code> in the output.</p>
-<h2 id="access-methods">Access Methods<a class="headerlink" href="#access-methods" title="Permanent link">&para;</a></h2>
-<h3 id="web-ui">Web UI<a class="headerlink" href="#web-ui" title="Permanent link">&para;</a></h3>
-<ul>
-<li>URL: <a href="http://localhost:8200">http://localhost:8200</a></li>
-<li>Login: Use the root token from initialization</li>
-</ul>
-<h3 id="command-line">Command Line<a class="headerlink" href="#command-line" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Set environment variable for convenience</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">VAULT_ADDR</span><span class="o">=</span>http://localhost:8200
-
-<span class="c1"># Login with root token</span>
-vault<span class="w"> </span>auth<span class="w"> </span>-method<span class="o">=</span>token<span class="w"> </span><span class="nv">token</span><span class="o">=</span>&lt;ROOT_TOKEN&gt;
-
-<span class="c1"># Or run commands directly in container</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault &lt;COMMAND&gt;&#39;</span>
-</code></pre></div>
-<h2 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h2>
-<h3 id="docker-composeyml">docker-compose.yml<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h3>
-<p>Located at project root, contains:</p>
-<ul>
-<li>Vault service definition</li>
-<li>Volume mounts for data persistence</li>
-<li>Network configuration</li>
-</ul>
-<h3 id="dockervaultlocaljson">docker/vault/local.json<a class="headerlink" href="#dockervaultlocaljson" title="Permanent link">&para;</a></h3>
-<p>Vault configuration file with:</p>
-<ul>
-<li>File storage backend</li>
-<li>HTTP listener (TLS disabled)</li>
-<li>UI enabled</li>
-<li>Logging configuration</li>
-</ul>
-<h2 id="maintenance-tasks">Maintenance Tasks<a class="headerlink" href="#maintenance-tasks" title="Permanent link">&para;</a></h2>
-<h3 id="stop-vault">Stop Vault<a class="headerlink" href="#stop-vault" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>vault
-</code></pre></div>
-<h3 id="start-existing-vault">Start Existing Vault<a class="headerlink" href="#start-existing-vault" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
-<span class="c1"># Then unseal with 3 keys (same process as step 4 above)</span>
-</code></pre></div>
-<h3 id="view-logs">View Logs<a class="headerlink" href="#view-logs" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>logs<span class="w"> </span>vault<span class="w"> </span>-f
-</code></pre></div>
-<h3 id="backup-vault-data">Backup Vault Data<a class="headerlink" href="#backup-vault-data" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Create backup of vault data volume</span>
-docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>vault-data:/data<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/backup<span class="w"> </span>ubuntu<span class="w"> </span>tar<span class="w"> </span>czf<span class="w"> </span>/backup/vault-backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/data<span class="w"> </span>.
-</code></pre></div>
-<h3 id="restore-vault-data">Restore Vault Data<a class="headerlink" href="#restore-vault-data" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Restore from backup</span>
-docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span>vault-data:/data<span class="w"> </span>-v<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span>:/backup<span class="w"> </span>ubuntu<span class="w"> </span>tar<span class="w"> </span>xzf<span class="w"> </span>/backup/vault-backup.tar.gz<span class="w"> </span>-C<span class="w"> </span>/data
-</code></pre></div>
-<h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
-<p>⚠️ <strong>Important Security Notes</strong>:</p>
+<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>Unseal Keys</strong>: Store the 5 unseal keys securely and separately</li>
-<li><strong>Root Token</strong>: Change or revoke the initial root token after setup</li>
-<li><strong>TLS</strong>: This setup uses HTTP for local development - enable TLS for production</li>
-<li><strong>Access Control</strong>: Implement proper authentication methods beyond root token</li>
-<li><strong>Backups</strong>: Regularly backup the vault data volume</li>
-<li><strong>Network</strong>: Restrict network access in production environments</li>
+<li>Teams push their test results to the Report Portal using the provided API.</li>
+<li>Dashboards and reports can be customized per team.</li>
+<li>Historical data can be queried for trend analysis.</li>
 </ol>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
-<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
-<p><strong>Vault won't start</strong>:</p>
-<ul>
-<li>Check Docker logs: <code>docker logs vault</code></li>
-<li>Verify configuration file syntax</li>
-<li>Ensure ports aren't in use</li>
-</ul>
-<p><strong>Cannot connect to Vault</strong>:</p>
-<ul>
-<li>Verify Vault is unsealed: <code>vault status</code></li>
-<li>Check VAULT_ADDR environment variable</li>
-<li>Ensure using HTTP not HTTPS for local setup</li>
-</ul>
-<p><strong>Lost unseal keys</strong>:</p>
-<ul>
-<li>If you have root token, you can rekey: <code>vault operator rekey</code></li>
-<li>Otherwise, you'll need to reinitialize (data loss)</li>
-</ul>
-<p><strong>Permission errors</strong>:</p>
-<ul>
-<li>Check Docker volume permissions</li>
-<li>Verify container user has access to mounted directories</li>
-</ul>
-<h3 id="useful-commands">Useful Commands<a class="headerlink" href="#useful-commands" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># Check seal status</span>
-vault<span class="w"> </span>status
-
-<span class="c1"># List enabled auth methods</span>
-vault<span class="w"> </span>auth<span class="w"> </span>list
-
-<span class="c1"># List enabled secret engines</span>
-vault<span class="w"> </span>secrets<span class="w"> </span>list
-
-<span class="c1"># Read vault configuration</span>
-vault<span class="w"> </span><span class="nb">read</span><span class="w"> </span>sys/config/state/sanitized
-
-<span class="c1"># Generate new unseal keys (requires existing keys)</span>
-vault<span class="w"> </span>operator<span class="w"> </span>rekey
-</code></pre></div>
-<h2 id="production-considerations">Production Considerations<a class="headerlink" href="#production-considerations" title="Permanent link">&para;</a></h2>
-<p>For production use, consider:</p>
-<ol>
-<li><strong>TLS Configuration</strong>: Enable HTTPS with proper certificates</li>
-<li><strong>High Availability</strong>: Use Consul or other HA storage backend</li>
-<li><strong>Auto-unseal</strong>: Configure auto-unseal with cloud HSM or transit</li>
-<li><strong>Monitoring</strong>: Set up monitoring and alerting</li>
-<li><strong>Access Policies</strong>: Implement least-privilege access policies</li>
-<li><strong>Regular Backups</strong>: Automated backup strategy</li>
-<li><strong>Network Security</strong>: Firewall rules and network segmentation</li>
-</ol>
-<h2 id="example-initial-setup-script">Example Initial Setup Script<a class="headerlink" href="#example-initial-setup-script" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="nb">set</span><span class="w"> </span>-e
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting Vault...&quot;</span>
-docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Waiting for Vault to start...&quot;</span>
-sleep<span class="w"> </span><span class="m">10</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Initializing Vault...&quot;</span>
-<span class="nv">INIT_OUTPUT</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator init&#39;</span><span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span>
-
-<span class="c1"># Extract keys and token (you should do this more securely)</span>
-<span class="nv">UNSEAL_KEY_1</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 1:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
-<span class="nv">UNSEAL_KEY_2</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 2:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
-<span class="nv">UNSEAL_KEY_3</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 3:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Unsealing Vault...&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_1</span><span class="s2">&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_2</span><span class="s2">&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_3</span><span class="s2">&quot;</span>
-
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Vault is ready!&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault status&#39;</span>
-</code></pre></div>
+<p>For more details, refer to the <a href="https://reportportal.io/">Report Portal documentation</a>.</p>
 
 
 
@@ -2355,7 +2107,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 14, 2025 21:05:32 UTC"><span class="timeago" datetime="2025-07-14T21:05:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 14, 2025 21:05:32 UTC">2025-07-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 19:02:05 UTC"><span class="timeago" datetime="2026-02-06T19:02:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 19:02:05 UTC">2026-02-06</span>
   </span>
 
     
@@ -2395,6 +2147,44 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../chaos_engineering/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chaos Engineering">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Chaos Engineering
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../backup/" class="md-footer__link md-footer__link--next" aria-label="Next: Disaster Recovery">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Disaster Recovery
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
