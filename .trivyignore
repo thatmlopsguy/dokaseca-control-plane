@@ -1,0 +1,10 @@
+# https://trivy.dev/docs/latest/configuration/filtering/
+# Accept the risk
+CVE-2018-14618
+
+# Ignore specific files or directories
+node_modules/
+*.log
+*.tmp
+
+# Add more rules as needed based on your project's requirements
