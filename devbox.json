@@ -3,7 +3,8 @@
   "packages": [
     "terraform@1.10.4",
     "adrgen@latest",
-    "minio-client@latest"
+    "minio-client@latest",
+    "vcluster@latest"
   ],
   "shell": {
     "init_hook": [

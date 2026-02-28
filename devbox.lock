@@ -147,6 +147,54 @@
           "store_path": "/nix/store/g6pi4fghw8gcarpdyfq68fhby71kajk1-terraform-1.10.4"
         }
       }
+    },
+    "vcluster@latest": {
+      "last_modified": "2026-02-23T15:40:43Z",
+      "resolved": "github:NixOS/nixpkgs/80d901ec0377e19ac3f7bb8c035201e2e098cc97#vcluster",
+      "source": "devbox-search",
+      "version": "0.31.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/yqvhp0k94kx7pgvgza4bgk5acm9bi09w-vcluster-0.31.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/yqvhp0k94kx7pgvgza4bgk5acm9bi09w-vcluster-0.31.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ppznpa1jaxv3b20ws9ri84farlz8ikx0-vcluster-0.31.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ppznpa1jaxv3b20ws9ri84farlz8ikx0-vcluster-0.31.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cwrz5lp49xnq1zq6xxnb3rc3nvnr8sdk-vcluster-0.31.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/cwrz5lp49xnq1zq6xxnb3rc3nvnr8sdk-vcluster-0.31.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3xj4d6489d20hqvi0hv4cm0dng24ll49-vcluster-0.31.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3xj4d6489d20hqvi0hv4cm0dng24ll49-vcluster-0.31.0"
+        }
+      }
     }
   }
 }
