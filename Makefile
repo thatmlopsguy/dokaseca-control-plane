@@ -1,3 +1,6 @@
+# Define the root directory
+ROOT_DIR ?= $(shell pwd)
+
 # Project Setup
 PROJECT_NAME := control-plane-dev
 # Read the version from the VERSION file
@@ -26,6 +29,15 @@ terraform-rm-state: ## remove all terraform states
 	@echo "Removing terraform state files..."
 	@rm -rf terraform/distributed/terraform.tfstate.d
 	@echo "Terraform state files removed."
+
+terraform-fmt: ## format terraform files
+	@terraform fmt -recursive terraform
+
+terraform-lint: ## linting terraform files
+	@tflint --init
+	@tflint --recursive \
+			--config="$(ROOT_DIR)/.tflint.hcl" \
+			--minimum-failure-severity=warning
 
 ##@ KinD
 kind-create-cluster: ## Create kind cluster

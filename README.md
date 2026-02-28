@@ -50,7 +50,7 @@ DoKa Seca consists of 5 GitHub repositories:
 
 * [`docker`](https://www.docker.com/)
 * [`terraform`](https://www.terraform.io/) or [`opentofu`](https://opentofu.org/)
-* [`Kind`](https://kind.sigs.k8s.io/docs/user/quick-start/), [`k0s`](https://docs.k0sproject.io/stable/) and/or [`k3d`](https://k3d.io/stable/)
+* [`Kind`](https://kind.sigs.k8s.io/docs/user/quick-start/), [`k0s`](https://docs.k0sproject.io/stable/), [`k3d`](https://k3d.io/stable/) and/or [`vind`](https://github.com/loft-sh/vind)
 * [`jq`](https://jqlang.github.io/jq/)
 * [`helm`](https://helm.sh/docs/intro/install/)
 * [`Kubectl`](https://kubernetes.io/docs/tasks/tools/)

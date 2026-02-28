@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.33.0
-# Generated on: 2025-12-03 13:26:08 UTC
+# Generated on: 2026-02-28 14:02:25 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -28,10 +28,10 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### System Dependencies
 - base64: base64 (GNU coreutils) 8.32
-- git: git version 2.52.0
+- git: git version 2.53.0
 - bash: GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
 - jq: jq-1.7.1
-- curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.19
+- curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.20
 
 ## 2. Container Runtime & Kubernetes Tools
 
@@ -66,7 +66,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Cluster Management
 - clusterctl: v1.9.7
-- vcluster: 0.29.1
+- vcluster: 0.31.0
 
 ## 5. Security Tools
 
