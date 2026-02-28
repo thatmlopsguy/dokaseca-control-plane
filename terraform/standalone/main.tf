@@ -1,6 +1,8 @@
 module "kind_cluster" {
   source = "./../modules/kind"
 
+  count = var.kubernetes_distro == "kind" ? 1 : 0
+
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
   environment        = var.environment
@@ -11,6 +13,20 @@ module "kind_cluster" {
   disable_default_cni = var.kubernetes_cni != "default"
 }
 
+module "vind_cluster" {
+  source = "./../modules/vind"
+
+  count = var.kubernetes_distro == "vind" ? 1 : 0
+
+  cluster_name         = local.kubernetes_name
+  kubernetes_version   = var.kubernetes_version
+  kubeconfig_save_path = local.kubeconfig_path
+
+  enable_telemetry         = false
+  enable_vcluster_platform = false
+  enable_private_nodes     = false
+}
+
 module "gateway_api" {
   source = "./../modules/gateway_api"
 
@@ -19,7 +35,7 @@ module "gateway_api" {
   release_version = var.gateway_api_release_version
   kubeconfig_path = local.kubeconfig_path
 
-  depends_on = [module.kind_cluster]
+  depends_on = [module.kind_cluster, module.vind_cluster]
 }
 
 module "gitops_bridge" {
@@ -44,7 +60,7 @@ module "gitops_bridge" {
 
   apps = local.argocd_apps
 
-  depends_on = [module.kind_cluster]
+  depends_on = [module.kind_cluster, module.vind_cluster]
 }
 
 module "fluxcd_operator" {
@@ -65,5 +81,5 @@ module "fluxcd_operator" {
   git_path                      = var.fluxcd_config.git_path
   git_ref                       = var.fluxcd_config.git_ref
 
-  depends_on = [module.kind_cluster]
+  depends_on = [module.kind_cluster, module.vind_cluster]
 }

@@ -1,5 +1,6 @@
 # Define the root directory
 ROOT_DIR ?= $(shell pwd)
+TERRAFORM_DIR := $(ROOT_DIR)/terraform
 
 # Project Setup
 PROJECT_NAME := control-plane-dev
@@ -27,17 +28,23 @@ clean-infra: kind-delete-all-clusters terraform-rm-state ## Clean all infrastruc
 ##@ Terraform
 terraform-rm-state: ## remove all terraform states
 	@echo "Removing terraform state files..."
-	@rm -rf terraform/distributed/terraform.tfstate.d
+	@rm -rf $(TERRAFORM_DIR)/distributed/terraform.tfstate.d
 	@echo "Terraform state files removed."
 
 terraform-fmt: ## format terraform files
-	@terraform fmt -recursive terraform
+	@terraform fmt -recursive $(TERRAFORM_DIR)
 
 terraform-lint: ## linting terraform files
 	@tflint --init
 	@tflint --recursive \
 			--config="$(ROOT_DIR)/.tflint.hcl" \
 			--minimum-failure-severity=warning
+
+terraform-docs: ## generates documentation for all terraform modules
+	@echo "## Generating documentation for terraform modules"
+	@for dir in $(shell find $(TERRAFORM_DIR)/modules -name '*.tf' -not -path '*/.terraform/*' -exec dirname {} \; | sort -u); do \
+		terraform-docs -c "$(ROOT_DIR)/.terraform-docs.yml" "$$dir"; \
+	done
 
 ##@ KinD
 kind-create-cluster: ## Create kind cluster

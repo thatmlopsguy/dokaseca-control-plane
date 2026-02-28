@@ -3,14 +3,16 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.19.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.7 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.10.1 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.37 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_helm"></a> [helm](#provider\_helm) | n/a |
-| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.19.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.10.1 |
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.37 |
 
 ## Modules
 
@@ -20,19 +22,27 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [helm_release.flux2](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
-| [kubectl_manifest.git_repository](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
-| [kubectl_manifest.kustomization](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
+| [helm_release.flux_instance](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [helm_release.flux_operator](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
+| [kubernetes_namespace.flux_system](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [kubernetes_secret.git_auth](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/secret) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_chart_version"></a> [chart\_version](#input\_chart\_version) | fluxcd helm chart version | `string` | `"2.15.0"` | no |
-| <a name="input_kustomization_path"></a> [kustomization\_path](#input\_kustomization\_path) | Path within the repository to look for kustomization files | `string` | n/a | yes |
+| <a name="input_cluster_size"></a> [cluster\_size](#input\_cluster\_size) | Cluster size, e.g. small, medium, large | `string` | `"small"` | no |
+| <a name="input_cluster_type"></a> [cluster\_type](#input\_cluster\_type) | Cluster type, e.g. kubernetes, openshift, azure, aws, gcp | `string` | `"kubernetes"` | no |
+| <a name="input_flux_registry"></a> [flux\_registry](#input\_flux\_registry) | Flux distribution registry | `string` | `"ghcr.io/fluxcd"` | no |
+| <a name="input_flux_version"></a> [flux\_version](#input\_flux\_version) | Flux version semver range | `string` | `"2.x"` | no |
+| <a name="input_git_path"></a> [git\_path](#input\_git\_path) | Path to the cluster manifests in the Git repository | `string` | `"clusters/production"` | no |
+| <a name="input_git_ref"></a> [git\_ref](#input\_git\_ref) | Git branch or tag in the format refs/heads/main or refs/tags/v1.0.0 | `string` | `"refs/heads/main"` | no |
+| <a name="input_git_token"></a> [git\_token](#input\_git\_token) | Git PAT | `string` | `""` | no |
+| <a name="input_git_url"></a> [git\_url](#input\_git\_url) | Git repository URL | `string` | `"https://github.com/fluxcd/flux2-kustomize-helm-example.git"` | no |
+| <a name="input_github_app_id"></a> [github\_app\_id](#input\_github\_app\_id) | GitHub App ID | `string` | `""` | no |
+| <a name="input_github_app_installation_owner"></a> [github\_app\_installation\_owner](#input\_github\_app\_installation\_owner) | GitHub App Installation Owner | `string` | `""` | no |
+| <a name="input_github_app_pem"></a> [github\_app\_pem](#input\_github\_app\_pem) | The contents of the GitHub App private key PEM file | `string` | `""` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | Kubernetes namespace to deploy Flux2 in | `string` | `"flux-system"` | no |
-| <a name="input_repository_branch"></a> [repository\_branch](#input\_repository\_branch) | Branch to track in the Git repository | `string` | `"main"` | no |
-| <a name="input_repository_url"></a> [repository\_url](#input\_repository\_url) | URL of the Git repository containing Kubernetes manifests | `string` | n/a | yes |
 
 ## Outputs
 
