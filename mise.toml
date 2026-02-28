@@ -1,0 +1,5 @@
+[tasks]
+version = """
+echo "Current version:"
+cat VERSION
+"""
