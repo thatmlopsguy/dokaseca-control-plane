@@ -4,7 +4,7 @@ domain_name                 = "k8s-home.lab"
 cloud_provider              = "local"
 kubernetes_distro           = "kind" # options: kind, vind
 kubernetes_version          = "1.35.1"
-kubernetes_cni              = "default" # options: default, calico, cilium, flannel, istio
+kubernetes_cni              = "cilium" # options: default, calico, cilium, flannel, istio
 kubernetes_cni_version      = "1.18.5"
 enable_vault                = false
 enable_gateway_api          = true
@@ -76,17 +76,21 @@ addons = {
   enable_trivy            = false
   enable_kubescape        = false
   # networking
-  enable_gateway_api   = true
-  enable_skupper       = false
-  enable_kubevip       = false
-  enable_metallb       = true
-  enable_cilium        = false
-  enable_calico        = false
-  enable_ingress_nginx = false
+  enable_gateway_api   = false # managed by terraform
+  enable_ingress_nginx = false # TODO deprecated, use gateway api instead
   enable_traefik       = false
-  enable_ngrok         = false
-  enable_istio         = true
-  enable_linkerd       = false
+  enable_skupper       = false
+  ## bare metal load-balancer for Kubernetes
+  enable_kubevip = false
+  enable_metallb = true
+  ## doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now,
+  ## TODO find a way to make it work with gitops
+  enable_flannel = false
+  enable_cilium  = false
+  enable_calico  = false
+  enable_istio   = false
+  enable_linkerd = false
+  enable_ngrok   = false
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false
