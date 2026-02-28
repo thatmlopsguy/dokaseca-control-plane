@@ -68,10 +68,19 @@ jobs:
         working-directory: terraform/standalone
         run: terraform show -no-color tfplan.binary
 
-      - name: Terraform Apply
+      - name: Terraform Apply (Cluster First)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         working-directory: terraform/standalone
-        run: terraform apply -auto-approve tfplan.binary
+        run: |
+          # Apply cluster first to create kubeconfig (works for kind or vind)
+          terraform apply -auto-approve -target=module.kind_cluster -target=module.vind_cluster
+
+      - name: Terraform Apply (Full)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: terraform/standalone
+        run: |
+          # Now apply remaining resources with kubeconfig available
+          terraform apply -auto-approve
 
       - name: Verify Cluster
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
