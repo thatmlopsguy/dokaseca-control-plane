@@ -37,6 +37,9 @@ locals {
     distro  = local.kubernetes_distro
   }, var.teams)
 
+
+  # Addons
+  # every time we add a new addon, we have to update the addons variable with a try function to avoid errors when the variable is not defined in terraform.tfvars
   oss_addons = {
     # multi tenancy
     enable_capsule = try(var.addons.enable_capsule, false) # TODO
@@ -200,16 +203,17 @@ locals {
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
     # machine learning
-    enable_feast      = try(var.addons.enable_feast, false)      # TODO
-    enable_kserve     = try(var.addons.enable_kserve, false)     # TODO
-    enable_mlflow     = try(var.addons.enable_mlflow, false)     # TODO
-    enable_kuberay    = try(var.addons.enable_kuberay, false)    # TODO
-    enable_seldon     = try(var.addons.enable_seldon, false)     # TODO
-    enable_litellm    = try(var.addons.enable_litellm, false)    # TODO
-    enable_ollama     = try(var.addons.enable_ollama, false)     # TODO
-    enable_langfuse   = try(var.addons.enable_langfuse, false)   # TODO
-    enable_kgateway   = try(var.addons.enable_kgateway, false)   # TODO
-    enable_vllm_stack = try(var.addons.enable_vllm_stack, false) # TODO
+    enable_feast            = try(var.addons.enable_feast, false)            # TODO
+    enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
+    enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
+    enable_kuberay          = try(var.addons.enable_kuberay, false)          # TODO
+    enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
+    enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
+    enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
+    enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
+    enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
+    enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
+    enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
     enable_kahu   = try(var.addons.enable_kahu, false)   # TODO

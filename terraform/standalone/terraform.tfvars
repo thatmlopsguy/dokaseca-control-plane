@@ -1,10 +1,15 @@
-environment        = "dev"
-cluster_type       = "spoke"
-domain_name        = "k8s-home.lab"
-cloud_provider     = "local"
-kubernetes_version = "1.33.1"
-gitops_controller  = "fluxcd" # options: argocd, fluxcd
-gitops_org         = "https://github.com/thatmlopsguy"
+environment                 = "dev"
+cluster_type                = "spoke"
+domain_name                 = "k8s-home.lab"
+cloud_provider              = "local"
+kubernetes_distro           = "kind"
+kubernetes_version          = "1.33.1"
+kubernetes_cni              = "default"
+enable_vault                = false
+enable_gateway_api          = true
+gateway_api_release_version = "v1.4.1"
+gitops_controller           = "argocd" # options: argocd, fluxcd
+gitops_org                  = "https://github.com/thatmlopsguy"
 # Teams
 teams = {
   team-a = "true"
@@ -128,14 +133,15 @@ addons = {
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
-  enable_mlflow     = false
-  enable_kuberay    = false
-  enable_seldon     = false
-  enable_litellm    = false
-  enable_langfuse   = false
-  enable_ollama     = false
-  enable_vllm_stack = false
-  enable_llm_d      = false
+  enable_mlflow           = false
+  enable_kuberay          = false
+  enable_seldon           = false
+  enable_litellm          = true
+  enable_litellm_operator = true
+  enable_langfuse         = false
+  enable_ollama           = false
+  enable_vllm_stack       = false
+  enable_llm_d            = false
   # schedulers
   enable_kueue    = false
   enable_yunikorn = false

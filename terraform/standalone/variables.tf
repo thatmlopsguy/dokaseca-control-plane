@@ -48,8 +48,8 @@ variable "kubernetes_distro" {
   default     = "kind"
 
   validation {
-    condition     = contains(["kind", "k3d", "k0s"], lower(var.kubernetes_distro))
-    error_message = "Invalid kubernetes distro. Must be one of 'kind', 'k3d' or 'k0s'."
+    condition     = contains(["kind", "k3d", "k0s", "vind"], lower(var.kubernetes_distro))
+    error_message = "Invalid kubernetes distro. Must be one of 'kind', 'k3d', 'k0s' or 'vind'."
   }
 }
 
@@ -59,14 +59,41 @@ variable "kubernetes_version" {
   default     = "1.31.2"
 }
 
-variable "cloud_provider" {
+variable "kubernetes_cni" {
+  description = "Kubernetes CNI plugin to use"
   type        = string
+  default     = "default"
+  validation {
+    condition     = contains(["default", "calico", "cilium", "flannel", "istio"], lower(var.kubernetes_cni))
+    error_message = "Invalid kubernetes cni. Must be one of 'default', 'calico', 'cilium', 'flannel' or 'istio'."
+  }
+}
+
+variable "cloud_provider" {
   description = "Cloud provider to deploy infrastructure to"
+  type        = string
   default     = "local"
 
   validation {
-    condition     = contains(["aws", "azure", "gcp", "local"], lower(var.cloud_provider))
+    condition     = contains(["local", "aws", "azure", "gcp"], lower(var.cloud_provider))
     error_message = "Invalid cloud provider. Must be one of 'local', 'aws', 'azure' or 'gcp'."
+  }
+}
+
+variable "enable_gateway_api" {
+  description = "Enable or disable the Gateway API CRDs"
+  type        = bool
+  default     = false
+}
+
+variable "gateway_api_release_version" {
+  description = "The version of the release to deploy"
+  type        = string
+  default     = "v1.4.1"
+
+  validation {
+    condition     = can(regex("^v?\\d+\\.\\d+\\.\\d+$", var.gateway_api_release_version))
+    error_message = "The release version must be in the format 'vX.Y.Z' or 'X.Y.Z'"
   }
 }
 
@@ -198,10 +225,12 @@ variable "addons" {
     enable_kubescape         = false
     enable_victoria_logs     = false
     # machine learning
-    enable_mlflow  = false
-    enable_kuberay = false
-    enable_seldon  = false
-    enable_feast   = false
+    enable_mlflow           = false
+    enable_kuberay          = false
+    enable_seldon           = false
+    enable_feast            = false
+    enable_litellm          = false
+    enable_litellm_operator = false
     # platform
     enable_teams = false
     # cloud provider specific

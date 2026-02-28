@@ -17,6 +17,15 @@ resource "kind_cluster" "main" {
     node {
       role = "control-plane"
 
+      # Apply patch for Ingress
+      kubeadm_config_patches = [<<-YAML
+        kind: InitConfiguration
+        nodeRegistration:
+          kubeletExtraArgs:
+            node-labels: "ingress-ready=true"
+        YAML
+      ]
+
       dynamic "extra_mounts" {
         for_each = var.extra_mounts
         content {
@@ -25,27 +34,28 @@ resource "kind_cluster" "main" {
         }
       }
 
-      kubeadm_config_patches = [
-        "kind: InitConfiguration\nnodeRegistration:\n  kubeletExtraArgs:\n    node-labels: \"ingress-ready=true\"\n",
-        #"kind: ClusterConfiguration\ncontrollerManager:\n  extraArgs:\n    bind-address: \"0.0.0.0\"\nscheduler:\n  extraArgs:\n    bind-address: \"0.0.0.0\"\n"
-      ]
-
-      # extra_port_mappings {
-      #   container_port = 80
-      #   host_port      = 80
-      # }
-
-      # extra_port_mappings {
-      #   container_port = 443
-      #   host_port      = 443
-      # }
+      dynamic "extra_port_mappings" {
+        for_each = var.port_configuration
+        content {
+          container_port = extra_port_mappings.value.node_port
+          host_port      = extra_port_mappings.value.host_port
+          protocol       = extra_port_mappings.value.protocol
+        }
+      }
     }
 
-    # Commenting out worker node due to persistent kubeadm join issues
-    # Using single-node cluster with untainted control-plane instead
-    # node {
-    #   role = "worker"
-    # }
+    dynamic "node" {
+      for_each = range(var.worker_nodes)
+      content {
+        role = "worker"
+      }
+    }
+
+    containerd_config_patches = [
+      <<-YAML
+      networking.disableDefaultCNI = ${var.disable_default_cni}
+      YAML
+    ]
   }
 }
 

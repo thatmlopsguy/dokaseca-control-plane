@@ -6,6 +6,20 @@ module "kind_cluster" {
   environment        = var.environment
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
+
+  # Use Cilium as CNI
+  disable_default_cni = var.kubernetes_cni != "default"
+}
+
+module "gateway_api" {
+  source = "./../modules/gateway_api"
+
+  count = var.enable_gateway_api ? 1 : 0
+
+  release_version = var.gateway_api_release_version
+  kubeconfig_path = local.kubeconfig_path
+
+  depends_on = [module.kind_cluster]
 }
 
 module "gitops_bridge" {
