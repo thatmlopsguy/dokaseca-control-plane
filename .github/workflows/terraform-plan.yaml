@@ -1,0 +1,51 @@
+name: "Terraform Plan Standalone"
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+    # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  terraform:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+      actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
+
+    # strategy:
+    #   fail-fast: false
+
+    name: "Terraform Plan Standalone"
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0 # Fetch full history for better diffs
+          persist-credentials: false
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4.0.0
+        with:
+          terraform_version: "1.14.1"
+          terraform_wrapper: false
+
+      - name: Terraform Init
+        working-directory: terraform/standalone
+        run: terraform init -upgrade
+
+      - name: Terraform Plan
+        working-directory: terraform/standalone
+        run: terraform plan -out=tfplan.binary
+
+      - name: Terraform Show Plan
+        working-directory: terraform/standalone
+        run: terraform show -no-color tfplan.binary
