@@ -23,24 +23,24 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
-clean-infra: kind-delete-all-clusters terraform-rm-state ## Clean all infrastructure
+clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-state ## Clean all infrastructure
 
 ##@ Terraform
-terraform-rm-state: ## remove all terraform states
+terraform-rm-state: ## Remove all terraform states
 	@echo "Removing terraform state files..."
 	@rm -rf $(TERRAFORM_DIR)/distributed/terraform.tfstate.d
 	@echo "Terraform state files removed."
 
-terraform-fmt: ## format terraform files
+terraform-fmt: ## Format terraform files
 	@terraform fmt -recursive $(TERRAFORM_DIR)
 
-terraform-lint: ## linting terraform files
+terraform-lint: ## Linting terraform files
 	@tflint --init
 	@tflint --recursive \
 			--config="$(ROOT_DIR)/.tflint.hcl" \
 			--minimum-failure-severity=warning
 
-terraform-docs: ## generates documentation for all terraform modules
+terraform-docs: ## Generates documentation for all terraform modules
 	@echo "## Generating documentation for terraform modules"
 	@for dir in $(shell find $(TERRAFORM_DIR)/modules -name '*.tf' -not -path '*/.terraform/*' -exec dirname {} \; | sort -u); do \
 		terraform-docs -c "$(ROOT_DIR)/.terraform-docs.yml" "$$dir"; \
@@ -66,14 +66,26 @@ kind-delete-all-clusters: ## Delete all kind clusters
 kind-export-kubeconfig: ## Export kind kubeconfig
 	@kind export kubeconfig --name $(PROJECT_NAME) --internal --kubeconfig kubeconfigs/$(PROJECT_NAME)
 
-kind-list-clusters: ## list kind clusters
+kind-list-clusters: ## List kind clusters
 	@kind get clusters
+
+##@ vcluster
+vcluster-list: ## List of vclusters
+	@vcluster list
+
+vcluster-delete-all-clusters: ## Delete all vclusters
+	@echo "Deleting all vclusters..."
+	@vcluster list --output json | jq -r '.[].Name' | while read name; do \
+		docker rm -f "vcluster.$${name}" 2>/dev/null || true; \
+		vcluster delete "$$name" --ignore-not-found 2>/dev/null || true; \
+	done
+	@echo "All vclusters deleted."
 
 ##@ K3s
 k3d-create-cluster: ## Create k3d cluster
 	@k3d cluster create --config=distros/k3d/simple.yml
 
-k3d-list-clusters: ## list k3d clusters
+k3d-list-clusters: ## List k3d clusters
 	@k3d cluster list
 
 k3d-delete-all-clusters: ## Delete all k3d clusters
@@ -179,7 +191,7 @@ restart-monitoring-stack: ## Restart monitoring stack
 	@kubectl rollout restart deploy,sts -n monitoring
 
 ##@ Security
-kubescape-scan: ## scan kubernetes
+kubescape-scan: ## Scan Kubernetes
 	@kubescape scan
 
 ##@ Compliance
@@ -189,7 +201,7 @@ kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui
 polaris-ui: ## Access polaris dashboard
 	@kubectl port-forward -n polaris svc/polaris-dashboard 9080:80
 
-cosign-gen-keys: ## generate cosign key pair
+cosign-gen-keys: ## Generate cosign key pair
 	@cosign generate-key-pair
 
 ##@ Cost
@@ -242,9 +254,6 @@ kargo-secret: ## Create kargo secret (requires apache2-utils)
 	echo "Password: $$pass"; \
 	echo "Password Hash: $$(htpasswd -bnBC 10 "" $$pass | tr -d ':')"; \
 	echo "Signing Key: $$(openssl rand -base64 48 | tr -d "=+/" | head -c 32)"
-
-vclusters: ## list of vclusters
-	@vcluster list
 
 komoplane-ui: ## Access komoplane-ui (crossplane dashboard)
 	@kubectl port-forward svc/komoplane -n komoplane 8090:8090

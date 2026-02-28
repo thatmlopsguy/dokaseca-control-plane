@@ -22,6 +22,7 @@ module "vind_cluster" {
   kubernetes_version   = var.kubernetes_version
   kubeconfig_save_path = local.kubeconfig_path
 
+  enable_default_cni       = var.kubernetes_cni == "default"
   enable_telemetry         = false
   enable_vcluster_platform = false
   enable_private_nodes     = false

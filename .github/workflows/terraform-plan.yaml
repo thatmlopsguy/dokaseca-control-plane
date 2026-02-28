@@ -88,6 +88,7 @@ jobs:
         run: |
           kind get clusters
           kubectl get nodes --kubeconfig ../../kubeconfigs/standalone/dev
+          kubectl get namespaces --kubeconfig ../../kubeconfigs/standalone/dev
 
       - name: Cleanup Kind Cluster
         if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push'

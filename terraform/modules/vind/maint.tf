@@ -48,7 +48,10 @@ resource "terraform_data" "vind_cluster_destroy" {
     when    = destroy
     command = <<EOT
       echo "#### Destroying vCluster with vind:" && \
-      vcluster delete ${self.input.cluster_name} && \
+      echo "#### Stopping vCluster containers manually..." && \
+      docker ps -a --filter "name=vcluster.*${self.input.cluster_name}" --format "{{.Names}}" | xargs -r docker stop && \
+      docker ps -a --filter "name=vcluster.*${self.input.cluster_name}" --format "{{.Names}}" | xargs -r docker rm && \
+      vcluster delete ${self.input.cluster_name} --ignore-not-found && \
       rm -f ${self.input.kubeconfig_save_path} && \
       echo "#### Cleanup completed"
     EOT
