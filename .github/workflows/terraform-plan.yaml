@@ -53,6 +53,13 @@ jobs:
         working-directory: terraform/standalone
         run: terraform init -upgrade
 
+      - name: Install kind
+        run: |
+          curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.31.0/kind-linux-amd64
+          chmod +x ./kind
+          sudo mv ./kind /usr/local/bin/kind
+          kind version
+
       - name: Terraform Plan
         working-directory: terraform/standalone
         run: terraform plan -out=tfplan.binary
@@ -60,3 +67,20 @@ jobs:
       - name: Terraform Show Plan
         working-directory: terraform/standalone
         run: terraform show -no-color tfplan.binary
+
+      - name: Terraform Apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: terraform/standalone
+        run: terraform apply -auto-approve tfplan.binary
+
+      - name: Verify Cluster
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: terraform/standalone
+        run: |
+          kind get clusters
+          kubectl get nodes --kubeconfig ../../kubeconfigs/standalone/dev
+
+      - name: Cleanup Kind Cluster
+        if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push'
+        working-directory: terraform/standalone
+        run: terraform destroy -auto-approve || true
