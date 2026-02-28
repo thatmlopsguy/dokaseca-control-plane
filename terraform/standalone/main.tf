@@ -38,6 +38,18 @@ module "gateway_api" {
   depends_on = [module.kind_cluster, module.vind_cluster]
 }
 
+module "cni" {
+  source = "./../modules/cni"
+
+  count = var.kubernetes_cni != "default" ? 1 : 0
+
+  kubernetes_cni  = var.kubernetes_cni
+  kubeconfig_path = local.kubeconfig_path
+  cni_version     = var.kubernetes_cni_version
+
+  depends_on = [module.kind_cluster, module.vind_cluster]
+}
+
 module "gitops_bridge" {
   source = "./../modules/gitops-bridge"
 

@@ -69,6 +69,11 @@ variable "kubernetes_cni" {
   }
 }
 
+variable "kubernetes_cni_version" {
+  description = "Version of the CNI plugin to use"
+  type        = string
+}
+
 variable "cloud_provider" {
   description = "Cloud provider to deploy infrastructure to"
   type        = string

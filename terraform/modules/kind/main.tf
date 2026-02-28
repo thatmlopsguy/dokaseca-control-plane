@@ -51,11 +51,9 @@ resource "kind_cluster" "main" {
       }
     }
 
-    containerd_config_patches = [
-      <<-YAML
-      networking.disableDefaultCNI = ${var.disable_default_cni}
-      YAML
-    ]
+    networking {
+      disable_default_cni = var.disable_default_cni
+    }
   }
 }
 
