@@ -100,15 +100,19 @@ locals {
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
     enable_krateo = try(var.addons.enable_krateo, false) # TODO
     # networking
-    enable_gateway_api   = try(var.addons.enable_gateway_api, true)
-    enable_skupper       = try(var.addons.enable_skupper, false)
-    enable_metallb       = try(var.addons.enable_metallb, false)
-    enable_kubevip       = try(var.addons.enable_kubevip, false)
+    ## cni - doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now, TODO find a way to make it work with gitops
+    # enable_flannel = try(var.addons.enable_flannel, false)
+    # enable_cilium  = try(var.addons.enable_cilium, false)
+    # enable_calico  = try(var.addons.enable_calico, false)
+    # enable_istio   = try(var.addons.enable_istio, false)
+    ## gateway api
+    enable_gateway_api = try(var.addons.enable_gateway_api, true)
+    enable_skupper     = try(var.addons.enable_skupper, false)
+    enable_metallb     = try(var.addons.enable_metallb, false)
+    enable_kubevip     = try(var.addons.enable_kubevip, false)
+    ## ingress controllers - DEPRECATED, use gateway api instead
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
-    enable_cilium        = try(var.addons.enable_cilium, false)
-    enable_calico        = try(var.addons.enable_calico, false)
-    enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
     enable_signoz                     = try(var.addons.enable_signoz, false)
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
