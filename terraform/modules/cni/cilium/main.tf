@@ -42,6 +42,16 @@ resource "helm_release" "cilium" {
     name  = "ingressController.loadbalancerMode"
     value = "shared"
   }
+
+  set {
+    name  = "hubble.relay.enabled"
+    value = "true"
+  }
+
+  set {
+    name  = "hubble.ui.enabled"
+    value = "true"
+  }
 }
 
 

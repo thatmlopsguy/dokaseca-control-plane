@@ -299,6 +299,7 @@ EOF
     declare -A network_tools=(
         [istioctl]="istioctl version --short --remote=false | awk 'NR==1 {print \$3}'"
         [cilium]="cilium version --client | awk '{print \$2}'"
+        [hubble]="hubble version | awk '{print \$2}' | cut -d'@' -f1"
     )
 
     for tool in "${!network_tools[@]}"; do
