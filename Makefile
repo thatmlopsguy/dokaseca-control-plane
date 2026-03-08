@@ -54,6 +54,10 @@ terraform-docs: ## Generates documentation for all terraform modules
 		terraform-docs -c "$(ROOT_DIR)/.terraform-docs.yml" "$$dir"; \
 	done
 
+##@ Docker
+docker-compose-up: ## Start docker-compose services
+	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra up -d
+
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
