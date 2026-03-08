@@ -4,14 +4,14 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "terraform/standalone/**"
+      - "terraform/topologies/standalone/**"
       - "terraform/modules/**"
       - ".terraform-docs.yml"
       - ".tflint.hcl"
   pull_request:
     branches: ["main"]
     paths:
-      - "terraform/standalone/**"
+      - "terraform/topologies/standalone/**"
       - "terraform/modules/**"
       - ".terraform-docs.yml"
       - ".tflint.hcl"
@@ -50,7 +50,7 @@ jobs:
           terraform_wrapper: false
 
       - name: Terraform Init
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: terraform init -upgrade
 
       - name: Install kind
@@ -61,36 +61,36 @@ jobs:
           kind version
 
       - name: Terraform Plan
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: terraform plan -out=tfplan.binary
 
       - name: Terraform Show Plan
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: terraform show -no-color tfplan.binary
 
       - name: Terraform Apply (Cluster First)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: |
           # Apply cluster first to create kubeconfig (works for kind or vind)
           terraform apply -auto-approve -target=module.kind_cluster -target=module.vind_cluster
 
       - name: Terraform Apply (Full)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: |
           # Now apply remaining resources with kubeconfig available
           terraform apply -auto-approve
 
       - name: Verify Cluster
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: |
           kind get clusters
-          kubectl get nodes --kubeconfig ../../kubeconfigs/standalone/dev
-          kubectl get namespaces --kubeconfig ../../kubeconfigs/standalone/dev
+          kubectl get nodes --kubeconfig ../../../kubeconfigs/standalone/dev
+          kubectl get namespaces --kubeconfig ../../../kubeconfigs/standalone/dev
 
       - name: Cleanup Kind Cluster
         if: always() && github.ref == 'refs/heads/main' && github.event_name == 'push'
-        working-directory: terraform/standalone
+        working-directory: terraform/topologies/standalone
         run: terraform destroy -auto-approve || true

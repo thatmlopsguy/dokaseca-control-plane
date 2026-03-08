@@ -1,7 +1,5 @@
 # DoKa Seca Architecture
 
-![DoKa Seca Architecture](assets/figures/diagrams/architecture.drawio.png)
-
 ## Overview
 
 DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a controlled, isolated environment

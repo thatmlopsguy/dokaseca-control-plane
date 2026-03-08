@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
-
-</div>
+<img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/></div>
 
 <div align="center">
 
@@ -25,6 +23,14 @@
 >⚠️ Note
 >
 > DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.
+
+## 📖 Overview
+
+<div align="center">
+  <img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/figures/images/internal-developer-platform.png" alt="Internal Developer Platform" width="600"/>
+  <p><em>Based on the Humanitec Reference Architectures for Internal Developer Platforms.</p>
+  <p>Source: <a href="https://platformengineering.org/platform-tooling">platformengineering.org</a></em></p>
+</div>
 
 ## 👋 Introduction
 
@@ -93,7 +99,7 @@ version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVer
 
 ## 🚀 Quick Start
 
-DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs:
+DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced configurations, see the [Terraform README](terraform/README.md).
 
 ### Option 1: Hub-Spoke Topology (Recommended)
 
@@ -103,7 +109,7 @@ This deploys a centralized hub cluster that manages multiple spoke clusters. The
 
 ```bash
 # Deploy control plane cluster
-cd terraform/hub-spoke/hub
+cd terraform/topologies/hub-spoke/hub
 terraform init
 terraform apply -auto-approve
 ```
@@ -111,11 +117,11 @@ terraform apply -auto-approve
 **Step 2: Deploy Spoke Clusters (Optional)**
 
 ```bash
-cd terraform/hub-spoke/spoke
+cd terraform/topologies/hub-spoke/spoke
 # Deploy spoke clusters for different environments
-./scripts/terraform.sh spoke dev apply
-./scripts/terraform.sh spoke stg apply
-./scripts/terraform.sh spoke prod apply
+./deploy.sh spoke dev apply
+./deploy.sh spoke stg apply
+./deploy.sh spoke prod apply
 ```
 
 **Step 3: Verify Deployment**
@@ -130,11 +136,10 @@ kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
 
 ### Option 2: Distributed Topology
 
-Each cluster manages its own addons and workloads independently.
-Navigate to distributed configuration.
+Each cluster manages its own addons and workloads independently. Navigate to the distributed configuration.
 
 ```bash
-cd terraform/distributed
+cd terraform/topologies/distributed
 
 # Deploy clusters for each environment
 ./deploy.sh dev
@@ -265,7 +270,7 @@ read our [contributing guidelines](CONTRIBUTING.md).
 
 ## 🗺️ Roadmap
 
-Want to know about the features to come? Check out the project [roadmap](ROADMAP.md) for more information.
+Want to know about the features to come? Check out the project roadmap for more information.
 
 ## 🔖 License
 

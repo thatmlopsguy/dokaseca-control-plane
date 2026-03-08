@@ -17,6 +17,7 @@ fi
 env=$1
 
 echo "Deploying $env with workspaces/${env}.tfvars ..."
+terraform init -upgrade
 
 # Check if the tfvars file exists
 if [[ ! -f "workspaces/${env}.tfvars" ]]; then
@@ -27,7 +28,6 @@ fi
 # Create workspace if it doesn't exist (ignore error if it already exists)
 terraform workspace new $env 2>/dev/null || true
 terraform workspace select $env
-terraform init
 
 echo "Applying terraform configuration..."
 terraform apply -var-file="workspaces/${env}.tfvars" -auto-approve

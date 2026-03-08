@@ -17,6 +17,6 @@ sudo mv ./kind /usr/local/bin/kind
 # setup autocomplete for kubectl and alias k
 sudo apt-get update -y && sudo apt-get install bash-completion -y
 mkdir $HOME/.kube
-echo "source <(kubectl completion bash)" >> $HOME/.bashrc
-echo "alias k=kubectl" >> $HOME/.bashrc
-echo "complete -F __start_kubectl k" >> $HOME/.bashrc
+echo "source <(kubectl completion bash)" >>$HOME/.bashrc
+echo "alias k=kubectl" >>$HOME/.bashrc
+echo "complete -F __start_kubectl k" >>$HOME/.bashrc
