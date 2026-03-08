@@ -27,7 +27,7 @@
 ## 📖 Overview
 
 <div align="center">
-  <img src="https://github.com/thatmlopsguy/dokaseca-control-plane/blob/main/docs/assets/figures/images/internal-developer-platform.png" alt="Internal Developer Platform" width="600"/>
+  <img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/figures/images/internal-developer-platform.png" alt="Internal Developer Platform" width="600"/>
   <p><em>Based on the Humanitec Reference Architectures for Internal Developer Platforms.</p>
   <p>Source: <a href="https://platformengineering.org/platform-tooling">platformengineering.org</a></em></p>
 </div>
