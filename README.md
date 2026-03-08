@@ -93,7 +93,7 @@ version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVer
 
 ## 🚀 Quick Start
 
-DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs:
+DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced configurations, see the [Terraform README](terraform/README.md).
 
 ### Option 1: Hub-Spoke Topology (Recommended)
 
@@ -113,9 +113,9 @@ terraform apply -auto-approve
 ```bash
 cd terraform/hub-spoke/spoke
 # Deploy spoke clusters for different environments
-./scripts/terraform.sh spoke dev apply
-./scripts/terraform.sh spoke stg apply
-./scripts/terraform.sh spoke prod apply
+./deploy.sh spoke dev apply
+./deploy.sh spoke stg apply
+./deploy.sh spoke prod apply
 ```
 
 **Step 3: Verify Deployment**
@@ -130,8 +130,7 @@ kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
 
 ### Option 2: Distributed Topology
 
-Each cluster manages its own addons and workloads independently.
-Navigate to distributed configuration.
+Each cluster manages its own addons and workloads independently. Navigate to the distributed configuration.
 
 ```bash
 cd terraform/distributed
