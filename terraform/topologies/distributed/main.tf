@@ -31,6 +31,29 @@ module "vind_cluster" {
   enable_private_nodes     = false
 }
 
+module "gateway_api" {
+  source = "git::https://github.com/thatmlopsguy/dokaseca-control-plane.git//terraform/modules/gateway_api?ref=main"
+
+  count = var.enable_gateway_api ? 1 : 0
+
+  release_version = var.gateway_api_release_version
+  kubeconfig_path = local.kubeconfig_path
+
+  depends_on = [module.kind_cluster, module.vind_cluster]
+}
+
+module "cni" {
+  source = "git::https://github.com/thatmlopsguy/dokaseca-control-plane.git//terraform/modules/cni?ref=main"
+
+  count = var.kubernetes_cni != "default" ? 1 : 0
+
+  kubernetes_cni  = var.kubernetes_cni
+  kubeconfig_path = local.kubeconfig_path
+  cni_version     = var.kubernetes_cni_version
+
+  depends_on = [module.kind_cluster, module.vind_cluster]
+}
+
 module "gitops_bridge" {
   source = "git::https://github.com/thatmlopsguy/dokaseca-control-plane.git//terraform/modules/gitops-bridge?ref=main"
 
