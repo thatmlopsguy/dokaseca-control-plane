@@ -270,7 +270,7 @@ read our [contributing guidelines](CONTRIBUTING.md).
 
 ## 🗺️ Roadmap
 
-Want to know about the features to come? Check out the project [roadmap](ROADMAP.md) for more information.
+Want to know about the features to come? Check out the project roadmap for more information.
 
 ## 🔖 License
 
