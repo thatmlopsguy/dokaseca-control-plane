@@ -2243,12 +2243,12 @@ version.BuildInfo<span class="o">{</span>Version:<span class="s2">&quot;v3.16.1&
 <p>This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.</p>
 <p><strong>Step 1: Deploy the Hub Cluster</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deploy control plane cluster</span>
-<span class="nb">cd</span><span class="w"> </span>terraform/hub-spoke/hub
+<span class="nb">cd</span><span class="w"> </span>terraform/topologies/hub-spoke/hub
 terraform<span class="w"> </span>init
 terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div>
 <p><strong>Step 2: Deploy Spoke Clusters (Optional)</strong></p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/hub-spoke/spoke
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/topologies/hub-spoke/spoke
 <span class="c1"># Deploy spoke clusters for different environments</span>
 ./deploy.sh<span class="w"> </span>spoke<span class="w"> </span>dev<span class="w"> </span>apply
 ./deploy.sh<span class="w"> </span>spoke<span class="w"> </span>stg<span class="w"> </span>apply
@@ -2263,7 +2263,7 @@ kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"
 </code></pre></div>
 <h3 id="option-2-distributed-topology">Option 2: Distributed Topology<a class="headerlink" href="#option-2-distributed-topology" title="Permanent link">&para;</a></h3>
 <p>Each cluster manages its own addons and workloads independently. Navigate to the distributed configuration.</p>
-<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/distributed
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/topologies/distributed
 
 <span class="c1"># Deploy clusters for each environment</span>
 ./deploy.sh<span class="w"> </span>dev
