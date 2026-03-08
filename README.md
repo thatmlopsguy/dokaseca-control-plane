@@ -103,7 +103,7 @@ This deploys a centralized hub cluster that manages multiple spoke clusters. The
 
 ```bash
 # Deploy control plane cluster
-cd terraform/hub-spoke/hub
+cd terraform/topologies/hub-spoke/hub
 terraform init
 terraform apply -auto-approve
 ```
@@ -111,7 +111,7 @@ terraform apply -auto-approve
 **Step 2: Deploy Spoke Clusters (Optional)**
 
 ```bash
-cd terraform/hub-spoke/spoke
+cd terraform/topologies/hub-spoke/spoke
 # Deploy spoke clusters for different environments
 ./deploy.sh spoke dev apply
 ./deploy.sh spoke stg apply
@@ -133,7 +133,7 @@ kubectl get secrets -n argocd -l argocd.argoproj.io/secret-type=cluster
 Each cluster manages its own addons and workloads independently. Navigate to the distributed configuration.
 
 ```bash
-cd terraform/distributed
+cd terraform/topologies/distributed
 
 # Deploy clusters for each environment
 ./deploy.sh dev

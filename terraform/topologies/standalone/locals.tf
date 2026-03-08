@@ -41,10 +41,15 @@ locals {
   # Addons
   # every time we add a new addon, we have to update the addons variable with a try function to avoid errors when the variable is not defined in terraform.tfvars
   oss_addons = {
+    # artifacts
+    enable_harbor      = try(var.addons.enable_harbor, false)      # TODO
+    enable_nexus       = try(var.addons.enable_nexus, false)       # TODO
+    enable_chartmuseum = try(var.addons.enable_chartmuseum, false) # TODO
+    enable_artifactory = try(var.addons.enable_artifactory, false) # TODO
     # multi tenancy
     enable_capsule = try(var.addons.enable_capsule, false) # TODO
     # dashboard
-    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # TODO
+    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # deprecated
     enable_headlamp             = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane            = try(var.addons.enable_komoplane, false)

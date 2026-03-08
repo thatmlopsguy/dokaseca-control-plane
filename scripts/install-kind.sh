@@ -3,7 +3,7 @@
 set -e
 
 # kind version
-KIND_VERSION="${KIND_VERSION:-v0.30.0}"
+KIND_VERSION="${KIND_VERSION:-v0.31.0}"
 echo "Installing kind version: ${KIND_VERSION}"
 
 # For AMD64 / x86_64

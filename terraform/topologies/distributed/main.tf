@@ -1,5 +1,5 @@
 module "kind_cluster" {
-  source = "./../modules/kind"
+  source = "./../../modules/kind"
 
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
@@ -9,7 +9,7 @@ module "kind_cluster" {
 }
 
 module "gitops_bridge" {
-  source = "./../modules/gitops-bridge"
+  source = "./../../modules/gitops-bridge"
 
   count = var.gitops_controller == "argocd" ? 1 : 0
 

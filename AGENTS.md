@@ -132,7 +132,6 @@ Naming:
 ## Workflow Notes / Gotchas
 
 - Semantic PR titles are enforced (see `.github/workflows/check-semantic-prs.yml`); use prefixes like `feat:`, `fix:`, `docs:`, `chore:`.
-- Some docs mention `./scripts/terraform.sh`, but it is not present in this checkout; run Terraform from `terraform/*` or use Make targets.
 - `third_party/` is excluded from repo-level pre-commit; run checks manually inside that subtree if you change it.
 
 ## Before PR (Quick)
