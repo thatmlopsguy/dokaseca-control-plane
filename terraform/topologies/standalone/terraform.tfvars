@@ -4,7 +4,7 @@ domain_name                 = "k8s-home.lab"
 cloud_provider              = "local"
 kubernetes_distro           = "kind" # options: kind, vind
 kubernetes_version          = "1.35.1"
-kubernetes_cni              = "cilium" # options: default, calico, cilium, flannel, istio
+kubernetes_cni              = "default" # options: default, calico, cilium, flannel, istio
 kubernetes_cni_version      = "1.18.5"
 enable_vault                = false
 enable_gateway_api          = true
@@ -28,6 +28,13 @@ argocd_files_config = {
   load_workloads = false
 }
 addons = {
+  # artifacts
+  enable_harbor      = false
+  enable_nexus       = false
+  enable_chartmuseum = false
+  enable_artifactory = false
+  # multi tenancy
+  enable_capsule = false
   # dashboard
   enable_headlamp       = false
   enable_helm_dashboard = false
