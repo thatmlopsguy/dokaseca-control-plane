@@ -41,7 +41,9 @@ No modules.
 | <a name="input_argocd"></a> [argocd](#input\_argocd) | argocd helm options | `any` | `{}` | no |
 | <a name="input_cluster"></a> [cluster](#input\_cluster) | argocd cluster secret | `any` | `null` | no |
 | <a name="input_create"></a> [create](#input\_create) | Create terraform resources | `bool` | `true` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Name of the environment | `string` | `"dev"` | no |
 | <a name="input_install"></a> [install](#input\_install) | Deploy argocd helm | `bool` | `true` | no |
+| <a name="input_region"></a> [region](#input\_region) | region of the kubernetes cluster | `string` | `"north-america"` | no |
 
 ## Outputs
 
