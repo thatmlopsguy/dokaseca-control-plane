@@ -1,3 +1,25 @@
+variable "environment" {
+  description = "Name of the environment"
+  type        = string
+  default     = "dev"
+
+  validation {
+    condition     = contains(["dev", "stg", "prod"], lower(var.environment))
+    error_message = "Invalid environment. Must be one of 'dev', 'stg' or 'prod'."
+  }
+}
+
+variable "region" {
+  description = "region of the kubernetes cluster"
+  type        = string
+  default     = "north-america"
+
+  validation {
+    condition     = contains(["north-america", "europe", "asia-pacific"], lower(var.region))
+    error_message = "Invalid environment. Must be one of 'north-america', 'europe' or 'asia-pacific'."
+  }
+}
+
 variable "cluster_name" {
   description = "Defines the name of the cluster"
   type        = string
@@ -17,17 +39,6 @@ variable "cluster_type" {
   validation {
     condition     = contains(["hub", "spoke"], lower(var.cluster_type))
     error_message = "Invalid cluster type. Must be one of 'hub' or 'spoke'."
-  }
-}
-
-variable "environment" {
-  description = "Name of the environment"
-  type        = string
-  default     = "dev"
-
-  validation {
-    condition     = contains(["dev", "stg", "prod"], lower(var.environment))
-    error_message = "Invalid environment. Must be one of 'dev', 'stg' or 'prod'."
   }
 }
 

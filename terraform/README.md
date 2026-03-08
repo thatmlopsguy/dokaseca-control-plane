@@ -2,6 +2,121 @@
 
 Deploys kind clusters in a multi-cluster setup.
 
+```sh
+$ tree terraform/topologies
+terraform/topologies
+├── distributed
+│   ├── bootstrap
+│   │   ├── addons.yaml
+│   │   └── workloads.yaml
+│   ├── deploy.sh
+│   ├── locals.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── providers.tf
+│   ├── variables.tf
+│   └── workspaces
+│       ├── dev.tfvars
+│       ├── prod.tfvars
+│       └── stg.tfvars
+├── hub-spoke
+│   ├── hub
+│   │   ├── bootstrap
+│   │   │   ├── addons.yaml
+│   │   │   └── workloads.yaml
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── providers.tf
+│   │   ├── terraform.tfstate
+│   │   └── variables.tf
+│   └── spokes
+│       ├── deploy.sh
+│       ├── locals.tf
+│       ├── main.tf
+│       ├── outputs.tf
+│       ├── providers.tf
+│       ├── terraform.tfstate.d
+│       │   └── dev
+│       ├── variables.tf
+│       └── workspaces
+│           ├── dev.tfvars
+│           ├── prod.tfvars
+│           └── stg.tfvars
+├── hub-spoke-agent
+│   ├── hub
+│   │   ├── bootstrap
+│   │   │   ├── addons.yaml
+│   │   │   └── workloads.yaml
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── providers.tf
+│   │   └── variables.tf
+│   └── spokes
+│       ├── bootstrap
+│       │   └── workloads.yaml
+│       ├── deploy.sh
+│       ├── locals.tf
+│       ├── main.tf
+│       ├── outputs.tf
+│       ├── providers.tf
+│       ├── variables.tf
+│       └── workspaces
+│           ├── dev.tfvars
+│           ├── prod.tfvars
+│           └── stg.tfvars
+├── hub-spoke-capi
+│   ├── bootstrap
+│   │   ├── addons.yaml
+│   │   ├── clusters.yaml
+│   │   └── workloads.yaml
+│   ├── locals.tf
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── providers.tf
+│   └── variables.tf
+├── hub-spoke-shared
+│   ├── hub
+│   │   ├── bootstrap
+│   │   │   ├── addons.yaml
+│   │   │   └── workloads.yaml
+│   │   ├── locals.tf
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── providers.tf
+│   │   ├── terraform.tfstate
+│   │   ├── terraform.tfstate.backup
+│   │   └── variables.tf
+│   └── spokes
+│       ├── bootstrap
+│       │   └── workloads.yaml
+│       ├── deploy.sh
+│       ├── locals.tf
+│       ├── main.tf
+│       ├── outputs.tf
+│       ├── providers.tf
+│       ├── terraform.tfstate.d
+│       │   └── dev
+│       │       └── terraform.tfstate
+│       ├── variables.tf
+│       └── workspaces
+│           ├── dev.tfvars
+│           ├── prod.tfvars
+│           └── stg.tfvars
+└── standalone
+    ├── bootstrap
+    │   ├── addons.yaml
+    │   └── workloads.yaml
+    ├── deploy.sh
+    ├── locals.tf
+    ├── main.tf
+    ├── outputs.tf
+    ├── providers.tf
+    ├── terraform.tfvars
+    └── variables.tf
+```
+
 ## Standalone/Distributed
 
 ![distributed](../docs/assets/figures/images/argocd-distributed.svg)
@@ -9,7 +124,7 @@ Deploys kind clusters in a multi-cluster setup.
 Deploys kind clusters in a standalone or distributed manner. Each cluster manages addons and workloads.
 
 ```bash
-cd distributed
+cd topologies/distributed
 ./deploy.sh dev
 ./deploy.sh stg
 ./deploy.sh prod
@@ -26,7 +141,7 @@ The hub cluster is responsible for managing addons and workloads.
 Note: The Hub cluster is deployed first, followed by the Spoke clusters.
 
 ```bash
-cd hub-spoke/hub
+cd topologies/hub-spoke/hub
 terraform init
 terraform apply -auto-approve
 ```
@@ -34,7 +149,7 @@ terraform apply -auto-approve
 The Spoke clusters are registered with the Hub's ArgoCD instance.
 
 ```bash
-cd hub-spoke/spoke
+cd topologies/hub-spoke/spoke
 ./deploy.sh dev
 ./deploy.sh stg
 ./deploy.sh prod
@@ -65,7 +180,7 @@ The hub cluster is responsible for managing shared addons, while spoke clusters 
 Deploys hub kind cluster that creates multiple spoke clusters via Cluster API (CAPI).
 
 ```bash
-cd hub-spoke-capi
+cd topologies/hub-spoke-capi
 terraform init
 terraform apply -auto-approve
 ```

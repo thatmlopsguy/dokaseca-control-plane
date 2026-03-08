@@ -1,11 +1,14 @@
 module "kind_cluster" {
-  source = "./../modules/kind"
+  source = "./../../modules/kind"
 
   count = var.kubernetes_distro == "kind" ? 1 : 0
 
+  # Pass required variables here
+  environment = var.environment
+  region      = var.region
+
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
-  environment        = var.environment
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
 
@@ -14,7 +17,7 @@ module "kind_cluster" {
 }
 
 module "vind_cluster" {
-  source = "./../modules/vind"
+  source = "./../../modules/vind"
 
   count = var.kubernetes_distro == "vind" ? 1 : 0
 
@@ -29,7 +32,7 @@ module "vind_cluster" {
 }
 
 module "gateway_api" {
-  source = "./../modules/gateway_api"
+  source = "./../../modules/gateway_api"
 
   count = var.enable_gateway_api ? 1 : 0
 
@@ -40,7 +43,7 @@ module "gateway_api" {
 }
 
 module "cni" {
-  source = "./../modules/cni"
+  source = "./../../modules/cni"
 
   count = var.kubernetes_cni != "default" ? 1 : 0
 
@@ -52,9 +55,13 @@ module "cni" {
 }
 
 module "gitops_bridge" {
-  source = "./../modules/gitops-bridge"
+  source = "./../../modules/gitops-bridge"
 
   count = var.gitops_controller == "argocd" ? 1 : 0
+
+  # Pass required variables here
+  environment = var.environment
+  region      = var.region
 
   cluster = {
     cluster_name = local.kubernetes_name
@@ -77,7 +84,7 @@ module "gitops_bridge" {
 }
 
 module "fluxcd_operator" {
-  source = "./../modules/fluxcd"
+  source = "./../../modules/fluxcd"
 
   count = var.gitops_controller == "fluxcd" ? 1 : 0
 

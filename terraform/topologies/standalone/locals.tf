@@ -10,7 +10,7 @@ locals {
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
   kubernetes_name    = "${var.cluster_type}-${var.environment}"
-  kubeconfig_path    = "${dirname(dirname(path.cwd))}/kubeconfigs/distributed/${var.environment}"
+  kubeconfig_path    = "${dirname(dirname(dirname(path.cwd)))}/kubeconfigs/standalone/${var.environment}"
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -37,9 +37,19 @@ locals {
     distro  = local.kubernetes_distro
   }, var.teams)
 
+
+  # Addons
+  # every time we add a new addon, we have to update the addons variable with a try function to avoid errors when the variable is not defined in terraform.tfvars
   oss_addons = {
+    # artifacts
+    enable_harbor      = try(var.addons.enable_harbor, false)      # TODO
+    enable_nexus       = try(var.addons.enable_nexus, false)       # TODO
+    enable_chartmuseum = try(var.addons.enable_chartmuseum, false) # TODO
+    enable_artifactory = try(var.addons.enable_artifactory, false) # TODO
+    # multi tenancy
+    enable_capsule = try(var.addons.enable_capsule, false) # TODO
     # dashboard
-    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # TODO
+    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # deprecated
     enable_headlamp             = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane            = try(var.addons.enable_komoplane, false)
@@ -59,6 +69,8 @@ locals {
     # delivery
     enable_argo_cd               = try(var.addons.enable_argo_cd, false)
     enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false)
+    # testops
+    enable_report_portal = try(var.addons.enable_report_portal, false) # TODO
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
     enable_argo_cd_agent = try(var.addons.enable_argo_cd_agent, false) # TODO
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
@@ -93,15 +105,19 @@ locals {
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
     enable_krateo = try(var.addons.enable_krateo, false) # TODO
     # networking
-    enable_gateway_api   = try(var.addons.enable_gateway_api, true)
-    enable_skupper       = try(var.addons.enable_skupper, false)
-    enable_metallb       = try(var.addons.enable_metallb, false)
-    enable_kubevip       = try(var.addons.enable_kubevip, false)
+    ## cni - doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now, TODO find a way to make it work with gitops
+    # enable_flannel = try(var.addons.enable_flannel, false)
+    # enable_cilium  = try(var.addons.enable_cilium, false)
+    # enable_calico  = try(var.addons.enable_calico, false)
+    # enable_istio   = try(var.addons.enable_istio, false)
+    ## gateway api
+    enable_gateway_api = try(var.addons.enable_gateway_api, false)
+    enable_skupper     = try(var.addons.enable_skupper, false)
+    enable_metallb     = try(var.addons.enable_metallb, false)
+    enable_kubevip     = try(var.addons.enable_kubevip, false)
+    ## ingress controllers - DEPRECATED, use gateway api instead
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
-    enable_cilium        = try(var.addons.enable_cilium, false)
-    enable_calico        = try(var.addons.enable_calico, false)
-    enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
     enable_signoz                     = try(var.addons.enable_signoz, false)
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
@@ -187,6 +203,8 @@ locals {
     # workload manager
     enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
     enable_airflow        = try(var.addons.enable_airflow, false)        # TODO
+    enable_dagster        = try(var.addons.enable_dagster, false)        # TODO
+    enable_prefect        = try(var.addons.enable_prefect, false)        # TODO
     enable_flyte          = try(var.addons.enable_flyte, false)          # TODO
     enable_argo_workflows = try(var.addons.enable_argo_workflows, false) # TODO
     # schedulers
@@ -194,16 +212,17 @@ locals {
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
     # machine learning
-    enable_feast      = try(var.addons.enable_feast, false)      # TODO
-    enable_kserve     = try(var.addons.enable_kserve, false)     # TODO
-    enable_mlflow     = try(var.addons.enable_mlflow, false)     # TODO
-    enable_kuberay    = try(var.addons.enable_kuberay, false)    # TODO
-    enable_seldon     = try(var.addons.enable_seldon, false)     # TODO
-    enable_litellm    = try(var.addons.enable_litellm, false)    # TODO
-    enable_ollama     = try(var.addons.enable_ollama, false)     # TODO
-    enable_langfuse   = try(var.addons.enable_langfuse, false)   # TODO
-    enable_kgateway   = try(var.addons.enable_kgateway, false)   # TODO
-    enable_vllm_stack = try(var.addons.enable_vllm_stack, false) # TODO
+    enable_feast            = try(var.addons.enable_feast, false)            # TODO
+    enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
+    enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
+    enable_kuberay          = try(var.addons.enable_kuberay, false)          # TODO
+    enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
+    enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
+    enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
+    enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
+    enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
+    enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
+    enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
     enable_kahu   = try(var.addons.enable_kahu, false)   # TODO

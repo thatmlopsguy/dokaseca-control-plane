@@ -9,8 +9,8 @@ locals {
 
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
-  kubernetes_name    = "${var.cluster_type}-${var.environment}"
-  kubeconfig_path    = "${dirname(dirname(path.cwd))}/kubeconfigs/standalone/${var.environment}"
+  kubernetes_name    = var.cluster_type
+  kubeconfig_path    = "${dirname(dirname(dirname(dirname(path.cwd))))}/kubeconfigs/hub-spoke-shared/${local.kubernetes_name}"
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
@@ -37,12 +37,7 @@ locals {
     distro  = local.kubernetes_distro
   }, var.teams)
 
-
-  # Addons
-  # every time we add a new addon, we have to update the addons variable with a try function to avoid errors when the variable is not defined in terraform.tfvars
   oss_addons = {
-    # multi tenancy
-    enable_capsule = try(var.addons.enable_capsule, false) # TODO
     # dashboard
     enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # TODO
     enable_headlamp             = try(var.addons.enable_headlamp, false)
@@ -64,8 +59,6 @@ locals {
     # delivery
     enable_argo_cd               = try(var.addons.enable_argo_cd, false)
     enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false)
-    # testops
-    enable_report_portal = try(var.addons.enable_report_portal, false) # TODO
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
     enable_argo_cd_agent = try(var.addons.enable_argo_cd_agent, false) # TODO
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
@@ -85,6 +78,7 @@ locals {
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
     enable_koreo         = try(var.addons.enable_koreo, false) # TODO
+    enable_vcluster      = try(var.addons.enable_vcluster, false)
     # gitops promoter
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
@@ -100,52 +94,38 @@ locals {
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
     enable_krateo = try(var.addons.enable_krateo, false) # TODO
     # networking
-    ## cni - doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now, TODO find a way to make it work with gitops
-    # enable_flannel = try(var.addons.enable_flannel, false)
-    # enable_cilium  = try(var.addons.enable_cilium, false)
-    # enable_calico  = try(var.addons.enable_calico, false)
-    # enable_istio   = try(var.addons.enable_istio, false)
-    ## gateway api
-    enable_gateway_api = try(var.addons.enable_gateway_api, false)
-    enable_skupper     = try(var.addons.enable_skupper, false)
-    enable_metallb     = try(var.addons.enable_metallb, false)
-    enable_kubevip     = try(var.addons.enable_kubevip, false)
-    ## ingress controllers - DEPRECATED, use gateway api instead
-    enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
+    enable_skupper       = try(var.addons.enable_skupper, false)
+    enable_metallb       = try(var.addons.enable_metallb, false)
+    enable_kubevip       = try(var.addons.enable_kubevip, false)
+    enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false)
     enable_traefik       = try(var.addons.enable_traefik, false)
+    enable_cilium        = try(var.addons.enable_cilium, false)
+    enable_calico        = try(var.addons.enable_calico, false)
+    enable_ngrok         = try(var.addons.enable_ngrok, false)
+    enable_istio         = try(var.addons.enable_istio, false)
     # monitoring
-    enable_signoz                     = try(var.addons.enable_signoz, false)
-    enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
+    # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
+    enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false)
+    enable_grafana_operator           = try(var.addons.enable_grafana_operator, false)
+    enable_metrics_server             = try(var.addons.enable_metrics_server, false)
+    enable_cortex                     = try(var.addons.enable_cortex, false)
+    enable_prometheus_adapter         = try(var.addons.enable_prometheus_adapter, false)
+    enable_logging_operator           = try(var.addons.enable_logging_operator, false)
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
+    enable_victoria_logs              = try(var.addons.enable_victoria_logs, false)
+    enable_pyroscope                  = try(var.addons.enable_pyroscope, false)
+    enable_alloy                      = try(var.addons.enable_alloy, false)
+    enable_vector                     = try(var.addons.enable_vector, false)
+    enable_fluentbit                  = try(var.addons.enable_fluentbit, false)
+    enable_zipkin                     = try(var.addons.enable_zipkin, false)
+    enable_loki                       = try(var.addons.enable_loki, false)
+    enable_pyrra                      = try(var.addons.enable_pyrra, false)
+    enable_tempo                      = try(var.addons.enable_tempo, false)
+    enable_thanos                     = try(var.addons.enable_thanos, false)
+    enable_opentelemetry_operator     = try(var.addons.enable_opentelemetry_operator, false)
     enable_kiali                      = try(var.addons.enable_kiali, false)
-    # agents
-    enable_alloy                  = try(var.addons.enable_alloy, false)
-    enable_vector                 = try(var.addons.enable_vector, false)
-    enable_fluentbit              = try(var.addons.enable_fluentbit, false)
-    enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
-    # metrics
-    enable_prometheus_adapter = try(var.addons.enable_prometheus_adapter, false)
-    enable_thanos             = try(var.addons.enable_thanos, false)
-    enable_metrics_server     = try(var.addons.enable_metrics_server, false)
-    enable_cortex             = try(var.addons.enable_cortex, false)
-    enable_mimir              = try(var.addons.enable_mimir, false)
-    # logs
-    enable_loki             = try(var.addons.enable_loki, false)
-    enable_victoria_logs    = try(var.addons.enable_victoria_logs, false)
-    enable_logging_operator = try(var.addons.enable_logging_operator, false)
-    enable_opensearch       = try(var.addons.enable_opensearch, false)
-    # dashboarding
-    enable_grafana_operator = try(var.addons.enable_grafana_operator, false)
-    enable_pyrra            = try(var.addons.enable_pyrra, false)
-    # tracing
-    enable_tempo           = try(var.addons.enable_tempo, false)
-    enable_jaeger          = try(var.addons.enable_jaeger, false)
-    enable_zipkin          = try(var.addons.enable_zipkin, false)
-    enable_victoria_traces = try(var.addons.enable_victoria_traces, false)
-    # profiling
-    enable_pyroscope = try(var.addons.enable_pyroscope, false)
-    enable_parca     = try(var.addons.enable_parca, false)
+    enable_jaeger                     = try(var.addons.enable_jaeger, false)
     # security
     enable_cert_manager     = try(var.addons.enable_cert_manager, false)
     enable_trivy            = try(var.addons.enable_trivy, false)
@@ -170,77 +150,47 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
-    enable_openebs   = try(var.addons.enable_openebs, false)
-    enable_minio     = try(var.addons.enable_minio, false)
-    enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
-    enable_longhorn  = try(var.addons.enable_longhorn, false)
+    enable_openebs = try(var.addons.enable_openebs, false)
+    enable_minio   = try(var.addons.enable_minio, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
     enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)         # TODO
     enable_mariadb_operator    = try(var.addons.enable_mariadb_operator, false)    # TODO
-    enable_documentdb_operator = try(var.addons.enable_documentdb_operator, false) # TODO
-    enable_weaviate            = try(var.addons.enable_weaviate, false)            # TODO
-    enable_milvus              = try(var.addons.enable_milvus, false)              # TODO
     # dora metrics
     enable_devlake = try(var.addons.enable_devlake, false)
     # utilities
-    enable_reloader                 = try(var.addons.enable_reloader, false)
-    enable_reflector                = try(var.addons.enable_reflector, false)
-    enable_k8s_replicator           = try(var.addons.enable_k8s_replicator, false)
-    enable_kured                    = try(var.addons.enable_kured, false)
-    enable_eraser                   = try(var.addons.enable_eraser, false)
-    enable_k8s_image_swapper        = try(var.addons.enable_k8s_image_swapper, false)
-    enable_spegel                   = try(var.addons.enable_spegel, false)
-    enable_harbor_container_webhook = try(var.addons.enable_harbor_container_webhook, false)
+    enable_reloader  = try(var.addons.enable_reloader, false)
+    enable_reflector = try(var.addons.enable_reflector, false)
+    enable_kured     = try(var.addons.enable_kured, false)
+    enable_eraser    = try(var.addons.enable_eraser, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager
-    enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
-    enable_airflow        = try(var.addons.enable_airflow, false)        # TODO
-    enable_dagster        = try(var.addons.enable_dagster, false)        # TODO
-    enable_prefect        = try(var.addons.enable_prefect, false)        # TODO
-    enable_flyte          = try(var.addons.enable_flyte, false)          # TODO
-    enable_argo_workflows = try(var.addons.enable_argo_workflows, false) # TODO
-    # schedulers
-    enable_kueue    = try(var.addons.enable_kueue, false)    # TODO
-    enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
-    enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
+    enable_temporal       = try(var.addons.enable_temporal, false) # TODO
+    enable_airflow        = try(var.addons.enable_airflow, false)  # TODO
+    enable_flyte          = try(var.addons.enable_flyte, false)    # TODO
+    enable_argo_workflows = try(var.addons.enable_argo_workflows, false)
     # machine learning
-    enable_feast            = try(var.addons.enable_feast, false)            # TODO
-    enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
-    enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
-    enable_kuberay          = try(var.addons.enable_kuberay, false)          # TODO
-    enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
-    enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
-    enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
-    enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
-    enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
-    enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
-    enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
-    # disaster recovery
-    enable_velero = try(var.addons.enable_velero, false) # TODO
-    enable_kahu   = try(var.addons.enable_kahu, false)   # TODO
+    enable_feast        = try(var.addons.enable_feast, false)        # TODO
+    enable_kserve       = try(var.addons.enable_kserve, false)       # TODO
+    enable_kubeflow     = try(var.addons.enable_kubeflow, false)     # TODO
+    enable_ray_operator = try(var.addons.enable_ray_operator, false) # TODO
+    enable_mlflow       = try(var.addons.enable_mlflow, false)       # TODO
+    enable_kuberay      = try(var.addons.enable_kuberay, false)      # TODO
+    enable_seldon       = try(var.addons.enable_seldon, false)       # TODO
+    enable_litellm      = try(var.addons.enable_litellm, false)      # TODO
+    enable_weaviate     = try(var.addons.enable_weaviate, false)     # TODO
+    enable_milvus       = try(var.addons.enable_milvus, false)       # TODO
+    enable_ollama       = try(var.addons.enable_ollama, false)       # TODO
+    enable_langfuse     = try(var.addons.enable_langfuse, false)     # TODO
+    enable_kgateway     = try(var.addons.enable_kgateway, false)     # TODO
   }
 
   # Enterprise
   enterprise_addons = {
-    enable_ngrok                         = try(var.addons.enable_ngrok, false)                         # TODO
-    enable_codefresh                     = try(var.addons.enable_codefresh, false)                     # TODO
-    enable_kubescape                     = try(var.addons.enable_kubescape, false)                     # TODO
-    enable_clickstack                    = try(var.addons.enable_clickstack, false)                    # TODO
-    enable_stash                         = try(var.addons.enable_stash, false)                         # TODO
-    enable_castai                        = try(var.addons.enable_castai, false)                        # TODO
-    enable_datadog                       = try(var.addons.enable_datadog, false)                       # TODO
-    enable_vcluster                      = try(var.addons.enable_vcluster, false)                      # TODO
-    enable_netbird                       = try(var.addons.enable_netbird, false)                       # TODO
-    enable_nvidia_gpu_operator           = try(var.addons.enable_nvidia_gpu_operator, false)           # TODO
-    enable_nvidia_device_plugin          = try(var.addons.enable_nvidia_device_plugin, false)          # TODO
-    enable_nvidia_kai_scheduler          = try(var.addons.enable_nvidia_kai_scheduler, false)          # TODO
-    enable_nvidia_dcgm_exporter          = try(var.addons.enable_nvidia_dcgm_exporter, false)          # TODO
-    enable_amd_gpu_operator              = try(var.addons.enable_amd_gpu_operator, false)              # TODO
-    enable_intel_device_plugins_operator = try(var.addons.enable_intel_device_plugins_operator, false) # TODO
-    enable_intel_device_plugins_gpu      = try(var.addons.enable_intel_device_plugins_gpu, false)      # TODO
+    enable_codefresh = try(var.addons.enable_codefresh, false)
+    enable_kubescape = try(var.addons.enable_kubescape, false)
   }
 
   # Azure
