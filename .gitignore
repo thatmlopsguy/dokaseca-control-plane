@@ -71,3 +71,6 @@ kustomize/*
 
 # .env
 .env
+
+# gitleaks report
+gitleaks-report.json

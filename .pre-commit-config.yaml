@@ -69,19 +69,13 @@ repos:
     rev: v0.25
     hooks:
     -   id: validate-pyproject
-  # - repo: local
-  #   hooks:
-  #     - id: terraform-docs
-  #       name: Terraform Docs Generator
-  #       description: Generate Terraform documentation using terraform-docs
-  #       entry: scripts/hooks/terraform-docs.sh
-  #       language: system
-  #       types: [terraform]
-  #       stages: [pre-commit]
-  #       files: '^terraform/modules/'
-  #   - id: suggestion
-  #     name: Suggestion
-  #     entry: bash -c 'echo "To bypass all the pre-commit hooks, add --no-verify to git commit. To skip a specific hook, prefix the commit command with SKIP=<hook-id>."'
-  #     language: system
-  #     verbose: true
-  #     pass_filenames: false
+-   repo: local
+    hooks:
+      - id: suggestion
+        name: Suggestion
+        entry: bash -c 'echo "To bypass all the pre-commit hooks, add --no-verify to git commit. To skip a specific hook, prefix the commit command with SKIP=<hook-id>."'
+        language: system
+        verbose: true
+        pass_filenames: false
+
+
