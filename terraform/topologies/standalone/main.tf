@@ -3,9 +3,12 @@ module "kind_cluster" {
 
   count = var.kubernetes_distro == "kind" ? 1 : 0
 
+  # Pass required variables here
+  environment = var.environment
+  region      = var.region
+
   cluster_name       = local.kubernetes_name
   cluster_type       = var.cluster_type
-  environment        = var.environment
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
 
@@ -55,6 +58,10 @@ module "gitops_bridge" {
   source = "./../../modules/gitops-bridge"
 
   count = var.gitops_controller == "argocd" ? 1 : 0
+
+  # Pass required variables here
+  environment = var.environment
+  region      = var.region
 
   cluster = {
     cluster_name = local.kubernetes_name

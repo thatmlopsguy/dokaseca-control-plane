@@ -36,27 +36,18 @@ provider "kind" {
 }
 
 provider "kubernetes" {
-  host                   = module.kind_cluster.cluster_endpoint
-  client_certificate     = module.kind_cluster.client_certificate
-  client_key             = module.kind_cluster.client_key
-  cluster_ca_certificate = module.kind_cluster.cluster_ca_certificate
+  config_path = fileexists(local.kubeconfig_path) ? local.kubeconfig_path : null
 }
 
 provider "helm" {
   kubernetes {
-    host                   = module.kind_cluster.cluster_endpoint
-    client_certificate     = module.kind_cluster.client_certificate
-    client_key             = module.kind_cluster.client_key
-    cluster_ca_certificate = module.kind_cluster.cluster_ca_certificate
+    config_path = fileexists(local.kubeconfig_path) ? local.kubeconfig_path : null
   }
 }
 
 provider "kubectl" {
-  host                   = module.kind_cluster.cluster_endpoint
-  client_certificate     = module.kind_cluster.client_certificate
-  client_key             = module.kind_cluster.client_key
-  cluster_ca_certificate = module.kind_cluster.cluster_ca_certificate
-  load_config_file       = false
+  config_path      = fileexists(local.kubeconfig_path) ? local.kubeconfig_path : null
+  load_config_file = fileexists(local.kubeconfig_path)
 }
 
 provider "vault" {

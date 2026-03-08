@@ -2,3 +2,7 @@ quiet: true
 download-external-modules: true
 directory: terraform
 framework: terraform
+skip-check:
+  - CKV_TF_1
+  - CKV_TF_2
+

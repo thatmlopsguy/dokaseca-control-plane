@@ -59,6 +59,21 @@ variable "kubernetes_version" {
   default     = "1.31.2"
 }
 
+variable "kubernetes_cni" {
+  description = "Kubernetes CNI plugin to use"
+  type        = string
+  default     = "default"
+  validation {
+    condition     = contains(["default", "calico", "cilium", "flannel", "istio"], lower(var.kubernetes_cni))
+    error_message = "Invalid kubernetes cni. Must be one of 'default', 'calico', 'cilium', 'flannel' or 'istio'."
+  }
+}
+
+variable "kubernetes_cni_version" {
+  description = "Version of the CNI plugin to use"
+  type        = string
+}
+
 variable "cloud_provider" {
   type        = string
   description = "Cloud provider to deploy infrastructure to"
@@ -67,6 +82,23 @@ variable "cloud_provider" {
   validation {
     condition     = contains(["aws", "azure", "gcp", "local"], lower(var.cloud_provider))
     error_message = "Invalid cloud provider. Must be one of 'local', 'aws', 'azure' or 'gcp'."
+  }
+}
+
+variable "enable_gateway_api" {
+  description = "Enable or disable the Gateway API CRDs"
+  type        = bool
+  default     = false
+}
+
+variable "gateway_api_release_version" {
+  description = "The version of the release to deploy"
+  type        = string
+  default     = "v1.4.1"
+
+  validation {
+    condition     = can(regex("^v?\\d+\\.\\d+\\.\\d+$", var.gateway_api_release_version))
+    error_message = "The release version must be in the format 'vX.Y.Z' or 'X.Y.Z'"
   }
 }
 
@@ -80,6 +112,38 @@ variable "gitops_controller" {
   }
 }
 
+variable "fluxcd_config" {
+  description = "FluxCD configuration"
+  type = object({
+    namespace                     = string
+    flux_version                  = string
+    flux_registry                 = string
+    cluster_type                  = string
+    cluster_size                  = string
+    git_token                     = string
+    github_app_id                 = string
+    github_app_installation_owner = string
+    github_app_pem                = string
+    git_url                       = string
+    git_path                      = string
+    git_ref                       = string
+  })
+  default = {
+    namespace                     = "flux-system"
+    flux_version                  = "2.x"
+    flux_registry                 = "ghcr.io/fluxcd"
+    cluster_type                  = "kubernetes"
+    cluster_size                  = "medium"
+    git_token                     = ""
+    github_app_id                 = ""
+    github_app_installation_owner = ""
+    github_app_pem                = ""
+    git_url                       = ""
+    git_path                      = ""
+    git_ref                       = ""
+  }
+}
+
 variable "argocd_files_config" {
   type = object({
     load_addons    = bool
@@ -89,18 +153,6 @@ variable "argocd_files_config" {
     load_addons    = true
     load_workloads = true
   }
-}
-
-variable "fluxcd_namespace" {
-  description = "Kubernetes namespace to deploy Flux2 in"
-  type        = string
-  default     = "flux-system"
-}
-
-variable "fluxcd_chart_version" {
-  description = "fluxcd helm chart version"
-  type        = string
-  default     = "2.17.1"
 }
 
 variable "argocd_chart_version" {
