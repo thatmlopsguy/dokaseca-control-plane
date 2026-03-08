@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -2238,7 +2238,7 @@ $<span class="w"> </span>helm<span class="w"> </span>version
 version.BuildInfo<span class="o">{</span>Version:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitCommit:<span class="s2">&quot;v3.16.1&quot;</span>,<span class="w"> </span>GitTreeState:<span class="s2">&quot;&quot;</span>,<span class="w"> </span>GoVersion:<span class="s2">&quot;go1.22.7&quot;</span><span class="o">}</span>
 </code></pre></div>
 <h2 id="quick-start">🚀 Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<p>DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs:</p>
+<p>DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced configurations, see the <a href="terraform/README.md">Terraform README</a>.</p>
 <h3 id="option-1-hub-spoke-topology-recommended">Option 1: Hub-Spoke Topology (Recommended)<a class="headerlink" href="#option-1-hub-spoke-topology-recommended" title="Permanent link">&para;</a></h3>
 <p>This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.</p>
 <p><strong>Step 1: Deploy the Hub Cluster</strong></p>
@@ -2250,9 +2250,9 @@ terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 <p><strong>Step 2: Deploy Spoke Clusters (Optional)</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/hub-spoke/spoke
 <span class="c1"># Deploy spoke clusters for different environments</span>
-./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>dev<span class="w"> </span>apply
-./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>stg<span class="w"> </span>apply
-./scripts/terraform.sh<span class="w"> </span>spoke<span class="w"> </span>prod<span class="w"> </span>apply
+./deploy.sh<span class="w"> </span>spoke<span class="w"> </span>dev<span class="w"> </span>apply
+./deploy.sh<span class="w"> </span>spoke<span class="w"> </span>stg<span class="w"> </span>apply
+./deploy.sh<span class="w"> </span>spoke<span class="w"> </span>prod<span class="w"> </span>apply
 </code></pre></div>
 <p><strong>Step 3: Verify Deployment</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Check deployed clusters</span>
@@ -2262,8 +2262,7 @@ kind<span class="w"> </span>get<span class="w"> </span>clusters
 kubectl<span class="w"> </span>get<span class="w"> </span>secrets<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-l<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>cluster
 </code></pre></div>
 <h3 id="option-2-distributed-topology">Option 2: Distributed Topology<a class="headerlink" href="#option-2-distributed-topology" title="Permanent link">&para;</a></h3>
-<p>Each cluster manages its own addons and workloads independently.
-Navigate to distributed configuration.</p>
+<p>Each cluster manages its own addons and workloads independently. Navigate to the distributed configuration.</p>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>terraform/distributed
 
 <span class="c1"># Deploy clusters for each environment</span>
