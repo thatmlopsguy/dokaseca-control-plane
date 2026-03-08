@@ -1,8 +1,6 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/>
-
-</div>
+<img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/logos/banner.svg" alt="DoKa Seca - Kubernetes Platform Engineering Framework" width="600"/></div>
 
 <div align="center">
 
@@ -25,6 +23,14 @@
 >⚠️ Note
 >
 > DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.
+
+## 📖 Overview
+
+<div align="center">
+  <img src="docs/assets/figures/images/internal-developer-platform.png" alt="Internal Developer Platform" width="600"/>
+  <p><em>Based on the Humanitec Reference Architectures for Internal Developer Platforms.</p>
+  <p>Source: <a href="https://platformengineering.org/platform-tooling">platformengineering.org</a></em></p>
+</div>
 
 ## 👋 Introduction
 
