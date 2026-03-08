@@ -1,10 +1,15 @@
-environment        = "stg"
-cluster_type       = "spoke"
-domain_name        = "k8s-home.lab"
-cloud_provider     = "local"
-kubernetes_version = "1.33.1"
-gitops_controller  = "argocd"
-gitops_org         = "https://github.com/thatmlopsguy"
+environment                 = "stg"
+cluster_type                = "spoke"
+domain_name                 = "k8s-home.lab"
+cloud_provider              = "local"
+kubernetes_version          = "1.35.1"
+kubernetes_cni              = "default" # options: default, calico, cilium, flannel, istio
+kubernetes_cni_version      = "1.18.5"
+enable_vault                = false
+enable_gateway_api          = true
+gateway_api_release_version = "v1.4.1"
+gitops_controller           = "argocd" # options: argocd, fluxcd
+gitops_org                  = "https://github.com/thatmlopsguy"
 # Teams
 teams = {
   team-a = "true"
