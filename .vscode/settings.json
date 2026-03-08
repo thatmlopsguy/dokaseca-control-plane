@@ -11,6 +11,7 @@
         "authelia",
         "authentik",
         "autoupdate",
+        "bashate",
         "bitnamilegacy",
         "capi",
         "castai",
@@ -78,6 +79,7 @@
         "rollouts",
         "sarif",
         "seldon",
+        "shellcheck",
         "signoz",
         "skupper",
         "spegel",
@@ -98,7 +100,8 @@
         "vmalertmanager",
         "vmsingle",
         "yunikorn",
-        "zipkin"
+        "zipkin",
+        "zizmor"
     ],
     "files.exclude": {
         "**/.git": true,

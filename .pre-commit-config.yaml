@@ -72,7 +72,7 @@ repos:
     -   id: validate-pyproject
 -   repo: local
     hooks:
-      - id: suggestion
+    -   id: suggestion
         name: Suggestion
         entry: bash -c 'echo "To bypass all the pre-commit hooks, add --no-verify to git commit. To skip a specific hook, prefix the commit command with SKIP=<hook-id>."'
         language: system
