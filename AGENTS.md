@@ -64,30 +64,13 @@ tflint --init
 tflint --recursive --config=".tflint.hcl" --minimum-failure-severity=warning
 ```
 
-Go single test (only if you are working inside the vendored subtree):
-
-```bash
-cd third_party/kubefleet
-make test
-go test ./... -run '^TestName$' -count=1
-go test ./pkg/somepkg -run '^TestName$' -count=1
-```
-
-Ginkgo suites in `third_party/kubefleet`:
-
-```bash
-cd third_party/kubefleet
-ginkgo -v ./test/scheduler
-ginkgo -v ./test/e2e --timeout=70m
-```
-
 ## Code Style Guidelines
 
 General:
 
 - Keep changes small and follow existing patterns; prefer stable ordering in config files.
 - Do not commit secrets; pre-commit runs `detect-private-key` and `gitleaks`.
-- Avoid editing `third_party/` unless explicitly required.
+- Avoid editing `third_party/`.
 
 Markdown:
 
@@ -111,12 +94,6 @@ Terraform/OpenTofu:
 - Follow `.tflint.hcl` rules: typed variables, described variables/outputs, `snake_case` naming, no deprecated patterns.
 - Module docs are generated with `terraform-docs -c .terraform-docs.yml` (writes `README.md` per module).
 
-Go (vendored in `third_party/kubefleet/`):
-
-- Follow `third_party/kubefleet/CLAUDE.md` (it is the upstream-specific agent guide).
-- Imports: stdlib, then third-party, then local; let `goimports` do ordering.
-- Tests: table-driven preferred; avoid assert libs when possible; use `cmp.Diff` and clear `want` naming.
-
 Naming:
 
 - Terraform: `snake_case` for variables/locals/outputs/resources.
@@ -127,6 +104,7 @@ Naming:
 - Prefer `make pre-commit-run` as the default "quality gate" before declaring work done.
 - Avoid changing generated files unless the task requires it (e.g., Terraform module `README.md` from `terraform-docs`).
 - Keep edits ASCII-only unless a file already uses Unicode.
+- Use `docker compose` instead of `docker-compose` (deprecated)
 
 ## Workflow Notes / Gotchas
 
