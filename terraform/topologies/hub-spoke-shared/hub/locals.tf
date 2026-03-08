@@ -10,7 +10,7 @@ locals {
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
   kubernetes_name    = var.cluster_type
-  kubeconfig_path    = "${dirname(dirname(dirname(path.cwd)))}/kubeconfigs/hub-spoke-shared/${local.kubernetes_name}"
+  kubeconfig_path    = "${dirname(dirname(dirname(dirname(path.cwd))))}/kubeconfigs/hub-spoke-shared/${local.kubernetes_name}"
 
   gitops_addons_url      = "${var.gitops_org}/${var.gitops_addons_repo}"
   gitops_addons_basepath = var.gitops_addons_basepath
