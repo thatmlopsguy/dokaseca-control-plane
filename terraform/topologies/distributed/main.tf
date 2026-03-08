@@ -32,7 +32,7 @@ module "vind_cluster" {
 }
 
 module "gateway_api" {
-  source = "git::https://github.com/thatmlopsguy/dokaseca-control-plane.git//terraform/modules/gateway_api?ref=main"
+  source = "git::https://github.com/thatmlopsguy/dokaseca-control-plane.git//terraform/modules/gateway-api?ref=main"
 
   count = var.enable_gateway_api ? 1 : 0
 
