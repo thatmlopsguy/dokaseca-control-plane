@@ -28,7 +28,15 @@ clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-
 ##@ Terraform
 terraform-rm-state: ## Remove all terraform states
 	@echo "Removing terraform state files..."
-	@rm -rf $(TERRAFORM_DIR)/topologies/distributed/terraform.tfstate.d
+	@rm -rf $(TERRAFORM_DIR)/topologies/standalone/terraform.tfstate \
+			$(TERRAFORM_DIR)/topologies/standalone/terraform.tfstate.backup \
+			$(TERRAFORM_DIR)/topologies/distributed/terraform.tfstate.d/ \
+			$(TERRAFORM_DIR)/topologies/hub-spoke/hub/terraform.tfstate \
+			$(TERRAFORM_DIR)/topologies/hub-spoke/hub/terraform.tfstate.backup \
+			$(TERRAFORM_DIR)/topologies/hub-spoke/spoke/terraform.tfstate.d/ \
+			$(TERRAFORM_DIR)/topologies/hub-spoke-shared/hub/terraform.tfstate \
+			$(TERRAFORM_DIR)/topologies/hub-spoke-shared/hub/terraform.tfstate.backup \
+			$(TERRAFORM_DIR)/topologies/hub-spoke-shared/spoke/terraform.tfstate.d/
 	@echo "Terraform state files removed."
 
 terraform-fmt: ## Format terraform files
