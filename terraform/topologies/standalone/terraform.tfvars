@@ -6,7 +6,7 @@ kubernetes_distro           = "kind" # options: kind, vind
 kubernetes_version          = "1.35.1"
 kubernetes_cni              = "default" # options: default, calico, cilium, flannel, istio
 kubernetes_cni_version      = "1.18.5"
-enable_vault                = false
+enable_vault                = true
 enable_gateway_api          = true
 gateway_api_release_version = "v1.4.1"
 gitops_controller           = "argocd" # options: argocd, fluxcd
@@ -40,7 +40,6 @@ addons = {
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
   # ci/cd
-  enable_harbor = false
   enable_tekton = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
@@ -63,7 +62,7 @@ addons = {
   # gitops promoter
   enable_argo_cd_image_updater = false
   enable_kargo                 = false
-  enable_gitops_promoter       = true
+  enable_gitops_promoter       = false
   # monitoring
   enable_metrics_server             = false
   enable_kube_prometheus_stack      = false
@@ -79,7 +78,7 @@ addons = {
   enable_kiali                      = false
   # security
   enable_cert_manager     = true
-  enable_external_secrets = false
+  enable_external_secrets = true
   enable_trivy            = false
   enable_kubescape        = false
   # networking
@@ -110,7 +109,9 @@ addons = {
   enable_vector           = false
   enable_logging_operator = false
   # cost
-  enable_opencost = false
+  enable_opencost   = false
+  enable_kepler     = false
+  enable_kube_green = false
   # disaster recovery
   enable_velero = false
   # storage
@@ -148,8 +149,8 @@ addons = {
   enable_mlflow           = false
   enable_kuberay          = false
   enable_seldon           = false
-  enable_litellm          = true
-  enable_litellm_operator = true
+  enable_litellm          = false
+  enable_litellm_operator = false
   enable_langfuse         = false
   enable_ollama           = false
   enable_vllm_stack       = false
@@ -163,6 +164,7 @@ addons = {
   # aws
   # gcp
   # enterprise
+  enable_kubecost             = false
   enable_vcluster             = false
   enable_nvidia_gpu_operator  = false
   enable_nvidia_device_plugin = false

@@ -230,6 +230,7 @@ locals {
 
   # Enterprise
   enterprise_addons = {
+    enable_kubecost                      = try(var.addons.enable_kubecost, false)                      # TODO
     enable_ngrok                         = try(var.addons.enable_ngrok, false)                         # TODO
     enable_codefresh                     = try(var.addons.enable_codefresh, false)                     # TODO
     enable_kubescape                     = try(var.addons.enable_kubescape, false)                     # TODO

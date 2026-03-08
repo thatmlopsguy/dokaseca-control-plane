@@ -31,8 +31,18 @@ module "vind_cluster" {
   enable_private_nodes     = false
 }
 
+module "vault" {
+  source = "./../../modules/vault"
+
+  count = var.enable_vault ? 1 : 0
+
+  vault_token = var.vault_token
+
+  depends_on = [module.kind_cluster, module.vind_cluster]
+}
+
 module "gateway_api" {
-  source = "./../../modules/gateway_api"
+  source = "./../../modules/gateway-api"
 
   count = var.enable_gateway_api ? 1 : 0
 

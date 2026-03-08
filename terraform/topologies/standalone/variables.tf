@@ -42,6 +42,12 @@ variable "enable_vault" {
   default     = false
 }
 
+variable "vault_token" {
+  description = "A Vault token to create in the external-secrets namespace for the External Secrets operator to use"
+  type        = string
+  sensitive   = true
+}
+
 variable "kubernetes_distro" {
   description = "Name of the kubernetes distro"
   type        = string

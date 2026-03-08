@@ -13,3 +13,5 @@ MD040: false
 MD036: false
 # https://github.com/DavidAnson/markdownlint/blob/main/doc/md060.md
 MD060: false
+# Ordered list item prefixes must be consecutive numbers
+MD029: false

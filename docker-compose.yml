@@ -1,4 +1,60 @@
+## Doka Seca common variables
+##
+## Based on https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
+
+## @section Deployment Profiles
+##
+## The following profiles can be used to control which services are launched:
+##
+## - infra: Infrastructure dependencies (e.g., database, message broker, gateway)
+## - optional: typically used for optional or internal services
+##
+
+## @section Logging configuration
+## @param x-logging Shared logging configuration for all services
+## - Uses json-file logging driver with rotation
+##
+x-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: 100m
+    max-file: "5"
+
+## @section Database configuration
+## @param x-database Shared database connection settings used across services
+## @param db_host Internal hostname of the database container (e.g., "postgres")
+## @param db_port Port used to connect to the database (default: 5432)
+## @param db_user Username for service-level access to the database
+## @param db_password Password for the specified DB user
+## @param db_name Logical database name used by services
+##
+x-database:
+  db_host: &db_host postgres
+  db_port: &db_port 5432
+  db_user: &db_user ${POSTGRES_USER-rpuser}
+  db_password: &db_password ${POSTGRES_PASSWORD-rppass}
+  db_name: &db_name ${POSTGRES_DB-reportportal}
+
+## @section AMQP (RabbitMQ) configuration
+## @param x-amqp Shared message broker settings used for internal service communication
+## @param rabbitmq_host Hostname of the RabbitMQ container (Docker internal DNS)
+## @param rabbitmq_port Port for AMQP protocol communication (default: 5672)
+## @param rabbitmq_apiport Port to access RabbitMQ web UI (default: 15672)
+## @param rabbitmq_user Username for authenticating RabbitMQ clients
+## @param rabbitmq_password Password for the RabbitMQ user
+##
+x-amqp:
+  rabbitmq_host: &rabbitmq_host rabbitmq
+  rabbitmq_port: &rabbitmq_port 5672
+  rabbitmq_apiport: &rabbitmq_apiport 15672
+  rabbitmq_user: &rabbitmq_user ${RABBITMQ_DEFAULT_USER-rabbitmq}
+  rabbitmq_password: &rabbitmq_password ${RABBITMQ_DEFAULT_PASS-rabbitmq}
+
 services:
+  ##
+  ## Doka Seca dependencies
+  ## @section Doka Seca dependencies
+  ##
   # https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
   portainer:
     container_name: portainer
@@ -13,6 +69,10 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer-data:/data
     restart: unless-stopped
+    profiles:
+      - optional
+    networks:
+      - kind
 
   vault:
     image: hashicorp/vault:1.21
@@ -20,47 +80,42 @@ services:
     ports:
       - "8200:8200"
     environment:
-      VAULT_ADDR: "http://127.0.0.1:8200"
-      VAULT_LOCAL_CONFIG: |
-        {
-          "backend": {
-            "file": {
-              "path": "/vault/file"
-            }
-          },
-          "listener": [{
-            "tcp": {
-              "address": "0.0.0.0:8200",
-              "tls_disable": true
-            }
-          }],
-          "default_lease_ttl": "168h",
-          "max_lease_ttl": "720h",
-          "ui": true,
-          "log_level": "INFO"
-        }
+      - VAULT_ADDR=http://0.0.0.0:8200
+      - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
+      - VAULT_DEV_ROOT_TOKEN_ID=root # For development only, do not use in production
     cap_add:
       - IPC_LOCK
-    command: vault server -config=/vault/config/local.json
-    volumes:
-      - vault-data:/vault/file
-      - vault-logs:/vault/logs
-      - ./docker/vault:/vault/config
+    command:
+      server -dev # For development only, do not use in production
+      # For production, use a proper storage backend and configuration file
+      # command: server -config=/vault/config/config.hcl
+    # volumes:
+    #   - vault-data:/vault/file
+    #   - vault-logs:/vault/logs
+    #   - ./docker/vault:/vault/config
     healthcheck:
       test: ["CMD", "vault", "status"]
       interval: 30s
       timeout: 10s
       retries: 5
     restart: unless-stopped
+    profiles:
+      - infra
+    networks:
+      - kind
 
   postgres:
     image: postgres:16
     container_name: postgres
+    logging:
+      <<: *logging
+    shm_size: "512m"
     environment:
       POSTGRES_PASSWORD: ${PG_PASSWORD:-postgres_password}
       POSTGRES_USER: ${PG_USER:-postgres}
-    ports:
-      - "5432:5432"
+    ## Uncomment to expose PostgreSQL externally
+    # ports:
+    #   - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
@@ -70,6 +125,10 @@ services:
       timeout: 10s
       retries: 5
     restart: unless-stopped
+    profiles:
+      - infra
+    networks:
+      - kind
 
   pgadmin:
     image: dpage/pgadmin4:9.12.0
@@ -92,6 +151,8 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+    networks:
+      - kind
 
   keycloak:
     image: quay.io/keycloak/keycloak:25.0
@@ -116,6 +177,10 @@ services:
       postgres:
         condition: service_healthy
     restart: unless-stopped
+    profiles:
+      - infra
+    networks:
+      - kind
 
   minio:
     # new version the admin features are removed
@@ -136,6 +201,10 @@ services:
       timeout: 10s
       retries: 5
     restart: unless-stopped
+    profiles:
+      - infra
+    networks:
+      - kind
 
   bucket-creator:
     image: minio/mc:RELEASE.2025-08-13T08-35-41Z
@@ -155,6 +224,10 @@ services:
       MINIO_ROOT_USER: minioAccessKey
       MINIO_ROOT_PASSWORD: minioSecretKey
     restart: "no"
+    profiles:
+      - infra
+    networks:
+      - kind
 
   prometheus:
     image: prom/prometheus:v3.9.1
@@ -163,6 +236,10 @@ services:
       - "9090:9090"
     volumes:
       - ./docker/prometheus:/etc/prometheus
+    profiles:
+      - optional
+    networks:
+      - spoke-dev-control-plane
 
   grafana:
     image: grafana/grafana:latest
@@ -174,8 +251,9 @@ services:
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_DASHBOARDS_MIN_REFRESH_INTERVAL: "5s"
     volumes:
-      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
       - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./docker/grafana/dashboards:/var/lib/grafana/dashboards
       - grafana-data:/var/lib/grafana
     depends_on:
       prometheus:
@@ -186,7 +264,10 @@ services:
       timeout: 10s
       retries: 5
     restart: unless-stopped
-
+    profiles:
+      - optional
+    networks:
+      - kind
   redis:
     image: redis:8.4.0
     container_name: redis
@@ -203,6 +284,11 @@ services:
       timeout: 10s
       retries: 5
     restart: unless-stopped
+    profiles:
+      - optional
+      - messaging
+    networks:
+      - kind
 
   redisinsight:
     image: redislabs/redisinsight:3.0
@@ -215,7 +301,58 @@ services:
       redis:
         condition: service_healthy
     restart: unless-stopped
+    profiles:
+      - optional
+      - messaging
+    networks:
+      - kind
 
+  ## @param rabbitmq Asynchronous message broker for inter-service communication
+  ## - Includes optional plugins for dashboard, LDAP, shovel, etc.
+  ##
+  rabbitmq:
+    image: bitnamilegacy/rabbitmq:4.1.2-debian-12-r1
+    container_name: rabbitmq
+    logging:
+      <<: *logging
+    # ports:
+    ## Uncomment to expose AMQP protocol port
+    #   - "5672:5672"
+    ## Uncomment to expose RabbitMQ dashboard
+    #   - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: *rabbitmq_user
+      RABBITMQ_DEFAULT_PASS: *rabbitmq_password
+      RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS: "true"
+      ## Block all procedures when free disk space is less than 50MB
+      ## Ref: https://www.rabbitmq.com/docs/disk-alarms
+      RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT: 50MB
+      RABBITMQ_PLUGINS: >
+        rabbitmq_consistent_hash_exchange
+        rabbitmq_management
+        rabbitmq_auth_backend_ldap
+        rabbitmq_shovel
+        rabbitmq_shovel_management
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
+    restart: always
+    profiles:
+      - messaging
+    networks:
+      - kind
+
+## @section Volumes
+## Named volumes for persistent data storage
+##
+## @param storage Shared volume for Doka Seca services that require file storage
+##
+## For custom host path, replace 'storage:' with a bind mount:
+##   - ./data/storage:/data/storage
+##
 volumes:
   vault-data:
   vault-logs:
@@ -231,6 +368,9 @@ volumes:
     #   type: none
     #   o: bind
     #   device: ./data/minio
-# networks:
-#   default:
-#     name: dokaseca_network
+## @section Networks
+## Custom Docker network for Doka Seca service discovery
+##
+networks:
+  kind:
+    external: true
