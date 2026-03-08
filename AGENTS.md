@@ -4,8 +4,7 @@ Agent-focused notes for this repo (infra/config + automation for Kubernetes plat
 
 ## Source Of Truth
 
-- Copilot rules: `.github/copilot-instructions.md` (there are no Cursor rules in `.cursor/rules/` or `.cursorrules` in this checkout)
-- Pre-commit hooks: `.pre-commit-config.yaml` (note: `third_party/` is excluded)
+- Pre-commit hooks: `.pre-commit-config.yaml` (note: `third_party/` is excluded; ignore this folder during automated checks and manual edits unless explicitly required)
 - Formatting: `.editorconfig` (LF, final newline, max line length 120)
 - Markdown lint: `.markdownlint.yaml`
 - Shell lint: `.shellcheckrc`
