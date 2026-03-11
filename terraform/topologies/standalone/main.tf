@@ -90,7 +90,7 @@ module "gitops_bridge" {
 
   apps = local.argocd_apps
 
-  depends_on = [module.kind_cluster, module.vind_cluster]
+  depends_on = [module.kind_cluster, module.vind_cluster, module.gateway_api, module.cni, module.vault]
 }
 
 module "fluxcd_operator" {
@@ -111,5 +111,5 @@ module "fluxcd_operator" {
   git_path                      = var.fluxcd_config.git_path
   git_ref                       = var.fluxcd_config.git_ref
 
-  depends_on = [module.kind_cluster, module.vind_cluster]
+  depends_on = [module.kind_cluster, module.vind_cluster, module.gateway_api, module.cni, module.vault]
 }

@@ -1,7 +1,7 @@
 variable "manage_namespace" {
   description = "Whether to manage the namespace creation in this module."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "vault_token_secret_name" {
