@@ -39,6 +39,7 @@ addons = {
   enable_headlamp       = false
   enable_helm_dashboard = false
   enable_komoplane      = false # requires enable_crossplane
+  enable_klances        = false # TODO https://github.com/nicolargo/klances
   # ci/cd
   enable_tekton = false
   # continuous delivery

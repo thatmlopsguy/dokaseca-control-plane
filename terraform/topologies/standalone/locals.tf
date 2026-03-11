@@ -49,14 +49,14 @@ locals {
     # multi tenancy
     enable_capsule = try(var.addons.enable_capsule, false) # TODO
     # dashboard
-    enable_kubernetes_dashboard = try(var.addons.enable_kubernetes_dashboard, false) # deprecated
-    enable_headlamp             = try(var.addons.enable_headlamp, false)
-    enable_helm_dashboard       = try(var.addons.enable_helm_dashboard, false)
-    enable_komoplane            = try(var.addons.enable_komoplane, false)
-    enable_altinity_dashboard   = try(var.addons.enable_altinity_dashboard, false)
-    enable_dapr_dashboard       = try(var.addons.enable_dapr_dashboard, false)
-    enable_velero_ui            = try(var.addons.enable_velero_ui, false)
-    enable_ocm_dashboard        = try(var.addons.enable_ocm_dashboard, false) # TODO
+    enable_headlamp           = try(var.addons.enable_headlamp, false)
+    enable_helm_dashboard     = try(var.addons.enable_helm_dashboard, false)
+    enable_komoplane          = try(var.addons.enable_komoplane, false)
+    enable_altinity_dashboard = try(var.addons.enable_altinity_dashboard, false)
+    enable_dapr_dashboard     = try(var.addons.enable_dapr_dashboard, false)
+    enable_velero_ui          = try(var.addons.enable_velero_ui, false)
+    enable_klances            = try(var.addons.enable_klances, false)       # TODO https://github.com/nicolargo/klances
+    enable_ocm_dashboard      = try(var.addons.enable_ocm_dashboard, false) # TODO
     # fleet manager
     enable_gardener        = try(var.addons.enable_gardener, false)        # TODO
     enable_project_sveltos = try(var.addons.enable_project_sveltos, false) # TODO

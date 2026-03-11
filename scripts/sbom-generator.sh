@@ -340,6 +340,7 @@ EOF
     declare -A dev_tools=(
         [make]="make --version | awk 'NR==1 {print \$3}'"
         [just]="just --version | awk '{print \$2}'"
+        [mise]="mise --version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+'"
         [go]="go version | awk '{print \$3}'"
         [python]="uv run python --version | awk '{print \$2}'"
         [node]="node --version"

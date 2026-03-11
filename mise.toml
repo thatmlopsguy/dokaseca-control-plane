@@ -1,5 +1,7 @@
-[tasks]
-version = """
-echo "Current version:"
+# Define tasks
+
+[tasks.version]
+description = "Doka Seca Version"
+run = """
 cat VERSION
 """

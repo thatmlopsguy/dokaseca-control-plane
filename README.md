@@ -22,7 +22,7 @@
 
 >⚠️ Note
 >
-> DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems.
+> DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems. Current version is intended for learning, experimentation, and as a reference implementation for platform engineering best practices. Use at your own risk.
 
 ## 📖 Overview
 
@@ -33,6 +33,8 @@
 </div>
 
 ## 👋 Introduction
+
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
 Welcome to **DoKa Seca** - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications - a comprehensive framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)!
 

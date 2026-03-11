@@ -7,12 +7,12 @@ This document outlines our security practices, supported versions, and procedure
 
 ## 🛡️ Supported Versions
 
-We actively maintain security updates for the following versions of DoKa Seca:
+This project is experimental. We will release security fixes as quickly as possible, but we provide no guarantees on supporting old versions.
 
 | Version | Supported | Status             |
 |---------|-----------|--------------------|
 | main    | ✅ Yes     | Active development |
-| 0.x.x   | ✅ Yes     | Current stable     |
+| 1.x.x   | ✅ Yes     | Current stable     |
 
 ## 🚨 Reporting a Vulnerability
 
@@ -22,7 +22,7 @@ We take security vulnerabilities seriously and appreciate responsible disclosure
 
 #### Private Security Advisory (Recommended)
 
-1. Go to the [Security tab](../../security/advisories) of this repository
+1. Go to the [Security tab](https://github.com/thatmlopsguy/dokaseca-control-plane/security/advisories) of this repository
 2. Click "Report a vulnerability"
 3. Fill out the security advisory form with detailed information
 4. Submit the report

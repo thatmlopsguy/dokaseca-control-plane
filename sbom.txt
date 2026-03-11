@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
-# Version: 1.33.0
-# Generated on: 2026-02-28 17:23:21 UTC
+# Version: 1.35.0
+# Generated on: 2026-03-11 21:39:19 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -42,12 +42,12 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Kubernetes Distribution Tools
 - k0s: v1.32.4+k0s.0
 - k3d: v5.8.3
-- kind: v0.30.0
+- kind: v0.31.0
 
 ### Kubernetes Client Tools
 - kubectl: v1.34.2
 - kustomize: v5.8.0
-- helm: v3.19.1+gv3.19.1
+- helm: v4.1.1+g5caf004
 
 ## 3. Infrastructure as Code (IaC)
 
@@ -58,7 +58,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ## 4. GitOps & Deployment Tools
 
 ### ArgoCD Ecosystem
-- argocd: v3.1.9
+- argocd: v3.3.2+8a3940d
 - kargo: Installed (version check failed)
 
 ### FluxCD Tools
@@ -73,7 +73,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Image Signing & Vulnerability Scanning
 - gitleaks: 8.28.0
 - cosign: v3.0.2
-- trivy: 0.66.0
+- trivy: 0.69.3
 - falcoctl: 0.11.4
 
 ### Certificate Management
@@ -83,14 +83,14 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ## 6. Backup & Storage Tools
 
 ### Backup Solutions
-- velero: v1.17.1
+- velero: v1.17.2
 - mc: RELEASE.2025-08-13T08-35-41Z
-- vault: v1.20.4
+- vault: v1.21.4
 
 ## 7. Network & Service Mesh Tools
 
 ### Service Mesh
-- istioctl: 1.28.0
+- istioctl: 1.29.0
 - cilium: 0.18.8
 - hubble: 1.18.3
 
@@ -104,6 +104,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Build Tools
 - node: v23.10.0
+- mise: 2026.3.7
 - just: 1.43.1
 - make: 4.3
 - python: 3.13.1

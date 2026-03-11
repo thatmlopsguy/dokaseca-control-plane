@@ -39,7 +39,7 @@ jobs:
       contents: read
 
     steps:
-      - uses: GitHubSecurityLab/actions-permissions/monitor@b25f731bf2f9eb9748c2e9757d366c3e72fa2109 # v1.0.2-beta8
+      # - uses: GitHubSecurityLab/actions-permissions/monitor@b25f731bf2f9eb9748c2e9757d366c3e72fa2109 # v1.0.2-beta8
 
       - name: Checkout code
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -47,18 +47,11 @@ jobs:
           fetch-depth: 0 # Fetch full history for better diffs
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@d9e0f98d3fc6adb07d1e3d37f3043649ddad06a1 # v6.5.0
         with:
-          python-version: "3.11"
-
-      - name: Cache pre-commit dependencies
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
-        with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}
-          restore-keys: |
-            pre-commit-${{ runner.os }}-
+          version-file: "pyproject.toml"
+          save-cache: true
 
       - name: Install system dependencies
         run: |
@@ -79,17 +72,6 @@ jobs:
           # sudo mv terraform-docs /usr/local/bin/
           # rm terraform-docs.tar.gz
 
-      - name: Install pre-commit
-        run: |
-          python -m pip install --upgrade pip
-          pip install pre-commit
-
       - name: Run pre-commit
-        run: pre-commit run --all-files
-
-      - name: Upload pre-commit cache
-        if: failure()
-        uses: actions/cache/save@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
-        with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-${{ runner.os }}-${{ hashFiles('.pre-commit-config.yaml') }}-${{ github.run_id }}
+        run: uvx prek run --all-files
+        shell: bash

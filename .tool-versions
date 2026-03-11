@@ -1,1 +1,5 @@
 terraform   1.14.1
+uv          0.10.2
+trivy       0.69.3
+helm        4.1.1
+kind        0.31.0
