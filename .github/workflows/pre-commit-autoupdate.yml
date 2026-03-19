@@ -10,6 +10,7 @@ on:
 jobs:
   auto-update:
     runs-on: ubuntu-latest
+    environment: ci
     permissions:
       contents: write
       pull-requests: write
