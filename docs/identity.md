@@ -22,6 +22,10 @@ graph TB
     KC --> Kargo[Kargo]
     KC --> Grafana[Grafana]
     KC --> Backstage[Backstage]
+    KC --> MLflow[MLflow]
+    KC --> Langfuse[Langfuse]
+    KC --> Temporal[Temporal]
+    KC --> Airflow[Airflow]
 
     KC --> DB[(PostgreSQL)]
 
@@ -39,6 +43,10 @@ graph TB
         Kargo
         Grafana
         Backstage
+        MLflow
+        Langfuse
+        Temporal
+        Airflow
     end
 ```
 
