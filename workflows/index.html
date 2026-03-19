@@ -12,13 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/testing/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/workflows/">
       
       
-        <link rel="prev" href="../chaos_engineering/">
+        <link rel="prev" href="../machine_learning/">
       
       
-        <link rel="next" href="../backup/">
+        <link rel="next" href="../cost/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Testing - Doka Seca</title>
+        <title>Workflow Orchestration - Doka Seca</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#testing-in-doka-seca" class="md-skip">
+        <a href="#workflow-orchestration" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Testing
+              Workflow Orchestration
             
           </span>
         </div>
@@ -1412,10 +1412,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1431,6 +1458,81 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#components-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Components Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#apache-airflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Apache Airflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#argo-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Argo Workflows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dagster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dagster
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temporal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temporal
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1493,37 +1595,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Testing
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
         
   
   
@@ -1539,109 +1614,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#report-portal" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Report Portal
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Report Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Purpose
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Deployment
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#access" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Access
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -2530,10 +2502,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#components-overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Components Overview
       
     </span>
   </a>
@@ -2541,74 +2513,46 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#report-portal" class="md-nav__link">
+  <a href="#apache-airflow" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Report Portal
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Report Portal">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Purpose
+        Apache Airflow
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#deployment" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#argo-workflows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Deployment
+        Argo Workflows
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#access" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#dagster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Access
+        Dagster
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#temporal" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configuration
+        Temporal
       
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Usage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -2632,45 +2576,24 @@
   
 
 
-<h1 id="testing-in-doka-seca">Testing in Doka Seca<a class="headerlink" href="#testing-in-doka-seca" title="Permanent link">&para;</a></h1>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>Doka Seca self-hosts a Report Portal Helm chart to provide a centralized platform for visualizing and managing test results from all teams. This ensures transparency, collaboration, and efficient debugging across the organization.</p>
-<h2 id="report-portal">Report Portal<a class="headerlink" href="#report-portal" title="Permanent link">&para;</a></h2>
-<h3 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h3>
-<p>Report Portal is used to aggregate and display test results from various teams. It supports:</p>
-<ul>
-<li>Centralized test result storage</li>
-<li>Real-time reporting</li>
-<li>Historical data analysis</li>
-<li>Integration with CI/CD pipelines</li>
-</ul>
-<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">&para;</a></h3>
-<p>The Report Portal Helm chart is deployed in the Kubernetes cluster managed by Doka Seca. It is configured to:</p>
-<ul>
-<li>Use persistent storage for test data</li>
-<li>Integrate with authentication mechanisms for secure access</li>
-<li>Provide dashboards for test result visualization</li>
-</ul>
-<h3 id="access">Access<a class="headerlink" href="#access" title="Permanent link">&para;</a></h3>
-<p>Teams can access the Report Portal via the following URL:</p>
-<div class="highlight"><pre><span></span><code>https://report-portal.dokaseca.local
-</code></pre></div>
-<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
-<p>The Helm chart is configured with the following values:</p>
-<ul>
-<li><code>persistence.enabled</code>: true</li>
-<li><code>resources.requests.cpu</code>: "500m"</li>
-<li><code>resources.requests.memory</code>: "512Mi"</li>
-<li><code>ingress.enabled</code>: true</li>
-<li><code>ingress.hosts</code>: ["report-portal.dokaseca.local"]</li>
-</ul>
-<h3 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h3>
+<h1 id="workflow-orchestration">Workflow Orchestration<a class="headerlink" href="#workflow-orchestration" title="Permanent link">&para;</a></h1>
+<p>DoKa Seca integrates with workflow orchestration tools to automate complex data pipelines and machine learning workflows. This allows you to schedule, monitor, and manage your workflows efficiently.</p>
+<h2 id="components-overview">Components Overview<a class="headerlink" href="#components-overview" title="Permanent link">&para;</a></h2>
+<p>Doka Seca's workflow orchestration stack includes:</p>
 <ol>
-<li>Teams push their test results to the Report Portal using the provided API.</li>
-<li>Dashboards and reports can be customized per team.</li>
-<li>Historical data can be queried for trend analysis.</li>
+<li><strong>Apache Airflow</strong> - For orchestrating complex workflows</li>
+<li><strong>Argo Workflows</strong> - For Kubernetes-native workflow orchestration</li>
+<li><strong>Dagster</strong> - For data orchestrations with a focus on software engineering best practices</li>
+<li><strong>Temporal</strong> - For long-running, stateful workflows with strong consistency guarantees</li>
 </ol>
-<p>For more details, refer to the <a href="https://reportportal.io/">Report Portal documentation</a>.</p>
+<h2 id="apache-airflow">Apache Airflow<a class="headerlink" href="#apache-airflow" title="Permanent link">&para;</a></h2>
+<p><a href="https://airflow.apache.org/">Apache Airflow</a> is an open-source platform to programmatically author, schedule, and monitor workflows. Doka Seca integrates Airflow to manage complex data pipelines and machine learning workflows.</p>
+<h2 id="argo-workflows">Argo Workflows<a class="headerlink" href="#argo-workflows" title="Permanent link">&para;</a></h2>
+<p><a href="https://argoproj.github.io/argo-workflows/">Argo Workflows</a> is a Kubernetes-native workflow engine for orchestrating parallel jobs. Doka Seca leverages Argo Workflows to run containerized tasks on Kubernetes clusters.</p>
+<h2 id="dagster">Dagster<a class="headerlink" href="#dagster" title="Permanent link">&para;</a></h2>
+<p><a href="https://dagster.io/">Dagster</a> is a data orchestrator for machine learning, analytics, and ETL. Doka Seca uses Dagster to build and manage data pipelines with a focus on software engineering best practices.</p>
+<h2 id="temporal">Temporal<a class="headerlink" href="#temporal" title="Permanent link">&para;</a></h2>
+<p><a href="https://temporal.io/">Temporal</a> is a platform for running long-running, stateful workflows with strong consistency guarantees. Doka Seca integrates Temporal to manage complex workflows that require reliability and scalability.</p>
 
 
 
@@ -2691,7 +2614,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 19:02:05 UTC"><span class="timeago" datetime="2026-02-06T19:02:05+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 19:02:05 UTC">2026-02-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 19, 2026 22:04:11 UTC"><span class="timeago" datetime="2026-03-19T22:04:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 19, 2026 22:04:11 UTC">2026-03-19</span>
   </span>
 
     
@@ -2736,7 +2659,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../chaos_engineering/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Chaos Engineering">
+          <a href="../machine_learning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Machine Learning">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2746,20 +2669,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Chaos Engineering
+                Machine Learning
               </div>
             </div>
           </a>
         
         
           
-          <a href="../backup/" class="md-footer__link md-footer__link--next" aria-label="Next: Disaster Recovery">
+          <a href="../cost/" class="md-footer__link md-footer__link--next" aria-label="Next: Cost Management">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Disaster Recovery
+                Cost Management
               </div>
             </div>
             <div class="md-footer__button md-icon">
