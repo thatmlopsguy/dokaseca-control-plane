@@ -46,6 +46,7 @@ nav:
     - Data Streams: data/streams.md
     - Data Storage: data/storage.md
   - Machine Learning: machine_learning.md
+  - Workflow Orchestration: workflows.md
   - Cost Management: cost.md
   - Chaos Engineering: chaos_engineering.md
   - Testing: testing.md

@@ -49,7 +49,7 @@ There are many ways to contribute:
   Run the following command to set up everything you need for development:
 
    ```bash
-   mise install
+   mise run tools
    ```
 
 ## Development Workflow
