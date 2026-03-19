@@ -56,7 +56,6 @@ nav:
     - Glossary: resources/glossary.md
     - Documentation: resources/documentation.md
     - FAQ: resources/faq.md
-    - Tech Radar: resources/techradar.md
     - Release Notes: resources/releases.md
     - Roadmap: resources/roadmap.md
     - References: resources/references.md
@@ -75,6 +74,7 @@ nav:
     - 0003 - GitOps with ArgoCD: adr/003-argocd-hub-and-spoke-configuration.md
     - 0004 - Preview Environments: adr/004-preview-env-argocd-vcluster.md
     - 0005 - KubeGreen for Energy Optimization: adr/005-kubegreen-energy-optimization.md
+  - Tech Radar: tech_radar.md
 
 # Configuration
 theme:
@@ -111,7 +111,7 @@ plugins:
   - tech-radar:
           title_name: 'Tech Radar'
           radars_folder: 'radars'
-          target_page: 'resources/techradar.md'
+          target_page: 'tech_radar.md'
   # TODO: Enable these plugins when ready
   # This plugin is used to generate the ADR index page
   # mkdocs-material-adr/adr
