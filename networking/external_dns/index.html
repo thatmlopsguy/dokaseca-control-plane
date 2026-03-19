@@ -12,31 +12,31 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/multi_tenancy/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/networking/external_dns/">
       
       
-        <link rel="prev" href="../backup/">
+        <link rel="prev" href="../service_mesh/">
       
       
-        <link rel="next" href="../multi_cluster/">
+        <link rel="next" href="../../observability/overview/">
       
       
         
       
       
-      <link rel="icon" href="../assets/logos/favicon.svg">
+      <link rel="icon" href="../../assets/logos/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>Multi Tenancy - Doka Seca</title>
+        <title>External DNS - Doka Seca</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,11 +49,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#multi-tenancy" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -94,9 +89,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi Tenancy
+              External DNS
             
           </span>
         </div>
@@ -229,9 +224,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     Doka Seca
@@ -258,7 +253,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -285,7 +280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         
   
   
@@ -359,7 +354,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/install/" class="md-nav__link">
+      <a href="../../getting_started/install/" class="md-nav__link">
         
   
   
@@ -387,7 +382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/repo_structure/" class="md-nav__link">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
         
   
   
@@ -415,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/teams/" class="md-nav__link">
+      <a href="../../getting_started/teams/" class="md-nav__link">
         
   
   
@@ -450,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../identity/" class="md-nav__link">
+      <a href="../../identity/" class="md-nav__link">
         
   
   
@@ -477,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../repository/" class="md-nav__link">
         
   
   
@@ -504,7 +499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../portal/" class="md-nav__link">
+      <a href="../../portal/" class="md-nav__link">
         
   
   
@@ -578,7 +573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/overview/" class="md-nav__link">
+      <a href="../../gitops/overview/" class="md-nav__link">
         
   
   
@@ -606,7 +601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/addons/" class="md-nav__link">
+      <a href="../../gitops/addons/" class="md-nav__link">
         
   
   
@@ -634,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/workloads/" class="md-nav__link">
+      <a href="../../gitops/workloads/" class="md-nav__link">
         
   
   
@@ -666,11 +661,24 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -684,7 +692,171 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Networking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ingress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingress
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gateway_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gateway API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../service_mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Mesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -743,7 +915,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/overview/" class="md-nav__link">
+      <a href="../../observability/overview/" class="md-nav__link">
         
   
   
@@ -771,14 +943,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/visualization/" class="md-nav__link">
+      <a href="../../observability/dashboards/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Visualization
+    Dashboards
   
 
     
@@ -799,7 +971,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/logging/" class="md-nav__link">
+      <a href="../../observability/logging/" class="md-nav__link">
         
   
   
@@ -827,7 +999,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/monitoring/" class="md-nav__link">
+      <a href="../../observability/monitoring/" class="md-nav__link">
         
   
   
@@ -855,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/tracing/" class="md-nav__link">
+      <a href="../../observability/tracing/" class="md-nav__link">
         
   
   
@@ -889,36 +1061,20 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../compliance/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     
-  
-    Compliance
-  
-
     
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
     
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -932,7 +1088,135 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy Enforcement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -943,8 +1227,55 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../../data/databases/" class="md-nav__link">
         
   
   
@@ -963,15 +1294,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../streams/" class="md-nav__link">
+      <a href="../../data/streams/" class="md-nav__link">
         
   
   
@@ -990,15 +1322,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../storage/" class="md-nav__link">
+      <a href="../../data/storage/" class="md-nav__link">
         
   
   
@@ -1017,6 +1350,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -1025,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_learning/" class="md-nav__link">
+      <a href="../../machine_learning/" class="md-nav__link">
         
   
   
@@ -1052,7 +1393,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cost/" class="md-nav__link">
+      <a href="../../cost/" class="md-nav__link">
         
   
   
@@ -1079,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chaos_engineering/" class="md-nav__link">
+      <a href="../../chaos_engineering/" class="md-nav__link">
         
   
   
@@ -1106,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../testing/" class="md-nav__link">
         
   
   
@@ -1133,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup/" class="md-nav__link">
+      <a href="../../backup/" class="md-nav__link">
         
   
   
@@ -1141,207 +1482,6 @@
     
   
     Disaster Recovery
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Multi Tenancy
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Multi Tenancy
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#types-of-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Types of Multi-Tenancy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#soft-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Soft Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hard-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hard Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diy-approach" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DIY Approach
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-for-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tools for Multi-Tenancy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vcluster
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#capsule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Capsule
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../multi_cluster/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Multi Cluster
   
 
     
@@ -1369,10 +1509,120 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" >
         
           
-          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Federation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Federation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../federation/multi_tenancy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi Tenancy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../federation/multi_cluster/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi Cluster
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
+        
+          
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
             
   
   
@@ -1390,8 +1640,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_22">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1408,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -1436,35 +1686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/contributing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Contributing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../resources/documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -1492,7 +1714,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/techradar/" class="md-nav__link">
+      <a href="../../resources/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/techradar/" class="md-nav__link">
         
   
   
@@ -1520,7 +1770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -1548,7 +1798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1576,7 +1826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1619,10 +1869,176 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_23" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
         
           
-          <label class="md-nav__link" for="__nav_23" id="__nav_23_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/maintainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintainers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
             
   
   
@@ -1640,8 +2056,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_23_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_23">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1658,7 +2074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/" class="md-nav__link">
+      <a href="../../rfc/" class="md-nav__link">
         
   
   
@@ -1686,7 +2102,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
         
   
   
@@ -1729,10 +2145,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_24" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
         
           
-          <label class="md-nav__link" for="__nav_24" id="__nav_24_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
             
   
   
@@ -1750,8 +2166,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_24_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_24">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1768,7 +2184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -1796,7 +2212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/001-use-architecture-decision-records/" class="md-nav__link">
+      <a href="../../adr/001-use-architecture-decision-records/" class="md-nav__link">
         
   
   
@@ -1824,7 +2240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+      <a href="../../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
         
   
   
@@ -1852,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+      <a href="../../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
         
   
   
@@ -1880,7 +2296,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
+      <a href="../../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
         
   
   
@@ -1908,7 +2324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
+      <a href="../../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
         
   
   
@@ -1953,116 +2369,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#types-of-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Types of Multi-Tenancy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#soft-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Soft Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#hard-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hard Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#diy-approach" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DIY Approach
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tools-for-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tools for Multi-Tenancy
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#vcluster" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Vcluster
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#capsule" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Capsule
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2082,100 +2388,9 @@
   
 
 
-<h1 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h1>
-<p>Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while providing isolation between them.</p>
-<h2 id="types-of-multi-tenancy">Types of Multi-Tenancy<a class="headerlink" href="#types-of-multi-tenancy" title="Permanent link">&para;</a></h2>
-<p>Multi-tenancy can be divided into two categories:</p>
-<h3 id="soft-multi-tenancy">Soft Multi-Tenancy<a class="headerlink" href="#soft-multi-tenancy" title="Permanent link">&para;</a></h3>
-<p>Soft multi-tenancy is suitable <strong>when you trust your tenants</strong> — like when you share a cluster with teams from the same company. In this model:</p>
-<ul>
-<li>Tenants are cooperative and don't intentionally try to breach isolation</li>
-<li>Isolation is primarily about preventing accidental interference</li>
-<li>You can use native Kubernetes constructs like Namespaces, RBAC, and Resource Quotas</li>
-</ul>
-<h3 id="hard-multi-tenancy">Hard Multi-Tenancy<a class="headerlink" href="#hard-multi-tenancy" title="Permanent link">&para;</a></h3>
-<p>Hard multi-tenancy is required <strong>when you don't trust tenants</strong> — such as in SaaS platforms where customers from different organizations share infrastructure. In this model:</p>
-<ul>
-<li>Strong isolation is mandatory</li>
-<li>Tenants may be hostile or attempt to escape their boundaries</li>
-<li>Security boundaries must be enforced at multiple levels</li>
-</ul>
-<div class="admonition warning">
-<p class="admonition-title">Hard Multi-Tenancy Recommendation</p>
-<p>If you need hard multi-tenancy, the advice is to use <strong>multiple clusters</strong> or a <strong>Cluster-as-a-Service</strong> tool instead. Kubernetes was not originally designed with strong multi-tenancy guarantees.</p>
-</div>
-<h2 id="diy-approach">DIY Approach<a class="headerlink" href="#diy-approach" title="Permanent link">&para;</a></h2>
-<p>If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own isolation using native Kubernetes primitives:</p>
-<ul>
-<li><strong>Namespaces</strong> — Logical isolation for resources</li>
-<li><strong>RBAC</strong> — Role-Based Access Control for authorization</li>
-<li><strong>Resource Quotas</strong> — Limit resource consumption per namespace</li>
-<li><strong>Network Policies</strong> — Control pod-to-pod communication</li>
-<li><strong>Pod Security Standards</strong> — Enforce security contexts</li>
-</ul>
-<h2 id="tools-for-multi-tenancy">Tools for Multi-Tenancy<a class="headerlink" href="#tools-for-multi-tenancy" title="Permanent link">&para;</a></h2>
-<p>There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger isolation guarantees:</p>
-<h3 id="vcluster">Vcluster<a class="headerlink" href="#vcluster" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.vcluster.com/">Vcluster</a> creates virtual Kubernetes clusters that run inside namespaces of a host cluster. Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying infrastructure.</p>
-<p><strong>Key Features:</strong></p>
-<ul>
-<li>Full Kubernetes API compatibility</li>
-<li>Lightweight virtual clusters</li>
-<li>Tenant isolation with dedicated control planes</li>
-<li>Cost-effective alternative to multiple physical clusters</li>
-</ul>
-<h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">&para;</a></h3>
-<p><a href="https://capsule.clastix.io/">Capsule</a> implements a multi-tenant and policy-based environment in Kubernetes. It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.</p>
-<p><strong>Key Features:</strong></p>
-<ul>
-<li>Hierarchical namespace management</li>
-<li>Native Kubernetes experience for tenants</li>
-<li>Policy enforcement across tenant namespaces</li>
-<li>Resource quota management at tenant level</li>
-</ul>
-<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
-<table>
-<thead>
-<tr>
-<th>Aspect</th>
-<th>DIY (Namespaces + RBAC)</th>
-<th>Capsule</th>
-<th>Vcluster</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Isolation Level</td>
-<td>Soft</td>
-<td>Soft</td>
-<td>Hard</td>
-</tr>
-<tr>
-<td>Complexity</td>
-<td>Low</td>
-<td>Medium</td>
-<td>Medium</td>
-</tr>
-<tr>
-<td>API Compatibility</td>
-<td>Limited</td>
-<td>Full</td>
-<td>Full</td>
-</tr>
-<tr>
-<td>Control Plane</td>
-<td>Shared</td>
-<td>Shared</td>
-<td>Dedicated per tenant</td>
-</tr>
-<tr>
-<td>Use Case</td>
-<td>Trusted teams</td>
-<td>Multi-team orgs</td>
-<td>Untrusted tenants</td>
-</tr>
-</tbody>
-</table>
+  <h1>External DNS</h1>
+
+
 
 
 
@@ -2196,7 +2411,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 17:32:16 UTC"><span class="timeago" datetime="2026-02-06T17:32:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 17:32:16 UTC">2026-02-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 19, 2026 18:10:56 UTC"><span class="timeago" datetime="2026-03-19T18:10:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 19, 2026 18:10:56 UTC">2026-03-19</span>
   </span>
 
     
@@ -2207,12 +2422,11 @@
   <span class="md-source-file__fact">
     <span class="md-icon" title="Contributors">
       
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 5.5A3.5 3.5 0 0 1 15.5 9a3.5 3.5 0 0 1-3.5 3.5A3.5 3.5 0 0 1 8.5 9 3.5 3.5 0 0 1 12 5.5M5 8c.56 0 1.08.15 1.53.42-.15 1.43.27 2.85 1.13 3.96C7.16 13.34 6.16 14 5 14a3 3 0 0 1-3-3 3 3 0 0 1 3-3m14 0a3 3 0 0 1 3 3 3 3 0 0 1-3 3c-1.16 0-2.16-.66-2.66-1.62a5.54 5.54 0 0 0 1.13-3.96c.45-.27.97-.42 1.53-.42M5.5 18.25c0-2.07 2.91-3.75 6.5-3.75s6.5 1.68 6.5 3.75V20h-13zM0 20v-1.5c0-1.39 1.89-2.56 4.45-2.9-.59.68-.95 1.62-.95 2.65V20zm24 0h-3.5v-1.75c0-1.03-.36-1.97-.95-2.65 2.56.34 4.45 1.51 4.45 2.9z"/></svg>
       
     </span>
     <nav>
       
-        <a href="mailto:165834479+thatmlopsguy@users.noreply.github.com">thatmlopsguy</a>
     </nav>
   </span>
 
@@ -2241,7 +2455,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../backup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Disaster Recovery">
+          <a href="../service_mesh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Service Mesh">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2251,20 +2465,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Disaster Recovery
+                Service Mesh
               </div>
             </div>
           </a>
         
         
           
-          <a href="../multi_cluster/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi Cluster">
+          <a href="../../observability/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Multi Cluster
+                Introduction
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2281,7 +2495,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 That MLOps Guy
+      Copyright &copy; 2025-2026 That MLOps Guy
     </div>
   
   
@@ -2332,14 +2546,14 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       

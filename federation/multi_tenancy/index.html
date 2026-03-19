@@ -12,31 +12,31 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/storage/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/federation/multi_tenancy/">
       
       
-        <link rel="prev" href="../streams/">
+        <link rel="prev" href="../../backup/">
       
       
-        <link rel="next" href="../machine_learning/">
+        <link rel="next" href="../multi_cluster/">
       
       
         
       
       
-      <link rel="icon" href="../assets/logos/favicon.svg">
+      <link rel="icon" href="../../assets/logos/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>Data Storage - Doka Seca</title>
+        <title>Multi Tenancy - Doka Seca</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,11 +49,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#storage" class="md-skip">
+        <a href="#multi-tenancy" class="md-skip">
           Skip to content
         </a>
       
@@ -94,9 +94,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Data Storage
+              Multi Tenancy
             
           </span>
         </div>
@@ -229,9 +229,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     Doka Seca
@@ -258,7 +258,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -285,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         
   
   
@@ -359,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/install/" class="md-nav__link">
+      <a href="../../getting_started/install/" class="md-nav__link">
         
   
   
@@ -387,7 +387,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/repo_structure/" class="md-nav__link">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
         
   
   
@@ -415,7 +415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/teams/" class="md-nav__link">
+      <a href="../../getting_started/teams/" class="md-nav__link">
         
   
   
@@ -450,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../identity/" class="md-nav__link">
+      <a href="../../identity/" class="md-nav__link">
         
   
   
@@ -477,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../repository/" class="md-nav__link">
         
   
   
@@ -504,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../portal/" class="md-nav__link">
+      <a href="../../portal/" class="md-nav__link">
         
   
   
@@ -578,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/overview/" class="md-nav__link">
+      <a href="../../gitops/overview/" class="md-nav__link">
         
   
   
@@ -606,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/addons/" class="md-nav__link">
+      <a href="../../gitops/addons/" class="md-nav__link">
         
   
   
@@ -634,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/workloads/" class="md-nav__link">
+      <a href="../../gitops/workloads/" class="md-nav__link">
         
   
   
@@ -668,9 +668,20 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../networking/" class="md-nav__link">
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -684,7 +695,163 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Networking
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/ingress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ingress
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/gateway_api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gateway API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/service_mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Mesh
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../networking/external_dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    External DNS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -743,7 +910,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/overview/" class="md-nav__link">
+      <a href="../../observability/overview/" class="md-nav__link">
         
   
   
@@ -771,14 +938,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/visualization/" class="md-nav__link">
+      <a href="../../observability/dashboards/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Visualization
+    Dashboards
   
 
     
@@ -799,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/logging/" class="md-nav__link">
+      <a href="../../observability/logging/" class="md-nav__link">
         
   
   
@@ -827,7 +994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/monitoring/" class="md-nav__link">
+      <a href="../../observability/monitoring/" class="md-nav__link">
         
   
   
@@ -855,7 +1022,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/tracing/" class="md-nav__link">
+      <a href="../../observability/tracing/" class="md-nav__link">
         
   
   
@@ -889,36 +1056,20 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../compliance/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
     
-  
-    Compliance
-  
-
     
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
     
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
       
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../security/" class="md-nav__link">
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
   
   
   <span class="md-ellipsis">
@@ -932,7 +1083,135 @@
   
   
 
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/certificates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Certificates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/secrets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Secrets Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Policy Enforcement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -943,8 +1222,55 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../database/" class="md-nav__link">
+      <a href="../../data/databases/" class="md-nav__link">
         
   
   
@@ -963,15 +1289,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
   
     <li class="md-nav__item">
-      <a href="../streams/" class="md-nav__link">
+      <a href="../../data/streams/" class="md-nav__link">
         
   
   
@@ -990,42 +1317,16 @@
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Data Storage
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../data/storage/" class="md-nav__link">
         
   
   
@@ -1041,169 +1342,13 @@
   
 
       </a>
-      
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#minio-object-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MinIO Object Storage
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="MinIO Object Storage">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-buckets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Buckets
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bucket-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bucket Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-integrations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Integrations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Integrations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#velero-backup-and-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Velero Backup and Restore
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#loki-log-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Loki Log Storage
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tempo-tracing-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tempo Tracing Backend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#victoria-metrics-long-term-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Victoria Metrics Long-term Storage
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reportportal-dependencies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ReportPortal Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1216,7 +1361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_learning/" class="md-nav__link">
+      <a href="../../machine_learning/" class="md-nav__link">
         
   
   
@@ -1243,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cost/" class="md-nav__link">
+      <a href="../../cost/" class="md-nav__link">
         
   
   
@@ -1270,7 +1415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chaos_engineering/" class="md-nav__link">
+      <a href="../../chaos_engineering/" class="md-nav__link">
         
   
   
@@ -1297,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../testing/" class="md-nav__link">
         
   
   
@@ -1324,7 +1469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup/" class="md-nav__link">
+      <a href="../../backup/" class="md-nav__link">
         
   
   
@@ -1348,10 +1493,86 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../multi_tenancy/" class="md-nav__link">
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_17" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_17" id="__nav_17_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Federation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_17">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Federation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi Tenancy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1367,12 +1588,133 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#types-of-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types of Multi-Tenancy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#soft-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Soft Multi-Tenancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hard-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hard Multi-Tenancy
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diy-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DIY Approach
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools for Multi-Tenancy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vcluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vcluster
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capsule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Capsule
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
-    
-      
-      
+              
+            
+              
+                
   
   
   
@@ -1397,6 +1739,14 @@
     </li>
   
 
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
     
       
       
@@ -1413,10 +1763,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_22" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_18" >
         
           
-          <label class="md-nav__link" for="__nav_22" id="__nav_22_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_18" id="__nav_18_label" tabindex="0">
             
   
   
@@ -1434,8 +1784,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_22_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_22">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_18_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_18">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1452,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -1480,35 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/contributing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Contributing
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../resources/documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -1536,7 +1858,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/techradar/" class="md-nav__link">
+      <a href="../../resources/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../resources/techradar/" class="md-nav__link">
         
   
   
@@ -1564,7 +1914,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -1592,7 +1942,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -1620,7 +1970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -1663,10 +2013,176 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_23" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_19" >
         
           
-          <label class="md-nav__link" for="__nav_23" id="__nav_23_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_19" id="__nav_19_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_19">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/maintainers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Maintainers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/support/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Support
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_20" >
+        
+          
+          <label class="md-nav__link" for="__nav_20" id="__nav_20_label" tabindex="0">
             
   
   
@@ -1684,8 +2200,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_23_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_23">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_20">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1702,7 +2218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/" class="md-nav__link">
+      <a href="../../rfc/" class="md-nav__link">
         
   
   
@@ -1730,7 +2246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
         
   
   
@@ -1773,10 +2289,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_24" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_21" >
         
           
-          <label class="md-nav__link" for="__nav_24" id="__nav_24_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_21" id="__nav_21_label" tabindex="0">
             
   
   
@@ -1794,8 +2310,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_24_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_24">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_21">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1812,7 +2328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -1840,7 +2356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/001-use-architecture-decision-records/" class="md-nav__link">
+      <a href="../../adr/001-use-architecture-decision-records/" class="md-nav__link">
         
   
   
@@ -1868,7 +2384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+      <a href="../../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
         
   
   
@@ -1896,7 +2412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+      <a href="../../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
         
   
   
@@ -1924,7 +2440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
+      <a href="../../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
         
   
   
@@ -1952,7 +2468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
+      <a href="../../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
         
   
   
@@ -2007,22 +2523,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minio-object-storage" class="md-nav__link">
+  <a href="#types-of-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MinIO Object Storage
+        Types of Multi-Tenancy
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MinIO Object Storage">
+    <nav class="md-nav" aria-label="Types of Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
+  <a href="#soft-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Architecture
+        Soft Multi-Tenancy
       
     </span>
   </a>
@@ -2030,32 +2546,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
+  <a href="#hard-multi-tenancy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#creating-buckets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Creating Buckets
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bucket-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bucket Configuration
+        Hard Multi-Tenancy
       
     </span>
   </a>
@@ -2068,22 +2562,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-integrations" class="md-nav__link">
+  <a href="#diy-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Service Integrations
+        DIY Approach
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Service Integrations">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools-for-multi-tenancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools for Multi-Tenancy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools for Multi-Tenancy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#velero-backup-and-restore" class="md-nav__link">
+  <a href="#vcluster" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Velero Backup and Restore
+        Vcluster
       
     </span>
   </a>
@@ -2091,32 +2596,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#loki-log-storage" class="md-nav__link">
+  <a href="#capsule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Loki Log Storage
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tempo-tracing-backend" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tempo Tracing Backend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#victoria-metrics-long-term-storage" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Victoria Metrics Long-term Storage
+        Capsule
       
     </span>
   </a>
@@ -2129,21 +2612,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reportportal-dependencies" class="md-nav__link">
+  <a href="#comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ReportPortal Dependencies
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        Comparison
       
     </span>
   </a>
@@ -2170,187 +2642,100 @@
   
 
 
-<h1 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h1>
-<p>This document describes the storage architecture used in the DoKa Seca, focusing on how MinIO running in Docker is used
-to provide S3-compatible object storage for various components.</p>
-<h2 id="minio-object-storage">MinIO Object Storage<a class="headerlink" href="#minio-object-storage" title="Permanent link">&para;</a></h2>
-<p><a href="https://min.io/">MinIO</a> is a high-performance, S3-compatible object storage system that we deploy to provide persistent
-storage for several critical components.</p>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
-<p>We run MinIO as a Docker container outside the Kubernetes cluster, providing S3-compatible storage that our Kubernetes services connect to:</p>
-<div class="highlight"><pre><span></span><code>┌─────────────────┐           ┌───────────────────────────┐
-│ Docker Host     │           │ Kubernetes Cluster        │
-│                 │           │                           │
-│ ┌─────────────┐ │  access   │  ┌─────────┐ ┌─────────┐  │
-│ │ MinIO Server│◄├───────────┤►◄│ Service │ │ Service │  │
-│ └─────────────┘ │           │  └─────────┘ └─────────┘  │
-└─────────────────┘           └───────────────────────────┘
-        │
-        ▼
-┌────────────────────────────────────────────┐
-│             S3 Buckets                     │
-│                                            │
-│  ┌──────────┐ ┌───────┐ ┌───────┐ ┌──────┐ │
-│  │  velero  │ │ loki  │ │ tempo │ │  vm  │ │
-│  └──────────┘ └───────┘ └───────┘ └──────┘ │
-│  ┌───────────────┐                         │
-│  │ report-portal │                         │
-│  └───────────────┘                         │
-└────────────────────────────────────────────┘
-</code></pre></div>
-<h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
-<p>To install MinIO using Docker:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Create directories for MinIO data</span>
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/velero-dev
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/velero-stg
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/velero-prod
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/loki
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/tempo
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/vm
-
-
-<span class="c1"># Start MinIO</span>
-docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
-</code></pre></div>
-<p>This will start a MinIO server accessible at:</p>
+<h1 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h1>
+<p>Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while providing isolation between them.</p>
+<h2 id="types-of-multi-tenancy">Types of Multi-Tenancy<a class="headerlink" href="#types-of-multi-tenancy" title="Permanent link">&para;</a></h2>
+<p>Multi-tenancy can be divided into two categories:</p>
+<h3 id="soft-multi-tenancy">Soft Multi-Tenancy<a class="headerlink" href="#soft-multi-tenancy" title="Permanent link">&para;</a></h3>
+<p>Soft multi-tenancy is suitable <strong>when you trust your tenants</strong> — like when you share a cluster with teams from the same company. In this model:</p>
 <ul>
-<li>API endpoint: <code>http://localhost:9000</code> (for S3 clients)</li>
-<li>Web Console: <code>http://localhost:9001</code> (for administration)</li>
+<li>Tenants are cooperative and don't intentionally try to breach isolation</li>
+<li>Isolation is primarily about preventing accidental interference</li>
+<li>You can use native Kubernetes constructs like Namespaces, RBAC, and Resource Quotas</li>
 </ul>
-<h3 id="creating-buckets">Creating Buckets<a class="headerlink" href="#creating-buckets" title="Permanent link">&para;</a></h3>
-<p>After installation, create the required buckets:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install MinIO client</span>
-curl<span class="w"> </span>https://dl.min.io/client/mc/release/linux-amd64/mc<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--create-dirs<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-o<span class="w"> </span><span class="nv">$HOME</span>/bin/mc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>chmod<span class="w"> </span>+x<span class="w"> </span><span class="nv">$HOME</span>/bin/mc
-
-<span class="c1"># Configure MinIO client</span>
-mc<span class="w"> </span><span class="nb">alias</span><span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="nb">local</span><span class="w"> </span>http://localhost:9000<span class="w"> </span>minioadmin<span class="w"> </span>minioadmin
-
-<span class="c1"># Create buckets</span>
-mc<span class="w"> </span>mb<span class="w"> </span>local/velero-dev
-mc<span class="w"> </span>mb<span class="w"> </span>local/velero-stg
-mc<span class="w"> </span>mb<span class="w"> </span>local/velero-prod
-mc<span class="w"> </span>mb<span class="w"> </span>local/loki
-mc<span class="w"> </span>mb<span class="w"> </span>local/tempo
-mc<span class="w"> </span>mb<span class="w"> </span>local/vm
-</code></pre></div>
-<h3 id="bucket-configuration">Bucket Configuration<a class="headerlink" href="#bucket-configuration" title="Permanent link">&para;</a></h3>
-<p>MinIO is configured with dedicated buckets for each service:</p>
+<h3 id="hard-multi-tenancy">Hard Multi-Tenancy<a class="headerlink" href="#hard-multi-tenancy" title="Permanent link">&para;</a></h3>
+<p>Hard multi-tenancy is required <strong>when you don't trust tenants</strong> — such as in SaaS platforms where customers from different organizations share infrastructure. In this model:</p>
+<ul>
+<li>Strong isolation is mandatory</li>
+<li>Tenants may be hostile or attempt to escape their boundaries</li>
+<li>Security boundaries must be enforced at multiple levels</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Hard Multi-Tenancy Recommendation</p>
+<p>If you need hard multi-tenancy, the advice is to use <strong>multiple clusters</strong> or a <strong>Cluster-as-a-Service</strong> tool instead. Kubernetes was not originally designed with strong multi-tenancy guarantees.</p>
+</div>
+<h2 id="diy-approach">DIY Approach<a class="headerlink" href="#diy-approach" title="Permanent link">&para;</a></h2>
+<p>If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own isolation using native Kubernetes primitives:</p>
+<ul>
+<li><strong>Namespaces</strong> — Logical isolation for resources</li>
+<li><strong>RBAC</strong> — Role-Based Access Control for authorization</li>
+<li><strong>Resource Quotas</strong> — Limit resource consumption per namespace</li>
+<li><strong>Network Policies</strong> — Control pod-to-pod communication</li>
+<li><strong>Pod Security Standards</strong> — Enforce security contexts</li>
+</ul>
+<h2 id="tools-for-multi-tenancy">Tools for Multi-Tenancy<a class="headerlink" href="#tools-for-multi-tenancy" title="Permanent link">&para;</a></h2>
+<p>There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger isolation guarantees:</p>
+<h3 id="vcluster">Vcluster<a class="headerlink" href="#vcluster" title="Permanent link">&para;</a></h3>
+<p><a href="https://www.vcluster.com/">Vcluster</a> creates virtual Kubernetes clusters that run inside namespaces of a host cluster. Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying infrastructure.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Full Kubernetes API compatibility</li>
+<li>Lightweight virtual clusters</li>
+<li>Tenant isolation with dedicated control planes</li>
+<li>Cost-effective alternative to multiple physical clusters</li>
+</ul>
+<h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">&para;</a></h3>
+<p><a href="https://capsule.clastix.io/">Capsule</a> implements a multi-tenant and policy-based environment in Kubernetes. It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Hierarchical namespace management</li>
+<li>Native Kubernetes experience for tenants</li>
+<li>Policy enforcement across tenant namespaces</li>
+<li>Resource quota management at tenant level</li>
+</ul>
+<h2 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Service</th>
-<th>Bucket Name</th>
-<th>Purpose</th>
+<th>Aspect</th>
+<th>DIY (Namespaces + RBAC)</th>
+<th>Capsule</th>
+<th>Vcluster</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Velero</td>
-<td>velero-{env}</td>
-<td>Kubernetes backup and restore</td>
+<td>Isolation Level</td>
+<td>Soft</td>
+<td>Soft</td>
+<td>Hard</td>
 </tr>
 <tr>
-<td>Loki</td>
-<td>loki</td>
-<td>Log storage and querying</td>
+<td>Complexity</td>
+<td>Low</td>
+<td>Medium</td>
+<td>Medium</td>
 </tr>
 <tr>
-<td>Tempo</td>
-<td>tempo</td>
-<td>Distributed tracing storage</td>
+<td>API Compatibility</td>
+<td>Limited</td>
+<td>Full</td>
+<td>Full</td>
 </tr>
 <tr>
-<td>Victoria Metrics</td>
-<td>vm</td>
-<td>Long-term metrics storage</td>
+<td>Control Plane</td>
+<td>Shared</td>
+<td>Shared</td>
+<td>Dedicated per tenant</td>
 </tr>
 <tr>
-<td>ReportPortal</td>
-<td>report-portal</td>
-<td>Object storage for ReportPortal</td>
+<td>Use Case</td>
+<td>Trusted teams</td>
+<td>Multi-team orgs</td>
+<td>Untrusted tenants</td>
 </tr>
 </tbody>
 </table>
-<h2 id="service-integrations">Service Integrations<a class="headerlink" href="#service-integrations" title="Permanent link">&para;</a></h2>
-<h3 id="velero-backup-and-restore">Velero Backup and Restore<a class="headerlink" href="#velero-backup-and-restore" title="Permanent link">&para;</a></h3>
-<p><a href="https://velero.io/">Velero</a> uses MinIO for storing Kubernetes cluster backups:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install Velero with MinIO storage</span>
-velero<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--provider<span class="w"> </span>aws<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--plugins<span class="w"> </span>velero/velero-plugin-for-aws:v1.7.0<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--bucket<span class="w"> </span>velero-dev<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--secret-file<span class="w"> </span>./credentials-velero<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--use-volume-snapshots<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backup-location-config<span class="w"> </span><span class="nv">region</span><span class="o">=</span>minio,s3ForcePathStyle<span class="o">=</span><span class="s2">&quot;true&quot;</span>,s3Url<span class="o">=</span>http://&lt;docker-host-ip&gt;:9000
-</code></pre></div>
-<h3 id="loki-log-storage">Loki Log Storage<a class="headerlink" href="#loki-log-storage" title="Permanent link">&para;</a></h3>
-<p><a href="https://grafana.com/oss/loki/">Loki</a> is configured to use MinIO for persistent log storage:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">loki</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">bucketNames</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">chunks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
-<span class="w">      </span><span class="nt">ruler</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
-<span class="w">      </span><span class="nt">admin</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3</span>
-<span class="w">    </span><span class="nt">s3</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-host-ip&gt;:9000</span>
-<span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minio</span>
-<span class="w">      </span><span class="nt">secretAccessKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minioadmin</span>
-<span class="w">      </span><span class="nt">accessKeyId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minioadmin</span>
-<span class="w">      </span><span class="nt">s3ForcePathStyle</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h3 id="tempo-tracing-backend">Tempo Tracing Backend<a class="headerlink" href="#tempo-tracing-backend" title="Permanent link">&para;</a></h3>
-<p><a href="https://grafana.com/oss/tempo/">Tempo</a> uses MinIO for storing distributed traces:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">tempo</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">storage</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">trace</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">backend</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s3</span>
-<span class="w">      </span><span class="nt">s3</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;docker-host-ip&gt;:9000</span>
-<span class="w">        </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tempo</span>
-<span class="w">        </span><span class="nt">access_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minioadmin</span>
-<span class="w">        </span><span class="nt">secret_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">minioadmin</span>
-<span class="w">        </span><span class="nt">insecure</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-</code></pre></div>
-<h3 id="victoria-metrics-long-term-storage">Victoria Metrics Long-term Storage<a class="headerlink" href="#victoria-metrics-long-term-storage" title="Permanent link">&para;</a></h3>
-<p><a href="https://victoriametrics.com/">Victoria Metrics</a> uses MinIO for long-term metrics storage:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">vmstorage</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">persistentVolume</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">storageDataPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/storage&quot;</span>
-<span class="w">    </span><span class="nt">retentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3m&quot;</span>
-<span class="w">  </span><span class="nt">s3</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;docker-host-ip&gt;:9000&quot;</span>
-<span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vm&quot;</span>
-<span class="w">    </span><span class="nt">accessKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minioadmin&quot;</span>
-<span class="w">    </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minioadmin&quot;</span>
-<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minio&quot;</span>
-</code></pre></div>
-<h2 id="reportportal-dependencies">ReportPortal Dependencies<a class="headerlink" href="#reportportal-dependencies" title="Permanent link">&para;</a></h2>
-<p>ReportPortal relies on MinIO for object storage. You can deploy MinIO manually as described earlier in this document or use a cloud-based alternative like AWS S3 or Azure Blob Storage.</p>
-<p>Example configuration for MinIO:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">reportportal</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">objectStorage</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-minio-endpoint&gt;</span>
-<span class="w">    </span><span class="nt">accessKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-access-key&gt;</span>
-<span class="w">    </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-secret-key&gt;</span>
-<span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;your-bucket-name&gt;</span>
-</code></pre></div>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://docs.min.io/">MinIO Documentation</a></li>
-<li><a href="https://velero.io/docs/main/contributions/minio/">Velero with MinIO</a></li>
-<li><a href="https://grafana.com/docs/loki/latest/operations/storage/">Loki Storage</a></li>
-<li><a href="https://grafana.com/docs/tempo/latest/configuration/s3/">Tempo Storage</a></li>
-<li><a href="https://docs.victoriametrics.com/Single-server-VictoriaMetrics.html#storage">Victoria Metrics Storage</a></li>
-<li><a href="https://reportportal.io/docs/installation-steps/DeployWithKubernetes#install-the-chart-with-dependencies">ReportPortal Object Storage</a></li>
-</ul>
 
 
 
@@ -2371,7 +2756,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 19:21:08 UTC"><span class="timeago" datetime="2026-02-06T19:21:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 19:21:08 UTC">2026-02-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 6, 2026 17:32:16 UTC"><span class="timeago" datetime="2026-02-06T17:32:16+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 6, 2026 17:32:16 UTC">2026-02-06</span>
   </span>
 
     
@@ -2416,7 +2801,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../streams/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Streams">
+          <a href="../../backup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Disaster Recovery">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2426,20 +2811,20 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
                 Previous
               </span>
               <div class="md-ellipsis">
-                Data Streams
+                Disaster Recovery
               </div>
             </div>
           </a>
         
         
           
-          <a href="../machine_learning/" class="md-footer__link md-footer__link--next" aria-label="Next: Machine Learning">
+          <a href="../multi_cluster/" class="md-footer__link md-footer__link--next" aria-label="Next: Multi Cluster">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Machine Learning
+                Multi Cluster
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2456,7 +2841,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 That MLOps Guy
+      Copyright &copy; 2025-2026 That MLOps Guy
     </div>
   
   
@@ -2507,14 +2892,14 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       
