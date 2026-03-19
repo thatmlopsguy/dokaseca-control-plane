@@ -10,6 +10,7 @@ Doka Seca's machine learning stack consists of four core components:
 2. **LiteLLM** - For routing LLM requests
 3. **Langfuse** - For LLM observability
 4. **vllm** - For local LLM inference
+5. **MLflow** - For experiment tracking and model management
 
 ## Ray Operator
 
@@ -123,9 +124,21 @@ Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of
 - **Quality Evaluation**: Evaluate responses against defined criteria
 - **Analytics Dashboard**: Visualize patterns and identify optimization opportunities
 
+## MLflow
+
+[MLflow](https://mlflow.org/) is an open-source platform for managing the end-to-end machine learning lifecycle. Doka Seca incorporates MLflow for experiment tracking, model versioning, and deployment management.
+
+### MLflow Capabilities
+
+- **Experiment Tracking**: Log parameters, metrics, and artifacts for reproducibility
+- **Model Registry**: Centralized repository for managing model versions and stages
+- **Deployment**: Seamlessly deploy models to various serving platforms
+- **Integration**: Works with popular ML libraries and frameworks
+
 ## References
 
 - [Ray Documentation](https://docs.ray.io/en/latest/)
 - [LiteLLM GitHub Repository](https://github.com/BerriAI/litellm)
 - [Langfuse Documentation](https://docs.langfuse.com/)
 - [Open Source LLMOps Stack](https://oss-llmops-stack.com/)
+- [MLflow Documentation](https://mlflow.org/docs/latest/index.html)
