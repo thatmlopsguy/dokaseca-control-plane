@@ -111,10 +111,11 @@ locals {
     # enable_calico  = try(var.addons.enable_calico, false)
     # enable_istio   = try(var.addons.enable_istio, false)
     ## gateway api
-    enable_gateway_api = try(var.addons.enable_gateway_api, false)
-    enable_skupper     = try(var.addons.enable_skupper, false)
-    enable_metallb     = try(var.addons.enable_metallb, false)
-    enable_kubevip     = try(var.addons.enable_kubevip, false)
+    enable_gateway_api  = try(var.addons.enable_gateway_api, false)
+    enable_skupper      = try(var.addons.enable_skupper, false)
+    enable_metallb      = try(var.addons.enable_metallb, false)
+    enable_kubevip      = try(var.addons.enable_kubevip, false)
+    enable_external_dns = try(var.addons.enable_external_dns, false)
     ## ingress controllers - DEPRECATED, use gateway api instead
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)

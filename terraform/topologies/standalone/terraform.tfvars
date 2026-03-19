@@ -89,8 +89,9 @@ addons = {
   enable_traefik       = false
   enable_skupper       = false
   ## bare metal load-balancer for Kubernetes
-  enable_kubevip = false
-  enable_metallb = true
+  enable_kubevip      = false
+  enable_metallb      = true
+  enable_external_dns = false
   ## doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now,
   ## TODO find a way to make it work with gitops
   enable_flannel = false
