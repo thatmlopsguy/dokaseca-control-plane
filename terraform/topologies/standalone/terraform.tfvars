@@ -79,6 +79,7 @@ addons = {
   enable_kiali                      = false
   # security
   enable_cert_manager     = true
+  enable_trust_manager    = false
   enable_external_secrets = true
   enable_trivy            = false
   enable_kubescape        = false
@@ -104,6 +105,7 @@ addons = {
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
   enable_connaisseur             = false
+  enable_policy_controller       = false
   # logging
   enable_fluentbit        = false
   enable_alloy            = false

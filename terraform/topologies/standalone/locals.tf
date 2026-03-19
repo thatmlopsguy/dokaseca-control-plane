@@ -153,6 +153,7 @@ locals {
     enable_parca     = try(var.addons.enable_parca, false)
     # security
     enable_cert_manager     = try(var.addons.enable_cert_manager, false)
+    enable_trust_manager    = try(var.addons.enable_trust_manager, false)
     enable_trivy            = try(var.addons.enable_trivy, false)
     enable_sealed_secrets   = try(var.addons.enable_sealed_secrets, false)
     enable_external_secrets = try(var.addons.enable_external_secrets, false)
@@ -171,6 +172,7 @@ locals {
     enable_kyverno_policy_reporter = try(var.addons.enable_kyverno_policy_reporter, false)
     enable_polaris                 = try(var.addons.enable_polaris, false)
     enable_connaisseur             = try(var.addons.enable_connaisseur, false)
+    enable_policy_controller       = try(var.addons.enable_policy_controller, false)
     # chaos engineering
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
