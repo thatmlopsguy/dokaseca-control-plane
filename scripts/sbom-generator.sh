@@ -353,6 +353,24 @@ EOF
         echo "- $tool: $version" >> "$SBOM_FILE"
     done
 
+    # Platform Engineering Tools
+    print_status "Analyzing platform engineering tools..."
+    cat << 'EOF' >> "$SBOM_FILE"
+
+### Platform Engineering Tools
+EOF
+
+    declare -A project_tools=(
+        [idpbuilder]="idpbuilder version 2>&1 | awk '{print \$2}'"
+        [kubara]="kubara --version 2>&1 | awk '{print \$3}'"
+    )
+
+    for tool in "${!project_tools[@]}"; do
+        local version
+        version=$(get_version "$tool" "${project_tools[$tool]}")
+        echo "- $tool: $version" >> "$SBOM_FILE"
+    done
+
     # Python Dependencies
     print_status "Analyzing Python dependencies..."
     cat << 'EOF' >> "$SBOM_FILE"

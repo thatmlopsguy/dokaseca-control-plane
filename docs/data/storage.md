@@ -46,6 +46,7 @@ mkdir -p data/minio/velero-prod
 mkdir -p data/minio/loki
 mkdir -p data/minio/tempo
 mkdir -p data/minio/vm
+mkdir -p data/minio/report-portal
 
 
 # Start MinIO

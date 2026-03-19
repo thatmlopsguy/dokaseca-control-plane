@@ -1,9 +1,3 @@
-variable "manage_namespace" {
-  description = "Whether to manage the namespace creation in this module."
-  type        = bool
-  default     = true
-}
-
 variable "vault_token_secret_name" {
   description = "Name of the Kubernetes secret to create for the Vault token."
   type        = string

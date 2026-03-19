@@ -47,7 +47,8 @@ cd dokaseca-control-plane
 Create a Kind cluster with the complete DoKa Seca platform stack:
 
 ```bash
-./scripts/terraform.sh hub dev apply
+cd topologies/standalone
+./deploy.sh
 ```
 
 This command will:
@@ -113,17 +114,6 @@ Once installed, DoKa Seca provides:
 * **Storage**: Persistent volume management
 * **Backup**: Velero for disaster recovery (optional)
 
-## Troubleshooting
-
-### Increase File Limits
-
-If you encounter "too many open files" errors:
-
-```bash
-sudo sysctl fs.inotify.max_user_watches=1048576
-sudo sysctl fs.inotify.max_user_instances=8192
-```
-
 ### Clean Installation
 
 To completely remove and reinstall:
@@ -138,10 +128,10 @@ To completely remove and reinstall:
 
 After installation:
 
-1. **Explore the Platform**: Check the [Architecture](architecture.md) guide
+1. **Explore the Platform**: Check the [Architecture](../architecture.md) guide
 2. **Deploy Applications**: Learn about the [Catalog](../catalog.md)
 3. **Configure GitOps**: Set up your [Repository](../repository.md) workflows
-4. **Monitor**: Access [Observability](../observability.md) dashboards
-5. **Secure**: Review [Security](../security.md) policies
+4. **Monitor**: Access [Observability](../observability/overview.md) dashboards
+5. **Secure**: Review [Security](../security/overview.md) policies
 
-For more detailed configuration and usage, continue to the [Architecture](architecture.md) section.
+For more detailed configuration and usage, continue to the [Architecture](../architecture.md) section.

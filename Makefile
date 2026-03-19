@@ -277,24 +277,23 @@ dapr-ui: ## Access dapr dashboard
 	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
 
 ##@ Documentation
-.PHONY: docs-install docs-serve docs-build
-docs-install: ## Install the requirements for starting the local web server for serving docs
-	@uv venv && \
-	uv pip install -r requirements/docs.txt
-
-docs-serve: docs-install ## Start a local web server for serving documentation
+.PHONY: docs-serve docs-build adr-list
+docs-serve: ## Start a local web server for serving documentation
 	@uv run mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
-docs-build: docs-install ## Build the documentation site
+docs-build: ## Build the documentation site
 	@uv run mkdocs build
 
-##@ Development
-.PHONY: pre-commit-install pre-commit-run
-pre-commit-run: ## Execute pre-commit git-hooks
-	@uvx prek run -a
+adr-list: ## List all ADRs
+	@adrgen list
 
+##@ Development
+.PHONY: pre-commit-install pre-commit-run pre-commit-update
 pre-commit-install: ## Install pre-commit git-hooks
 	@uvx prek install
+
+pre-commit-run: ## Execute pre-commit git-hooks
+	@uvx prek run -a
 
 pre-commit-update: ## Update pre-commit git-hooks
 	@uvx pre-commit-update

@@ -9,15 +9,18 @@
 </div>
 
 <div align="center">
+  <a href="https://img.shields.io/badge/status-alpha-orange"><img src="https://img.shields.io/badge/status-alpha-orange" alt="Project Status"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane"><img src="https://img.shields.io/github/stars/thatmlopsguy/dokaseca-control-plane?style=flat&label=GitHub%20%E2%AD%90" alt="GitHub"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/commits/main"><img src="https://img.shields.io/github/last-commit/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub last commit"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/graphs/commit-activity"><img src="https://img.shields.io/github/commit-activity/w/thatmlopsguy/dokaseca-control-plane" alt="Commit activity"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/issues"><img src="https://img.shields.io/github/issues/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub issues"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/pulls"><img src="https://img.shields.io/github/issues-pr/thatmlopsguy/dokaseca-control-plane" alt="GitHub PRs"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/releases/latest"><img src="https://img.shields.io/github/release/thatmlopsguy/dokaseca-control-plane.svg" alt="GitHub release"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a>
   <a href="https://thatmlopsguy.github.io/dokaseca-control-plane/"><img src="https://img.shields.io/website-up-down-green-red/http/shields.io.svg" alt="Website"></a>
   <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/actions/workflows/pre-commit.yml"><img src="https://github.com/thatmlopsguy/dokaseca-control-plane/workflows/Pre-commit%20Checks/badge.svg" alt="Pre-commit"></a>
   <a href="https://scorecard.dev/viewer/?uri=github.com/thatmlopsguy/dokaseca-control-plane"><img src="https://img.shields.io/ossf-scorecard/github.com/thatmlopsguy/dokaseca-control-plane?label=openssf+scorecard&style=flat" alt="Pre-commit"></a>
+  <a href="https://github.com/thatmlopsguy/dokaseca-control-plane/discussions"><img src="https://img.shields.io/github/discussions/thatmlopsguy/dokaseca-control-plane" alt="GitHub Discussions"></a>
 </div>
 
 >⚠️ Note
@@ -78,28 +81,16 @@ DoKa Seca consists of 5 GitHub repositories:
 * [`velero`](https://github.com/vmware-tanzu/velero)
 * [`vault`](https://developer.hashicorp.com/vault/docs/install)
 * [`minio client (mc)`](https://github.com/minio/mc)
+* [`crossplane-cli`](https://docs.crossplane.io/v2.2/cli/)
 
-```sh
-$ kubectl version
-Client Version: v1.31.0
-Kustomize Version: v5.4.2
-Server Version: v1.30.0
-
-$ kind version
-kind v0.27.0 go1.23.6 linux/amd64
-
-$ k3d --version
-k3d version v5.8.3
-k3s version v1.31.5-k3s1 (default)
-
-$ k0s version
-v1.32.4+k0s.0
-
-$ helm version
-version.BuildInfo{Version:"v3.16.1", GitCommit:"v3.16.1", GitTreeState:"", GoVersion:"go1.22.7"}
-```
+> **⚠️ Note: Internet access required**
+> You will also need access to the internet to download the necessary Helm charts and CRDs.
+> Make sure you are not blocked by a firewall or proxy.
 
 ## 🚀 Quick Start
+
+Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and configured properly.
+This ensures your platform setup is consistent, secure, and easily reproducible across environments.
 
 DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced configurations, see the [Terraform README](terraform/README.md).
 
@@ -261,11 +252,11 @@ sudo sysctl fs.inotify.max_user_instances=8192
 
 Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
 
-## 📚 Resources
+## 📚 Support & Resources
 
 User documentation can be found on our [user docs site](https://thatmlopsguy.github.io/dokaseca-control-plane/).
 
-## 🤝 Contributing
+## 🤝 Contributing & Governance
 
 All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
 read our [contributing guidelines](CONTRIBUTING.md).

@@ -23,33 +23,48 @@ nav:
     - Overview: gitops/overview.md
     - Addons: gitops/addons.md
     - Workloads: gitops/workloads.md
-  - Networking: networking.md
+  - Networking:
+    - Overview: networking/overview.md
+    - Ingress: networking/ingress.md
+    - Gateway API: networking/gateway_api.md
+    - Service Mesh: networking/service_mesh.md
+    - External DNS: networking/external_dns.md
   - Observability:
     - Introduction: observability/overview.md
-    - Visualization: observability/visualization.md
+    - Dashboards: observability/dashboards.md
     - Logging: observability/logging.md
     - Monitoring: observability/monitoring.md
     - Tracing: observability/tracing.md
-  - Compliance: compliance.md
-  - Security: security.md
-  - Databases: database.md
-  - Data Streams: streams.md
-  - Data Storage: storage.md
+  - Security:
+    - Overview: security/overview.md
+    - Certificates: security/certificates.md
+    - Secrets Management: security/secrets.md
+    - Policy Enforcement: security/policy.md
+  - Data:
+    - Databases: data/databases.md
+    - Data Streams: data/streams.md
+    - Data Storage: data/storage.md
   - Machine Learning: machine_learning.md
   - Cost Management: cost.md
   - Chaos Engineering: chaos_engineering.md
   - Testing: testing.md
   - Disaster Recovery: backup.md
-  - Multi Tenancy: multi_tenancy.md
-  - Multi Cluster: multi_cluster.md
+  - Federation:
+    - Multi Tenancy: federation/multi_tenancy.md
+    - Multi Cluster: federation/multi_cluster.md
   - Resources:
     - Glossary: resources/glossary.md
-    - Contributing: resources/contributing.md
     - Documentation: resources/documentation.md
+    - FAQ: resources/faq.md
     - Tech Radar: resources/techradar.md
     - Release Notes: resources/releases.md
     - Roadmap: resources/roadmap.md
     - References: resources/references.md
+  - Community:
+    - Contributing: community/contributing.md
+    - Maintainers: community/maintainers.md
+    - Governance: community/governance.md
+    - Support: community/support.md
   - RFCs:
     - Overview: rfc/index.md
     - 0001 - GitOps Promotion with Kargo: rfc/0001-gitops-promotion-with-kargo.md
@@ -125,7 +140,7 @@ markdown_extensions:
       permalink: true
 
 # Copyright
-copyright: Copyright &copy; 2025 That MLOps Guy
+copyright: Copyright &copy; 2025-2026 That MLOps Guy
 
 # Extra configuration
 extra:
