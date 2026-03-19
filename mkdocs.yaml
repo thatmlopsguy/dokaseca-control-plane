@@ -11,6 +11,7 @@ repo_name: dokaseca-control-plane
 # Navigation
 nav:
   - Overview: index.md
+  - Tech Radar: tech_radar.md
   - Architecture: architecture.md
   - Getting Started:
     - Installation: getting_started/install.md
@@ -74,7 +75,6 @@ nav:
     - 0003 - GitOps with ArgoCD: adr/003-argocd-hub-and-spoke-configuration.md
     - 0004 - Preview Environments: adr/004-preview-env-argocd-vcluster.md
     - 0005 - KubeGreen for Energy Optimization: adr/005-kubegreen-energy-optimization.md
-  - Tech Radar: tech_radar.md
 
 # Configuration
 theme:
