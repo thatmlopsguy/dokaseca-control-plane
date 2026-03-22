@@ -1459,6 +1459,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clickhouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clickhouse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#integration-with-vault" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2671,6 +2693,28 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clickhouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clickhouse
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#integration-with-vault" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2785,6 +2829,41 @@
 <td>langfuse_password</td>
 <td>jdbc:postgresql://postgres:5432/langfuse</td>
 </tr>
+<tr>
+<td>MLflow</td>
+<td>mlflow</td>
+<td>mlflow</td>
+<td>mlflow_password</td>
+<td>jdbc:postgresql://postgres:5432/mlflow</td>
+</tr>
+<tr>
+<td>Report Portal</td>
+<td>report_portal</td>
+<td>report_portal</td>
+<td>report_portal_password</td>
+<td>jdbc:postgresql://postgres:5432/report_portal</td>
+</tr>
+<tr>
+<td>Chaos Mesh</td>
+<td>chaos_mesh</td>
+<td>chaos_mesh</td>
+<td>chaos_mesh_password</td>
+<td>jdbc:postgresql://postgres:5432/chaos_mesh</td>
+</tr>
+<tr>
+<td>Airflow</td>
+<td>airflow</td>
+<td>airflow</td>
+<td>airflow_password</td>
+<td>jdbc:postgresql://postgres:5432/airflow</td>
+</tr>
+<tr>
+<td>Dagster</td>
+<td>dagster</td>
+<td>dagster</td>
+<td>dagster_password</td>
+<td>jdbc:postgresql://postgres:5432/dagster</td>
+</tr>
 </tbody>
 </table>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
@@ -2817,13 +2896,32 @@
 <li>Port: 5432</li>
 <li>User/Password: As specified in .env file</li>
 </ul>
+<h2 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
+<p>MongoDB is used for Litmus. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection
+information provided in the <code>.env</code> file. The MongoDB container is defined in the <code>docker-compose.yml</code> file and can
+be accessed using the MongoDB client or any compatible database tool.</p>
+<h2 id="clickhouse">Clickhouse<a class="headerlink" href="#clickhouse" title="Permanent link">&para;</a></h2>
+<p>The Clickhouse database is used for langfuse. It is configured similarly to PostgreSQL, with credentials stored
+in Vault and connection information provided in the <code>.env</code> file. The Clickhouse container is defined in the
+<code>docker-compose.yml</code> file and can be accessed using the Clickhouse client or any compatible database tool.</p>
 <h2 id="integration-with-vault">Integration with Vault<a class="headerlink" href="#integration-with-vault" title="Permanent link">&para;</a></h2>
-<p>Database credentials are stored in Vault following the pattern described in the <a href="/docs/secrets.md">secrets documentation</a>:</p>
-<div class="highlight"><pre><span></span><code>vault/platform/postgres/common/backstage
+<p>Database credentials are stored in Vault following the pattern described in the <a href="/docs/security/secrets.md">secrets documentation</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># PostgreSQL credentials</span>
+vault/platform/postgres/common/backstage
 vault/platform/postgres/common/keycloak
 vault/platform/postgres/common/devlake
+vault/platform/postgres/common/temporal
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
+vault/platform/postgres/common/mlflow
+vault/platform/postgres/common/airflow
+vault/platform/postgres/common/dagster
+vault/platform/postgres/common/report_portal
+vault/platform/postgres/common/chaos_mesh
+<span class="c1"># Clickhouse credentials</span>
+vault/platform/clickhouse/common/langfuse
+<span class="c1"># MongoDB credentials</span>
+vault/platform/mongodb/common/litmus
 </code></pre></div>
 <h2 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
 <p>Database data is persisted in the <code>postgres-data</code> Docker volume.</p>
@@ -2847,7 +2945,7 @@ vault/platform/postgres/common/langfuse
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 14, 2025 20:44:59 UTC"><span class="timeago" datetime="2025-07-14T20:44:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 14, 2025 20:44:59 UTC">2025-07-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 22, 2026 15:58:43 UTC"><span class="timeago" datetime="2026-03-22T15:58:43+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 22, 2026 15:58:43 UTC">2026-03-22</span>
   </span>
 
     
