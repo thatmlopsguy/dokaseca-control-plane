@@ -12,13 +12,13 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/data/databases/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/data/cache/">
       
       
-        <link rel="prev" href="../../security/policy/">
+        <link rel="prev" href="../storage/">
       
       
-        <link rel="next" href="../streams/">
+        <link rel="next" href="../../machine_learning/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Databases - Doka Seca</title>
+        <title>Caching - Doka Seca</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#database-setup-for-doka-seca-platform-services" class="md-skip">
+        <a href="#cache-key-value-stores-for-doka-seca-platform-services-redis-valkey" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Databases
+              Caching
             
           </span>
         </div>
@@ -1296,37 +1296,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Databases
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../databases/" class="md-nav__link">
         
   
   
@@ -1342,170 +1315,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Database Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connection Information
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing PostgreSQL
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing PostgreSQL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#via-command-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via Command Line
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#via-external-tool" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via External Tool
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MongoDB
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clickhouse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clickhouse
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-with-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration with Vault
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-and-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup and Recovery
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1571,10 +1380,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../cache/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Caching
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1590,6 +1426,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#supported-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported Use Cases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services-that-require-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Services that require Redis
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2621,10 +2499,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#supported-use-cases" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Supported Use Cases
       
     </span>
   </a>
@@ -2632,132 +2510,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-structure" class="md-nav__link">
+  <a href="#services-that-require-redis" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Database Structure
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-information" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connection Information
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#environment-variables" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment Variables
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#accessing-postgresql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Accessing PostgreSQL
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Accessing PostgreSQL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#via-command-line" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via Command Line
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#via-external-tool" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Via External Tool
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mongodb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MongoDB
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#clickhouse" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Clickhouse
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-with-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration with Vault
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#backup-and-recovery" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Backup and Recovery
+        Services that require Redis
       
     </span>
   </a>
@@ -2784,175 +2540,44 @@
   
 
 
-<h1 id="database-setup-for-doka-seca-platform-services">Database Setup for DoKa Seca Platform Services<a class="headerlink" href="#database-setup-for-doka-seca-platform-services" title="Permanent link">&para;</a></h1>
-<p>This document outlines the database configuration for platform services in the DoKa Seca project.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The platform uses a single PostgreSQL database container with multiple databases for different platform services:</p>
+<h1 id="cache-key-value-stores-for-doka-seca-platform-services-redis-valkey">Cache &amp; Key-Value Stores for DoKa Seca Platform Services (Redis / Valkey)<a class="headerlink" href="#cache-key-value-stores-for-doka-seca-platform-services-redis-valkey" title="Permanent link">&para;</a></h1>
+<p>This document describes the supported caching and key-value store options in DoKa Seca.</p>
+<p>DoKa Seca supports Redis/Valkey for caching, session storage, and lightweight key-value needs.
+Some addons (for example, <code>langfuse</code>) may use Redis/Valkey for pub/sub, ephemeral storage, or to back small queues.</p>
+<h2 id="supported-use-cases">Supported Use Cases<a class="headerlink" href="#supported-use-cases" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Keycloak</strong>: Identity and access management</li>
-<li><strong>DevLake</strong>: DevOps metrics platform</li>
-<li><strong>Temporal</strong>: Workflow orchestration</li>
-<li><strong>Backstage</strong>: Developer portal</li>
-<li><strong>LiteLLM</strong>: LLM proxy service</li>
-<li><strong>Langfuse</strong>: LLM observability service</li>
+<li>Caching (application-level caches, response caching)</li>
+<li>Session storage</li>
+<li>Pub/Sub and lightweight message passing for addons (e.g. Langfuse instrumentation)</li>
+<li>Feature flags and small metadata stores</li>
 </ul>
-<h2 id="database-structure">Database Structure<a class="headerlink" href="#database-structure" title="Permanent link">&para;</a></h2>
-<p>Each service has:</p>
-<ul>
-<li>Its own dedicated database</li>
-<li>A unique user with appropriate permissions</li>
-<li>Password-based authentication</li>
-</ul>
-<h2 id="connection-information">Connection Information<a class="headerlink" href="#connection-information" title="Permanent link">&para;</a></h2>
+<h2 id="services-that-require-redis">Services that require Redis<a class="headerlink" href="#services-that-require-redis" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
 <th>Service</th>
-<th>Database</th>
-<th>Username</th>
-<th>Default Password</th>
-<th>Connection String</th>
+<th>Purpose of Redis</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Keycloak</td>
-<td>keycloak</td>
-<td>keycloak</td>
-<td>keycloak_password</td>
-<td>jdbc:postgresql://postgres:5432/keycloak</td>
-</tr>
-<tr>
-<td>DevLake</td>
-<td>devlake</td>
-<td>devlake</td>
-<td>devlake_password</td>
-<td>jdbc:postgresql://postgres:5432/devlake</td>
-</tr>
-<tr>
-<td>Temporal</td>
-<td>temporal</td>
-<td>temporal</td>
-<td>temporal_password</td>
-<td>jdbc:postgresql://postgres:5432/temporal</td>
-</tr>
-<tr>
-<td>Backstage</td>
-<td>backstage</td>
-<td>backstage</td>
-<td>backstage_password</td>
-<td>jdbc:postgresql://postgres:5432/backstage</td>
+<td>Langfuse</td>
+<td>Pub/Sub, ephemeral queues, and worker coordination for instrumentation and addons</td>
 </tr>
 <tr>
 <td>LiteLLM</td>
-<td>litellm</td>
-<td>litellm</td>
-<td>litellm_password</td>
-<td>jdbc:postgresql://postgres:5432/litellm</td>
-</tr>
-<tr>
-<td>Langfuse</td>
-<td>langfuse</td>
-<td>langfuse</td>
-<td>langfuse_password</td>
-<td>jdbc:postgresql://postgres:5432/langfuse</td>
-</tr>
-<tr>
-<td>MLflow</td>
-<td>mlflow</td>
-<td>mlflow</td>
-<td>mlflow_password</td>
-<td>jdbc:postgresql://postgres:5432/mlflow</td>
-</tr>
-<tr>
-<td>Report Portal</td>
-<td>report_portal</td>
-<td>report_portal</td>
-<td>report_portal_password</td>
-<td>jdbc:postgresql://postgres:5432/report_portal</td>
-</tr>
-<tr>
-<td>Chaos Mesh</td>
-<td>chaos_mesh</td>
-<td>chaos_mesh</td>
-<td>chaos_mesh_password</td>
-<td>jdbc:postgresql://postgres:5432/chaos_mesh</td>
+<td>Caching and lightweight coordination for model runners (used by some integrations)</td>
 </tr>
 <tr>
 <td>Airflow</td>
-<td>airflow</td>
-<td>airflow</td>
-<td>airflow_password</td>
-<td>jdbc:postgresql://postgres:5432/airflow</td>
+<td>Celery Redis broker/backend for task queues and scheduler coordination</td>
 </tr>
 <tr>
 <td>Dagster</td>
-<td>dagster</td>
-<td>dagster</td>
-<td>dagster_password</td>
-<td>jdbc:postgresql://postgres:5432/dagster</td>
+<td>Redis broker/backend for task queues and scheduler coordination</td>
 </tr>
 </tbody>
 </table>
-<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
-<p>Database credentials are configured via environment variables in the <code>.env</code> file. Copy <code>.env.example</code> to <code>.env</code> and adjust as needed:</p>
-<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.env.example<span class="w"> </span>.env
-</code></pre></div>
-<h3 id="environment-variables">Environment Variables<a class="headerlink" href="#environment-variables" title="Permanent link">&para;</a></h3>
-<ul>
-<li><code>PG_USER</code> &amp; <code>PG_PASSWORD</code>: PostgreSQL admin credentials</li>
-<li>Service-specific credentials:</li>
-<li><code>KC_DB_USERNAME</code> &amp; <code>KC_DB_PASSWORD</code> (Keycloak)</li>
-<li><code>DL_DB_USERNAME</code> &amp; <code>DL_DB_PASSWORD</code> (DevLake)</li>
-<li>etc.</li>
-</ul>
-<h2 id="accessing-postgresql">Accessing PostgreSQL<a class="headerlink" href="#accessing-postgresql" title="Permanent link">&para;</a></h2>
-<h3 id="via-command-line">Via Command Line<a class="headerlink" href="#via-command-line" title="Permanent link">&para;</a></h3>
-<p>Connect to the PostgreSQL container:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>postgres
-</code></pre></div>
-<p>List databases:</p>
-<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="n">l</span>
-</code></pre></div>
-<p>Connect to a specific database:</p>
-<div class="highlight"><pre><span></span><code><span class="err">\</span><span class="k">c</span><span class="w"> </span><span class="n">keycloak</span>
-</code></pre></div>
-<h3 id="via-external-tool">Via External Tool<a class="headerlink" href="#via-external-tool" title="Permanent link">&para;</a></h3>
-<p>Connect using your preferred database client:</p>
-<ul>
-<li>Host: localhost</li>
-<li>Port: 5432</li>
-<li>User/Password: As specified in .env file</li>
-</ul>
-<h2 id="mongodb">MongoDB<a class="headerlink" href="#mongodb" title="Permanent link">&para;</a></h2>
-<p>MongoDB is used for Litmus. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection
-information provided in the <code>.env</code> file. The MongoDB container is defined in the <code>docker-compose.yml</code> file and can
-be accessed using the MongoDB client or any compatible database tool.</p>
-<h2 id="clickhouse">Clickhouse<a class="headerlink" href="#clickhouse" title="Permanent link">&para;</a></h2>
-<p>The Clickhouse database is used for langfuse. It is configured similarly to PostgreSQL, with credentials stored
-in Vault and connection information provided in the <code>.env</code> file. The Clickhouse container is defined in the
-<code>docker-compose.yml</code> file and can be accessed using the Clickhouse client or any compatible database tool.</p>
-<h2 id="integration-with-vault">Integration with Vault<a class="headerlink" href="#integration-with-vault" title="Permanent link">&para;</a></h2>
-<p>Database credentials are stored in Vault following the pattern described in the <a href="/docs/security/secrets.md">secrets documentation</a>:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># PostgreSQL credentials</span>
-vault/platform/postgres/common/backstage
-vault/platform/postgres/common/keycloak
-vault/platform/postgres/common/devlake
-vault/platform/postgres/common/temporal
-vault/platform/postgres/common/litellm
-vault/platform/postgres/common/langfuse
-vault/platform/postgres/common/mlflow
-vault/platform/postgres/common/airflow
-vault/platform/postgres/common/dagster
-vault/platform/postgres/common/report_portal
-vault/platform/postgres/common/chaos_mesh
-<span class="c1"># Clickhouse credentials</span>
-vault/platform/clickhouse/common/langfuse
-<span class="c1"># MongoDB credentials</span>
-vault/platform/mongodb/common/litmus
-</code></pre></div>
-<h2 id="backup-and-recovery">Backup and Recovery<a class="headerlink" href="#backup-and-recovery" title="Permanent link">&para;</a></h2>
-<p>Database data is persisted in the <code>postgres-data</code> Docker volume.</p>
 
 
 
@@ -2973,7 +2598,7 @@ vault/platform/mongodb/common/litmus
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 22, 2026 15:58:43 UTC"><span class="timeago" datetime="2026-03-22T15:58:43+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 22, 2026 15:58:43 UTC">2026-03-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 22, 2026 16:31:41 UTC"><span class="timeago" datetime="2026-03-22T16:31:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 22, 2026 16:31:41 UTC">2026-03-22</span>
   </span>
 
     
@@ -3018,7 +2643,7 @@ vault/platform/mongodb/common/litmus
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../security/policy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Policy Enforcement">
+          <a href="../storage/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Data Storage">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3028,20 +2653,20 @@ vault/platform/mongodb/common/litmus
                 Previous
               </span>
               <div class="md-ellipsis">
-                Policy Enforcement
+                Data Storage
               </div>
             </div>
           </a>
         
         
           
-          <a href="../streams/" class="md-footer__link md-footer__link--next" aria-label="Next: Data Streams">
+          <a href="../../machine_learning/" class="md-footer__link md-footer__link--next" aria-label="Next: Machine Learning">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Data Streams
+                Machine Learning
               </div>
             </div>
             <div class="md-footer__button md-icon">
