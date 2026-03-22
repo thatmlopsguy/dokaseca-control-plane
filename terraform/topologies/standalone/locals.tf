@@ -182,6 +182,7 @@ locals {
     enable_minio     = try(var.addons.enable_minio, false)
     enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
     enable_longhorn  = try(var.addons.enable_longhorn, false)
+    enable_seaweedfs = try(var.addons.enable_seaweedfs, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
@@ -215,6 +216,7 @@ locals {
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
     # machine learning
+    enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
     enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO

@@ -1,13 +1,6 @@
 name: "Terraform Plan Standalone"
 
 on:
-  push:
-    branches: ["main"]
-    paths:
-      - "terraform/topologies/standalone/**"
-      - "terraform/modules/**"
-      - ".terraform-docs.yml"
-      - ".tflint.hcl"
   pull_request:
     branches: ["main"]
     paths:

@@ -23,7 +23,7 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
-clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-state ## Clean all infrastructure
+clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-state docker-compose-down ## Clean all infrastructure
 
 ##@ Terraform
 terraform-rm-state: ## Remove all terraform states
@@ -57,6 +57,9 @@ terraform-docs: ## Generates documentation for all terraform modules
 ##@ Docker
 docker-compose-up: ## Start docker-compose services
 	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra up -d
+
+docker-compose-down: ## Stop docker-compose services
+	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra down
 
 ##@ KinD
 kind-create-cluster: ## Create kind cluster

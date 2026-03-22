@@ -45,6 +45,7 @@ nav:
     - Databases: data/databases.md
     - Data Streams: data/streams.md
     - Data Storage: data/storage.md
+    - Caching: data/cache.md
   - Machine Learning: machine_learning.md
   - Workflow Orchestration: workflows.md
   - Cost Management: cost.md

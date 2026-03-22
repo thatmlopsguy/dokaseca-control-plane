@@ -23,14 +23,19 @@ Each service has:
 
 ## Connection Information
 
-| Service   | Database  | Username  | Default Password   | Connection String                         |
-|-----------|-----------|-----------|--------------------|-------------------------------------------|
-| Keycloak  | keycloak  | keycloak  | keycloak_password  | jdbc:postgresql://postgres:5432/keycloak  |
-| DevLake   | devlake   | devlake   | devlake_password   | jdbc:postgresql://postgres:5432/devlake   |
-| Temporal  | temporal  | temporal  | temporal_password  | jdbc:postgresql://postgres:5432/temporal  |
-| Backstage | backstage | backstage | backstage_password | jdbc:postgresql://postgres:5432/backstage |
-| LiteLLM   | litellm   | litellm   | litellm_password   | jdbc:postgresql://postgres:5432/litellm   |
-| Langfuse  | langfuse  | langfuse  | langfuse_password  | jdbc:postgresql://postgres:5432/langfuse  |
+| Service       | Database      | Username      | Default Password       | Connection String                             |
+|---------------|---------------|---------------|------------------------|-----------------------------------------------|
+| Keycloak      | keycloak      | keycloak      | keycloak_password      | jdbc:postgresql://postgres:5432/keycloak      |
+| DevLake       | devlake       | devlake       | devlake_password       | jdbc:postgresql://postgres:5432/devlake       |
+| Temporal      | temporal      | temporal      | temporal_password      | jdbc:postgresql://postgres:5432/temporal      |
+| Backstage     | backstage     | backstage     | backstage_password     | jdbc:postgresql://postgres:5432/backstage     |
+| LiteLLM       | litellm       | litellm       | litellm_password       | jdbc:postgresql://postgres:5432/litellm       |
+| Langfuse      | langfuse      | langfuse      | langfuse_password      | jdbc:postgresql://postgres:5432/langfuse      |
+| MLflow        | mlflow        | mlflow        | mlflow_password        | jdbc:postgresql://postgres:5432/mlflow        |
+| Report Portal | report_portal | report_portal | report_portal_password | jdbc:postgresql://postgres:5432/report_portal |
+| Chaos Mesh    | chaos_mesh    | chaos_mesh    | chaos_mesh_password    | jdbc:postgresql://postgres:5432/chaos_mesh    |
+| Airflow       | airflow       | airflow       | airflow_password       | jdbc:postgresql://postgres:5432/airflow       |
+| Dagster       | dagster       | dagster       | dagster_password       | jdbc:postgresql://postgres:5432/dagster       |
 
 ## Configuration
 
@@ -78,16 +83,39 @@ Connect using your preferred database client:
 - Port: 5432
 - User/Password: As specified in .env file
 
+## MongoDB
+
+MongoDB is used for Litmus. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection
+information provided in the `.env` file. The MongoDB container is defined in the `docker-compose.yml` file and can
+be accessed using the MongoDB client or any compatible database tool.
+
+## Clickhouse
+
+The Clickhouse database is used for langfuse. It is configured similarly to PostgreSQL, with credentials stored
+in Vault and connection information provided in the `.env` file. The Clickhouse container is defined in the
+`docker-compose.yml` file and can be accessed using the Clickhouse client or any compatible database tool.
+
 ## Integration with Vault
 
-Database credentials are stored in Vault following the pattern described in the [secrets documentation](/docs/secrets.md):
+Database credentials are stored in Vault following the pattern described in the [secrets documentation](/docs/security/secrets.md):
 
 ```sh
+# PostgreSQL credentials
 vault/platform/postgres/common/backstage
 vault/platform/postgres/common/keycloak
 vault/platform/postgres/common/devlake
+vault/platform/postgres/common/temporal
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
+vault/platform/postgres/common/mlflow
+vault/platform/postgres/common/airflow
+vault/platform/postgres/common/dagster
+vault/platform/postgres/common/report_portal
+vault/platform/postgres/common/chaos_mesh
+# Clickhouse credentials
+vault/platform/clickhouse/common/langfuse
+# MongoDB credentials
+vault/platform/mongodb/common/litmus
 ```
 
 ## Backup and Recovery

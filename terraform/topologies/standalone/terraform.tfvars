@@ -60,7 +60,7 @@ addons = {
   # platform engineering
   enable_karpor = false
   enable_kro    = false
-  # gitops promoter
+  # gitops promotion
   enable_argo_cd_image_updater = false
   enable_kargo                 = false
   enable_gitops_promoter       = false
@@ -85,7 +85,7 @@ addons = {
   enable_kubescape        = false
   # networking
   enable_gateway_api   = false # managed by terraform
-  enable_ingress_nginx = false # TODO deprecated, use gateway api instead
+  enable_ingress_nginx = true
   enable_traefik       = false
   enable_skupper       = false
   ## bare metal load-balancer for Kubernetes
@@ -122,6 +122,7 @@ addons = {
   enable_minio     = false
   enable_rook_ceph = false
   enable_longhorn  = false
+  enable_seaweedfs = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false
@@ -150,6 +151,8 @@ addons = {
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
+  enable_kaito            = false
+  enable_feast            = false
   enable_mlflow           = false
   enable_kuberay          = false
   enable_seldon           = false

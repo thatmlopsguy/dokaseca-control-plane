@@ -15,9 +15,6 @@ CNIs provide networking for pod-to-pod communication within the cluster.
 For KinD clusters:
 
 ```sh
-# Install Cilium CLI
-make install-cilium-cli
-
 # Deploy Cilium on KinD
 cilium install --version 1.14.3 \
   --set kubeProxyReplacement=strict \
