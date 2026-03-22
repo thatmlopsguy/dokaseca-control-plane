@@ -150,6 +150,8 @@ addons = {
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
+  enable_kaito            = false
+  enable_feast            = false
   enable_mlflow           = false
   enable_kuberay          = false
   enable_seldon           = false

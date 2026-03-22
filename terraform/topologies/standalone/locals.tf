@@ -215,6 +215,7 @@ locals {
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
     # machine learning
+    enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
     enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
