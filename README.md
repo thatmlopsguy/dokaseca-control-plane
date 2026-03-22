@@ -27,7 +27,7 @@
 >
 > DoKa Seca is still in relatively early development. At this time, **do not use** Doka Seca for critical production systems. Current version is intended for learning, experimentation, and as a reference implementation for platform engineering best practices. Use at your own risk.
 
-## 📖 Overview
+## Overview
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/thatmlopsguy/dokaseca-control-plane/main/docs/assets/figures/images/internal-developer-platform.png" alt="Internal Developer Platform" width="600"/>
@@ -35,7 +35,7 @@
   <p>Source: <a href="https://platformengineering.org/platform-tooling">platformengineering.org</a></em></p>
 </div>
 
-## 👋 Introduction
+## Introduction
 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
@@ -87,7 +87,7 @@ DoKa Seca consists of 5 GitHub repositories:
 > You will also need access to the internet to download the necessary Helm charts and CRDs.
 > Make sure you are not blocked by a firewall or proxy.
 
-## 🚀 Quick Start
+## Quick Start
 
 Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and configured properly.
 This ensures your platform setup is consistent, secure, and easily reproducible across environments.
@@ -231,7 +231,7 @@ The output looks like the following:
 }
 ```
 
-## 💥 Destroy Infrastructure
+## Destroy Infrastructure
 
 To tear down all the resources and the kind cluster(s), run the following command:
 
@@ -239,7 +239,7 @@ To tear down all the resources and the kind cluster(s), run the following comman
 make clean-infra
 ```
 
-## ⚒️ Troubleshooting
+## Troubleshooting
 
 `ERROR: failed to create cluster: could not find a log line that matches "Reached target .*Multi-User System.*|detected cgroup v1"`
 
@@ -252,19 +252,19 @@ sudo sysctl fs.inotify.max_user_instances=8192
 
 Source: [Pod errors due to “too many open files”](https://kind.sigs.k8s.io/docs/user/known-issues/#pod-errors-due-to-too-many-open-files)
 
-## 📚 Support & Resources
+## Support & Resources
 
 User documentation can be found on our [user docs site](https://thatmlopsguy.github.io/dokaseca-control-plane/).
 
-## 🤝 Contributing & Governance
+## Contributing & Governance
 
 All contributors are warmly welcome. If you want to become a new contributor, we are so happy! Just, before doing it,
 read our [contributing guidelines](CONTRIBUTING.md).
 
-## 🗺️ Roadmap
+## Roadmap
 
 Want to know about the features to come? Check out the project roadmap for more information.
 
-## 🔖 License
+## License
 
 DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE)
