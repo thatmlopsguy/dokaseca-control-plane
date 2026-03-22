@@ -1,15 +1,22 @@
 ## Doka Seca common variables
 ##
 ## Based on https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
-
+## and https://github.com/langfuse/oss-llmops-stack/blob/main/docker-compose/docker-compose.yml
+##
 ## @section Deployment Profiles
 ##
 ## The following profiles can be used to control which services are launched:
 ##
 ## - infra: Infrastructure dependencies (e.g., database, message broker, gateway)
 ## - optional: typically used for optional or internal services
+## - database: database services (PostgreSQL, MongoDB, ClickHouse)
+## - storage: object storage services (MinIO)
+## - monitoring: monitoring stack (Prometheus, Grafana)
+## - messaging: messaging services (RabbitMQ, Redis)
 ##
-
+## To launch all services, use:
+##   docker-compose --profile infra --profile optional --profile database
+##
 ## @section Logging configuration
 ## @param x-logging Shared logging configuration for all services
 ## - Uses json-file logging driver with rotation
@@ -87,6 +94,7 @@ services:
     restart: unless-stopped
     networks:
       - kind
+
   vault:
     image: hashicorp/vault:1.21
     container_name: vault
@@ -140,6 +148,7 @@ services:
     restart: unless-stopped
     profiles:
       - infra
+      - database
     networks:
       - kind
 
@@ -164,6 +173,76 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+      - database
+    networks:
+      - kind
+
+  mongodb:
+    image: mongo:8.2.6-noble
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongo}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongo}
+    volumes:
+      - mongodb-data:/data/db
+    restart: unless-stopped
+    profiles:
+      - infra
+      - database
+    networks:
+      - kind
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongo}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongo}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_INITDB_ROOT_PASSWORD:-mongo}@mongodb:27017/"
+      ME_CONFIG_MONGODB_AUTH_DATABASE: "admin"
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH: true
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_WEB_USERNAME:-admin}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_WEB_PASSWORD:-password}
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    profiles:
+      - infra
+      - database
+    networks:
+      - kind
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:25.8.20
+    container_name: clickhouse
+    ports:
+      - "8123:8123" # HTTP interface
+      - "9009:9000" # Native client interface
+    environment:
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse_password}
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+      - clickhouse-logs:/var/log/clickhouse-server
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    profiles:
+      - infra
+      - database
     networks:
       - kind
 
@@ -216,6 +295,7 @@ services:
     restart: unless-stopped
     profiles:
       - infra
+      - storage
     networks:
       - kind
 
@@ -232,15 +312,16 @@ services:
       mc mb --ignore-existing local/loki &&
       mc mb --ignore-existing local/tempo &&
       mc mb --ignore-existing local/victoria-metrics &&
-      mc mb --ignore-existing local/report-portal" &&
+      mc mb --ignore-existing local/report-portal &&
       mc mb --ignore-existing local/mlflow &&
-      mc mb --ignore-existing local/langfuse
+      mc mb --ignore-existing local/langfuse"
     environment:
       MINIO_ROOT_USER: minioAccessKey
       MINIO_ROOT_PASSWORD: minioSecretKey
     restart: "no"
     profiles:
       - infra
+      - storage
     networks:
       - kind
 
@@ -253,6 +334,8 @@ services:
       - ./docker/prometheus:/etc/prometheus
     profiles:
       - optional
+      - monitoring
+    restart: unless-stopped
     networks:
       - spoke-dev-control-plane
 
@@ -281,6 +364,7 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+      - monitoring
     networks:
       - kind
   redis:
@@ -356,6 +440,7 @@ services:
       start_period: 60s
     restart: always
     profiles:
+      - optional # Messaging is optional for now
       - messaging
     networks:
       - kind
@@ -373,6 +458,9 @@ volumes:
   vault-logs:
   postgres-data:
   pgadmin-data:
+  mongodb-data:
+  clickhouse-data:
+  clickhouse-logs:
   grafana-data:
   portainer-data:
   redis-data:
