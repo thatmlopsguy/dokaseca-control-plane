@@ -13,6 +13,7 @@
 ## - storage: object storage services (MinIO)
 ## - monitoring: monitoring stack (Prometheus, Grafana)
 ## - messaging: messaging services (RabbitMQ, Redis)
+## By default, only the 'infra' profile is active, which includes essential infrastructure services.
 ##
 ## To launch all services, use:
 ##   docker-compose --profile infra --profile optional --profile database
@@ -27,42 +28,16 @@ x-logging: &logging
     max-size: 100m
     max-file: "5"
 
-## @section Database configuration
-## @param x-database Shared database connection settings used across services
-## @param db_host Internal hostname of the database container (e.g., "postgres")
-## @param db_port Port used to connect to the database (default: 5432)
-## @param db_user Username for service-level access to the database
-## @param db_password Password for the specified DB user
-## @param db_name Logical database name used by services
-##
-x-database:
-  db_host: &db_host postgres
-  db_port: &db_port 5432
-  db_user: &db_user ${POSTGRES_USER-rpuser}
-  db_password: &db_password ${POSTGRES_PASSWORD-rppass}
-  db_name: &db_name ${POSTGRES_DB-reportportal}
-
-## @section AMQP (RabbitMQ) configuration
-## @param x-amqp Shared message broker settings used for internal service communication
-## @param rabbitmq_host Hostname of the RabbitMQ container (Docker internal DNS)
-## @param rabbitmq_port Port for AMQP protocol communication (default: 5672)
-## @param rabbitmq_apiport Port to access RabbitMQ web UI (default: 15672)
-## @param rabbitmq_user Username for authenticating RabbitMQ clients
-## @param rabbitmq_password Password for the RabbitMQ user
-##
-x-amqp:
-  rabbitmq_host: &rabbitmq_host rabbitmq
-  rabbitmq_port: &rabbitmq_port 5672
-  rabbitmq_apiport: &rabbitmq_apiport 15672
-  rabbitmq_user: &rabbitmq_user ${RABBITMQ_DEFAULT_USER-rabbitmq}
-  rabbitmq_password: &rabbitmq_password ${RABBITMQ_DEFAULT_PASS-rabbitmq}
-
 services:
   ##
   ## Doka Seca dependencies
   ## @section Doka Seca dependencies
   ##
-  # https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
+
+  ## @param portainer Web-based Docker management UI for monitoring and managing containers, images, volumes, and networks
+  ## - Exposes port 9000 for accessing the Portainer dashboard
+  ## - Uses Docker socket for direct communication with the Docker daemon
+  ## https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
   portainer:
     container_name: portainer
     image: portainer/portainer-ce:2.38.0
@@ -80,7 +55,13 @@ services:
       - optional
     networks:
       - kind
-  # See also Terrapod https://github.com/mattrobinsonsre/terrapod
+
+  ## @param atlantis Terraform pull request automation tool for infrastructure as code management
+  ## - Listens for GitHub webhooks to trigger Terraform plan/apply workflows
+  ## - Exposes port 4141 for webhook communication
+  ## - Requires GitHub user and token for authentication and repository access
+  ## See also Terrapod https://github.com/mattrobinsonsre/terrapod
+  ##
   atlantis:
     image: runatlantis/atlantis:latest
     container_name: atlantis
@@ -95,6 +76,10 @@ services:
     networks:
       - kind
 
+  ## @param vault Secret management server for storing sensitive configuration and credentials
+  ## - Runs in development mode for simplicity, not recommended for production use
+  ## - Exposes default Vault port 8200 for internal communication
+  ##
   vault:
     image: hashicorp/vault:1.21
     container_name: vault
@@ -125,6 +110,11 @@ services:
     networks:
       - kind
 
+  ## @param postgres Relational database server for structured data storage
+  ## - Uses official PostgreSQL image with version 16
+  ## - Exposes default PostgreSQL port 5432 for internal communication
+  ## - Includes healthcheck to ensure database is ready before dependent services start
+  ##
   postgres:
     image: postgres:16
     container_name: postgres
@@ -177,6 +167,10 @@ services:
     networks:
       - kind
 
+  ## MongoDB NoSQL database for services that require flexible schema or document storage
+  ## - Exposes default MongoDB port 27017 for internal communication
+  ## - Includes Mongo Express web UI for database management and monitoring
+  ##
   mongodb:
     image: mongo:8.2.6-noble
     container_name: mongodb
@@ -219,6 +213,10 @@ services:
     networks:
       - kind
 
+  ## @param clickhouse Columnar database for analytics and time-series data storage
+  ## - Exposes HTTP interface on port 8123 and native client interface on port 9000 for internal communication
+  ## - Includes healthcheck to ensure ClickHouse is ready before dependent services start
+  ##
   clickhouse:
     image: clickhouse/clickhouse-server:25.8.20
     container_name: clickhouse
@@ -246,6 +244,10 @@ services:
     networks:
       - kind
 
+  ## @param keycloak Open-source identity and access management server
+  ## - Provides authentication and authorization for Doka Seca services
+  ## - Supports multiple protocols (OAuth2, OpenID Connect, SAML)
+  ##
   keycloak:
     image: quay.io/keycloak/keycloak:25.0
     container_name: keycloak
@@ -274,6 +276,11 @@ services:
     networks:
       - kind
 
+  ## @param minio Object storage server compatible with Amazon S3
+  ## - Used for storing artifacts, logs, and other large files
+  ## - Provides a web console for management and monitoring
+  ## - For production, consider using a proper storage backend and configuration
+  ##
   minio:
     # new version the admin features are removed
     image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
@@ -325,6 +332,9 @@ services:
     networks:
       - kind
 
+  ## @param  prometheus Open-source monitoring and alerting toolkit for collecting and querying metrics
+  ## - Exposes port 9090 for Prometheus web UI and API
+  ##
   prometheus:
     image: prom/prometheus:v3.9.1
     container_name: prometheus
@@ -339,6 +349,10 @@ services:
     networks:
       - spoke-dev-control-plane
 
+  ## @param grafana Open-source analytics and monitoring platform for visualizing metrics collected by Prometheus
+  ## - Exposes port 3000 for Grafana web UI
+  ## - Configured to connect to Prometheus as a data source and load predefined dashboards
+  ##
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -367,6 +381,10 @@ services:
       - monitoring
     networks:
       - kind
+
+  ## @param redis In-memory data structure store used for caching, session management
+  ## and message brokering
+  ##
   redis:
     image: redis:8.4.0
     container_name: redis
@@ -420,8 +438,8 @@ services:
     ## Uncomment to expose RabbitMQ dashboard
     #   - "15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: *rabbitmq_user
-      RABBITMQ_DEFAULT_PASS: *rabbitmq_password
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-rabbitmq}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbitmq_password}
       RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS: "true"
       ## Block all procedures when free disk space is less than 50MB
       ## Ref: https://www.rabbitmq.com/docs/disk-alarms
