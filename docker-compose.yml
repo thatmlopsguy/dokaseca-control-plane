@@ -73,7 +73,20 @@ services:
       - optional
     networks:
       - kind
-
+  # See also Terrapod https://github.com/mattrobinsonsre/terrapod
+  atlantis:
+    image: runatlantis/atlantis:latest
+    container_name: atlantis
+    ports:
+      - "4141:4141"
+    environment:
+      - ATLANTIS_GH_USER=atlantis
+      - ATLANTIS_GH_TOKEN
+    profiles:
+      - optional
+    restart: unless-stopped
+    networks:
+      - kind
   vault:
     image: hashicorp/vault:1.21
     container_name: vault

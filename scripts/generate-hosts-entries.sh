@@ -1,7 +1,10 @@
 #!/bin/bash
+# This script generates hosts entries for the services deployed in the Kubernetes cluster, using the ingress load balancer IP and a base domain.
+# The generated entries can be added to the /etc/hosts file for local development and testing purposes.
+# See also https://www.bushart.org/resource/wildcard-dns-ip/
 
 # Base domain configuration
-BASE_DOMAIN="dokaseca.local"
+BASE_DOMAIN=${BASE_DOMAIN:-"dokaseca.local"}
 
 # Get the ingress load balancer IP
 INGRESS_LB_IP=$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
@@ -26,6 +29,14 @@ SERVICE_PREFIXES=(
 	"jaeger"
 	"keycloak"
 	"devlake"
+    "mlflow"
+    "langfuse"
+    "temporal"
+    "airflow"
+    "report-portal"
+    "minio"
+    "litmus"
+    "chaos-mesh"
 )
 
 # Generate hosts entries

@@ -42,3 +42,38 @@ CREATE USER langfuse WITH PASSWORD 'langfuse_password';
 GRANT ALL PRIVILEGES ON DATABASE langfuse TO langfuse;
 \c langfuse
 GRANT ALL ON SCHEMA public TO langfuse;
+
+-- MLflow database
+CREATE DATABASE mlflow;
+CREATE USER mlflow WITH PASSWORD 'mlflow_password';
+GRANT ALL PRIVILEGES ON DATABASE mlflow TO mlflow;
+\c mlflow
+GRANT ALL ON SCHEMA public TO mlflow;
+
+-- Airflow database
+CREATE DATABASE airflow;
+CREATE USER airflow WITH PASSWORD 'airflow_password';
+GRANT ALL PRIVILEGES ON DATABASE airflow TO airflow;
+\c airflow
+GRANT ALL ON SCHEMA public TO airflow;
+
+-- Dagster database
+CREATE DATABASE dagster;
+CREATE USER dagster WITH PASSWORD 'dagster_password';
+GRANT ALL PRIVILEGES ON DATABASE dagster TO dagster;
+\c dagster
+GRANT ALL ON SCHEMA public TO dagster;
+
+-- report-portal database
+CREATE DATABASE report_portal;
+CREATE USER report_portal WITH PASSWORD 'report_portal_password';
+GRANT ALL PRIVILEGES ON DATABASE report_portal TO report_portal;
+\c report_portal
+GRANT ALL ON SCHEMA public TO report_portal;
+
+-- Chaos Mesh database
+CREATE DATABASE chaos_mesh;
+CREATE USER chaos_mesh WITH PASSWORD 'chaos_mesh_password';
+GRANT ALL PRIVILEGES ON DATABASE chaos_mesh TO chaos_mesh;
+\c chaos_mesh
+GRANT ALL ON SCHEMA public TO chaos_mesh;
