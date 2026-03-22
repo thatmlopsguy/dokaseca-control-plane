@@ -47,7 +47,8 @@ mkdir -p data/minio/loki
 mkdir -p data/minio/tempo
 mkdir -p data/minio/vm
 mkdir -p data/minio/report-portal
-
+mkdir -p data/minio/mlflow
+mkdir -p data/minio/langfuse
 
 # Start MinIO
 docker compose up -d
@@ -79,6 +80,9 @@ mc mb local/velero-prod
 mc mb local/loki
 mc mb local/tempo
 mc mb local/vm
+mc mb local/report-portal
+mc mb local/mlflow
+mc mb local/langfuse
 ```
 
 ### Bucket Configuration
@@ -92,6 +96,8 @@ MinIO is configured with dedicated buckets for each service:
 | Tempo            | tempo         | Distributed tracing storage     |
 | Victoria Metrics | vm            | Long-term metrics storage       |
 | ReportPortal     | report-portal | Object storage for ReportPortal |
+| MLflow           | mlflow        | Object storage for MLflow       |
+| Langfuse         | langfuse      | Object storage for Langfuse     |
 
 ## Service Integrations
 
