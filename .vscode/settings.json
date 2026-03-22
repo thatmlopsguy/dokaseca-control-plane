@@ -83,6 +83,7 @@
         "robusta",
         "rollouts",
         "sarif",
+        "seaweedfs",
         "seldon",
         "shellcheck",
         "signoz",

@@ -122,6 +122,7 @@ addons = {
   enable_minio     = false
   enable_rook_ceph = false
   enable_longhorn  = false
+  enable_seaweedfs = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false

@@ -182,6 +182,7 @@ locals {
     enable_minio     = try(var.addons.enable_minio, false)
     enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
     enable_longhorn  = try(var.addons.enable_longhorn, false)
+    enable_seaweedfs = try(var.addons.enable_seaweedfs, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
