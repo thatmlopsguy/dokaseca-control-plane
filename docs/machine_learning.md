@@ -6,58 +6,11 @@ Doka Seca provides a robust machine learning platform built on Kubernetes, integ
 
 Doka Seca's machine learning stack consists of four core components:
 
-1. **Ray Operator** - For distributed training workloads
-2. **LiteLLM** - For routing LLM requests
-3. **Langfuse** - For LLM observability
-4. **vllm** - For local LLM inference
+1. **LiteLLM** - For routing LLM requests
+2. **Langfuse** - For LLM observability
+3. **vllm** - For local LLM inference
+4. **Kaito** - Operator that automates the AI/ML model inference or tuning workload in a Kubernetes cluster
 5. **MLflow** - For experiment tracking and model management
-
-## Ray Operator
-
-[Ray](https://ray.io/) is an open-source unified framework for scaling AI and Python applications.
-Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) to manage distributed training workloads.
-
-### Ray Capabilities
-
-- **Distributed Training**: Scale machine learning workloads across multiple nodes
-- **Resource Management**: Efficiently allocate CPU, GPU, and memory resources
-- **Fault Tolerance**: Automatically recover from node failures
-- **Dynamic Scaling**: Scale resources up or down based on workload demands
-
-### Usage
-
-```yaml
-apiVersion: ray.io/v1
-kind: RayCluster
-metadata:
-  name: ray-cluster
-spec:
-  rayVersion: '2.9.0'
-  headGroupSpec:
-    rayStartParams: {}
-    template:
-      spec:
-        containers:
-        - name: ray-head
-          image: rayproject/ray:2.9.0
-          resources:
-            limits:
-              cpu: "2"
-              memory: "4Gi"
-  workerGroupSpecs:
-  - groupName: worker-group
-    replicas: 3
-    rayStartParams: {}
-    template:
-      spec:
-        containers:
-        - name: ray-worker
-          image: rayproject/ray:2.9.0
-          resources:
-            limits:
-              cpu: "1"
-              memory: "2Gi"
-```
 
 ## vllm
 

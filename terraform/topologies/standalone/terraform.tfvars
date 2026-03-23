@@ -154,7 +154,6 @@ addons = {
   enable_kaito            = false
   enable_feast            = false
   enable_mlflow           = false
-  enable_kuberay          = false
   enable_seldon           = false
   enable_litellm          = false
   enable_litellm_operator = false
@@ -166,9 +165,14 @@ addons = {
   enable_kueue    = false
   enable_yunikorn = false
   enable_volcano  = false
+  # distributed computing
+  enable_kuberay        = false # TODO
+  enable_spark_operator = false # TODO
+  enable_slurm_operator = false # TODO
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
+  # https://aws-controllers-k8s.github.io/community/docs/community/services/
   # gcp
   # enterprise
   enable_kubecost             = false

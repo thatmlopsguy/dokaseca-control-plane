@@ -29,3 +29,31 @@ print_error() {
 print_header() {
     echo -e "${PURPLE}=== $1 ===${NC}"
 }
+
+verify_deployment() {
+
+    print_info "Verifying deployment..."
+
+    print_header "Kubernetes nodes"
+    kubectl get nodes
+
+    print_header "ArgoCD Applications"
+    kubectl get applications -n argocd
+}
+
+print_next_steps() {
+
+    print_header "Next Steps"
+    echo "1. Port-forward ArgoCD:"
+    echo "   kubectl port-forward svc/argocd-server -n argocd 8080:443"
+    echo ""
+    echo "2. Access ArgoCD UI at https://localhost:8080"
+    echo "   Username: admin"
+    echo "   Password: $ARGOCD_PASSWORD"
+    echo ""
+    print_header "Monitor Application Sync Status"
+    echo "   kubectl get applications -n argocd"
+    echo ""
+    print_header "Clean Up (when done)"
+    echo "   make clean-infra"
+}

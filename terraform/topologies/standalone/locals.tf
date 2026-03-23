@@ -215,12 +215,15 @@ locals {
     enable_kueue    = try(var.addons.enable_kueue, false)    # TODO
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
+    # distributed computing
+    enable_kuberay        = try(var.addons.enable_kuberay, false)        # TODO
+    enable_spark_operator = try(var.addons.enable_spark_operator, false) # TODO
+    enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO
     # machine learning
     enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
     enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
-    enable_kuberay          = try(var.addons.enable_kuberay, false)          # TODO
     enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
     enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
@@ -228,9 +231,12 @@ locals {
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
     enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
+    # analytics
+    enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
+    enable_superset       = try(var.addons.enable_superset, false)       # TODO
+    enable_trino          = try(var.addons.enable_trino, false)          # TODO
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
-    enable_kahu   = try(var.addons.enable_kahu, false)   # TODO
   }
 
   # Enterprise
@@ -261,9 +267,18 @@ locals {
   }
 
   # AWS
+  # https://aws-controllers-k8s.github.io/community/docs/community/services/
   aws_addons = {
-    enable_aws_karpenter        = try(var.addons.enable_aws_karpenter, false)
-    enable_aws_external_secrets = try(var.addons.enable_aws_external_secrets, false)
+    enable_aws_karpenter                = try(var.addons.enable_aws_karpenter, false)
+    enable_aws_external_secrets         = try(var.addons.enable_aws_external_secrets, false)
+    enable_aws_load_balancer_controller = try(var.addons.enable_aws_load_balancer_controller, false)
+    enable_aws_ebs_csi_driver           = try(var.addons.enable_aws_ebs_csi_driver, false)
+    enable_aws_efs_csi_driver           = try(var.addons.enable_aws_efs_csi_driver, false)
+    enable_aws_ack_eks_controller       = try(var.addons.enable_aws_ack_eks_controller, false)
+    enable_aws_ack_s3_controller        = try(var.addons.enable_aws_ack_s3_controller, false)
+    enable_aws_ack_rds_controller       = try(var.addons.enable_aws_ack_rds_controller, false)
+    enable_aws_ack_sqs_controller       = try(var.addons.enable_aws_ack_sqs_controller, false)
+    enable_aws_ack_sns_controller       = try(var.addons.enable_aws_ack_sns_controller, false)
   }
 
   # GCP
