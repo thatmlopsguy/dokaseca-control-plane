@@ -36,6 +36,7 @@ Each service has:
 | Chaos Mesh    | chaos_mesh    | chaos_mesh    | chaos_mesh_password    | jdbc:postgresql://postgres:5432/chaos_mesh    |
 | Airflow       | airflow       | airflow       | airflow_password       | jdbc:postgresql://postgres:5432/airflow       |
 | Dagster       | dagster       | dagster       | dagster_password       | jdbc:postgresql://postgres:5432/dagster       |
+| Superset      | superset      | superset      | superset_password      | jdbc:postgresql://postgres:5432/superset      |
 
 ## Configuration
 
