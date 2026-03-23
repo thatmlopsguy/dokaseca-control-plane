@@ -202,6 +202,8 @@ locals {
     enable_k8s_image_swapper        = try(var.addons.enable_k8s_image_swapper, false)
     enable_spegel                   = try(var.addons.enable_spegel, false)
     enable_harbor_container_webhook = try(var.addons.enable_harbor_container_webhook, false)
+    enable_fake_gpu_operator        = try(var.addons.enable_fake_gpu_operator, false) # TODO see https://github.com/run-ai/fake-gpu-operator
+    enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager
@@ -231,6 +233,7 @@ locals {
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
     enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
+    enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false) # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
     # analytics
     enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
     enable_superset       = try(var.addons.enable_superset, false)       # TODO
