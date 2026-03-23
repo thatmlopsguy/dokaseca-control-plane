@@ -7,21 +7,30 @@
 
 set -e  # Exit on any error
 
+PROJECT_ROOT=$(git rev-parse --show-toplevel)
+
+source "$PROJECT_ROOT/scripts/lib/common.sh"
+
+# Check prerequisites before proceeding
+check_prerequisites
+
 if [[ $# -eq 0 ]] ; then
-    echo "No arguments supplied"
-    echo "Usage: deploy.sh <environment>"
-    echo "Example: deploy.sh dev"
+    print_error "No arguments supplied"
+    print_info "Usage: deploy.sh <environment>"
+    print_info "Example: deploy.sh dev"
     exit 1
 fi
 
 env=$1
 
-echo "Deploying $env with workspaces/${env}.tfvars ..."
+check_prerequisites
+
+print_header "Deploying $env with workspaces/${env}.tfvars ..."
 terraform init -upgrade
 
 # Check if the tfvars file exists
 if [[ ! -f "workspaces/${env}.tfvars" ]]; then
-    echo "Error: workspaces/${env}.tfvars does not exist"
+    print_error "workspaces/${env}.tfvars does not exist"
     exit 1
 fi
 
@@ -29,13 +38,15 @@ fi
 terraform workspace new $env 2>/dev/null || true
 terraform workspace select $env
 
-echo "Applying terraform configuration..."
+print_header "Applying terraform configuration..."
 terraform apply -var-file="workspaces/${env}.tfvars" -auto-approve
 
 # List all Kind clusters
-echo "Current Kind clusters:"
+print_header "Current Kind clusters"
 kind get clusters 2>/dev/null || echo "No Kind clusters found"
 
 # List all vclusters
-echo "Current vclusters:"
+print_header "Current vclusters"
 vcluster list 2>/dev/null || echo "No vclusters found"
+
+verify_deployment

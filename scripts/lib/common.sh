@@ -30,19 +30,31 @@ print_header() {
     echo -e "${PURPLE}=== $1 ===${NC}"
 }
 
-verify_deployment() {
+# Check prerequisites
+check_prerequisites() {
+    print_info "Checking prerequisites..."
 
+    command -v terraform >/dev/null 2>&1 || { print_error "terraform is required but not installed."; exit 1; }
+    command -v kubectl >/dev/null 2>&1 || { print_error "kubectl is required but not installed."; exit 1; }
+    command -v kind >/dev/null 2>&1 || { print_error "kind is required but not installed."; exit 1; }
+
+    print_success "Prerequisites check passed"
+}
+
+verify_deployment() {
     print_info "Verifying deployment..."
 
     print_header "Kubernetes nodes"
     kubectl get nodes
+
+    print_header "Kubernetes namespaces"
+    kubectl get namespaces
 
     print_header "ArgoCD Applications"
     kubectl get applications -n argocd
 }
 
 print_next_steps() {
-
     print_header "Next Steps"
     echo "1. Port-forward ArgoCD:"
     echo "   kubectl port-forward svc/argocd-server -n argocd 8080:443"
