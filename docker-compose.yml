@@ -321,7 +321,8 @@ services:
       mc mb --ignore-existing local/victoria-metrics &&
       mc mb --ignore-existing local/report-portal &&
       mc mb --ignore-existing local/mlflow &&
-      mc mb --ignore-existing local/langfuse"
+      mc mb --ignore-existing local/langfuse &&
+      mc mb --ignore-existing local/pyroscope"
     environment:
       MINIO_ROOT_USER: minioAccessKey
       MINIO_ROOT_PASSWORD: minioSecretKey

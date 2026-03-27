@@ -12,7 +12,6 @@ on:
       - "**.md"
       - ".pre-commit-config.yaml"
       - ".shellcheckrc"
-      - "requirements/**"
       - "scripts/**"
       - "terraform/**"
 
@@ -27,7 +26,6 @@ on:
       - "**.md"
       - ".pre-commit-config.yaml"
       - ".shellcheckrc"
-      - "requirements/**"
       - "scripts/**"
       - "terraform/**"
 

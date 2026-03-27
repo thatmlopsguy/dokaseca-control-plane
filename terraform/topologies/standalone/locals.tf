@@ -76,10 +76,10 @@ locals {
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events   = try(var.addons.enable_argo_events, false)
     enable_keda          = try(var.addons.enable_keda, false)
-    enable_keptn         = try(var.addons.enable_keptn, false)
-    enable_open_feature  = try(var.addons.enable_open_feature, false)
-    enable_openfunction  = try(var.addons.enable_openfunction, false)
-    enable_sloth         = try(var.addons.enable_sloth, false)
+    # enable_keptn         = try(var.addons.enable_keptn, false) # Archived
+    enable_open_feature = try(var.addons.enable_open_feature, false)
+    enable_openfunction = try(var.addons.enable_openfunction, false)
+    enable_sloth        = try(var.addons.enable_sloth, false)
     # fleet managers
     # https://kubefleet-dev.github.io/website/
     enable_kubefleet_hub_agent    = try(var.addons.enable_kubefleet_hub_agent, false)    # TODO
@@ -167,6 +167,7 @@ locals {
     enable_opencost   = try(var.addons.enable_opencost, false)
     enable_kepler     = try(var.addons.enable_kepler, false)
     enable_kube_green = try(var.addons.enable_kube_green, false)
+    enable_goldilocks = try(var.addons.enable_goldilocks, false)
     # compliance
     enable_kyverno                 = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
