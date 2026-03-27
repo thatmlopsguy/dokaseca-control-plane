@@ -48,7 +48,7 @@ addons = {
   enable_argo_rollouts  = false
   enable_argo_workflows = false
   enable_argo_events    = false
-  enable_keptn          = false
+  # enable_keptn          = false
   # developer experience
   enable_keda = false
   enable_dapr = false
@@ -116,6 +116,7 @@ addons = {
   enable_opencost   = false
   enable_kepler     = false
   enable_kube_green = false
+  enable_goldilocks = false
   # disaster recovery
   enable_velero = false
   # storage
@@ -181,6 +182,7 @@ addons = {
   enable_nvidia_device_plugin = false
   enable_nvidia_kai_scheduler = false
 }
+
 # Resources
 gitops_addons_extras_repo     = "helm-charts"
 gitops_addons_extras_basepath = "stable"

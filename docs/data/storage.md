@@ -40,15 +40,14 @@ To install MinIO using Docker:
 
 ```bash
 # Create directories for MinIO data
-mkdir -p data/minio/velero-dev
-mkdir -p data/minio/velero-stg
-mkdir -p data/minio/velero-prod
+mkdir -p data/minio/velero
 mkdir -p data/minio/loki
 mkdir -p data/minio/tempo
 mkdir -p data/minio/vm
 mkdir -p data/minio/report-portal
 mkdir -p data/minio/mlflow
 mkdir -p data/minio/langfuse
+mkdir -p data/minio/pyroscope
 
 # Start MinIO
 docker compose up -d
@@ -74,15 +73,14 @@ curl https://dl.min.io/client/mc/release/linux-amd64/mc \
 mc alias set local http://localhost:9000 minioadmin minioadmin
 
 # Create buckets
-mc mb local/velero-dev
-mc mb local/velero-stg
-mc mb local/velero-prod
+mc mb local/velero
 mc mb local/loki
 mc mb local/tempo
 mc mb local/vm
 mc mb local/report-portal
 mc mb local/mlflow
 mc mb local/langfuse
+mc mb local/pyroscope
 ```
 
 ### Bucket Configuration
@@ -91,13 +89,14 @@ MinIO is configured with dedicated buckets for each service:
 
 | Service          | Bucket Name   | Purpose                         |
 |------------------|---------------|---------------------------------|
-| Velero           | velero-{env}  | Kubernetes backup and restore   |
+| Velero           | velero        | Kubernetes backup and restore   |
 | Loki             | loki          | Log storage and querying        |
 | Tempo            | tempo         | Distributed tracing storage     |
 | Victoria Metrics | vm            | Long-term metrics storage       |
 | ReportPortal     | report-portal | Object storage for ReportPortal |
 | MLflow           | mlflow        | Object storage for MLflow       |
 | Langfuse         | langfuse      | Object storage for Langfuse     |
+| Pyroscope        | pyroscope     | Object storage for Pyroscope    |
 
 ## Service Integrations
 

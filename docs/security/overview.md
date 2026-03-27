@@ -94,7 +94,8 @@ supply chain attacks. This ensures immutable references to specific action versi
 
 ### Zizmor Linting
 
-All GitHub Actions workflows **must pass [Zizmor](https://github.com/woodruffw/zizmor) linting rules**. Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.
+All GitHub Actions workflows **must pass [Zizmor](https://github.com/woodruffw/zizmor) linting rules**.
+Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.
 
 **Required checks:**
 
@@ -103,6 +104,33 @@ All GitHub Actions workflows **must pass [Zizmor](https://github.com/woodruffw/z
 - Correct permissions configuration (principle of least privilege)
 - Safe use of pull request triggers
 - Validation of artifact integrity
+
+### Dependabot Cooldowns
+
+To mitigate supply chain attacks from rapid dependency updates, DoKa Seca configures
+[Dependabot cooldowns](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown)
+on version update groups. Cooldowns introduce a waiting period before Dependabot opens a pull request for a newly
+released version, giving the community time to detect and report compromised packages.
+
+```yaml
+version: 2
+
+updates:
+  # update once a week, with a 7-day cooldown
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+```
+
+**Why cooldowns matter:**
+
+- **Early-warning buffer**: A 7-day delay allows time for the ecosystem to flag malicious or broken releases before
+  they reach your workflows
+- **Reduced blast radius**: Prevents automatic adoption of a compromised version minutes after publication
+- **Complements SHA pinning**: While pinned SHAs protect against tag mutation, cooldowns protect against net-new malicious releases
 
 ## Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions
 
@@ -115,3 +143,4 @@ All GitHub Actions workflows **must pass [Zizmor](https://github.com/woodruffw/z
 - [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/overview/)
 - [GitHub Actions Policy](https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/)
 - [How to Harden GitHub Actions: The Unofficial Guide](https://www.wiz.io/blog/github-actions-security-guide)
+- [Dependabot Cooldowns](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown)

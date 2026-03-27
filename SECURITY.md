@@ -81,9 +81,8 @@ DoKa Seca uses various automated security tools:
 ### Continuous Security
 
 - **Dependabot**: Automated dependency vulnerability scanning
-- **CodeQL**: Semantic code analysis for security issues
-- **Container Scanning**: Automated container image vulnerability scanning
-- **Secret Scanning**: Detection of committed secrets and tokens
+- **Container Scanning**: Automated container image vulnerability scanning with Trivy
+- **Secret Scanning**: Detection of committed secrets and tokens using Betterleaks
 - **SBOM Generation**: Software Bill of Materials for transparency
 
 ### Security Policies

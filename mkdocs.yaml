@@ -36,6 +36,7 @@ nav:
     - Logging: observability/logging.md
     - Monitoring: observability/monitoring.md
     - Tracing: observability/tracing.md
+    - Profiles: observability/profiles.md
   - Security:
     - Overview: security/overview.md
     - Certificates: security/certificates.md

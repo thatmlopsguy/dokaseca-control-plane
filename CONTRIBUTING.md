@@ -45,8 +45,8 @@ There are many ways to contribute:
    ```
 
 4. **Install dependencies**:
-  We use [Mise](https://mise.jdx.dev/) to manage our development environment and dependencies.
-  Run the following command to set up everything you need for development:
+  Install [`mise`](https://mise.jdx.dev/) to manage project-specific tools and tasks, then run `mise install`
+  in the repository root to download the tool versions declared in `.tool-versions` and make them available in your shell.
 
    ```bash
    mise run tools
