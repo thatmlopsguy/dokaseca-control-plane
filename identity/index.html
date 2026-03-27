@@ -670,6 +670,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#paralus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paralus
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2891,6 +2902,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#paralus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paralus
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3013,6 +3035,7 @@
 <li><strong>Single Sign-On (SSO)</strong> across all platform components</li>
 <li><strong>Multi-tenant user management</strong> with role-based access control</li>
 <li><strong>OIDC/SAML integration</strong> with platform services</li>
+<li><strong>Developer access to Kubernetes resources</strong> through Paralus integration</li>
 <li><strong>Identity federation</strong> with external providers</li>
 <li><strong>Audit logging</strong> for compliance requirements</li>
 </ul>
@@ -3133,6 +3156,19 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">  </span><span class="no">p, role:platform-admin, clusters, *, *, allow</span>
 <span class="w">  </span><span class="no">g, platform-team, role:platform-admin</span>
 </code></pre></div>
+<h3 id="paralus">Paralus<a class="headerlink" href="#paralus" title="Permanent link">&para;</a></h3>
+<p>DoKa Seca supports the Paralus project to provide secure developer access to Kubernetes resources across tenant and
+platform clusters.</p>
+<p>Paralus complements the platform IAM model by:</p>
+<ul>
+<li>Providing authenticated access to Kubernetes clusters without broadly distributing kubeconfig files</li>
+<li>Enforcing role-based access for developers, tenant administrators, and platform teams</li>
+<li>Supporting audited access sessions for Kubernetes APIs, namespaces, and workloads</li>
+<li>Centralizing developer access workflows for multi-cluster environments</li>
+</ul>
+<p>In this model, Keycloak acts as the identity provider and Paralus acts as the access gateway for Kubernetes resources.
+This allows developers to authenticate with platform-managed identities and access only the clusters and namespaces
+granted to their role.</p>
 <h2 id="security-configuration">Security Configuration<a class="headerlink" href="#security-configuration" title="Permanent link">&para;</a></h2>
 <h3 id="password-policies">Password Policies<a class="headerlink" href="#password-policies" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3202,7 +3238,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 19, 2026 21:50:11 UTC"><span class="timeago" datetime="2026-03-19T21:50:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 19, 2026 21:50:11 UTC">2026-03-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2026 21:32:41 UTC"><span class="timeago" datetime="2026-03-27T21:32:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2026 21:32:41 UTC">2026-03-27</span>
   </span>
 
     
