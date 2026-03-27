@@ -9,6 +9,7 @@ The DoKa Seca platform uses Keycloak as the central identity provider (IdP) to p
 - **Single Sign-On (SSO)** across all platform components
 - **Multi-tenant user management** with role-based access control
 - **OIDC/SAML integration** with platform services
+- **Developer access to Kubernetes resources** through Paralus integration
 - **Identity federation** with external providers
 - **Audit logging** for compliance requirements
 
@@ -123,6 +124,22 @@ policy.csv: |
   p, role:platform-admin, clusters, *, *, allow
   g, platform-team, role:platform-admin
 ```
+
+### Paralus
+
+DoKa Seca supports the Paralus project to provide secure developer access to Kubernetes resources across tenant and
+platform clusters.
+
+Paralus complements the platform IAM model by:
+
+- Providing authenticated access to Kubernetes clusters without broadly distributing kubeconfig files
+- Enforcing role-based access for developers, tenant administrators, and platform teams
+- Supporting audited access sessions for Kubernetes APIs, namespaces, and workloads
+- Centralizing developer access workflows for multi-cluster environments
+
+In this model, Keycloak acts as the identity provider and Paralus acts as the access gateway for Kubernetes resources.
+This allows developers to authenticate with platform-managed identities and access only the clusters and namespaces
+granted to their role.
 
 ## Security Configuration
 
