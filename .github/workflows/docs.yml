@@ -34,29 +34,18 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@5a095e7a2014a4212f075830d4f7277575a9d098 # v7.3.1
         with:
-          python-version: 3.x
+          enable-cache: true
 
-      - run: echo "cache_id=$(date --utc '+%V')" >> "$GITHUB_ENV"
-
-      - name: Cache pip dependencies
+      - name: Cache venv
         uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
         with:
-          path: ~/.cache/pip
-          key: pip-${{ hashFiles('**/requirements/docs.txt') }}
+          path: .venv
+          key: venv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
           restore-keys: |
-            pip-
-
-      - name: Cache mkdocs material
-        uses: actions/cache@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
+            venv-${{ runner.os }}-
 
       - run: |
-          mkdir -p .cache
-          pip install -r requirements/docs.txt
-          mkdocs gh-deploy --force
+          uv run mkdocs gh-deploy --force
