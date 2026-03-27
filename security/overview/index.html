@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/security/overview/">
       
       
-        <link rel="prev" href="../../observability/tracing/">
+        <link rel="prev" href="../../observability/profiles/">
       
       
         <link rel="next" href="../certificates/">
@@ -1070,6 +1070,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1270,6 +1298,17 @@
     <span class="md-ellipsis">
       
         Zizmor Linting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependabot-cooldowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependabot Cooldowns
       
     </span>
   </a>
@@ -2698,6 +2737,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dependabot-cooldowns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dependabot Cooldowns
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2816,7 +2866,8 @@ supply chain attacks. This ensures immutable references to specific action versi
 <li>Monitor security advisories for actions in use</li>
 </ol>
 <h3 id="zizmor-linting">Zizmor Linting<a class="headerlink" href="#zizmor-linting" title="Permanent link">&para;</a></h3>
-<p>All GitHub Actions workflows <strong>must pass <a href="https://github.com/woodruffw/zizmor">Zizmor</a> linting rules</strong>. Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.</p>
+<p>All GitHub Actions workflows <strong>must pass <a href="https://github.com/woodruffw/zizmor">Zizmor</a> linting rules</strong>.
+Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.</p>
 <p><strong>Required checks:</strong></p>
 <ul>
 <li>No use of untrusted input in dangerous contexts</li>
@@ -2824,6 +2875,29 @@ supply chain attacks. This ensures immutable references to specific action versi
 <li>Correct permissions configuration (principle of least privilege)</li>
 <li>Safe use of pull request triggers</li>
 <li>Validation of artifact integrity</li>
+</ul>
+<h3 id="dependabot-cooldowns">Dependabot Cooldowns<a class="headerlink" href="#dependabot-cooldowns" title="Permanent link">&para;</a></h3>
+<p>To mitigate supply chain attacks from rapid dependency updates, DoKa Seca configures
+<a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown">Dependabot cooldowns</a>
+on version update groups. Cooldowns introduce a waiting period before Dependabot opens a pull request for a newly
+released version, giving the community time to detect and report compromised packages.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+
+<span class="nt">updates</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># update once a week, with a 7-day cooldown</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github-actions</span>
+<span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/</span>
+<span class="w">    </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">weekly</span>
+<span class="w">    </span><span class="nt">cooldown</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">default-days</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7</span>
+</code></pre></div>
+<p><strong>Why cooldowns matter:</strong></p>
+<ul>
+<li><strong>Early-warning buffer</strong>: A 7-day delay allows time for the ecosystem to flag malicious or broken releases before
+  they reach your workflows</li>
+<li><strong>Reduced blast radius</strong>: Prevents automatic adoption of a compromised version minutes after publication</li>
+<li><strong>Complements SHA pinning</strong>: While pinned SHAs protect against tag mutation, cooldowns protect against net-new malicious releases</li>
 </ul>
 <h2 id="avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions">Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions<a class="headerlink" href="#avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions" title="Permanent link">&para;</a></h2>
 <p><img alt="github-actions-workflows" src="assets/figures/images/github-actions-workflows.png" /></p>
@@ -2834,6 +2908,7 @@ supply chain attacks. This ensures immutable references to specific action versi
 <li><a href="https://kubernetes.io/docs/concepts/security/overview/">Kubernetes Security Best Practices</a></li>
 <li><a href="https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/">GitHub Actions Policy</a></li>
 <li><a href="https://www.wiz.io/blog/github-actions-security-guide">How to Harden GitHub Actions: The Unofficial Guide</a></li>
+<li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown">Dependabot Cooldowns</a></li>
 </ul>
 
 
@@ -2855,7 +2930,7 @@ supply chain attacks. This ensures immutable references to specific action versi
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 29, 2025 21:26:36 UTC"><span class="timeago" datetime="2025-11-29T21:26:36+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 29, 2025 21:26:36 UTC">2025-11-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2026 21:26:00 UTC"><span class="timeago" datetime="2026-03-27T21:26:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2026 21:26:00 UTC">2026-03-27</span>
   </span>
 
     
@@ -2900,7 +2975,7 @@ supply chain attacks. This ensures immutable references to specific action versi
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../observability/tracing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tracing">
+          <a href="../../observability/profiles/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Profiles">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2910,7 +2985,7 @@ supply chain attacks. This ensures immutable references to specific action versi
                 Previous
               </span>
               <div class="md-ellipsis">
-                Tracing
+                Profiles
               </div>
             </div>
           </a>

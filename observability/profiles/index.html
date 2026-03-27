@@ -12,31 +12,31 @@
         <meta name="author" content="That MLOps Guy">
       
       
-        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/identity/">
+        <link rel="canonical" href="https://thatmlopsguy.github.io/dokaseca-control-plane/observability/profiles/">
       
       
-        <link rel="prev" href="../getting_started/teams/">
+        <link rel="prev" href="../tracing/">
       
       
-        <link rel="next" href="../repository/">
+        <link rel="next" href="../../security/overview/">
       
       
         
       
       
-      <link rel="icon" href="../assets/logos/favicon.svg">
+      <link rel="icon" href="../../assets/logos/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
-        <title>IAM - Doka Seca</title>
+        <title>Profiles - Doka Seca</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,11 +49,11 @@
       
     
     
-      <link rel="stylesheet" href="../css/timeago.css">
+      <link rel="stylesheet" href="../../css/timeago.css">
     
-      <link rel="stylesheet" href="../assets/css/custom.css">
+      <link rel="stylesheet" href="../../assets/css/custom.css">
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#identity-and-access-management" class="md-skip">
+        <a href="#profiling-solutions" class="md-skip">
           Skip to content
         </a>
       
@@ -94,9 +94,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-header__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -113,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              IAM
+              Profiles
             
           </span>
         </div>
@@ -229,9 +229,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
+    <a href="../.." title="Doka Seca" class="md-nav__button md-logo" aria-label="Doka Seca" data-md-component="logo">
       
-  <img src="../assets/logos/logo.svg" alt="logo">
+  <img src="../../assets/logos/logo.svg" alt="logo">
 
     </a>
     Doka Seca
@@ -258,7 +258,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -285,7 +285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tech_radar/" class="md-nav__link">
+      <a href="../../tech_radar/" class="md-nav__link">
         
   
   
@@ -312,7 +312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../../architecture/" class="md-nav__link">
         
   
   
@@ -386,7 +386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/install/" class="md-nav__link">
+      <a href="../../getting_started/install/" class="md-nav__link">
         
   
   
@@ -414,7 +414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/repo_structure/" class="md-nav__link">
+      <a href="../../getting_started/repo_structure/" class="md-nav__link">
         
   
   
@@ -442,7 +442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting_started/teams/" class="md-nav__link">
+      <a href="../../getting_started/teams/" class="md-nav__link">
         
   
   
@@ -474,37 +474,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    IAM
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../identity/" class="md-nav__link">
         
   
   
@@ -520,254 +493,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authentication
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authentication">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#keycloak-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Keycloak Setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Getting Started
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authorization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authorization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#user-roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        User Roles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#groups-and-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Groups and Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Integration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hashicorp-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HashiCorp Vault
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ArgoCD
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Security Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#password-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Password Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#session-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Session Management
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#federation-and-external-providers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Federation and External Providers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Federation and External Providers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#github-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitHub Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ldapactive-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LDAP/Active Directory
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -779,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../repository/" class="md-nav__link">
+      <a href="../../repository/" class="md-nav__link">
         
   
   
@@ -806,7 +531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../portal/" class="md-nav__link">
+      <a href="../../portal/" class="md-nav__link">
         
   
   
@@ -880,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/overview/" class="md-nav__link">
+      <a href="../../gitops/overview/" class="md-nav__link">
         
   
   
@@ -908,7 +633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/addons/" class="md-nav__link">
+      <a href="../../gitops/addons/" class="md-nav__link">
         
   
   
@@ -936,7 +661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gitops/workloads/" class="md-nav__link">
+      <a href="../../gitops/workloads/" class="md-nav__link">
         
   
   
@@ -1018,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/overview/" class="md-nav__link">
+      <a href="../../networking/overview/" class="md-nav__link">
         
   
   
@@ -1046,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/ingress/" class="md-nav__link">
+      <a href="../../networking/ingress/" class="md-nav__link">
         
   
   
@@ -1074,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/gateway_api/" class="md-nav__link">
+      <a href="../../networking/gateway_api/" class="md-nav__link">
         
   
   
@@ -1102,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/service_mesh/" class="md-nav__link">
+      <a href="../../networking/service_mesh/" class="md-nav__link">
         
   
   
@@ -1130,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../networking/external_dns/" class="md-nav__link">
+      <a href="../../networking/external_dns/" class="md-nav__link">
         
   
   
@@ -1162,18 +887,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1194,7 +921,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_10">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1212,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -1240,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/dashboards/" class="md-nav__link">
+      <a href="../dashboards/" class="md-nav__link">
         
   
   
@@ -1268,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/logging/" class="md-nav__link">
+      <a href="../logging/" class="md-nav__link">
         
   
   
@@ -1296,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/monitoring/" class="md-nav__link">
+      <a href="../monitoring/" class="md-nav__link">
         
   
   
@@ -1324,7 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../observability/tracing/" class="md-nav__link">
+      <a href="../tracing/" class="md-nav__link">
         
   
   
@@ -1349,10 +1076,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../observability/profiles/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1368,6 +1122,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-profiling-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Default Profiling Stack
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Default Profiling Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-grafana-pyroscope-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Grafana Pyroscope (Supported)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Grafana Pyroscope (Supported)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-profiling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When To Use Profiling
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1434,7 +1286,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/overview/" class="md-nav__link">
+      <a href="../../security/overview/" class="md-nav__link">
         
   
   
@@ -1462,7 +1314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/certificates/" class="md-nav__link">
+      <a href="../../security/certificates/" class="md-nav__link">
         
   
   
@@ -1490,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/secrets/" class="md-nav__link">
+      <a href="../../security/secrets/" class="md-nav__link">
         
   
   
@@ -1518,7 +1370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../security/policy/" class="md-nav__link">
+      <a href="../../security/policy/" class="md-nav__link">
         
   
   
@@ -1600,7 +1452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/databases/" class="md-nav__link">
+      <a href="../../data/databases/" class="md-nav__link">
         
   
   
@@ -1628,7 +1480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/streams/" class="md-nav__link">
+      <a href="../../data/streams/" class="md-nav__link">
         
   
   
@@ -1656,7 +1508,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/storage/" class="md-nav__link">
+      <a href="../../data/storage/" class="md-nav__link">
         
   
   
@@ -1684,7 +1536,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../data/cache/" class="md-nav__link">
+      <a href="../../data/cache/" class="md-nav__link">
         
   
   
@@ -1719,7 +1571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../machine_learning/" class="md-nav__link">
+      <a href="../../machine_learning/" class="md-nav__link">
         
   
   
@@ -1746,7 +1598,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflows/" class="md-nav__link">
+      <a href="../../workflows/" class="md-nav__link">
         
   
   
@@ -1773,7 +1625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compute/" class="md-nav__link">
+      <a href="../../compute/" class="md-nav__link">
         
   
   
@@ -1800,7 +1652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cost/" class="md-nav__link">
+      <a href="../../cost/" class="md-nav__link">
         
   
   
@@ -1827,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../chaos_engineering/" class="md-nav__link">
+      <a href="../../chaos_engineering/" class="md-nav__link">
         
   
   
@@ -1854,7 +1706,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../testing/" class="md-nav__link">
+      <a href="../../testing/" class="md-nav__link">
         
   
   
@@ -1881,7 +1733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../backup/" class="md-nav__link">
+      <a href="../../backup/" class="md-nav__link">
         
   
   
@@ -1955,7 +1807,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../federation/multi_tenancy/" class="md-nav__link">
+      <a href="../../federation/multi_tenancy/" class="md-nav__link">
         
   
   
@@ -1983,7 +1835,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../federation/multi_cluster/" class="md-nav__link">
+      <a href="../../federation/multi_cluster/" class="md-nav__link">
         
   
   
@@ -2065,7 +1917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/glossary/" class="md-nav__link">
+      <a href="../../resources/glossary/" class="md-nav__link">
         
   
   
@@ -2093,7 +1945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/documentation/" class="md-nav__link">
+      <a href="../../resources/documentation/" class="md-nav__link">
         
   
   
@@ -2121,7 +1973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/faq/" class="md-nav__link">
+      <a href="../../resources/faq/" class="md-nav__link">
         
   
   
@@ -2149,7 +2001,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/releases/" class="md-nav__link">
+      <a href="../../resources/releases/" class="md-nav__link">
         
   
   
@@ -2177,7 +2029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/roadmap/" class="md-nav__link">
+      <a href="../../resources/roadmap/" class="md-nav__link">
         
   
   
@@ -2205,7 +2057,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../resources/references/" class="md-nav__link">
+      <a href="../../resources/references/" class="md-nav__link">
         
   
   
@@ -2287,7 +2139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../community/contributing/" class="md-nav__link">
+      <a href="../../community/contributing/" class="md-nav__link">
         
   
   
@@ -2315,7 +2167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../community/maintainers/" class="md-nav__link">
+      <a href="../../community/maintainers/" class="md-nav__link">
         
   
   
@@ -2343,7 +2195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../community/governance/" class="md-nav__link">
+      <a href="../../community/governance/" class="md-nav__link">
         
   
   
@@ -2371,7 +2223,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../community/support/" class="md-nav__link">
+      <a href="../../community/support/" class="md-nav__link">
         
   
   
@@ -2453,7 +2305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/" class="md-nav__link">
+      <a href="../../rfc/" class="md-nav__link">
         
   
   
@@ -2481,7 +2333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
+      <a href="../../rfc/0001-gitops-promotion-with-kargo/" class="md-nav__link">
         
   
   
@@ -2563,7 +2415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/" class="md-nav__link">
+      <a href="../../adr/" class="md-nav__link">
         
   
   
@@ -2591,7 +2443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/001-use-architecture-decision-records/" class="md-nav__link">
+      <a href="../../adr/001-use-architecture-decision-records/" class="md-nav__link">
         
   
   
@@ -2619,7 +2471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
+      <a href="../../adr/002-external-secrets-operator-multi-tenancy/" class="md-nav__link">
         
   
   
@@ -2647,7 +2499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
+      <a href="../../adr/003-argocd-hub-and-spoke-configuration/" class="md-nav__link">
         
   
   
@@ -2675,7 +2527,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
+      <a href="../../adr/004-preview-env-argocd-vcluster/" class="md-nav__link">
         
   
   
@@ -2703,7 +2555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
+      <a href="../../adr/005-kubegreen-energy-optimization/" class="md-nav__link">
         
   
   
@@ -2758,44 +2610,34 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#overview" class="md-nav__link">
+  <a href="#default-profiling-stack" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Overview
+        Default Profiling Stack
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#authentication" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authentication
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authentication">
+    <nav class="md-nav" aria-label="Default Profiling Stack">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#keycloak-setup" class="md-nav__link">
+  <a href="#1-grafana-pyroscope-supported" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Keycloak Setup
+        1. Grafana Pyroscope (Supported)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Grafana Pyroscope (Supported)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
       
     </span>
   </a>
@@ -2803,10 +2645,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
+  <a href="#features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Getting Started
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Access
       
     </span>
   </a>
@@ -2817,40 +2670,6 @@
     </nav>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Authorization
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Authorization">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#user-roles" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        User Roles
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#groups-and-multi-tenancy" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Groups and Multi-Tenancy
-      
-    </span>
-  </a>
-  
-</li>
         
       </ul>
     </nav>
@@ -2858,127 +2677,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#service-integration" class="md-nav__link">
+  <a href="#when-to-use-profiling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Service Integration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#hashicorp-vault" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        HashiCorp Vault
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#argocd" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ArgoCD
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#security-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Security Configuration
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Security Configuration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#password-policies" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Password Policies
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#session-management" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Session Management
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#federation-and-external-providers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Federation and External Providers
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Federation and External Providers">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#github-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitHub Integration
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ldapactive-directory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        LDAP/Active Directory
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        References
+        When To Use Profiling
       
     </span>
   </a>
@@ -3005,182 +2707,38 @@
   
 
 
-<h1 id="identity-and-access-management">Identity and Access Management<a class="headerlink" href="#identity-and-access-management" title="Permanent link">&para;</a></h1>
-<p>This document describes the identity and access management (IAM) setup for the DoKa Seca platform, including Keycloak integration with various platform components.</p>
-<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
-<p>The DoKa Seca platform uses Keycloak as the central identity provider (IdP) to provide:</p>
-<ul>
-<li><strong>Single Sign-On (SSO)</strong> across all platform components</li>
-<li><strong>Multi-tenant user management</strong> with role-based access control</li>
-<li><strong>OIDC/SAML integration</strong> with platform services</li>
-<li><strong>Identity federation</strong> with external providers</li>
-<li><strong>Audit logging</strong> for compliance requirements</li>
-</ul>
-<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>graph TB
-    User[User] --&gt; KC[Keycloak]
-    KC --&gt; Vault[HashiCorp Vault]
-    KC --&gt; ArgoCD[ArgoCD]
-    KC --&gt; Kargo[Kargo]
-    KC --&gt; Grafana[Grafana]
-    KC --&gt; Backstage[Backstage]
-    KC --&gt; MLflow[MLflow]
-    KC --&gt; Langfuse[Langfuse]
-    KC --&gt; Temporal[Temporal]
-    KC --&gt; Airflow[Airflow]
-
-    KC --&gt; DB[(PostgreSQL)]
-
-    subgraph "Identity Sources"
-        LDAP[LDAP/AD]
-        GitHub[GitHub]
-    end
-
-    LDAP --&gt; KC
-    GitHub --&gt; KC
-
-    subgraph "Platform Services"
-        Vault
-        ArgoCD
-        Kargo
-        Grafana
-        Backstage
-        MLflow
-        Langfuse
-        Temporal
-        Airflow
-    end</code></pre>
-<h2 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h2>
-<h3 id="keycloak-setup">Keycloak Setup<a class="headerlink" href="#keycloak-setup" title="Permanent link">&para;</a></h3>
-<p>Keycloak serves as the central identity provider with the following configuration:</p>
-<ul>
-<li><strong>Database</strong>: PostgreSQL for persistent storage</li>
-<li><strong>Realm</strong>: <code>dokaseca</code> - main realm for all platform users</li>
-<li><strong>Protocols</strong>: OIDC/OAuth2 and SAML 2.0 support</li>
-<li><strong>Federation</strong>: Integration with external identity providers</li>
-</ul>
-<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
-<p><strong>Access admin console</strong>: <a href="http://localhost:8080">http://localhost:8080</a></p>
-<ul>
-<li>Username: <code>admin</code></li>
-<li>Password: <code>admin_password</code></li>
-</ul>
-<h2 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
-<h3 id="user-roles">User Roles<a class="headerlink" href="#user-roles" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Description</th>
-<th>Permissions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>platform-admin</code></td>
-<td>Platform administrators</td>
-<td>Full access to all platform components and infrastructure</td>
-</tr>
-<tr>
-<td><code>tenant-admin</code></td>
-<td>Tenant administrators</td>
-<td>Administrative access within their tenant namespace</td>
-</tr>
-<tr>
-<td><code>developer</code></td>
-<td>Development team members</td>
-<td>Read/write access to tenant applications and resources</td>
-</tr>
-<tr>
-<td><code>viewer</code></td>
-<td>Read-only users</td>
-<td>View-only access to tenant resources and dashboards</td>
-</tr>
-</tbody>
-</table>
-<h3 id="groups-and-multi-tenancy">Groups and Multi-Tenancy<a class="headerlink" href="#groups-and-multi-tenancy" title="Permanent link">&para;</a></h3>
-<p>Groups provide the primary mechanism for multi-tenancy:</p>
-<ul>
-<li><strong><code>platform-team</code></strong>: Platform engineering team with <code>platform-admin</code> role</li>
-<li><strong><code>tenant-a</code></strong>: Tenant A team members with <code>tenant-admin</code> and <code>developer</code> roles</li>
-<li><strong><code>tenant-b</code></strong>: Tenant B team members with <code>tenant-admin</code> and <code>developer</code> roles</li>
-<li><strong><code>tenant-c</code></strong>: Tenant C team members with <code>tenant-admin</code> and <code>developer</code> roles</li>
-</ul>
-<h2 id="service-integration">Service Integration<a class="headerlink" href="#service-integration" title="Permanent link">&para;</a></h2>
-<h3 id="hashicorp-vault">HashiCorp Vault<a class="headerlink" href="#hashicorp-vault" title="Permanent link">&para;</a></h3>
-<p>Vault integrates with Keycloak using the OIDC auth method:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Enable OIDC auth method</span>
-vault<span class="w"> </span>auth<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>oidc
-
-<span class="c1"># Configure OIDC</span>
-vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_discovery_url</span><span class="o">=</span><span class="s2">&quot;https://keycloak.dokaseca.local/realms/dokaseca&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_client_id</span><span class="o">=</span><span class="s2">&quot;vault&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_client_secret</span><span class="o">=</span><span class="s2">&quot;vault-client-secret&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">default_role</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
-</code></pre></div>
-<h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h3>
-<p>ArgoCD integrates with Keycloak for SSO and RBAC:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">oidc.config</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">  </span><span class="no">name: Keycloak</span>
-<span class="w">  </span><span class="no">issuer: https://keycloak.dokaseca.local/realms/dokaseca</span>
-<span class="w">  </span><span class="no">clientId: argocd</span>
-<span class="w">  </span><span class="no">clientSecret: argocd-client-secret</span>
-<span class="w">  </span><span class="no">requestedScopes: [&quot;openid&quot;, &quot;profile&quot;, &quot;email&quot;, &quot;groups&quot;]</span>
-
-<span class="nt">policy.csv</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">  </span><span class="no">p, role:platform-admin, applications, *, */*, allow</span>
-<span class="w">  </span><span class="no">p, role:platform-admin, clusters, *, *, allow</span>
-<span class="w">  </span><span class="no">g, platform-team, role:platform-admin</span>
-</code></pre></div>
-<h2 id="security-configuration">Security Configuration<a class="headerlink" href="#security-configuration" title="Permanent link">&para;</a></h2>
-<h3 id="password-policies">Password Policies<a class="headerlink" href="#password-policies" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Minimum 12 characters</li>
-<li>Mixed case letters, numbers, and special characters</li>
-<li>Username/email restrictions</li>
-<li>Brute force protection enabled</li>
-</ul>
-<h3 id="session-management">Session Management<a class="headerlink" href="#session-management" title="Permanent link">&para;</a></h3>
-<ul>
-<li>SSO session timeout: 30 minutes</li>
-<li>Maximum session lifespan: 10 hours</li>
-<li>Access token lifespan: 5 minutes</li>
-<li>Offline session timeout: 30 days</li>
-</ul>
-<h2 id="federation-and-external-providers">Federation and External Providers<a class="headerlink" href="#federation-and-external-providers" title="Permanent link">&para;</a></h2>
-<h3 id="github-integration">GitHub Integration<a class="headerlink" href="#github-integration" title="Permanent link">&para;</a></h3>
-<p>Configure GitHub as an identity provider for developer authentication:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${github.client.id}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${github.client.secret}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;defaultScope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user:email&quot;</span>
-<span class="w">  </span><span class="p">}</span>
+<h1 id="profiling-solutions">Profiling Solutions<a class="headerlink" href="#profiling-solutions" title="Permanent link">&para;</a></h1>
+<p>DoKa Seca supports continuous profiling using <strong>Grafana Pyroscope</strong> for Kubernetes workloads.
+With Pyroscope enabled, teams can analyze CPU and memory behavior over time and correlate profiles
+with logs, metrics, and traces through Grafana.</p>
+<h2 id="default-profiling-stack">Default Profiling Stack<a class="headerlink" href="#default-profiling-stack" title="Permanent link">&para;</a></h2>
+<p>The default profiling option is <strong>Pyroscope</strong> integrated with <strong>Grafana</strong>.</p>
+<h3 id="1-grafana-pyroscope-supported">1. Grafana Pyroscope (Supported)<a class="headerlink" href="#1-grafana-pyroscope-supported" title="Permanent link">&para;</a></h3>
+<p><strong>Pyroscope</strong> is the supported continuous profiling backend in DoKa Seca.</p>
+<h4 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="nb">addons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">enable_pyroscope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="ldapactive-directory">LDAP/Active Directory<a class="headerlink" href="#ldapactive-directory" title="Permanent link">&para;</a></h3>
-<p>Enterprise LDAP integration for corporate users:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Corporate LDAP&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ad&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;connectionUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldaps://ldap.company.com:636&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;usersDn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ou=users,dc=company,dc=com&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h4 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://www.keycloak.org/documentation">Keycloak Documentation</a></li>
-<li><a href="https://openid.net/connect/">OIDC Specification</a></li>
-<li><a href="https://tools.ietf.org/html/draft-ietf-oauth-security-topics">OAuth 2.0 Security Best Practices</a></li>
-<li><a href="https://www.vaultproject.io/docs/auth/oidc">Vault OIDC Auth Method</a></li>
+<li><strong>Continuous Profiling</strong>: Always-on profile collection for application runtime analysis</li>
+<li><strong>Grafana Integration</strong>: Native visualization and exploration in Grafana</li>
+<li><strong>Performance Optimization</strong>: Identify hot paths and inefficient code sections</li>
+<li><strong>Resource Insight</strong>: Understand CPU and memory usage patterns over time</li>
+<li><strong>Multi-language Support</strong>: Works with multiple language runtimes through profiling SDKs and exporters</li>
+</ul>
+<h4 id="access">Access<a class="headerlink" href="#access" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># Access Pyroscope through Grafana</span>
+kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/victoria-metrics-k8s-stack-grafana<span class="w"> </span>-n<span class="w"> </span>monitoring<span class="w"> </span><span class="m">3000</span>:80
+</code></pre></div>
+<h2 id="when-to-use-profiling">When To Use Profiling<a class="headerlink" href="#when-to-use-profiling" title="Permanent link">&para;</a></h2>
+<p>Use Pyroscope in DoKa Seca when you need to:</p>
+<ul>
+<li>Investigate high CPU or memory consumption</li>
+<li>Detect regressions after application releases</li>
+<li>Optimize expensive functions and request paths</li>
+<li>Correlate profiling data with existing observability signals</li>
 </ul>
 
 
@@ -3202,7 +2760,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 19, 2026 21:50:11 UTC"><span class="timeago" datetime="2026-03-19T21:50:11+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 19, 2026 21:50:11 UTC">2026-03-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2026 21:26:00 UTC"><span class="timeago" datetime="2026-03-27T21:26:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2026 21:26:00 UTC">2026-03-27</span>
   </span>
 
     
@@ -3247,7 +2805,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../getting_started/teams/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Teams and Roles">
+          <a href="../tracing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tracing">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3257,20 +2815,20 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Teams and Roles
+                Tracing
               </div>
             </div>
           </a>
         
         
           
-          <a href="../repository/" class="md-footer__link md-footer__link--next" aria-label="Next: Repository">
+          <a href="../../security/overview/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Repository
+                Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -3338,14 +2896,14 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="../js/timeago.min.js"></script>
+        <script src="../../js/timeago.min.js"></script>
       
-        <script src="../js/timeago_mkdocs_material.js"></script>
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
         <script src="https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js"></script>
       

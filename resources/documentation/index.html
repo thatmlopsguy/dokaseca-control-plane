@@ -1070,6 +1070,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../observability/profiles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Profiles
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1901,17 +1929,6 @@
     <span class="md-ellipsis">
       
         Quick Start
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#manual-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manual Installation
       
     </span>
   </a>
@@ -2931,17 +2948,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#manual-installation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Manual Installation
-      
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -3289,7 +3295,7 @@ writing, and deploying documentation for the DoKa Seca platform.</p>
 └── *.md                      # Feature documentation
 
 mkdocs.yaml                   # MkDocs configuration
-requirements/docs.txt         # Python dependencies
+pyproject.toml                # Python dependencies
 .github/workflows/docs.yml    # Automated deployment
 </code></pre></div>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
@@ -3316,25 +3322,6 @@ requirements/docs.txt         # Python dependencies
 <li><strong>Access the documentation</strong> at <code>http://localhost:8000</code></li>
 </ol>
 <p>The development server provides live reloading, so changes to Markdown files will be automatically reflected in your browser.</p>
-<h3 id="manual-installation">Manual Installation<a class="headerlink" href="#manual-installation" title="Permanent link">&para;</a></h3>
-<p>If you prefer manual installation:</p>
-<ol>
-<li><strong>Create a virtual environment</strong>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate<span class="w">  </span><span class="c1"># On Windows: .venv\Scripts\activate</span>
-</code></pre></div>
-<ol>
-<li><strong>Install dependencies</strong>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pip
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements/docs.txt
-</code></pre></div>
-<ol>
-<li><strong>Start the server</strong>:</li>
-</ol>
-<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
-</code></pre></div>
 <h2 id="writing-documentation">Writing Documentation<a class="headerlink" href="#writing-documentation" title="Permanent link">&para;</a></h2>
 <h3 id="file-organization">File Organization<a class="headerlink" href="#file-organization" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3433,7 +3420,7 @@ Content starts here...
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pymdownx.details</span><span class="w">     </span><span class="c1"># Collapsible sections</span>
 </code></pre></div>
 <h3 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h3>
-<p>Documentation dependencies are managed in <code>requirements/docs.txt</code>:</p>
+<p>Documentation dependencies are managed in <code>pyproject.toml</code>:</p>
 <ul>
 <li><code>mkdocs</code>: Core static site generator</li>
 <li><code>mkdocs-material</code>: Material Design theme</li>
@@ -3558,7 +3545,7 @@ mkdocs<span class="w"> </span>gh-deploy<span class="w"> </span>--force
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="August 13, 2025 10:48:25 UTC"><span class="timeago" datetime="2025-08-13T10:48:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="August 13, 2025 10:48:25 UTC">2025-08-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 27, 2026 21:26:00 UTC"><span class="timeago" datetime="2026-03-27T21:26:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 27, 2026 21:26:00 UTC">2026-03-27</span>
   </span>
 
     
