@@ -37,6 +37,7 @@ SERVICE_PREFIXES=(
     "minio"
     "litmus"
     "chaos-mesh"
+    "paralus"
 )
 
 # Generate hosts entries
