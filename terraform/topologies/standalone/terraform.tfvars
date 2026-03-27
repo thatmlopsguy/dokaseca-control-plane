@@ -28,6 +28,9 @@ argocd_files_config = {
   load_workloads = false
 }
 addons = {
+  # rbac
+  enable_paralus      = false # TODO
+  enable_rbac_manager = false # TODO
   # artifacts
   enable_harbor      = false
   enable_nexus       = false
@@ -48,7 +51,6 @@ addons = {
   enable_argo_rollouts  = false
   enable_argo_workflows = false
   enable_argo_events    = false
-  # enable_keptn          = false
   # developer experience
   enable_keda = false
   enable_dapr = false
@@ -153,6 +155,7 @@ addons = {
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
   enable_kaito            = false
+  enable_ai_runway        = false # TODO https://github.com/kaito-project/airunway
   enable_feast            = false
   enable_mlflow           = false
   enable_seldon           = false

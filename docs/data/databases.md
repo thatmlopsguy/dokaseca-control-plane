@@ -37,6 +37,7 @@ Each service has:
 | Airflow       | airflow       | airflow       | airflow_password       | jdbc:postgresql://postgres:5432/airflow       |
 | Dagster       | dagster       | dagster       | dagster_password       | jdbc:postgresql://postgres:5432/dagster       |
 | Superset      | superset      | superset      | superset_password      | jdbc:postgresql://postgres:5432/superset      |
+| Paralus       | paralus       | paralus       | paralus_password       | jdbc:postgresql://postgres:5432/paralus       |
 
 ## Configuration
 
@@ -113,6 +114,7 @@ vault/platform/postgres/common/airflow
 vault/platform/postgres/common/dagster
 vault/platform/postgres/common/report_portal
 vault/platform/postgres/common/chaos_mesh
+vault/platform/postgres/common/paralus
 # Clickhouse credentials
 vault/platform/clickhouse/common/langfuse
 # MongoDB credentials

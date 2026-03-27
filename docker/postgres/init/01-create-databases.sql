@@ -77,3 +77,10 @@ CREATE USER chaos_mesh WITH PASSWORD 'chaos_mesh_password';
 GRANT ALL PRIVILEGES ON DATABASE chaos_mesh TO chaos_mesh;
 \c chaos_mesh
 GRANT ALL ON SCHEMA public TO chaos_mesh;
+
+-- Paralus database
+CREATE DATABASE paralus;
+CREATE USER paralus WITH PASSWORD 'paralus_password';
+GRANT ALL PRIVILEGES ON DATABASE paralus TO paralus;
+\c paralus
+GRANT ALL ON SCHEMA public TO paralus;

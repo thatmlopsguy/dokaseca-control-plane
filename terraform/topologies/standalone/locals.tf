@@ -48,6 +48,9 @@ locals {
     enable_artifactory = try(var.addons.enable_artifactory, false) # TODO
     # multi tenancy
     enable_capsule = try(var.addons.enable_capsule, false) # TODO
+    # rbac
+    enable_paralus      = try(var.addons.enable_paralus, false)      # TODO
+    enable_rbac_manager = try(var.addons.enable_rbac_manager, false) # TODO
     # dashboard
     enable_headlamp           = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard     = try(var.addons.enable_helm_dashboard, false)
@@ -224,6 +227,7 @@ locals {
     enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO
     # machine learning
     enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
+    enable_ai_runway        = try(var.addons.enable_ai_runway, false)        # TODO see https://github.com/kaito-project/airunway
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
     enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
@@ -259,6 +263,7 @@ locals {
     enable_nvidia_device_plugin          = try(var.addons.enable_nvidia_device_plugin, false)          # TODO
     enable_nvidia_kai_scheduler          = try(var.addons.enable_nvidia_kai_scheduler, false)          # TODO
     enable_nvidia_dcgm_exporter          = try(var.addons.enable_nvidia_dcgm_exporter, false)          # TODO
+    enable_nvidia_dynamo                 = try(var.addons.enable_nvidia_dynamo, false)                 # TODO see https://github.com/ai-dynamo/dynamo
     enable_amd_gpu_operator              = try(var.addons.enable_amd_gpu_operator, false)              # TODO
     enable_intel_device_plugins_operator = try(var.addons.enable_intel_device_plugins_operator, false) # TODO
     enable_intel_device_plugins_gpu      = try(var.addons.enable_intel_device_plugins_gpu, false)      # TODO
