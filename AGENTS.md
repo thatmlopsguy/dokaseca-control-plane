@@ -38,7 +38,7 @@ bash tests/cilium-test.sh
 
 Notes:
 
-- Local tooling is managed via `uv`/`uvx` in the Makefile; docs deps are in `requirements/docs.txt`.
+- Local tooling is managed via `uv`/`uvx` in the Makefile;
 - Use `docker compose` (not `docker-compose`).
 
 ## Running A Single Check / Single Test

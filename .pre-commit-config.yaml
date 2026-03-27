@@ -24,7 +24,7 @@ repos:
         args: ["--ignore=E002,E003"]
         files: ^scripts/.*\.sh$
 -   repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.507
+    rev: 3.2.510
     hooks:
     -   id: checkov
         name: checkov
@@ -34,7 +34,7 @@ repos:
     -   id: commitizen
         stages: [commit-msg]
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.22.0
+    rev: v1.23.1
     hooks:
     -   id: zizmor
 -   repo: https://github.com/rhysd/actionlint
@@ -61,11 +61,11 @@ repos:
     hooks:
     -   id: markdownlint
         exclude: "(\\.github/PULL_REQUEST_TEMPLATE\\.md|CODE_OF_CONDUCT\\.md)"
--   repo: https://github.com/gitleaks/gitleaks
-    rev: v8.30.0
+-   repo: https://github.com/betterleaks/betterleaks
+    rev: v1.1.1
     hooks:
-    -   id: gitleaks
-        args: ["--config=.gitleaks.toml"]
+    -   id: betterleaks
+        args: ["--config=.betterleaks.toml"]
 -   repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.25
     hooks:
@@ -74,7 +74,9 @@ repos:
     hooks:
     -   id: suggestion
         name: Suggestion
-        entry: bash -c 'echo "To bypass all the pre-commit hooks, add --no-verify to git commit. To skip a specific hook, prefix the commit command with SKIP=<hook-id>."'
+        entry: bash -c 'echo "To bypass all the pre-commit hooks, add
+          --no-verify to git commit. To skip a specific hook, prefix the commit
+          command with SKIP=<hook-id>."'
         language: system
         verbose: true
         pass_filenames: false

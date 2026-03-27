@@ -3,6 +3,8 @@
 This roadmap outlines the planned features, improvements, and integrations for the DoKa Seca platform.
 Items are organized by category and priority, with completed tasks marked with green checkmark.
 
+This roadmap is a living document and may change based on community feedback and project priorities.
+
 ## Platform Infrastructure
 
 ### Observability & Monitoring
@@ -28,7 +30,7 @@ Items are organized by category and priority, with completed tasks marked with g
 ### Container Network Interface (CNI)
 
 - [ ] **Cilium CNI** - Deploy Cilium for advanced networking, security, and observability
-- [ ] **Linkerd Service Mesh** - Install Linkerd via FluxCD for service-to-service communication
+- [ ] **Istio Service Mesh** - Install Istio for service-to-service communication
 - [ ] **Network Policies** - Implement comprehensive network security policies
 
 ### Load Balancing & Ingress
@@ -36,7 +38,6 @@ Items are organized by category and priority, with completed tasks marked with g
 - [x] **KubeVIP** - Load balancer for Kubernetes control plane via Helm chart
 - [ ] **Gateway API** - Install and configure Kubernetes Gateway API for next-generation ingress management
 - [ ] **Traefik Gateway** - Install and configure Traefik to test Gateway API functionality
-- [ ] **Ingress Optimization** - Performance tuning and SSL/TLS automation
 
 ### Multi-Cluster Networking
 
@@ -67,14 +68,14 @@ Items are organized by category and priority, with completed tasks marked with g
 
 ### Infrastructure as Code
 
-- [ ] **Terraform Modules** - Additional reusable Terraform modules for cloud resources
+- [x] **Terraform Modules** - Additional reusable Terraform modules for cloud resources
 - [ ] **Infrastructure Testing** - Automated testing for infrastructure changes
 
 ### Automation & Tooling
 
 - [ ] **CI/CD Enhancements** - Improved build and deployment pipelines
 - [ ] **Quality Gates** - Automated quality checks and security scanning
-- [ ] **Documentation Automation** - Automated documentation generation and updates
+- [x] **Documentation Automation** - Automated documentation generation and updates
 
 ### Monitoring & Operations
 
@@ -113,7 +114,7 @@ We welcome community input on our roadmap! Here's how you can contribute:
 ### 🤝 **Contribute Implementation**
 
 - Pick up roadmap items and submit pull requests
-- Review the [Contributing Guide](contributing.md) for development guidelines
+- Review the [Contributing Guide](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/main/CONTRIBUTING.md) for development guidelines
 
 ### 📋 **Roadmap Process**
 

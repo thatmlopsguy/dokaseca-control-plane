@@ -6,7 +6,7 @@ This directory contains Architecture Decision Records (ADRs) for the DoKa Seca p
 
 Architecture Decision Records are short text documents that capture an important architectural decision made along with its context and consequences. They help teams understand why certain decisions were made and provide historical context for future changes.
 
-## ADR List
+## ADR Index
 
 - [Use Architecture Decision Records](001-use-architecture-decision-records.md)
 - [External Secrets Operator Multi-tenancy](002-external-secrets-operator-multi-tenancy.md)
@@ -50,3 +50,21 @@ What becomes easier or more difficult to do because of this change?
 4. Keep ADRs concise but complete
 5. Update the index when adding new ADRs
 6. ADRs are immutable once accepted - create new ADRs to supersede old ones
+
+## Creating ADRs with ADRgen
+
+We recommend using the ADRgen CLI to create new ADRs in this repository. ADRgen is available at `https://github.com/asiermarques/adrgen`.
+
+From the repository root you can create a new ADR in `docs/adr` with:
+
+```bash
+adrgen create "Title of the ADR" -m "components, technologies"
+```
+
+If you make a decision that improves another previous one, a good practice is specify the relation in both ADR files. For example, if ADR 002 improves ADR 001, you can add a "Supersedes" section in ADR 002 and a "Superseded by" section in ADR 001.
+
+```bash
+adrgen create "Another a that improves the previous one" -a 1
+```
+
+After creating an ADR, update the index if needed or run `adrgen list` to list ADRs. `adrgen list -f status=accepted` will list only accepted ADRs.

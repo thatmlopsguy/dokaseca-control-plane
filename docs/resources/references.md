@@ -22,11 +22,11 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 ### Platform Frameworks and Stacks
 
 - **[CNOE (Cloud Native Operational Excellence)](https://cnoe.io/)** - Open-source reference implementation for cloud-native platform engineering
-- **[BACK Stack](https://backstack.dev/)** - Modern infrastructure stack combining Backstage, ArgoCD, Crossplane, and Kubernetes
-- **[Harmonix](https://harmonixonaws.io/)** - AWS-native platform engineering framework for building developer platforms
+- **[BACK Stack](https://backstack.dev/)** - Modern infrastructure stack combining Backstage, ArgoCD, Crossplane, and Kubernetes for building internal developer platforms with GitOps and self-service capabilities
 - **[Krateo PlatformOps](https://krateo.io/)** - Cloud-native platform for managing infrastructure and applications through a unified control plane with strong GitOps practices
 - **[Azure AKS Platform Engineering](https://github.com/Azure-Samples/aks-platform-engineering)** - Microsoft's reference implementation for building platform engineering solutions on Azure Kubernetes Service with GitOps and developer self-service capabilities
 - **[kubriX](https://github.com/suxess-it/kubriX)** - Cloud-native platform framework providing comprehensive tooling and patterns for building production-ready Kubernetes platforms
+- **[Kubara](https://docs.kubara.io/latest-stable/)** - Single binary CLI tool written in Go providing a lightweight framework for bootstrapping Kubernetes platforms with production-proven best practices very easily
 
 ### Configuration and Automation
 
@@ -57,4 +57,4 @@ The cloud-native ecosystem thrives on collaboration and shared knowledge. DoKa S
 
 ## Contributing References
 
-If you know of other projects or resources that have influenced platform engineering practices and should be included in this list, please [contribute](contributing.md) by submitting a pull request or opening an issue.
+If you know of other projects or resources that have influenced platform engineering practices and should be included in this list, please [contribute](community/contributing.md) by submitting a pull request or opening an issue.

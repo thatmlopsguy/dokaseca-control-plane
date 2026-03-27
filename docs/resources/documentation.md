@@ -26,7 +26,7 @@ docs/                          # Documentation source files
 └── *.md                      # Feature documentation
 
 mkdocs.yaml                   # MkDocs configuration
-requirements/docs.txt         # Python dependencies
+pyproject.toml                # Python dependencies
 .github/workflows/docs.yml    # Automated deployment
 ```
 
@@ -58,30 +58,6 @@ Before working with documentation, ensure you have:
 3. **Access the documentation** at `http://localhost:8000`
 
 The development server provides live reloading, so changes to Markdown files will be automatically reflected in your browser.
-
-### Manual Installation
-
-If you prefer manual installation:
-
-1. **Create a virtual environment**:
-
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-   ```
-
-2. **Install dependencies**:
-
-   ```bash
-   pip install -U pip
-   pip install -r requirements/docs.txt
-   ```
-
-3. **Start the server**:
-
-   ```bash
-   mkdocs serve
-   ```
 
 ## Writing Documentation
 
@@ -214,7 +190,7 @@ markdown_extensions:
 
 ### Dependencies
 
-Documentation dependencies are managed in `requirements/docs.txt`:
+Documentation dependencies are managed in `pyproject.toml`:
 
 - `mkdocs`: Core static site generator
 - `mkdocs-material`: Material Design theme

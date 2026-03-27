@@ -23,7 +23,8 @@ For each supported Kubernetes version, all addons and configurations undergo com
 
 ### Example
 
-If the current Kubernetes release is `v1.34.x`, Docka Seca will target `v1.33.x` for its releases, ensuring all addons and configurations are thoroughly tested and validated for that specific version.
+If the current Kubernetes release is `v1.34.x`, Docka Seca will target `v1.33.x` for its releases, ensuring all addons and configurations
+are thoroughly tested and validated for that specific version.
 
 !!! warning "Warning"
     Additional documentation coming soon!

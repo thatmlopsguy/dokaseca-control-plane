@@ -17,6 +17,7 @@ declare -A tools=(
 	[clusteradm]="clusteradm version"
 	[autok3s]="autok3s version"
 	[mkcert]="mkcert --version"
+    [kubara]="kubara --version"
 )
 
 # Check each tool and display its version

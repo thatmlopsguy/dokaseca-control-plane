@@ -1,15 +1,23 @@
 ## Doka Seca common variables
 ##
 ## Based on https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
-
+## and https://github.com/langfuse/oss-llmops-stack/blob/main/docker-compose/docker-compose.yml
+##
 ## @section Deployment Profiles
 ##
 ## The following profiles can be used to control which services are launched:
 ##
 ## - infra: Infrastructure dependencies (e.g., database, message broker, gateway)
 ## - optional: typically used for optional or internal services
+## - database: database services (PostgreSQL, MongoDB, ClickHouse)
+## - storage: object storage services (MinIO)
+## - monitoring: monitoring stack (Prometheus, Grafana)
+## - messaging: messaging services (RabbitMQ, Redis)
+## By default, only the 'infra' profile is active, which includes essential infrastructure services.
 ##
-
+## To launch all services, use:
+##   docker-compose --profile infra --profile optional --profile database
+##
 ## @section Logging configuration
 ## @param x-logging Shared logging configuration for all services
 ## - Uses json-file logging driver with rotation
@@ -20,42 +28,16 @@ x-logging: &logging
     max-size: 100m
     max-file: "5"
 
-## @section Database configuration
-## @param x-database Shared database connection settings used across services
-## @param db_host Internal hostname of the database container (e.g., "postgres")
-## @param db_port Port used to connect to the database (default: 5432)
-## @param db_user Username for service-level access to the database
-## @param db_password Password for the specified DB user
-## @param db_name Logical database name used by services
-##
-x-database:
-  db_host: &db_host postgres
-  db_port: &db_port 5432
-  db_user: &db_user ${POSTGRES_USER-rpuser}
-  db_password: &db_password ${POSTGRES_PASSWORD-rppass}
-  db_name: &db_name ${POSTGRES_DB-reportportal}
-
-## @section AMQP (RabbitMQ) configuration
-## @param x-amqp Shared message broker settings used for internal service communication
-## @param rabbitmq_host Hostname of the RabbitMQ container (Docker internal DNS)
-## @param rabbitmq_port Port for AMQP protocol communication (default: 5672)
-## @param rabbitmq_apiport Port to access RabbitMQ web UI (default: 15672)
-## @param rabbitmq_user Username for authenticating RabbitMQ clients
-## @param rabbitmq_password Password for the RabbitMQ user
-##
-x-amqp:
-  rabbitmq_host: &rabbitmq_host rabbitmq
-  rabbitmq_port: &rabbitmq_port 5672
-  rabbitmq_apiport: &rabbitmq_apiport 15672
-  rabbitmq_user: &rabbitmq_user ${RABBITMQ_DEFAULT_USER-rabbitmq}
-  rabbitmq_password: &rabbitmq_password ${RABBITMQ_DEFAULT_PASS-rabbitmq}
-
 services:
   ##
   ## Doka Seca dependencies
   ## @section Doka Seca dependencies
   ##
-  # https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
+
+  ## @param portainer Web-based Docker management UI for monitoring and managing containers, images, volumes, and networks
+  ## - Exposes port 9000 for accessing the Portainer dashboard
+  ## - Uses Docker socket for direct communication with the Docker daemon
+  ## https://docs.portainer.io/start/install-ce/server/docker/linux#docker-compose
   portainer:
     container_name: portainer
     image: portainer/portainer-ce:2.38.0
@@ -74,6 +56,30 @@ services:
     networks:
       - kind
 
+  ## @param atlantis Terraform pull request automation tool for infrastructure as code management
+  ## - Listens for GitHub webhooks to trigger Terraform plan/apply workflows
+  ## - Exposes port 4141 for webhook communication
+  ## - Requires GitHub user and token for authentication and repository access
+  ## See also Terrapod https://github.com/mattrobinsonsre/terrapod
+  ##
+  atlantis:
+    image: runatlantis/atlantis:latest
+    container_name: atlantis
+    ports:
+      - "4141:4141"
+    environment:
+      - ATLANTIS_GH_USER=atlantis
+      - ATLANTIS_GH_TOKEN
+    profiles:
+      - optional
+    restart: unless-stopped
+    networks:
+      - kind
+
+  ## @param vault Secret management server for storing sensitive configuration and credentials
+  ## - Runs in development mode for simplicity, not recommended for production use
+  ## - Exposes default Vault port 8200 for internal communication
+  ##
   vault:
     image: hashicorp/vault:1.21
     container_name: vault
@@ -104,6 +110,11 @@ services:
     networks:
       - kind
 
+  ## @param postgres Relational database server for structured data storage
+  ## - Uses official PostgreSQL image with version 16
+  ## - Exposes default PostgreSQL port 5432 for internal communication
+  ## - Includes healthcheck to ensure database is ready before dependent services start
+  ##
   postgres:
     image: postgres:16
     container_name: postgres
@@ -127,6 +138,7 @@ services:
     restart: unless-stopped
     profiles:
       - infra
+      - database
     networks:
       - kind
 
@@ -151,9 +163,91 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+      - database
     networks:
       - kind
 
+  ## MongoDB NoSQL database for services that require flexible schema or document storage
+  ## - Exposes default MongoDB port 27017 for internal communication
+  ## - Includes Mongo Express web UI for database management and monitoring
+  ##
+  mongodb:
+    image: mongo:8.2.6-noble
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongo}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongo}
+    volumes:
+      - mongodb-data:/data/db
+    restart: unless-stopped
+    profiles:
+      - infra
+      - database
+    networks:
+      - kind
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongo}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongo}
+      ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
+      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_INITDB_ROOT_PASSWORD:-mongo}@mongodb:27017/"
+      ME_CONFIG_MONGODB_AUTH_DATABASE: "admin"
+      ME_CONFIG_MONGODB_PORT: 27017
+      ME_CONFIG_BASICAUTH: true
+      ME_CONFIG_BASICAUTH_USERNAME: ${ME_WEB_USERNAME:-admin}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${ME_WEB_PASSWORD:-password}
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    profiles:
+      - infra
+      - database
+    networks:
+      - kind
+
+  ## @param clickhouse Columnar database for analytics and time-series data storage
+  ## - Exposes HTTP interface on port 8123 and native client interface on port 9000 for internal communication
+  ## - Includes healthcheck to ensure ClickHouse is ready before dependent services start
+  ##
+  clickhouse:
+    image: clickhouse/clickhouse-server:25.8.20
+    container_name: clickhouse
+    ports:
+      - "8123:8123" # HTTP interface
+      - "9009:9000" # Native client interface
+    environment:
+      CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-clickhouse_password}
+    volumes:
+      - clickhouse-data:/var/lib/clickhouse
+      - clickhouse-logs:/var/log/clickhouse-server
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8123/ping || exit 1
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: always
+    profiles:
+      - infra
+      - database
+    networks:
+      - kind
+
+  ## @param keycloak Open-source identity and access management server
+  ## - Provides authentication and authorization for Doka Seca services
+  ## - Supports multiple protocols (OAuth2, OpenID Connect, SAML)
+  ##
   keycloak:
     image: quay.io/keycloak/keycloak:25.0
     container_name: keycloak
@@ -182,6 +276,11 @@ services:
     networks:
       - kind
 
+  ## @param minio Object storage server compatible with Amazon S3
+  ## - Used for storing artifacts, logs, and other large files
+  ## - Provides a web console for management and monitoring
+  ## - For production, consider using a proper storage backend and configuration
+  ##
   minio:
     # new version the admin features are removed
     image: quay.io/minio/minio:RELEASE.2025-04-22T22-12-26Z
@@ -203,6 +302,7 @@ services:
     restart: unless-stopped
     profiles:
       - infra
+      - storage
     networks:
       - kind
 
@@ -219,16 +319,23 @@ services:
       mc mb --ignore-existing local/loki &&
       mc mb --ignore-existing local/tempo &&
       mc mb --ignore-existing local/victoria-metrics &&
-      mc mb --ignore-existing local/report-portal"
+      mc mb --ignore-existing local/report-portal &&
+      mc mb --ignore-existing local/mlflow &&
+      mc mb --ignore-existing local/langfuse &&
+      mc mb --ignore-existing local/pyroscope"
     environment:
       MINIO_ROOT_USER: minioAccessKey
       MINIO_ROOT_PASSWORD: minioSecretKey
     restart: "no"
     profiles:
       - infra
+      - storage
     networks:
       - kind
 
+  ## @param  prometheus Open-source monitoring and alerting toolkit for collecting and querying metrics
+  ## - Exposes port 9090 for Prometheus web UI and API
+  ##
   prometheus:
     image: prom/prometheus:v3.9.1
     container_name: prometheus
@@ -238,9 +345,15 @@ services:
       - ./docker/prometheus:/etc/prometheus
     profiles:
       - optional
+      - monitoring
+    restart: unless-stopped
     networks:
       - spoke-dev-control-plane
 
+  ## @param grafana Open-source analytics and monitoring platform for visualizing metrics collected by Prometheus
+  ## - Exposes port 3000 for Grafana web UI
+  ## - Configured to connect to Prometheus as a data source and load predefined dashboards
+  ##
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -266,8 +379,13 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+      - monitoring
     networks:
       - kind
+
+  ## @param redis In-memory data structure store used for caching, session management
+  ## and message brokering
+  ##
   redis:
     image: redis:8.4.0
     container_name: redis
@@ -321,8 +439,8 @@ services:
     ## Uncomment to expose RabbitMQ dashboard
     #   - "15672:15672"
     environment:
-      RABBITMQ_DEFAULT_USER: *rabbitmq_user
-      RABBITMQ_DEFAULT_PASS: *rabbitmq_password
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER:-rabbitmq}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS:-rabbitmq_password}
       RABBITMQ_MANAGEMENT_ALLOW_WEB_ACCESS: "true"
       ## Block all procedures when free disk space is less than 50MB
       ## Ref: https://www.rabbitmq.com/docs/disk-alarms
@@ -341,6 +459,7 @@ services:
       start_period: 60s
     restart: always
     profiles:
+      - optional # Messaging is optional for now
       - messaging
     networks:
       - kind
@@ -358,6 +477,9 @@ volumes:
   vault-logs:
   postgres-data:
   pgadmin-data:
+  mongodb-data:
+  clickhouse-data:
+  clickhouse-logs:
   grafana-data:
   portainer-data:
   redis-data:

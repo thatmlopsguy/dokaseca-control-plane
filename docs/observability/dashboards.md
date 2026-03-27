@@ -1,4 +1,4 @@
-# Visualization and Dashboards
+# Dashboards
 
 DoKa Seca provides unified observability visualization through **Grafana**, serving as the central platform for monitoring logs, metrics, and traces across your Kubernetes infrastructure. Grafana acts as the single pane of glass for all observability data, providing comprehensive dashboards, alerting, and analysis capabilities.
 

@@ -1,7 +1,21 @@
-# Define tasks
+# Variables
+[env]
+PROJECT_NAME = "Doka Seca"
 
-[tasks.version]
-description = "Doka Seca Version"
-run = """
-cat VERSION
-"""
+[tasks.tools]
+description = "Install all tools and setup pre-commit"
+depends = ["mise", "pre-commit-install"]
+
+[tasks.mise]
+description = "Install mise tools"
+run = "mise install --yes"
+
+[tasks.pre-commit-install]
+description = "Install pre-commit hooks"
+run = "uvx prek install"
+outputs = [".git/hooks/pre-commit"]
+
+[tasks.tools-list]
+description = "List current mise tools"
+run = "mise list --current"
+

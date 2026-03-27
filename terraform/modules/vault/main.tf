@@ -1,6 +1,4 @@
 resource "kubernetes_namespace" "external_secrets" {
-  count = var.manage_namespace ? 1 : 0
-
   metadata {
     name = "external-secrets"
   }
@@ -28,5 +26,7 @@ resource "kubernetes_secret" "vault_token" {
   lifecycle {
     ignore_changes = [metadata]
   }
+
+  depends_on = [kubernetes_namespace.external_secrets]
 }
 

@@ -48,7 +48,7 @@ addons = {
   enable_argo_rollouts  = false
   enable_argo_workflows = false
   enable_argo_events    = false
-  enable_keptn          = false
+  # enable_keptn          = false
   # developer experience
   enable_keda = false
   enable_dapr = false
@@ -60,7 +60,7 @@ addons = {
   # platform engineering
   enable_karpor = false
   enable_kro    = false
-  # gitops promoter
+  # gitops promotion
   enable_argo_cd_image_updater = false
   enable_kargo                 = false
   enable_gitops_promoter       = false
@@ -79,17 +79,19 @@ addons = {
   enable_kiali                      = false
   # security
   enable_cert_manager     = true
+  enable_trust_manager    = false
   enable_external_secrets = true
   enable_trivy            = false
   enable_kubescape        = false
   # networking
   enable_gateway_api   = false # managed by terraform
-  enable_ingress_nginx = false # TODO deprecated, use gateway api instead
+  enable_ingress_nginx = true
   enable_traefik       = false
   enable_skupper       = false
   ## bare metal load-balancer for Kubernetes
-  enable_kubevip = false
-  enable_metallb = true
+  enable_kubevip      = false
+  enable_metallb      = true
+  enable_external_dns = false
   ## doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now,
   ## TODO find a way to make it work with gitops
   enable_flannel = false
@@ -104,6 +106,7 @@ addons = {
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
   enable_connaisseur             = false
+  enable_policy_controller       = false
   # logging
   enable_fluentbit        = false
   enable_alloy            = false
@@ -113,12 +116,14 @@ addons = {
   enable_opencost   = false
   enable_kepler     = false
   enable_kube_green = false
+  enable_goldilocks = false
   # disaster recovery
   enable_velero = false
   # storage
   enable_minio     = false
   enable_rook_ceph = false
   enable_longhorn  = false
+  enable_seaweedfs = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false
@@ -147,8 +152,9 @@ addons = {
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
   # machine learning
+  enable_kaito            = false
+  enable_feast            = false
   enable_mlflow           = false
-  enable_kuberay          = false
   enable_seldon           = false
   enable_litellm          = false
   enable_litellm_operator = false
@@ -160,9 +166,14 @@ addons = {
   enable_kueue    = false
   enable_yunikorn = false
   enable_volcano  = false
+  # distributed computing
+  enable_kuberay        = false # TODO
+  enable_spark_operator = false # TODO
+  enable_slurm_operator = false # TODO
   # azure
   enable_azure_service_operator = false # requires enable_cert_manager
   # aws
+  # https://aws-controllers-k8s.github.io/community/docs/community/services/
   # gcp
   # enterprise
   enable_kubecost             = false
@@ -171,6 +182,7 @@ addons = {
   enable_nvidia_device_plugin = false
   enable_nvidia_kai_scheduler = false
 }
+
 # Resources
 gitops_addons_extras_repo     = "helm-charts"
 gitops_addons_extras_basepath = "stable"

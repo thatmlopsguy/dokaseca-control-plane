@@ -23,7 +23,7 @@ help: ## Show this help
 release: ## Show release version
 	@echo $(RELEASE_VERSION)-$(GIT_HASH)
 
-clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-state ## Clean all infrastructure
+clean-infra: kind-delete-all-clusters vcluster-delete-all-clusters terraform-rm-state docker-compose-down ## Clean all infrastructure
 
 ##@ Terraform
 terraform-rm-state: ## Remove all terraform states
@@ -57,6 +57,9 @@ terraform-docs: ## Generates documentation for all terraform modules
 ##@ Docker
 docker-compose-up: ## Start docker-compose services
 	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra up -d
+
+docker-compose-down: ## Stop docker-compose services
+	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra down
 
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
@@ -277,24 +280,23 @@ dapr-ui: ## Access dapr dashboard
 	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
 
 ##@ Documentation
-.PHONY: docs-install docs-serve docs-build
-docs-install: ## Install the requirements for starting the local web server for serving docs
-	@uv venv && \
-	uv pip install -r requirements/docs.txt
-
-docs-serve: docs-install ## Start a local web server for serving documentation
+.PHONY: docs-serve docs-build adr-list
+docs-serve: ## Start a local web server for serving documentation
 	@uv run mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
-docs-build: docs-install ## Build the documentation site
+docs-build: ## Build the documentation site
 	@uv run mkdocs build
 
-##@ Development
-.PHONY: pre-commit-install pre-commit-run
-pre-commit-run: ## Execute pre-commit git-hooks
-	@uvx prek run -a
+adr-list: ## List all ADRs
+	@adrgen list
 
+##@ Development
+.PHONY: pre-commit-install pre-commit-run pre-commit-update
 pre-commit-install: ## Install pre-commit git-hooks
 	@uvx prek install
+
+pre-commit-run: ## Execute pre-commit git-hooks
+	@uvx prek run -a
 
 pre-commit-update: ## Update pre-commit git-hooks
 	@uvx pre-commit-update

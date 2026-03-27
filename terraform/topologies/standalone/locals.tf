@@ -76,10 +76,10 @@ locals {
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events   = try(var.addons.enable_argo_events, false)
     enable_keda          = try(var.addons.enable_keda, false)
-    enable_keptn         = try(var.addons.enable_keptn, false)
-    enable_open_feature  = try(var.addons.enable_open_feature, false)
-    enable_openfunction  = try(var.addons.enable_openfunction, false)
-    enable_sloth         = try(var.addons.enable_sloth, false)
+    # enable_keptn         = try(var.addons.enable_keptn, false) # Archived
+    enable_open_feature = try(var.addons.enable_open_feature, false)
+    enable_openfunction = try(var.addons.enable_openfunction, false)
+    enable_sloth        = try(var.addons.enable_sloth, false)
     # fleet managers
     # https://kubefleet-dev.github.io/website/
     enable_kubefleet_hub_agent    = try(var.addons.enable_kubefleet_hub_agent, false)    # TODO
@@ -111,10 +111,11 @@ locals {
     # enable_calico  = try(var.addons.enable_calico, false)
     # enable_istio   = try(var.addons.enable_istio, false)
     ## gateway api
-    enable_gateway_api = try(var.addons.enable_gateway_api, false)
-    enable_skupper     = try(var.addons.enable_skupper, false)
-    enable_metallb     = try(var.addons.enable_metallb, false)
-    enable_kubevip     = try(var.addons.enable_kubevip, false)
+    enable_gateway_api  = try(var.addons.enable_gateway_api, false)
+    enable_skupper      = try(var.addons.enable_skupper, false)
+    enable_metallb      = try(var.addons.enable_metallb, false)
+    enable_kubevip      = try(var.addons.enable_kubevip, false)
+    enable_external_dns = try(var.addons.enable_external_dns, false)
     ## ingress controllers - DEPRECATED, use gateway api instead
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
@@ -153,6 +154,7 @@ locals {
     enable_parca     = try(var.addons.enable_parca, false)
     # security
     enable_cert_manager     = try(var.addons.enable_cert_manager, false)
+    enable_trust_manager    = try(var.addons.enable_trust_manager, false)
     enable_trivy            = try(var.addons.enable_trivy, false)
     enable_sealed_secrets   = try(var.addons.enable_sealed_secrets, false)
     enable_external_secrets = try(var.addons.enable_external_secrets, false)
@@ -165,12 +167,14 @@ locals {
     enable_opencost   = try(var.addons.enable_opencost, false)
     enable_kepler     = try(var.addons.enable_kepler, false)
     enable_kube_green = try(var.addons.enable_kube_green, false)
+    enable_goldilocks = try(var.addons.enable_goldilocks, false)
     # compliance
     enable_kyverno                 = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
     enable_kyverno_policy_reporter = try(var.addons.enable_kyverno_policy_reporter, false)
     enable_polaris                 = try(var.addons.enable_polaris, false)
     enable_connaisseur             = try(var.addons.enable_connaisseur, false)
+    enable_policy_controller       = try(var.addons.enable_policy_controller, false)
     # chaos engineering
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
@@ -179,6 +183,7 @@ locals {
     enable_minio     = try(var.addons.enable_minio, false)
     enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
     enable_longhorn  = try(var.addons.enable_longhorn, false)
+    enable_seaweedfs = try(var.addons.enable_seaweedfs, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO
@@ -198,6 +203,8 @@ locals {
     enable_k8s_image_swapper        = try(var.addons.enable_k8s_image_swapper, false)
     enable_spegel                   = try(var.addons.enable_spegel, false)
     enable_harbor_container_webhook = try(var.addons.enable_harbor_container_webhook, false)
+    enable_fake_gpu_operator        = try(var.addons.enable_fake_gpu_operator, false) # TODO see https://github.com/run-ai/fake-gpu-operator
+    enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # workload manager
@@ -211,11 +218,15 @@ locals {
     enable_kueue    = try(var.addons.enable_kueue, false)    # TODO
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
+    # distributed computing
+    enable_kuberay        = try(var.addons.enable_kuberay, false)        # TODO
+    enable_spark_operator = try(var.addons.enable_spark_operator, false) # TODO
+    enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO
     # machine learning
+    enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO
     enable_mlflow           = try(var.addons.enable_mlflow, false)           # TODO
-    enable_kuberay          = try(var.addons.enable_kuberay, false)          # TODO
     enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
     enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
@@ -223,9 +234,13 @@ locals {
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
     enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
+    enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false) # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
+    # analytics
+    enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
+    enable_superset       = try(var.addons.enable_superset, false)       # TODO
+    enable_trino          = try(var.addons.enable_trino, false)          # TODO
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
-    enable_kahu   = try(var.addons.enable_kahu, false)   # TODO
   }
 
   # Enterprise
@@ -256,9 +271,18 @@ locals {
   }
 
   # AWS
+  # https://aws-controllers-k8s.github.io/community/docs/community/services/
   aws_addons = {
-    enable_aws_karpenter        = try(var.addons.enable_aws_karpenter, false)
-    enable_aws_external_secrets = try(var.addons.enable_aws_external_secrets, false)
+    enable_aws_karpenter                = try(var.addons.enable_aws_karpenter, false)
+    enable_aws_external_secrets         = try(var.addons.enable_aws_external_secrets, false)
+    enable_aws_load_balancer_controller = try(var.addons.enable_aws_load_balancer_controller, false)
+    enable_aws_ebs_csi_driver           = try(var.addons.enable_aws_ebs_csi_driver, false)
+    enable_aws_efs_csi_driver           = try(var.addons.enable_aws_efs_csi_driver, false)
+    enable_aws_ack_eks_controller       = try(var.addons.enable_aws_ack_eks_controller, false)
+    enable_aws_ack_s3_controller        = try(var.addons.enable_aws_ack_s3_controller, false)
+    enable_aws_ack_rds_controller       = try(var.addons.enable_aws_ack_rds_controller, false)
+    enable_aws_ack_sqs_controller       = try(var.addons.enable_aws_ack_sqs_controller, false)
+    enable_aws_ack_sns_controller       = try(var.addons.enable_aws_ack_sns_controller, false)
   }
 
   # GCP

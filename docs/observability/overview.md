@@ -15,7 +15,7 @@ control and optimize the environment.
 
 ## DoKa Seca Observability Stack
 
-DoKa Seca provides a comprehensive observability stack that covers the three pillars of observability: **Metrics**, **Logs**, and **Traces**. The platform offers multiple observability solutions that can be enabled based on your requirements.
+DoKa Seca provides a comprehensive observability stack that covers the four pillars of observability: **Metrics**, **Logs**, **Traces**, **Profiles**. The platform offers multiple observability solutions that can be enabled based on your requirements.
 
 ## Primary Observability Stack
 
@@ -183,15 +183,15 @@ DoKa Seca's default observability stack is built around the Victoria Metrics eco
   * Configuration validation
   * Performance metrics
 
-## Dashboard Solutions
+#### **Hubble** (`enable_hubble`)
 
-### **Kubernetes Dashboard** (`enable_kubernetes_dashboard`)
-
-* **Purpose**: Web-based Kubernetes user interface
+* **Purpose**: Service mesh observability (Cilium)
 * **Features**:
-  * Cluster resource management
-  * Workload visualization
-  * Resource monitoring
+  * Network flow visibility
+  * Security monitoring
+  * Performance metrics
+
+## Dashboard Solutions
 
 ### **Headlamp** (`enable_headlamp`)
 
@@ -216,32 +216,6 @@ DoKa Seca's default observability stack is built around the Victoria Metrics eco
   * ClickHouse-specific metrics
   * Query performance monitoring
   * Cluster health visualization
-
-## Log Management Alternatives
-
-### **Cortex** (`enable_cortex`)
-
-* **Purpose**: Horizontally scalable Prometheus
-* **Features**:
-  * Multi-tenancy
-  * Long-term storage
-  * High availability
-
-### **Thanos** (`enable_thanos`)
-
-* **Purpose**: Prometheus long-term storage
-* **Features**:
-  * Global query view
-  * Object storage integration
-  * Data deduplication
-
-### **Logging Operator** (`enable_logging_operator`)
-
-* **Purpose**: Kubernetes-native log management
-* **Features**:
-  * Fluentd/Fluent Bit integration
-  * Log routing and filtering
-  * Multiple output destinations
 
 ## Configuration Examples
 
