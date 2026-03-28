@@ -18,7 +18,6 @@ If guidance conflicts, prefer these config files.
 ```bash
 # discover targets
 make help
-just --list
 
 # CI-equivalent lint gate
 make pre-commit-run
@@ -41,35 +40,12 @@ Notes:
 - Local tooling is managed via `uv`/`uvx` in the Makefile;
 - Use `docker compose` (not `docker-compose`).
 
-## Running A Single Check / Single Test
-
-Pre-commit (fast iteration):
-
-```bash
-pre-commit run --list
-pre-commit run <hook-id> --files path/to/file1 path/to/file2
-```
-
-Shellcheck one script:
-
-```bash
-shellcheck --rcfile=.shellcheckrc scripts/some-script.sh
-```
-
-Terraform for one module/directory:
-
-```bash
-terraform fmt -recursive terraform/modules/<module>
-tflint --init
-tflint --recursive --config=".tflint.hcl" --minimum-failure-severity=warning
-```
-
 ## Code Style Guidelines
 
 General:
 
 - Keep changes small and follow existing patterns; prefer stable ordering in config files.
-- Do not commit secrets; pre-commit runs `detect-private-key` and `gitleaks`.
+- Do not commit secrets; pre-commit runs `detect-private-key` and `betterleaks`.
 - Avoid editing `third_party/`.
 
 Markdown:
@@ -109,7 +85,7 @@ Naming:
 ## Workflow Notes / Gotchas
 
 - Semantic PR titles are enforced (see `.github/workflows/check-semantic-prs.yml`); use prefixes like `feat:`, `fix:`, `docs:`, `chore:`.
-- `third_party/` is excluded from repo-level pre-commit; run checks manually inside that subtree if you change it.
+- `third_party/` is excluded from repo-level pre-commit;
 
 ## Before PR (Quick)
 
