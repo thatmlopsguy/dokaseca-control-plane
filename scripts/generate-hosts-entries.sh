@@ -38,6 +38,7 @@ SERVICE_PREFIXES=(
     "litmus"
     "chaos-mesh"
     "paralus"
+    "hubble"
 )
 
 # Generate hosts entries
