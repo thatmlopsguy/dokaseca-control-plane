@@ -17,6 +17,8 @@ nav:
     - Installation: getting_started/install.md
     - Repo Structure: getting_started/repo_structure.md
     - Teams and Roles: getting_started/teams.md
+  - Tutorials:
+    - Overview: tutorials/overview.md
   - IAM: identity.md
   - Repository: repository.md
   - Portal: portal.md
