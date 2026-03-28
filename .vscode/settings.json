@@ -102,6 +102,7 @@
         "tflint",
         "tfstate",
         "tfvars",
+        "tigera",
         "tracee",
         "traefik",
         "trino",

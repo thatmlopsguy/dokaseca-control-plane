@@ -31,7 +31,7 @@ nav:
     - Ingress: networking/ingress.md
     - Gateway API: networking/gateway_api.md
     - Service Mesh: networking/service_mesh.md
-    - External DNS: networking/external_dns.md
+    - DNS: networking/dns.md
   - Observability:
     - Introduction: observability/overview.md
     - Dashboards: observability/dashboards.md
