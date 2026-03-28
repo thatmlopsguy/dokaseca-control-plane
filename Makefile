@@ -205,6 +205,9 @@ kiali-ui: ## Access kiali ui
 restart-monitoring-stack: ## Restart monitoring stack
 	@kubectl rollout restart deploy,sts -n monitoring
 
+hubble-ui: ## Access hubble ui
+	@kubectl port-forward -n kube-system svc/hubble-ui 12000:80
+
 ##@ Security
 kubescape-scan: ## Scan Kubernetes
 	@kubescape scan
