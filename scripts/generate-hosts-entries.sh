@@ -17,6 +17,7 @@ fi
 
 # Define the domains array
 SERVICE_PREFIXES=(
+    "ldap"
 	"argocd"
 	"kargo"
 	"grafana"

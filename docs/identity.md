@@ -27,6 +27,7 @@ graph TB
     KC --> Langfuse[Langfuse]
     KC --> Temporal[Temporal]
     KC --> Airflow[Airflow]
+    KC --> Headlamp[Headlamp]
 
     KC --> DB[(PostgreSQL)]
 
@@ -48,6 +49,7 @@ graph TB
         Langfuse
         Temporal
         Airflow
+        Headlamp
     end
 ```
 
@@ -184,11 +186,11 @@ Enterprise LDAP integration for corporate users:
 {
   "providerId": "ldap",
   "alias": "ldap",
-  "displayName": "Corporate LDAP",
+  "displayName": "Doka Seca LDAP",
   "config": {
     "vendor": "ad",
-    "connectionUrl": "ldaps://ldap.company.com:636",
-    "usersDn": "ou=users,dc=company,dc=com"
+    "connectionUrl": "ldaps://ldap.dokaseca.local:636",
+    "usersDn": "ou=users,dc=dokaseca,dc=local"
   }
 }
 ```
