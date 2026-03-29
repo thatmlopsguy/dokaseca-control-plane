@@ -43,8 +43,10 @@ To install MinIO using Docker:
 mkdir -p data/minio/velero
 mkdir -p data/minio/loki
 mkdir -p data/minio/tempo
-mkdir -p data/minio/vm
-mkdir -p data/minio/report-portal
+mkdir -p data/minio/victoriametrics
+mkdir -p data/minio/victoriatraces
+mkdir -p data/minio/victorialogs
+mkdir -p data/minio/reportportal
 mkdir -p data/minio/mlflow
 mkdir -p data/minio/langfuse
 mkdir -p data/minio/pyroscope
@@ -76,8 +78,10 @@ mc alias set local http://localhost:9000 minioadmin minioadmin
 mc mb local/velero
 mc mb local/loki
 mc mb local/tempo
-mc mb local/vm
-mc mb local/report-portal
+mc mb local/victoriametrics
+mc mb local/victoriatraces
+mc mb local/victorialogs
+mc mb local/reportportal
 mc mb local/mlflow
 mc mb local/langfuse
 mc mb local/pyroscope
@@ -87,16 +91,18 @@ mc mb local/pyroscope
 
 MinIO is configured with dedicated buckets for each service:
 
-| Service          | Bucket Name   | Purpose                         |
-|------------------|---------------|---------------------------------|
-| Velero           | velero        | Kubernetes backup and restore   |
-| Loki             | loki          | Log storage and querying        |
-| Tempo            | tempo         | Distributed tracing storage     |
-| Victoria Metrics | vm            | Long-term metrics storage       |
-| ReportPortal     | report-portal | Object storage for ReportPortal |
-| MLflow           | mlflow        | Object storage for MLflow       |
-| Langfuse         | langfuse      | Object storage for Langfuse     |
-| Pyroscope        | pyroscope     | Object storage for Pyroscope    |
+| Service          | Bucket Name     | Purpose                         |
+|------------------|-----------------|---------------------------------|
+| Velero           | velero          | Kubernetes backup and restore   |
+| Loki             | loki            | Log storage and querying        |
+| Tempo            | tempo           | Distributed tracing storage     |
+| Victoria Metrics | victoriametrics | Long-term metrics storage       |
+| Victoria Traces  | victoriatraces  | Long-term traces storage        |
+| Victoria Logs    | victorialogs    | Long-term logs storage          |
+| ReportPortal     | reportportal    | Object storage for ReportPortal |
+| MLflow           | mlflow          | Object storage for MLflow       |
+| Langfuse         | langfuse        | Object storage for Langfuse     |
+| Pyroscope        | pyroscope       | Object storage for Pyroscope    |
 
 ## Service Integrations
 
@@ -109,7 +115,7 @@ MinIO is configured with dedicated buckets for each service:
 velero install \
   --provider aws \
   --plugins velero/velero-plugin-for-aws:v1.7.0 \
-  --bucket velero-dev \
+  --bucket velero \
   --secret-file ./credentials-velero \
   --use-volume-snapshots=false \
   --backup-location-config region=minio,s3ForcePathStyle="true",s3Url=http://<docker-host-ip>:9000

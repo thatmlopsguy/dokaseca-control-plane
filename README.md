@@ -59,6 +59,9 @@ DoKa Seca consists of 5 GitHub repositories:
 
 **Prerequisites**
 
+* [`git`](https://git-scm.com/downloads)
+* [`make`](https://www.gnu.org/software/make/)
+* [`direnv`](https://direnv.net/)
 * [`docker`](https://www.docker.com/)
 * [`terraform`](https://www.terraform.io/) or [`opentofu`](https://opentofu.org/)
 * [`Kind`](https://kind.sigs.k8s.io/docs/user/quick-start/), [`k0s`](https://docs.k0sproject.io/stable/), [`k3d`](https://k3d.io/stable/) and/or [`vind`](https://github.com/loft-sh/vind)

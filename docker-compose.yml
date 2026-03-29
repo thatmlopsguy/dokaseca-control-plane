@@ -9,14 +9,14 @@
 ##
 ## - infra: Infrastructure dependencies (e.g., database, message broker, gateway)
 ## - optional: typically used for optional or internal services
-## - database: database services (PostgreSQL, MongoDB, ClickHouse)
+## - database: database services (PostgreSQL, MySQL,MongoDB, ClickHouse)
 ## - storage: object storage services (MinIO)
 ## - monitoring: monitoring stack (Prometheus, Grafana)
 ## - messaging: messaging services (RabbitMQ, Redis)
 ## By default, only the 'infra' profile is active, which includes essential infrastructure services.
 ##
 ## To launch all services, use:
-##   docker-compose --profile infra --profile optional --profile database
+##   docker compose --profile infra --profile optional --profile database
 ##
 ## @section Logging configuration
 ## @param x-logging Shared logging configuration for all services
@@ -45,8 +45,8 @@ services:
     ports:
       - "9002:9000"
     environment:
-      - ADMIN_USERNAME=username
-      - ADMIN_PASSWORD=password
+      - ADMIN_USERNAME=${PORTAINER_ADMIN_USERNAME:-admin}
+      - ADMIN_PASSWORD=${PORTAINER_ADMIN_PASSWORD:-admin_password}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer-data:/data
@@ -88,7 +88,7 @@ services:
     environment:
       - VAULT_ADDR=http://0.0.0.0:8200
       - VAULT_DEV_LISTEN_ADDRESS=0.0.0.0:8200
-      - VAULT_DEV_ROOT_TOKEN_ID=root # For development only, do not use in production
+      - VAULT_DEV_ROOT_TOKEN_ID=${VAULT_DEV_ROOT_TOKEN_ID:-root} # For development only, do not use in production
     cap_add:
       - IPC_LOCK
     command:
@@ -163,6 +163,35 @@ services:
     restart: unless-stopped
     profiles:
       - optional
+      - database
+    networks:
+      - kind
+
+  ## MySQL/MariaDB database for services that require relational storage with MySQL compatibility
+  ## - Exposes default MySQL port 3306 for internal communication
+  ## - Includes healthcheck to ensure MySQL is ready before dependent services start
+  ##
+  mysql:
+    image: mysql:8.0.45-debian
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql_root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-devlake}
+      MYSQL_USER: ${MYSQL_USER:-devlake_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-devlake_password}
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/mysql/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    profiles:
+      - infra
       - database
     networks:
       - kind
@@ -254,7 +283,7 @@ services:
     environment:
       KC_DB: postgres
       KC_DB_URL: jdbc:postgresql://postgres:5432/keycloak
-      KC_DB_USERNAME: ${KC_DB_USERNAME:-keycloak}
+      KC_DB_USERNAME: ${KC_DB_USERNAME:-keycloak_user}
       KC_DB_PASSWORD: ${KC_DB_PASSWORD:-keycloak_password}
       KC_HOSTNAME: localhost
       KC_HOSTNAME_STRICT: false
@@ -318,14 +347,16 @@ services:
       mc mb --ignore-existing local/velero &&
       mc mb --ignore-existing local/loki &&
       mc mb --ignore-existing local/tempo &&
-      mc mb --ignore-existing local/victoria-metrics &&
-      mc mb --ignore-existing local/report-portal &&
+      mc mb --ignore-existing local/victoriametrics &&
+      mc mb --ignore-existing local/victorialogs &&
+      mc mb --ignore-existing local/victoriatraces &&
+      mc mb --ignore-existing local/reportportal &&
       mc mb --ignore-existing local/mlflow &&
       mc mb --ignore-existing local/langfuse &&
       mc mb --ignore-existing local/pyroscope"
     environment:
-      MINIO_ROOT_USER: minioAccessKey
-      MINIO_ROOT_PASSWORD: minioSecretKey
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioAccessKey}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioSecretKey}
     restart: "no"
     profiles:
       - infra
@@ -477,6 +508,7 @@ volumes:
   vault-logs:
   postgres-data:
   pgadmin-data:
+  mysql-data:
   mongodb-data:
   clickhouse-data:
   clickhouse-logs:

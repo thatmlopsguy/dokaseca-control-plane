@@ -282,6 +282,10 @@ cyclops-ui: ## Access cyclops-ui
 dapr-ui: ## Access dapr dashboard
 	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
 
+##@ ML/AI
+mlflow-ui: ## Access mlflow ui
+	@kubectl port-forward svc/mlflow 5000:80 -n mlflow
+
 ##@ Documentation
 .PHONY: docs-serve docs-build adr-list
 docs-serve: ## Start a local web server for serving documentation
