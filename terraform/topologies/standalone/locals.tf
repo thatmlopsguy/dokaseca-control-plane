@@ -202,6 +202,7 @@ locals {
     enable_harbor_container_webhook = try(var.addons.enable_harbor_container_webhook, false)
     enable_fake_gpu_operator        = try(var.addons.enable_fake_gpu_operator, false) # TODO see https://github.com/run-ai/fake-gpu-operator
     enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
+    enable_inspektor_gadget         = try(var.addons.enable_inspektor_gadget, false)  # TODO
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # tests
@@ -240,7 +241,8 @@ locals {
     enable_superset       = try(var.addons.enable_superset, false)       # TODO
     enable_trino          = try(var.addons.enable_trino, false)          # TODO
     # disaster recovery
-    enable_velero = try(var.addons.enable_velero, false) # TODO
+    enable_velero         = try(var.addons.enable_velero, false)         # TODO
+    enable_brudi_operator = try(var.addons.enable_brudi_operator, false) # TODO see https://github.com/mittwald/brudi-operator
     # incident management
     enable_oneuptime       = try(var.addons.enable_oneuptime, false)       # TODO
     enable_oneuptime_agent = try(var.addons.enable_oneuptime_agent, false) # TODO

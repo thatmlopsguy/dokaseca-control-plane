@@ -46,6 +46,7 @@
         "healthcheck",
         "homelab",
         "htpasswd",
+        "inspektor",
         "istioctl",
         "kaito",
         "karmada",

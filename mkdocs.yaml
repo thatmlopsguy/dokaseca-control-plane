@@ -80,7 +80,6 @@ nav:
     - Scaling: runbooks/scaling.md
     - Performance Tuning: runbooks/performance_tuning.md
     - Troubleshooting: runbooks/troubleshooting.md
-    - Best Practices: runbooks/best_practices.md
     - Checklists: runbooks/checklists.md
   - RFCs:
     - Overview: rfc/index.md

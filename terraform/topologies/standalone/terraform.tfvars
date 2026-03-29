@@ -90,7 +90,7 @@ addons = {
   enable_nats              = false
   enable_rabbitmq_operator = false
   # networking
-  enable_gateway_api   = false # managed by terraform
+  enable_gateway_api   = false
   enable_ingress_nginx = true
   enable_traefik       = false
   enable_skupper       = false
@@ -179,11 +179,12 @@ addons = {
   enable_k8s_replicator           = false
   enable_kured                    = false
   enable_eraser                   = false
-  enable_k8s_image_swapper        = false
+  enable_k8s_image_swapper        = false # TODO see https://github.com/estahn/k8s-image-swapper
   enable_spegel                   = false
   enable_harbor_container_webhook = false
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
+  enable_inspektor_gadget         = false
   # portal
   enable_backstage = false
   # tests
@@ -222,7 +223,8 @@ addons = {
   enable_superset       = false # TODO
   enable_trino          = false # TODO
   # disaster recovery
-  enable_velero = false # Tested
+  enable_velero         = false # Tested
+  enable_brudi_operator = false # TODO
   # incident management
   enable_oneuptime       = false # TODO
   enable_oneuptime_agent = false # TODO

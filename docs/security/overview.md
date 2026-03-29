@@ -1,7 +1,8 @@
 # Security
 
 The DoKa Seca platform implements a defense-in-depth approach to Kubernetes security, leveraging both vulnerability
-scanning and runtime threat detection.
+scanning and runtime threat detection. The 4Cs Security Model: Cloud, Cluster, Container, Code, provides a comprehensive
+framework for securing the platform across all layers of the stack.
 
 ## Trivy: Vulnerability & Misconfiguration Scanning
 
