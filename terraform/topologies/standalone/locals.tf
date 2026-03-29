@@ -241,6 +241,8 @@ locals {
     enable_trino          = try(var.addons.enable_trino, false)          # TODO
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
+    # incident management
+    enable_oneuptime = try(var.addons.enable_oneuptime, false) # TODO
   }
 
   # Enterprise

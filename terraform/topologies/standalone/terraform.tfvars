@@ -102,7 +102,7 @@ addons = {
   enable_signoz                     = false
   enable_k8s_monitoring             = false
   enable_kube_prometheus_stack      = false
-  enable_victoria_metrics_k8s_stack = false
+  enable_victoria_metrics_k8s_stack = true
   enable_kiali                      = false
   # agents
   enable_alloy                  = false
@@ -121,6 +121,7 @@ addons = {
   enable_logging_operator = false
   enable_opensearch       = false
   # dashboards
+  enable_grafana          = false
   enable_grafana_operator = false
   enable_pyrra            = false
   # tracing
@@ -132,7 +133,7 @@ addons = {
   enable_pyroscope = false
   enable_parca     = false
   # security
-  enable_cert_manager     = false
+  enable_cert_manager     = true
   enable_trust_manager    = false
   enable_trivy            = false
   enable_sealed_secrets   = false
@@ -184,7 +185,7 @@ addons = {
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
   # portal
-  enable_backstage = false # requires enable_cloudnative_pg
+  enable_backstage = false
   # tests
   enable_report_portal = false # TODO
   # workload manager
@@ -207,7 +208,7 @@ addons = {
   enable_ai_runway        = false # TODO see https://github.com/kaito-project/airunway
   enable_feast            = false # TODO
   enable_kserve           = false # TODO
-  enable_mlflow           = false # TODO
+  enable_mlflow           = false # Tested
   enable_seldon           = false # TODO
   enable_litellm          = false # TODO
   enable_litellm_operator = false # TODO
@@ -221,7 +222,9 @@ addons = {
   enable_superset       = false # TODO
   enable_trino          = false # TODO
   # disaster recovery
-  enable_velero = false # TODO
+  enable_velero = false # Tested
+  # incident management
+  enable_oneuptime = false # TODO
 }
 
 # Resources
