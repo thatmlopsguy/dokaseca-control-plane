@@ -87,9 +87,10 @@ Connect using your preferred database client:
 
 MySQL is used for DevLake. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection information provided in the `.env` file. The MySQL container is defined in the `docker-compose.yml` file and can be accessed using the MySQL client or any compatible database tool.
 
-| Service       | Database      | Username           | Default Password       | Connection String                             |
-|---------------|---------------|--------------------|------------------------|-----------------------------------------------|
-| devlake       | devlake       | devlake_user       | devlake_password       | jdbc:mysql://mysql:3306/devlake               |
+| Service | Database | Username     | Default Password | Connection String               |
+|---------|----------|--------------|------------------|---------------------------------|
+| devlake | devlake  | devlake_user | devlake_password | jdbc:mysql://mysql:3306/devlake |
+| zipkin  | zipkin   | zipkin_user  | zipkin_password  | jdbc:mysql://mysql:3306/zipkin  |
 
 ## MongoDB
 
@@ -102,6 +103,16 @@ be accessed using the MongoDB client or any compatible database tool.
 The Clickhouse database is used for langfuse and signoz. It is configured similarly to PostgreSQL, with credentials stored
 in Vault and connection information provided in the `.env` file. The Clickhouse container is defined in the
 `docker-compose.yml` file and can be accessed using the Clickhouse client or any compatible database tool.
+
+## Cassandra
+
+!!! warning "Warning"
+    Documentation coming soon!
+
+## Elasticsearch
+
+!!! warning "Warning"
+    Documentation coming soon!
 
 ## Integration with Vault
 

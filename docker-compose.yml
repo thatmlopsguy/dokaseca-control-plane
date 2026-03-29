@@ -394,6 +394,7 @@ services:
       GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
       GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_DASHBOARDS_MIN_REFRESH_INTERVAL: "5s"
+      GF_INSTALL_PLUGINS: victoriametrics-logs-datasource
     volumes:
       - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
       - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
