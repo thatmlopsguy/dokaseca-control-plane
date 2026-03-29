@@ -224,7 +224,8 @@ addons = {
   # disaster recovery
   enable_velero = false # Tested
   # incident management
-  enable_oneuptime = false # TODO
+  enable_oneuptime       = false # TODO
+  enable_oneuptime_agent = false # TODO
 }
 
 # Resources

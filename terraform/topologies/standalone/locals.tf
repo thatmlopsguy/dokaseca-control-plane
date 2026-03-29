@@ -242,7 +242,8 @@ locals {
     # disaster recovery
     enable_velero = try(var.addons.enable_velero, false) # TODO
     # incident management
-    enable_oneuptime = try(var.addons.enable_oneuptime, false) # TODO
+    enable_oneuptime       = try(var.addons.enable_oneuptime, false)       # TODO
+    enable_oneuptime_agent = try(var.addons.enable_oneuptime_agent, false) # TODO
   }
 
   # Enterprise
