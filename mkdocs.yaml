@@ -71,6 +71,21 @@ nav:
     - Maintainers: community/maintainers.md
     - Governance: community/governance.md
     - Support: community/support.md
+  # - Runbooks:
+  #   - Overview: runbooks/index.md
+  #   - Incident Response: runbooks/incident_response.md
+  #   - Disaster Recovery: runbooks/disaster_recovery.md
+  #   - Onboarding: runbooks/onboarding.md
+  #   - Offboarding: runbooks/offboarding.md
+  #   - Maintenance: runbooks/maintenance.md
+  #   - Scaling: runbooks/scaling.md
+  #   - Performance Tuning: runbooks/performance_tuning.md
+  #   - Security: runbooks/security.md
+  #   - Compliance: runbooks/compliance.md
+  #   - Cost Optimization: runbooks/cost_optimization.md
+  #   - Troubleshooting: runbooks/troubleshooting.md
+  #   - Best Practices: runbooks/best_practices.md
+  #   - Checklists: runbooks/checklists.md
   - RFCs:
     - Overview: rfc/index.md
     - 0001 - GitOps Promotion with Kargo: rfc/0001-gitops-promotion-with-kargo.md

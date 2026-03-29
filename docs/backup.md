@@ -59,7 +59,7 @@ helm install velero vmware-tanzu/velero \
   --set configuration.backupStorageLocation.bucket=<YOUR_BUCKET> \
   --set configuration.backupStorageLocation.config.region=minio \
   --set configuration.backupStorageLocation.config.s3ForcePathStyle=true \
-  --set configuration.backupStorageLocation.config.s3Url=http://minio.minio.svc:9000 \
+  --set configuration.backupStorageLocation.config.s3Url=http://minio:9000 \
   --set credentials.existingSecret=velero-creds
 ```
 

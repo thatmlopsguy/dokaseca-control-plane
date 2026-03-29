@@ -138,6 +138,7 @@ locals {
     enable_logging_operator = try(var.addons.enable_logging_operator, false)
     enable_opensearch       = try(var.addons.enable_opensearch, false)
     # dashboards
+    enable_grafana          = try(var.addons.enable_grafana, false)
     enable_grafana_operator = try(var.addons.enable_grafana_operator, false)
     enable_pyrra            = try(var.addons.enable_pyrra, false)
     # tracing
