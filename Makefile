@@ -61,6 +61,9 @@ docker-compose-up: ## Start docker-compose services
 docker-compose-down: ## Stop docker-compose services
 	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra down
 
+docker-stop-all: ## Stop all running Docker containers
+	@docker ps -q | xargs -r docker stop
+
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
