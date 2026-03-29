@@ -41,6 +41,7 @@ SERVICE_PREFIXES=(
     "paralus"
     "hubble"
     "headlamp"
+    "oneuptime"
 )
 
 # Generate hosts entries
