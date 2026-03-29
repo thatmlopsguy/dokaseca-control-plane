@@ -10,17 +10,34 @@ CNIs provide networking for pod-to-pod communication within the cluster.
 
 [Cilium](https://cilium.io/) is our primary CNI, leveraging eBPF for high-performance, secure networking with additional observability features.
 
+Cilium ingress validation requires more than enabling the ingress controller.
+The working configuration also enables the Envoy L7 load balancer backend and NodePort support. Without those
+settings, `cilium connectivity test` can fail while waiting for the generated ingress service
+`cilium-ingress-same-node`.
+
 #### Installation
 
 For KinD clusters:
 
 ```sh
-# Deploy Cilium on KinD
-cilium install --version 1.14.3 \
-  --set kubeProxyReplacement=strict \
-  --set k8sServiceHost=control-plane-dev-control-plane \
-  --set k8sServicePort=6443
+# Repo-managed Cilium settings for Kind ingress support
+# See terraform/modules/cni/cilium/main.tf
+helm upgrade --install cilium cilium/cilium \
+  --namespace kube-system \
+  --create-namespace \
+  --version 1.18.5 \
+  --set ingressController.enabled=true \
+  --set ingressController.default=true \
+  --set ingressController.loadbalancerMode=shared \
+  --set ingressController.service.type=NodePort \
+  --set loadBalancer.l7.backend=envoy \
+  --set nodePort.enabled=true
 ```
+
+The two settings below are the critical fix for the Kind connectivity failure:
+
+- `loadBalancer.l7.backend=envoy`
+- `nodePort.enabled=true`
 
 #### Validation
 
@@ -28,8 +45,19 @@ cilium install --version 1.14.3 \
 # Check Cilium status
 cilium status
 
-# Run connectivity test
-cilium connectivity test
+# Run the repo wrapper
+./tests/cilium-test.sh
+```
+
+If you want to verify the runtime prerequisites directly, check:
+
+```sh
+$ cilium config view | rg 'enable-node-port|enable-ingress-controller|loadbalancer-l7'
+enable-ingress-controller                         true
+enable-node-port                                  true
+loadbalancer-l7                                   envoy
+loadbalancer-l7-algorithm                         round_robin
+loadbalancer-l7-ports
 ```
 
 #### Multi-cluster

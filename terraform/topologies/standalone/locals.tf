@@ -49,46 +49,42 @@ locals {
     # multi tenancy
     enable_capsule = try(var.addons.enable_capsule, false) # TODO
     # rbac
-    enable_paralus      = try(var.addons.enable_paralus, false)      # TODO
-    enable_rbac_manager = try(var.addons.enable_rbac_manager, false) # TODO
+    enable_paralus               = try(var.addons.enable_paralus, false)               # TODO
+    enable_rbac_manager          = try(var.addons.enable_rbac_manager, false)          # TODO
+    enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false) # TODO
     # dashboard
     enable_headlamp           = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard     = try(var.addons.enable_helm_dashboard, false)
     enable_komoplane          = try(var.addons.enable_komoplane, false)
     enable_altinity_dashboard = try(var.addons.enable_altinity_dashboard, false)
     enable_dapr_dashboard     = try(var.addons.enable_dapr_dashboard, false)
-    enable_velero_ui          = try(var.addons.enable_velero_ui, false)
-    enable_klances            = try(var.addons.enable_klances, false)       # TODO https://github.com/nicolargo/klances
+    enable_velero_ui          = try(var.addons.enable_velero_ui, false)     # TODO
     enable_ocm_dashboard      = try(var.addons.enable_ocm_dashboard, false) # TODO
-    # fleet manager
-    enable_gardener        = try(var.addons.enable_gardener, false)        # TODO
-    enable_project_sveltos = try(var.addons.enable_project_sveltos, false) # TODO
-    # observability
+    # fleet managers
+    enable_kubefleet_hub_agent     = try(var.addons.enable_kubefleet_hub_agent, false)     # TODO see https://kubefleet-dev.github.io/website/
+    enable_kubefleet_member_agent  = try(var.addons.enable_kubefleet_member_agent, false)  # TODO
+    enable_open_cluster_management = try(var.addons.enable_open_cluster_management, false) # TODO see https://open-cluster-management.io/
+    enable_gardener                = try(var.addons.enable_gardener, false)                # TODO
+    enable_project_sveltos         = try(var.addons.enable_project_sveltos, false)         # TODO
     # identity
     enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
     enable_authentik    = try(var.addons.enable_authentik, false)    # TODO
     enable_keycloak     = try(var.addons.enable_keycloak, false)     # TODO
     enable_authelia     = try(var.addons.enable_authelia, false)     # TODO
-    # delivery
-    enable_argo_cd               = try(var.addons.enable_argo_cd, false)
-    enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false)
-    # testops
-    enable_report_portal = try(var.addons.enable_report_portal, false) # TODO
+    # ci/cd
+    enable_tekton = try(var.addons.enable_tekton, false) # TODO
+    # continuous delivery
+    # gitops bridge create enable_argocd variable
+    enable_argo_cd = try(var.addons.enable_argo_cd, false)
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
     enable_argo_cd_agent = try(var.addons.enable_argo_cd_agent, false) # TODO
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events   = try(var.addons.enable_argo_events, false)
-    enable_keda          = try(var.addons.enable_keda, false)
-    # enable_keptn         = try(var.addons.enable_keptn, false) # Archived
+    # developer experience
+    enable_keda         = try(var.addons.enable_keda, false)
     enable_open_feature = try(var.addons.enable_open_feature, false)
     enable_openfunction = try(var.addons.enable_openfunction, false)
     enable_sloth        = try(var.addons.enable_sloth, false)
-    # fleet managers
-    # https://kubefleet-dev.github.io/website/
-    enable_kubefleet_hub_agent    = try(var.addons.enable_kubefleet_hub_agent, false)    # TODO
-    enable_kubefleet_member_agent = try(var.addons.enable_kubefleet_member_agent, false) # TODO
-    # https://open-cluster-management.io/
-    enable_open_cluster_management = try(var.addons.enable_open_cluster_management, false) # TODO
     # orchestration
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
@@ -97,42 +93,39 @@ locals {
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
     enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, false)
-    # messaging
-    enable_strimzi           = try(var.addons.enable_strimzi, false)
-    enable_nats              = try(var.addons.enable_nats, false)
-    enable_rabbitmq_operator = try(var.addons.enable_rabbitmq_operator, false)
     # platform engineering
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
     enable_dapr   = try(var.addons.enable_dapr, false)
     enable_choreo = try(var.addons.enable_choreo, false) # TODO
     enable_krateo = try(var.addons.enable_krateo, false) # TODO
+    # messaging
+    enable_strimzi           = try(var.addons.enable_strimzi, false)
+    enable_nats              = try(var.addons.enable_nats, false)
+    enable_rabbitmq_operator = try(var.addons.enable_rabbitmq_operator, false)
     # networking
-    ## cni - doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now, TODO find a way to make it work with gitops
-    # enable_flannel = try(var.addons.enable_flannel, false)
-    # enable_cilium  = try(var.addons.enable_cilium, false)
-    # enable_calico  = try(var.addons.enable_calico, false)
-    # enable_istio   = try(var.addons.enable_istio, false)
+    enable_gateway_api = try(var.addons.enable_gateway_api, false)
+    ## service mesh
+    enable_istio = try(var.addons.enable_istio, false)
     ## gateway api
-    enable_gateway_api  = try(var.addons.enable_gateway_api, false)
-    enable_skupper      = try(var.addons.enable_skupper, false)
-    enable_metallb      = try(var.addons.enable_metallb, false)
-    enable_kubevip      = try(var.addons.enable_kubevip, false)
-    enable_external_dns = try(var.addons.enable_external_dns, false)
     ## ingress controllers - DEPRECATED, use gateway api instead
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
+    enable_skupper       = try(var.addons.enable_skupper, false)
+    enable_metallb       = try(var.addons.enable_metallb, false)
+    enable_kubevip       = try(var.addons.enable_kubevip, false)
+    enable_external_dns  = try(var.addons.enable_external_dns, false)
+    # agents
+    enable_alloy                  = try(var.addons.enable_alloy, false)
+    enable_vector                 = try(var.addons.enable_vector, false)
+    enable_fluentbit              = try(var.addons.enable_fluentbit, false)
+    enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
     # monitoring
     enable_signoz                     = try(var.addons.enable_signoz, false)
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
     enable_kiali                      = try(var.addons.enable_kiali, false)
-    # agents
-    enable_alloy                  = try(var.addons.enable_alloy, false)
-    enable_vector                 = try(var.addons.enable_vector, false)
-    enable_fluentbit              = try(var.addons.enable_fluentbit, false)
-    enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
     # metrics
     enable_prometheus_adapter = try(var.addons.enable_prometheus_adapter, false)
     enable_thanos             = try(var.addons.enable_thanos, false)
@@ -144,7 +137,7 @@ locals {
     enable_victoria_logs    = try(var.addons.enable_victoria_logs, false)
     enable_logging_operator = try(var.addons.enable_logging_operator, false)
     enable_opensearch       = try(var.addons.enable_opensearch, false)
-    # dashboarding
+    # dashboards
     enable_grafana_operator = try(var.addons.enable_grafana_operator, false)
     enable_pyrra            = try(var.addons.enable_pyrra, false)
     # tracing
@@ -210,6 +203,8 @@ locals {
     enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
+    # tests
+    enable_report_portal = try(var.addons.enable_report_portal, false) # TODO
     # workload manager
     enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
     enable_airflow        = try(var.addons.enable_airflow, false)        # TODO

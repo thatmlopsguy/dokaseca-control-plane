@@ -49,6 +49,25 @@ kubectl get secret -n monitoring victoria-metrics-k8s-stack-grafana \
 # Password: [decoded from secret above]
 ```
 
+## Headlamp: Kubernetes Web UI
+
+DoKa Seca also supports **Headlamp**, a lightweight Kubernetes web UI for cluster browsing and basic workload management. Manifests to deploy Headlamp are provided in the repository at `kubernetes/headlamp/manifests.yaml`.
+
+To install Headlamp:
+
+```bash
+kubectl apply -f kubernetes/headlamp/manifests.yaml
+```
+
+To access the UI (example using port-forward; adjust service name/namespace if different):
+
+```bash
+kubectl -n kube-system port-forward svc/headlamp 8087:80
+# Then open http://localhost:8087 in your browser
+```
+
+Headlamp complements Grafana by providing a focused UI for Kubernetes resource inspection and lightweight management, while Grafana remains the central observability and analytics platform.
+
 ## Metrics Visualization
 
 DoKa Seca automatically configures Grafana with comprehensive metrics dashboards for infrastructure and application monitoring.

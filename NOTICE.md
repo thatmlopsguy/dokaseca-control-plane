@@ -18,4 +18,4 @@ SPDX identifier: `CC-BY-4.0`
 Third-party components:
 
 This project may include third-party components, which are licensed under their respective licenses.
-Please refer to the NOTICE file for details on third-party components and their licenses.
+Please refer to the [NOTICE](third_party/NOTICE.md) file for details on third-party components and their licenses.

@@ -48,19 +48,6 @@ DoKa Seca will utilize Cluster API for:
 - **Standardized cluster templates:** Creating reusable cluster blueprints with pre-configured settings for each environment
 - **Lifecycle management:** Enabling seamless upgrades and scaling operations across clusters
 
-### KRO (Kubernetes Resource Orchestration)
-
-[KRO](https://github.com/kro-project) will be used to simplify cross-cluster resource management, enabling DoKa Seca to:
-
-- **Coordinate multi-cluster deployments:** Manage application lifecycles across cluster boundaries
-- **Handle dependencies between clusters:** Ensure proper sequencing of resource creation
-- **Implement advanced rollout strategies:** Control the deployment flow across multiple environments
-
-#### Planned Integration
-
-KRO will work alongside ArgoCD to provide more sophisticated orchestration between clusters, especially for complex application
-topologies spanning multiple clusters.
-
 ### Crossplane
 
 [Crossplane](https://www.crossplane.io/) will enable DoKa Seca to define and use higher-level abstractions for both
@@ -87,7 +74,7 @@ infrastructure and applications, making it easier to manage complex deployments.
 [Open Cluster Management](https://open-cluster-management.io/) is a CNCF project that provides a comprehensive
 multi-cluster management platform with strong governance and policy capabilities.
 
-#### OCM Capabilities
+#### Capabilities
 
 OCM will complement our cluster management strategy by offering:
 
@@ -107,18 +94,16 @@ compatibility with our current distributed approach.
 DoKa Seca plans to integrate these tools in a complementary fashion:
 
 1. **Cluster API** will handle the core cluster provisioning and lifecycle management
-2. **KRO** will manage application deployment orchestration across clusters
-3. **Crossplane** will provide higher-level abstractions and additional infrastructure resources
-4. **Open Cluster Management (OCM)** will provide comprehensive governance and security posture management
+2. **Crossplane** will provide higher-level abstractions and additional infrastructure resources
+3. **Open Cluster Management (OCM)** will provide comprehensive governance and security posture management
 
 The initial implementation will focus on standardizing cluster creation for dev, staging, and production environments
-using Cluster API, with KRO, Crossplane, KubeFleet, and OCM capabilities being integrated in subsequent phases.
+using Cluster API, with Crossplane, KubeFleet, and OCM capabilities being integrated in subsequent phases.
 
 ## References
 
 - [Building a Bridge between Terraform and ArgoCD](https://www.slideshare.net/CarlosSantana1/building-a-bridge-between-terraform-and-argocd)
 - [Cluster API Documentation](https://cluster-api.sigs.k8s.io/introduction.html)
-- [KRO Project](https://github.com/kro-project)
 - [Crossplane Documentation](https://docs.crossplane.io/)
 - [KubeFleet](https://kubefleet.dev/)
 - [Kordent](https://k0rdent.io/)

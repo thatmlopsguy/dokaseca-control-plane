@@ -14,5 +14,11 @@ gateway_api_release_version = "v1.4.1"
 This will install the Gateway API CRDs and the controller in your cluster. You can verify the installation by checking for the presence of the Gateway API resources:
 
 ```sh
-kubectl get crds | grep gateway
+$ kubectl get crds | grep gateway
+backendtlspolicies.gateway.networking.k8s.io  
+gatewayclasses.gateway.networking.k8s.io  
+gateways.gateway.networking.k8s.io  
+grpcroutes.gateway.networking.k8s.io  
+httproutes.gateway.networking.k8s.io  
+referencegrants.gateway.networking.k8s.io  
 ```
