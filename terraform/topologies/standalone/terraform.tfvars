@@ -4,7 +4,7 @@ domain_name                 = "k8s-home.lab"
 cloud_provider              = "local"
 kubernetes_distro           = "kind" # options: kind, vind
 kubernetes_version          = "1.35.1"
-kubernetes_cni              = "default" # options: default, calico, cilium, flannel, istio
+kubernetes_cni              = "cilium" # options: default, calico, cilium, flannel, istio
 kubernetes_cni_version      = "1.18.5"
 enable_vault                = true
 enable_gateway_api          = true
@@ -28,80 +28,124 @@ argocd_files_config = {
   load_workloads = false
 }
 addons = {
-  # rbac
-  enable_paralus      = false # TODO
-  enable_rbac_manager = false # TODO
   # artifacts
-  enable_harbor      = false
-  enable_nexus       = false
-  enable_chartmuseum = false
-  enable_artifactory = false
+  enable_harbor      = false # TODO
+  enable_nexus       = false # TODO
+  enable_chartmuseum = false # TODO
+  enable_artifactory = false # TODO
   # multi tenancy
-  enable_capsule = false
+  enable_capsule = false # TODO
+  # rbac
+  enable_paralus               = false # TODO
+  enable_rbac_manager          = false # TODO
+  enable_argo_cd_rbac_operator = false # TODO
   # dashboard
-  enable_headlamp       = false
-  enable_helm_dashboard = false
-  enable_komoplane      = false # requires enable_crossplane
-  enable_klances        = false # TODO https://github.com/nicolargo/klances
+  enable_headlamp           = false # Tested
+  enable_helm_dashboard     = false
+  enable_komoplane          = false # requires enable_crossplane
+  enable_altinity_dashboard = false # TODO
+  enable_dapr_dashboard     = false # TODO
+  enable_velero_ui          = false # TODO
+  enable_ocm_dashboard      = false # TODO
+  # fleet manager
+  enable_kubefleet_hub_agent     = false # TODO
+  enable_kubefleet_member_agent  = false # TODO
+  enable_open_cluster_management = false # TODO
+  enable_gardener                = false # TODO
+  enable_project_sveltos         = false # TODO
+  # identity
+  enable_oauth2_proxy = false # TODO
+  enable_authentik    = false # TODO
+  enable_keycloak     = false # TODO
+  enable_authelia     = false # TODO
   # ci/cd
   enable_tekton = false
   # continuous delivery
   # gitops bridge create enable_argocd variable
-  enable_argo_cd        = false
-  enable_argo_rollouts  = false
-  enable_argo_workflows = false
-  enable_argo_events    = false
+  enable_argo_cd       = false
+  enable_argo_cd_agent = false # TODO
+  enable_argo_rollouts = false
+  enable_argo_events   = false
   # developer experience
-  enable_keda = false
-  enable_dapr = false
-  # feature flags
-  enable_open_feature = false
+  enable_keda         = false # tested
+  enable_open_feature = false # feature flags
+  enable_openfunction = false
+  enable_sloth        = false
   # orchestration
   enable_capi_operator = false # requires enable_cert_manager
   enable_crossplane    = false
-  # platform engineering
-  enable_karpor = false
-  enable_kro    = false
+  enable_koreo         = false
   # gitops promotion
   enable_argo_cd_image_updater = false
   enable_kargo                 = false
   enable_gitops_promoter       = false
-  # monitoring
-  enable_metrics_server             = false
-  enable_kube_prometheus_stack      = false
-  enable_victoria_metrics_k8s_stack = false
-  enable_victoria_logs              = false
-  enable_grafana_operator           = false
-  enable_cortex                     = false
-  enable_thanos                     = false
-  enable_tempo                      = false
-  enable_zipkin                     = false
-  enable_jaeger                     = false
-  enable_opentelemetry_operator     = false
-  enable_kiali                      = false
-  # security
-  enable_cert_manager     = true
-  enable_trust_manager    = false
-  enable_external_secrets = true
-  enable_trivy            = false
-  enable_kubescape        = false
+  # platform engineering
+  enable_karpor = false
+  enable_kro    = false
+  enable_dapr   = false
+  enable_choreo = false
+  enable_krateo = false
+  # messaging
+  enable_strimzi           = false
+  enable_nats              = false
+  enable_rabbitmq_operator = false
   # networking
   enable_gateway_api   = false # managed by terraform
   enable_ingress_nginx = true
   enable_traefik       = false
   enable_skupper       = false
   ## bare metal load-balancer for Kubernetes
-  enable_kubevip      = false
   enable_metallb      = true
+  enable_kubevip      = false
   enable_external_dns = false
-  ## doesn't work with gitops yet, needs to be installed with terraform provider helm_release for now,
-  ## TODO find a way to make it work with gitops
-  enable_flannel = false
-  enable_cilium  = false
-  enable_calico  = false
-  enable_istio   = false
-  enable_linkerd = false
-  enable_ngrok   = false
+  # monitoring
+  enable_signoz                     = false
+  enable_k8s_monitoring             = false
+  enable_kube_prometheus_stack      = false
+  enable_victoria_metrics_k8s_stack = false
+  enable_kiali                      = false
+  # agents
+  enable_alloy                  = false
+  enable_vector                 = false
+  enable_fluentbit              = false
+  enable_opentelemetry_operator = false
+  # metrics
+  enable_prometheus_adapter = false
+  enable_thanos             = false
+  enable_metrics_server     = false
+  enable_cortex             = false
+  enable_mimir              = false
+  # logs
+  enable_loki             = false
+  enable_victoria_logs    = false
+  enable_logging_operator = false
+  enable_opensearch       = false
+  # dashboards
+  enable_grafana_operator = false
+  enable_pyrra            = false
+  # tracing
+  enable_tempo           = false
+  enable_jaeger          = false
+  enable_zipkin          = false
+  enable_victoria_traces = false
+  # profiling
+  enable_pyroscope = false
+  enable_parca     = false
+  # security
+  enable_cert_manager     = false
+  enable_trust_manager    = false
+  enable_trivy            = false
+  enable_sealed_secrets   = false
+  enable_external_secrets = false
+  enable_kubearmor        = false
+  enable_falco            = false
+  enable_tetragon         = false
+  enable_tracee           = false
+  # cost
+  enable_opencost   = false
+  enable_kepler     = false
+  enable_kube_green = false
+  enable_goldilocks = false
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false
@@ -109,18 +153,9 @@ addons = {
   enable_polaris                 = false
   enable_connaisseur             = false
   enable_policy_controller       = false
-  # logging
-  enable_fluentbit        = false
-  enable_alloy            = false
-  enable_vector           = false
-  enable_logging_operator = false
-  # cost
-  enable_opencost   = false
-  enable_kepler     = false
-  enable_kube_green = false
-  enable_goldilocks = false
-  # disaster recovery
-  enable_velero = false
+  # chaos engineering
+  enable_litmus     = false
+  enable_chaos_mesh = false
   # storage
   enable_minio     = false
   enable_rook_ceph = false
@@ -135,36 +170,30 @@ addons = {
   enable_documentdb_operator = false
   enable_weaviate            = false
   enable_milvus              = false
-  # messaging
-  enable_strimzi = false
-  enable_nats    = false
-  # dora
+  # dora metrics
   enable_devlake = false
-  # chaos engineering
-  enable_litmus     = false
-  enable_chaos_mesh = false
   # utils
   enable_reloader                 = false
   enable_reflector                = false
+  enable_k8s_replicator           = false
   enable_kured                    = false
   enable_eraser                   = false
   enable_k8s_image_swapper        = false
   enable_spegel                   = false
   enable_harbor_container_webhook = false
+  enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
+  enable_kuik                     = false
   # portal
   enable_backstage = false # requires enable_cloudnative_pg
-  # machine learning
-  enable_kaito            = false
-  enable_ai_runway        = false # TODO https://github.com/kaito-project/airunway
-  enable_feast            = false
-  enable_mlflow           = false
-  enable_seldon           = false
-  enable_litellm          = false
-  enable_litellm_operator = false
-  enable_langfuse         = false
-  enable_ollama           = false
-  enable_vllm_stack       = false
-  enable_llm_d            = false
+  # tests
+  enable_report_portal = false # TODO
+  # workload manager
+  enable_temporal       = false # TODO
+  enable_airflow        = false # TODO
+  enable_dagster        = false # TODO
+  enable_prefect        = false # TODO
+  enable_flyte          = false # TODO
+  enable_argo_workflows = false # TODO
   # schedulers
   enable_kueue    = false
   enable_yunikorn = false
@@ -173,17 +202,26 @@ addons = {
   enable_kuberay        = false # TODO
   enable_spark_operator = false # TODO
   enable_slurm_operator = false # TODO
-  # azure
-  enable_azure_service_operator = false # requires enable_cert_manager
-  # aws
-  # https://aws-controllers-k8s.github.io/community/docs/community/services/
-  # gcp
-  # enterprise
-  enable_kubecost             = false
-  enable_vcluster             = false
-  enable_nvidia_gpu_operator  = false
-  enable_nvidia_device_plugin = false
-  enable_nvidia_kai_scheduler = false
+  # machine learning
+  enable_kaito            = false # TODO
+  enable_ai_runway        = false # TODO see https://github.com/kaito-project/airunway
+  enable_feast            = false # TODO
+  enable_kserve           = false # TODO
+  enable_mlflow           = false # TODO
+  enable_seldon           = false # TODO
+  enable_litellm          = false # TODO
+  enable_litellm_operator = false # TODO
+  enable_ollama           = false # TODO
+  enable_langfuse         = false # TODO
+  enable_kgateway         = false # TODO
+  enable_vllm_stack       = false # TODO
+  enable_kubeflow_trainer = false # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
+  # analytics
+  enable_flink_operator = false # TODO
+  enable_superset       = false # TODO
+  enable_trino          = false # TODO
+  # disaster recovery
+  enable_velero = false # TODO
 }
 
 # Resources

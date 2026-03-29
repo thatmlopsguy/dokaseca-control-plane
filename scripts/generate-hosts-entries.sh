@@ -39,6 +39,7 @@ SERVICE_PREFIXES=(
     "chaos-mesh"
     "paralus"
     "hubble"
+    "headlamp"
 )
 
 # Generate hosts entries

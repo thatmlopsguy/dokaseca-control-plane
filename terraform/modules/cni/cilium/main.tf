@@ -44,6 +44,16 @@ resource "helm_release" "cilium" {
   }
 
   set {
+    name  = "loadBalancer.l7.backend"
+    value = "envoy"
+  }
+
+  set {
+    name  = "nodePort.enabled"
+    value = "true"
+  }
+
+  set {
     name  = "hubble.relay.enabled"
     value = "true"
   }
