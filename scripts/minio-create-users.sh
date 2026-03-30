@@ -25,13 +25,15 @@ BUCKETS=(
   velero:MINIO_VELERO
   loki:MINIO_LOKI
   tempo:MINIO_TEMPO
-  pyroscope:MINIO_PYROSCOPE
   victoriametrics:MINIO_VICTORIA_METRICS
   victoriatraces:MINIO_VICTORIA_TRACES
   victorialogs:MINIO_VICTORIA_LOGS
   reportportal:MINIO_REPORT_PORTAL
   mlflow:MINIO_MLFLOW
   langfuse:MINIO_LANGFUSE
+  pyroscope:MINIO_PYROSCOPE
+  harbor:MINIO_HARBOR
+  chartmuseum:MINIO_CHARTMUSEUM
 )
 
 # ---------- helpers ----------------------------------------------------------
