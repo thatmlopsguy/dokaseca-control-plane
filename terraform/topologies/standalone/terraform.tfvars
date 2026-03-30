@@ -30,15 +30,15 @@ argocd_files_config = {
 addons = {
   # artifacts
   enable_harbor      = false # TODO
-  enable_nexus       = false # TODO
   enable_chartmuseum = false # TODO
-  enable_artifactory = false # TODO
   # multi tenancy
-  enable_capsule = false # TODO
+  enable_capsule               = false # TODO
+  enable_multi_tenant_operator = false # TODO
   # rbac
   enable_paralus               = false # TODO
   enable_rbac_manager          = false # TODO
   enable_argo_cd_rbac_operator = false # TODO
+  enable_openfga               = false # TODO
   # dashboard
   enable_headlamp           = false # Tested
   enable_helm_dashboard     = false
@@ -187,6 +187,7 @@ addons = {
   # scaling
   enable_keda              = false
   enable_keda_add_ons_http = false
+  enable_keda_kaito_scaler = false # TODO
   # portal
   enable_backstage = false
   # tests
@@ -208,6 +209,7 @@ addons = {
   enable_slurm_operator = false # TODO
   # machine learning
   enable_kaito            = false # TODO
+  enable_llm_d            = false # TODO
   enable_ai_runway        = false # TODO see https://github.com/kaito-project/airunway
   enable_feast            = false # TODO
   enable_kserve           = false # TODO

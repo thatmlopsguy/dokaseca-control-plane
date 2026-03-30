@@ -21,3 +21,4 @@ Some addons (for example, `langfuse`) may use Redis/Valkey for pub/sub, ephemera
 | Airflow  | Celery Redis broker/backend for task queues and scheduler coordination             |
 | Dagster  | Redis broker/backend for task queues and scheduler coordination                    |
 | Superset | Caching and session storage for improved performance and user experience           |
+| Harbor   | Caching and session storage for improved performance and user experience           |

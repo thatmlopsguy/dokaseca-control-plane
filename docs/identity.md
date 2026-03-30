@@ -28,6 +28,7 @@ graph TB
     KC --> Temporal[Temporal]
     KC --> Airflow[Airflow]
     KC --> Headlamp[Headlamp]
+    KC --> Harbor[Harbor]
 
     KC --> DB[(PostgreSQL)]
 
@@ -50,6 +51,7 @@ graph TB
         Temporal
         Airflow
         Headlamp
+        Harbor
     end
 ```
 

@@ -43,15 +43,15 @@ locals {
   oss_addons = {
     # artifacts
     enable_harbor      = try(var.addons.enable_harbor, false)      # TODO
-    enable_nexus       = try(var.addons.enable_nexus, false)       # TODO
     enable_chartmuseum = try(var.addons.enable_chartmuseum, false) # TODO
-    enable_artifactory = try(var.addons.enable_artifactory, false) # TODO
     # multi tenancy
-    enable_capsule = try(var.addons.enable_capsule, false) # TODO
+    enable_capsule               = try(var.addons.enable_capsule, false)               # TODO
+    enable_multi_tenant_operator = try(var.addons.enable_multi_tenant_operator, false) # TODO see https://docs.stakater.com/mto/1.6/installation/kubernetes.html
     # rbac
     enable_paralus               = try(var.addons.enable_paralus, false)               # TODO
     enable_rbac_manager          = try(var.addons.enable_rbac_manager, false)          # TODO
     enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false) # TODO
+    enable_openfga               = try(var.addons.enable_openfga, false)               # TODO
     # dashboard
     enable_headlamp           = try(var.addons.enable_headlamp, false)
     enable_helm_dashboard     = try(var.addons.enable_helm_dashboard, false)
@@ -205,6 +205,7 @@ locals {
     # scaling
     enable_keda              = try(var.addons.enable_keda, false)
     enable_keda_add_ons_http = try(var.addons.enable_keda_add_ons_http, false)
+    enable_keda_kaito_scaler = try(var.addons.enable_keda_kaito_scaler, false) # TODO
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # tests
@@ -226,6 +227,7 @@ locals {
     enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO
     # machine learning
     enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
+    enable_llm_d            = try(var.addons.enable_llm_d, false)            # TODO see
     enable_ai_runway        = try(var.addons.enable_ai_runway, false)        # TODO see https://github.com/kaito-project/airunway
     enable_feast            = try(var.addons.enable_feast, false)            # TODO
     enable_kserve           = try(var.addons.enable_kserve, false)           # TODO

@@ -31,3 +31,4 @@
 
 - [Checklist for Kubernetes in Production: Best Practices for SREs](https://www.infoq.com/articles/checklist-kubernetes-production/)
 - [The AKS Checklist](https://www.the-aks-checklist.com/)
+- [The Ultimate Multi-Tenancy Checklist for Kubernetes](https://www.stakater.com/post/the-ultimate-multi-tenancy-checklist-for-kubernetes)

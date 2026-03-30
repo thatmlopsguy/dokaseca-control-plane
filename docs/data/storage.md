@@ -50,6 +50,8 @@ mkdir -p data/minio/reportportal
 mkdir -p data/minio/mlflow
 mkdir -p data/minio/langfuse
 mkdir -p data/minio/pyroscope
+mkdir -p data/minio/harbor
+mkdir -p data/minio/chartmuseum
 
 # Start MinIO
 docker compose up -d
@@ -85,6 +87,8 @@ mc mb local/reportportal
 mc mb local/mlflow
 mc mb local/langfuse
 mc mb local/pyroscope
+mc mb local/harbor
+mc mb local/chartmuseum
 ```
 
 ### Bucket Configuration
@@ -103,6 +107,8 @@ MinIO is configured with dedicated buckets for each service:
 | MLflow           | mlflow          | Object storage for MLflow       |
 | Langfuse         | langfuse        | Object storage for Langfuse     |
 | Pyroscope        | pyroscope       | Object storage for Pyroscope    |
+| Harbor           | harbor          | Object storage for Harbor       |
+| ChartMuseum      | chartmuseum     | Object storage for ChartMuseum  |
 
 ## Service Integrations
 

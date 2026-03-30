@@ -36,6 +36,7 @@ Each service has:
 | Dagster       | dagster       | dagster_user       | dagster_password       | jdbc:postgresql://postgres:5432/dagster       |
 | Superset      | superset      | superset_user      | superset_password      | jdbc:postgresql://postgres:5432/superset      |
 | Paralus       | paralus       | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus       |
+| Harbor        | harbor        | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor        |
 
 ## Configuration
 

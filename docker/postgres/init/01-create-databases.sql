@@ -84,3 +84,10 @@ CREATE USER paralus_user WITH PASSWORD 'paralus_password';
 GRANT ALL PRIVILEGES ON DATABASE paralus TO paralus_user;
 \c paralus
 GRANT ALL ON SCHEMA public TO paralus_user;
+
+-- Harbor database
+CREATE DATABASE harbor;
+CREATE USER harbor_user WITH PASSWORD 'harbor_password';
+GRANT ALL PRIVILEGES ON DATABASE harbor TO harbor_user;
+\c harbor
+GRANT ALL ON SCHEMA public TO harbor_user;

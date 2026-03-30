@@ -42,6 +42,8 @@ SERVICE_PREFIXES=(
     "hubble"
     "headlamp"
     "oneuptime"
+    "harbor"
+    "chartmuseum"
 )
 
 # Generate hosts entries
