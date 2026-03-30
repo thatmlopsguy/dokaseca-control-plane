@@ -15,11 +15,6 @@ VERSION_FILE="$PROJECT_DIR/VERSION"
 # shellcheck source=lib/common.sh
 source "$SCRIPT_DIR/lib/common.sh"
 
-# Alias for consistency with existing code
-print_status() {
-    print_info "$1"
-}
-
 # Function to get version command output
 get_version() {
     local tool="$1"
@@ -74,7 +69,7 @@ generate_sbom() {
     generate_sbom_header > "$SBOM_FILE"
 
     # Core System Tools
-    print_status "Analyzing core system tools..."
+    print_info "Analyzing core system tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 1. Core System Requirements
@@ -104,7 +99,7 @@ EOF
     done
 
     # Container Runtime and Orchestration
-    print_status "Analyzing container and Kubernetes tools..."
+    print_info "Analyzing container and Kubernetes tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 2. Container Runtime & Kubernetes Tools
@@ -149,6 +144,7 @@ EOF
         [kubectl]="kubectl version --client --output=yaml | grep gitVersion | awk '{print \$2}'"
         [helm]="helm version --short"
         [kustomize]="kustomize version"
+        [oras]="oras version | awk 'NR==1 {print \$2}'"
     )
 
     for tool in "${!k8s_client_tools[@]}"; do
@@ -158,7 +154,7 @@ EOF
     done
 
     # Infrastructure as Code
-    print_status "Analyzing Infrastructure as Code tools..."
+    print_info "Analyzing Infrastructure as Code tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 3. Infrastructure as Code (IaC)
@@ -178,7 +174,7 @@ EOF
     done
 
     # GitOps and Deployment Tools
-    print_status "Analyzing GitOps and deployment tools..."
+    print_info "Analyzing GitOps and deployment tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 4. GitOps & Deployment Tools
@@ -229,7 +225,7 @@ EOF
     done
 
     # Security Tools
-    print_status "Analyzing security tools..."
+    print_info "Analyzing security tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 5. Security Tools
@@ -267,7 +263,7 @@ EOF
     done
 
     # Backup and Storage Tools
-    print_status "Analyzing backup and storage tools..."
+    print_info "Analyzing backup and storage tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 6. Backup & Storage Tools
@@ -288,7 +284,7 @@ EOF
     done
 
     # Network Tools
-    print_status "Analyzing network tools..."
+    print_info "Analyzing network tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 7. Network & Service Mesh Tools
@@ -309,7 +305,7 @@ EOF
     done
 
     # Observability and Monitoring
-    print_status "Analyzing observability tools..."
+    print_info "Analyzing observability tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 8. Observability & Monitoring Tools
@@ -329,7 +325,7 @@ EOF
     done
 
     # Development Tools
-    print_status "Analyzing development tools..."
+    print_info "Analyzing development tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 9. Development Tools
@@ -354,7 +350,7 @@ EOF
     done
 
     # Platform Engineering Tools
-    print_status "Analyzing platform engineering tools..."
+    print_info "Analyzing platform engineering tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ### Platform Engineering Tools
@@ -372,7 +368,7 @@ EOF
     done
 
     # Python Dependencies
-    print_status "Analyzing Python dependencies..."
+    print_info "Analyzing Python dependencies..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 10. Verification
@@ -410,7 +406,7 @@ documentation at: https://thatmlopsguy.github.io/dokaseca-control-plane/
 EOF
 
     print_success "SBOM generated successfully at: $SBOM_FILE"
-    print_status "Total lines in SBOM: $(wc -l < "$SBOM_FILE")"
+    print_info "Total lines in SBOM: $(wc -l < "$SBOM_FILE")"
 }
 
 # Main execution
@@ -423,15 +419,15 @@ main() {
         exit 1
     fi
 
-    print_status "Project directory: $PROJECT_DIR"
-    print_status "SBOM output file: $SBOM_FILE"
+    print_info "Project directory: $PROJECT_DIR"
+    print_info "SBOM output file: $SBOM_FILE"
 
     # Generate SBOM
     generate_sbom
 
     print_success "SBOM generation completed!"
-    print_status "You can view the SBOM at: $SBOM_FILE"
-    print_status "To check which tools are missing, run: ./scripts/check-tools.sh"
+    print_info "You can view the SBOM at: $SBOM_FILE"
+    print_info "To check which tools are missing, run: ./scripts/check-tools.sh"
 }
 
 # Handle script arguments
@@ -469,7 +465,7 @@ EOF
         ;;
     *)
         print_error "Unknown option: $1"
-        print_status "Use --help for usage information"
+        print_info "Use --help for usage information"
         exit 1
         ;;
 esac
