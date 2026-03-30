@@ -67,7 +67,6 @@ addons = {
   enable_argo_rollouts = false
   enable_argo_events   = false
   # developer experience
-  enable_keda         = false # tested
   enable_open_feature = false # feature flags
   enable_openfunction = false
   enable_sloth        = false
@@ -185,6 +184,9 @@ addons = {
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
   enable_inspektor_gadget         = false
+  # scaling
+  enable_keda              = false
+  enable_keda_add_ons_http = false
   # portal
   enable_backstage = false
   # tests

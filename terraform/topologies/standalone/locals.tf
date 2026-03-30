@@ -81,7 +81,6 @@ locals {
     enable_argo_rollouts = try(var.addons.enable_argo_rollouts, false)
     enable_argo_events   = try(var.addons.enable_argo_events, false)
     # developer experience
-    enable_keda         = try(var.addons.enable_keda, false)
     enable_open_feature = try(var.addons.enable_open_feature, false)
     enable_openfunction = try(var.addons.enable_openfunction, false)
     enable_sloth        = try(var.addons.enable_sloth, false)
@@ -203,6 +202,9 @@ locals {
     enable_fake_gpu_operator        = try(var.addons.enable_fake_gpu_operator, false) # TODO see https://github.com/run-ai/fake-gpu-operator
     enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     enable_inspektor_gadget         = try(var.addons.enable_inspektor_gadget, false)  # TODO
+    # scaling
+    enable_keda              = try(var.addons.enable_keda, false)
+    enable_keda_add_ons_http = try(var.addons.enable_keda_add_ons_http, false)
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)
     # tests
