@@ -146,6 +146,7 @@ addons = {
   enable_kepler     = false
   enable_kube_green = false
   enable_goldilocks = false
+  enable_kruise     = false # TODO
   # compliance
   enable_kyverno                 = false
   enable_kyverno_policies        = false

@@ -164,6 +164,7 @@ locals {
     enable_kepler     = try(var.addons.enable_kepler, false)
     enable_kube_green = try(var.addons.enable_kube_green, false)
     enable_goldilocks = try(var.addons.enable_goldilocks, false)
+    enable_kruise     = try(var.addons.enable_kruise, false) # TODO see https://github.com/kruize/autotune
     # compliance
     enable_kyverno                 = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
