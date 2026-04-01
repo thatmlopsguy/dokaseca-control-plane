@@ -89,14 +89,15 @@ addons = {
   enable_nats              = false
   enable_rabbitmq_operator = false
   # networking
+  enable_metallb       = true
+  enable_kubevip       = false
   enable_gateway_api   = false
+  enable_envoy         = false
+  enable_istio         = false
   enable_ingress_nginx = true
   enable_traefik       = false
+  enable_external_dns  = false
   enable_skupper       = false
-  ## bare metal load-balancer for Kubernetes
-  enable_metallb      = true
-  enable_kubevip      = false
-  enable_external_dns = false
   # monitoring
   enable_signoz                     = false
   enable_k8s_monitoring             = false

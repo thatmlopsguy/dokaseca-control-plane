@@ -64,6 +64,9 @@ docker-compose-down: ## Stop docker-compose services
 docker-stop-all: ## Stop all running Docker containers
 	@docker ps -q | xargs -r docker stop
 
+docker-start-all: ## Start all stopped Docker containers
+	@docker ps -a -q --filter "status=exited" | xargs -r docker start
+
 ##@ KinD
 kind-create-cluster: ## Create kind cluster
 	@if [ ! "$(shell kind get clusters | grep $(PROJECT_NAME))" ]; then \
