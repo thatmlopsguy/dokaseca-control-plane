@@ -35,6 +35,7 @@ locals {
     type    = local.type
     version = local.kubernetes_version
     distro  = local.kubernetes_distro
+    domain  = local.domain
   }, var.teams)
 
 
