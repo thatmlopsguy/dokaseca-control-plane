@@ -1613,17 +1613,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Elasticsearch
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#integration-with-vault" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3241,17 +3230,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#elasticsearch" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Elasticsearch
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#integration-with-vault" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3414,6 +3392,13 @@
 <td>harbor_password</td>
 <td>jdbc:postgresql://postgres:5432/harbor</td>
 </tr>
+<tr>
+<td>Uptrace</td>
+<td>uptrace</td>
+<td>uptrace_user</td>
+<td>uptrace_password</td>
+<td>jdbc:postgresql://postgres:5432/uptrace</td>
+</tr>
 </tbody>
 </table>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
@@ -3479,16 +3464,65 @@
 <p>MongoDB is used for Litmus. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection
 information provided in the <code>.env</code> file. The MongoDB container is defined in the <code>docker-compose.yml</code> file and can
 be accessed using the MongoDB client or any compatible database tool.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Database</th>
+<th>Username</th>
+<th>Default Password</th>
+<th>Connection String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>litmus</td>
+<td>litmus</td>
+<td>litmus_user</td>
+<td>litmus_password</td>
+<td>mongodb://mongodb:27017/litmus</td>
+</tr>
+</tbody>
+</table>
 <h2 id="clickhouse">Clickhouse<a class="headerlink" href="#clickhouse" title="Permanent link">&para;</a></h2>
 <p>The Clickhouse database is used for langfuse and signoz. It is configured similarly to PostgreSQL, with credentials stored
 in Vault and connection information provided in the <code>.env</code> file. The Clickhouse container is defined in the
 <code>docker-compose.yml</code> file and can be accessed using the Clickhouse client or any compatible database tool.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Database</th>
+<th>Username</th>
+<th>Default Password</th>
+<th>Connection String</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>langfuse</td>
+<td>langfuse</td>
+<td>langfuse_user</td>
+<td>langfuse_password</td>
+<td>jdbc:clickhouse://clickhouse:8123/langfuse</td>
+</tr>
+<tr>
+<td>signoz</td>
+<td>signoz</td>
+<td>signoz_user</td>
+<td>signoz_password</td>
+<td>jdbc:clickhouse://clickhouse:8123/signoz</td>
+</tr>
+<tr>
+<td>uptrace</td>
+<td>uptrace</td>
+<td>uptrace_user</td>
+<td>uptrace_password</td>
+<td>jdbc:clickhouse://clickhouse:8123/uptrace</td>
+</tr>
+</tbody>
+</table>
 <h2 id="cassandra">Cassandra<a class="headerlink" href="#cassandra" title="Permanent link">&para;</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Documentation coming soon!</p>
-</div>
-<h2 id="elasticsearch">Elasticsearch<a class="headerlink" href="#elasticsearch" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Documentation coming soon!</p>
@@ -3507,11 +3541,15 @@ vault/platform/postgres/common/dagster
 vault/platform/postgres/common/report_portal
 vault/platform/postgres/common/chaos_mesh
 vault/platform/postgres/common/paralus
+vault/platform/postgres/common/superset
+vault/platform/postgres/common/harbor
+vault/platform/postgres/common/uptrace
 <span class="c1"># MySQL credentials</span>
 vault/platform/mysql/common/devlake
 <span class="c1"># Clickhouse credentials</span>
 vault/platform/clickhouse/common/langfuse
 vault/platform/clickhouse/common/signoz
+vault/platform/clickhouse/common/uptrace
 <span class="c1"># MongoDB credentials</span>
 vault/platform/mongodb/common/litmus
 </code></pre></div>
@@ -3537,7 +3575,7 @@ vault/platform/mongodb/common/litmus
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 30, 2026 21:27:19 UTC"><span class="timeago" datetime="2026-03-30T21:27:19+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 30, 2026 21:27:19 UTC">2026-03-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 2, 2026 17:30:50 UTC"><span class="timeago" datetime="2026-04-02T17:30:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 2, 2026 17:30:50 UTC">2026-04-02</span>
   </span>
 
     
