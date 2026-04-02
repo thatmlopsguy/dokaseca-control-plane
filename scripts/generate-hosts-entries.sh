@@ -46,6 +46,8 @@ SERVICE_PREFIXES=(
     "chartmuseum"
     "uptrace"
     "otelcollector"
+    "dagster"
+    "argoworkflows"
 )
 
 # Generate hosts entries

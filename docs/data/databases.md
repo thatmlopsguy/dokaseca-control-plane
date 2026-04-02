@@ -4,13 +4,9 @@ This document outlines the database configuration for platform services in the D
 
 ## Overview
 
-The platform uses a single PostgreSQL, MySQL and Clickhouse containers with multiple databases for different platform services:
-
-- **Keycloak**: Identity and access management
-- **Temporal**: Workflow orchestration
-- **Backstage**: Developer portal
-- **LiteLLM**: LLM proxy service
-- **Langfuse**: LLM observability service
+The platform uses a single PostgreSQL, MySQL and Clickhouse containers with multiple databases for different platform services.
+Each service has its own dedicated database, user, and password for isolation and security. Database credentials are stored in
+Vault and accessed by services via environment variables.
 
 ## Database Structure
 
@@ -38,6 +34,7 @@ Each service has:
 | Paralus       | paralus       | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus       |
 | Harbor        | harbor        | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor        |
 | Uptrace       | uptrace       | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace       |
+| argoworkflows | argoworkflows | argoworkflows_user | argoworkflows_password | jdbc:postgresql://postgres:5432/argoworkflows |
 
 ## Configuration
 
@@ -141,6 +138,7 @@ vault/platform/postgres/common/paralus
 vault/platform/postgres/common/superset
 vault/platform/postgres/common/harbor
 vault/platform/postgres/common/uptrace
+vault/platform/postgres/common/argoworkflows
 # MySQL credentials
 vault/platform/mysql/common/devlake
 # Clickhouse credentials

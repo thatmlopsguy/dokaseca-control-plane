@@ -52,6 +52,7 @@ mkdir -p data/minio/langfuse
 mkdir -p data/minio/pyroscope
 mkdir -p data/minio/harbor
 mkdir -p data/minio/chartmuseum
+mkdir -p data/minio/argoworkflows
 
 # Start MinIO
 docker compose up -d
@@ -89,26 +90,28 @@ mc mb local/langfuse
 mc mb local/pyroscope
 mc mb local/harbor
 mc mb local/chartmuseum
+mc mb local/argoworkflows
 ```
 
 ### Bucket Configuration
 
 MinIO is configured with dedicated buckets for each service:
 
-| Service          | Bucket Name     | Purpose                         |
-|------------------|-----------------|---------------------------------|
-| Velero           | velero          | Kubernetes backup and restore   |
-| Loki             | loki            | Log storage and querying        |
-| Tempo            | tempo           | Distributed tracing storage     |
-| Victoria Metrics | victoriametrics | Long-term metrics storage       |
-| Victoria Traces  | victoriatraces  | Long-term traces storage        |
-| Victoria Logs    | victorialogs    | Long-term logs storage          |
-| ReportPortal     | reportportal    | Object storage for ReportPortal |
-| MLflow           | mlflow          | Object storage for MLflow       |
-| Langfuse         | langfuse        | Object storage for Langfuse     |
-| Pyroscope        | pyroscope       | Object storage for Pyroscope    |
-| Harbor           | harbor          | Object storage for Harbor       |
-| ChartMuseum      | chartmuseum     | Object storage for ChartMuseum  |
+| Service          | Bucket Name     | Purpose                           |
+|------------------|-----------------|-----------------------------------|
+| Velero           | velero          | Kubernetes backup and restore     |
+| Loki             | loki            | Log storage and querying          |
+| Tempo            | tempo           | Distributed tracing storage       |
+| Victoria Metrics | victoriametrics | Long-term metrics storage         |
+| Victoria Traces  | victoriatraces  | Long-term traces storage          |
+| Victoria Logs    | victorialogs    | Long-term logs storage            |
+| ReportPortal     | reportportal    | Object storage for ReportPortal   |
+| MLflow           | mlflow          | Object storage for MLflow         |
+| Langfuse         | langfuse        | Object storage for Langfuse       |
+| Pyroscope        | pyroscope       | Object storage for Pyroscope      |
+| Harbor           | harbor          | Object storage for Harbor         |
+| ChartMuseum      | chartmuseum     | Object storage for ChartMuseum    |
+| Argo Workflows   | argoworkflows   | Object storage for Argo Workflows |
 
 ## Service Integrations
 

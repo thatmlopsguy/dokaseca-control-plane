@@ -292,6 +292,19 @@ dapr-ui: ## Access dapr dashboard
 mlflow-ui: ## Access mlflow ui
 	@kubectl port-forward svc/mlflow 5000:80 -n mlflow
 
+##@ Workflow Orchestration
+temporal-ui: ## Access temporal ui
+	@kubectl port-forward svc/temporal-ui 8083:80 -n temporal
+
+airflow-ui: ## Access airflow ui (admin:admin)
+	@kubectl port-forward svc/airflow-api-server 8084:8080 -n airflow
+
+dagster-ui: ## Access dagster ui
+	@kubectl port-forward svc/dagster-dagster-webserver 3003:80 -n dagster
+
+argo-workflows-ui: ## Access argo workflows ui
+	@kubectl port-forward svc/argo-workflows-server -n argo 2746:2746
+
 ##@ Documentation
 .PHONY: docs-serve docs-build adr-list
 docs-serve: ## Start a local web server for serving documentation

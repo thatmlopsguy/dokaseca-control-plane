@@ -358,6 +358,7 @@ services:
       mc mb --ignore-existing local/langfuse &&
       mc mb --ignore-existing local/harbor &&
       mc mb --ignore-existing local/chartmuseum &&
+      mc mb --ignore-existing local/argoworkflows &&
       mc mb --ignore-existing local/pyroscope"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioAccessKey}
