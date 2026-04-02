@@ -7,6 +7,7 @@ resource "null_resource" "gateway_api" {
     on_version_change = var.release_version
     gateway_api_url   = local.gateway_api_url
     kubeconfig_path   = var.kubeconfig_path
+    cluster_identity  = var.cluster_identity
   }
 
   provisioner "local-exec" {

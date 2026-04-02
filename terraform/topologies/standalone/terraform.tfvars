@@ -1,6 +1,8 @@
 environment                 = "dev"
+region                      = "local"
 cluster_type                = "spoke"
-domain_name                 = "k8s-home.lab"
+cluster_name                = "standalone"
+domain_name                 = "dokaseca.local"
 cloud_provider              = "local"
 kubernetes_distro           = "kind" # options: kind, vind
 kubernetes_version          = "1.35.1"
@@ -92,7 +94,7 @@ addons = {
   enable_metallb       = true
   enable_kubevip       = false
   enable_gateway_api   = false
-  enable_envoy         = false
+  enable_envoy         = true
   enable_istio         = false
   enable_ingress_nginx = true
   enable_traefik       = false
@@ -100,10 +102,13 @@ addons = {
   enable_skupper       = false
   # monitoring
   enable_signoz                     = false
+  enable_uptrace                    = false
   enable_k8s_monitoring             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = true
   enable_kiali                      = false
+  # alerts
+  enable_alertmanager = false
   # agents
   enable_alloy                  = false
   enable_vector                 = false
@@ -111,8 +116,8 @@ addons = {
   enable_opentelemetry_operator = false
   # metrics
   enable_prometheus_adapter = false
-  enable_thanos             = false
   enable_metrics_server     = false
+  enable_thanos             = false
   enable_cortex             = false
   enable_mimir              = false
   # logs
@@ -187,8 +192,8 @@ addons = {
   enable_kuik                     = false
   enable_inspektor_gadget         = false
   # scaling
-  enable_keda              = false
-  enable_keda_add_ons_http = false
+  enable_keda              = true
+  enable_keda_add_ons_http = true
   enable_keda_kaito_scaler = false # TODO
   # portal
   enable_backstage = false

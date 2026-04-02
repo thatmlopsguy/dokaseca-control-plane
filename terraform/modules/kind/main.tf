@@ -64,12 +64,3 @@ resource "local_file" "kubeconfig" {
   filename        = var.kubeconfig_path
   file_permission = "0600"
 }
-
-# # Remove NoSchedule taint from control-plane to allow workload scheduling
-# resource "null_resource" "remove_control_plane_taint" {
-#   depends_on = [kind_cluster.main]
-
-#   provisioner "local-exec" {
-#     command = "kubectl --kubeconfig ${var.kubeconfig_path} taint nodes --all node-role.kubernetes.io/control-plane- || true"
-#   }
-# }

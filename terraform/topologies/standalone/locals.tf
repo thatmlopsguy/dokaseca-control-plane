@@ -1,11 +1,12 @@
 locals {
-  name   = "ex-${replace(basename(path.cwd), "_", "-")}"
-  env    = var.environment
-  region = var.region
-  teams  = var.teams
-  cloud  = var.cloud_provider
-  domain = var.domain_name
-  type   = var.cluster_type
+  name         = "ex-${replace(basename(path.cwd), "_", "-")}"
+  env          = var.environment
+  region       = var.region
+  teams        = var.teams
+  cloud        = var.cloud_provider
+  domain       = var.domain_name
+  type         = var.cluster_type
+  cluster_name = var.cluster_name
 
   kubernetes_distro  = var.kubernetes_distro
   kubernetes_version = var.kubernetes_version
@@ -29,13 +30,14 @@ locals {
   # Cluster labels
   # Argocd secret labels for cluster selector
   argocd_cluster_labels = merge({
-    cloud   = local.cloud
-    region  = local.region
-    env     = local.env
-    type    = local.type
-    version = local.kubernetes_version
-    distro  = local.kubernetes_distro
-    domain  = local.domain
+    cloud        = local.cloud
+    region       = local.region
+    env          = local.env
+    type         = local.type
+    version      = local.kubernetes_version
+    distro       = local.kubernetes_distro
+    domain       = local.domain
+    cluster_name = local.cluster_name
   }, var.teams)
 
 
@@ -119,15 +121,19 @@ locals {
     enable_fluentbit              = try(var.addons.enable_fluentbit, false)
     enable_opentelemetry_operator = try(var.addons.enable_opentelemetry_operator, false)
     # monitoring
+    # apm /stacks
     enable_signoz                     = try(var.addons.enable_signoz, false)
+    enable_uptrace                    = try(var.addons.enable_uptrace, false)
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
     enable_kiali                      = try(var.addons.enable_kiali, false)
+    # alerts
+    enable_alertmanager = try(var.addons.enable_alertmanager, false)
     # metrics
     enable_prometheus_adapter = try(var.addons.enable_prometheus_adapter, false)
-    enable_thanos             = try(var.addons.enable_thanos, false)
     enable_metrics_server     = try(var.addons.enable_metrics_server, false)
+    enable_thanos             = try(var.addons.enable_thanos, false)
     enable_cortex             = try(var.addons.enable_cortex, false)
     enable_mimir              = try(var.addons.enable_mimir, false)
     # logs

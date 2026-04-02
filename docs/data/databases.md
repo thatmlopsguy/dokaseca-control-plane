@@ -37,6 +37,7 @@ Each service has:
 | Superset      | superset      | superset_user      | superset_password      | jdbc:postgresql://postgres:5432/superset      |
 | Paralus       | paralus       | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus       |
 | Harbor        | harbor        | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor        |
+| Uptrace       | uptrace       | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace       |
 
 ## Configuration
 
@@ -99,18 +100,23 @@ MongoDB is used for Litmus. It is configured similarly to PostgreSQL, with crede
 information provided in the `.env` file. The MongoDB container is defined in the `docker-compose.yml` file and can
 be accessed using the MongoDB client or any compatible database tool.
 
+| Service  | Database | Username      | Default Password  | Connection String                          |
+|----------|----------|---------------|-------------------|--------------------------------------------|
+| litmus   | litmus   | litmus_user   | litmus_password   | mongodb://mongodb:27017/litmus            |
+
 ## Clickhouse
 
 The Clickhouse database is used for langfuse and signoz. It is configured similarly to PostgreSQL, with credentials stored
 in Vault and connection information provided in the `.env` file. The Clickhouse container is defined in the
 `docker-compose.yml` file and can be accessed using the Clickhouse client or any compatible database tool.
 
+| Service  | Database | Username      | Default Password  | Connection String                          |
+|----------|----------|---------------|-------------------|--------------------------------------------|
+| langfuse | langfuse | langfuse_user | langfuse_password | jdbc:clickhouse://clickhouse:8123/langfuse |
+| signoz   | signoz   | signoz_user   | signoz_password   | jdbc:clickhouse://clickhouse:8123/signoz   |
+| uptrace  | uptrace  | uptrace_user  | uptrace_password  | jdbc:clickhouse://clickhouse:8123/uptrace  |
+
 ## Cassandra
-
-!!! warning "Warning"
-    Documentation coming soon!
-
-## Elasticsearch
 
 !!! warning "Warning"
     Documentation coming soon!
@@ -132,11 +138,15 @@ vault/platform/postgres/common/dagster
 vault/platform/postgres/common/report_portal
 vault/platform/postgres/common/chaos_mesh
 vault/platform/postgres/common/paralus
+vault/platform/postgres/common/superset
+vault/platform/postgres/common/harbor
+vault/platform/postgres/common/uptrace
 # MySQL credentials
 vault/platform/mysql/common/devlake
 # Clickhouse credentials
 vault/platform/clickhouse/common/langfuse
 vault/platform/clickhouse/common/signoz
+vault/platform/clickhouse/common/uptrace
 # MongoDB credentials
 vault/platform/mongodb/common/litmus
 ```

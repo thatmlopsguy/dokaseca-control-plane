@@ -116,6 +116,7 @@
         "tracee",
         "traefik",
         "trino",
+        "uptrace",
         "vclusters",
         "velero",
         "vind",

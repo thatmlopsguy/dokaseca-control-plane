@@ -12,11 +12,21 @@ variable "environment" {
 variable "region" {
   description = "region of the kubernetes cluster"
   type        = string
-  default     = "north-america"
+  default     = "local"
 
   validation {
-    condition     = contains(["north-america", "europe", "asia-pacific"], lower(var.region))
-    error_message = "Invalid environment. Must be one of 'north-america', 'europe' or 'asia-pacific'."
+    condition     = contains(["local", "eu", "apac", "us"], lower(var.region))
+    error_message = "Invalid environment. Must be one of 'local', 'eu', 'apac' or 'us'."
+  }
+}
+
+variable "cluster_name" {
+  description = "Name of the Kubernetes cluster"
+  type        = string
+  default     = "standalone"
+  validation {
+    condition     = length(var.cluster_name) > 0
+    error_message = "Cluster name must not be empty."
   }
 }
 

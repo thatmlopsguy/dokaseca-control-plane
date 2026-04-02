@@ -78,6 +78,13 @@ GRANT ALL PRIVILEGES ON DATABASE chaos_mesh TO chaos_mesh_user;
 \c chaos_mesh
 GRANT ALL ON SCHEMA public TO chaos_mesh_user;
 
+-- Superset database
+CREATE DATABASE superset;
+CREATE USER superset_user WITH PASSWORD 'superset_password';
+GRANT ALL PRIVILEGES ON DATABASE superset TO superset_user;
+\c superset
+GRANT ALL ON SCHEMA public TO superset_user;
+
 -- Paralus database
 CREATE DATABASE paralus;
 CREATE USER paralus_user WITH PASSWORD 'paralus_password';
@@ -91,3 +98,10 @@ CREATE USER harbor_user WITH PASSWORD 'harbor_password';
 GRANT ALL PRIVILEGES ON DATABASE harbor TO harbor_user;
 \c harbor
 GRANT ALL ON SCHEMA public TO harbor_user;
+
+-- Uptrace database
+CREATE DATABASE uptrace;
+CREATE USER uptrace_user WITH PASSWORD 'uptrace_password';
+GRANT ALL PRIVILEGES ON DATABASE uptrace TO uptrace_user;
+\c uptrace
+GRANT ALL ON SCHEMA public TO uptrace_user;

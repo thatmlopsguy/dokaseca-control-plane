@@ -44,6 +44,8 @@ SERVICE_PREFIXES=(
     "oneuptime"
     "harbor"
     "chartmuseum"
+    "uptrace"
+    "otelcollector"
 )
 
 # Generate hosts entries

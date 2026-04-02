@@ -7,7 +7,7 @@ module "kind_cluster" {
   environment = var.environment
   region      = var.region
 
-  cluster_name       = local.kubernetes_name
+  cluster_name       = var.cluster_name
   cluster_type       = var.cluster_type
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
@@ -21,7 +21,7 @@ module "vind_cluster" {
 
   count = var.kubernetes_distro == "vind" ? 1 : 0
 
-  cluster_name         = local.kubernetes_name
+  cluster_name         = var.cluster_name
   kubernetes_version   = var.kubernetes_version
   kubeconfig_save_path = local.kubeconfig_path
 
@@ -48,6 +48,7 @@ module "gateway_api" {
 
   release_version = var.gateway_api_release_version
   kubeconfig_path = local.kubeconfig_path
+  cluster_identity = try(one(module.kind_cluster[*].cluster_endpoint), one(module.vind_cluster[*].kubeconfig_path), local.kubeconfig_path)
 
   depends_on = [module.kind_cluster, module.vind_cluster]
 }
@@ -74,8 +75,8 @@ module "gitops_bridge" {
   region      = var.region
 
   cluster = {
-    cluster_name = local.kubernetes_name
-    environment  = local.env
+    cluster_name = var.cluster_name
+    environment  = var.environment
     metadata     = local.addons_metadata # metadata annotations
     addons       = local.addons          # metadata labels
   }

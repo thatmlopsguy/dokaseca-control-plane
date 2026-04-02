@@ -18,3 +18,9 @@ variable "kubeconfig_path" {
     error_message = "The kubeconfig path must point to an existing file"
   }
 }
+
+variable "cluster_identity" {
+  description = "A value that changes when the underlying cluster changes, used to re-run CRD apply"
+  type        = string
+  default     = ""
+}
