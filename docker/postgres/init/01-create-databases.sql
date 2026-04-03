@@ -15,11 +15,15 @@ GRANT ALL PRIVILEGES ON DATABASE devlake TO devlake_user;
 \c devlake
 GRANT ALL ON SCHEMA public TO devlake_user;
 
--- Temporal database
+-- Temporal databases
 CREATE DATABASE temporal;
+CREATE DATABASE temporal_visibility;
 CREATE USER temporal_user WITH PASSWORD 'temporal_password';
 GRANT ALL PRIVILEGES ON DATABASE temporal TO temporal_user;
 \c temporal
+GRANT ALL ON SCHEMA public TO temporal_user;
+GRANT ALL PRIVILEGES ON DATABASE temporal_visibility TO temporal_user;
+\c temporal_visibility
 GRANT ALL ON SCHEMA public TO temporal_user;
 
 -- Backstage database

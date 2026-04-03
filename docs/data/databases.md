@@ -18,23 +18,24 @@ Each service has:
 
 ## Connection Information
 
-| Service       | Database      | Username           | Default Password       | Connection String                             |
-|---------------|---------------|--------------------|------------------------|-----------------------------------------------|
-| Keycloak      | keycloak      | keycloak_user      | keycloak_password      | jdbc:postgresql://postgres:5432/keycloak      |
-| Temporal      | temporal      | temporal_user      | temporal_password      | jdbc:postgresql://postgres:5432/temporal      |
-| Backstage     | backstage     | backstage_user     | backstage_password     | jdbc:postgresql://postgres:5432/backstage     |
-| LiteLLM       | litellm       | litellm_user       | litellm_password       | jdbc:postgresql://postgres:5432/litellm       |
-| Langfuse      | langfuse      | langfuse_user      | langfuse_password      | jdbc:postgresql://postgres:5432/langfuse      |
-| MLflow        | mlflow        | mlflow_user        | mlflow_password        | jdbc:postgresql://postgres:5432/mlflow        |
-| Report Portal | report_portal | report_portal_user | report_portal_password | jdbc:postgresql://postgres:5432/report_portal |
-| Chaos Mesh    | chaos_mesh    | chaos_mesh_user    | chaos_mesh_password    | jdbc:postgresql://postgres:5432/chaos_mesh    |
-| Airflow       | airflow       | airflow_user       | airflow_password       | jdbc:postgresql://postgres:5432/airflow       |
-| Dagster       | dagster       | dagster_user       | dagster_password       | jdbc:postgresql://postgres:5432/dagster       |
-| Superset      | superset      | superset_user      | superset_password      | jdbc:postgresql://postgres:5432/superset      |
-| Paralus       | paralus       | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus       |
-| Harbor        | harbor        | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor        |
-| Uptrace       | uptrace       | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace       |
-| argoworkflows | argoworkflows | argoworkflows_user | argoworkflows_password | jdbc:postgresql://postgres:5432/argoworkflows |
+| Service       | Database            | Username           | Default Password       | Connection String                                   |
+|---------------|---------------------|--------------------|------------------------|-----------------------------------------------------|
+| Keycloak      | keycloak            | keycloak_user      | keycloak_password      | jdbc:postgresql://postgres:5432/keycloak            |
+| Temporal      | temporal            | temporal_user      | temporal_password      | jdbc:postgresql://postgres:5432/temporal            |
+| Temporal      | temporal_visibility | temporal_user      | temporal_password      | jdbc:postgresql://postgres:5432/temporal_visibility |
+| Backstage     | backstage           | backstage_user     | backstage_password     | jdbc:postgresql://postgres:5432/backstage           |
+| LiteLLM       | litellm             | litellm_user       | litellm_password       | jdbc:postgresql://postgres:5432/litellm             |
+| Langfuse      | langfuse            | langfuse_user      | langfuse_password      | jdbc:postgresql://postgres:5432/langfuse            |
+| MLflow        | mlflow              | mlflow_user        | mlflow_password        | jdbc:postgresql://postgres:5432/mlflow              |
+| Report Portal | report_portal       | report_portal_user | report_portal_password | jdbc:postgresql://postgres:5432/report_portal       |
+| Chaos Mesh    | chaos_mesh          | chaos_mesh_user    | chaos_mesh_password    | jdbc:postgresql://postgres:5432/chaos_mesh          |
+| Airflow       | airflow             | airflow_user       | airflow_password       | jdbc:postgresql://postgres:5432/airflow             |
+| Dagster       | dagster             | dagster_user       | dagster_password       | jdbc:postgresql://postgres:5432/dagster             |
+| Superset      | superset            | superset_user      | superset_password      | jdbc:postgresql://postgres:5432/superset            |
+| Paralus       | paralus             | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus             |
+| Harbor        | harbor              | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor              |
+| Uptrace       | uptrace             | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace             |
+| argoworkflows | argoworkflows       | argoworkflows_user | argoworkflows_password | jdbc:postgresql://postgres:5432/argoworkflows       |
 
 ## Configuration
 
