@@ -33,6 +33,23 @@ print_header() {
     echo -e "${CYAN}==================================================${NC}"
 }
 
+# Function to get version command output
+get_version() {
+    local tool="$1"
+    local cmd="$2"
+
+    if command -v "$tool" &>/dev/null; then
+        local version_output
+        if version_output=$(eval "$cmd" 2>/dev/null); then
+            echo "$version_output" | head -1
+        else
+            echo "Installed (version check failed)"
+        fi
+    else
+        echo "NOT INSTALLED"
+    fi
+}
+
 wait_for_pods_ready() {
     local timeout=${1:-300}
     local interval=${2:-15}

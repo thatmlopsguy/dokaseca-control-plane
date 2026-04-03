@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.35.0
-# Generated on: 2026-03-30 21:40:28 UTC
+# Generated on: 2026-04-03 08:39:24 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -58,9 +58,9 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ## 4. GitOps & Deployment Tools
 
-### ArgoCD Ecosystem
+### ArgoCD/Akuity Ecosystem
 - argocd: v3.3.2+8a3940d
-- kargo: Installed (version check failed)
+- kargo: v1.7.2
 
 ### FluxCD Tools
 - flux: 2.7.3
@@ -101,7 +101,14 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - flux9s: Installed (version check failed)
 - k9s: 0.50.16
 
-## 9. Development Tools
+## 9. Workflows & Pipeline Tools
+
+### Workflow CLIs
+- argo: v3.6.3
+- tkn: 0.44.0
+- temporal: 1.1.0
+
+## 10. Development Tools
 
 ### Build Tools
 - node: v23.10.0
@@ -116,7 +123,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - kubara: v0.6.3
 - idpbuilder: 0.9.1
 
-## 10. Verification
+## 11. Verification
 
 After installation, verify your setup by running:
 
@@ -128,7 +135,7 @@ After installation, verify your setup by running:
 ./scripts/sbom-generator.sh
 ```
 
-## 11. Security Considerations
+## 12. Security Considerations
 
 - Regularly update all tools to their latest versions for security patches
 - Use signed container images when available (cosign verification)
@@ -138,7 +145,7 @@ After installation, verify your setup by running:
 - Enable audit logging in Kubernetes clusters
 - Use network policies to restrict cluster communication
 
-## 12. Support & Maintenance
+## 13. Support & Maintenance
 
 - **Project Repository**: https://github.com/thatmlopsguy/dokaseca-control-plane
 - **Documentation**: https://thatmlopsguy.github.io/dokaseca-control-plane/

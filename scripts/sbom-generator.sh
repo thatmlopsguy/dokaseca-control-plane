@@ -15,23 +15,6 @@ VERSION_FILE="$PROJECT_DIR/VERSION"
 # shellcheck source=lib/common.sh
 source "$SCRIPT_DIR/lib/common.sh"
 
-# Function to get version command output
-get_version() {
-    local tool="$1"
-    local cmd="$2"
-
-    if command -v "$tool" &>/dev/null; then
-        local version_output
-        if version_output=$(eval "$cmd" 2>/dev/null); then
-            echo "$version_output" | head -1
-        else
-            echo "Installed (version check failed)"
-        fi
-    else
-        echo "NOT INSTALLED"
-    fi
-}
-
 # Function to generate SBOM header
 generate_sbom_header() {
     local project_version="unknown"
@@ -179,12 +162,12 @@ EOF
 
 ## 4. GitOps & Deployment Tools
 
-### ArgoCD Ecosystem
+### ArgoCD/Akuity Ecosystem
 EOF
 
     declare -A gitops_tools=(
         [argocd]="argocd version --client | awk 'NR==1 {print \$2}'"
-        [kargo]="kargo version | awk 'NR==1 {print \$3}'"
+        [kargo]="kargo version --client | awk 'NR==1 {print \$3}'"
     )
 
     for tool in "${!gitops_tools[@]}"; do
@@ -326,9 +309,33 @@ EOF
 
     # Development Tools
     print_info "Analyzing development tools..."
+
+    # Workflows & Pipeline Tools (after Observability)
+    print_info "Analyzing workflows and pipeline CLI tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
-## 9. Development Tools
+## 9. Workflows & Pipeline Tools
+
+### Workflow CLIs
+EOF
+
+    declare -A workflow_tools=(
+        [argo]="argo version --short | awk -F/ '{print \$NF}'"
+        [tkn]="tkn version | awk 'NR==1 {print \$3}'"
+        [temporal]="temporal --version | awk 'NR==1 {print \$3}'"
+    )
+
+    for tool in "${!workflow_tools[@]}"; do
+        local version
+        version=$(get_version "$tool" "${workflow_tools[$tool]}")
+        echo "- $tool: $version" >> "$SBOM_FILE"
+    done
+
+    # Development Tools (renumbered)
+    print_info "Analyzing development tools..."
+    cat << 'EOF' >> "$SBOM_FILE"
+
+## 10. Development Tools
 
 ### Build Tools
 EOF
@@ -371,7 +378,7 @@ EOF
     print_info "Analyzing Python dependencies..."
     cat << 'EOF' >> "$SBOM_FILE"
 
-## 10. Verification
+## 11. Verification
 
 After installation, verify your setup by running:
 
@@ -383,7 +390,7 @@ After installation, verify your setup by running:
 ./scripts/sbom-generator.sh
 ```
 
-## 11. Security Considerations
+## 12. Security Considerations
 
 - Regularly update all tools to their latest versions for security patches
 - Use signed container images when available (cosign verification)
@@ -393,7 +400,7 @@ After installation, verify your setup by running:
 - Enable audit logging in Kubernetes clusters
 - Use network policies to restrict cluster communication
 
-## 12. Support & Maintenance
+## 13. Support & Maintenance
 
 - **Project Repository**: https://github.com/thatmlopsguy/dokaseca-control-plane
 - **Documentation**: https://thatmlopsguy.github.io/dokaseca-control-plane/
