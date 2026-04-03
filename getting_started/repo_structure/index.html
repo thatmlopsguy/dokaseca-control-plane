@@ -422,6 +422,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -464,6 +466,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -472,18 +476,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repository-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository Structure
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#control-plane-repository-this-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -493,8 +485,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#addons-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -504,8 +496,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#clusters-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -515,8 +507,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#workloads-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -524,11 +516,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1044,7 +1031,7 @@
   <span class="md-ellipsis">
     
   
-    Repository
+    Artifact Repositories
   
 
     
@@ -3312,6 +3299,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -3320,18 +3309,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#repository-structure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Repository Structure
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Repository Structure">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#control-plane-repository-this-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3341,8 +3318,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#addons-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3352,8 +3329,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#clusters-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3363,8 +3340,8 @@
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#workloads-repository" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3372,11 +3349,6 @@
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -3745,32 +3717,28 @@
   
 
 
-  <h1>Repo Structure</h1>
-
-<h2 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h2>
+<h1 id="repository-structure">Repository Structure<a class="headerlink" href="#repository-structure" title="Permanent link">&para;</a></h1>
 <p>DoKa Seca follows a multi-repository GitOps pattern:</p>
-<h3 id="control-plane-repository-this-repository"><strong>Control Plane Repository</strong> (This Repository)<a class="headerlink" href="#control-plane-repository-this-repository" title="Permanent link">&para;</a></h3>
+<h2 id="control-plane-repository-this-repository"><strong>Control Plane Repository</strong> (This Repository)<a class="headerlink" href="#control-plane-repository-this-repository" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>dokaseca-control-plane/
 ├──<span class="w"> </span>terraform/<span class="w">           </span><span class="c1"># Infrastructure as Code</span>
-├──<span class="w"> </span>charts/<span class="w">             </span><span class="c1"># Helm charts for custom applications</span>
-├──<span class="w"> </span>gitops/<span class="w">             </span><span class="c1"># GitOps configurations</span>
 ├──<span class="w"> </span>docs/<span class="w">               </span><span class="c1"># Documentation</span>
 └──<span class="w"> </span>scripts/<span class="w">            </span><span class="c1"># Automation scripts</span>
 </code></pre></div>
-<h3 id="addons-repository"><strong>Addons Repository</strong><a class="headerlink" href="#addons-repository" title="Permanent link">&para;</a></h3>
+<h2 id="addons-repository"><strong>Addons Repository</strong><a class="headerlink" href="#addons-repository" title="Permanent link">&para;</a></h2>
 <p>Contains ArgoCD ApplicationSets for platform addons:</p>
 <div class="highlight"><pre><span></span><code>dokaseca-addons/
 ├──<span class="w"> </span>appsets/<span class="w">            </span><span class="c1"># ArgoCD ApplicationSets</span>
 └──<span class="w"> </span>values/<span class="w">             </span><span class="c1"># Environment-specific values</span>
 </code></pre></div>
-<h3 id="clusters-repository"><strong>Clusters Repository</strong><a class="headerlink" href="#clusters-repository" title="Permanent link">&para;</a></h3>
+<h2 id="clusters-repository"><strong>Clusters Repository</strong><a class="headerlink" href="#clusters-repository" title="Permanent link">&para;</a></h2>
 <p>Manages cluster-specific configurations:</p>
 <div class="highlight"><pre><span></span><code>dokaseca-clusters/
 ├──<span class="w"> </span>clusters/<span class="w">           </span><span class="c1"># Per-cluster configurations</span>
 ├──<span class="w"> </span>environments/<span class="w">       </span><span class="c1"># Environment-specific settings</span>
 └──<span class="w"> </span>policies/<span class="w">           </span><span class="c1"># Cluster policies</span>
 </code></pre></div>
-<h3 id="workloads-repository"><strong>Workloads Repository</strong><a class="headerlink" href="#workloads-repository" title="Permanent link">&para;</a></h3>
+<h2 id="workloads-repository"><strong>Workloads Repository</strong><a class="headerlink" href="#workloads-repository" title="Permanent link">&para;</a></h2>
 <p>Contains application workloads:</p>
 <div class="highlight"><pre><span></span><code>dokaseca-workloads/
 ├──<span class="w"> </span>applications/<span class="w">       </span><span class="c1"># Application manifests</span>
@@ -3804,7 +3772,6 @@ in the platform ecosystem. This approach provides clear separation of concerns, 
 │   └── providers.tf     # Cloud provider configurations
 ├── docs/               # Platform documentation
 └── scripts/
-    ├── bootstrap.sh    # Platform bootstrap script
     └── utils/          # Utility scripts
 </code></pre></div>
 <h4 id="2-addons-repository-dokaseca-addons"><strong>2. Addons Repository</strong> (<code>dokaseca-addons</code>)<a class="headerlink" href="#2-addons-repository-dokaseca-addons" title="Permanent link">&para;</a></h4>
@@ -3822,15 +3789,16 @@ in the platform ecosystem. This approach provides clear separation of concerns, 
 <li>Platform capability enablement</li>
 </ul>
 <div class="highlight"><pre><span></span><code>dokaseca-addons/
-├── appsets/
+├── argocd/appsets/
 │   ├── observability/   # Monitoring and logging addons
 │   ├── security/        # Security and compliance addons
 │   ├── networking/      # Network and ingress addons
 │   └── developer-tools/ # Developer experience addons
-└── values/
-    ├── dev/            # Development environment values
-    ├── staging/        # Staging environment values
-    └── production/     # Production environment values
+└── environments/
+    ├── default/          # Default environment values
+    ├── dev/              # Development environment values
+    ├── staging/          # Staging environment values
+    └── production/       # Production environment values
 </code></pre></div>
 <h4 id="3-helm-charts-repository-helm-charts"><strong>3. Helm Charts Repository</strong> (<code>helm-charts</code>)<a class="headerlink" href="#3-helm-charts-repository-helm-charts" title="Permanent link">&para;</a></h4>
 <p><strong>Purpose</strong>: Centralized Helm chart library and distribution</p>
@@ -4055,7 +4023,7 @@ in the platform ecosystem. This approach provides clear separation of concerns, 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 28, 2025 20:22:15 UTC"><span class="timeago" datetime="2025-07-28T20:22:15+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 28, 2025 20:22:15 UTC">2025-07-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 3, 2026 12:44:03 UTC"><span class="timeago" datetime="2026-04-03T12:44:03+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 3, 2026 12:44:03 UTC">2026-04-03</span>
   </span>
 
     
