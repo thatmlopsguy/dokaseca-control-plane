@@ -8,12 +8,12 @@ CONTAINER="${POSTGRES_CONTAINER:-postgres}"
 PG_USER="${PG_USER:-postgres}"
 
 EXPECTED_DBS=(
-  keycloak devlake temporal backstage litellm langfuse
+  keycloak devlake temporal temporal_visibility backstage litellm langfuse
   mlflow airflow dagster report_portal chaos_mesh paralus
 )
 
 EXPECTED_USERS=(
-  keycloak_user devlake_user temporal_user backstage_user litellm_user langfuse_user
+  keycloak_user devlake_user temporal_user  backstage_user litellm_user langfuse_user
   mlflow_user airflow_user dagster_user report_portal_user chaos_mesh_user paralus_user
 )
 
@@ -72,6 +72,22 @@ if [[ ${#missing_users[@]} -gt 0 ]]; then
   echo "MISSING users: ${missing_users[*]}"
 else
   echo "All expected users exist."
+fi
+echo
+
+# Check temporal_user has CREATEDB (required by Temporal admin-tools)
+echo "=== temporal_user privileges ==="
+temporal_createdb=$(run_psql "SELECT rolcreatedb FROM pg_roles WHERE rolname = 'temporal_user';") || true
+if [[ -z "${temporal_createdb}" ]]; then
+  echo "temporal_user not found or error querying role attributes."
+else
+  # psql returns 't' or 'f'
+  if [[ "${temporal_createdb//[[:space:]]/}" != "t" ]]; then
+    echo "WARNING: temporal_user does NOT have CREATEDB. This prevents Temporal init from creating databases."
+    echo "Fix: docker exec ${CONTAINER} psql -U ${PG_USER} -c \"ALTER ROLE temporal_user CREATEDB;\""
+  else
+    echo "temporal_user has CREATEDB"
+  fi
 fi
 echo
 

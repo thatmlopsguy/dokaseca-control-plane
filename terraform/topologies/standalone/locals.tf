@@ -51,6 +51,10 @@ locals {
     enable_capsule               = try(var.addons.enable_capsule, false)               # TODO
     enable_multi_tenant_operator = try(var.addons.enable_multi_tenant_operator, false) # TODO see https://docs.stakater.com/mto/1.6/installation/kubernetes.html
     # rbac
+    enable_oauth2_proxy          = try(var.addons.enable_oauth2_proxy, false)          # TODO
+    enable_authentik             = try(var.addons.enable_authentik, false)             # TODO
+    enable_keycloak              = try(var.addons.enable_keycloak, false)              # TODO
+    enable_authelia              = try(var.addons.enable_authelia, false)              # TODO
     enable_paralus               = try(var.addons.enable_paralus, false)               # TODO
     enable_rbac_manager          = try(var.addons.enable_rbac_manager, false)          # TODO
     enable_argo_cd_rbac_operator = try(var.addons.enable_argo_cd_rbac_operator, false) # TODO
@@ -69,11 +73,6 @@ locals {
     enable_open_cluster_management = try(var.addons.enable_open_cluster_management, false) # TODO see https://open-cluster-management.io/
     enable_gardener                = try(var.addons.enable_gardener, false)                # TODO
     enable_project_sveltos         = try(var.addons.enable_project_sveltos, false)         # TODO
-    # identity
-    enable_oauth2_proxy = try(var.addons.enable_oauth2_proxy, false) # TODO
-    enable_authentik    = try(var.addons.enable_authentik, false)    # TODO
-    enable_keycloak     = try(var.addons.enable_keycloak, false)     # TODO
-    enable_authelia     = try(var.addons.enable_authelia, false)     # TODO
     # ci/cd
     enable_tekton = try(var.addons.enable_tekton, false) # TODO
     # continuous delivery

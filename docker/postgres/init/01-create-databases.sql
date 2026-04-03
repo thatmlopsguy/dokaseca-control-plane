@@ -18,7 +18,7 @@ GRANT ALL ON SCHEMA public TO devlake_user;
 -- Temporal databases
 CREATE DATABASE temporal;
 CREATE DATABASE temporal_visibility;
-CREATE USER temporal_user WITH PASSWORD 'temporal_password';
+CREATE USER temporal_user WITH PASSWORD 'temporal_password' CREATEDB;
 GRANT ALL PRIVILEGES ON DATABASE temporal TO temporal_user;
 \c temporal
 GRANT ALL ON SCHEMA public TO temporal_user;

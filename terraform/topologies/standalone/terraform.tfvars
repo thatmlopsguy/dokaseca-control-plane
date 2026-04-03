@@ -37,6 +37,10 @@ addons = {
   enable_capsule               = false # TODO
   enable_multi_tenant_operator = false # TODO
   # rbac
+  enable_oauth2_proxy          = false # TODO
+  enable_authentik             = false # TODO
+  enable_keycloak              = false # TODO
+  enable_authelia              = false # TODO
   enable_paralus               = false # TODO
   enable_rbac_manager          = false # TODO
   enable_argo_cd_rbac_operator = false # TODO
@@ -55,11 +59,6 @@ addons = {
   enable_open_cluster_management = false # TODO
   enable_gardener                = false # TODO
   enable_project_sveltos         = false # TODO
-  # identity
-  enable_oauth2_proxy = false # TODO
-  enable_authentik    = false # TODO
-  enable_keycloak     = false # TODO
-  enable_authelia     = false # TODO
   # ci/cd
   enable_tekton = false
   # continuous delivery
@@ -196,15 +195,14 @@ addons = {
   enable_keda_add_ons_http = false
   enable_keda_kaito_scaler = false # TODO
   # portal
-  enable_backstage = false
+  enable_backstage = false # TODO
   # tests
   enable_report_portal = false # TODO
   # workload manager
-  enable_temporal       = false # TODO
-  enable_airflow        = false # TODO
-  enable_dagster        = false # TODO
-  enable_flyte          = false # TODO
-  enable_argo_workflows = true  # TODO
+  enable_temporal       = false # Tested
+  enable_airflow        = false # Tested
+  enable_dagster        = false # Tested
+  enable_argo_workflows = false
   # schedulers
   enable_kueue    = false
   enable_yunikorn = false

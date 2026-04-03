@@ -294,7 +294,7 @@ mlflow-ui: ## Access mlflow ui
 
 ##@ Workflow Orchestration
 temporal-ui: ## Access temporal ui
-	@kubectl port-forward svc/temporal-ui 8083:80 -n temporal
+	@kubectl port-forward svc/temporal-web 8083:8080 -n temporal
 
 airflow-ui: ## Access airflow ui (admin:admin)
 	@kubectl port-forward svc/airflow-api-server 8084:8080 -n airflow
