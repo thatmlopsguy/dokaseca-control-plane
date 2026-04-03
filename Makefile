@@ -305,6 +305,10 @@ dagster-ui: ## Access dagster ui
 argo-workflows-ui: ## Access argo workflows ui
 	@kubectl port-forward svc/argo-workflows-server -n argo 2746:2746
 
+##@ CI Pipelines
+tekton-dashboard-ui: ## Access tekton dashboard ui
+	@kubectl port-forward svc/tekton-dashboard -n tekton-pipelines 9097:9097
+
 ##@ Documentation
 .PHONY: docs-serve docs-build adr-list
 docs-serve: ## Start a local web server for serving documentation

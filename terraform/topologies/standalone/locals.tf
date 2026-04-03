@@ -220,7 +220,6 @@ locals {
     enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
     enable_airflow        = try(var.addons.enable_airflow, false)        # TODO
     enable_dagster        = try(var.addons.enable_dagster, false)        # TODO
-    enable_prefect        = try(var.addons.enable_prefect, false)        # TODO
     enable_flyte          = try(var.addons.enable_flyte, false)          # TODO
     enable_argo_workflows = try(var.addons.enable_argo_workflows, false) # TODO
     # schedulers

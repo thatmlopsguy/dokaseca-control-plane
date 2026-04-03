@@ -44,7 +44,7 @@ addons = {
   # dashboard
   enable_headlamp           = false # Tested
   enable_helm_dashboard     = false
-  enable_komoplane          = false # requires enable_crossplane
+  enable_komoplane          = false
   enable_altinity_dashboard = false # TODO
   enable_dapr_dashboard     = false # TODO
   enable_velero_ui          = false # TODO
@@ -73,7 +73,7 @@ addons = {
   enable_openfunction = false
   enable_sloth        = false
   # orchestration
-  enable_capi_operator = false # requires enable_cert_manager
+  enable_capi_operator = false
   enable_crossplane    = false
   enable_koreo         = false
   # gitops promotion
@@ -105,7 +105,7 @@ addons = {
   enable_uptrace                    = false
   enable_k8s_monitoring             = false
   enable_kube_prometheus_stack      = false
-  enable_victoria_metrics_k8s_stack = true
+  enable_victoria_metrics_k8s_stack = false
   enable_kiali                      = false
   # alerts
   enable_alertmanager = false
@@ -190,10 +190,10 @@ addons = {
   enable_harbor_container_webhook = false
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
-  enable_inspektor_gadget         = false
+  enable_inspektor_gadget         = true
   # scaling
-  enable_keda              = true
-  enable_keda_add_ons_http = true
+  enable_keda              = false
+  enable_keda_add_ons_http = false
   enable_keda_kaito_scaler = false # TODO
   # portal
   enable_backstage = false
@@ -203,9 +203,8 @@ addons = {
   enable_temporal       = false # TODO
   enable_airflow        = false # TODO
   enable_dagster        = false # TODO
-  enable_prefect        = false # TODO
   enable_flyte          = false # TODO
-  enable_argo_workflows = false # TODO
+  enable_argo_workflows = true  # TODO
   # schedulers
   enable_kueue    = false
   enable_yunikorn = false

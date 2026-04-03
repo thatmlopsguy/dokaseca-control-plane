@@ -48,6 +48,7 @@ SERVICE_PREFIXES=(
     "otelcollector"
     "dagster"
     "argoworkflows"
+    "tekton-dashboard"
 )
 
 # Generate hosts entries
