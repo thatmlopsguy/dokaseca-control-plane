@@ -19,7 +19,8 @@ DoKa Seca's GitOps implementation provides:
 
 ## GitOps Bridge Architecture
 
-The GitOps Bridge is a key component that enables automated deployment and management of both cluster addons and workloads using ArgoCD.
+The GitOps Bridge is a key component that enables automated deployment and management of both cluster addons and workloads
+using ArgoCD.
 
 Here's how it works:
 
@@ -94,12 +95,12 @@ graph TB
 
 2. Addons Management
     * `addons.yaml` ApplicationSet monitors the addons repository
-    * Automatically deploys cluster-level components (metrics-server, Metallb, etc.)
+    * Automatically deploys cluster-level components (metrics-server, MetalLB, etc.)
     * Uses cluster annotations to determine which addons to deploy
 
 3. Workloads Management
     * `workloads.yaml` ApplicationSet monitors the workloads repository
-    * Deploys application workloads (Team A, Team-b, Team-c)
+    * Deploys application workloads (Team A, Team B, Team C)
     * Supports environment-specific configurations
 
 4. Clusters Management

@@ -39,13 +39,18 @@
 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
-Welcome to **DoKa Seca** (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an opinionated infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)!
+Welcome to **DoKa Seca** (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an opinionated
+infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for bootstrapping cloud-native
+platforms using Kubernetes in Docker (Kind)!
 
-The name "DoKa Seca" is a playful Portuguese phrase where "DoKa" incorporates the "K" from Kubernetes (representing the containerized orchestration at the heart of this project), and "Seca" means "dry" - drawing inspiration from the concept of a **dry dock**. Just as ships are built, repaired, and maintained in dry docks - controlled, isolated environments where all the necessary infrastructure and tooling are readily available - DoKa Seca provides a "dry dock" for Kubernetes platforms. It creates an isolated, controlled environment where entire cloud-native platforms can be rapidly assembled, configured, and tested before being deployed to production waters.
+DoKa Seca provides a production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than
+just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs
+essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.
 
-DoKa Seca provides an opinionated, production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.
-
-This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in local development or homelab environments while following enterprise-grade patterns and best practices.
+This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers
+and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of
+GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in
+local development or homelab environments while following enterprise-grade patterns and best practices.
 
 DoKa Seca consists of 5 GitHub repositories:
 
@@ -95,7 +100,8 @@ DoKa Seca consists of 5 GitHub repositories:
 Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and configured properly.
 This ensures your platform setup is consistent, secure, and easily reproducible across environments.
 
-DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced configurations, see the [Terraform README](terraform/README.md).
+DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced
+configurations, see [terraform/README.md](terraform/README.md).
 
 ### Option 1: Hub-Spoke Topology (Recommended)
 
@@ -167,8 +173,6 @@ make argo-cd-password
 make argo-cd-ui
 # Access at: http://localhost:8088
 ```
-
-For detailed deployment options and advanced configurations, see [terraform/README.md](terraform/README.md).
 
 If you enable in `terraform.tfvars` the gitops bridge by setting `enable_gitops_bridge = true`, then argocd will be also
 installed and all the enabled addons. You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.

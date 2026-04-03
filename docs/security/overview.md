@@ -133,9 +133,9 @@ updates:
 - **Reduced blast radius**: Prevents automatic adoption of a compromised version minutes after publication
 - **Complements SHA pinning**: While pinned SHAs protect against tag mutation, cooldowns protect against net-new malicious releases
 
-## Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions
+### Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions
 
-![github-actions-workflows](assets/figures/images/github-actions-workflows.png)
+![github-actions-workflows](../assets/figures/images/github-actions-workflows.png)
 
 ## References
 

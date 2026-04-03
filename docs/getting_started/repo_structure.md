@@ -1,19 +1,17 @@
-## Repository Structure
+# Repository Structure
 
 DoKa Seca follows a multi-repository GitOps pattern:
 
-### **Control Plane Repository** (This Repository)
+## **Control Plane Repository** (This Repository)
 
 ```sh
 dokaseca-control-plane/
 ├── terraform/           # Infrastructure as Code
-├── charts/             # Helm charts for custom applications
-├── gitops/             # GitOps configurations
 ├── docs/               # Documentation
 └── scripts/            # Automation scripts
 ```
 
-### **Addons Repository**
+## **Addons Repository**
 
 Contains ArgoCD ApplicationSets for platform addons:
 
@@ -23,7 +21,7 @@ dokaseca-addons/
 └── values/             # Environment-specific values
 ```
 
-### **Clusters Repository**
+## **Clusters Repository**
 
 Manages cluster-specific configurations:
 
@@ -34,7 +32,7 @@ dokaseca-clusters/
 └── policies/           # Cluster policies
 ```
 
-### **Workloads Repository**
+## **Workloads Repository**
 
 Contains application workloads:
 
@@ -78,7 +76,6 @@ dokaseca-control-plane/
 │   └── providers.tf     # Cloud provider configurations
 ├── docs/               # Platform documentation
 └── scripts/
-    ├── bootstrap.sh    # Platform bootstrap script
     └── utils/          # Utility scripts
 ```
 
@@ -100,15 +97,16 @@ dokaseca-control-plane/
 
 ```text
 dokaseca-addons/
-├── appsets/
+├── argocd/appsets/
 │   ├── observability/   # Monitoring and logging addons
 │   ├── security/        # Security and compliance addons
 │   ├── networking/      # Network and ingress addons
 │   └── developer-tools/ # Developer experience addons
-└── values/
-    ├── dev/            # Development environment values
-    ├── staging/        # Staging environment values
-    └── production/     # Production environment values
+└── environments/
+    ├── default/          # Default environment values
+    ├── dev/              # Development environment values
+    ├── staging/          # Staging environment values
+    └── production/       # Production environment values
 
 ```
 

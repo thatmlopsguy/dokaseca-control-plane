@@ -1,11 +1,13 @@
 # Logging Solutions
 
-DoKa Seca provides comprehensive logging solutions to collect, store, process, and analyze logs from your Kubernetes clusters and applications.
-The platform supports multiple logging backends and collection agents to meet different requirements and use cases.
+DoKa Seca provides comprehensive logging solutions to collect, store, process, and analyze logs from your Kubernetes
+clusters and applications. The platform supports multiple logging backends and collection agents to meet different
+requirements and use cases.
 
 ## Default Logging Architecture
 
-The **default and recommended** logging solution in DoKa Seca uses **Victoria Logs** as the logging backend with various agent options for log collection and shipping.
+The **default and recommended** logging solution in DoKa Seca uses **Victoria Logs** as the logging backend with various
+agent options for log collection and shipping.
 
 ### Default Stack: Victoria Logs + Collection Agents
 
@@ -71,13 +73,35 @@ While not explicitly mentioned in the configuration, Loki can be used as an alte
 
 ## Log Collection Agents
 
-DoKa Seca provides multiple options for collecting and shipping logs to the backend systems. Choose the agent that best fits your requirements.
+DoKa Seca provides multiple options for collecting and shipping logs to the backend systems. Choose the agent that best
+fits your requirements.
 
-### 1. Grafana Alloy (Recommended)
+### 1. Fluent Bit (Recommended)
+
+**Fluent Bit** is a lightweight log forwarder and processor, ideal for Kubernetes environments.
+
+To enable Fluent Bit:
+
+```hcl
+addons = {
+  enable_fluent_bit = true
+  enable_victoria_logs = true
+}
+```
+
+#### Fluent Bit Features
+
+* **Lightweight**: Minimal resource consumption
+* **High Performance**: Optimized for high-throughput log processing
+* **Kubernetes Native**: Deep Kubernetes integration
+* **Flexible Routing**: Advanced log routing capabilities
+* **Built-in Parsers**: Support for various log formats
+
+### 2. Grafana Alloy
 
 **Alloy** is Grafana's distribution of the OpenTelemetry Collector, optimized for the Grafana ecosystem.
 
-#### Alloy Configuration
+To enable Alloy:
 
 ```hcl
 addons = {
@@ -123,54 +147,7 @@ logs:
     - loki
 ```
 
-### 2. OpenTelemetry Collector
-
-The **OpenTelemetry Collector** provides vendor-neutral observability data collection.
-
-#### OTel Configuration
-
-```hcl
-addons = {
-  enable_opentelemetry_operator = true
-  enable_victoria_logs = true
-}
-```
-
-#### OTel Features
-
-* **Vendor Neutral**: Standard OpenTelemetry implementation
-* **Extensible**: Rich ecosystem of receivers, processors, and exporters
-* **Multi-Backend**: Send logs to multiple destinations
-* **Cloud Native**: Kubernetes-native deployment and management
-
-#### OTel Components
-
-* **OpenTelemetry Operator**: Kubernetes operator for managing collectors
-* **Collector Instances**: DaemonSet for node-level collection
-* **Custom Resources**: OpenTelemetryCollector CRDs
-
-### 3. Fluent Bit
-
-**Fluent Bit** is a lightweight log processor and forwarder.
-
-#### Fluent Bit Configuration
-
-```hcl
-addons = {
-  enable_fluent_bit = true
-  enable_victoria_logs = true
-}
-```
-
-#### Fluent Bit Features
-
-* **Lightweight**: Minimal resource consumption
-* **High Performance**: Optimized for high-throughput log processing
-* **Kubernetes Native**: Deep Kubernetes integration
-* **Flexible Routing**: Advanced log routing capabilities
-* **Built-in Parsers**: Support for various log formats
-
-### 4. Vector
+### 3. Datadog Vector
 
 **Vector** is a high-performance log and metrics router.
 
@@ -218,26 +195,13 @@ sinks:
 
 ## Logging Architecture Patterns
 
-### 1. Single Agent Pattern (Recommended)
-
-Use one collection agent per node for simplicity and efficiency:
-
-```hcl
-addons = {
-  enable_victoria_logs = true
-  enable_alloy = true  # Single agent for logs, metrics, and traces
-}
-```
-
-### 2. Specialized Agent Pattern
-
 Use different agents for different purposes:
 
 ```hcl
 addons = {
   enable_victoria_logs = true
-  enable_alloy = true          # For metrics and traces
-  enable_vector = true         # For high-performance log processing
+  enable_fluent_bit = true       # For log collection and shipping
+  enable_otel_collector = true   # For metrics and traces collection
 }
 ```
 
@@ -273,7 +237,9 @@ addons = {
 
 ## Compliance and Data Privacy
 
-DoKa Seca logging solutions support comprehensive data privacy and compliance requirements for highly regulated environments. Personal data, sensitive information, and regulated data must be properly masked or redacted before being sent to storage backends.
+DoKa Seca logging solutions support comprehensive data privacy and compliance requirements for highly regulated
+environments. Personal data, sensitive information, and regulated data must be properly masked or redacted before being
+sent to storage backends.
 
 ### GDPR Compliance (General Data Protection Regulation)
 

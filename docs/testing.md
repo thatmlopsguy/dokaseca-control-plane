@@ -2,7 +2,8 @@
 
 ## Overview
 
-Doka Seca self-hosts a Report Portal Helm chart to provide a centralized platform for visualizing and managing test results from all teams. This ensures transparency, collaboration, and efficient debugging across the organization.
+Doka Seca self-hosts a Report Portal Helm chart to provide a centralized platform for visualizing and managing test
+results from all teams. This ensures transparency, collaboration, and efficient debugging across the organization.
 
 ## Report Portal
 

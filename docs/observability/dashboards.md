@@ -1,10 +1,13 @@
 # Dashboards
 
-DoKa Seca provides unified observability visualization through **Grafana**, serving as the central platform for monitoring logs, metrics, and traces across your Kubernetes infrastructure. Grafana acts as the single pane of glass for all observability data, providing comprehensive dashboards, alerting, and analysis capabilities.
+DoKa Seca provides unified observability visualization through **Grafana**, serving as the central platform for
+monitoring logs, metrics, and traces across your Kubernetes infrastructure. Grafana acts as the single pane of glass for
+all observability data, providing comprehensive dashboards, alerting, and analysis capabilities.
 
 ## Grafana: The Central Visualization Platform
 
-**Grafana** is DoKa Seca's primary visualization platform, automatically configured and integrated with all observability backends to provide seamless data correlation and analysis.
+**Grafana** is DoKa Seca's primary visualization platform, automatically configured and integrated with all observability
+backends to provide seamless data correlation and analysis.
 
 ### Default Grafana Integration
 
@@ -51,7 +54,8 @@ kubectl get secret -n monitoring victoria-metrics-k8s-stack-grafana \
 
 ## Headlamp: Kubernetes Web UI
 
-DoKa Seca also supports **Headlamp**, a lightweight Kubernetes web UI for cluster browsing and basic workload management. Manifests to deploy Headlamp are provided in the repository at `kubernetes/headlamp/manifests.yaml`.
+DoKa Seca also supports **Headlamp**, a lightweight Kubernetes web UI for cluster browsing and basic workload management.
+Manifests to deploy Headlamp are provided in the repository at `kubernetes/headlamp/manifests.yaml`.
 
 To install Headlamp:
 
@@ -66,7 +70,8 @@ kubectl -n kube-system port-forward svc/headlamp 8087:80
 # Then open http://localhost:8087 in your browser
 ```
 
-Headlamp complements Grafana by providing a focused UI for Kubernetes resource inspection and lightweight management, while Grafana remains the central observability and analytics platform.
+Headlamp complements Grafana by providing a focused UI for Kubernetes resource inspection and lightweight management,
+while Grafana remains the central observability and analytics platform.
 
 ## Metrics Visualization
 

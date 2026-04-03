@@ -53,7 +53,7 @@ cd topologies/standalone
 
 This command will:
 
-* Create a Kind cluster named `hub-dev`
+* Create a Kind cluster named `standalone`
 * Install the core platform components
 * Configure GitOps workflows with ArgoCD (if enabled)
 * Set up observability stack
@@ -64,11 +64,19 @@ This command will:
 Check that your cluster is running:
 
 ```bash
-kind get clusters
-# Output: hub-dev
+$ kind get clusters
+standalone
 
-kubectl cluster-info
-kubectl get nodes
+$ kubectl cluster-info
+Kubernetes control plane is running at https://127.0.0.1:41963
+CoreDNS is running at https://127.0.0.1:41963/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+
+$ kubectl get nodes
+NAME                       STATUS   ROLES           AGE   VERSION
+standalone-control-plane   Ready    control-plane   24h   v1.35.1
+standalone-worker          Ready    <none>          24h   v1.35.1
 ```
 
 ### 4. Access Platform Components
@@ -93,7 +101,7 @@ DoKa Seca supports various configuration options through `terraform.tfvars`:
 enable_gitops_bridge = true
 
 # Configure cluster settings
-cluster_name = "hub-dev"
+cluster_name = "standalone"
 environment = "dev"
 
 # Enable specific addons
@@ -119,9 +127,7 @@ Once installed, DoKa Seca provides:
 To completely remove and reinstall:
 
 ```bash
-./scripts/terraform.sh hub dev destroy
-# Wait for cleanup to complete
-./scripts/terraform.sh hub dev apply
+make clean-infra
 ```
 
 ## Next Steps

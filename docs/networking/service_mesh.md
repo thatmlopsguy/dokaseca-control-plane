@@ -6,11 +6,13 @@ Service meshes provide advanced networking features like traffic management, sec
 
 [Istio](https://istio.io/) is a popular service mesh that enhances security, observability, and traffic management.
 
-```sh
-# Install Istio using istioctl
-istioctl install --set profile=demo -y
+```hcl
+enable_istio = true
+```
 
-# Enable automatic sidecar injection for a namespace
+### Enable automatic sidecar injection for a namespace
+
+```sh
 kubectl label namespace default istio-injection=enabled
 ```
 
@@ -49,9 +51,23 @@ For connecting multiple clusters:
 Install cli
 
 ```sh
-$ curl https://skupper.io/install.sh | sh
-$ skupper version
+curl https://skupper.io/install.sh | sh
+skupper version
 client version                 1.8.3
 transport version              not-found (no configuration has been provided)
 controller version             not-found (no configuration has been provided)
 ```
+
+Create a Skupper network in each cluster:
+
+```sh
+skupper init --namespace skupper --ingress none
+```
+
+Connect clusters:
+
+```sh
+skupper link create --namespace skupper --cluster-name cluster1 --remote-cluster cluster2 --remote-namespace skupper
+```
+
+### Cilium Cluster Mesh

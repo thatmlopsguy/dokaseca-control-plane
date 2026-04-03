@@ -2,13 +2,21 @@
 
 ## Introduction
 
-DoKa Seca provides flexibility in choosing the right GitOps promotion strategy for your workloads through three complementary tools: [Kargo](https://kargo.io/) is the **default and recommended** promotion tool for DoKa Seca workloads, [ArgoCD Image Updater](https://argocd-image-updater.readthedocs.io/) or [GitOps Promoter](https://github.com/argoproj-labs/gitops-promoter).
+DoKa Seca provides flexibility in choosing the right GitOps promotion strategy for your workloads through three
+complementary tools: [Kargo](https://kargo.io/) is the **default and recommended** promotion tool for DoKa Seca workloads,
+[ArgoCD Image Updater](https://argocd-image-updater.readthedocs.io/) or [GitOps Promoter](https://github.com/argoproj-labs/gitops-promoter).
 
-These three tools work in conjunction with ArgoCD to provide a complete GitOps workflow for continuous delivery. While ArgoCD handles the core GitOps functionality of synchronizing Git repository state with Kubernetes clusters, Kargo, ArgoCD Image Updater, and GitOps Promoter extend this capability by automating the promotion of applications across environments. They integrate seamlessly with ArgoCD's declarative approach, automatically updating Git repositories with new image versions or configuration changes, which ArgoCD then detects and deploys according to its synchronization policies.
+These three tools work in conjunction with ArgoCD to provide a complete GitOps workflow for continuous delivery.
+While ArgoCD handles the core GitOps functionality of synchronizing Git repository state with Kubernetes clusters, Kargo,
+ArgoCD Image Updater, and GitOps Promoter extend this capability by automating the promotion of applications across
+environments. They integrate seamlessly with ArgoCD's declarative approach, automatically updating Git repositories with
+new image versions or configuration changes, which ArgoCD then detects and deploys according to its synchronization policies.
 
 ## Repository Structure
 
-DoKa Seca uses an external repository to organize the workloads, see [`dokaseca-workloads`](https://github.com/thatmlopsguy/dokaseca-workloads), for each team, following a structured approach that separates platform configuration from workload definitions. The repository structure is designed to support multi-team environments with clear separation of concerns:
+DoKa Seca uses an external repository to organize the workloads, see [`dokaseca-workloads`](https://github.com/thatmlopsguy/dokaseca-workloads),
+for each team, following a structured approach that separates platform configuration from workload definitions.
+The repository structure is designed to support multi-team environments with clear separation of concerns:
 
 ```
 ├── README.md
@@ -57,7 +65,8 @@ DoKa Seca uses an external repository to organize the workloads, see [`dokaseca-
 
 DoKa Seca leverages ArgoCD ApplicationSets to deploy workloads across multiple environments and clusters.
 
-Below is an example ApplicationSet that demonstrates how to deploy a Python API application across different environments with environment-specific configurations:
+Below is an example ApplicationSet that demonstrates how to deploy a Python API application across different environments
+with environment-specific configurations:
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -150,9 +159,12 @@ This example ApplicationSet demonstrates several important patterns used in DoKa
 
 ## Cluster Labeling for Team Targeting
 
-To enable team-based targeting as shown in the ApplicationSet example above, you need to add the appropriate team labels to the ArgoCD cluster secrets. The `team-a: "true"` label in the cluster selector ensures that workloads are deployed only to clusters belonging to that specific team.
+To enable team-based targeting as shown in the ApplicationSet example above, you need to add the appropriate team labels
+to the ArgoCD cluster secrets. The `team-a: "true"` label in the cluster selector ensures that workloads are deployed
+only to clusters belonging to that specific team.
 
-To add this label to an ArgoCD cluster secret, you can either modify the existing cluster secret directly or use the DoKa Seca Terraform configuration. In the cluster secret, add the label under the `metadata.labels` section:
+To add this label to an ArgoCD cluster secret, you can either modify the existing cluster secret directly or use the
+DoKa Seca Terraform configuration. In the cluster secret, add the label under the `metadata.labels` section:
 
 ```yaml
 metadata:
@@ -164,7 +176,8 @@ metadata:
     cloud: "local"
 ```
 
-This labeling strategy allows ApplicationSets to precisely target the right clusters based on team ownership, environment, and geographical region, ensuring proper workload isolation and deployment control across your multi-cluster setup.
+This labeling strategy allows ApplicationSets to precisely target the right clusters based on team ownership, environment,
+and geographical region, ensuring proper workload isolation and deployment control across your multi-cluster setup.
 
 ## References
 

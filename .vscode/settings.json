@@ -121,6 +121,7 @@
         "velero",
         "vind",
         "vllm",
+        "vmagent",
         "vmalert",
         "vmalertmanager",
         "vmsingle",
@@ -142,4 +143,8 @@
         "**/.venv": true,
     },
     "editor.formatOnSave": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
 }

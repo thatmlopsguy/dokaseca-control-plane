@@ -1,7 +1,8 @@
 # Monitoring and Alerting
 
-DoKa Seca provides comprehensive metrics collection, storage, and alerting capabilities to monitor your Kubernetes infrastructure and applications.
-The platform uses a **hub-and-spoke architecture** with **Victoria Metrics** as the default metrics backend and **VMAlert/VMAlertmanager** for alerting.
+DoKa Seca provides comprehensive metrics collection, storage, and alerting capabilities to monitor your Kubernetes
+infrastructure and applications. The platform uses a **hub-and-spoke architecture** with **Victoria Metrics** as the
+default metrics backend and **VMAlert/VMAlertmanager** for alerting.
 
 ## Default Monitoring Architecture
 
@@ -36,7 +37,8 @@ with **VMAgent** in spoke clusters for efficient metrics collection and aggregat
 
 ### 1. Victoria Metrics (Primary/Default)
 
-**Victoria Metrics** is DoKa Seca's **primary and recommended** metrics backend, providing high-performance metrics storage and querying.
+**Victoria Metrics** is DoKa Seca's **primary and recommended** metrics backend, providing high-performance metrics
+storage and querying.
 
 #### Victoria Metrics Configuration
 

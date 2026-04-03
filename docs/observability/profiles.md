@@ -1,18 +1,18 @@
 # Profiling Solutions
 
 DoKa Seca supports continuous profiling using **Grafana Pyroscope** for Kubernetes workloads.
-With Pyroscope enabled, teams can analyze CPU and memory behavior over time and correlate profiles
-with logs, metrics, and traces through Grafana.
 
 ## Default Profiling Stack
 
 The default profiling option is **Pyroscope** integrated with **Grafana**.
+With Pyroscope enabled, teams can analyze CPU and memory behavior over time and correlate profiles with logs, metrics,
+and traces through Grafana.
 
 ### 1. Grafana Pyroscope (Supported)
 
 **Pyroscope** is the supported continuous profiling backend in DoKa Seca.
 
-#### Configuration
+To enable Pyroscope in DoKa Seca:
 
 ```hcl
 addons = {

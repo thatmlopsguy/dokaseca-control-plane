@@ -1,6 +1,7 @@
 # Machine Learning
 
-Doka Seca provides a robust machine learning platform built on Kubernetes, integrating best-in-class tools for distributed training, LLM request routing, and observability.
+Doka Seca provides a robust machine learning platform built on Kubernetes, integrating best-in-class tools for
+distributed training, LLM request routing, and observability.
 
 ## Components Overview
 
@@ -79,7 +80,8 @@ Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of
 
 ## MLflow
 
-[MLflow](https://mlflow.org/) is an open-source platform for managing the end-to-end machine learning lifecycle. Doka Seca incorporates MLflow for experiment tracking, model versioning, and deployment management.
+[MLflow](https://mlflow.org/) is an open-source platform for managing the end-to-end machine learning lifecycle.
+Doka Seca incorporates MLflow for experiment tracking, model versioning, and deployment management.
 
 ### MLflow Capabilities
 

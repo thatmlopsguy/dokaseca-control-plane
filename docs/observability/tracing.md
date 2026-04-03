@@ -1,10 +1,13 @@
 # Tracing Solutions
 
-DoKa Seca provides comprehensive distributed tracing solutions to monitor and analyze request flows across microservices in your Kubernetes clusters. The platform supports multiple tracing backends and collection methods to meet different performance and scalability requirements.
+DoKa Seca provides comprehensive distributed tracing solutions to monitor and analyze request flows across microservices
+in your Kubernetes clusters. The platform supports multiple tracing backends and collection methods to meet different
+performance and scalability requirements.
 
 ## Default Tracing Architecture
 
-The **default and recommended** tracing solution in DoKa Seca uses **Tempo** as the tracing backend with **OpenTelemetry Collector** for trace collection and processing.
+The **default and recommended** tracing solution in DoKa Seca uses **Tempo** as the tracing backend with **OpenTelemetry
+Collector** for trace collection and processing.
 
 ### Default Stack: Tempo + OpenTelemetry Collector
 
@@ -28,7 +31,7 @@ The **default and recommended** tracing solution in DoKa Seca uses **Tempo** as 
 
 **Tempo** is DoKa Seca's **primary and recommended** tracing backend, providing high-scale distributed tracing.
 
-#### Configuration
+To enable Tempo in DoKa Seca:
 
 ```hcl
 addons = {
@@ -68,7 +71,7 @@ kubectl port-forward svc/tempo-query-frontend -n monitoring 3200:3200
 
 **Jaeger** provides end-to-end distributed tracing with a comprehensive UI.
 
-#### Jaeger Configuration
+To enable Jaeger in DoKa Seca:
 
 ```hcl
 addons = {
@@ -101,35 +104,7 @@ addons = {
 kubectl port-forward svc/jaeger-query -n monitoring 16686:80
 ```
 
-### 3. Zipkin (Lightweight Alternative)
-
-**Zipkin** provides a simple, lightweight distributed tracing system.
-
-#### Zipkin Configuration
-
-```hcl
-addons = {
-  enable_zipkin = true
-}
-```
-
-#### Zipkin Features
-
-* **Simple Deployment**: Easy to deploy and configure
-* **Web UI**: Built-in web interface for trace visualization
-* **Service Discovery**: Automatic service dependency mapping
-* **Low Resource Usage**: Minimal resource requirements
-* **Multiple Transports**: HTTP, Kafka, RabbitMQ support
-* **Storage Flexibility**: In-memory, MySQL, Cassandra, Elasticsearch
-
-#### Zipkin Components
-
-* **Zipkin Collector**: Receives and processes traces
-* **Zipkin Storage**: Configurable storage backend
-* **Zipkin Query API**: REST API for trace queries
-* **Zipkin UI**: Web interface for trace analysis
-
-### 4. Victoria Traces (High-Performance Alternative)
+### 3. Victoria Traces
 
 **Victoria Traces** provides high-performance tracing storage compatible with Victoria Metrics ecosystem.
 

@@ -154,7 +154,8 @@ spec:
 
 ### Installation and Setup
 
-DoKa Seca includes both Chaos Mesh and Litmus as optional components that can be enabled during platform bootstrap by configuring Terraform variables:
+DoKa Seca includes both Chaos Mesh and Litmus as optional components that can be enabled during platform bootstrap by
+configuring Terraform variables:
 
 ```hcl
 # terraform/tfvars/dev.tfvars

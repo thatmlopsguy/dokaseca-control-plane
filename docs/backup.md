@@ -25,14 +25,13 @@ curl -L https://github.com/vmware-tanzu/velero/releases/latest/download/velero-l
 sudo mv velero-linux-amd64/velero /usr/local/bin/
 ```
 
-### Helm (Recommended)
+Enable velero addon in Terraform:
 
-```bash
-helm repo add vmware-tanzu https://vmware-tanzu.github.io/helm-charts
-helm repo update
+```hcl
+addons = {
+  enable_velero = true
+}
 ```
-
----
 
 ## Storage Configuration
 
@@ -48,22 +47,6 @@ kubectl create secret generic velero-creds \
   --from-literal=aws_access_key_id=<MINIO_ACCESS_KEY> \
   --from-literal=aws_secret_access_key=<MINIO_SECRET_KEY>
 ```
-
-1. Install Velero with Helm:
-
-```bash
-helm install velero vmware-tanzu/velero \
-  --namespace velero --create-namespace \
-  --set configuration.provider=aws \
-  --set configuration.backupStorageLocation.name=default \
-  --set configuration.backupStorageLocation.bucket=<YOUR_BUCKET> \
-  --set configuration.backupStorageLocation.config.region=minio \
-  --set configuration.backupStorageLocation.config.s3ForcePathStyle=true \
-  --set configuration.backupStorageLocation.config.s3Url=http://minio:9000 \
-  --set credentials.existingSecret=velero-creds
-```
-
----
 
 ## Usage
 

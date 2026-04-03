@@ -20,7 +20,7 @@ nav:
   - Tutorials:
     - Overview: tutorials/overview.md
   - IAM: identity.md
-  - Repository: repository.md
+  - Artifact Repositories: repository.md
   - Portal: portal.md
   - GitOps:
     - Overview: gitops/overview.md

@@ -2,9 +2,7 @@
 
 Continuous Monitoring & Observability increases agility, improves customer experience and reduces risk of the cloud
 environment. According to Wikipedia, Observability is a measure of how well internal states of a system can be inferred
-from the knowledge of its external outputs. The term observability itself originates from the field of control theory,
-where it basically means that you can infer the internal state of the components in a system by learning about the
-external signals/outputs it is producing.
+from the knowledge of its external outputs.
 
 The difference between Monitoring and Observability is that Monitoring tells you whether a system is working or not,
 while Observability tells you why the system isn't working. Monitoring is usually a reactive measure whereas the goal of
@@ -15,13 +13,16 @@ control and optimize the environment.
 
 ## DoKa Seca Observability Stack
 
-DoKa Seca provides a comprehensive observability stack that covers the four pillars of observability: **Metrics**, **Logs**, **Traces**, **Profiles**. The platform offers multiple observability solutions that can be enabled based on your requirements.
+DoKa Seca provides a comprehensive observability stack that covers the four pillars of observability: **Metrics**,
+**Logs**, **Traces**, **Profiles**.
+The platform offers multiple observability solutions that can be enabled based on your requirements.
 
 ## Primary Observability Stack
 
 ### Victoria Metrics Ecosystem
 
-DoKa Seca's default observability stack is built around the Victoria Metrics ecosystem, providing a high-performance, cost-effective alternative to Prometheus:
+DoKa Seca's default observability stack is built around the Victoria Metrics ecosystem, providing a high-performance,
+cost-effective alternative to Prometheus:
 
 #### **Victoria Metrics K8s Stack** (`enable_victoria_metrics_k8s_stack`)
 
@@ -62,23 +63,26 @@ DoKa Seca's default observability stack is built around the Victoria Metrics eco
 
 ### Data Collection and Shipping
 
-#### **Alloy** (`enable_alloy`)
+#### **Fluent Bit** (`enable_fluent_bit`)
 
-* **Purpose**: Grafana's distribution of OpenTelemetry Collector
-* **Capabilities**:
+* **Purpose**: Lightweight log forwarder
+* **Features**:
+  * High-performance log collection
+  * Multiple output plugins (Victoria Logs, Elasticsearch, etc.)
+  * Kubernetes metadata enrichment
+* **Use Case**: Collect application and cluster logs for centralized management
+
+#### **OpenTelemetry Collector** (`enable_opentelemetry_collector`)
+
+* **Purpose**: Unified telemetry data collection
+* **Features**:
   * Metrics, logs, and traces collection
   * Data transformation and routing
   * Multi-destination shipping
-  * Low resource footprint
-
-#### **Vector** (`enable_vector`)
-
-* **Purpose**: High-performance log and metrics router
-* **Features**:
-  * Real-time data transformation
-  * Multiple input/output formats
-  * Built-in error handling
-  * Memory-efficient processing
+  * Vendor-agnostic architecture
+  * Integration with various backends (Victoria Metrics, Grafana Tempo, Jaeger, etc.)
+  * Low resource footprint with auto-scaling capabilities
+* **Use Case**: Collect telemetry data from applications and infrastructure for comprehensive observability
 
 ## Alternative Observability Solutions
 
@@ -109,7 +113,7 @@ DoKa Seca's default observability stack is built around the Victoria Metrics eco
 
 ### Tracing Solutions
 
-#### **Tempo** (`enable_tempo`)
+#### **Grafana Tempo** (`enable_tempo`)
 
 * **Purpose**: High-scale distributed tracing backend
 * **Features**:
@@ -126,14 +130,6 @@ DoKa Seca's default observability stack is built around the Victoria Metrics eco
   * Jaeger Collector
   * Jaeger Query UI
   * Storage backend
-
-#### **Zipkin** (`enable_zipkin`)
-
-* **Purpose**: Distributed tracing system
-* **Features**:
-  * Simple deployment model
-  * Web UI for trace visualization
-  * Service dependency mapping
 
 ### Profiling Solutions
 
@@ -287,34 +283,6 @@ kubectl port-forward svc/kube-prometheus-stack-prometheus -n monitoring 9090:909
 ```bash
 kubectl port-forward svc/jaeger-query -n monitoring 16686:80
 ```
-
-## Best Practices
-
-### 1. **Resource Management**
-
-* Configure appropriate resource limits for monitoring components
-* Use persistent volumes for long-term metric storage
-* Implement data retention policies
-
-### 2. **Security**
-
-* Enable RBAC for monitoring components
-* Use ServiceMonitor labels for metric discovery
-* Implement network policies for monitoring namespace
-
-### 3. **Performance Optimization**
-
-* Configure scrape intervals based on requirements
-* Use metric relabeling to reduce cardinality
-* Implement recording rules for complex queries
-
-### 4. **High Availability**
-
-* Deploy monitoring components across multiple nodes
-* Use anti-affinity rules for critical components
-* Implement backup strategies for monitoring data
-
-## Monitoring Integration
 
 DoKa Seca automatically configures ServiceMonitors and dashboards for:
 

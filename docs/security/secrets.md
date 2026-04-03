@@ -74,9 +74,7 @@ Similar policies exist for Team B and Team C.
 S3 bucket credentials are stored in the following format:
 
 ```sh
-vault/platform/s3/velero/dev
-vault/platform/s3/velero/stg
-vault/platform/s3/velero/prod
+vault/platform/s3/velero
 vault/platform/s3/loki
 ```
 
@@ -160,9 +158,10 @@ In case of security incidents, secrets can be immediately rotated using:
 # Or manually through the Vault UI
 ```
 
-## Audit and Compliance
+## Audit and Compliance (SOC 2)
 
-All access to secrets is logged in Vault's audit log, which is integrated with our central logging system. Regular compliance reports are generated from these logs to ensure:
+All access to secrets is logged in Vault's audit log, which is integrated with our central logging system.
+Regular compliance reports are generated from these logs to ensure:
 
 - No unauthorized access attempts
 - Proper rotation schedules are maintained

@@ -1,14 +1,18 @@
 # Networking
 
-This document provides an overview of the networking components used in our Kubernetes homelab setup, including Container Network Interfaces (CNIs), load balancers, ingress controllers, API gateways, and service meshes.
+This document provides an overview of the networking components used in our Kubernetes homelab setup,
+including Container Network Interfaces (CNIs), load balancers, ingress controllers, API gateways, and
+service meshes.
 
 ## Container Network Interfaces (CNI)
 
-CNIs provide networking for pod-to-pod communication within the cluster.
+CNIs provide networking for pod-to-pod communication within the cluster. DoKa Seca supports multiple CNIs,
+with Cilium as the default for its performance and security features.
 
 ### Cilium
 
-[Cilium](https://cilium.io/) is our primary CNI, leveraging eBPF for high-performance, secure networking with additional observability features.
+[Cilium](https://cilium.io/) is our primary CNI, leveraging eBPF for high-performance, secure networking
+with additional observability features.
 
 Cilium ingress validation requires more than enabling the ingress controller.
 The working configuration also enables the Envoy L7 load balancer backend and NodePort support. Without those
@@ -75,15 +79,18 @@ cilium clustermesh enable --service-type NodePort
 
 [MetalLB](https://metallb.universe.tf/) provides a network load balancer implementation for bare-metal Kubernetes clusters.
 
-#### Installing MetalLB
+#### Enabling MetalLB
 
-```sh
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.3/config/manifests/metallb-native.yaml
+To enable MetalLB in DoKa Seca, set the following in `terraform.tfvars`:
+
+```hcl
+enable_metallb = true
 ```
 
 #### Configuration
 
-To complete the layer2 configuration, you need to provide MetalLB with a range of IP addresses it controls, which should be on the docker kind network. To find the IP address range, run:
+To complete the layer2 configuration, you need to provide MetalLB with a range of IP addresses it controls, which should be on
+the docker kind network. To find the IP address range, run:
 
 ```sh
 docker network inspect -f '{{.IPAM.Config}}' kind
@@ -112,11 +119,12 @@ metadata:
 
 [Kube-vip](https://kube-vip.io/) provides high availability for Kubernetes control plane and services.
 
-#### Installing Kube-vip
+#### Enabling Kube-vip
 
-```sh
-# Deploy as DaemonSet for control plane HA
-kubectl apply -f https://raw.githubusercontent.com/kube-vip/kube-vip-manifests/main/control-plane/daemonset.yaml
+To enable Kube-vip in DoKa Seca, set the following in `terraform.tfvars`:
+
+```hcl
+enable_kubevip = true
 ```
 
 ## References

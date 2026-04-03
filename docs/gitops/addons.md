@@ -1,7 +1,8 @@
 # GitOps Kubernetes Addons
 
 This guide explains how to deploy Kubernetes addons using the GitOps Bridge pattern in DoKa Seca.
-The GitOps Bridge enables automated deployment and management of cluster-level components through declarative configuration and ArgoCD ApplicationSets.
+The GitOps Bridge enables automated deployment and management of cluster-level components through declarative
+configuration and ArgoCD ApplicationSets.
 
 ## Introduction
 
@@ -25,7 +26,8 @@ The addon deployment follows this workflow:
 
 ## Repository Structure
 
-DoKa Seca uses the Git repository [`dokaseca-addons`](https://github.com/thatmlopsguy/dokaseca-addons) with the following structure:
+DoKa Seca uses the Git repository [`dokaseca-addons`](https://github.com/thatmlopsguy/dokaseca-addons) with the following
+structure:
 
 ```
 dokaseca-addons/

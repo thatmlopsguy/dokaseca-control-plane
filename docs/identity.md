@@ -1,6 +1,7 @@
 # Identity and Access Management
 
-This document describes the identity and access management (IAM) setup for the DoKa Seca platform, including Keycloak integration with various platform components.
+This document describes the identity and access management (IAM) setup for the DoKa Seca platform, including Keycloak
+integration with various platform components.
 
 ## Overview
 

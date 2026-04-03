@@ -16,7 +16,9 @@ Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/lat
 
 ## Spark Operator
 
-[Apache Spark](https://spark.apache.org/) provides a fast and general-purpose cluster-computing system for big data processing. Doka Seca integrates the [Spark Operator for Kubernetes](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator) to run Spark applications natively on Kubernetes.
+[Apache Spark](https://spark.apache.org/) provides a fast and general-purpose cluster-computing system for big data processing.
+Doka Seca integrates the [Spark Operator for Kubernetes](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator)
+to run Spark applications natively on Kubernetes.
 
 ### Spark Capabilities
 
@@ -27,7 +29,9 @@ Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/lat
 
 ## Slurm Operator
 
-[Slurm](https://slurm.schedmd.com/) is a popular job scheduler for HPC environments. Doka Seca supports the [Slurm Operator for Kubernetes](https://github.com/kubernetes-sigs/slurm-operator) to schedule and manage Slurm jobs backed by Kubernetes resources for hybrid HPC workloads.
+[Slurm](https://slurm.schedmd.com/) is a popular job scheduler for HPC environments. Doka Seca supports the
+[Slurm Operator for Kubernetes](https://github.com/kubernetes-sigs/slurm-operator) to schedule and manage Slurm jobs
+backed by Kubernetes resources for hybrid HPC workloads.
 
 ### Slurm Capabilities
 
