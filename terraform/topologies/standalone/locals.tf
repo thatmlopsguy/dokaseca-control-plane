@@ -109,6 +109,7 @@ locals {
     enable_kubevip       = try(var.addons.enable_kubevip, false)
     enable_gateway_api   = try(var.addons.enable_gateway_api, false)
     enable_envoy         = try(var.addons.enable_envoy, false)
+    enable_kgateway      = try(var.addons.enable_kgateway, false)
     enable_istio         = try(var.addons.enable_istio, false)
     enable_ingress_nginx = try(var.addons.enable_ingress_nginx, false) # TODO deprecated
     enable_traefik       = try(var.addons.enable_traefik, false)
@@ -241,7 +242,6 @@ locals {
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
     enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
-    enable_kgateway         = try(var.addons.enable_kgateway, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false) # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
     # analytics
@@ -307,7 +307,10 @@ locals {
 
   # Platform
   platform_addons = {
-    enable_teams = try(var.addons.enable_teams, false)
+    enable_teams                     = try(var.addons.enable_teams, false)
+    enable_gateway_class             = try(var.addons.enable_gateway_class, false)
+    enable_kro_rgds                  = try(var.addons.enable_kro_rgds, false)
+    enable_kyverno_internal_policies = try(var.addons.enable_kyverno_internal_policies, false)
   }
 
   addons = merge(

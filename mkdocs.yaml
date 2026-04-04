@@ -19,7 +19,10 @@ nav:
     - Teams and Roles: getting_started/teams.md
   - Tutorials:
     - Overview: tutorials/overview.md
-  - IAM: identity.md
+  - IAM:
+    - Overview: identity.md
+    - Authentication: identity/authentication.md
+    - Authorization: identity/authorization.md
   - Artifact Repositories: repository.md
   - Portal: portal.md
   - GitOps:
@@ -37,6 +40,7 @@ nav:
     - Dashboards: observability/dashboards.md
     - Logging: observability/logging.md
     - Monitoring: observability/monitoring.md
+    - Alerting: observability/alerts.md
     - Tracing: observability/tracing.md
     - Profiles: observability/profiles.md
   - Security:
@@ -59,6 +63,10 @@ nav:
   - Federation:
     - Multi Tenancy: federation/multi_tenancy.md
     - Multi Cluster: federation/multi_cluster.md
+  - Platform Engineering:
+    - Overview: platform_engineering/overview.md
+    - Internal Developer Portal: platform_engineering/portal.md
+    - Self-Service Capabilities: platform_engineering/self_service.md
   - Resources:
     - Glossary: resources/glossary.md
     - Documentation: resources/documentation.md

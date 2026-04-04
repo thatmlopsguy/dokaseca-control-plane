@@ -94,6 +94,7 @@ addons = {
   enable_kubevip       = false
   enable_gateway_api   = false
   enable_envoy         = true
+  enable_kgateway      = false
   enable_istio         = false
   enable_ingress_nginx = true
   enable_traefik       = false
@@ -223,7 +224,6 @@ addons = {
   enable_litellm_operator = false # TODO
   enable_ollama           = false # TODO
   enable_langfuse         = false # TODO
-  enable_kgateway         = false # TODO
   enable_vllm_stack       = false # TODO
   enable_kubeflow_trainer = false # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
   # analytics
@@ -236,6 +236,11 @@ addons = {
   # incident management
   enable_oneuptime       = false # TODO
   enable_oneuptime_agent = false # TODO
+  # internal platform
+  enable_teams                     = false
+  enable_gateway_class             = true
+  enable_kro_rgds                  = false
+  enable_kyverno_internal_policies = false
 }
 
 # Resources

@@ -23,3 +23,14 @@ addons = {
 
 !!! warning "Warning"
     Documentation coming soon!
+
+## Self-Signed TLS Certificates
+
+To generate self-signed TLS certificates for testing purposes, you can use the following `mkcert` command:
+
+```sh
+mkcert dokaseca.local "*.dokaseca.local"
+mkcert -install
+```
+
+This will create TLS certificates for the specified domains, which can be used for local development and testing of secure communication within the DoKa Seca platform.

@@ -4,9 +4,10 @@ This document lists the maintainers of DoKa Seca.
 
 ## Current Maintainers
 
-| Name | Email | GitHub | Role |
-|------|-------|--------|------|
+| Name           | Email | GitHub        | Role            |
+|----------------|-------|---------------|-----------------|
 | That MLOps Guy | ---   | @thatmlopsguy | Lead Maintainer |
+| ---            | ---   | ---           | ---             |
 
 ## Responsibilities
 
