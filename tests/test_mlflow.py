@@ -9,7 +9,7 @@
 
 """Test MLflow tracking server and S3 artifact storage backend.
 
-uv run tests/test-mlflow.py
+uv run tests/test_mlflow.py
 
 Prerequisites:
   - MLflow service port-forwarded: kubectl port-forward -n mlflow svc/mlflow 5000:80

@@ -157,6 +157,7 @@ locals {
     enable_cert_manager     = try(var.addons.enable_cert_manager, false)
     enable_trust_manager    = try(var.addons.enable_trust_manager, false)
     enable_trivy            = try(var.addons.enable_trivy, false)
+    enable_trivy_operator   = try(var.addons.enable_trivy_operator, false)
     enable_sealed_secrets   = try(var.addons.enable_sealed_secrets, false)
     enable_external_secrets = try(var.addons.enable_external_secrets, false)
     enable_vault            = try(var.addons.enable_vault, false)
@@ -220,7 +221,6 @@ locals {
     enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
     enable_airflow        = try(var.addons.enable_airflow, false)        # TODO
     enable_dagster        = try(var.addons.enable_dagster, false)        # TODO
-    enable_flyte          = try(var.addons.enable_flyte, false)          # TODO
     enable_argo_workflows = try(var.addons.enable_argo_workflows, false) # TODO
     # schedulers
     enable_kueue    = try(var.addons.enable_kueue, false)    # TODO

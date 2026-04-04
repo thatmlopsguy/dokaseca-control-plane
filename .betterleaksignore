@@ -4,3 +4,4 @@ b629a96a453d5d6220754e95c9fed13c6c8e7b1b:docker-compose.yml:generic-api-key:63
 237bba2323fbf1cb07032fb86969973c680a1c7f:environments/default/addons/kargo/values.yaml:generic-api-key:193
 9c58c9313dbb32f9434092d07050e0437bbccd02:kustomize/backstage/secret.yaml:kubernetes-secret-yaml:2
 76c8b41e75a1c0d864d9dd44b61bd93892d62047:examples/external-secrets/auth.yaml:kubernetes-secret-token-base64:7
+tests/test_langfuse.py:generic-api-key:10

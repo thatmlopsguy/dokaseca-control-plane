@@ -292,6 +292,9 @@ dapr-ui: ## Access dapr dashboard
 mlflow-ui: ## Access mlflow ui
 	@kubectl port-forward svc/mlflow 5000:80 -n mlflow
 
+langfuse-ui: ## Access langfuse ui
+	@kubectl port-forward svc/langfuse-web 3080:3000 -n langfuse
+
 ##@ Workflow Orchestration
 temporal-ui: ## Access temporal ui
 	@kubectl port-forward svc/temporal-web 8083:8080 -n temporal

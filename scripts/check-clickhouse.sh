@@ -24,7 +24,7 @@ EXPECTED_USERS=(
 )
 
 EXPECTED_ACCESS_TYPES=(
-  SELECT INSERT ALTER
+  SELECT INSERT ALTER CLUSTER
 )
 
 run_clickhouse() {
@@ -101,12 +101,21 @@ print_info "Grants"
 existing_grants=$(run_clickhouse "SELECT user_name, access_type, database FROM system.grants WHERE user_name IN ('langfuse_user', 'signoz_user', 'uptrace_user') ORDER BY user_name, database, access_type")
 echo "${existing_grants}"
 
+
+# Check for missing grants, handling CLUSTER as a global privilege
 missing_grants=()
 for db in "${EXPECTED_DBS[@]}"; do
   user="${db}_user"
   for access_type in "${EXPECTED_ACCESS_TYPES[@]}"; do
-    if ! echo "${existing_grants}" | awk '{print $1" "$2" "$3}' | grep -qx "${user} ${access_type} ${db}"; then
-      missing_grants+=("${user}:${access_type}:${db}")
+    if [[ "$access_type" == "CLUSTER" ]]; then
+      # Check for global CLUSTER privilege (database column is NULL/empty or missing)
+      if ! echo "${existing_grants}" | awk '{if ($1=="'${user}'" && $2=="CLUSTER") print $0}' | grep -q "CLUSTER"; then
+        missing_grants+=("${user}:CLUSTER:*")
+      fi
+    else
+      if ! echo "${existing_grants}" | awk '{print $1" "$2" "$3}' | grep -qx "${user} ${access_type} ${db}"; then
+        missing_grants+=("${user}:${access_type}:${db}")
+      fi
     fi
   done
 done
