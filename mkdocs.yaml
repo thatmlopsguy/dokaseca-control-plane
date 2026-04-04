@@ -24,7 +24,6 @@ nav:
     - Authentication: identity/authentication.md
     - Authorization: identity/authorization.md
   - Artifact Repositories: repository.md
-  - Portal: portal.md
   - GitOps:
     - Overview: gitops/overview.md
     - Addons: gitops/addons.md

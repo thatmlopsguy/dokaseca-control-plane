@@ -139,6 +139,20 @@ DoKa Seca includes comprehensive pre-configured dashboards:
 - Sync performance metrics
 - Git repository health
 
+## Default Dashboards in Doka Seca
+
+Doka Seca comes with the following dashboards by default:
+
+| Dashboard    | Description                                              |
+|--------------|----------------------------------------------------------|
+| Kyverno      | Policy management and compliance for Kubernetes clusters |
+| ArgoCD       | GitOps continuous delivery and application deployment    |
+| DevLake      | Engineering analytics and insights                       |
+| Istio        | Service mesh observability and traffic management        |
+| cert-manager | Certificate management and monitoring                    |
+| OpenCost     | Kubernetes cost monitoring and allocation                |
+| Temporal     | Workflow orchestration and monitoring                    |
+
 ## Logs Visualization
 
 Grafana provides powerful log analysis capabilities through integration with Victoria Logs and other log backends.
