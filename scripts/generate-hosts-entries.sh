@@ -48,6 +48,7 @@ SERVICE_PREFIXES=(
     "otelcollector"
     "dagster"
     "argoworkflows"
+    "argorollouts"
     "tekton-dashboard"
 )
 
