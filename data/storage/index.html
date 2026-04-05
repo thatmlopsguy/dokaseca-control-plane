@@ -1682,45 +1682,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bucket-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bucket Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-integrations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Integrations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Integrations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#velero-backup-and-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Velero Backup and Restore
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#loki-log-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3359,45 +3320,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bucket-configuration" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Bucket Configuration
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#service-integrations" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Service Integrations
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Service Integrations">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#velero-backup-and-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Velero Backup and Restore
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#loki-log-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3521,6 +3443,7 @@ mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/pyroscope
 mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/harbor
 mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/chartmuseum
 mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/argoworkflows
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/falcosidekick
 
 <span class="c1"># Start MinIO</span>
 docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -3555,89 +3478,37 @@ mc<span class="w"> </span>mb<span class="w"> </span>local/pyroscope
 mc<span class="w"> </span>mb<span class="w"> </span>local/harbor
 mc<span class="w"> </span>mb<span class="w"> </span>local/chartmuseum
 mc<span class="w"> </span>mb<span class="w"> </span>local/argoworkflows
-</code></pre></div>
-<h3 id="bucket-configuration">Bucket Configuration<a class="headerlink" href="#bucket-configuration" title="Permanent link">&para;</a></h3>
-<p>MinIO is configured with dedicated buckets for each service:</p>
-<table>
-<thead>
-<tr>
-<th>Service</th>
-<th>Bucket Name</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Velero</td>
-<td>velero</td>
-<td>Kubernetes backup and restore</td>
-</tr>
-<tr>
-<td>Loki</td>
-<td>loki</td>
-<td>Log storage and querying</td>
-</tr>
-<tr>
-<td>Tempo</td>
-<td>tempo</td>
-<td>Distributed tracing storage</td>
-</tr>
-<tr>
-<td>Victoria Metrics</td>
-<td>victoriametrics</td>
-<td>Long-term metrics storage</td>
-</tr>
-<tr>
-<td>Victoria Traces</td>
-<td>victoriatraces</td>
-<td>Long-term traces storage</td>
-</tr>
-<tr>
-<td>Victoria Logs</td>
-<td>victorialogs</td>
-<td>Long-term logs storage</td>
-</tr>
-<tr>
-<td>ReportPortal</td>
-<td>reportportal</td>
-<td>Object storage for ReportPortal</td>
-</tr>
-<tr>
-<td>MLflow</td>
-<td>mlflow</td>
-<td>Object storage for MLflow</td>
-</tr>
-<tr>
-<td>Langfuse</td>
-<td>langfuse</td>
-<td>Object storage for Langfuse</td>
-</tr>
-<tr>
-<td>Pyroscope</td>
-<td>pyroscope</td>
-<td>Object storage for Pyroscope</td>
-</tr>
-<tr>
-<td>Harbor</td>
-<td>harbor</td>
-<td>Object storage for Harbor</td>
-</tr>
-<tr>
-<td>ChartMuseum</td>
-<td>chartmuseum</td>
-<td>Object storage for ChartMuseum</td>
-</tr>
-<tr>
-<td>Argo Workflows</td>
-<td>argoworkflows</td>
-<td>Object storage for Argo Workflows</td>
-</tr>
-</tbody>
-</table>
-<h2 id="service-integrations">Service Integrations<a class="headerlink" href="#service-integrations" title="Permanent link">&para;</a></h2>
-<h3 id="velero-backup-and-restore">Velero Backup and Restore<a class="headerlink" href="#velero-backup-and-restore" title="Permanent link">&para;</a></h3>
-<p><a href="https://velero.io/">Velero</a> uses MinIO for storing Kubernetes cluster backups:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install Velero with MinIO storage</span>
+mc<span class="w"> </span>mb<span class="w"> </span>local/falcosidekick
+
+<span class="c1">### Bucket Configuration</span>
+
+MinIO<span class="w"> </span>is<span class="w"> </span>configured<span class="w"> </span>with<span class="w"> </span>dedicated<span class="w"> </span>buckets<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>service:
+
+<span class="p">|</span><span class="w"> </span>Service<span class="w">          </span><span class="p">|</span><span class="w"> </span>Bucket<span class="w"> </span>Name<span class="w">     </span><span class="p">|</span><span class="w"> </span>Purpose<span class="w">                           </span><span class="p">|</span>
+<span class="p">|</span>------------------<span class="p">|</span>-----------------<span class="p">|</span>-----------------------------------<span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Velero<span class="w">           </span><span class="p">|</span><span class="w"> </span>velero<span class="w">          </span><span class="p">|</span><span class="w"> </span>Kubernetes<span class="w"> </span>backup<span class="w"> </span>and<span class="w"> </span>restore<span class="w">     </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Loki<span class="w">             </span><span class="p">|</span><span class="w"> </span>loki<span class="w">            </span><span class="p">|</span><span class="w"> </span>Log<span class="w"> </span>storage<span class="w"> </span>and<span class="w"> </span>querying<span class="w">          </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Tempo<span class="w">            </span><span class="p">|</span><span class="w"> </span>tempo<span class="w">           </span><span class="p">|</span><span class="w"> </span>Distributed<span class="w"> </span>tracing<span class="w"> </span>storage<span class="w">       </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Victoria<span class="w"> </span>Metrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>victoriametrics<span class="w"> </span><span class="p">|</span><span class="w"> </span>Long-term<span class="w"> </span>metrics<span class="w"> </span>storage<span class="w">         </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Victoria<span class="w"> </span>Traces<span class="w">  </span><span class="p">|</span><span class="w"> </span>victoriatraces<span class="w">  </span><span class="p">|</span><span class="w"> </span>Long-term<span class="w"> </span>traces<span class="w"> </span>storage<span class="w">          </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Victoria<span class="w"> </span>Logs<span class="w">    </span><span class="p">|</span><span class="w"> </span>victorialogs<span class="w">    </span><span class="p">|</span><span class="w"> </span>Long-term<span class="w"> </span>logs<span class="w"> </span>storage<span class="w">            </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>ReportPortal<span class="w">     </span><span class="p">|</span><span class="w"> </span>reportportal<span class="w">    </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>ReportPortal<span class="w">   </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>MLflow<span class="w">           </span><span class="p">|</span><span class="w"> </span>mlflow<span class="w">          </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>MLflow<span class="w">         </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Langfuse<span class="w">         </span><span class="p">|</span><span class="w"> </span>langfuse<span class="w">        </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>Langfuse<span class="w">       </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Pyroscope<span class="w">        </span><span class="p">|</span><span class="w"> </span>pyroscope<span class="w">       </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>Pyroscope<span class="w">      </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Harbor<span class="w">           </span><span class="p">|</span><span class="w"> </span>harbor<span class="w">          </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>Harbor<span class="w">         </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>ChartMuseum<span class="w">      </span><span class="p">|</span><span class="w"> </span>chartmuseum<span class="w">     </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>ChartMuseum<span class="w">    </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Argo<span class="w"> </span>Workflows<span class="w">   </span><span class="p">|</span><span class="w"> </span>argoworkflows<span class="w">   </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>Argo<span class="w"> </span>Workflows<span class="w"> </span><span class="p">|</span>
+<span class="p">|</span><span class="w"> </span>Falco<span class="w"> </span>Sidekick<span class="w">   </span><span class="p">|</span><span class="w"> </span>falcosidekick<span class="w">   </span><span class="p">|</span><span class="w"> </span>Object<span class="w"> </span>storage<span class="w"> </span><span class="k">for</span><span class="w"> </span>Falco<span class="w"> </span>Sidekick<span class="w"> </span><span class="p">|</span>
+
+<span class="c1">## Service Integrations</span>
+
+<span class="c1">### Velero Backup and Restore</span>
+
+<span class="o">[</span>Velero<span class="o">](</span>https://velero.io/<span class="o">)</span><span class="w"> </span>uses<span class="w"> </span>MinIO<span class="w"> </span><span class="k">for</span><span class="w"> </span>storing<span class="w"> </span>Kubernetes<span class="w"> </span>cluster<span class="w"> </span>backups:
+
+<span class="sb">```</span>bash
+<span class="c1"># Install Velero with MinIO storage</span>
 velero<span class="w"> </span>install<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--provider<span class="w"> </span>aws<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--plugins<span class="w"> </span>velero/velero-plugin-for-aws:v1.7.0<span class="w"> </span><span class="se">\</span>
@@ -3731,7 +3602,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 2, 2026 21:00:45 UTC"><span class="timeago" datetime="2026-04-02T21:00:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 2, 2026 21:00:45 UTC">2026-04-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 5, 2026 20:54:48 UTC"><span class="timeago" datetime="2026-04-05T20:54:48+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 5, 2026 20:54:48 UTC">2026-04-05</span>
   </span>
 
     
