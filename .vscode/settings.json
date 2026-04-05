@@ -41,6 +41,7 @@
         "envrc",
         "falco",
         "falcoctl",
+        "falcosidekick",
         "flink",
         "fluxcd",
         "freelens",

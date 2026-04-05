@@ -208,6 +208,7 @@ locals {
     enable_fake_gpu_operator        = try(var.addons.enable_fake_gpu_operator, false) # TODO see https://github.com/run-ai/fake-gpu-operator
     enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     enable_inspektor_gadget         = try(var.addons.enable_inspektor_gadget, false)  # TODO
+    enable_kor                      = try(var.addons.enable_kor, false)
     # scaling
     enable_keda              = try(var.addons.enable_keda, false)
     enable_keda_addons_http  = try(var.addons.enable_keda_addons_http, false)
@@ -239,7 +240,6 @@ locals {
     enable_seldon           = try(var.addons.enable_seldon, false)           # TODO
     enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
-    enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false)
@@ -310,6 +310,7 @@ locals {
     enable_gateway_class             = try(var.addons.enable_gateway_class, false)
     enable_kro_rgds                  = try(var.addons.enable_kro_rgds, false)
     enable_kyverno_internal_policies = try(var.addons.enable_kyverno_internal_policies, false)
+    enable_crossplane_compositions   = try(var.addons.enable_crossplane_compositions, false)
   }
 
   addons = merge(

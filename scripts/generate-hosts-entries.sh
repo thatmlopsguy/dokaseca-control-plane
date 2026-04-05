@@ -50,6 +50,7 @@ SERVICE_PREFIXES=(
     "argoworkflows"
     "argorollouts"
     "tekton-dashboard"
+    "falcosidekick"
 )
 
 # Generate hosts entries

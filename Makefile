@@ -30,7 +30,7 @@ GIT_HASH ?= $(shell git log --format="%h" -n 1)
 SHELL = /usr/bin/env bash -o pipefail
 .SHELLFLAGS = -ec
 
-.DEFAULT_GOAL:=help
+.DEFAULT_GOAL := help
 
 .PHONY: help
 ##@ General
@@ -234,6 +234,9 @@ hubble-ui: ## Access hubble ui
 ##@ Security
 kubescape-scan: ## Scan Kubernetes
 	@kubescape scan
+
+falcosidekick-ui: ## Access falcosidekick ui
+	@kubectl port-forward -n falco svc/falcosidekick-ui 2802:2802
 
 ##@ Compliance
 kyverno-policy-reporter-ui: ## Access kyverno policy reporter ui

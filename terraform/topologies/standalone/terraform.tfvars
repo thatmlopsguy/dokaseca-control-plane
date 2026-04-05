@@ -179,7 +179,7 @@ addons = {
   enable_milvus              = false
   # dora metrics
   enable_devlake = false
-  # utils
+  # utilities
   enable_reloader                 = false
   enable_reflector                = false
   enable_k8s_replicator           = false
@@ -191,6 +191,7 @@ addons = {
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
   enable_inspektor_gadget         = false
+  enable_kor                      = false
   # scaling
   enable_keda              = false # Tested
   enable_keda_addons_http  = false

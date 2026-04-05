@@ -39,6 +39,7 @@ SERVICES=(
   harbor:REDIS_HARBOR
   uptrace:REDIS_UPTRACE
   feast:REDIS_FEAST
+  falcosidekick:REDIS_FALCOSIDEKICK
 )
 
 redis_exec() {

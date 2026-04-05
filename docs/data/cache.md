@@ -14,13 +14,14 @@ Some addons (for example, `langfuse`) may use Redis/Valkey for pub/sub, ephemera
 
 ## Services that require Redis
 
-| Service  | Purpose of Redis                                                                   |
-|----------|------------------------------------------------------------------------------------|
-| Langfuse | Pub/Sub, ephemeral queues, and worker coordination for instrumentation and addons  |
-| LiteLLM  | Caching and lightweight coordination for model runners (used by some integrations) |
-| Airflow  | Celery Redis broker/backend for task queues and scheduler coordination             |
-| Dagster  | Redis broker/backend for task queues and scheduler coordination                    |
-| Superset | Caching and session storage for improved performance and user experience           |
-| Harbor   | Caching and session storage for improved performance and user experience           |
-| Uptrace  | Caching and lightweight coordination for distributed tracing and observability     |
-| Feast    | Caching and lightweight coordination for feature store operations                  |
+| Service       | Purpose of Redis                                                                   |
+|---------------|------------------------------------------------------------------------------------|
+| Langfuse      | Pub/Sub, ephemeral queues, and worker coordination for instrumentation and addons  |
+| LiteLLM       | Caching and lightweight coordination for model runners (used by some integrations) |
+| Airflow       | Celery Redis broker/backend for task queues and scheduler coordination             |
+| Dagster       | Redis broker/backend for task queues and scheduler coordination                    |
+| Superset      | Caching and session storage for improved performance and user experience           |
+| Harbor        | Caching and session storage for improved performance and user experience           |
+| Uptrace       | Caching and lightweight coordination for distributed tracing and observability     |
+| Feast         | Caching and lightweight coordination for feature store operations                  |
+| Falcosidekick | Caching and lightweight coordination for Falco alert processing and forwarding     |
