@@ -1,3 +1,20 @@
+# Copyright 2026 The Doka Seca Authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# If you update this file, please follow
+# https://www.thapaliya.com/en/writings/well-documented-makefiles/
+#
 # Define the root directory
 ROOT_DIR ?= $(shell pwd)
 TERRAFORM_DIR := $(ROOT_DIR)/terraform
@@ -13,7 +30,7 @@ GIT_HASH ?= $(shell git log --format="%h" -n 1)
 SHELL = /usr/bin/env bash -o pipefail
 .SHELLFLAGS = -ec
 
-all: help
+.DEFAULT_GOAL:=help
 
 .PHONY: help
 ##@ General
@@ -243,13 +260,6 @@ litmus-ui: ## Access Litmus ui
 chaos-mesh-ui: ## Access chaos mesh ui
 	@kubectl port-forward -n chaos-mesh svc/chaos-dashboard 2333:2333
 
-##@ SRE
-keptn-password: ## Get keptn password
-	@kubectl get secret -n keptn-system bridge-credentials -o jsonpath={.data.BASIC_AUTH_PASSWORD} | base64 -d
-
-keptn-ui: ## Access keptn ui
-	@kubectl port-forward -n keptn-system svc/lifecycle-webhook-service 8081:443
-
 ##@ Platform Engineering
 karpor-ui: ## Access karpor ui
 	@kubectl -n karpor port-forward service/karpor-server 7443:7443
@@ -259,12 +269,6 @@ headlamp-ui: ## Access headlamp ui
 
 headlamp-token: ## Get headlamp token
 	@kubectl create token headlamp -n kube-system
-
-k8s-dashboard-ui: ## Get k8s-dashboard ui
-	@kubectl port-forward -n kube-system svc/kubernetes-dashboard-web 8001:8000
-
-k8s-dashboard-token: ## Get k8s-dashboard token
-	@kubectl create token admin-user -n kube-system
 
 backstage-ui: ## Access backstage ui
 	@kubectl port-forward svc/backstage -n backstage 7007:7007
@@ -306,11 +310,15 @@ dagster-ui: ## Access dagster ui
 	@kubectl port-forward svc/dagster-dagster-webserver 3003:80 -n dagster
 
 argo-workflows-ui: ## Access argo workflows ui
-	@kubectl port-forward svc/argo-workflows-server -n argo 2746:2746
+	@kubectl port-forward svc/argo-workflows-server 2746:2746 -n argo
+
+##@ Schedulers
+yunikorn-ui: ## Access yunikorn ui
+	@kubectl port-forward svc/yunikorn-service 9889:9889 -n yunikorn-system
 
 ##@ CI Pipelines
 tekton-dashboard-ui: ## Access tekton dashboard ui
-	@kubectl port-forward svc/tekton-dashboard -n tekton-pipelines 9097:9097
+	@kubectl port-forward svc/tekton-dashboard 9097:9097 -n tekton-pipelines
 
 ##@ Documentation
 .PHONY: docs-serve docs-build adr-list

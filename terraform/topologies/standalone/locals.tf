@@ -85,7 +85,6 @@ locals {
     # developer experience
     enable_open_feature = try(var.addons.enable_open_feature, false)
     enable_openfunction = try(var.addons.enable_openfunction, false)
-    enable_sloth        = try(var.addons.enable_sloth, false)
     # orchestration
     enable_capi_operator = try(var.addons.enable_capi_operator, false)
     enable_crossplane    = try(var.addons.enable_crossplane, false)
@@ -130,6 +129,7 @@ locals {
     enable_kiali                      = try(var.addons.enable_kiali, false)
     # alerts
     enable_alertmanager = try(var.addons.enable_alertmanager, false)
+    enable_sloth        = try(var.addons.enable_sloth, false)
     # metrics
     enable_prometheus_adapter = try(var.addons.enable_prometheus_adapter, false)
     enable_metrics_server     = try(var.addons.enable_metrics_server, false)
@@ -148,7 +148,6 @@ locals {
     # tracing
     enable_tempo           = try(var.addons.enable_tempo, false)
     enable_jaeger          = try(var.addons.enable_jaeger, false)
-    enable_zipkin          = try(var.addons.enable_zipkin, false)
     enable_victoria_traces = try(var.addons.enable_victoria_traces, false)
     # profiling
     enable_pyroscope = try(var.addons.enable_pyroscope, false)
@@ -243,7 +242,7 @@ locals {
     enable_ollama           = try(var.addons.enable_ollama, false)           # TODO
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
-    enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false) # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
+    enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false)
     # analytics
     enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
     enable_superset       = try(var.addons.enable_superset, false)       # TODO

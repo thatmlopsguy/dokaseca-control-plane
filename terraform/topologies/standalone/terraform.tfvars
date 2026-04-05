@@ -70,7 +70,6 @@ addons = {
   # developer experience
   enable_open_feature = false # feature flags
   enable_openfunction = false
-  enable_sloth        = false
   # orchestration
   enable_capi_operator = false
   enable_crossplane    = false
@@ -109,6 +108,7 @@ addons = {
   enable_kiali                      = false
   # alerts
   enable_alertmanager = false
+  enable_sloth        = true
   # agents
   enable_alloy                  = false
   enable_vector                 = false
@@ -132,7 +132,6 @@ addons = {
   # tracing
   enable_tempo           = false
   enable_jaeger          = false
-  enable_zipkin          = false
   enable_victoria_traces = false
   # profiling
   enable_pyroscope = false
@@ -155,8 +154,8 @@ addons = {
   enable_goldilocks = false
   enable_kruise     = false # TODO
   # compliance
-  enable_kyverno                 = false
-  enable_kyverno_policies        = false
+  enable_kyverno                 = false # Tested
+  enable_kyverno_policies        = false # Tested
   enable_kyverno_policy_reporter = false
   enable_polaris                 = false
   enable_connaisseur             = false
@@ -191,9 +190,9 @@ addons = {
   enable_harbor_container_webhook = false
   enable_fake_gpu_operator        = false # TODO see https://github.com/run-ai/fake-gpu-operator
   enable_kuik                     = false
-  enable_inspektor_gadget         = true
+  enable_inspektor_gadget         = false
   # scaling
-  enable_keda              = false
+  enable_keda              = false # Tested
   enable_keda_add_ons_http = false
   enable_keda_kaito_scaler = false # TODO
   # portal
@@ -206,9 +205,9 @@ addons = {
   enable_dagster        = false # Tested
   enable_argo_workflows = false
   # schedulers
-  enable_kueue    = false
-  enable_yunikorn = false
-  enable_volcano  = false
+  enable_kueue    = false # Tested
+  enable_yunikorn = false # Tested
+  enable_volcano  = false # Tested
   # distributed computing
   enable_kuberay        = false # TODO
   enable_spark_operator = false # TODO
@@ -223,10 +222,9 @@ addons = {
   enable_seldon           = false # TODO
   enable_litellm          = false # TODO
   enable_litellm_operator = false # TODO
-  enable_ollama           = false # TODO
-  enable_langfuse         = false # TODO
-  enable_vllm_stack       = false # TODO
-  enable_kubeflow_trainer = false # TODO see https://www.kubeflow.org/docs/components/trainer/operator-guides/installation/
+  enable_langfuse         = false # Tested
+  enable_vllm_stack       = false # Tested
+  enable_kubeflow_trainer = false # Tested
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO

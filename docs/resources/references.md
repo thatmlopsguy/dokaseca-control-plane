@@ -32,6 +32,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 
 - **[Kusion](https://github.com/KusionStack/kusion)** - Programmable configuration techstack for building reliable applications at scale
 - **[mlinfra](https://mlinfra.io/latest/)** - Infrastructure-as-code platform specifically designed for machine learning workloads
+- **[deployKF](https://www.deploykf.org/)** - Builds machine learning platforms on Kubernetes. It combines the best of Kubeflow, Airflow, and MLflow into a complete platform that is easy to deploy and maintain.
 
 ### Cloud Provider Platforms
 
