@@ -53,6 +53,7 @@ mkdir -p data/minio/pyroscope
 mkdir -p data/minio/harbor
 mkdir -p data/minio/chartmuseum
 mkdir -p data/minio/argoworkflows
+mkdir -p data/minio/falcosidekick
 
 # Start MinIO
 docker compose up -d
@@ -91,7 +92,7 @@ mc mb local/pyroscope
 mc mb local/harbor
 mc mb local/chartmuseum
 mc mb local/argoworkflows
-```
+mc mb local/falcosidekick
 
 ### Bucket Configuration
 
@@ -112,6 +113,7 @@ MinIO is configured with dedicated buckets for each service:
 | Harbor           | harbor          | Object storage for Harbor         |
 | ChartMuseum      | chartmuseum     | Object storage for ChartMuseum    |
 | Argo Workflows   | argoworkflows   | Object storage for Argo Workflows |
+| Falco Sidekick   | falcosidekick   | Object storage for Falco Sidekick |
 
 ## Service Integrations
 

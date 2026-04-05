@@ -34,6 +34,7 @@ BUCKETS=(
   pyroscope:MINIO_PYROSCOPE
   harbor:MINIO_HARBOR
   chartmuseum:MINIO_CHARTMUSEUM
+  falcosidekick:MINIO_FALCOSIDEKICK
 )
 
 # ---------- helpers ----------------------------------------------------------
