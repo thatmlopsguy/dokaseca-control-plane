@@ -210,7 +210,7 @@ locals {
     enable_inspektor_gadget         = try(var.addons.enable_inspektor_gadget, false)  # TODO
     # scaling
     enable_keda              = try(var.addons.enable_keda, false)
-    enable_keda_add_ons_http = try(var.addons.enable_keda_add_ons_http, false)
+    enable_keda_addons_http  = try(var.addons.enable_keda_addons_http, false)
     enable_keda_kaito_scaler = try(var.addons.enable_keda_kaito_scaler, false) # TODO
     # portal
     enable_backstage = try(var.addons.enable_backstage, false)

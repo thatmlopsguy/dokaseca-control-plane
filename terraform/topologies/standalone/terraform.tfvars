@@ -193,7 +193,7 @@ addons = {
   enable_inspektor_gadget         = false
   # scaling
   enable_keda              = false # Tested
-  enable_keda_add_ons_http = false
+  enable_keda_addons_http  = false
   enable_keda_kaito_scaler = false # TODO
   # portal
   enable_backstage = false # TODO
@@ -209,7 +209,7 @@ addons = {
   enable_yunikorn = false # Tested
   enable_volcano  = false # Tested
   # distributed computing
-  enable_kuberay        = false # TODO
+  enable_kuberay        = false # Tested
   enable_spark_operator = false # TODO
   enable_slurm_operator = false # TODO
   # machine learning

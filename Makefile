@@ -312,6 +312,10 @@ dagster-ui: ## Access dagster ui
 argo-workflows-ui: ## Access argo workflows ui
 	@kubectl port-forward svc/argo-workflows-server 2746:2746 -n argo
 
+##@ Compute
+ray-dashboard-ui: ## Access ray ui
+	@kubectl port-forward svc/raycluster-kuberay-head-svc 8265:8265 -n kuberay
+
 ##@ Schedulers
 yunikorn-ui: ## Access yunikorn ui
 	@kubectl port-forward svc/yunikorn-service 9889:9889 -n yunikorn-system
