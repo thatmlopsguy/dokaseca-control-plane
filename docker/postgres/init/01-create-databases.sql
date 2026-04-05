@@ -109,3 +109,10 @@ CREATE USER uptrace_user WITH PASSWORD 'uptrace_password';
 GRANT ALL PRIVILEGES ON DATABASE uptrace TO uptrace_user;
 \c uptrace
 GRANT ALL ON SCHEMA public TO uptrace_user;
+
+-- Feast database
+CREATE DATABASE feast;
+CREATE USER feast_user WITH PASSWORD 'feast_password';
+GRANT ALL PRIVILEGES ON DATABASE feast TO feast_user;
+\c feast
+GRANT ALL ON SCHEMA public TO feast_user;

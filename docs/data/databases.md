@@ -36,6 +36,7 @@ Each service has:
 | Harbor        | harbor              | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor              |
 | Uptrace       | uptrace             | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace             |
 | argoworkflows | argoworkflows       | argoworkflows_user | argoworkflows_password | jdbc:postgresql://postgres:5432/argoworkflows       |
+| Feast         | feast               | feast_user         | feast_password         | jdbc:postgresql://postgres:5432/feast               |
 
 ## Configuration
 

@@ -23,3 +23,4 @@ Some addons (for example, `langfuse`) may use Redis/Valkey for pub/sub, ephemera
 | Superset | Caching and session storage for improved performance and user experience           |
 | Harbor   | Caching and session storage for improved performance and user experience           |
 | Uptrace  | Caching and lightweight coordination for distributed tracing and observability     |
+| Feast    | Caching and lightweight coordination for feature store operations                  |
