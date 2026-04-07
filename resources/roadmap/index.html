@@ -3808,21 +3808,21 @@ Items are organized by category and priority, with completed tasks marked with g
 </ul>
 <h3 id="progressive-delivery">Progressive Delivery<a class="headerlink" href="#progressive-delivery" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Flagger Integration</strong> - Automated canary deployments and progressive delivery via FluxCD</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Argo Rollouts Integration</strong> - Automated canary deployments and progressive delivery via Argo Rollouts</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Traffic Management</strong> - Advanced traffic splitting and A/B testing capabilities</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Deployment Strategies</strong> - Blue/green and canary deployment patterns</li>
 </ul>
 <h2 id="networking-connectivity">Networking &amp; Connectivity<a class="headerlink" href="#networking-connectivity" title="Permanent link">&para;</a></h2>
 <h3 id="container-network-interface-cni">Container Network Interface (CNI)<a class="headerlink" href="#container-network-interface-cni" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cilium CNI</strong> - Deploy Cilium for advanced networking, security, and observability</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Cilium CNI</strong> - Deploy Cilium for advanced networking, security, and observability</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Istio Service Mesh</strong> - Install Istio for service-to-service communication</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Network Policies</strong> - Implement comprehensive network security policies</li>
 </ul>
 <h3 id="load-balancing-ingress">Load Balancing &amp; Ingress<a class="headerlink" href="#load-balancing-ingress" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>KubeVIP</strong> - Load balancer for Kubernetes control plane via Helm chart</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Gateway API</strong> - Install and configure Kubernetes Gateway API for next-generation ingress management</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Gateway API</strong> - Install and configure Kubernetes Gateway API for next-generation ingress management</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Traefik Gateway</strong> - Install and configure Traefik to test Gateway API functionality</li>
 </ul>
 <h3 id="multi-cluster-networking">Multi-Cluster Networking<a class="headerlink" href="#multi-cluster-networking" title="Permanent link">&para;</a></h3>
@@ -3840,7 +3840,7 @@ Items are organized by category and priority, with completed tasks marked with g
 <h3 id="security-compliance">Security &amp; Compliance<a class="headerlink" href="#security-compliance" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Enhanced Policy Management</strong> - Advanced Kyverno policies for security and compliance</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Secret Management</strong> - Implementation of External Secrets Operator with Vault integration</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <strong>Secret Management</strong> - Implementation of External Secrets Operator with Vault integration</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Image Security</strong> - Enhanced container image scanning and vulnerability management</li>
 </ul>
 <h3 id="data-storage">Data &amp; Storage<a class="headerlink" href="#data-storage" title="Permanent link">&para;</a></h3>
@@ -3877,8 +3877,8 @@ Items are organized by category and priority, with completed tasks marked with g
 <h3 id="ecosystem-integration">Ecosystem Integration<a class="headerlink" href="#ecosystem-integration" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Cloud Native Tools</strong> - Integration with additional CNCF projects</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Vendor Solutions</strong> - Integration with enterprise-grade solutions</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Custom Extensions</strong> - Framework for custom platform extensions</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>Vendor Solutions</strong> - Integration with enterprise-grade solutions (<strong>support this with sponsorships</strong>)</li>
 </ul>
 <h2 id="contributing-to-the-roadmap">Contributing to the Roadmap<a class="headerlink" href="#contributing-to-the-roadmap" title="Permanent link">&para;</a></h2>
 <p>We welcome community input on our roadmap! Here's how you can contribute:</p>
@@ -3929,7 +3929,7 @@ Check back regularly for updates!</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 19, 2026 18:10:56 UTC"><span class="timeago" datetime="2026-03-19T18:10:56+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 19, 2026 18:10:56 UTC">2026-03-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 7, 2026 20:33:19 UTC"><span class="timeago" datetime="2026-04-07T20:33:19+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 7, 2026 20:33:19 UTC">2026-04-07</span>
   </span>
 
     
