@@ -182,11 +182,12 @@ locals {
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
-    enable_openebs   = try(var.addons.enable_openebs, false)
-    enable_minio     = try(var.addons.enable_minio, false)
-    enable_rook_ceph = try(var.addons.enable_rook_ceph, false)
-    enable_longhorn  = try(var.addons.enable_longhorn, false)
-    enable_seaweedfs = try(var.addons.enable_seaweedfs, false)
+    enable_openebs          = try(var.addons.enable_openebs, false)
+    enable_minio            = try(var.addons.enable_minio, false)
+    enable_rook_ceph        = try(var.addons.enable_rook_ceph, false)
+    enable_longhorn         = try(var.addons.enable_longhorn, false)
+    enable_seaweedfs        = try(var.addons.enable_seaweedfs, false)
+    enable_piraeus_operator = try(var.addons.enable_piraeus_operator, false)
     # databases
     enable_cloudnative_pg      = try(var.addons.enable_cloudnative_pg, false)
     enable_clickhouse_operator = try(var.addons.enable_clickhouse_operator, false) # TODO

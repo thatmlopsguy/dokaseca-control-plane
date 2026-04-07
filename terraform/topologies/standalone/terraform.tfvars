@@ -165,10 +165,11 @@ addons = {
   enable_litmus     = false
   enable_chaos_mesh = false
   # storage
-  enable_minio     = false
-  enable_rook_ceph = false
-  enable_longhorn  = false
-  enable_seaweedfs = false
+  enable_minio            = false
+  enable_rook_ceph        = false
+  enable_longhorn         = false
+  enable_seaweedfs        = false
+  enable_piraeus_operator = false
   # databases
   enable_cloudnative_pg      = false
   enable_atlas_operator      = false
@@ -264,5 +265,10 @@ extra_mounts = [
   {
     host_path      = "/proc"
     container_path = "/procHost"
+  },
+  # https://oneuptime.com/blog/post/2026-03-31-rook-deploy-rook-ceph-kind-kubernetes-in-docker/view
+  {
+    host_path      = "/dev"
+    container_path = "/dev"
   }
 ]
