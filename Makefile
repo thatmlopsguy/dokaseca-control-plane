@@ -23,6 +23,7 @@ TERRAFORM_DIR := $(ROOT_DIR)/terraform
 PROJECT_NAME := control-plane-dev
 # Read the version from the VERSION file
 RELEASE_VERSION ?= $(shell cat VERSION)
+VERSION ?= $(shell git describe --tags --dirty)
 GIT_HASH ?= $(shell git log --format="%h" -n 1)
 
 # Setting SHELL to bash allows bash commands to be executed by recipes.

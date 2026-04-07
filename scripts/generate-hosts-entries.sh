@@ -51,6 +51,7 @@ SERVICE_PREFIXES=(
     "argorollouts"
     "tekton-dashboard"
     "falcosidekick"
+    "longhorn"
 )
 
 # Generate hosts entries

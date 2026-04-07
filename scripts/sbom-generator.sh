@@ -109,6 +109,7 @@ EOF
     declare -A k8s_distro_tools=(
         [kind]="kind version | awk '{print \$2}'"
         [k3d]="k3d version | awk 'NR==1 {print \$3}'"
+        [k3s]="k3s --version | awk '{print \$3}'"
         [k0s]="k0s version"
     )
 
