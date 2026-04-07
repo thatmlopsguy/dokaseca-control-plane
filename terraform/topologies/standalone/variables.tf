@@ -40,6 +40,15 @@ variable "cluster_type" {
   }
 }
 
+variable "extra_mounts" {
+  description = "Extra mounts for the cluster nodes as objects with host_path and container_path"
+  type = list(object({
+    host_path      = string
+    container_path = string
+  }))
+  default = []
+}
+
 variable "domain_name" {
   description = "Domain name"
   type        = string

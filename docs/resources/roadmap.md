@@ -21,7 +21,7 @@ This roadmap is a living document and may change based on community feedback and
 
 ### Progressive Delivery
 
-- [x] **Flagger Integration** - Automated canary deployments and progressive delivery via FluxCD
+- [ ] **Argo Rollouts Integration** - Automated canary deployments and progressive delivery via Argo Rollouts
 - [ ] **Traffic Management** - Advanced traffic splitting and A/B testing capabilities
 - [ ] **Deployment Strategies** - Blue/green and canary deployment patterns
 
@@ -29,14 +29,14 @@ This roadmap is a living document and may change based on community feedback and
 
 ### Container Network Interface (CNI)
 
-- [ ] **Cilium CNI** - Deploy Cilium for advanced networking, security, and observability
+- [x] **Cilium CNI** - Deploy Cilium for advanced networking, security, and observability
 - [ ] **Istio Service Mesh** - Install Istio for service-to-service communication
 - [ ] **Network Policies** - Implement comprehensive network security policies
 
 ### Load Balancing & Ingress
 
 - [x] **KubeVIP** - Load balancer for Kubernetes control plane via Helm chart
-- [ ] **Gateway API** - Install and configure Kubernetes Gateway API for next-generation ingress management
+- [x] **Gateway API** - Install and configure Kubernetes Gateway API for next-generation ingress management
 - [ ] **Traefik Gateway** - Install and configure Traefik to test Gateway API functionality
 
 ### Multi-Cluster Networking
@@ -55,7 +55,7 @@ This roadmap is a living document and may change based on community feedback and
 ### Security & Compliance
 
 - [ ] **Enhanced Policy Management** - Advanced Kyverno policies for security and compliance
-- [ ] **Secret Management** - Implementation of External Secrets Operator with Vault integration
+- [x] **Secret Management** - Implementation of External Secrets Operator with Vault integration
 - [ ] **Image Security** - Enhanced container image scanning and vulnerability management
 
 ### Data & Storage
@@ -94,8 +94,8 @@ This roadmap is a living document and may change based on community feedback and
 ### Ecosystem Integration
 
 - [ ] **Cloud Native Tools** - Integration with additional CNCF projects
-- [ ] **Vendor Solutions** - Integration with enterprise-grade solutions
 - [ ] **Custom Extensions** - Framework for custom platform extensions
+- [ ] **Vendor Solutions** - Integration with enterprise-grade solutions (**support this with sponsorships**)
 
 ## Contributing to the Roadmap
 

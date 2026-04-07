@@ -137,16 +137,17 @@ addons = {
   enable_pyroscope = false
   enable_parca     = false
   # security
-  enable_cert_manager     = true
-  enable_trust_manager    = false
-  enable_trivy            = false
-  enable_trivy_operator   = false
-  enable_sealed_secrets   = false
-  enable_external_secrets = true
-  enable_kubearmor        = false
-  enable_falco            = false
-  enable_tetragon         = false
-  enable_tracee           = false
+  enable_cert_manager       = true
+  enable_trust_manager      = false
+  enable_trivy              = false
+  enable_trivy_operator     = false
+  enable_sealed_secrets     = false
+  enable_external_secrets   = true
+  enable_kubearmor          = false
+  enable_falco              = true
+  enable_tetragon           = false
+  enable_tracee             = false
+  enable_dependency_tracker = false # TODO
   # cost
   enable_opencost   = false
   enable_kepler     = false
@@ -174,6 +175,7 @@ addons = {
   enable_cloudbeaver         = false
   enable_clickhouse_operator = false
   enable_mariadb_operator    = false
+  enable_mongodb_operator    = false
   enable_documentdb_operator = false
   enable_weaviate            = false
   enable_milvus              = false
@@ -252,3 +254,15 @@ gitops_workloads_repo     = "dokaseca-workloads"
 gitops_workloads_basepath = "argocd"
 gitops_workloads_path     = "workloads"
 gitops_workloads_revision = "main"
+# Extra configuration
+extra_mounts = [
+  {
+    host_path      = "/var/run/docker.sock"
+    container_path = "/var/run/docker.sock"
+  },
+  # https://tetragon.io/docs/getting-started/install-k8s/
+  {
+    host_path      = "/proc"
+    container_path = "/procHost"
+  }
+]

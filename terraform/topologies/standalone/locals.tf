@@ -153,17 +153,18 @@ locals {
     enable_pyroscope = try(var.addons.enable_pyroscope, false)
     enable_parca     = try(var.addons.enable_parca, false)
     # security
-    enable_cert_manager     = try(var.addons.enable_cert_manager, false)
-    enable_trust_manager    = try(var.addons.enable_trust_manager, false)
-    enable_trivy            = try(var.addons.enable_trivy, false)
-    enable_trivy_operator   = try(var.addons.enable_trivy_operator, false)
-    enable_sealed_secrets   = try(var.addons.enable_sealed_secrets, false)
-    enable_external_secrets = try(var.addons.enable_external_secrets, false)
-    enable_vault            = try(var.addons.enable_vault, false)
-    enable_kubearmor        = try(var.addons.enable_kubearmor, false)
-    enable_falco            = try(var.addons.enable_falco, false)
-    enable_tetragon         = try(var.addons.enable_tetragon, false)
-    enable_tracee           = try(var.addons.enable_tracee, false)
+    enable_cert_manager       = try(var.addons.enable_cert_manager, false)
+    enable_trust_manager      = try(var.addons.enable_trust_manager, false)
+    enable_trivy              = try(var.addons.enable_trivy, false)
+    enable_trivy_operator     = try(var.addons.enable_trivy_operator, false)
+    enable_sealed_secrets     = try(var.addons.enable_sealed_secrets, false)
+    enable_external_secrets   = try(var.addons.enable_external_secrets, false)
+    enable_vault              = try(var.addons.enable_vault, false)
+    enable_kubearmor          = try(var.addons.enable_kubearmor, false)
+    enable_falco              = try(var.addons.enable_falco, false)
+    enable_tetragon           = try(var.addons.enable_tetragon, false)
+    enable_tracee             = try(var.addons.enable_tracee, false)
+    enable_dependency_tracker = try(var.addons.enable_dependency_tracker, false) # TODO
     # cost
     enable_opencost   = try(var.addons.enable_opencost, false)
     enable_kepler     = try(var.addons.enable_kepler, false)
@@ -192,6 +193,7 @@ locals {
     enable_cloudbeaver         = try(var.addons.enable_cloudbeaver, false)         # TODO
     enable_mariadb_operator    = try(var.addons.enable_mariadb_operator, false)    # TODO
     enable_documentdb_operator = try(var.addons.enable_documentdb_operator, false) # TODO
+    enable_mongodb_operator    = try(var.addons.enable_mongodb_operator, false)    # TODO
     enable_weaviate            = try(var.addons.enable_weaviate, false)            # TODO
     enable_milvus              = try(var.addons.enable_milvus, false)              # TODO
     # dora metrics

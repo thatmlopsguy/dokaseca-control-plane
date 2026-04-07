@@ -11,6 +11,7 @@ module "kind_cluster" {
   cluster_type       = var.cluster_type
   kubernetes_version = var.kubernetes_version
   kubeconfig_path    = local.kubeconfig_path
+  extra_mounts       = var.extra_mounts
 
   # Use Cilium as CNI
   disable_default_cni = var.kubernetes_cni != "default"
@@ -46,8 +47,8 @@ module "gateway_api" {
 
   count = var.enable_gateway_api ? 1 : 0
 
-  release_version = var.gateway_api_release_version
-  kubeconfig_path = local.kubeconfig_path
+  release_version  = var.gateway_api_release_version
+  kubeconfig_path  = local.kubeconfig_path
   cluster_identity = try(one(module.kind_cluster[*].cluster_endpoint), one(module.vind_cluster[*].kubeconfig_path), local.kubeconfig_path)
 
   depends_on = [module.kind_cluster, module.vind_cluster]
