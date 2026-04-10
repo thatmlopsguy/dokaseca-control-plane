@@ -34,11 +34,11 @@ variable "cluster_name" {
 variable "cluster_type" {
   description = "Type of the cluster, used in naming"
   type        = string
-  default     = "hub"
+  default     = "stable"
 
   validation {
-    condition     = contains(["hub", "spoke", "standalone"], lower(var.cluster_type))
-    error_message = "Invalid cluster type. Must be one of 'hub', 'spoke' or 'standalone'."
+    condition     = contains(["hub", "spoke", "standalone", "stable", "canary"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'hub', 'spoke', 'standalone', 'stable' or 'canary'."
   }
 }
 

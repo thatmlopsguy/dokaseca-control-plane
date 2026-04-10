@@ -33,10 +33,10 @@ variable "cluster_name" {
 variable "cluster_type" {
   description = "Type of the kubernetes cluster"
   type        = string
-  default     = "spoke"
+  default     = "stable"
   validation {
-    condition     = contains(["spoke"], lower(var.cluster_type))
-    error_message = "Invalid cluster type. Must be one of 'spoke'."
+    condition     = contains(["stable", "canary"], lower(var.cluster_type))
+    error_message = "Invalid cluster type. Must be one of 'stable' or 'canary'."
   }
 }
 
@@ -73,8 +73,8 @@ variable "kubernetes_distro" {
   default     = "kind"
 
   validation {
-    condition     = contains(["kind", "k3d", "k0s", "vind"], lower(var.kubernetes_distro))
-    error_message = "Invalid kubernetes distro. Must be one of 'kind', 'k3d', 'k0s' or 'vind'."
+    condition     = contains(["kind", "k3d", "k3s", "k0s", "vind"], lower(var.kubernetes_distro))
+    error_message = "Invalid kubernetes distro. Must be one of 'kind', 'k3d', 'k3s', 'k0s' or 'vind'."
   }
 }
 

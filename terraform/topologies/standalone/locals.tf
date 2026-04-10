@@ -5,7 +5,7 @@ locals {
   teams        = var.teams
   cloud        = var.cloud_provider
   domain       = var.domain_name
-  type         = var.cluster_type
+  cluster_type = var.cluster_type
   cluster_name = var.cluster_name
 
   kubernetes_distro  = var.kubernetes_distro
@@ -33,10 +33,10 @@ locals {
     cloud        = local.cloud
     region       = local.region
     env          = local.env
-    type         = local.type
     version      = local.kubernetes_version
     distro       = local.kubernetes_distro
     domain       = local.domain
+    cluster_type = local.cluster_type
     cluster_name = local.cluster_name
   }, var.teams)
 

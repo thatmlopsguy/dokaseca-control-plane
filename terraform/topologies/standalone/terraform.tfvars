@@ -1,6 +1,6 @@
 environment                 = "dev"
 region                      = "local"
-cluster_type                = "spoke"
+cluster_type                = "stable"
 cluster_name                = "standalone"
 domain_name                 = "dokaseca.local"
 cloud_provider              = "local"
