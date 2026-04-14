@@ -220,6 +220,8 @@ EOF
     declare -A security_tools=(
         [cosign]="cosign version | grep GitVersion | cut -d':' -f2 | tr -d ' '"
         [trivy]="trivy --version | awk 'NR==1 {print \$2}'"
+        [grype]="grype version | awk 'NR==2 {print \$2}'"
+        [syft]="syft version | awk 'NR==2 {print \$2}'"
         [falcoctl]="falcoctl version | awk '{print \$3}'"
         [gitleaks]="gitleaks --version | awk 'NR==1 {print \$3}'"
         [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
