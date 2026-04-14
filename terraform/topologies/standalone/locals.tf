@@ -65,8 +65,11 @@ locals {
     enable_komoplane          = try(var.addons.enable_komoplane, false)
     enable_altinity_dashboard = try(var.addons.enable_altinity_dashboard, false)
     enable_dapr_dashboard     = try(var.addons.enable_dapr_dashboard, false)
-    enable_velero_ui          = try(var.addons.enable_velero_ui, false)     # TODO
-    enable_ocm_dashboard      = try(var.addons.enable_ocm_dashboard, false) # TODO
+    enable_velero_ui          = try(var.addons.enable_velero_ui, false)
+    enable_ocm_dashboard      = try(var.addons.enable_ocm_dashboard, false)
+    enable_policy_reporter    = try(var.addons.enable_policy_reporter, false)
+    enable_falcosidekick      = try(var.addons.enable_falcosidekick, false)
+    enable_kiali              = try(var.addons.enable_kiali, false)
     # fleet managers
     enable_kubefleet_hub_agent     = try(var.addons.enable_kubefleet_hub_agent, false)     # TODO see https://kubefleet-dev.github.io/website/
     enable_kubefleet_member_agent  = try(var.addons.enable_kubefleet_member_agent, false)  # TODO
@@ -126,7 +129,6 @@ locals {
     enable_k8s_monitoring             = try(var.addons.enable_k8s_monitoring, false) # https://github.com/grafana/k8s-monitoring-helm/tree/main/charts/k8s-monitoring
     enable_kube_prometheus_stack      = try(var.addons.enable_kube_prometheus_stack, false)
     enable_victoria_metrics_k8s_stack = try(var.addons.enable_victoria_metrics_k8s_stack, false)
-    enable_kiali                      = try(var.addons.enable_kiali, false)
     # alerts
     enable_alertmanager = try(var.addons.enable_alertmanager, false)
     enable_sloth        = try(var.addons.enable_sloth, false)
@@ -172,16 +174,16 @@ locals {
     enable_goldilocks = try(var.addons.enable_goldilocks, false)
     enable_kruise     = try(var.addons.enable_kruise, false) # TODO see https://github.com/kruize/autotune
     # compliance
-    enable_kyverno                 = try(var.addons.enable_kyverno, false)
-    enable_kyverno_policies        = try(var.addons.enable_kyverno_policies, false)
-    enable_kyverno_policy_reporter = try(var.addons.enable_kyverno_policy_reporter, false)
-    enable_polaris                 = try(var.addons.enable_polaris, false)
-    enable_connaisseur             = try(var.addons.enable_connaisseur, false)
-    enable_policy_controller       = try(var.addons.enable_policy_controller, false)
+    enable_kyverno           = try(var.addons.enable_kyverno, false)
+    enable_kyverno_policies  = try(var.addons.enable_kyverno_policies, false)
+    enable_polaris           = try(var.addons.enable_polaris, false)
+    enable_connaisseur       = try(var.addons.enable_connaisseur, false)
+    enable_policy_controller = try(var.addons.enable_policy_controller, false)
     # chaos engineering
     enable_litmus     = try(var.addons.enable_litmus, false)
     enable_chaos_mesh = try(var.addons.enable_chaos_mesh, false)
     # storage
+    enable_rustfs           = try(var.addons.enable_rustfs, false)
     enable_openebs          = try(var.addons.enable_openebs, false)
     enable_minio            = try(var.addons.enable_minio, false)
     enable_rook_ceph        = try(var.addons.enable_rook_ceph, false)

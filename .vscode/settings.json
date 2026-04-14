@@ -98,6 +98,7 @@
         "redisinsight",
         "robusta",
         "rollouts",
+        "rustfs",
         "sarif",
         "seaweedfs",
         "seldon",

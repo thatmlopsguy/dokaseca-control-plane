@@ -1,7 +1,9 @@
 ## Doka Seca common variables
 ##
-## Based on https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
-## and https://github.com/langfuse/oss-llmops-stack/blob/main/docker-compose/docker-compose.yml
+## Based on:
+##  - https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
+##  - https://github.com/langfuse/oss-llmops-stack/blob/main/docker-compose/docker-compose.yml
+##  - https://github.com/rustfs/rustfs/blob/main/docker-compose.yml
 ##
 ## @section Deployment Profiles
 ##
@@ -10,7 +12,7 @@
 ## - infra: Infrastructure dependencies (e.g., database, message broker, gateway)
 ## - optional: typically used for optional or internal services
 ## - database: database services (PostgreSQL, MySQL,MongoDB, ClickHouse)
-## - storage: object storage services (MinIO)
+## - storage: object storage services (MinIO, rustfs)
 ## - monitoring: monitoring stack (Prometheus, Grafana)
 ## - messaging: messaging services (RabbitMQ, Redis)
 ## By default, only the 'infra' profile is active, which includes essential infrastructure services.
@@ -370,6 +372,41 @@ services:
     networks:
       - kind
 
+  rustfs:
+    image: rustfs/rustfs:latest
+    container_name: rustfs
+    ports:
+      - "9080:9000" # S3 API port
+      - "9081:9001" # Console port
+    environment:
+      - RUSTFS_ADDRESS=0.0.0.0:9000
+      - RUSTFS_CONSOLE_ADDRESS=0.0.0.0:9001
+      - RUSTFS_CONSOLE_ENABLE=true
+      - RUSTFS_CORS_ALLOWED_ORIGINS=*
+      - RUSTFS_CONSOLE_CORS_ALLOWED_ORIGINS=*
+      - RUSTFS_ACCESS_KEY=${RUSTFS_ACCESS_KEY:-rustfsadmin}
+      - RUSTFS_SECRET_KEY=${RUSTFS_SECRET_KEY:-rustfssecret}
+      - RUSTFS_OBS_LOGGER_LEVEL=info
+    volumes:
+      - rustfs-data:/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "sh",
+          "-c",
+          "curl -f http://127.0.0.1:9000/health && curl -f http://127.0.0.1:9001/rustfs/console/health",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    profiles:
+      - infra
+      - storage
+    networks:
+      - kind
+
   ## @param  prometheus Open-source monitoring and alerting toolkit for collecting and querying metrics
   ## - Exposes port 9090 for Prometheus web UI and API
   ##
@@ -402,8 +439,8 @@ services:
       GF_DASHBOARDS_MIN_REFRESH_INTERVAL: "5s"
       GF_INSTALL_PLUGINS: victoriametrics-logs-datasource
     volumes:
-      - ./docker/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
-      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+      - ./docker/grafana/provisioning/dashboards/dashboard.yaml:/etc/grafana/provisioning/dashboards/main.yaml
+      - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
       - ./docker/grafana/dashboards:/var/lib/grafana/dashboards
       - grafana-data:/var/lib/grafana
     depends_on:
@@ -524,6 +561,7 @@ volumes:
   redis-data:
   redis-insight:
   minio-data:
+  rustfs-data:
     # driver: local
     # driver_opts:
     #   type: none

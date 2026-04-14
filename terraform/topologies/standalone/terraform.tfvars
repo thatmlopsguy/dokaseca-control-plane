@@ -49,10 +49,13 @@ addons = {
   enable_headlamp           = false # Tested
   enable_helm_dashboard     = false
   enable_komoplane          = false
-  enable_altinity_dashboard = false # TODO
-  enable_dapr_dashboard     = false # TODO
-  enable_velero_ui          = false # TODO
-  enable_ocm_dashboard      = false # TODO
+  enable_altinity_dashboard = false
+  enable_dapr_dashboard     = false
+  enable_velero_ui          = false
+  enable_ocm_dashboard      = false
+  enable_falcosidekick      = false
+  enable_policy_reporter    = false
+  enable_kiali              = false
   # fleet manager
   enable_kubefleet_hub_agent     = false # TODO
   enable_kubefleet_member_agent  = false # TODO
@@ -76,11 +79,11 @@ addons = {
   enable_koreo         = false
   # gitops promotion
   enable_argo_cd_image_updater = false
-  enable_kargo                 = false
+  enable_kargo                 = true
   enable_gitops_promoter       = false
   # platform engineering
   enable_karpor = false
-  enable_kro    = true
+  enable_kro    = false
   enable_dapr   = false
   enable_choreo = false
   enable_krateo = false
@@ -105,10 +108,9 @@ addons = {
   enable_k8s_monitoring             = false
   enable_kube_prometheus_stack      = false
   enable_victoria_metrics_k8s_stack = false
-  enable_kiali                      = false
   # alerts
   enable_alertmanager = false
-  enable_sloth        = true
+  enable_sloth        = false
   # agents
   enable_alloy                  = false
   enable_vector                 = false
@@ -144,7 +146,7 @@ addons = {
   enable_sealed_secrets     = false
   enable_external_secrets   = true
   enable_kubearmor          = false
-  enable_falco              = true
+  enable_falco              = false
   enable_tetragon           = false
   enable_tracee             = false
   enable_dependency_tracker = false # TODO
@@ -165,6 +167,7 @@ addons = {
   enable_litmus     = false
   enable_chaos_mesh = false
   # storage
+  enable_rustfs           = true
   enable_minio            = false
   enable_rook_ceph        = false
   enable_longhorn         = false
