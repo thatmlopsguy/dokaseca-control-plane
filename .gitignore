@@ -77,3 +77,9 @@ kustomize/*
 
 # gitleaks report
 gitleaks-report.json
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
