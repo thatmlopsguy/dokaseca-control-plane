@@ -200,7 +200,8 @@ locals {
     enable_weaviate            = try(var.addons.enable_weaviate, false)            # TODO
     enable_milvus              = try(var.addons.enable_milvus, false)              # TODO
     # dora metrics
-    enable_devlake = try(var.addons.enable_devlake, false)
+    enable_devlake   = try(var.addons.enable_devlake, false)
+    enable_open_dora = try(var.addons.enable_open_dora, false)
     # utilities
     enable_reloader                 = try(var.addons.enable_reloader, false)
     enable_reflector                = try(var.addons.enable_reflector, false)

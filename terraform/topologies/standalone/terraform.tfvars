@@ -184,7 +184,8 @@ addons = {
   enable_weaviate            = false
   enable_milvus              = false
   # dora metrics
-  enable_devlake = false
+  enable_devlake   = false
+  enable_open_dora = false
   # utilities
   enable_reloader                 = false
   enable_reflector                = false
