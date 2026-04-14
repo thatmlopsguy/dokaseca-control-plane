@@ -143,6 +143,8 @@
         "**/.external_modules": true,
         "**/.devbox": true,
         "**/.venv": true,
+        "**/*.pyc": true,
+        "**/__pycache__": true
     },
     "editor.formatOnSave": true,
     "editor.rulers": [
