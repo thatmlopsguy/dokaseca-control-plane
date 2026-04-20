@@ -70,6 +70,9 @@ locals {
     enable_policy_reporter    = try(var.addons.enable_policy_reporter, false)
     enable_falcosidekick      = try(var.addons.enable_falcosidekick, false)
     enable_kiali              = try(var.addons.enable_kiali, false)
+    # infrastructure
+    enable_atlantis  = try(var.addons.enable_atlantis, false)
+    enable_semaphore = try(var.addons.enable_semaphore, false)
     # fleet managers
     enable_kubefleet_hub_agent     = try(var.addons.enable_kubefleet_hub_agent, false)     # TODO see https://kubefleet-dev.github.io/website/
     enable_kubefleet_member_agent  = try(var.addons.enable_kubefleet_member_agent, false)  # TODO

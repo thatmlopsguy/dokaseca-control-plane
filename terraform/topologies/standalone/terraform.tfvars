@@ -56,6 +56,9 @@ addons = {
   enable_falcosidekick      = false
   enable_policy_reporter    = false
   enable_kiali              = false
+  # infrastructure
+  enable_atlantis  = false
+  enable_semaphore = false
   # fleet manager
   enable_kubefleet_hub_agent     = false # TODO
   enable_kubefleet_member_agent  = false # TODO
