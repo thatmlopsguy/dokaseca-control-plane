@@ -70,3 +70,7 @@ There are tools that abstract multi-tenancy complexities from you, providing a b
 | API Compatibility | Limited                 | Full            | Full                 |
 | Control Plane     | Shared                  | Shared          | Dedicated per tenant |
 | Use Case          | Trusted teams           | Multi-team orgs | Untrusted tenants    |
+
+## References
+
+- [ADR-EKS-SEC-10002-MULTI-TENANCY](https://github.com/aws-samples/container-design-decisions/blob/main/EKS/Security/ADR-EKS-SEC-10002-MULTI-TENANCY.md)
