@@ -70,6 +70,7 @@ locals {
     enable_policy_reporter    = try(var.addons.enable_policy_reporter, false)
     enable_falcosidekick      = try(var.addons.enable_falcosidekick, false)
     enable_kiali              = try(var.addons.enable_kiali, false)
+    enable_kafbat_ui          = try(var.addons.enable_kafbat_ui, false)
     # infrastructure
     enable_atlantis  = try(var.addons.enable_atlantis, false)
     enable_semaphore = try(var.addons.enable_semaphore, false)
@@ -158,18 +159,20 @@ locals {
     enable_pyroscope = try(var.addons.enable_pyroscope, false)
     enable_parca     = try(var.addons.enable_parca, false)
     # security
-    enable_cert_manager       = try(var.addons.enable_cert_manager, false)
-    enable_trust_manager      = try(var.addons.enable_trust_manager, false)
-    enable_trivy              = try(var.addons.enable_trivy, false)
-    enable_trivy_operator     = try(var.addons.enable_trivy_operator, false)
-    enable_sealed_secrets     = try(var.addons.enable_sealed_secrets, false)
-    enable_external_secrets   = try(var.addons.enable_external_secrets, false)
-    enable_vault              = try(var.addons.enable_vault, false)
-    enable_kubearmor          = try(var.addons.enable_kubearmor, false)
-    enable_falco              = try(var.addons.enable_falco, false)
-    enable_tetragon           = try(var.addons.enable_tetragon, false)
-    enable_tracee             = try(var.addons.enable_tracee, false)
-    enable_dependency_tracker = try(var.addons.enable_dependency_tracker, false) # TODO
+    enable_secrets_store_csi_driver = try(var.addons.enable_secrets_store_csi_driver, false)
+    enable_cert_manager             = try(var.addons.enable_cert_manager, false)
+    enable_trust_manager            = try(var.addons.enable_trust_manager, false)
+    enable_trivy                    = try(var.addons.enable_trivy, false)
+    enable_trivy_operator           = try(var.addons.enable_trivy_operator, false)
+    enable_sealed_secrets           = try(var.addons.enable_sealed_secrets, false)
+    enable_external_secrets         = try(var.addons.enable_external_secrets, false)
+    enable_vault                    = try(var.addons.enable_vault, false)
+    enable_openbao                  = try(var.addons.enable_openbao, false)
+    enable_kubearmor                = try(var.addons.enable_kubearmor, false)
+    enable_falco                    = try(var.addons.enable_falco, false)
+    enable_tetragon                 = try(var.addons.enable_tetragon, false)
+    enable_tracee                   = try(var.addons.enable_tracee, false)
+    enable_dependency_tracker       = try(var.addons.enable_dependency_tracker, false) # TODO
     # cost
     enable_opencost   = try(var.addons.enable_opencost, false)
     enable_kepler     = try(var.addons.enable_kepler, false)
@@ -288,29 +291,32 @@ locals {
 
   # Azure
   azure_addons = {
-    enable_azure_service_operator = try(var.addons.enable_azure_service_operator, false)
-    enable_azure_external_secrets = try(var.addons.enable_azure_external_secrets, false)
+    enable_azure_service_operator           = try(var.addons.enable_azure_service_operator, false)
+    enable_azure_external_secrets           = try(var.addons.enable_azure_external_secrets, false)
+    enable_azure_secrets_store_csi_provider = try(var.addons.enable_azure_secrets_store_csi_provider, false)
   }
 
   # AWS
   # https://aws-controllers-k8s.github.io/community/docs/community/services/
   aws_addons = {
-    enable_aws_karpenter                = try(var.addons.enable_aws_karpenter, false)
-    enable_aws_external_secrets         = try(var.addons.enable_aws_external_secrets, false)
-    enable_aws_load_balancer_controller = try(var.addons.enable_aws_load_balancer_controller, false)
-    enable_aws_ebs_csi_driver           = try(var.addons.enable_aws_ebs_csi_driver, false)
-    enable_aws_efs_csi_driver           = try(var.addons.enable_aws_efs_csi_driver, false)
-    enable_aws_ack_eks_controller       = try(var.addons.enable_aws_ack_eks_controller, false)
-    enable_aws_ack_s3_controller        = try(var.addons.enable_aws_ack_s3_controller, false)
-    enable_aws_ack_rds_controller       = try(var.addons.enable_aws_ack_rds_controller, false)
-    enable_aws_ack_sqs_controller       = try(var.addons.enable_aws_ack_sqs_controller, false)
-    enable_aws_ack_sns_controller       = try(var.addons.enable_aws_ack_sns_controller, false)
+    enable_aws_secrets_store_csi_provider = try(var.addons.enable_aws_secrets_store_csi_provider, false)
+    enable_aws_karpenter                  = try(var.addons.enable_aws_karpenter, false)
+    enable_aws_external_secrets           = try(var.addons.enable_aws_external_secrets, false)
+    enable_aws_load_balancer_controller   = try(var.addons.enable_aws_load_balancer_controller, false)
+    enable_aws_ebs_csi_driver             = try(var.addons.enable_aws_ebs_csi_driver, false)
+    enable_aws_efs_csi_driver             = try(var.addons.enable_aws_efs_csi_driver, false)
+    enable_aws_ack_eks_controller         = try(var.addons.enable_aws_ack_eks_controller, false)
+    enable_aws_ack_s3_controller          = try(var.addons.enable_aws_ack_s3_controller, false)
+    enable_aws_ack_rds_controller         = try(var.addons.enable_aws_ack_rds_controller, false)
+    enable_aws_ack_sqs_controller         = try(var.addons.enable_aws_ack_sqs_controller, false)
+    enable_aws_ack_sns_controller         = try(var.addons.enable_aws_ack_sns_controller, false)
   }
 
   # GCP
   gcp_addons = {
-    enable_gcp_keda             = try(var.addons.enable_gcp_keda, false)
-    enable_gcp_external_secrets = try(var.addons.enable_gcp_external_secrets, false)
+    enable_gcp_keda                       = try(var.addons.enable_gcp_keda, false)
+    enable_gcp_external_secrets           = try(var.addons.enable_gcp_external_secrets, false)
+    enable_gcp_secrets_store_csi_provider = try(var.addons.enable_gcp_secrets_store_csi_provider, false)
   }
 
   # Platform

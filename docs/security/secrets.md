@@ -96,9 +96,6 @@ vault/platform/postgres/common/keycloak
 vault/platform/postgres/common/devlake
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
-vault/platform/postgres/dev/app-db
-vault/platform/postgres/stg/app-db
-vault/platform/postgres/prod/app-db
 ```
 
 Each secret contains:
@@ -132,7 +129,9 @@ vault/team-a/dev/app-name/certificates
 
 ## Integration with Kubernetes
 
-Secrets from Vault are synced to Kubernetes using the External Secrets Operator. The following CRDs are used:
+Secrets from Vault are synced to Kubernetes using the External Secrets Operator.
+
+The following CRDs are used:
 
 - `ClusterSecretStore`: Configures the connection to Vault
 - `ExternalSecret`: Maps Vault secrets to Kubernetes secrets
@@ -171,3 +170,75 @@ Regular compliance reports are generated from these logs to ensure:
 
 Vault's storage backend is regularly backed up using Velero. In case of disaster recovery, follow the procedure in
 `docs/vault-setup.md` to restore from backup.
+
+## Vault + CSI Secrets Store Driver (direct mount)
+
+Doka Seca also supports integrating HashiCorp Vault with the Kubernetes Secrets Store CSI Driver.
+In this flow Vault -> CSI Secrets Store Driver -> Volume mount -> Application, the CSI provider fetches secrets directly
+from Vault and mounts them into the pod filesystem (for example: `/secrets/credentials`). When rotation is enabled the
+driver refreshes the mounted file periodically without requiring a pod restart.
+
+High-level steps:
+
+- Install the Secrets Store CSI Driver and the HashiCorp Vault provider for the driver.
+- Create a `SecretProviderClass` that tells the CSI driver which Vault address, role and secret paths to use.
+- Add a CSI volume to your `Pod`/`Deployment` and mount it at the desired path (e.g. `/secrets`).
+- (Optional) Enable rotation/refresh according to the provider and driver configuration so files are updated automatically.
+
+Example `SecretProviderClass` (minimal):
+
+```yaml
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: vault-secrets
+spec:
+  provider: vault
+  parameters:
+    vaultAddress: "https://vault.default.svc:8200"
+    roleName: "k8s-role"
+    # provider-specific "objects" listing the Vault paths/keys to fetch
+    objects: |
+      - objectName: "app-credentials"
+        secretPath: "secret/data/platform/app"
+        secretKey: "credentials"
+```
+
+Example `Pod` snippet mounting the CSI volume at `/secrets`:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-with-vault-csi
+spec:
+  containers:
+  - name: app
+    image: your-image:tag
+    volumeMounts:
+    - name: secrets-store-inline
+      mountPath: /secrets
+      readOnly: true
+  volumes:
+  - name: secrets-store-inline
+    csi:
+      driver: secrets-store.csi.k8s.io
+      readOnly: true
+      volumeAttributes:
+        secretProviderClass: "vault-secrets"
+```
+
+With the configuration above, the secret value referenced by `objectName`/`secretKey` will be available as a file under
+`/secrets` (for example `/secrets/credentials` or `/secrets/app-credentials` depending on the provider configuration).
+
+Rotation and refresh notes:
+
+- The Secrets Store CSI Driver supports refreshing mounted secrets so they are updated in-place. The exact method and configuration keys for enabling rotation depend on the CSI provider (Vault provider) and the driver version. Consult the provider docs for supported rotation/refresh parameters and recommended polling intervals.
+- When rotation is enabled, the mounted file(s) are updated by the driver; most applications can pick up credential changes without restarting, but verify your application reload semantics (for example, re-read files or handle SIGHUP if required).
+- If you also need a Kubernetes `Secret` resource created from the Vault secret (for compatibility with apps expecting `Secret` objects), use the `secretObjects` feature of the Secrets Store CSI Driver to sync the mounted secrets into Kubernetes `Secret` resources.
+
+See the Secrets Store CSI Driver and Vault provider documentation for installation steps, provider-specific parameters and best practices for rotation and RBAC.
+
+## References
+
+- [Argo CD with Vault and the CSI Secrets Store Driver demo](https://github.com/kostis-codefresh/argocd-csi-secret-store-example)
