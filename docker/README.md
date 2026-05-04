@@ -22,3 +22,4 @@ monitoring and messaging.
 | MongoDB        | [http://localhost:27017](http://localhost:27017) |
 | Mongo Express  | [http://localhost:8081](http://localhost:8081)   |
 | RabbitMQ       | [http://localhost:15672](http://localhost:15672) |
+| Dozzle         | [http://localhost:8085](http://localhost:8085)   |

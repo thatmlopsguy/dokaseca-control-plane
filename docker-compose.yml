@@ -13,7 +13,7 @@
 ## - optional: typically used for optional or internal services
 ## - database: database services (PostgreSQL, MySQL,MongoDB, ClickHouse)
 ## - storage: object storage services (MinIO, rustfs)
-## - monitoring: monitoring stack (Prometheus, Grafana)
+## - monitoring: monitoring stack (Prometheus, Grafana), dozzle
 ## - messaging: messaging services (RabbitMQ, Redis)
 ## By default, only the 'infra' profile is active, which includes essential infrastructure services.
 ##
@@ -93,8 +93,8 @@ services:
       - VAULT_DEV_ROOT_TOKEN_ID=${VAULT_DEV_ROOT_TOKEN_ID:-root} # For development only, do not use in production
     cap_add:
       - IPC_LOCK
-    command:
-      server -dev # For development only, do not use in production
+    command: server -dev
+      # For development only, do not use in production
       # For production, use a proper storage backend and configuration file
       # command: server -config=/vault/config/config.hcl
     # volumes:
@@ -102,7 +102,7 @@ services:
     #   - vault-logs:/vault/logs
     #   - ./docker/vault:/vault/config
     healthcheck:
-      test: ["CMD", "vault", "status"]
+      test: [ "CMD", "vault", "status" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -133,7 +133,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./docker/postgres/init:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -158,7 +158,7 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      test: [ "CMD", "curl", "-f", "http://localhost:80" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -187,7 +187,7 @@ services:
       - mysql-data:/var/lib/mysql
       - ./docker/mysql/init:/docker-entrypoint-initdb.d
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -229,7 +229,8 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME:-mongo}
       ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-mongo}
       ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
-      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_INITDB_ROOT_PASSWORD:-mongo}@mongodb:27017/"
+      ME_CONFIG_MONGODB_URL: "mongodb://${MONGO_INITDB_ROOT_USERNAME:-mongo}:${MONGO_\
+        INITDB_ROOT_PASSWORD:-mongo}@mongodb:27017/"
       ME_CONFIG_MONGODB_AUTH_DATABASE: "admin"
       ME_CONFIG_MONGODB_PORT: 27017
       ME_CONFIG_BASICAUTH: true
@@ -266,7 +267,7 @@ services:
         soft: 262144
         hard: 262144
     healthcheck:
-      test: ["CMD-SHELL", "clickhouse-client --query 'SELECT 1'"]
+      test: [ "CMD-SHELL", "clickhouse-client --query 'SELECT 1'" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -322,14 +323,14 @@ services:
     environment:
       MINIO_ROOT_USER: minioAccessKey
       MINIO_ROOT_PASSWORD: minioSecretKey
-    command: ["server", "--console-address", ":9001", "/data"]
+    command: [ "server", "--console-address", ":9001", "/data" ]
     ports:
       - "9000:9000" # S3 API
       - "9001:9001" # MinIO Console
     volumes:
       - minio-data:/data
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -346,22 +347,18 @@ services:
     depends_on:
       minio:
         condition: service_healthy
-    entrypoint: ["/bin/sh", "-c"]
+    entrypoint: [ "/bin/sh", "-c" ]
     command: >
-      "mc alias set local http://minio:9000 $$MINIO_ROOT_USER $$MINIO_ROOT_PASSWORD &&
-      mc mb --ignore-existing local/velero &&
-      mc mb --ignore-existing local/loki &&
-      mc mb --ignore-existing local/tempo &&
-      mc mb --ignore-existing local/victoriametrics &&
-      mc mb --ignore-existing local/victorialogs &&
-      mc mb --ignore-existing local/victoriatraces &&
-      mc mb --ignore-existing local/reportportal &&
-      mc mb --ignore-existing local/mlflow &&
-      mc mb --ignore-existing local/langfuse &&
-      mc mb --ignore-existing local/harbor &&
-      mc mb --ignore-existing local/chartmuseum &&
-      mc mb --ignore-existing local/argoworkflows &&
-      mc mb --ignore-existing local/pyroscope"
+      "mc alias set local http://minio:9000 $$MINIO_ROOT_USER
+      $$MINIO_ROOT_PASSWORD && mc mb --ignore-existing local/velero && mc mb
+      --ignore-existing local/loki && mc mb --ignore-existing local/tempo && mc
+      mb --ignore-existing local/victoriametrics && mc mb --ignore-existing
+      local/victorialogs && mc mb --ignore-existing local/victoriatraces && mc
+      mb --ignore-existing local/reportportal && mc mb --ignore-existing
+      local/mlflow && mc mb --ignore-existing local/langfuse && mc mb
+      --ignore-existing local/harbor && mc mb --ignore-existing
+      local/chartmuseum && mc mb --ignore-existing local/argoworkflows && mc mb
+      --ignore-existing local/pyroscope"
     environment:
       MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioAccessKey}
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioSecretKey}
@@ -395,7 +392,8 @@ services:
           "CMD",
           "sh",
           "-c",
-          "curl -f http://127.0.0.1:9000/health && curl -f http://127.0.0.1:9001/rustfs/console/health",
+          "curl -f http://127.0.0.1:9000/health && curl -f
+            http://127.0.0.1:9001/rustfs/console/health",
         ]
       interval: 30s
       timeout: 10s
@@ -404,6 +402,23 @@ services:
     profiles:
       - infra
       - storage
+    networks:
+      - kind
+
+  ## @param dozzle Web-based Docker log viewer for real-time monitoring of container logs
+  dozzle:
+    image: amir20/dozzle:v10.5.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - dozzle_data:/data
+    ports:
+      - 8085:8080
+    environment:
+      - DOZZLE_HOSTNAME=doka-seca
+    profiles:
+      - optional
+      - monitoring
+    restart: unless-stopped
     networks:
       - kind
 
@@ -447,7 +462,7 @@ services:
       prometheus:
         condition: service_started
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000/api/health"]
+      test: [ "CMD", "curl", "-f", "http://localhost:3000/api/health" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -472,7 +487,7 @@ services:
     volumes:
       - redis-data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 30s
       timeout: 10s
       retries: 5
@@ -521,13 +536,10 @@ services:
       ## Ref: https://www.rabbitmq.com/docs/disk-alarms
       RABBITMQ_DISK_FREE_ABSOLUTE_LIMIT: 50MB
       RABBITMQ_PLUGINS: >
-        rabbitmq_consistent_hash_exchange
-        rabbitmq_management
-        rabbitmq_auth_backend_ldap
-        rabbitmq_shovel
-        rabbitmq_shovel_management
+        rabbitmq_consistent_hash_exchange rabbitmq_management
+        rabbitmq_auth_backend_ldap rabbitmq_shovel rabbitmq_shovel_management
     healthcheck:
-      test: ["CMD", "rabbitmqctl", "status"]
+      test: [ "CMD", "rabbitmqctl", "status" ]
       interval: 30s
       timeout: 30s
       retries: 5
@@ -562,14 +574,15 @@ volumes:
   redis-insight:
   minio-data:
   rustfs-data:
+  dozzle-data:
     # driver: local
     # driver_opts:
     #   type: none
     #   o: bind
     #   device: ./data/minio
-## @section Networks
-## Custom Docker network for Doka Seca service discovery
-##
+    ## @section Networks
+    ## Custom Docker network for Doka Seca service discovery
+    ##
 networks:
   kind:
     external: true
