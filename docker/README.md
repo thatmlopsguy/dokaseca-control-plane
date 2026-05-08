@@ -7,6 +7,7 @@ monitoring and messaging.
 | Service        | Localhost Endpoint                               |
 |----------------|--------------------------------------------------|
 | Portainer      | [http://localhost:9002](http://localhost:9002)   |
+| Dockhand       | [http://localhost:3001](http://localhost:3001)   |
 | Vault          | [http://localhost:8200](http://localhost:8200)   |
 | Keycloak       | [http://localhost:8080](http://localhost:8080)   |
 | MinIO Console  | [http://localhost:9001](http://localhost:9001)   |

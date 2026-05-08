@@ -1,5 +1,28 @@
 -- Create databases and users for platform services
 -- This script runs automatically when the PostgreSQL container starts
+-- It creates separate databases and users for each service to ensure isolation and security
+-- Each user is granted all privileges on their respective database and the public schema
+-- The passwords used here are for demonstration purposes and should be changed in a production environment
+-- List of services with their corresponding databases and users:
+-- - Keycloak: keycloak, keycloak_user
+-- - DevLake: devlake, devlake_user
+-- - Temporal: temporal, temporal_user; temporal_visibility, temporal_user
+-- - Backstage: backstage, backstage_user
+-- - LiteLLM: litellm, litellm_user
+-- - Langfuse: langfuse, langfuse_user
+-- - MLflow: mlflow, mlflow_user
+-- - Airflow: airflow, airflow_user
+-- - Dagster: dagster, dagster_user
+-- - Report Portal: report_portal, report_portal_user
+-- - Chaos Mesh: chaos_mesh, chaos_mesh_user
+-- - Superset: superset, superset_user
+-- - Paralus: paralus, paralus_user
+-- - Harbor: harbor, harbor_user
+-- - Uptrace: uptrace, uptrace_user
+-- - Feast: feast, feast_user
+-- - Dockhand: dockhand, dockhand_user
+-- - Grafana: grafana, grafana_user
+-- - Argo Workflows: argo_workflows, argo_workflows_user
 
 -- Keycloak database
 CREATE DATABASE keycloak;
@@ -116,3 +139,24 @@ CREATE USER feast_user WITH PASSWORD 'feast_password';
 GRANT ALL PRIVILEGES ON DATABASE feast TO feast_user;
 \c feast
 GRANT ALL ON SCHEMA public TO feast_user;
+
+-- dockhand database
+CREATE DATABASE dockhand;
+CREATE USER dockhand_user WITH PASSWORD 'dockhand_password';
+GRANT ALL PRIVILEGES ON DATABASE dockhand TO dockhand_user;
+\c dockhand
+GRANT ALL ON SCHEMA public TO dockhand_user;
+
+-- Grafana database
+CREATE DATABASE grafana;
+CREATE USER grafana_user WITH PASSWORD 'grafana_password';
+GRANT ALL PRIVILEGES ON DATABASE grafana TO grafana_user;
+\c grafana
+GRANT ALL ON SCHEMA public TO grafana_user;
+
+-- Argo Workflows database
+CREATE DATABASE argo_workflows;
+CREATE USER argo_workflows_user WITH PASSWORD 'argo_workflows_password';
+GRANT ALL PRIVILEGES ON DATABASE argo_workflows TO argo_workflows_user;
+\c argo_workflows
+GRANT ALL ON SCHEMA public TO argo_workflows_user;

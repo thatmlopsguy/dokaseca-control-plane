@@ -126,11 +126,13 @@ Database credentials are stored in Vault following the pattern described in the 
 
 ```sh
 # PostgreSQL credentials
+vault/platform/postgres/common/dockhand
 vault/platform/postgres/common/backstage
 vault/platform/postgres/common/keycloak
 vault/platform/postgres/common/temporal
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
+vault/platform/postgres/common/grafana
 vault/platform/postgres/common/mlflow
 vault/platform/postgres/common/airflow
 vault/platform/postgres/common/dagster
