@@ -243,6 +243,7 @@ locals {
     enable_spark_operator = try(var.addons.enable_spark_operator, false) # TODO
     enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO
     # machine learning
+    enable_hami             = try(var.addons.enable_hami, false)             # TODO see https://project-hami.io/
     enable_kaito            = try(var.addons.enable_kaito, false)            # TODO
     enable_llm_d            = try(var.addons.enable_llm_d, false)            # TODO see
     enable_ai_runway        = try(var.addons.enable_ai_runway, false)        # TODO see https://github.com/kaito-project/airunway

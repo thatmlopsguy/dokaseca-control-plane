@@ -228,6 +228,7 @@ addons = {
   enable_spark_operator = false # TODO
   enable_slurm_operator = false # TODO
   # machine learning
+  enable_hami             = false # TODO see https://project-hami.io/
   enable_kaito            = false # TODO
   enable_llm_d            = false # TODO
   enable_ai_runway        = false # TODO see https://github.com/kaito-project/airunway
