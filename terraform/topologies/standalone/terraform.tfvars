@@ -258,6 +258,8 @@ addons = {
   enable_gateway_class             = true
   enable_kro_rgds                  = false
   enable_kyverno_internal_policies = false
+  # enterprise
+  enable_portkey_gateway = false
 }
 
 # Resources

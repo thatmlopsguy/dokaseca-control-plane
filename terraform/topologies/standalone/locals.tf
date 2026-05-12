@@ -290,6 +290,7 @@ locals {
     enable_amd_gpu_operator              = try(var.addons.enable_amd_gpu_operator, false)              # TODO
     enable_intel_device_plugins_operator = try(var.addons.enable_intel_device_plugins_operator, false) # TODO
     enable_intel_device_plugins_gpu      = try(var.addons.enable_intel_device_plugins_gpu, false)      # TODO
+    enable_portkey_gateway               = try(var.addons.enable_portkey_gateway, false)               # TODO
   }
 
   # Azure
