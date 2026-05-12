@@ -142,7 +142,9 @@ vault/platform/postgres/common/paralus
 vault/platform/postgres/common/superset
 vault/platform/postgres/common/harbor
 vault/platform/postgres/common/uptrace
-vault/platform/postgres/common/argoworkflows
+vault/platform/postgres/common/argo_workflows
+vault/platform/postgres/common/arize_phoenix
+vault/platform/postgres/common/feast
 # MySQL credentials
 vault/platform/mysql/common/devlake
 # Clickhouse credentials

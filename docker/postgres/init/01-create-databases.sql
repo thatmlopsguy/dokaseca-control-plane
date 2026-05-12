@@ -23,6 +23,7 @@
 -- - Dockhand: dockhand, dockhand_user
 -- - Grafana: grafana, grafana_user
 -- - Argo Workflows: argo_workflows, argo_workflows_user
+-- - Arize Phoenix: arize_phoenix, arize_phoenix_user
 
 -- Keycloak database
 CREATE DATABASE keycloak;
@@ -160,3 +161,10 @@ CREATE USER argo_workflows_user WITH PASSWORD 'argo_workflows_password';
 GRANT ALL PRIVILEGES ON DATABASE argo_workflows TO argo_workflows_user;
 \c argo_workflows
 GRANT ALL ON SCHEMA public TO argo_workflows_user;
+
+-- Arize Phoenix database
+CREATE DATABASE arize_phoenix;
+CREATE USER arize_phoenix_user WITH PASSWORD 'arize_phoenix_password';
+GRANT ALL PRIVILEGES ON DATABASE arize_phoenix TO arize_phoenix_user;
+\c arize_phoenix
+GRANT ALL ON SCHEMA public TO arize_phoenix_user;

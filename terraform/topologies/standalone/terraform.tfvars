@@ -239,6 +239,7 @@ addons = {
   enable_litellm          = false # TODO
   enable_litellm_operator = false # TODO
   enable_langfuse         = false # Tested
+  enable_arize_phoenix    = false # TODO
   enable_vllm_stack       = false # Tested
   enable_kubeflow_trainer = false # Tested
   # analytics

@@ -254,6 +254,7 @@ locals {
     enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
+    enable_arize_phoenix    = try(var.addons.enable_arize_phoenix, false)    # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false)
     # analytics
