@@ -206,6 +206,7 @@ addons = {
   enable_kuik                     = false
   enable_inspektor_gadget         = false
   enable_kor                      = false
+  enable_kwok                     = false
   # scaling
   enable_keda              = false # Tested
   enable_keda_addons_http  = false

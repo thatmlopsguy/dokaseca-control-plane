@@ -221,6 +221,7 @@ locals {
     enable_kuik                     = try(var.addons.enable_kuik, false)              # TODO see https://github.com/enix/kube-image-keeper
     enable_inspektor_gadget         = try(var.addons.enable_inspektor_gadget, false)  # TODO
     enable_kor                      = try(var.addons.enable_kor, false)
+    enable_kwok                     = try(var.addons.enable_kwok, false) # TODO see https://github.com/kubernetes-sigs/kwok
     # scaling
     enable_keda              = try(var.addons.enable_keda, false)
     enable_keda_addons_http  = try(var.addons.enable_keda_addons_http, false)
