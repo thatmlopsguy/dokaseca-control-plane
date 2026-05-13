@@ -243,6 +243,7 @@ addons = {
   enable_arize_phoenix    = false # TODO
   enable_vllm_stack       = false # Tested
   enable_kubeflow_trainer = false # Tested
+  enable_llmkube          = false # TODO
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO
