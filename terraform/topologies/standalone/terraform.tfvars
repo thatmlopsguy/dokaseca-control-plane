@@ -60,6 +60,9 @@ addons = {
   # infrastructure
   enable_atlantis  = false
   enable_semaphore = false
+  # virtual machines
+  enable_kubevirt   = false # TODO
+  enable_virtrigaud = false # TODO see https://virtrigaud.io/
   # fleet manager
   enable_kubefleet_hub_agent     = false # TODO
   enable_kubefleet_member_agent  = false # TODO
@@ -85,6 +88,7 @@ addons = {
   enable_argo_cd_image_updater = false
   enable_kargo                 = true
   enable_gitops_promoter       = false
+  enable_kapro                 = false # TODO see https://kapro.dev/
   # platform engineering
   enable_karpor = false
   enable_kro    = false
