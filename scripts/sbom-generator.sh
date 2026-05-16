@@ -227,6 +227,7 @@ EOF
         [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
         [chainsaw]="chainsaw version | awk 'NR==1 {print \$2}'"
         [depsguard]="depsguard --version | awk 'NR==1 {print \$2}'"
+        [pinact]="pinact --version | awk 'NR==1 {print \$3}'"
     )
 
     for tool in "${!security_tools[@]}"; do

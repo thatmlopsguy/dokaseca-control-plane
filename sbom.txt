@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.35.0
-# Generated on: 2026-05-16 20:29:22 UTC
+# Generated on: 2026-05-16 20:57:28 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -75,6 +75,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Image Signing & Vulnerability Scanning
 - gitleaks: 8.28.0
 - cosign: v3.0.6
+- pinact: 3.9.2
 - depsguard: 0.1.33
 - kyverno: 1.17.1
 - syft: 1.44.0
