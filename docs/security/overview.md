@@ -64,7 +64,7 @@ kubectl logs -n falco -l app=falco
 All GitHub Actions used in CI/CD workflows **must use pinned versions (commit SHA)** instead of tags or branches to prevent
 supply chain attacks. This ensures immutable references to specific action versions.
 
-![github-actions](assets/figures/images/github-policy-actions.png)
+![github-actions](../assets/figures/images/github-policy-actions.png)
 
 **❌ Avoid using tags or branches:**
 
@@ -92,6 +92,26 @@ supply chain attacks. This ensures immutable references to specific action versi
 1. Always include version comment for human readability
 2. Regularly update pinned versions and review changes
 3. Monitor security advisories for actions in use
+
+**Enforcement with [pinact](https://github.com/suzuki-shunsuke/pinact):**
+
+SHA pinning is enforced using [pinact](https://github.com/suzuki-shunsuke/pinact), a CLI that automatically pins GitHub
+Actions and Reusable Workflows to commit SHAs. It can also update pinned versions, verify version annotations, and
+skip recently released versions via `--min-age` (acting as a cooldown for actions).
+
+```bash
+# Pin all actions in the repository
+pinact run
+
+# Validate that all actions are pinned (useful in CI)
+pinact run --check
+
+# Update pinned actions to latest versions
+pinact run -u
+
+# Update but skip versions released in the last 7 days
+pinact run -u --min-age 7
+```
 
 ### Zizmor Linting
 
@@ -172,6 +192,7 @@ depsguard
 - [Kubernetes Security Best Practices](https://kubernetes.io/docs/concepts/security/overview/)
 - [GitHub Actions Policy](https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/)
 - [How to Harden GitHub Actions: The Unofficial Guide](https://www.wiz.io/blog/github-actions-security-guide)
+- [pinact](https://github.com/suzuki-shunsuke/pinact)
 - [Dependabot Cooldowns](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown)
 - [DepsGuard](https://depsguard.com/)
 - [Dependency Cooldowns](https://cooldowns.dev/)
