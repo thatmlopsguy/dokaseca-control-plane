@@ -3504,7 +3504,7 @@ replicaset-nginx-599c4f6679<span class="w">   </span>Trivy<span class="w">     <
 <h3 id="pin-action-versions">Pin Action Versions<a class="headerlink" href="#pin-action-versions" title="Permanent link">&para;</a></h3>
 <p>All GitHub Actions used in CI/CD workflows <strong>must use pinned versions (commit SHA)</strong> instead of tags or branches to prevent
 supply chain attacks. This ensures immutable references to specific action versions.</p>
-<p><img alt="github-actions" src="assets/figures/images/github-policy-actions.png" /></p>
+<p><img alt="github-actions" src="../../assets/figures/images/github-policy-actions.png" /></p>
 <p><strong>❌ Avoid using tags or branches:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@main</span>
@@ -3526,6 +3526,22 @@ supply chain attacks. This ensures immutable references to specific action versi
 <li>Regularly update pinned versions and review changes</li>
 <li>Monitor security advisories for actions in use</li>
 </ol>
+<p><strong>Enforcement with <a href="https://github.com/suzuki-shunsuke/pinact">pinact</a>:</strong></p>
+<p>SHA pinning is enforced using <a href="https://github.com/suzuki-shunsuke/pinact">pinact</a>, a CLI that automatically pins GitHub
+Actions and Reusable Workflows to commit SHAs. It can also update pinned versions, verify version annotations, and
+skip recently released versions via <code>--min-age</code> (acting as a cooldown for actions).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pin all actions in the repository</span>
+pinact<span class="w"> </span>run
+
+<span class="c1"># Validate that all actions are pinned (useful in CI)</span>
+pinact<span class="w"> </span>run<span class="w"> </span>--check
+
+<span class="c1"># Update pinned actions to latest versions</span>
+pinact<span class="w"> </span>run<span class="w"> </span>-u
+
+<span class="c1"># Update but skip versions released in the last 7 days</span>
+pinact<span class="w"> </span>run<span class="w"> </span>-u<span class="w"> </span>--min-age<span class="w"> </span><span class="m">7</span>
+</code></pre></div>
 <h3 id="zizmor-linting">Zizmor Linting<a class="headerlink" href="#zizmor-linting" title="Permanent link">&para;</a></h3>
 <p>All GitHub Actions workflows <strong>must pass <a href="https://github.com/woodruffw/zizmor">Zizmor</a> linting rules</strong>.
 Zizmor is a static analysis tool that identifies security issues and anti-patterns in GitHub Actions workflows.</p>
@@ -3592,6 +3608,7 @@ depsguard
 <li><a href="https://kubernetes.io/docs/concepts/security/overview/">Kubernetes Security Best Practices</a></li>
 <li><a href="https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/">GitHub Actions Policy</a></li>
 <li><a href="https://www.wiz.io/blog/github-actions-security-guide">How to Harden GitHub Actions: The Unofficial Guide</a></li>
+<li><a href="https://github.com/suzuki-shunsuke/pinact">pinact</a></li>
 <li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown">Dependabot Cooldowns</a></li>
 <li><a href="https://depsguard.com/">DepsGuard</a></li>
 <li><a href="https://cooldowns.dev/">Dependency Cooldowns</a></li>
@@ -3616,7 +3633,7 @@ depsguard
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2026 20:37:46 UTC"><span class="timeago" datetime="2026-05-16T20:37:46+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2026 20:37:46 UTC">2026-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2026 22:09:44 UTC"><span class="timeago" datetime="2026-05-16T22:09:44+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2026 22:09:44 UTC">2026-05-16</span>
   </span>
 
     
