@@ -1510,6 +1510,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#depsguard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DepsGuard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3387,6 +3398,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#depsguard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DepsGuard
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3538,6 +3560,29 @@ released version, giving the community time to detect and report compromised pac
 <li><strong>Reduced blast radius</strong>: Prevents automatic adoption of a compromised version minutes after publication</li>
 <li><strong>Complements SHA pinning</strong>: While pinned SHAs protect against tag mutation, cooldowns protect against net-new malicious releases</li>
 </ul>
+<h3 id="depsguard">DepsGuard<a class="headerlink" href="#depsguard" title="Permanent link">&para;</a></h3>
+<p><a href="https://depsguard.com/">DepsGuard</a> is used to scan and harden package manager configurations against supply chain
+attacks. It provides an interactive TUI that detects missing security settings and applies fixes across npm, pnpm, Yarn,
+Bun, and uv.</p>
+<p><strong>What DepsGuard checks and configures:</strong></p>
+<ul>
+<li>Minimum release age / dependency cooldowns (e.g. <code>min-release-age</code> in <code>.npmrc</code>, <code>exclude-newer</code> in <code>uv.toml</code>)</li>
+<li>Disabling risky install scripts (<code>ignore-scripts=true</code>)</li>
+<li>Blocking exotic transitive dependencies (<code>block-exotic-subdeps</code>)</li>
+<li>Provenance downgrade protection (<code>trust-policy=no-downgrade</code>)</li>
+<li>Strict build script enforcement (<code>strict-dep-builds</code>)</li>
+<li>Renovate and Dependabot cooldown settings</li>
+</ul>
+<p><strong>Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install</span>
+cargo<span class="w"> </span>install<span class="w"> </span>depsguard
+
+<span class="c1"># Scan current project and show findings</span>
+depsguard<span class="w"> </span>scan
+
+<span class="c1"># Interactive mode: scan, select fixes, preview diffs, and apply</span>
+depsguard
+</code></pre></div>
 <h3 id="avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions">Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions<a class="headerlink" href="#avoid-allow-github-actions-to-create-and-approve-pull-requests-permission-in-repository-settings-and-set-read-only-default-workflow-permissions" title="Permanent link">&para;</a></h3>
 <p><img alt="github-actions-workflows" src="../../assets/figures/images/github-actions-workflows.png" /></p>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
@@ -3548,6 +3593,8 @@ released version, giving the community time to detect and report compromised pac
 <li><a href="https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/">GitHub Actions Policy</a></li>
 <li><a href="https://www.wiz.io/blog/github-actions-security-guide">How to Harden GitHub Actions: The Unofficial Guide</a></li>
 <li><a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown">Dependabot Cooldowns</a></li>
+<li><a href="https://depsguard.com/">DepsGuard</a></li>
+<li><a href="https://cooldowns.dev/">Dependency Cooldowns</a></li>
 </ul>
 
 
@@ -3569,7 +3616,7 @@ released version, giving the community time to detect and report compromised pac
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 3, 2026 12:44:03 UTC"><span class="timeago" datetime="2026-04-03T12:44:03+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 3, 2026 12:44:03 UTC">2026-04-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2026 20:37:46 UTC"><span class="timeago" datetime="2026-05-16T20:37:46+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2026 20:37:46 UTC">2026-05-16</span>
   </span>
 
     
