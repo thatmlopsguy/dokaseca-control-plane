@@ -133,6 +133,34 @@ updates:
 - **Reduced blast radius**: Prevents automatic adoption of a compromised version minutes after publication
 - **Complements SHA pinning**: While pinned SHAs protect against tag mutation, cooldowns protect against net-new malicious releases
 
+### DepsGuard
+
+[DepsGuard](https://depsguard.com/) is used to scan and harden package manager configurations against supply chain
+attacks. It provides an interactive TUI that detects missing security settings and applies fixes across npm, pnpm, Yarn,
+Bun, and uv.
+
+**What DepsGuard checks and configures:**
+
+- Minimum release age / dependency cooldowns (e.g. `min-release-age` in `.npmrc`, `exclude-newer` in `uv.toml`)
+- Disabling risky install scripts (`ignore-scripts=true`)
+- Blocking exotic transitive dependencies (`block-exotic-subdeps`)
+- Provenance downgrade protection (`trust-policy=no-downgrade`)
+- Strict build script enforcement (`strict-dep-builds`)
+- Renovate and Dependabot cooldown settings
+
+**Usage:**
+
+```bash
+# Install
+cargo install depsguard
+
+# Scan current project and show findings
+depsguard scan
+
+# Interactive mode: scan, select fixes, preview diffs, and apply
+depsguard
+```
+
 ### Avoid ‘Allow GitHub Actions to Create and Approve Pull Requests’ permission in repository settings and Set Read-Only Default Workflow Permissions
 
 ![github-actions-workflows](../assets/figures/images/github-actions-workflows.png)
@@ -145,3 +173,5 @@ updates:
 - [GitHub Actions Policy](https://github.blog/changelog/2025-08-15-github-actions-policy-now-supports-blocking-and-sha-pinning-actions/)
 - [How to Harden GitHub Actions: The Unofficial Guide](https://www.wiz.io/blog/github-actions-security-guide)
 - [Dependabot Cooldowns](https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file#cooldown)
+- [DepsGuard](https://depsguard.com/)
+- [Dependency Cooldowns](https://cooldowns.dev/)

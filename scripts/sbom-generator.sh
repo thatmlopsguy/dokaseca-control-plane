@@ -226,6 +226,7 @@ EOF
         [gitleaks]="gitleaks --version | awk 'NR==1 {print \$3}'"
         [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
         [chainsaw]="chainsaw version | awk 'NR==1 {print \$2}'"
+        [depsguard]="depsguard --version | awk 'NR==1 {print \$2}'"
     )
 
     for tool in "${!security_tools[@]}"; do
@@ -370,7 +371,6 @@ EOF
 
     declare -A project_tools=(
         [idpbuilder]="idpbuilder version 2>&1 | awk '{print \$2}'"
-        [kubara]="kubara --version 2>&1 | awk '{print \$3}'"
     )
 
     for tool in "${!project_tools[@]}"; do
