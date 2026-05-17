@@ -244,10 +244,12 @@ addons = {
   enable_litellm          = false # TODO
   enable_litellm_operator = false # TODO
   enable_langfuse         = false # Tested
+  enable_langtrace        = false # TODO see https://www.langtrace.ai/
   enable_arize_phoenix    = false # TODO
   enable_vllm_stack       = false # Tested
   enable_kubeflow_trainer = false # Tested
   enable_llmkube          = false # TODO
+  enable_kubeai           = false # TODO see https://www.kubeai.org/
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO

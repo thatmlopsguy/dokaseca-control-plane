@@ -10,6 +10,7 @@
 -- - Backstage: backstage, backstage_user
 -- - LiteLLM: litellm, litellm_user
 -- - Langfuse: langfuse, langfuse_user
+-- - Langtrace: langtrace, langtrace_user
 -- - MLflow: mlflow, mlflow_user
 -- - Airflow: airflow, airflow_user
 -- - Dagster: dagster, dagster_user
@@ -70,6 +71,13 @@ CREATE USER langfuse_user WITH PASSWORD 'langfuse_password';
 GRANT ALL PRIVILEGES ON DATABASE langfuse TO langfuse_user;
 \c langfuse
 GRANT ALL ON SCHEMA public TO langfuse_user;
+
+-- Langtrace database
+CREATE DATABASE langtrace;
+CREATE USER langtrace_user WITH PASSWORD 'langtrace_password';
+GRANT ALL PRIVILEGES ON DATABASE langtrace TO langtrace_user;
+\c langtrace
+GRANT ALL ON SCHEMA public TO langtrace_user;
 
 -- MLflow database
 CREATE DATABASE mlflow;

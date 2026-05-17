@@ -8,8 +8,10 @@ distributed training, LLM request routing, and observability.
 Doka Seca's machine learning stack consists of four core components:
 
 1. **LiteLLM** - For routing LLM requests
-2. **Langfuse** - For LLM observability
-3. **vllm** - For local LLM inference
+2. **Langfuse** or **Langtrace** - For LLM observability
+3. **Kubeai/LLMKube** - For LLM inference:
+   1. **vllm** - For local LLM inference
+   2. **ollama** - For local LLM inference
 4. **Kaito** - Operator that automates the AI/ML model inference or tuning workload in a Kubernetes cluster
 5. **MLflow** - For experiment tracking and model management
 
@@ -78,6 +80,11 @@ Doka Seca integrates Langfuse to provide comprehensive monitoring and tracing of
 - **Quality Evaluation**: Evaluate responses against defined criteria
 - **Analytics Dashboard**: Visualize patterns and identify optimization opportunities
 
+## Langtrace
+
+[Langtrace](https://docs.langtrace.ai/) is an open-source observability platform for LLM applications, similar to Langfuse.
+Doka Seca offers Langtrace as an alternative to Langfuse for users seeking a different set of features or integrations.
+
 ## MLflow
 
 [MLflow](https://mlflow.org/) is an open-source platform for managing the end-to-end machine learning lifecycle.
@@ -97,3 +104,7 @@ Doka Seca incorporates MLflow for experiment tracking, model versioning, and dep
 - [Langfuse Documentation](https://docs.langfuse.com/)
 - [Open Source LLMOps Stack](https://oss-llmops-stack.com/)
 - [MLflow Documentation](https://mlflow.org/docs/latest/index.html)
+- [Langtrace Documentation](https://docs.langtrace.ai/)
+- [LLMKube Documentation](https://llmkube.com/docs)
+- [KubeAI Documentation](https://www.kubeai.org/)
+- [Kaito Documentation](https://kaito-project.github.io/kaito/docs/)

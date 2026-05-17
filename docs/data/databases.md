@@ -18,25 +18,27 @@ Each service has:
 
 ## Connection Information
 
-| Service       | Database            | Username           | Default Password       | Connection String                                   |
-|---------------|---------------------|--------------------|------------------------|-----------------------------------------------------|
-| Keycloak      | keycloak            | keycloak_user      | keycloak_password      | jdbc:postgresql://postgres:5432/keycloak            |
-| Temporal      | temporal            | temporal_user      | temporal_password      | jdbc:postgresql://postgres:5432/temporal            |
-| Temporal      | temporal_visibility | temporal_user      | temporal_password      | jdbc:postgresql://postgres:5432/temporal_visibility |
-| Backstage     | backstage           | backstage_user     | backstage_password     | jdbc:postgresql://postgres:5432/backstage           |
-| LiteLLM       | litellm             | litellm_user       | litellm_password       | jdbc:postgresql://postgres:5432/litellm             |
-| Langfuse      | langfuse            | langfuse_user      | langfuse_password      | jdbc:postgresql://postgres:5432/langfuse            |
-| MLflow        | mlflow              | mlflow_user        | mlflow_password        | jdbc:postgresql://postgres:5432/mlflow              |
-| Report Portal | report_portal       | report_portal_user | report_portal_password | jdbc:postgresql://postgres:5432/report_portal       |
-| Chaos Mesh    | chaos_mesh          | chaos_mesh_user    | chaos_mesh_password    | jdbc:postgresql://postgres:5432/chaos_mesh          |
-| Airflow       | airflow             | airflow_user       | airflow_password       | jdbc:postgresql://postgres:5432/airflow             |
-| Dagster       | dagster             | dagster_user       | dagster_password       | jdbc:postgresql://postgres:5432/dagster             |
-| Superset      | superset            | superset_user      | superset_password      | jdbc:postgresql://postgres:5432/superset            |
-| Paralus       | paralus             | paralus_user       | paralus_password       | jdbc:postgresql://postgres:5432/paralus             |
-| Harbor        | harbor              | harbor_user        | harbor_password        | jdbc:postgresql://postgres:5432/harbor              |
-| Uptrace       | uptrace             | uptrace_user       | uptrace_password       | jdbc:postgresql://postgres:5432/uptrace             |
-| argoworkflows | argoworkflows       | argoworkflows_user | argoworkflows_password | jdbc:postgresql://postgres:5432/argoworkflows       |
-| Feast         | feast               | feast_user         | feast_password         | jdbc:postgresql://postgres:5432/feast               |
+| Service        | Database            | Username            | Default Password        | Connection String                                   |
+|----------------|---------------------|---------------------|-------------------------|-----------------------------------------------------|
+| Keycloak       | keycloak            | keycloak_user       | keycloak_password       | jdbc:postgresql://postgres:5432/keycloak            |
+| Temporal       | temporal            | temporal_user       | temporal_password       | jdbc:postgresql://postgres:5432/temporal            |
+| Temporal       | temporal_visibility | temporal_user       | temporal_password       | jdbc:postgresql://postgres:5432/temporal_visibility |
+| Backstage      | backstage           | backstage_user      | backstage_password      | jdbc:postgresql://postgres:5432/backstage           |
+| LiteLLM        | litellm             | litellm_user        | litellm_password        | jdbc:postgresql://postgres:5432/litellm             |
+| Langfuse       | langfuse            | langfuse_user       | langfuse_password       | jdbc:postgresql://postgres:5432/langfuse            |
+| Langtrace      | langtrace           | langtrace_user      | langtrace_password      | jdbc:postgresql://postgres:5432/langtrace           |
+| Grafana        | grafana             | grafana_user        | grafana_password        | jdbc:postgresql://postgres:5432/grafana             |
+| MLflow         | mlflow              | mlflow_user         | mlflow_password         | jdbc:postgresql://postgres:5432/mlflow              |
+| Report Portal  | report_portal       | report_portal_user  | report_portal_password  | jdbc:postgresql://postgres:5432/report_portal       |
+| Chaos Mesh     | chaos_mesh          | chaos_mesh_user     | chaos_mesh_password     | jdbc:postgresql://postgres:5432/chaos_mesh          |
+| Airflow        | airflow             | airflow_user        | airflow_password        | jdbc:postgresql://postgres:5432/airflow             |
+| Dagster        | dagster             | dagster_user        | dagster_password        | jdbc:postgresql://postgres:5432/dagster             |
+| Superset       | superset            | superset_user       | superset_password       | jdbc:postgresql://postgres:5432/superset            |
+| Paralus        | paralus             | paralus_user        | paralus_password        | jdbc:postgresql://postgres:5432/paralus             |
+| Harbor         | harbor              | harbor_user         | harbor_password         | jdbc:postgresql://postgres:5432/harbor              |
+| Uptrace        | uptrace             | uptrace_user        | uptrace_password        | jdbc:postgresql://postgres:5432/uptrace             |
+| Argo Workflows | argo_workflows      | argo_workflows_user | argo_workflows_password | jdbc:postgresql://postgres:5432/argo_workflows      |
+| Feast          | feast               | feast_user          | feast_password          | jdbc:postgresql://postgres:5432/feast               |
 
 ## Configuration
 
@@ -109,11 +111,12 @@ The Clickhouse database is used for langfuse and signoz. It is configured simila
 in Vault and connection information provided in the `.env` file. The Clickhouse container is defined in the
 `docker-compose.yml` file and can be accessed using the Clickhouse client or any compatible database tool.
 
-| Service  | Database | Username      | Default Password  | Connection String                          |
-|----------|----------|---------------|-------------------|--------------------------------------------|
-| langfuse | langfuse | langfuse_user | langfuse_password | jdbc:clickhouse://clickhouse:8123/langfuse |
-| signoz   | signoz   | signoz_user   | signoz_password   | jdbc:clickhouse://clickhouse:8123/signoz   |
-| uptrace  | uptrace  | uptrace_user  | uptrace_password  | jdbc:clickhouse://clickhouse:8123/uptrace  |
+| Service   | Database  | Username       | Default Password   | Connection String                           |
+|-----------|-----------|----------------|--------------------|---------------------------------------------|
+| langfuse  | langfuse  | langfuse_user  | langfuse_password  | jdbc:clickhouse://clickhouse:8123/langfuse  |
+| langtrace | langtrace | langtrace_user | langtrace_password | jdbc:clickhouse://clickhouse:8123/langtrace |
+| signoz    | signoz    | signoz_user    | signoz_password    | jdbc:clickhouse://clickhouse:8123/signoz    |
+| uptrace   | uptrace   | uptrace_user   | uptrace_password   | jdbc:clickhouse://clickhouse:8123/uptrace   |
 
 ## Cassandra
 
@@ -132,6 +135,7 @@ vault/platform/postgres/common/keycloak
 vault/platform/postgres/common/temporal
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse
+vault/platform/postgres/common/langtrace
 vault/platform/postgres/common/grafana
 vault/platform/postgres/common/mlflow
 vault/platform/postgres/common/airflow
@@ -149,6 +153,7 @@ vault/platform/postgres/common/feast
 vault/platform/mysql/common/devlake
 # Clickhouse credentials
 vault/platform/clickhouse/common/langfuse
+vault/platform/clickhouse/common/langtrace
 vault/platform/clickhouse/common/signoz
 vault/platform/clickhouse/common/uptrace
 # MongoDB credentials

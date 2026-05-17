@@ -255,10 +255,12 @@ locals {
     enable_litellm          = try(var.addons.enable_litellm, false)          # TODO
     enable_litellm_operator = try(var.addons.enable_litellm_operator, false) # TODO
     enable_langfuse         = try(var.addons.enable_langfuse, false)         # TODO
+    enable_langtrace        = try(var.addons.enable_langtrace, false)        # TODO see https://www.langtrace.ai/
     enable_arize_phoenix    = try(var.addons.enable_arize_phoenix, false)    # TODO
     enable_vllm_stack       = try(var.addons.enable_vllm_stack, false)       # TODO
     enable_kubeflow_trainer = try(var.addons.enable_kubeflow_trainer, false)
     enable_llmkube          = try(var.addons.enable_llmkube, false) # TODO see https://llmkube.com/
+    enable_kubeai           = try(var.addons.enable_kubeai, false)  # TODO see https://www.kubeai.org/
     # analytics
     enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
     enable_superset       = try(var.addons.enable_superset, false)       # TODO
