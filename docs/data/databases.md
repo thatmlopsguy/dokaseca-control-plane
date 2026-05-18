@@ -132,6 +132,7 @@ Database credentials are stored in Vault following the pattern described in the 
 vault/platform/postgres/common/dockhand
 vault/platform/postgres/common/backstage
 vault/platform/postgres/common/keycloak
+vault/platform/postgres/common/openfga
 vault/platform/postgres/common/temporal
 vault/platform/postgres/common/litellm
 vault/platform/postgres/common/langfuse

@@ -6,6 +6,7 @@
 -- List of services with their corresponding databases and users:
 -- - Keycloak: keycloak, keycloak_user
 -- - DevLake: devlake, devlake_user
+-- - OpenFGA: openfga, openfga_user
 -- - Temporal: temporal, temporal_user; temporal_visibility, temporal_user
 -- - Backstage: backstage, backstage_user
 -- - LiteLLM: litellm, litellm_user
@@ -32,6 +33,13 @@ CREATE USER keycloak_user WITH PASSWORD 'keycloak_password';
 GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak_user;
 \c keycloak
 GRANT ALL ON SCHEMA public TO keycloak_user;
+
+-- OpenFGA database
+CREATE DATABASE openfga;
+CREATE USER openfga_user WITH PASSWORD 'openfga_password';
+GRANT ALL PRIVILEGES ON DATABASE openfga TO openfga_user;
+\c openfga
+GRANT ALL ON SCHEMA public TO openfga_user;
 
 -- DevLake database
 CREATE DATABASE devlake;
