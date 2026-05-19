@@ -87,6 +87,44 @@ Connect using your preferred database client:
 - Port: 5432
 - User/Password: As specified in .env file
 
+## Connection Pooling with PgBouncer
+
+For improved resilience and to handle large numbers of client connections, we recommend running PgBouncer as a
+lightweight connection pooler in front of PostgreSQL. PgBouncer reduces connection churn, protects Postgres from
+being overwhelmed, and provides transaction pooling for short-lived connections.
+
+Recommended practices:
+
+- Run PgBouncer as a sidecar, a separate container in `docker-compose`, or as a small deployment in Kubernetes.
+- Point service connection strings at PgBouncer (default port `6432`) instead of connecting directly to Postgres.
+- Use `pool_mode = transaction` for most web applications; use `session` if your application requires session-level state.
+- Tune `max_client_conn`, `default_pool_size`, and `reserve_pool_size` according to your workload.
+- Ensure PgBouncer uses the same authentication method (e.g. `md5` or `scram-sha-256`) and has access to credentials from Vault.
+
+Example `docker-compose` snippet:
+
+```yaml
+pgbouncer:
+  image: pgbouncer/pgbouncer:latest
+  environment:
+    - DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres
+  ports:
+    - "6432:6432"
+  volumes:
+    - ./pgbouncer/pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro
+```
+
+Connection string example for services:
+
+- `jdbc:postgresql://pgbouncer:6432/keycloak`
+
+Operational notes:
+
+- Monitor PgBouncer stats with `SHOW POOLS;` and `SHOW STATS;` to assess pooling health.
+- When performing Postgres maintenance, drain/stop PgBouncer to gracefully close client connections.
+- Consider per-user connection limits and resource isolation to avoid noisy-neighbor effects.
+- Store PgBouncer config and credentials in Vault and render templates at deploy time.
+
 ## MySQL/MariaDB
 
 MySQL is used for DevLake. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection information provided in the `.env` file. The MySQL container is defined in the `docker-compose.yml` file and can be accessed using the MySQL client or any compatible database tool.
