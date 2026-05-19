@@ -1681,6 +1681,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connection-pooling-with-pgbouncer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Pooling with PgBouncer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mysqlmariadb" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3436,6 +3447,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connection-pooling-with-pgbouncer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Connection Pooling with PgBouncer
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#mysqlmariadb" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -3718,6 +3740,39 @@ Vault and accessed by services via environment variables.</p>
 <li>Port: 5432</li>
 <li>User/Password: As specified in .env file</li>
 </ul>
+<h2 id="connection-pooling-with-pgbouncer">Connection Pooling with PgBouncer<a class="headerlink" href="#connection-pooling-with-pgbouncer" title="Permanent link">&para;</a></h2>
+<p>For improved resilience and to handle large numbers of client connections, we recommend running PgBouncer as a
+lightweight connection pooler in front of PostgreSQL. PgBouncer reduces connection churn, protects Postgres from
+being overwhelmed, and provides transaction pooling for short-lived connections.</p>
+<p>Recommended practices:</p>
+<ul>
+<li>Run PgBouncer as a sidecar, a separate container in <code>docker-compose</code>, or as a small deployment in Kubernetes.</li>
+<li>Point service connection strings at PgBouncer (default port <code>6432</code>) instead of connecting directly to Postgres.</li>
+<li>Use <code>pool_mode = transaction</code> for most web applications; use <code>session</code> if your application requires session-level state.</li>
+<li>Tune <code>max_client_conn</code>, <code>default_pool_size</code>, and <code>reserve_pool_size</code> according to your workload.</li>
+<li>Ensure PgBouncer uses the same authentication method (e.g. <code>md5</code> or <code>scram-sha-256</code>) and has access to credentials from Vault.</li>
+</ul>
+<p>Example <code>docker-compose</code> snippet:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">pgbouncer</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgbouncer/pgbouncer:latest</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DATABASE_URL=postgresql://postgres:password@postgres:5432/postgres</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;6432:6432&quot;</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./pgbouncer/pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini:ro</span>
+</code></pre></div>
+<p>Connection string example for services:</p>
+<ul>
+<li><code>jdbc:postgresql://pgbouncer:6432/keycloak</code></li>
+</ul>
+<p>Operational notes:</p>
+<ul>
+<li>Monitor PgBouncer stats with <code>SHOW POOLS;</code> and <code>SHOW STATS;</code> to assess pooling health.</li>
+<li>When performing Postgres maintenance, drain/stop PgBouncer to gracefully close client connections.</li>
+<li>Consider per-user connection limits and resource isolation to avoid noisy-neighbor effects.</li>
+<li>Store PgBouncer config and credentials in Vault and render templates at deploy time.</li>
+</ul>
 <h2 id="mysqlmariadb">MySQL/MariaDB<a class="headerlink" href="#mysqlmariadb" title="Permanent link">&para;</a></h2>
 <p>MySQL is used for DevLake. It is configured similarly to PostgreSQL, with credentials stored in Vault and connection information provided in the <code>.env</code> file. The MySQL container is defined in the <code>docker-compose.yml</code> file and can be accessed using the MySQL client or any compatible database tool.</p>
 <table>
@@ -3877,7 +3932,7 @@ vault/platform/mongodb/common/litmus
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 18, 2026 20:35:24 UTC"><span class="timeago" datetime="2026-05-18T20:35:24+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 18, 2026 20:35:24 UTC">2026-05-18</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 19, 2026 20:23:23 UTC"><span class="timeago" datetime="2026-05-19T20:23:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 19, 2026 20:23:23 UTC">2026-05-19</span>
   </span>
 
     
