@@ -45,6 +45,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 
 - **[Integrate Velero to back up and restore Karmada resources](https://karmada.io/docs/administrator/backup/working-with-velero)** - Best practices for implementing backup strategies in multi-cluster environments
 - **[GitOps Patterns](https://github.com/cloudogu/gitops-patterns)** - Collection of GitOps patterns and best practices for implementing GitOps workflows in cloud-native environments
+- **[Building a cloud native internal developer platform with Kubernetes, GitOps, and supply chain security](https://www.cncf.io/blog/2026/05/29/building-a-cloud-native-internal-developer-platform-with-kubernetes-gitops-and-supply-chain-security/)** - CNCF blog post on building a cloud-native internal developer platform with Kubernetes, GitOps, and supply chain security best practices
 
 ### Platform Engineering Talks and Presentations
 
