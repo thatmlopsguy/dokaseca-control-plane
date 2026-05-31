@@ -100,6 +100,7 @@ locals {
     enable_argo_cd_image_updater = try(var.addons.enable_argo_cd_image_updater, false)
     enable_kargo                 = try(var.addons.enable_kargo, false)
     enable_gitops_promoter       = try(var.addons.enable_gitops_promoter, false)
+    enable_gitops_reverser       = try(var.addons.enable_gitops_reverser, false) # TODO see https://github.com/ConfigButler/gitops-reverser
     # platform engineering
     enable_karpor = try(var.addons.enable_karpor, false)
     enable_kro    = try(var.addons.enable_kro, false)
@@ -269,6 +270,7 @@ locals {
     # disaster recovery
     enable_velero         = try(var.addons.enable_velero, false)         # TODO
     enable_brudi_operator = try(var.addons.enable_brudi_operator, false) # TODO see https://github.com/mittwald/brudi-operator
+    enable_katafygio      = try(var.addons.enable_katafygio, false)      # TODO see https://github.com/bpineau/katafygio
     # incident management
     enable_oneuptime       = try(var.addons.enable_oneuptime, false)       # TODO
     enable_oneuptime_agent = try(var.addons.enable_oneuptime_agent, false) # TODO
