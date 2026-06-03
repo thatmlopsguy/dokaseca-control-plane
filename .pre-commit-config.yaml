@@ -24,17 +24,17 @@ repos:
         args: ["--ignore=E002,E003,E006"]
         files: ^scripts/.*\.sh$
 -   repo: https://github.com/bridgecrewio/checkov
-    rev: 3.2.526
+    rev: 3.2.530
     hooks:
     -   id: checkov
         name: checkov
 -   repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.13.10
+    rev: v4.16.3
     hooks:
     -   id: commitizen
         stages: [commit-msg]
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.24.1
+    rev: v1.25.2
     hooks:
     -   id: zizmor
 -   repo: https://github.com/rhysd/actionlint
@@ -51,7 +51,7 @@ repos:
         args: ["--ignore-words", ".codespell-ignore"]
         exclude: ".*\\.svg$"
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.37.1
+    rev: 0.37.2
     hooks:
     -   id: check-github-workflows
     -   id: check-dependabot
@@ -62,7 +62,7 @@ repos:
     -   id: markdownlint
         exclude: "(\\.github/PULL_REQUEST_TEMPLATE\\.md|CODE_OF_CONDUCT\\.md)"
 -   repo: https://github.com/betterleaks/betterleaks
-    rev: v1.1.2
+    rev: v1.3.1
     hooks:
     -   id: betterleaks
         args: ["--config=.betterleaks.toml"]
