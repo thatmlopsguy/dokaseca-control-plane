@@ -167,6 +167,7 @@ addons = {
   enable_kube_green = false
   enable_goldilocks = false
   enable_kruise     = false # TODO
+  enable_ballast    = false # TODO see https://github.com/Tight-Line/ballast
   # compliance
   enable_kyverno                 = false # Tested
   enable_kyverno_policies        = false # Tested
@@ -219,6 +220,7 @@ addons = {
   enable_backstage = false # TODO
   # tests
   enable_report_portal = false # TODO
+  enable_nbomber       = false # TODO
   # workload manager
   enable_temporal       = false # Tested
   enable_airflow        = false # Tested
@@ -251,6 +253,7 @@ addons = {
   enable_kubeflow_trainer  = false # Tested
   enable_llmkube           = false # TODO
   enable_kubeai            = false # TODO see https://www.kubeai.org/
+  enable_kagenti           = false # TODO see https://github.com/kagenti/kagenti
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO

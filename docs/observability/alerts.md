@@ -15,3 +15,6 @@ sending notifications based on defined conditions.
 
 VMAlertmanager is the alert management component that handles deduplication, grouping, and routing of alerts to various
 notification channels such as email, Slack, PagerDuty, etc.
+
+Additionally, [Service Level Objective (SLO)](https://sre.google/sre-book/service-level-objectives/) alerts generated with
+[Sloth](https://sloth.dev/) are included.

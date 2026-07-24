@@ -179,7 +179,8 @@ locals {
     enable_kepler     = try(var.addons.enable_kepler, false)
     enable_kube_green = try(var.addons.enable_kube_green, false)
     enable_goldilocks = try(var.addons.enable_goldilocks, false)
-    enable_kruise     = try(var.addons.enable_kruise, false) # TODO see https://github.com/kruize/autotune
+    enable_kruise     = try(var.addons.enable_kruise, false)  # TODO see https://github.com/kruize/autotune
+    enable_ballast    = try(var.addons.enable_ballast, false) # TODO see https://github.com/Tight-Line/ballast
     # compliance
     enable_kyverno           = try(var.addons.enable_kyverno, false)
     enable_kyverno_policies  = try(var.addons.enable_kyverno_policies, false)
@@ -231,6 +232,7 @@ locals {
     enable_backstage = try(var.addons.enable_backstage, false)
     # tests
     enable_report_portal = try(var.addons.enable_report_portal, false) # TODO
+    enable_nbomber       = try(var.addons.enable_nbomber, false)       # TODO see https://nbomber.com/
     # workload manager
     enable_temporal       = try(var.addons.enable_temporal, false)       # TODO
     enable_airflow        = try(var.addons.enable_airflow, false)        # TODO
@@ -263,6 +265,7 @@ locals {
     enable_kubeflow_trainer  = try(var.addons.enable_kubeflow_trainer, false)
     enable_llmkube           = try(var.addons.enable_llmkube, false) # TODO see https://llmkube.com/
     enable_kubeai            = try(var.addons.enable_kubeai, false)  # TODO see https://www.kubeai.org/
+    enable_kagenti           = try(var.addons.enable_kagenti, false) # TODO see https://github.com/kagenti/kagenti
     # analytics
     enable_flink_operator = try(var.addons.enable_flink_operator, false) # TODO
     enable_superset       = try(var.addons.enable_superset, false)       # TODO
