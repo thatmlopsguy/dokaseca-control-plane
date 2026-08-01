@@ -8,7 +8,7 @@ dependencies = []
 
 [dependency-groups]
 dev = [
-    "prek>=0.4.5",
+    "prek>=0.4.11",
 ]
 docs = [
     "mkdocs>=1.6.1",
