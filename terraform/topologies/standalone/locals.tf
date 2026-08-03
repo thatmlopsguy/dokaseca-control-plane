@@ -243,6 +243,7 @@ locals {
     enable_volcano  = try(var.addons.enable_volcano, false)  # TODO
     enable_yunikorn = try(var.addons.enable_yunikorn, false) # TODO
     # distributed computing
+    enable_sail           = try(var.addons.enable_sail, false)           # TODO see https://github.com/lakehq/sail
     enable_kuberay        = try(var.addons.enable_kuberay, false)        # TODO
     enable_spark_operator = try(var.addons.enable_spark_operator, false) # TODO
     enable_slurm_operator = try(var.addons.enable_slurm_operator, false) # TODO

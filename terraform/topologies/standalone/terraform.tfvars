@@ -231,6 +231,7 @@ addons = {
   enable_yunikorn = false # Tested
   enable_volcano  = false # Tested
   # distributed computing
+  enable_sail           = false # TODO see https://github.com/lakehq/sail
   enable_kuberay        = false # Tested
   enable_spark_operator = false # TODO
   enable_slurm_operator = false # TODO
