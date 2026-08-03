@@ -1,7 +1,13 @@
 {
     "[terraform]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "hashicorp.terraform"
+        "editor.defaultFormatter": "hashicorp.terraform",
+        "editor.formatOnSaveMode": "file"
+    },
+    "[terraform-vars]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "hashicorp.terraform",
+        "editor.formatOnSaveMode": "file"
     },
     "cSpell.words": [
         "admissionregistration",
@@ -152,4 +158,8 @@
         80,
         120
     ],
+    "terraform.languageServer.enable": true,
+    "files.associations": {
+        "*.tfvars": "terraform-vars"
+    }
 }
