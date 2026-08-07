@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.35.0
-# Generated on: 2026-05-16 20:57:28 UTC
+# Generated on: 2026-08-07 15:46:27 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -27,26 +27,26 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - git (version control)
 
 ### System Dependencies
-- base64: base64 (GNU coreutils) 8.32
-- git: git version 2.54.0
-- bash: GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
-- jq: jq-1.7.1
-- curl: curl 7.81.0 (x86_64-pc-linux-gnu) libcurl/7.81.0 OpenSSL/3.0.2 zlib/1.2.11 brotli/1.0.9 zstd/1.4.8 libidn2/2.3.2 libpsl/0.21.0 (+libidn2/2.3.2) libssh/0.9.6/openssl/zlib nghttp2/1.43.0 librtmp/2.3 OpenLDAP/2.5.20
+- base64: base64 (uutils coreutils) 0.8.0
+- git: git version 2.53.0
+- bash: GNU bash, version 5.3.9(1)-release (x86_64-pc-linux-gnu)
+- jq: jq-1.8.2
+- curl: curl 8.18.0 (x86_64-pc-linux-gnu) libcurl/8.18.0 OpenSSL/3.5.5 zlib/1.3.1 brotli/1.2.0 zstd/1.5.7 libidn2/2.3.8 libpsl/0.21.2 libssh2/1.11.1 nghttp2/1.68.0 librtmp/2.3 mit-krb5/1.22.1 OpenLDAP/2.6.10
 
 ## 2. Container Runtime & Kubernetes Tools
 
 ### Container Platform
 - podman: NOT INSTALLED
-- docker: Docker version 27.2.1, build 9e34c9b
+- docker: Docker version 29.1.3, build 29.1.3-0ubuntu4.1
 
 ### Kubernetes Distribution Tools
-- k0s: v1.32.4+k0s.0
-- k3s: v1.32.3+k3s1
-- k3d: v5.8.3
+- k0s: NOT INSTALLED
+- k3s: v1.35.6+k3s1
+- k3d: v5.9.0
 - kind: v0.31.0
 
 ### Kubernetes Client Tools
-- kubectl: v1.36.0
+- kubectl: v1.36.2
 - oras: 1.3.0
 - kustomize: v5.8.1
 - helm: v4.1.1+g5caf004
@@ -54,80 +54,80 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ## 3. Infrastructure as Code (IaC)
 
 ### Terraform/OpenTofu
-- tofu: v1.11.6
+- tofu: v1.12.4
 - terraform: v1.14.1
 
 ## 4. GitOps & Deployment Tools
 
 ### ArgoCD/Akuity Ecosystem
 - argocd: v3.3.2+8a3940d
-- kargo: v1.7.2
+- kargo: 1.10.9
 
 ### FluxCD Tools
-- flux: 2.8.6
+- flux: 2.9.1
 
 ### Cluster Management
-- clusterctl: v1.9.7
-- vcluster: 0.31.0
+- clusterctl: v1.13.4
+- vcluster: 0.35.1
 
 ## 5. Security Tools
 
 ### Image Signing & Vulnerability Scanning
-- gitleaks: 8.28.0
-- cosign: v3.0.6
-- pinact: 3.9.2
-- depsguard: 0.1.33
-- kyverno: 1.17.1
-- syft: 1.44.0
-- chainsaw: v0.2.14
+- cosign: v3.1.1
+- pinact: 4.1.0
+- depsguard: NOT INSTALLED
+- kyverno: v1.18.2
+- syft: 1.46.0
+- chainsaw: v0.2.15
 - trivy: 0.69.3
 - falcoctl: 0.11.4
-- grype: 0.112.0
+- betterleaks: 1.7.2
+- grype: 0.115.0
 
 ### Certificate Management
 - mkcert: v1.4.4
-- openssl: OpenSSL 3.3.2 3 Sep 2024 (Library: OpenSSL 3.3.2 3 Sep 2024)
+- openssl: OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
 
 ## 6. Backup & Storage Tools
 
 ### Backup Solutions
-- velero: v1.17.2
+- velero: v1.18.0
 - mc: RELEASE.2025-08-13T08-35-41Z
-- vault: v1.21.4
+- vault: v2.0.3
 
 ## 7. Network & Service Mesh Tools
 
 ### Service Mesh
-- istioctl: 1.29.0
-- cilium: 0.19.2
-- hubble: 1.19.3
+- istioctl: 1.30.2
+- cilium: 0.19.6
+- hubble: 1.19.4
 
 ## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
-- flux9s: Installed (version check failed)
-- k9s: dev
+- flux9s: 0.12.0
+- k9s: 0.51.0
 
 ## 9. Workflows & Pipeline Tools
 
 ### Workflow CLIs
 - argo: v3.6.3
-- tkn: 0.44.1
-- temporal: 1.1.0
+- tkn: 0.45.0
+- temporal: NOT INSTALLED
 
 ## 10. Development Tools
 
 ### Build Tools
-- node: v24.15.0
-- mise: 2026.3.7
-- just: 1.50.0
-- make: 4.3
-- python: 3.13.1
-- npm: 11.12.1
-- go: go1.25.5
+- node: NOT INSTALLED
+- mise: 2026.7.12
+- just: 1.56.0
+- make: 4.4.1
+- python: 3.13.14
+- npm: NOT INSTALLED
+- go: go1.26.0
 
 ### Platform Engineering Tools
-- idpbuilder: 0.9.1
+- idpbuilder: NOT INSTALLED
 
 ## 11. Verification
 

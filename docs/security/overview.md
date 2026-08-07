@@ -57,6 +57,15 @@ kubectl logs -n falco -l app=falco
 - Alerts are integrated with platform observability
 - Security events are audited and reviewed regularly
 
+## Tetragon Security
+
+[Tetragon](https://cilium.io/tetragon/) is used for:
+
+- Real-time security observability for Kubernetes workloads
+- Detecting and responding to suspicious activity at the kernel level
+- Enforcing security policies with fine-grained control
+- Integrating with alerting and monitoring systems
+
 ## GitHub Actions Security
 
 ### Pin Action Versions

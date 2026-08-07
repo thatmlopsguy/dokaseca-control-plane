@@ -223,7 +223,7 @@ EOF
         [grype]="grype version | awk 'NR==2 {print \$2}'"
         [syft]="syft version | awk 'NR==2 {print \$2}'"
         [falcoctl]="falcoctl version | awk '{print \$3}'"
-        [gitleaks]="gitleaks --version | awk 'NR==1 {print \$3}'"
+        [betterleaks]="betterleaks --version | awk 'NR==1 {print \$3}'"
         [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
         [chainsaw]="chainsaw version | awk 'NR==1 {print \$2}'"
         [depsguard]="depsguard --version | awk 'NR==1 {print \$2}'"
@@ -305,7 +305,7 @@ EOF
 
     declare -A observability_tools=(
         [k9s]="k9s version | grep Version | cut -d':' -f2 | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*m//g'"
-        [flux9s]="flux9s version | grep Version | cut -d':' -f2"
+        [flux9s]="flux9s version | awk 'NR==1 {print \$2}'"
     )
 
     for tool in "${!observability_tools[@]}"; do

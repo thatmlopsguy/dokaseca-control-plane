@@ -39,18 +39,20 @@
 
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
-Welcome to **DoKa Seca** (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an opinionated
-infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for bootstrapping cloud-native
-platforms using Kubernetes in Docker (Kind)!
+Welcome to **DoKa Seca** (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an
+opinionated infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for
+bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)!
 
-DoKa Seca provides a production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than
-just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs
-essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.
+DoKa Seca provides a production-ready framework that automates the entire platform bootstrap process using Kind clusters.
+Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions
+infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single
+command, in your local "dry dock" environment.
 
-This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers
-and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of
-GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in
-local development or homelab environments while following enterprise-grade patterns and best practices.
+This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for
+platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll
+find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native
+security practices - all designed to run efficiently in local development or homelab environments while following
+enterprise-grade patterns and best practices.
 
 DoKa Seca consists of 5 GitHub repositories:
 
@@ -89,7 +91,7 @@ DoKa Seca consists of 5 GitHub repositories:
 * [`velero`](https://github.com/vmware-tanzu/velero)
 * [`vault`](https://developer.hashicorp.com/vault/docs/install)
 * [`minio client (mc)`](https://github.com/minio/mc)
-* [`crossplane-cli`](https://docs.crossplane.io/v2.2/cli/)
+* [`crossplane-cli`](https://github.com/crossplane/cli/)
 
 > **⚠️ Note: Internet access required**
 > You will also need access to the internet to download the necessary Helm charts and CRDs.
@@ -97,15 +99,23 @@ DoKa Seca consists of 5 GitHub repositories:
 
 ## Quick Start
 
-Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and configured properly.
-This ensures your platform setup is consistent, secure, and easily reproducible across environments.
+Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and
+configured properly. This ensures your platform setup is consistent, secure, and easily reproducible across environments.
 
-DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced
-configurations, see [terraform/README.md](terraform/README.md).
+DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment
+options and advanced configurations, see [terraform/README.md](terraform/README.md).
+
+Copy .secrets.example to .secrets and fill in the required values. This file contains sensitive information such as
+passwords and API keys, so make sure to keep it secure.
+
+```bash
+cp .secrets.example .secrets
+```
 
 ### Option 1: Hub-Spoke Topology (Recommended)
 
-This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.
+This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages the
+addons/workloads for all clusters.
 
 **Step 1: Deploy the Hub Cluster**
 
@@ -274,6 +284,8 @@ Want to know about the features to come? Check out the project roadmap for more 
 
 ## License
 
-DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE), a permissive free software license that allows you to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions under specific terms.
+DoKa Seca is licensed under [Apache License, Version 2.0](LICENSE), a permissive free software license that allows you
+to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions under specific
+terms.
 
 Please note that various pieces of software it installs in your cluster may have other licenses.

@@ -83,6 +83,7 @@ locals {
     # ci/cd
     enable_tekton = try(var.addons.enable_tekton, false) # TODO
     # continuous delivery
+    enable_kokumi = try(var.addons.enable_kokumi, false) # TODO see https://kokumi.dev/
     # gitops bridge create enable_argocd variable
     enable_argo_cd = try(var.addons.enable_argo_cd, false)
     # https://github.com/open-cluster-management-io/addon-contrib/blob/main/argocd-agent-addon/charts/argocd-agent-addon/Chart.yaml
