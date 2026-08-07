@@ -23,7 +23,7 @@
       
       
       <link rel="icon" href="assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -31,7 +31,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -3495,16 +3495,18 @@
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
 <p><a href="https://kubernetes.io/"><img alt="Kubernetes" src="https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&amp;logo=kubernetes&amp;logoColor=white" /></a></p>
-<p>Welcome to <strong>DoKa Seca</strong> (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an opinionated
-infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for bootstrapping cloud-native
-platforms using Kubernetes in Docker (Kind)!</p>
-<p>DoKa Seca provides a production-ready framework that automates the entire platform bootstrap process using Kind clusters. Rather than
-just being a collection of configurations, it's a complete platform engineering solution that provisions infrastructure, installs
-essential tooling, configures GitOps workflows, and sets up observability - all with a single command, in your local "dry dock" environment.</p>
-<p>This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for platform engineers
-and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll find real-world implementations of
-GitOps workflows, infrastructure as code, observability stacks, and cloud-native security practices - all designed to run efficiently in
-local development or homelab environments while following enterprise-grade patterns and best practices.</p>
+<p>Welcome to <strong>DoKa Seca</strong> (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an
+opinionated infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for
+bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)!</p>
+<p>DoKa Seca provides a production-ready framework that automates the entire platform bootstrap process using Kind clusters.
+Rather than just being a collection of configurations, it's a complete platform engineering solution that provisions
+infrastructure, installs essential tooling, configures GitOps workflows, and sets up observability - all with a single
+command, in your local "dry dock" environment.</p>
+<p>This project serves as both a personal learning journey into modern DevOps practices and a comprehensive resource for
+platform engineers and developers interested in rapidly spinning up production-grade Kubernetes environments. Here you'll
+find real-world implementations of GitOps workflows, infrastructure as code, observability stacks, and cloud-native
+security practices - all designed to run efficiently in local development or homelab environments while following
+enterprise-grade patterns and best practices.</p>
 <p>DoKa Seca consists of 5 GitHub repositories:</p>
 <table>
 <thead>
@@ -3563,7 +3565,7 @@ local development or homelab environments while following enterprise-grade patte
 <li><a href="https://github.com/vmware-tanzu/velero"><code>velero</code></a></li>
 <li><a href="https://developer.hashicorp.com/vault/docs/install"><code>vault</code></a></li>
 <li><a href="https://github.com/minio/mc"><code>minio client (mc)</code></a></li>
-<li><a href="https://docs.crossplane.io/v2.2/cli/"><code>crossplane-cli</code></a></li>
+<li><a href="https://github.com/crossplane/cli/"><code>crossplane-cli</code></a></li>
 </ul>
 <blockquote>
 <p><strong>⚠️ Note: Internet access required</strong>
@@ -3571,12 +3573,17 @@ You will also need access to the internet to download the necessary Helm charts 
 Make sure you are not blocked by a firewall or proxy.</p>
 </blockquote>
 <h2 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h2>
-<p>Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and configured properly.
-This ensures your platform setup is consistent, secure, and easily reproducible across environments.</p>
-<p>DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment options and advanced
-configurations, see <a href="terraform/README.md">terraform/README.md</a>.</p>
+<p>Doka Seca uses terraform to provision the infrastructure and deploy the clusters, so make sure you have it installed and
+configured properly. This ensures your platform setup is consistent, secure, and easily reproducible across environments.</p>
+<p>DoKa Seca supports multiple deployment topologies. Choose the one that best fits your needs. For detailed deployment
+options and advanced configurations, see <a href="terraform/README.md">terraform/README.md</a>.</p>
+<p>Copy .secrets.example to .secrets and fill in the required values. This file contains sensitive information such as
+passwords and API keys, so make sure to keep it secure.</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>.secrets.example<span class="w"> </span>.secrets
+</code></pre></div>
 <h3 id="option-1-hub-spoke-topology-recommended">Option 1: Hub-Spoke Topology (Recommended)<a class="headerlink" href="#option-1-hub-spoke-topology-recommended" title="Permanent link">&para;</a></h3>
-<p>This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages addons/workloads for all clusters.</p>
+<p>This deploys a centralized hub cluster that manages multiple spoke clusters. The hub cluster runs ArgoCD and manages the
+addons/workloads for all clusters.</p>
 <p><strong>Step 1: Deploy the Hub Cluster</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deploy control plane cluster</span>
 <span class="nb">cd</span><span class="w"> </span>terraform/topologies/hub-spoke/hub
@@ -3695,7 +3702,9 @@ read our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
 <h2 id="roadmap">Roadmap<a class="headerlink" href="#roadmap" title="Permanent link">&para;</a></h2>
 <p>Want to know about the features to come? Check out the project roadmap for more information.</p>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p>DoKa Seca is licensed under <a href="LICENSE">Apache License, Version 2.0</a>, a permissive free software license that allows you to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions under specific terms.</p>
+<p>DoKa Seca is licensed under <a href="LICENSE">Apache License, Version 2.0</a>, a permissive free software license that allows you
+to use the software for any purpose, to distribute it, to modify it, and to distribute modified versions under specific
+terms.</p>
 <p>Please note that various pieces of software it installs in your cluster may have other licenses.</p>
 
 
@@ -3840,7 +3849,7 @@ read our <a href="CONTRIBUTING.md">contributing guidelines</a>.</p>
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.footer"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="js/timeago.min.js"></script>
       
