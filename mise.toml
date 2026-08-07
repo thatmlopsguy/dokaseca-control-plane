@@ -2,6 +2,9 @@
 [env]
 PROJECT_NAME = "Doka Seca"
 
+[settings]
+minimum_release_age = "7d" # default is 24h
+
 [tasks.tools]
 description = "Install all tools and setup pre-commit"
 depends = ["mise", "pre-commit-install"]
@@ -18,4 +21,3 @@ outputs = [".git/hooks/pre-commit"]
 [tasks.tools-list]
 description = "List current mise tools"
 run = "mise list --current"
-
