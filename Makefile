@@ -351,4 +351,4 @@ pre-commit-run: ## Execute pre-commit git-hooks
 	@uvx prek run -a
 
 pre-commit-update: ## Update pre-commit git-hooks
-	@uvx pre-commit-update
+	@uvx prek update

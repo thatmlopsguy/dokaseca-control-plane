@@ -1,10 +1,10 @@
 name: Release Drafter
 
 on:
-  push:
-    # branches to consider in the event; optional, defaults to all
-    branches:
-      - main
+  #push:
+  # branches to consider in the event; optional, defaults to all
+  #  branches:
+  #    - main
 
   # pull_request_target event is required for autolabeler to support PRs from forks
   # and provides better handling of release updates
