@@ -3,13 +3,11 @@ name = "dokaseca"
 version = "0.1.0"
 description = "Framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind)"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.14"
 dependencies = []
 
 [dependency-groups]
-dev = [
-    "prek>=0.4.11",
-]
+dev = ["prek>=0.4.11"]
 docs = [
     "mkdocs>=1.6.1",
     "mkdocs-git-authors-plugin>=0.10.0",

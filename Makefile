@@ -77,7 +77,7 @@ docker-compose-up: ## Start docker-compose services
 	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra up -d
 
 docker-compose-down: ## Stop docker-compose services
-	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra down
+	@docker compose -f $(ROOT_DIR)/docker-compose.yml --profile infra down 2>/dev/null || true
 
 docker-stop-all: ## Stop all running Docker containers
 	@docker ps -q | xargs -r docker stop
@@ -114,10 +114,10 @@ vcluster-list: ## List of vclusters
 
 vcluster-delete-all-clusters: ## Delete all vclusters
 	@echo "Deleting all vclusters..."
-	@vcluster list --output json | jq -r '.[].Name' | while read name; do \
+	@vcluster list --output json 2>/dev/null | jq -r '.[].Name' 2>/dev/null | while read name; do \
 		docker rm -f "vcluster.$${name}" 2>/dev/null || true; \
 		vcluster delete "$$name" --ignore-not-found 2>/dev/null || true; \
-	done
+	done || true
 	@echo "All vclusters deleted."
 
 ##@ K3s
@@ -276,6 +276,9 @@ headlamp-token: ## Get headlamp token
 
 backstage-ui: ## Access backstage ui
 	@kubectl port-forward svc/backstage -n backstage 7007:7007
+
+kokumi-ui: ## Access kokumi ui (admin:admin)
+	@kubectl port-forward -n kokumi svc/kokumi-server 8085:80 &
 
 kargo-ui: ## Access kargo ui (password: oFUvUWUmelWqEIZ6ppHQrkEfFaPgvvJx)
 	@kubectl port-forward svc/kargo-api -n kargo 8081:80

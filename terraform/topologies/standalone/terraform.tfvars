@@ -77,7 +77,7 @@ addons = {
   enable_argo_cd_agent = false # TODO
   enable_argo_rollouts = false
   enable_argo_events   = false
-  enable_kokumi        = false # TODO see https://kokumi.dev/
+  enable_kokumi        = true # TODO see https://kokumi.dev/
   # developer experience
   enable_open_feature = false # feature flags
   enable_openfunction = false
