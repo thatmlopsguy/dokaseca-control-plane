@@ -138,7 +138,7 @@ EOF
     done
 
     # Infrastructure as Code
-    print_info "Analyzing Infrastructure as Code tools..."
+    print_info "Analyzing infrastructure as code tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 3. Infrastructure as Code (IaC)
@@ -158,7 +158,7 @@ EOF
     done
 
     # GitOps and Deployment Tools
-    print_info "Analyzing GitOps and deployment tools..."
+    print_info "Analyzing gitops and deployment tools..."
     cat << 'EOF' >> "$SBOM_FILE"
 
 ## 4. GitOps & Deployment Tools
