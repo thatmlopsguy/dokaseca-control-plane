@@ -299,6 +299,9 @@ cyclops-ui: ## Access cyclops-ui
 dapr-ui: ## Access dapr dashboard
 	@kubectl port-forward svc/dapr-dashboard  8001:8080 -n dapr-system
 
+radar-ui: ## Access radar ui
+	@kubectl port-forward svc/radar 9280:9280 -n radar
+
 ##@ ML/AI
 mlflow-ui: ## Access mlflow ui
 	@kubectl port-forward svc/mlflow 5000:80 -n mlflow
