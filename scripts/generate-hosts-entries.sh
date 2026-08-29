@@ -52,6 +52,7 @@ SERVICE_PREFIXES=(
     "tekton-dashboard"
     "falcosidekick"
     "longhorn"
+    "radar"
 )
 
 # Generate hosts entries
