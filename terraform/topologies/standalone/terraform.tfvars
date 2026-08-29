@@ -57,6 +57,7 @@ addons = {
   enable_policy_reporter    = false
   enable_kiali              = false
   enable_kafbat_ui          = false
+  enable_radar              = true # TODO
   # infrastructure
   enable_atlantis  = false
   enable_semaphore = false

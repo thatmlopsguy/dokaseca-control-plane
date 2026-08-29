@@ -71,6 +71,7 @@ locals {
     enable_falcosidekick      = try(var.addons.enable_falcosidekick, false)
     enable_kiali              = try(var.addons.enable_kiali, false)
     enable_kafbat_ui          = try(var.addons.enable_kafbat_ui, false)
+    enable_radar              = try(var.addons.enable_radar, false)
     # infrastructure
     enable_atlantis  = try(var.addons.enable_atlantis, false)
     enable_semaphore = try(var.addons.enable_semaphore, false)
