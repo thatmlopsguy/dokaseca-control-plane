@@ -163,6 +163,7 @@ addons = {
   enable_tetragon                 = false
   enable_tracee                   = false
   enable_dependency_tracker       = false # TODO
+  enable_sonarqube                = false
   # cost
   enable_opencost   = false
   enable_kepler     = false
@@ -198,8 +199,9 @@ addons = {
   enable_weaviate            = false
   enable_milvus              = false
   # dora metrics
-  enable_devlake   = false
-  enable_open_dora = false
+  enable_devlake    = false
+  enable_open_dora  = false
+  enable_middleware = false # TODO https://www.middlewarehq.com/
   # utilities
   enable_reloader                 = false
   enable_reflector                = false

@@ -176,6 +176,7 @@ locals {
     enable_tetragon                 = try(var.addons.enable_tetragon, false)
     enable_tracee                   = try(var.addons.enable_tracee, false)
     enable_dependency_tracker       = try(var.addons.enable_dependency_tracker, false) # TODO
+    enable_sonarqube                = try(var.addons.enable_sonarqube, false)
     # cost
     enable_opencost   = try(var.addons.enable_opencost, false)
     enable_kepler     = try(var.addons.enable_kepler, false)
@@ -210,8 +211,9 @@ locals {
     enable_weaviate            = try(var.addons.enable_weaviate, false)            # TODO
     enable_milvus              = try(var.addons.enable_milvus, false)              # TODO
     # dora metrics
-    enable_devlake   = try(var.addons.enable_devlake, false)
-    enable_open_dora = try(var.addons.enable_open_dora, false)
+    enable_devlake    = try(var.addons.enable_devlake, false)
+    enable_open_dora  = try(var.addons.enable_open_dora, false)
+    enable_middleware = try(var.addons.enable_middleware, false) # TODO https://www.middlewarehq.com/
     # utilities
     enable_reloader                 = try(var.addons.enable_reloader, false)
     enable_reflector                = try(var.addons.enable_reflector, false)
