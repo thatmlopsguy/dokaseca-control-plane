@@ -1,5 +1,5 @@
-name: 'Pre-commit autoupdate'
-description: 'Run prek autoupdate'
+name: 'Pre-commit update'
+description: 'Run prek update'
 branding:
   icon: chevrons-up
   color: yellow
@@ -9,5 +9,5 @@ runs:
     - name: Run prek
       uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
       with:
-        extra-args: "autoupdate"
+        extra-args: "update"
         prek-version: "0.5.5"
