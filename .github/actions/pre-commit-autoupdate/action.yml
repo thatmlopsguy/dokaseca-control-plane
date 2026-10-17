@@ -1,16 +1,13 @@
 name: 'Pre-commit autoupdate'
-description: 'Run pre-commit autoupdate and run them on all files using uv'
+description: 'Run prek autoupdate'
 branding:
   icon: chevrons-up
   color: yellow
 runs:
   using: "composite"
   steps:
-    - name: Install uv
-      uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+    - name: Run prek
+      uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
       with:
-        version: "latest"
-
-    - name: Run pre-commit autoupdate
-      run: uvx prek update
-      shell: bash
+        extra-args: "autoupdate"
+        prek-version: "0.5.5"
