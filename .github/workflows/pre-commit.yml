@@ -1,4 +1,4 @@
-name: Pre-commit Checks
+name: PrekChecks
 
 on:
   push:
@@ -30,32 +30,27 @@ on:
       - "terraform/**"
 
 jobs:
-  pre-commit:
-    name: Pre-commit
+  prek:
+    name: Prek
     runs-on: ubuntu-latest
     permissions:
       contents: read
 
     steps:
-      # - uses: GitHubSecurityLab/actions-permissions/monitor@b25f731bf2f9eb9748c2e9757d366c3e72fa2109 # v1.0.2-beta8
-
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0 # Fetch full history for better diffs
           persist-credentials: false
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
-        with:
-          version-file: "pyproject.toml"
-
       - name: Install system dependencies
         run: |
           # Install shellcheck
           sudo apt-get update
-          sudo apt-get install -y shellcheck
+          sudo apt-get install -y shellcheck shfmt
 
-      - name: Run pre-commit
-        run: uvx prek run --all-files
-        shell: bash
+      - name: Run prek
+        uses: j178/prek-action@1382ad72dea72f9d53832f2bcb65b3e87a947204 # v3.0.1
+        with:
+          extra-args: "--all-files"
+          prek-version: "0.5.5"

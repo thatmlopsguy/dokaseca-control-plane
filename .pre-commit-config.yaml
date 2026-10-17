@@ -23,11 +23,11 @@ repos:
         name: shellcheck
         args: ["--rcfile=.shellcheckrc"]
         files: ^scripts/.*\.sh$
-# -   repo: https://github.com/jumanjihouse/pre-commit-hooks
-#     rev: 3.0.0
-#     hooks:
-#     -   id: shfmt
-#         args: ['-l', '-i', '2', '-ci', '-sr', '-w']
+-   repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+    -   id: shfmt
+        args: ['-l', '-i', '2', '-ci', '-sr', '-w']
 -   repo: https://github.com/openstack/bashate
     rev: 2.1.1
     hooks:
