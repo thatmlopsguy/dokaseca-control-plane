@@ -21,7 +21,7 @@ kubectl -n kube-system get pods # --watch
 cilium status --wait
 
 if [[ -n "${CILIUM_TEST_SELECTOR}" ]]; then
-	cilium connectivity test --test "${CILIUM_TEST_SELECTOR}"
+  cilium connectivity test --test "${CILIUM_TEST_SELECTOR}"
 else
-	cilium connectivity test
+  cilium connectivity test
 fi

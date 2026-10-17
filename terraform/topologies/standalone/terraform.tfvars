@@ -156,6 +156,7 @@ addons = {
   enable_trivy_operator           = false
   enable_sealed_secrets           = false
   enable_external_secrets         = true
+  enable_dynamic_secrets_operator = false # TODO see https://github.com/quantumsys-dev/dynamic-secret-operator
   enable_vault                    = false
   enable_openbao                  = false
   enable_kubearmor                = false
@@ -179,8 +180,9 @@ addons = {
   enable_connaisseur             = false
   enable_policy_controller       = false
   # chaos engineering
-  enable_litmus     = false
-  enable_chaos_mesh = false
+  enable_litmus        = false
+  enable_chaos_mesh    = false
+  enable_krkn_operator = false # TODO see https://github.com/krkn/krkn-operator
   # storage
   enable_rustfs           = false
   enable_minio            = false
@@ -238,7 +240,8 @@ addons = {
   enable_sail           = false # TODO see https://github.com/lakehq/sail
   enable_kuberay        = false # Tested
   enable_spark_operator = false # TODO
-  enable_slurm_operator = false # TODO
+  enable_slurm_operator = false # TODO see https://github.com/SlinkyProject/slurm-operator
+  enable_soperator      = false # TODO see https://github.com/nebius/soperator
   # machine learning
   enable_hami              = false # TODO see https://project-hami.io/
   enable_kaito             = false # TODO
@@ -249,7 +252,7 @@ addons = {
   enable_mlflow            = false # Tested
   enable_seldon            = false # TODO
   enable_litellm           = false # TODO
-  enable_litellm_operator  = false # TODO
+  enable_litellm_operator  = false # TODO see https://litellm-operator.palena.ai/
   enable_langfuse          = false # Tested
   enable_langfuse_operator = false # TODO see https://langfuse-operator.palena.ai/
   enable_langtrace         = false # TODO see https://www.langtrace.ai/
@@ -259,6 +262,7 @@ addons = {
   enable_llmkube           = false # TODO
   enable_kubeai            = false # TODO see https://www.kubeai.org/
   enable_kagenti           = false # TODO see https://github.com/kagenti/kagenti
+  enable_agentgateway      = false # TODO see https://github.com/agentgateway/agentgateway
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO

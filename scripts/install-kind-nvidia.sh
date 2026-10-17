@@ -13,7 +13,7 @@ echo "Allowing volume mounts..."
 # This is necessary for GPU passthrough in containerized environments
 sudo sed -i '/accept-nvidia-visible-devices-as-volume-mounts/c\accept-nvidia-visible-devices-as-volume-mounts = true' /etc/nvidia-container-runtime/config.toml
 
-kind create cluster --name single-node-cluster --config - <<EOF
+kind create cluster --name single-node-cluster --config - << EOF
 apiVersion: kind.x-k8s.io/v1alpha4
 kind: Cluster
 nodes:

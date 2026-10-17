@@ -13,7 +13,7 @@ EXPECTED_DBS=(
 )
 
 EXPECTED_USERS=(
-  keycloak_user devlake_user temporal_user  backstage_user litellm_user langfuse_user
+  keycloak_user devlake_user temporal_user backstage_user litellm_user langfuse_user
   mlflow_user airflow_user dagster_user report_portal_user chaos_mesh_user paralus_user
 )
 
@@ -25,7 +25,7 @@ echo "=== PostgreSQL Health Check ==="
 echo
 
 # Check container is running
-if ! docker inspect --format='{{.State.Running}}' "${CONTAINER}" 2>/dev/null | grep -q true; then
+if ! docker inspect --format='{{.State.Running}}' "${CONTAINER}" 2> /dev/null | grep -q true; then
   echo "ERROR: Container '${CONTAINER}' is not running."
   exit 1
 fi
@@ -98,7 +98,7 @@ for db in "${EXPECTED_DBS[@]}"; do
     grants=$(run_psql "SELECT grantee, privilege_type
       FROM information_schema.role_table_grants
       WHERE table_catalog = '${db}'
-      LIMIT 5;" 2>/dev/null || true)
+      LIMIT 5;" 2> /dev/null || true)
     acl=$(run_psql "SELECT datacl FROM pg_database WHERE datname = '${db}';")
     echo "${db}: ${acl:-<default>}"
   fi
@@ -110,7 +110,7 @@ echo "=== Schema Public Privileges ==="
 for db in "${EXPECTED_DBS[@]}"; do
   if echo "${existing_dbs}" | grep -qx "${db}"; then
     schema_acl=$(docker exec "${CONTAINER}" psql -U "${PG_USER}" -d "${db}" -tAc \
-      "SELECT nspacl FROM pg_namespace WHERE nspname = 'public';" 2>/dev/null || true)
+      "SELECT nspacl FROM pg_namespace WHERE nspname = 'public';" 2> /dev/null || true)
     echo "${db}/public: ${schema_acl:-<default>}"
   fi
 done

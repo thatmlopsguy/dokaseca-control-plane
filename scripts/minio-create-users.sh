@@ -39,11 +39,11 @@ BUCKETS=(
 
 # ---------- helpers ----------------------------------------------------------
 
-info()  { printf '[INFO]  %s\n' "$1"; }
+info() { printf '[INFO]  %s\n' "$1"; }
 error() { printf '[ERROR] %s\n' "$1" >&2; }
 
 check_prerequisites() {
-  if ! command -v mc &>/dev/null; then
+  if ! command -v mc &> /dev/null; then
     error "mc (MinIO Client) is not installed. Install it from https://min.io/docs/minio/linux/reference/minio-mc.html"
     exit 1
   fi
@@ -54,7 +54,8 @@ create_bucket_policy() {
   local policy_name="$2"
 
   local policy_json
-  policy_json=$(cat <<EOF
+  policy_json=$(
+    cat << EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -75,7 +76,7 @@ create_bucket_policy() {
   ]
 }
 EOF
-)
+  )
 
   local tmp_file
   tmp_file=$(mktemp)
@@ -111,10 +112,10 @@ for entry in "${BUCKETS[@]}"; do
   policy_name="${username}_policy"
 
   # Create policy scoped to this bucket
-  create_bucket_policy "${bucket}" "${policy_name}" 2>/dev/null || true
+  create_bucket_policy "${bucket}" "${policy_name}" 2> /dev/null || true
 
   # Create (or update) the user
-  if mc admin user info "${MC_ALIAS}" "${username}" &>/dev/null; then
+  if mc admin user info "${MC_ALIAS}" "${username}" &> /dev/null; then
     info "User '${username}' already exists -- updating"
   fi
   mc admin user add "${MC_ALIAS}" "${username}" "${password}"

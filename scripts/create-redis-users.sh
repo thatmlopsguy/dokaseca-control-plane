@@ -51,12 +51,12 @@ redis_exec() {
 }
 
 check_prerequisites() {
-  if ! command -v docker >/dev/null 2>&1; then
+  if ! command -v docker > /dev/null 2>&1; then
     print_error "docker is required but not installed."
     exit 1
   fi
 
-  if ! docker inspect --format='{{.State.Running}}' "${REDIS_CONTAINER}" 2>/dev/null | grep -q true; then
+  if ! docker inspect --format='{{.State.Running}}' "${REDIS_CONTAINER}" 2> /dev/null | grep -q true; then
     print_error "Container '${REDIS_CONTAINER}' is not running."
     exit 1
   fi
@@ -67,9 +67,9 @@ autodetect_admin_password() {
     return
   fi
 
-  REDIS_PASSWORD=$(docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "${REDIS_CONTAINER}" \
-    | awk -F= '$1=="REDIS_PASSWORD" {print $2}' \
-    | tail -n1)
+  REDIS_PASSWORD=$(docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "${REDIS_CONTAINER}" |
+    awk -F= '$1=="REDIS_PASSWORD" {print $2}' |
+    tail -n1)
 }
 
 main() {
@@ -83,7 +83,7 @@ main() {
   fi
 
   # Validate we can connect before applying ACL changes.
-  redis_exec PING >/dev/null
+  redis_exec PING > /dev/null
 
   printf '\n%-12s %-20s %s\n' "SERVICE" "USERNAME" "PASSWORD"
   printf '%-12s %-20s %s\n' "-------" "--------" "--------"
@@ -99,7 +99,7 @@ main() {
     password="${!pass_var:-${service}_password}"
 
     # Create/update ACL user with broad command and key permissions.
-    redis_exec ACL SETUSER "${username}" on ">${password}" "~*" "+@all" >/dev/null
+    redis_exec ACL SETUSER "${username}" on ">${password}" "~*" "+@all" > /dev/null
     printf '%-12s %-20s %s\n' "${service}" "${username}" "${password}"
   done
 

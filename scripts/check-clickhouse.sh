@@ -42,16 +42,16 @@ run_clickhouse() {
 
 print_info "ClickHouse Health Check"
 # Check container is running
-if ! docker inspect --format='{{.State.Running}}' "${CONTAINER}" 2>/dev/null | grep -q true; then
+if ! docker inspect --format='{{.State.Running}}' "${CONTAINER}" 2> /dev/null | grep -q true; then
   print_error "Container '${CONTAINER}' is not running."
   exit 1
 fi
 print_info "Container '${CONTAINER}' is running."
 
 if [[ -z "${CLICKHOUSE_PASSWORD}" ]]; then
-  CLICKHOUSE_PASSWORD=$(docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "${CONTAINER}" \
-    | awk -F= '$1=="CLICKHOUSE_PASSWORD" {print $2}' \
-    | tail -n1)
+  CLICKHOUSE_PASSWORD=$(docker inspect --format='{{range .Config.Env}}{{println .}}{{end}}' "${CONTAINER}" |
+    awk -F= '$1=="CLICKHOUSE_PASSWORD" {print $2}' |
+    tail -n1)
 fi
 
 if [[ -z "${CLICKHOUSE_PASSWORD}" ]]; then
@@ -100,7 +100,6 @@ fi
 print_info "Grants"
 existing_grants=$(run_clickhouse "SELECT user_name, access_type, database FROM system.grants WHERE user_name IN ('langfuse_user', 'signoz_user', 'uptrace_user') ORDER BY user_name, database, access_type")
 echo "${existing_grants}"
-
 
 # Check for missing grants, handling CLUSTER as a global privilege
 missing_grants=()

@@ -5,7 +5,12 @@ repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
+    -   id: mixed-line-ending
+        args: [--fix=lf]
+    -   id: forbid-new-submodules
+    -   id: check-vcs-permalinks
     -   id: check-merge-conflict
+    -   id: check-case-conflict
     -   id: check-added-large-files
         args: ["--maxkb=2000"]
     -   id: trailing-whitespace
@@ -18,6 +23,11 @@ repos:
         name: shellcheck
         args: ["--rcfile=.shellcheckrc"]
         files: ^scripts/.*\.sh$
+-   repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 3.0.0
+    hooks:
+    -   id: shfmt
+        args: ['-l', '-i', '2', '-ci', '-sr', '-w']
 -   repo: https://github.com/openstack/bashate
     rev: 2.1.1
     hooks:
@@ -26,17 +36,17 @@ repos:
         args: ["--ignore=E002,E003,E006"]
         files: ^scripts/.*\.sh$
 -   repo: https://github.com/bridgecrewio/checkov
-    rev: 3.3.9
+    rev: "3.3.26"
     hooks:
     -   id: checkov
         name: checkov
 -   repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.17.0
+    rev: v4.19.2
     hooks:
     -   id: commitizen
         stages: [commit-msg]
 -   repo: https://github.com/zizmorcore/zizmor-pre-commit
-    rev: v1.28.0
+    rev: v1.30.1
     hooks:
     -   id: zizmor
 -   repo: https://github.com/rhysd/actionlint
@@ -46,6 +56,8 @@ repos:
         name: actionlint
         description: Lint GitHub Actions workflow files
         files: ^\.github/workflows/.*\.ya?ml$
+        # actionlint 1.7.12 rejects GitHub's `$/` self-repository syntax
+        exclude: ^\.github/workflows/pre-commit-autoupdate\.yml$
 -   repo: https://github.com/codespell-project/codespell
     rev: v2.4.3
     hooks:
@@ -53,7 +65,7 @@ repos:
         args: ["--ignore-words", ".codespell-ignore"]
         exclude: ".*\\.svg$"
 -   repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.37.4
+    rev: "0.38.2"
     hooks:
     -   id: check-github-workflows
     -   id: check-dependabot
@@ -64,12 +76,12 @@ repos:
     -   id: markdownlint
         exclude: "(\\.github/PULL_REQUEST_TEMPLATE\\.md|CODE_OF_CONDUCT\\.md)"
 -   repo: https://github.com/betterleaks/betterleaks
-    rev: v1.7.3
+    rev: v2.0.0-rc.2
     hooks:
     -   id: betterleaks
         args: ["--config=.betterleaks.toml"]
 -   repo: https://github.com/abravalheri/validate-pyproject
-    rev: v0.25
+    rev: "0.26"
     hooks:
     -   id: validate-pyproject
 -   repo: local
@@ -82,5 +94,3 @@ repos:
         language: system
         verbose: true
         pass_filenames: false
-
-

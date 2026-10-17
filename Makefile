@@ -348,10 +348,10 @@ adr-list: ## List all ADRs
 ##@ Development
 .PHONY: pre-commit-install pre-commit-run pre-commit-update
 pre-commit-install: ## Install pre-commit git-hooks
-	@uvx prek install
+	@prek install
 
 pre-commit-run: ## Execute pre-commit git-hooks
-	@uvx prek run -a
+	@prek run -a
 
 pre-commit-update: ## Update pre-commit git-hooks
-	@uvx prek update
+	@prek update

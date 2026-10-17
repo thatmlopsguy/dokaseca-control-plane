@@ -17,12 +17,12 @@ source "$SCRIPT_DIR/lib/common.sh"
 
 # Function to generate SBOM header
 generate_sbom_header() {
-    local project_version="unknown"
-    if [[ -f "$VERSION_FILE" ]]; then
-        project_version=$(cat "$VERSION_FILE" | tr -d '[:space:]')
-    fi
+  local project_version="unknown"
+  if [[ -f "$VERSION_FILE" ]]; then
+    project_version=$(cat "$VERSION_FILE" | tr -d '[:space:]')
+  fi
 
-    cat << EOF
+  cat << EOF
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: $project_version
 # Generated on: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
@@ -46,14 +46,14 @@ EOF
 
 # Main SBOM generation function
 generate_sbom() {
-    print_header "Generating SBOM for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications"
+  print_header "Generating SBOM for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications"
 
-    # Create or overwrite SBOM file
-    generate_sbom_header > "$SBOM_FILE"
+  # Create or overwrite SBOM file
+  generate_sbom_header > "$SBOM_FILE"
 
-    # Core System Tools
-    print_info "Analyzing core system tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Core System Tools
+  print_info "Analyzing core system tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 1. Core System Requirements
 
@@ -67,322 +67,322 @@ generate_sbom() {
 ### System Dependencies
 EOF
 
-    declare -A core_tools=(
-        [bash]="bash --version | head -1"
-        [curl]="curl --version | head -1"
-        [base64]="base64 --version | head -1"
-        [jq]="jq --version"
-        [git]="git --version"
-    )
+  declare -A core_tools=(
+    [bash]="bash --version | head -1"
+    [curl]="curl --version | head -1"
+    [base64]="base64 --version | head -1"
+    [jq]="jq --version"
+    [git]="git --version"
+  )
 
-    for tool in "${!core_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${core_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!core_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${core_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Container Runtime and Orchestration
-    print_info "Analyzing container and Kubernetes tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Container Runtime and Orchestration
+  print_info "Analyzing container and Kubernetes tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 2. Container Runtime & Kubernetes Tools
 
 ### Container Platform
 EOF
 
-    declare -A container_tools=(
-        [docker]="docker --version"
-        [podman]="podman --version"
-    )
+  declare -A container_tools=(
+    [docker]="docker --version"
+    [podman]="podman --version"
+  )
 
-    for tool in "${!container_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${container_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!container_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${container_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    cat << 'EOF' >> "$SBOM_FILE"
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### Kubernetes Distribution Tools
 EOF
 
-    declare -A k8s_distro_tools=(
-        [kind]="kind version | awk '{print \$2}'"
-        [k3d]="k3d version | awk 'NR==1 {print \$3}'"
-        [k3s]="k3s --version | awk '{print \$3}'"
-        [k0s]="k0s version"
-    )
+  declare -A k8s_distro_tools=(
+    [kind]="kind version | awk '{print \$2}'"
+    [k3d]="k3d version | awk 'NR==1 {print \$3}'"
+    [k3s]="k3s --version | awk '{print \$3}'"
+    [k0s]="k0s version"
+  )
 
-    for tool in "${!k8s_distro_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${k8s_distro_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!k8s_distro_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${k8s_distro_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    cat << 'EOF' >> "$SBOM_FILE"
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### Kubernetes Client Tools
 EOF
 
-    declare -A k8s_client_tools=(
-        [kubectl]="kubectl version --client --output=yaml | grep gitVersion | awk '{print \$2}'"
-        [helm]="helm version --short"
-        [kustomize]="kustomize version"
-        [oras]="oras version | awk 'NR==1 {print \$2}'"
-    )
+  declare -A k8s_client_tools=(
+    [kubectl]="kubectl version --client --output=yaml | grep gitVersion | awk '{print \$2}'"
+    [helm]="helm version --short"
+    [kustomize]="kustomize version"
+    [oras]="oras version | awk 'NR==1 {print \$2}'"
+  )
 
-    for tool in "${!k8s_client_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${k8s_client_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!k8s_client_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${k8s_client_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Infrastructure as Code
-    print_info "Analyzing infrastructure as code tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Infrastructure as Code
+  print_info "Analyzing infrastructure as code tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 3. Infrastructure as Code (IaC)
 
 ### Terraform/OpenTofu
 EOF
 
-    declare -A iac_tools=(
-        [terraform]="terraform --version | awk 'NR==1 {print \$2}'"
-        [tofu]="tofu --version | awk 'NR==1 {print \$2}'"
-    )
+  declare -A iac_tools=(
+    [terraform]="terraform --version | awk 'NR==1 {print \$2}'"
+    [tofu]="tofu --version | awk 'NR==1 {print \$2}'"
+  )
 
-    for tool in "${!iac_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${iac_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!iac_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${iac_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # GitOps and Deployment Tools
-    print_info "Analyzing gitops and deployment tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # GitOps and Deployment Tools
+  print_info "Analyzing gitops and deployment tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 4. GitOps & Deployment Tools
 
 ### ArgoCD/Akuity Ecosystem
 EOF
 
-    declare -A gitops_tools=(
-        [argocd]="argocd version --client | awk 'NR==1 {print \$2}'"
-        [kargo]="kargo version --client | awk 'NR==1 {print \$3}'"
-    )
+  declare -A gitops_tools=(
+    [argocd]="argocd version --client | awk 'NR==1 {print \$2}'"
+    [kargo]="kargo version --client | awk 'NR==1 {print \$3}'"
+  )
 
-    for tool in "${!gitops_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${gitops_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!gitops_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${gitops_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    cat << 'EOF' >> "$SBOM_FILE"
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### FluxCD Tools
 EOF
 
-    declare -A flux_tools=(
-        [flux]="flux -v | awk '{print \$3}'"
-    )
+  declare -A flux_tools=(
+    [flux]="flux -v | awk '{print \$3}'"
+  )
 
-    for tool in "${!flux_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${flux_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!flux_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${flux_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    cat << 'EOF' >> "$SBOM_FILE"
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### Cluster Management
 EOF
 
-    declare -A cluster_mgmt_tools=(
-        [clusterctl]="clusterctl version -o short"
-        [vcluster]="vcluster --version | awk '{print \$3}'"
-    )
+  declare -A cluster_mgmt_tools=(
+    [clusterctl]="clusterctl version -o short"
+    [vcluster]="vcluster --version | awk '{print \$3}'"
+  )
 
-    for tool in "${!cluster_mgmt_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${cluster_mgmt_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!cluster_mgmt_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${cluster_mgmt_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Security Tools
-    print_info "Analyzing security tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Security Tools
+  print_info "Analyzing security tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 5. Security Tools
 
 ### Image Signing & Vulnerability Scanning
 EOF
 
-    declare -A security_tools=(
-        [cosign]="cosign version | grep GitVersion | cut -d':' -f2 | tr -d ' '"
-        [trivy]="trivy --version | awk 'NR==1 {print \$2}'"
-        [grype]="grype version | awk 'NR==2 {print \$2}'"
-        [syft]="syft version | awk 'NR==2 {print \$2}'"
-        [falcoctl]="falcoctl version | awk '{print \$3}'"
-        [betterleaks]="betterleaks --version | awk 'NR==1 {print \$3}'"
-        [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
-        [chainsaw]="chainsaw version | awk 'NR==1 {print \$2}'"
-        [depsguard]="depsguard --version | awk 'NR==1 {print \$2}'"
-        [pinact]="pinact --version | awk 'NR==1 {print \$3}'"
-    )
+  declare -A security_tools=(
+    [cosign]="cosign version | grep GitVersion | cut -d':' -f2 | tr -d ' '"
+    [trivy]="trivy --version | awk 'NR==1 {print \$2}'"
+    [grype]="grype version | awk 'NR==2 {print \$2}'"
+    [syft]="syft version | awk 'NR==2 {print \$2}'"
+    [falcoctl]="falcoctl version | awk '{print \$3}'"
+    [betterleaks]="betterleaks --version | awk 'NR==1 {print \$3}'"
+    [kyverno]="kyverno version | awk 'NR==1 {print \$2}'"
+    [chainsaw]="chainsaw version | awk 'NR==1 {print \$2}'"
+    [depsguard]="depsguard --version | awk 'NR==1 {print \$2}'"
+    [pinact]="pinact --version | awk 'NR==1 {print \$3}'"
+  )
 
-    for tool in "${!security_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${security_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!security_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${security_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    cat << 'EOF' >> "$SBOM_FILE"
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### Certificate Management
 EOF
 
-    declare -A cert_tools=(
-        [mkcert]="mkcert -version"
-        [openssl]="openssl version"
-    )
+  declare -A cert_tools=(
+    [mkcert]="mkcert -version"
+    [openssl]="openssl version"
+  )
 
-    for tool in "${!cert_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${cert_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!cert_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${cert_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Backup and Storage Tools
-    print_info "Analyzing backup and storage tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Backup and Storage Tools
+  print_info "Analyzing backup and storage tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 6. Backup & Storage Tools
 
 ### Backup Solutions
 EOF
 
-    declare -A backup_tools=(
-        [velero]="velero version --client-only | awk 'NR==2 {print \$2}'"
-        [mc]="mc --version | awk 'NR==1 {print \$3}'"
-        [vault]="vault version | awk 'NR==1 {print \$2}' | tr -d ','"
-    )
+  declare -A backup_tools=(
+    [velero]="velero version --client-only | awk 'NR==2 {print \$2}'"
+    [mc]="mc --version | awk 'NR==1 {print \$3}'"
+    [vault]="vault version | awk 'NR==1 {print \$2}' | tr -d ','"
+  )
 
-    for tool in "${!backup_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${backup_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!backup_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${backup_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Network Tools
-    print_info "Analyzing network tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Network Tools
+  print_info "Analyzing network tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 7. Network & Service Mesh Tools
 
 ### Service Mesh
 EOF
 
-    declare -A network_tools=(
-        [istioctl]="istioctl version --short --remote=false | awk 'NR==1 {print \$3}'"
-        [cilium]="cilium version --client | awk '{print \$2}'"
-        [hubble]="hubble version | awk '{print \$2}' | cut -d'@' -f1"
-    )
+  declare -A network_tools=(
+    [istioctl]="istioctl version --short --remote=false | awk 'NR==1 {print \$3}'"
+    [cilium]="cilium version --client | awk '{print \$2}'"
+    [hubble]="hubble version | awk '{print \$2}' | cut -d'@' -f1"
+  )
 
-    for tool in "${!network_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${network_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!network_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${network_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Observability and Monitoring
-    print_info "Analyzing observability tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Observability and Monitoring
+  print_info "Analyzing observability tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
 EOF
 
-    declare -A observability_tools=(
-        [k9s]="k9s version | grep Version | cut -d':' -f2 | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*m//g'"
-        [flux9s]="flux9s version | awk 'NR==1 {print \$2}'"
-    )
+  declare -A observability_tools=(
+    [k9s]="k9s version | grep Version | cut -d':' -f2 | tr -d '[:space:]' | sed 's/\x1b\[[0-9;]*m//g'"
+    [flux9s]="flux9s version | awk 'NR==1 {print \$2}'"
+  )
 
-    for tool in "${!observability_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${observability_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!observability_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${observability_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Development Tools
-    print_info "Analyzing development tools..."
+  # Development Tools
+  print_info "Analyzing development tools..."
 
-    # Workflows & Pipeline Tools (after Observability)
-    print_info "Analyzing workflows and pipeline CLI tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Workflows & Pipeline Tools (after Observability)
+  print_info "Analyzing workflows and pipeline CLI tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 9. Workflows & Pipeline Tools
 
 ### Workflow CLIs
 EOF
 
-    declare -A workflow_tools=(
-        [argo]="argo version --short | awk -F/ '{print \$NF}'"
-        [tkn]="tkn version | awk 'NR==1 {print \$3}'"
-        [temporal]="temporal --version | awk 'NR==1 {print \$3}'"
-    )
+  declare -A workflow_tools=(
+    [argo]="argo version --short | awk -F/ '{print \$NF}'"
+    [tkn]="tkn version | awk 'NR==1 {print \$3}'"
+    [temporal]="temporal --version | awk 'NR==1 {print \$3}'"
+  )
 
-    for tool in "${!workflow_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${workflow_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!workflow_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${workflow_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Development Tools (renumbered)
-    print_info "Analyzing development tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Development Tools (renumbered)
+  print_info "Analyzing development tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 10. Development Tools
 
 ### Build Tools
 EOF
 
-    declare -A dev_tools=(
-        [make]="make --version | awk 'NR==1 {print \$3}'"
-        [just]="just --version | awk '{print \$2}'"
-        [mise]="mise --version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+'"
-        [go]="go version | awk '{print \$3}'"
-        [python]="uv run python --version | awk '{print \$2}'"
-        [node]="node --version"
-        [npm]="npm --version"
-    )
+  declare -A dev_tools=(
+    [make]="make --version | awk 'NR==1 {print \$3}'"
+    [just]="just --version | awk '{print \$2}'"
+    [mise]="mise --version | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+'"
+    [go]="go version | awk '{print \$3}'"
+    [python]="uv run python --version | awk '{print \$2}'"
+    [node]="node --version"
+    [npm]="npm --version"
+  )
 
-    for tool in "${!dev_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${dev_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!dev_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${dev_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Platform Engineering Tools
-    print_info "Analyzing platform engineering tools..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Platform Engineering Tools
+  print_info "Analyzing platform engineering tools..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ### Platform Engineering Tools
 EOF
 
-    declare -A project_tools=(
-        [idpbuilder]="idpbuilder version 2>&1 | awk '{print \$2}'"
-    )
+  declare -A project_tools=(
+    [idpbuilder]="idpbuilder version 2>&1 | awk '{print \$2}'"
+  )
 
-    for tool in "${!project_tools[@]}"; do
-        local version
-        version=$(get_version "$tool" "${project_tools[$tool]}")
-        echo "- $tool: $version" >> "$SBOM_FILE"
-    done
+  for tool in "${!project_tools[@]}"; do
+    local version
+    version=$(get_version "$tool" "${project_tools[$tool]}")
+    echo "- $tool: $version" >> "$SBOM_FILE"
+  done
 
-    # Python Dependencies
-    print_info "Analyzing Python dependencies..."
-    cat << 'EOF' >> "$SBOM_FILE"
+  # Python Dependencies
+  print_info "Analyzing Python dependencies..."
+  cat << 'EOF' >> "$SBOM_FILE"
 
 ## 11. Verification
 
@@ -418,35 +418,35 @@ documentation at: https://thatmlopsguy.github.io/dokaseca-control-plane/
 
 EOF
 
-    print_success "SBOM generated successfully at: $SBOM_FILE"
-    print_info "Total lines in SBOM: $(wc -l < "$SBOM_FILE")"
+  print_success "SBOM generated successfully at: $SBOM_FILE"
+  print_info "Total lines in SBOM: $(wc -l < "$SBOM_FILE")"
 }
 
 # Main execution
 main() {
-    print_header "SBOM Generator Initiated"
+  print_header "SBOM Generator Initiated"
 
-    # Check if we're in the right directory
-    if [[ ! -f "$PROJECT_DIR/README.md" ]] || [[ ! -d "$PROJECT_DIR/scripts" ]]; then
-        print_error "This script must be run from the Doka Seca project root or scripts directory"
-        exit 1
-    fi
+  # Check if we're in the right directory
+  if [[ ! -f "$PROJECT_DIR/README.md" ]] || [[ ! -d "$PROJECT_DIR/scripts" ]]; then
+    print_error "This script must be run from the Doka Seca project root or scripts directory"
+    exit 1
+  fi
 
-    print_info "Project directory: $PROJECT_DIR"
-    print_info "SBOM output file: $SBOM_FILE"
+  print_info "Project directory: $PROJECT_DIR"
+  print_info "SBOM output file: $SBOM_FILE"
 
-    # Generate SBOM
-    generate_sbom
+  # Generate SBOM
+  generate_sbom
 
-    print_success "SBOM generation completed!"
-    print_info "You can view the SBOM at: $SBOM_FILE"
-    print_info "To check which tools are missing, run: ./scripts/check-tools.sh"
+  print_success "SBOM generation completed!"
+  print_info "You can view the SBOM at: $SBOM_FILE"
+  print_info "To check which tools are missing, run: ./scripts/check-tools.sh"
 }
 
 # Handle script arguments
 case "${1:-}" in
-    --help|-h)
-        cat << EOF
+  --help | -h)
+    cat << EOF
 SBOM Generator for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 
 Usage: $0 [OPTIONS]
@@ -466,19 +466,19 @@ Examples:
     $0              # Generate SBOM
     $0 --help       # Show help
 EOF
-        exit 0
-        ;;
-    --version|-v)
-        echo "SBOM Generator v1.0.0"
-        exit 0
-        ;;
-    "")
-        # No arguments, proceed with normal execution
-        main
-        ;;
-    *)
-        print_error "Unknown option: $1"
-        print_info "Use --help for usage information"
-        exit 1
-        ;;
+    exit 0
+    ;;
+  --version | -v)
+    echo "SBOM Generator v1.0.0"
+    exit 0
+    ;;
+  "")
+    # No arguments, proceed with normal execution
+    main
+    ;;
+  *)
+    print_error "Unknown option: $1"
+    print_info "Use --help for usage information"
+    exit 1
+    ;;
 esac

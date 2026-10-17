@@ -4,6 +4,15 @@
 
 title = "Betterleaks"
 
+# Ignore Terraform state and Terraform cache paths
+prefilter = '''
+matchesAny(attributes["path"], [
+  `^terraform/.*/terraform\.tfstate(\.backup)?$`,
+  `^terraform/.*/terraform\.tfstate\.d/.*$`,
+  `^terraform/.*/\.terraform/.*$`,
+])
+'''
+
 [extend]
 useDefault = true
 
@@ -12,16 +21,5 @@ id = "kubernetes-secret-token-base64"
 description = "Detect base64 token values in YAML Secret manifests"
 regex = '''(?im)^\s*token:\s*([A-Za-z0-9+/]{4,}={0,2})\s*$'''
 path = '''(?i)\.(yaml|yml)$'''
-secretGroup = 1
+valueGroup = 1
 keywords = ["token:"]
-
-[[allowlists]]
-description = "Ignore Terraform state and Terraform cache paths"
-paths = [
-	'''^terraform/.*/terraform\.tfstate(\.backup)?$''',
-	'''^terraform/.*/terraform\.tfstate\.d/.*$''',
-	'''^terraform/.*/\.terraform/.*$''',
-]
-
-
-
