@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.35.0
-# Generated on: 2026-08-29 12:18:46 UTC
+# Generated on: 2026-10-25 21:16:05 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -27,7 +27,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 - git (version control)
 
 ### System Dependencies
-- base64: base64 (uutils coreutils) 0.8.0
+- base64: base64 (uutils coreutils) 0.10.0
 - git: git version 2.53.0
 - bash: GNU bash, version 5.3.9(1)-release (x86_64-pc-linux-gnu)
 - jq: jq-1.8.2
@@ -36,35 +36,35 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ## 2. Container Runtime & Kubernetes Tools
 
 ### Container Platform
-- podman: NOT INSTALLED
-- docker: Docker version 29.1.3, build 29.1.3-0ubuntu4.1
+- podman: podman version 5.7.0
+- docker: Docker version 29.9.2, build a82e528
 
 ### Kubernetes Distribution Tools
 - k0s: NOT INSTALLED
-- k3s: v1.35.7+k3s1
+- k3s: v1.36.5+k3s1
 - k3d: v5.9.0
 - kind: v0.31.0
 
 ### Kubernetes Client Tools
-- kubectl: v1.36.3
-- oras: 1.3.3
-- kustomize: v5.8.1
+- kubectl: v1.37.1
+- oras: 1.3.5
+- kustomize: v5.8.2
 - helm: v4.1.1+g5caf004
 
 ## 3. Infrastructure as Code (IaC)
 
 ### Terraform/OpenTofu
-- tofu: v1.12.5
+- tofu: v1.13.2
 - terraform: v1.14.1
 
 ## 4. GitOps & Deployment Tools
 
 ### ArgoCD/Akuity Ecosystem
 - argocd: v3.3.2+8a3940d
-- kargo: 1.11.2
+- kargo: 1.11.4
 
 ### FluxCD Tools
-- flux: 2.9.4
+- flux: 2.9.6
 
 ### Cluster Management
 - clusterctl: v1.13.4
@@ -74,57 +74,56 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Image Signing & Vulnerability Scanning
 - cosign: v3.1.3
-- pinact: 4.1.1
+- pinact: 5.0.0
 - depsguard: NOT INSTALLED
-- kyverno: v1.19.0
-- syft: 1.51.0
+- kyverno: v1.19.2
+- syft: 1.54.1
 - chainsaw: v0.2.15
 - trivy: 0.69.3
-- falcoctl: 0.13.0
-- betterleaks: 1.7.4
-- grype: 0.117.0
+- falcoctl: 0.14.0
+- betterleaks: 1.9.0
+- grype: 0.120.0
 
 ### Certificate Management
 - mkcert: v1.4.4
-- openssl: OpenSSL 3.6.3 9 Jun 2026 (Library: OpenSSL 3.6.3 9 Jun 2026)
+- openssl: OpenSSL 4.0.3 29 Sep 2026 (Library: OpenSSL 4.0.3 29 Sep 2026)
 
 ## 6. Backup & Storage Tools
 
 ### Backup Solutions
-- velero: v1.18.2
-- mc: RELEASE.2025-08-13T08-35-41Z
+- velero: v1.18.3
 - vault: v2.0.3
 
 ## 7. Network & Service Mesh Tools
 
 ### Service Mesh
-- istioctl: 1.30.3
+- istioctl: 1.31.2
 - cilium: 0.19.7
-- hubble: 1.19.4
+- hubble: 1.20.2
 
 ## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
-- flux9s: 1.0.3
+- flux9s: 1.3.0
 - k9s: 0.51.0
 
 ## 9. Workflows & Pipeline Tools
 
 ### Workflow CLIs
 - argo: v3.6.3
-- tkn: 0.46.0
+- tkn: 0.46.2
 - temporal: NOT INSTALLED
 
 ## 10. Development Tools
 
 ### Build Tools
 - node: v24.19.0
-- mise: 2026.7.12
+- mise: 2026.10.17
 - just: 1.58.0
 - make: 4.4.1
 - python: 3.14.4
 - npm: 11.17.0
-- go: go1.26.0
+- go: go1.27.3
 
 ### Platform Engineering Tools
 - idpbuilder: 0.10.2

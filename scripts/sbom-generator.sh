@@ -263,7 +263,6 @@ EOF
 
   declare -A backup_tools=(
     [velero]="velero version --client-only | awk 'NR==2 {print \$2}'"
-    [mc]="mc --version | awk 'NR==1 {print \$3}'"
     [vault]="vault version | awk 'NR==1 {print \$2}' | tr -d ','"
   )
 
