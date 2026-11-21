@@ -355,3 +355,6 @@ pre-commit-run: ## Execute pre-commit git-hooks
 
 pre-commit-update: ## Update pre-commit git-hooks
 	@prek update
+
+mise-up: ## Update tool versions
+	@mise up --bump

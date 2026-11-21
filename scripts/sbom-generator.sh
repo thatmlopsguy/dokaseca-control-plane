@@ -327,7 +327,7 @@ EOF
 
   declare -A workflow_tools=(
     [argo]="argo version --short | awk -F/ '{print \$NF}'"
-    [tkn]="tkn version | awk 'NR==1 {print \$3}'"
+    [tkn]="tkn version --component client"
     [temporal]="temporal --version | awk 'NR==1 {print \$3}'"
   )
 

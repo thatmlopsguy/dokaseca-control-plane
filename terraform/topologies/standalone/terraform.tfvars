@@ -33,6 +33,7 @@ addons = {
   # artifacts
   enable_harbor      = false # TODO
   enable_chartmuseum = false # TODO
+  enable_zot         = false # TODO see https://zotregistry.dev/
   # multi tenancy
   enable_capsule               = false # TODO
   enable_multi_tenant_operator = false # TODO
@@ -70,6 +71,7 @@ addons = {
   enable_open_cluster_management = false # TODO
   enable_gardener                = false # TODO
   enable_project_sveltos         = false # TODO
+  enable_karmada                 = false # TODO see https://karmada.io/
   # ci/cd
   enable_tekton = false
   # continuous delivery
@@ -97,6 +99,8 @@ addons = {
   enable_dapr   = false
   enable_choreo = false
   enable_krateo = false
+  # ai platform engineering
+  enable_caipe = false # TODO see https://caipe.io/
   # messaging
   enable_strimzi           = false
   enable_nats              = false
@@ -225,8 +229,9 @@ addons = {
   # portal
   enable_backstage = false # TODO
   # tests
-  enable_report_portal = false # TODO
-  enable_nbomber       = false # TODO
+  enable_report_portal       = false # TODO
+  enable_nbomber             = false # TODO
+  enable_locust_k8s_operator = false # TODO see https://abdelrhmanhamouda.github.io/locust-k8s-operator/
   # workload manager
   enable_temporal       = false # Tested
   enable_airflow        = false # Tested
@@ -261,8 +266,10 @@ addons = {
   enable_kubeflow_trainer  = false # Tested
   enable_llmkube           = false # TODO
   enable_kubeai            = false # TODO see https://www.kubeai.org/
-  enable_kagenti           = false # TODO see https://github.com/kagenti/kagenti
-  enable_agentgateway      = false # TODO see https://github.com/agentgateway/agentgateway
+  # agentic ai
+  enable_kagent       = false # TODO see https://kagent.dev/
+  enable_goose        = false # TODO see https://goose-docs.ai/
+  enable_agentgateway = false # TODO see https://github.com/agentgateway/agentgateway
   # analytics
   enable_flink_operator = false # TODO
   enable_superset       = false # TODO

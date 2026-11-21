@@ -1,6 +1,6 @@
 # Software Bill of Materials (SBOM) for Doka Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Version: 1.35.0
-# Generated on: 2026-10-25 21:16:05 UTC
+# Generated on: 2026-11-21 13:14:54 UTC
 # Project: DoKa Seca - Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications
 # Repository: https://github.com/thatmlopsguy/dokaseca-control-plane
 # License: Apache License 2.0
@@ -37,30 +37,30 @@ infrastructure as code, observability stacks, and cloud-native security practice
 
 ### Container Platform
 - podman: podman version 5.7.0
-- docker: Docker version 29.9.2, build a82e528
+- docker: Docker version 29.10.0, build fdd4b8e
 
 ### Kubernetes Distribution Tools
 - k0s: NOT INSTALLED
 - k3s: v1.36.5+k3s1
 - k3d: v5.9.0
-- kind: v0.31.0
+- kind: v0.33.0
 
 ### Kubernetes Client Tools
-- kubectl: v1.37.1
+- kubectl: v1.37.2
 - oras: 1.3.5
-- kustomize: v5.8.2
-- helm: v4.1.1+g5caf004
+- kustomize: v5.8.3
+- helm: v4.3.1+gc0d08d0
 
 ## 3. Infrastructure as Code (IaC)
 
 ### Terraform/OpenTofu
-- tofu: v1.13.2
-- terraform: v1.14.1
+- tofu: v1.13.1
+- terraform: v1.16.6
 
 ## 4. GitOps & Deployment Tools
 
 ### ArgoCD/Akuity Ecosystem
-- argocd: v3.3.2+8a3940d
+- argocd: v3.5.5+a5038b0
 - kargo: 1.11.4
 
 ### FluxCD Tools
@@ -75,11 +75,11 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Image Signing & Vulnerability Scanning
 - cosign: v3.1.3
 - pinact: 5.0.0
-- depsguard: NOT INSTALLED
+- depsguard: 0.1.40
 - kyverno: v1.19.2
-- syft: 1.54.1
+- syft: 1.55.0
 - chainsaw: v0.2.15
-- trivy: 0.69.3
+- trivy: 0.76.0
 - falcoctl: 0.14.0
 - betterleaks: 1.9.0
 - grype: 0.120.0
@@ -97,14 +97,14 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ## 7. Network & Service Mesh Tools
 
 ### Service Mesh
-- istioctl: 1.31.2
+- istioctl: 1.31.3
 - cilium: 0.19.7
 - hubble: 1.20.2
 
 ## 8. Observability & Monitoring Tools
 
 ### Kubernetes Dashboards
-- flux9s: 1.3.0
+- flux9s: 1.4.5
 - k9s: 0.51.0
 
 ## 9. Workflows & Pipeline Tools
@@ -119,7 +119,7 @@ infrastructure as code, observability stacks, and cloud-native security practice
 ### Build Tools
 - node: v24.19.0
 - mise: 2026.10.17
-- just: 1.58.0
+- just: 1.59.0
 - make: 4.4.1
 - python: 3.14.4
 - npm: 11.17.0
