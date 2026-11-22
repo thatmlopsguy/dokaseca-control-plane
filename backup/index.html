@@ -3467,8 +3467,8 @@
 
 <h1 id="backup">Backup<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h1>
 <h2 id="velero-kubernetes-backup-restore">Velero: Kubernetes Backup &amp; Restore<a class="headerlink" href="#velero-kubernetes-backup-restore" title="Permanent link">&para;</a></h2>
-<p><a href="https://velero.io/">Velero</a> is an open source tool to back up and restore Kubernetes cluster resources and persistent volumes.
-It supports public cloud platforms and on-premises environments.</p>
+<p><a href="https://velero.io/">Velero</a> is an open source tool to back up and restore Kubernetes cluster resources and persistent
+volumes. It supports public cloud platforms and on-premises environments.</p>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Take scheduled or on-demand backups of your cluster and restore in case of loss</li>
@@ -3489,16 +3489,16 @@ sudo<span class="w"> </span>mv<span class="w"> </span>velero-linux-amd64/velero<
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="storage-configuration">Storage Configuration<a class="headerlink" href="#storage-configuration" title="Permanent link">&para;</a></h2>
-<p>Velero supports S3-compatible storage (AWS S3, MinIO, etc). Example: MinIO (self-hosted S3):</p>
+<p>Velero supports S3-compatible storage (AWS S3, RustFS, etc). Example: RustFS (self-hosted S3):</p>
 <ol>
-<li>Deploy MinIO</li>
+<li>Deploy RustFS</li>
 <li>Create a bucket for Velero backups</li>
-<li>Create a Kubernetes secret with your S3 credentials:</li>
+<li>Create a Kubernetes secret with your RustFS S3 credentials:</li>
 </ol>
 <div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>velero-creds<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--namespace<span class="w"> </span>velero<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;MINIO_ACCESS_KEY&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;MINIO_SECRET_KEY&gt;
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;RUSTFS_ACCESS_KEY&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--from-literal<span class="o">=</span><span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;RUSTFS_SECRET_KEY&gt;
 </code></pre></div>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <h3 id="create-a-backup">Create a Backup<a class="headerlink" href="#create-a-backup" title="Permanent link">&para;</a></h3>
@@ -3537,7 +3537,7 @@ sudo<span class="w"> </span>mv<span class="w"> </span>velero-linux-amd64/velero<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 3, 2026 12:44:03 UTC"><span class="timeago" datetime="2026-04-03T12:44:03+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 3, 2026 12:44:03 UTC">2026-04-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 22, 2026 14:35:07 UTC"><span class="timeago" datetime="2026-11-22T14:35:07+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 22, 2026 14:35:07 UTC">2026-11-22</span>
   </span>
 
     

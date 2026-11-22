@@ -3412,18 +3412,21 @@
 
 
 <h1 id="multi-tenancy">Multi-Tenancy<a class="headerlink" href="#multi-tenancy" title="Permanent link">&para;</a></h1>
-<p>Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while providing isolation between them.</p>
+<p>Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while
+providing isolation between them.</p>
 <h2 id="types-of-multi-tenancy">Types of Multi-Tenancy<a class="headerlink" href="#types-of-multi-tenancy" title="Permanent link">&para;</a></h2>
 <p>Multi-tenancy can be divided into two categories:</p>
 <h3 id="soft-multi-tenancy">Soft Multi-Tenancy<a class="headerlink" href="#soft-multi-tenancy" title="Permanent link">&para;</a></h3>
-<p>Soft multi-tenancy is suitable <strong>when you trust your tenants</strong> — like when you share a cluster with teams from the same company. In this model:</p>
+<p>Soft multi-tenancy is suitable <strong>when you trust your tenants</strong> — like when you share a cluster with teams from the same
+company. In this model:</p>
 <ul>
 <li>Tenants are cooperative and don't intentionally try to breach isolation</li>
 <li>Isolation is primarily about preventing accidental interference</li>
 <li>You can use native Kubernetes constructs like Namespaces, RBAC, and Resource Quotas</li>
 </ul>
 <h3 id="hard-multi-tenancy">Hard Multi-Tenancy<a class="headerlink" href="#hard-multi-tenancy" title="Permanent link">&para;</a></h3>
-<p>Hard multi-tenancy is required <strong>when you don't trust tenants</strong> — such as in SaaS platforms where customers from different organizations share infrastructure. In this model:</p>
+<p>Hard multi-tenancy is required <strong>when you don't trust tenants</strong> — such as in SaaS platforms where customers from different
+organizations share infrastructure. In this model:</p>
 <ul>
 <li>Strong isolation is mandatory</li>
 <li>Tenants may be hostile or attempt to escape their boundaries</li>
@@ -3431,10 +3434,12 @@
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Hard Multi-Tenancy Recommendation</p>
-<p>If you need hard multi-tenancy, the advice is to use <strong>multiple clusters</strong> or a <strong>Cluster-as-a-Service</strong> tool instead. Kubernetes was not originally designed with strong multi-tenancy guarantees.</p>
+<p>If you need hard multi-tenancy, the advice is to use <strong>multiple clusters</strong> or a <strong>Cluster-as-a-Service</strong> tool instead.
+Kubernetes was not originally designed with strong multi-tenancy guarantees.</p>
 </div>
 <h2 id="diy-approach">DIY Approach<a class="headerlink" href="#diy-approach" title="Permanent link">&para;</a></h2>
-<p>If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own isolation using native Kubernetes primitives:</p>
+<p>If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own
+isolation using native Kubernetes primitives:</p>
 <ul>
 <li><strong>Namespaces</strong> — Logical isolation for resources</li>
 <li><strong>RBAC</strong> — Role-Based Access Control for authorization</li>
@@ -3443,9 +3448,12 @@
 <li><strong>Pod Security Standards</strong> — Enforce security contexts</li>
 </ul>
 <h2 id="tools-for-multi-tenancy">Tools for Multi-Tenancy<a class="headerlink" href="#tools-for-multi-tenancy" title="Permanent link">&para;</a></h2>
-<p>There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger isolation guarantees:</p>
+<p>There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger
+isolation guarantees:</p>
 <h3 id="vcluster">Vcluster<a class="headerlink" href="#vcluster" title="Permanent link">&para;</a></h3>
-<p><a href="https://www.vcluster.com/">Vcluster</a> creates virtual Kubernetes clusters that run inside namespaces of a host cluster. Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying infrastructure.</p>
+<p><a href="https://www.vcluster.com/">Vcluster</a> creates virtual Kubernetes clusters that run inside namespaces of a host cluster.
+Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying
+infrastructure.</p>
 <p><strong>Key Features:</strong></p>
 <ul>
 <li>Full Kubernetes API compatibility</li>
@@ -3454,7 +3462,8 @@
 <li>Cost-effective alternative to multiple physical clusters</li>
 </ul>
 <h3 id="capsule">Capsule<a class="headerlink" href="#capsule" title="Permanent link">&para;</a></h3>
-<p><a href="https://capsule.clastix.io/">Capsule</a> implements a multi-tenant and policy-based environment in Kubernetes. It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.</p>
+<p><a href="https://capsule.clastix.io/">Capsule</a> implements a multi-tenant and policy-based environment in Kubernetes.
+It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.</p>
 <p><strong>Key Features:</strong></p>
 <ul>
 <li>Hierarchical namespace management</li>
@@ -3529,7 +3538,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 1, 2026 13:48:31 UTC"><span class="timeago" datetime="2026-05-01T13:48:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 1, 2026 13:48:31 UTC">2026-05-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 22, 2026 14:35:07 UTC"><span class="timeago" datetime="2026-11-22T14:35:07+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 22, 2026 14:35:07 UTC">2026-11-22</span>
   </span>
 
     

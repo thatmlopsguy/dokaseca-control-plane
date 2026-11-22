@@ -1637,15 +1637,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minio-object-storage" class="md-nav__link">
+  <a href="#rustfs-object-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MinIO Object Storage
+        RustFS Object Storage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MinIO Object Storage">
+    <nav class="md-nav" aria-label="RustFS Object Storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3275,15 +3275,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#minio-object-storage" class="md-nav__link">
+  <a href="#rustfs-object-storage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MinIO Object Storage
+        RustFS Object Storage
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="MinIO Object Storage">
+    <nav class="md-nav" aria-label="RustFS Object Storage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3402,7 +3402,7 @@
 <h1 id="storage">Storage<a class="headerlink" href="#storage" title="Permanent link">&para;</a></h1>
 <p>This document describes the storage architecture used in the DoKa Seca, focusing on how MinIO running in Docker is used
 to provide S3-compatible object storage for various components.</p>
-<h2 id="minio-object-storage">MinIO Object Storage<a class="headerlink" href="#minio-object-storage" title="Permanent link">&para;</a></h2>
+<h2 id="rustfs-object-storage">RustFS Object Storage<a class="headerlink" href="#rustfs-object-storage" title="Permanent link">&para;</a></h2>
 <p><a href="https://min.io/">MinIO</a> is a high-performance, S3-compatible object storage system that we deploy to provide persistent
 storage for several critical components.</p>
 <h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h3>
@@ -3430,20 +3430,20 @@ storage for several critical components.</p>
 <h3 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h3>
 <p>To install MinIO using Docker:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Create directories for MinIO data</span>
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/velero
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/loki
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/tempo
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/victoriametrics
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/victoriatraces
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/victorialogs
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/reportportal
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/mlflow
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/langfuse
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/pyroscope
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/harbor
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/chartmuseum
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/argoworkflows
-mkdir<span class="w"> </span>-p<span class="w"> </span>data/minio/falcosidekick
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/velero
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/loki
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/tempo
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/victoriametrics
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/victoriatraces
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/victorialogs
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/reportportal
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/mlflow
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/langfuse
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/pyroscope
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/harbor
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/chartmuseum
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/argoworkflows
+mkdir<span class="w"> </span>-p<span class="w"> </span>data/rustfs/falcosidekick
 
 <span class="c1"># Start MinIO</span>
 docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
@@ -3602,7 +3602,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 5, 2026 20:54:48 UTC"><span class="timeago" datetime="2026-04-05T20:54:48+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 5, 2026 20:54:48 UTC">2026-04-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 22, 2026 14:35:07 UTC"><span class="timeago" datetime="2026-11-22T14:35:07+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 22, 2026 14:35:07 UTC">2026-11-22</span>
   </span>
 
     
