@@ -17,7 +17,8 @@ There are several ways to organize and connect multiple Kubernetes clusters:
 - **Standalone/Distributed:** Each cluster operates independently, with its own control plane and management.
 This is simple and works well for clear environment separation (as in our current setup).
 - **Centralized (Hub/Spoke):** A central "hub" cluster manages or coordinates multiple "spoke" clusters.
-This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential single point of failure.
+This can simplify policy management, observability, and cross-cluster workflows, but adds complexity and a potential
+single point of failure.
 
 ![hub-spoke](assets/figures/diagrams/hup-spoke.drawio.png)
 

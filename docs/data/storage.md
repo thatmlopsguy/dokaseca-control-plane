@@ -3,7 +3,7 @@
 This document describes the storage architecture used in the DoKa Seca, focusing on how MinIO running in Docker is used
 to provide S3-compatible object storage for various components.
 
-## MinIO Object Storage
+## RustFS Object Storage
 
 [MinIO](https://min.io/) is a high-performance, S3-compatible object storage system that we deploy to provide persistent
 storage for several critical components.
@@ -40,20 +40,20 @@ To install MinIO using Docker:
 
 ```bash
 # Create directories for MinIO data
-mkdir -p data/minio/velero
-mkdir -p data/minio/loki
-mkdir -p data/minio/tempo
-mkdir -p data/minio/victoriametrics
-mkdir -p data/minio/victoriatraces
-mkdir -p data/minio/victorialogs
-mkdir -p data/minio/reportportal
-mkdir -p data/minio/mlflow
-mkdir -p data/minio/langfuse
-mkdir -p data/minio/pyroscope
-mkdir -p data/minio/harbor
-mkdir -p data/minio/chartmuseum
-mkdir -p data/minio/argoworkflows
-mkdir -p data/minio/falcosidekick
+mkdir -p data/rustfs/velero
+mkdir -p data/rustfs/loki
+mkdir -p data/rustfs/tempo
+mkdir -p data/rustfs/victoriametrics
+mkdir -p data/rustfs/victoriatraces
+mkdir -p data/rustfs/victorialogs
+mkdir -p data/rustfs/reportportal
+mkdir -p data/rustfs/mlflow
+mkdir -p data/rustfs/langfuse
+mkdir -p data/rustfs/pyroscope
+mkdir -p data/rustfs/harbor
+mkdir -p data/rustfs/chartmuseum
+mkdir -p data/rustfs/argoworkflows
+mkdir -p data/rustfs/falcosidekick
 
 # Start MinIO
 docker compose up -d

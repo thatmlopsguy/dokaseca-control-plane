@@ -2,17 +2,20 @@
 
 ## Overview
 
-Modern platform engineering initiatives typically involve three core roles that work together to deliver and maintain cloud-native platforms:
+Modern platform engineering initiatives typically involve three core roles that work together to deliver and maintain
+cloud-native platforms:
 
 - **Platform Engineers**: Design and build the platform infrastructure and developer experience
 - **DevOps Engineers**: Bridge development and operations with automation and reliability practices
 - **Developers**: Build and deploy applications using the platform's capabilities
 
-Each role has distinct responsibilities, but successful platform engineering requires close collaboration and shared understanding of goals.
+Each role has distinct responsibilities, but successful platform engineering requires close collaboration and shared
+understanding of goals.
 
 ## Platform Engineer
 
-Platform engineers are responsible for building and maintaining the underlying platform infrastructure that enables developer productivity and operational excellence.
+Platform engineers are responsible for building and maintaining the underlying platform infrastructure that enables
+developer productivity and operational excellence.
 
 ### Platform Engineer Responsibilities
 
@@ -63,7 +66,8 @@ graph TD
 
 ## DevOps Engineer
 
-DevOps engineers focus on automating delivery pipelines, ensuring system reliability, and bridging the gap between development and operations teams.
+DevOps engineers focus on automating delivery pipelines, ensuring system reliability, and bridging the gap between
+development and operations teams.
 
 Responsibilities
 
@@ -115,7 +119,8 @@ graph TD
 
 ## Developer
 
-Developers focus on building applications and services using the platform's capabilities, following established patterns and practices.
+Developers focus on building applications and services using the platform's capabilities, following established patterns
+and practices.
 
 Responsibilities
 

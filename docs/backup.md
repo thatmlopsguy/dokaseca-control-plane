@@ -2,8 +2,8 @@
 
 ## Velero: Kubernetes Backup & Restore
 
-[Velero](https://velero.io/) is an open source tool to back up and restore Kubernetes cluster resources and persistent volumes.
-It supports public cloud platforms and on-premises environments.
+[Velero](https://velero.io/) is an open source tool to back up and restore Kubernetes cluster resources and persistent
+volumes. It supports public cloud platforms and on-premises environments.
 
 ### Key Features
 
@@ -35,17 +35,17 @@ addons = {
 
 ## Storage Configuration
 
-Velero supports S3-compatible storage (AWS S3, MinIO, etc). Example: MinIO (self-hosted S3):
+Velero supports S3-compatible storage (AWS S3, RustFS, etc). Example: RustFS (self-hosted S3):
 
-1. Deploy MinIO
+1. Deploy RustFS
 2. Create a bucket for Velero backups
-3. Create a Kubernetes secret with your S3 credentials:
+3. Create a Kubernetes secret with your RustFS S3 credentials:
 
 ```bash
 kubectl create secret generic velero-creds \
   --namespace velero \
-  --from-literal=aws_access_key_id=<MINIO_ACCESS_KEY> \
-  --from-literal=aws_secret_access_key=<MINIO_SECRET_KEY>
+  --from-literal=aws_access_key_id=<RUSTFS_ACCESS_KEY> \
+  --from-literal=aws_secret_access_key=<RUSTFS_SECRET_KEY>
 ```
 
 ## Usage

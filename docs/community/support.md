@@ -89,7 +89,8 @@ We welcome:
 - Test coverage
 - Community support
 
-Our community follows the [Code of Conduct](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/main/CODE_OF_CONDUCT.md). By participating, you agree to uphold a welcoming and inclusive environment for everyone.
+Our community follows the [Code of Conduct](https://github.com/thatmlopsguy/dokaseca-control-plane/blob/main/CODE_OF_CONDUCT.md).
+By participating, you agree to uphold a welcoming and inclusive environment for everyone.
 
 ---
 

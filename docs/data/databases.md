@@ -20,6 +20,7 @@ Each service has:
 
 | Service        | Database            | Username            | Default Password        | Connection String                                   |
 |----------------|---------------------|---------------------|-------------------------|-----------------------------------------------------|
+| OpenBao        | openbao             | openbao_user        | openbao_password        | jdbc:postgresql://postgres:5432/openbao             |
 | Keycloak       | keycloak            | keycloak_user       | keycloak_password       | jdbc:postgresql://postgres:5432/keycloak            |
 | OpenFGA        | openfga             | openfga_user        | openfga_password        | jdbc:postgresql://postgres:5432/openfga             |
 | Temporal       | temporal            | temporal_user       | temporal_password       | jdbc:postgresql://postgres:5432/temporal            |

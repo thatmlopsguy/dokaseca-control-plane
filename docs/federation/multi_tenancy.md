@@ -1,6 +1,7 @@
 # Multi-Tenancy
 
-Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while providing isolation between them.
+Multi-tenancy in Kubernetes refers to sharing a cluster among multiple users, teams, or applications (tenants) while
+providing isolation between them.
 
 ## Types of Multi-Tenancy
 
@@ -8,7 +9,8 @@ Multi-tenancy can be divided into two categories:
 
 ### Soft Multi-Tenancy
 
-Soft multi-tenancy is suitable **when you trust your tenants** — like when you share a cluster with teams from the same company. In this model:
+Soft multi-tenancy is suitable **when you trust your tenants** — like when you share a cluster with teams from the same
+company. In this model:
 
 - Tenants are cooperative and don't intentionally try to breach isolation
 - Isolation is primarily about preventing accidental interference
@@ -16,18 +18,21 @@ Soft multi-tenancy is suitable **when you trust your tenants** — like when you
 
 ### Hard Multi-Tenancy
 
-Hard multi-tenancy is required **when you don't trust tenants** — such as in SaaS platforms where customers from different organizations share infrastructure. In this model:
+Hard multi-tenancy is required **when you don't trust tenants** — such as in SaaS platforms where customers from different
+organizations share infrastructure. In this model:
 
 - Strong isolation is mandatory
 - Tenants may be hostile or attempt to escape their boundaries
 - Security boundaries must be enforced at multiple levels
 
 !!! warning "Hard Multi-Tenancy Recommendation"
-    If you need hard multi-tenancy, the advice is to use **multiple clusters** or a **Cluster-as-a-Service** tool instead. Kubernetes was not originally designed with strong multi-tenancy guarantees.
+    If you need hard multi-tenancy, the advice is to use **multiple clusters** or a **Cluster-as-a-Service** tool instead.
+    Kubernetes was not originally designed with strong multi-tenancy guarantees.
 
 ## DIY Approach
 
-If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own isolation using native Kubernetes primitives:
+If you can tolerate the weaker multi-tenancy model in exchange for simplicity and convenience, you can roll out your own
+isolation using native Kubernetes primitives:
 
 - **Namespaces** — Logical isolation for resources
 - **RBAC** — Role-Based Access Control for authorization
@@ -37,11 +42,14 @@ If you can tolerate the weaker multi-tenancy model in exchange for simplicity an
 
 ## Tools for Multi-Tenancy
 
-There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger isolation guarantees:
+There are tools that abstract multi-tenancy complexities from you, providing a better developer experience and stronger
+isolation guarantees:
 
 ### Vcluster
 
-[Vcluster](https://www.vcluster.com/) creates virtual Kubernetes clusters that run inside namespaces of a host cluster. Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying infrastructure.
+[Vcluster](https://www.vcluster.com/) creates virtual Kubernetes clusters that run inside namespaces of a host cluster.
+Each virtual cluster has its own API server and control plane, providing strong isolation while sharing the underlying
+infrastructure.
 
 **Key Features:**
 
@@ -52,7 +60,8 @@ There are tools that abstract multi-tenancy complexities from you, providing a b
 
 ### Capsule
 
-[Capsule](https://capsule.clastix.io/) implements a multi-tenant and policy-based environment in Kubernetes. It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.
+[Capsule](https://capsule.clastix.io/) implements a multi-tenant and policy-based environment in Kubernetes.
+It aggregates multiple namespaces into a "Tenant" abstraction, providing isolation and governance.
 
 **Key Features:**
 

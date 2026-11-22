@@ -4,6 +4,7 @@
 -- Each user is granted all privileges on their respective database and the public schema
 -- The passwords used here are for demonstration purposes and should be changed in a production environment
 -- List of services with their corresponding databases and users:
+-- - OpenBAO: openbao, openbao_user
 -- - Keycloak: keycloak, keycloak_user
 -- - DevLake: devlake, devlake_user
 -- - OpenFGA: openfga, openfga_user
@@ -26,6 +27,13 @@
 -- - Grafana: grafana, grafana_user
 -- - Argo Workflows: argo_workflows, argo_workflows_user
 -- - Arize Phoenix: arize_phoenix, arize_phoenix_user
+
+-- OpenBAO database
+CREATE DATABASE openbao;
+CREATE USER openbao_user WITH PASSWORD 'openbao_password';
+GRANT ALL PRIVILEGES ON DATABASE openbao TO openbao_user;
+\c openbao
+GRANT ALL ON SCHEMA public TO openbao_user;
 
 -- Keycloak database
 CREATE DATABASE keycloak;

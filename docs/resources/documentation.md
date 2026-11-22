@@ -34,7 +34,7 @@ pyproject.toml                # Python dependencies
 
 Before working with documentation, ensure you have:
 
-- Python 3.13 or higher
+- Python 3.15 or higher
 - Git
 - Text editor or IDE
 - Basic Markdown knowledge
@@ -162,7 +162,7 @@ Content starts here...
 The main configuration is in `mkdocs.yaml`:
 
 - **Site Information**: Name, description, and repository links
-- **Navigation**: Page hierarchy and organization  
+- **Navigation**: Page hierarchy and organization
 - **Theme**: Material theme configuration with color schemes
 - **Extensions**: Enhanced Markdown features
 - **Plugins**: Additional functionality

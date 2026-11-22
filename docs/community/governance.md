@@ -28,11 +28,13 @@ See [MAINTAINERS.md](maintainers.md) for the current list of maintainers.
 
 ### Committers
 
-Committers have demonstrated expertise and commitment to the project. They can approve pull requests and participate in technical decisions.
+Committers have demonstrated expertise and commitment to the project. They can approve pull requests and participate in
+technical decisions.
 
 ### Steering Committee
 
-The Steering Committee provides strategic direction and makes decisions on project scope, governance changes, and maintainer appointments.
+The Steering Committee provides strategic direction and makes decisions on project scope, governance changes, and
+maintainer appointments.
 
 ## Decision-Making Process
 

@@ -1,11 +1,13 @@
 # Distributed Computing
 
-Doka Seca supports distributed workload operators including Ray, Spark, and Slurm, enabling scalable training, batch processing, and HPC job scheduling on Kubernetes.
+Doka Seca supports distributed workload operators including Ray, Spark, and Slurm, enabling scalable training, batch
+processing, and HPC job scheduling on Kubernetes.
 
 ## Ray Operator
 
 [Ray](https://ray.io/) is an open-source unified framework for scaling AI and Python applications.
-Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) to manage distributed training workloads.
+Doka Seca leverages the [Ray Operator for Kubernetes](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) to
+manage distributed training workloads.
 
 ### Ray Capabilities
 

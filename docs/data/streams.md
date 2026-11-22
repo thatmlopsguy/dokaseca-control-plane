@@ -6,7 +6,9 @@ NATS, and RabbitMQ.
 
 ## Overview
 
-Messaging systems play a critical role in modern distributed architectures, enabling asynchronous communication, event-driven patterns, and data streaming. DoKa Seca provides support for three complementary messaging systems, each with different strengths:
+Messaging systems play a critical role in modern distributed architectures, enabling asynchronous communication,
+event-driven patterns, and data streaming. DoKa Seca provides support for three complementary messaging systems, each
+with different strengths:
 
 | System                 | Best For                                       | Key Features                                            | Performance Profile                    |
 |------------------------|------------------------------------------------|---------------------------------------------------------|----------------------------------------|

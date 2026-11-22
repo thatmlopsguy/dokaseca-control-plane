@@ -1,6 +1,8 @@
 # DoKa Seca Installation
 
-Welcome to DoKa Seca! This guide will help you set up the complete framework for bootstrapping cloud-native platforms using Kubernetes in Docker (Kind). DoKa Seca provides an opinionated, production-ready approach to rapidly deploying a full platform stack with GitOps, observability, and security built-in.
+Welcome to DoKa Seca! This guide will help you set up the complete framework for bootstrapping cloud-native platforms
+using Kubernetes in Docker (Kind). DoKa Seca provides an opinionated, production-ready approach to rapidly deploying a
+full platform stack with GitOps, observability, and security built-in.
 
 ## Prerequisites
 

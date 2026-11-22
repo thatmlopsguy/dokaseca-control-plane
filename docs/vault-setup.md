@@ -1,11 +1,12 @@
 # HashiCorp Vault Setup Guide
 
-This document provides step-by-step instructions for setting up HashiCorp Vault using Docker Compose with persistent storage.
+This document provides step-by-step instructions for setting up HashiCorp Vault/OpenBao using Docker Compose with
+persistent storage.
 
 ## Prerequisites
 
 - Docker and Docker Compose installed
-- Basic understanding of Vault concepts
+- Basic understanding of Vault/OpenBao concepts
 - Terminal access
 
 ## Architecture

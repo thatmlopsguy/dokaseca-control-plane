@@ -44,8 +44,9 @@ dokaseca-workloads/
 
 ## Multi-Repository Architecture
 
-DoKa Seca is designed as a distributed system composed of multiple specialized repositories, each serving a specific purpose
-in the platform ecosystem. This approach provides clear separation of concerns, enables team autonomy, and supports scalable platform operations.
+DoKa Seca is designed as a distributed system composed of multiple specialized repositories, each serving a specific
+purpose in the platform ecosystem. This approach provides clear separation of concerns, enables team autonomy, and
+supports scalable platform operations.
 
 ### Core Repositories
 

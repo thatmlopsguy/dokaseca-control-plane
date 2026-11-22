@@ -1,7 +1,8 @@
 # References
 
 DoKa Seca draws inspiration from numerous cloud-native platform engineering projects and initiatives.
-This page acknowledges the innovative work that has influenced the design and implementation of our platform bootstrapping framework.
+This page acknowledges the innovative work that has influenced the design and implementation of our platform bootstrapping
+framework.
 
 ## Platform Engineering Inspirations
 
@@ -27,6 +28,7 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 - **[Azure AKS Platform Engineering](https://github.com/Azure-Samples/aks-platform-engineering)** - Microsoft's reference implementation for building platform engineering solutions on Azure Kubernetes Service with GitOps and developer self-service capabilities
 - **[kubriX](https://github.com/suxess-it/kubriX)** - Cloud-native platform framework providing comprehensive tooling and patterns for building production-ready Kubernetes platforms
 - **[Kubara](https://docs.kubara.io/latest-stable/)** - Single binary CLI tool written in Go providing a lightweight framework for bootstrapping Kubernetes platforms with production-proven best practices very easily
+- **[Caipe](https://caipe.io/)** - Build, govern, and operate secure AI agents and workflows for teams, enterprises, individuals, you, and teams.
 
 ### Configuration and Automation
 
@@ -53,10 +55,15 @@ DoKa Seca is inspired by the following projects and platforms that have shaped m
 
 ## Acknowledgments
 
-We extend our gratitude to the maintainers and contributors of these projects. Their innovative approaches to platform engineering, developer experience, and cloud-native operations have significantly influenced DoKa Seca's architecture and implementation.
+We extend our gratitude to the maintainers and contributors of these projects. Their innovative approaches to platform
+engineering, developer experience, and cloud-native operations have significantly influenced DoKa Seca's architecture
+and implementation.
 
-The cloud-native ecosystem thrives on collaboration and shared knowledge. DoKa Seca aims to contribute back to this ecosystem by providing a practical, production-ready platform bootstrapping framework that incorporates lessons learned from these exemplary projects.
+The cloud-native ecosystem thrives on collaboration and shared knowledge. DoKa Seca aims to contribute back to this
+ecosystem by providing a practical, production-ready platform bootstrapping framework that incorporates lessons learned
+from these exemplary projects.
 
 ## Contributing References
 
-If you know of other projects or resources that have influenced platform engineering practices and should be included in this list, please [contribute](community/contributing.md) by submitting a pull request or opening an issue.
+If you know of other projects or resources that have influenced platform engineering practices and should be included in
+this list, please [contribute](community/contributing.md) by submitting a pull request or opening an issue.

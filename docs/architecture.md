@@ -2,20 +2,23 @@
 
 ## Overview
 
-DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a controlled, isolated environment
-where complete cloud-native platforms can be rapidly assembled, configured, and tested.
+DoKa Seca is a comprehensive platform engineering framework designed around the "dry dock" concept - providing a
+controlled, isolated environment where complete cloud-native platforms can be rapidly assembled, configured, and tested.
 
-The architecture follows modern platform engineering principles with a strong emphasis on GitOps, Infrastructure as Code, and automated platform bootstrapping.
+The architecture follows modern platform engineering principles with a strong emphasis on GitOps, Infrastructure as Code,
+and automated platform bootstrapping.
 
 ## Core Architecture Principles
 
 ### 1. **GitOps-First Design**
 
-All platform configuration, application deployments, and infrastructure changes are managed through Git repositories, ensuring reproducibility, auditability, and collaborative development.
+All platform configuration, application deployments, and infrastructure changes are managed through Git repositories,
+ensuring reproducibility, auditability, and collaborative development.
 
 ### 2. **Opinionated Platform Stack**
 
-Provides curated, production-ready components that work together seamlessly, reducing decision fatigue and accelerating time-to-productivity.
+Provides curated, production-ready components that work together seamlessly, reducing decision fatigue and accelerating
+time-to-productivity.
 
 ## High-Level Architecture
 
