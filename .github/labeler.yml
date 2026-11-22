@@ -48,7 +48,7 @@ security:
 # Dependencies
 dependencies:
   - changed-files:
-    - any-glob-to-any-file: ['requirements/**/*', 'devbox.*', 'package*.json']
+    - any-glob-to-any-file: ['requirements/**/*', 'devbox.*', 'package*.json', "uv.lock", ".tool-versions"]
 
 # Examples
 examples:

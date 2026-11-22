@@ -257,7 +257,6 @@ addons = {
   enable_feast             = false # TODO
   enable_kserve            = false # TODO
   enable_mlflow            = false # Tested
-  enable_seldon            = false # TODO
   enable_litellm           = false # TODO
   enable_litellm_operator  = false # TODO see https://litellm-operator.palena.ai/
   enable_langfuse          = false # Tested
