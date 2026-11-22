@@ -89,7 +89,7 @@ DoKa Seca consists of 5 GitHub repositories:
 * [`clusteradm`](https://github.com/open-cluster-management-io/clusteradm)
 * [`cosign`](https://github.com/sigstore/cosign)
 * [`velero`](https://github.com/vmware-tanzu/velero)
-* [`vault`](https://developer.hashicorp.com/vault/docs/install)
+* [`vault`](https://developer.hashicorp.com/vault/docs/install) or [`openbao`](https://openbao.org/docs/install/)
 * [`crossplane-cli`](https://github.com/crossplane/cli/)
 
 > **⚠️ Note: Internet access required**

@@ -166,6 +166,31 @@ services:
     networks:
       - kind
 
+  ## @param openbao Secret management server for storing sensitive configuration and credentials
+  ## - Runs in development mode for simplicity, not recommended for production use
+  ## - Exposes default OpenBAO port 8201 for internal communication
+  ##
+  openbao:
+    image: openbao/openbao:2.6.6
+    container_name: openbao
+    ports:
+      - "8201:8201"
+    environment:
+      - OPENBAO_DEV_LISTEN_ADDRESS=0.0.0.0:8201
+    volumes:
+      - openbao-data:/openbao/data
+      - openbao-logs:/openbao/logs
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8201"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+    profiles:
+      - infra
+    networks:
+      - kind
+
   ## @param postgres Relational database server for structured data storage
   ## - Uses official PostgreSQL image with version 16
   ## - Exposes default PostgreSQL port 5432 for internal communication
@@ -621,6 +646,8 @@ services:
 volumes:
   vault-data:
   vault-logs:
+  openbao-data:
+  openbao-logs:
   postgres-data:
   pgadmin-data:
   mysql-data:

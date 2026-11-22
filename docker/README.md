@@ -10,6 +10,7 @@ monitoring and messaging.
 | Dockhand       | [http://localhost:3001](http://localhost:3001)   |
 | Maintenant     | [http://localhost:8071](http://localhost:8071)   |
 | Vault          | [http://localhost:8200](http://localhost:8200)   |
+| OpenBAO        | [http://localhost:8201](http://localhost:8201)   |
 | Keycloak       | [http://localhost:8080](http://localhost:8080)   |
 | MinIO Console  | [http://localhost:9001](http://localhost:9001)   |
 | RustFS Console | [http://localhost:9003](http://localhost:9003)   |
