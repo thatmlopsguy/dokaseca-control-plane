@@ -37,7 +37,7 @@
 
 ## Introduction
 
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.35-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+[![Kubernetes](https://img.shields.io/badge/Kubernetes-v1.37-blue?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 
 Welcome to **DoKa Seca** (Distributed Orchestration Kubernetes Automation with Scalable Edge Computing Applications) - an
 opinionated infrastructure framework that combines the power of Cloud Native Computing Foundation (CNCF) projects for
@@ -90,7 +90,6 @@ DoKa Seca consists of 5 GitHub repositories:
 * [`cosign`](https://github.com/sigstore/cosign)
 * [`velero`](https://github.com/vmware-tanzu/velero)
 * [`vault`](https://developer.hashicorp.com/vault/docs/install)
-* [`minio client (mc)`](https://github.com/minio/mc)
 * [`crossplane-cli`](https://github.com/crossplane/cli/)
 
 > **⚠️ Note: Internet access required**
@@ -169,7 +168,7 @@ kind get clusters
 # Expected output:
 # hub-dev
 # spoke-dev
-# spoke-prod  
+# spoke-prod
 # spoke-stg
 ```
 
