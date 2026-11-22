@@ -93,7 +93,7 @@ services:
   ## - Stores persistent data in a dedicated volume
   ## - Provides system information, process monitoring, and container management
   maintenant:
-    image: ghcr.io/kolapsis/maintenant:latest
+    image: ghcr.io/kolapsis/maintenant:1.13.0
     ports:
       - "8071:8080"
     read_only: true
@@ -118,7 +118,7 @@ services:
   ## See also Terrapod https://github.com/mattrobinsonsre/terrapod
   ##
   atlantis:
-    image: runatlantis/atlantis:latest
+    image: runatlantis/atlantis:v0.50.0
     container_name: atlantis
     ports:
       - "4141:4141"
@@ -172,7 +172,7 @@ services:
   ## - Includes healthcheck to ensure database is ready before dependent services start
   ##
   postgres:
-    image: postgres:16
+    image: postgres:18.7
     container_name: postgres
     logging:
       <<: *logging
@@ -425,7 +425,7 @@ services:
       - kind
 
   rustfs:
-    image: rustfs/rustfs:latest
+    image: rustfs/rustfs:1.0.6
     container_name: rustfs
     ports:
       - "9080:9000" # S3 API port
@@ -503,7 +503,7 @@ services:
   ## - Configured to connect to Prometheus as a data source and load predefined dashboards
   ##
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:13.1
     container_name: grafana
     ports:
       - "3000:3000"
