@@ -231,6 +231,7 @@ addons = {
   # tests
   enable_report_portal       = false # TODO
   enable_nbomber             = false # TODO
+  enable_k6_operator         = false # TODO see https://github.com/grafana/k6-operator
   enable_locust_k8s_operator = false # TODO see https://abdelrhmanhamouda.github.io/locust-k8s-operator/
   # workload manager
   enable_temporal       = false # Tested
@@ -242,6 +243,7 @@ addons = {
   enable_yunikorn = false # Tested
   enable_volcano  = false # Tested
   # distributed computing
+  enable_skypilot       = false # TODO see https://skypilot.ai/
   enable_sail           = false # TODO see https://github.com/lakehq/sail
   enable_kuberay        = false # Tested
   enable_spark_operator = false # TODO
@@ -267,6 +269,7 @@ addons = {
   enable_llmkube           = false # TODO
   enable_kubeai            = false # TODO see https://www.kubeai.org/
   # agentic ai
+  enable_openshell    = false # TODO see https://github.com/ai-openshell
   enable_kagent       = false # TODO see https://kagent.dev/
   enable_goose        = false # TODO see https://goose-docs.ai/
   enable_agentgateway = false # TODO see https://github.com/agentgateway/agentgateway

@@ -20,8 +20,8 @@ Technologies are also organized into four quadrants:
 - **Platforms**: Infrastructure and platform technologies
 - **Techniques**: Methods, processes, and architectural patterns
 
-The tech radar is reviewed and updated **every semester** (twice a year). Each update may promote, demote,
-or introduce technologies based on our practical experience and the broader ecosystem's evolution.
+The tech radar is reviewed and updated **every year**. Each update may promote, demote, or introduce technologies based
+on our practical experience and the broader ecosystem's evolution.
 
 Technologies are evaluated based on criteria such as:
 

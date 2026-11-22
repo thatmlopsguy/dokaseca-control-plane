@@ -337,10 +337,10 @@ tekton-dashboard-ui: ## Access tekton dashboard ui
 ##@ Documentation
 .PHONY: docs-serve docs-build adr-list
 docs-serve: ## Start a local web server for serving documentation
-	@uv run mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
+	@uv run --group docs mkdocs serve || echo "Error running mkdocs serve. Have you run make install?"
 
 docs-build: ## Build the documentation site
-	@uv run mkdocs build
+	@uv run --group docs mkdocs build
 
 adr-list: ## List all ADRs
 	@adrgen list
