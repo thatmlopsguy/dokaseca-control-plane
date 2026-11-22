@@ -30,6 +30,9 @@ argocd_files_config = {
   load_workloads = false
 }
 addons = {
+  # git forge
+  enable_gitea   = false # TODO see https://gitea.io/
+  enable_forgejo = false # TODO see https://forgejo.org/
   # artifacts
   enable_harbor      = false # TODO
   enable_chartmuseum = false # TODO
