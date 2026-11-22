@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -4081,16 +4081,16 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">provider</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://vault.dokaseca.local&quot;</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;secret&quot;</span>
-<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v2&quot;</span>
+<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://vault.dokaseca.local"</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"v2"</span>
 <span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">kubernetes</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kubernetes&quot;</span>
-<span class="w">          </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;bootstrap-role&quot;</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">"kubernetes"</span>
+<span class="w">          </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="s">"bootstrap-role"</span>
 <span class="w">          </span><span class="nt">serviceAccountRef</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets-infra&quot;</span>
-<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets&quot;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"external-secrets-infra"</span>
+<span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">"external-secrets"</span>
 </code></pre></div>
 <h4 id="namespace-secret-store-template"><strong>Namespace Secret Store Template</strong><a class="headerlink" href="#namespace-secret-store-template" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external-secrets.io/v1beta1</span>
@@ -4101,67 +4101,67 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">provider</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">vault</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://vault.dokaseca.local&quot;</span>
-<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;secret&quot;</span>
-<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;v2&quot;</span>
+<span class="w">      </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">"https://vault.dokaseca.local"</span>
+<span class="w">      </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="s">"secret"</span>
+<span class="w">      </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"v2"</span>
 <span class="w">      </span><span class="nt">auth</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">kubernetes</span><span class="p">:</span>
-<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;kubernetes&quot;</span>
-<span class="w">          </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${TENANT_NAMESPACE}-role&quot;</span>
+<span class="w">          </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="s">"kubernetes"</span>
+<span class="w">          </span><span class="nt">role</span><span class="p">:</span><span class="w"> </span><span class="s">"${TENANT_NAMESPACE}-role"</span>
 <span class="w">          </span><span class="nt">serviceAccountRef</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;external-secrets-${TENANT_NAME}&quot;</span>
+<span class="w">            </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">"external-secrets-${TENANT_NAME}"</span>
 <span class="w">            </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${TENANT_NAMESPACE}</span>
 </code></pre></div>
 <h3 id="6-vault-policies-and-roles"><strong>6. Vault Policies and Roles</strong><a class="headerlink" href="#6-vault-policies-and-roles" title="Permanent link">&para;</a></h3>
 <h4 id="platform-team-policy"><strong>Platform Team Policy</strong><a class="headerlink" href="#platform-team-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Platform team policy for full Vault access</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete", "list"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;, &quot;list&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete", "list"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="bootstrap-policy"><strong>Bootstrap Policy</strong><a class="headerlink" href="#bootstrap-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Bootstrap policy for cluster-wide secret store</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;read&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/platform/bootstrap/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"read"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/platform/bootstrap/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"list", "read"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="tenant-policy-template"><strong>Tenant Policy Template</strong><a class="headerlink" href="#tenant-policy-template" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Policy for tenant-specific access</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/tenants/{{identity.entity.aliases.MOUNT_ACCESSOR.metadata.service_account_namespace}}/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/tenants/{{identity.entity.aliases.MOUNT_ACCESSOR.metadata.service_account_namespace}}/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/tenants/{{identity.entity.aliases.MOUNT_ACCESSOR.metadata.service_account_namespace}}/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/tenants/{{identity.entity.aliases.MOUNT_ACCESSOR.metadata.service_account_namespace}}/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"list", "read", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="shared-services-policy"><strong>Shared Services Policy</strong><a class="headerlink" href="#shared-services-policy" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Policy for shared services (platform team exclusive)</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/platform/bootstrap/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/platform/bootstrap/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/platform/bootstrap/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"list", "read", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/shared-services/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/platform/shared-services/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/platform/shared-services/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/platform/shared-services/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"list", "read", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/data/platform/infrastructure/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;create&quot;, &quot;read&quot;, &quot;update&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/data/platform/infrastructure/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"create", "read", "update", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
-<span class="err">path</span><span class="w"> </span><span class="s2">&quot;secret/metadata/platform/infrastructure/*&quot;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;list&quot;, &quot;read&quot;, &quot;delete&quot;</span><span class="p">]</span>
+<span class="err">path</span><span class="w"> </span><span class="s2">"secret/metadata/platform/infrastructure/*"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">capabilities</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"list", "read", "delete"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="7-automated-deployment-process"><strong>7. Automated Deployment Process</strong><a class="headerlink" href="#7-automated-deployment-process" title="Permanent link">&para;</a></h3>
@@ -4251,7 +4251,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical</span>
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Secret</span><span class="nv"> </span><span class="s">Store</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">failing&quot;</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">"Secret</span><span class="nv"> </span><span class="s">Store</span><span class="nv"> </span><span class="s">{{</span><span class="nv"> </span><span class="s">$labels.name</span><span class="nv"> </span><span class="s">}}</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">failing"</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SecretSyncFailed</span>
 <span class="w">    </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">external_secrets_sync_calls_error &gt; external_secrets_sync_calls_total * 0.1</span>
@@ -4259,7 +4259,7 @@ to tenant authentication credentials. This maintains the security boundary betwe
 <span class="w">    </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">warning</span>
 <span class="w">    </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;High</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">secret</span><span class="nv"> </span><span class="s">synchronization&quot;</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s">"High</span><span class="nv"> </span><span class="s">error</span><span class="nv"> </span><span class="s">rate</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">secret</span><span class="nv"> </span><span class="s">synchronization"</span>
 </code></pre></div>
 <h2 id="security-considerations">Security Considerations<a class="headerlink" href="#security-considerations" title="Permanent link">&para;</a></h2>
 <h3 id="access-control"><strong>Access Control</strong><a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h3>
@@ -4476,10 +4476,10 @@ to tenant authentication credentials. This maintains the security boundary betwe
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

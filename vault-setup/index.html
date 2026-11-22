@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3478,7 +3478,7 @@
 <p>You should see logs indicating the server started, but will show "security barrier not initialized" - this is expected.</p>
 <h3 id="3-initialize-vault">3. Initialize Vault<a class="headerlink" href="#3-initialize-vault" title="Permanent link">&para;</a></h3>
 <p>Initialize Vault to generate unseal keys and root token:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator init&#39;</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault operator init'</span>
 </code></pre></div>
 <p><strong>Important</strong>: Save the output securely! You'll get:</p>
 <ul>
@@ -3488,17 +3488,17 @@
 <h3 id="4-unseal-vault">4. Unseal Vault<a class="headerlink" href="#4-unseal-vault" title="Permanent link">&para;</a></h3>
 <p>Vault needs to be unsealed with 3 of the 5 keys every time it starts:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># First unseal key</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_1&gt;&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_1&gt;'</span>
 
 <span class="c1"># Second unseal key</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_2&gt;&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_2&gt;'</span>
 
 <span class="c1"># Third unseal key (Vault will be unsealed after this)</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_3&gt;&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal &lt;UNSEAL_KEY_3&gt;'</span>
 </code></pre></div>
 <h3 id="5-verify-vault-status">5. Verify Vault Status<a class="headerlink" href="#5-verify-vault-status" title="Permanent link">&para;</a></h3>
 <p>Check that Vault is fully operational:</p>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault status&#39;</span>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault status'</span>
 </code></pre></div>
 <p>Look for <code>Sealed: false</code> in the output.</p>
 <h2 id="access-methods">Access Methods<a class="headerlink" href="#access-methods" title="Permanent link">&para;</a></h2>
@@ -3515,7 +3515,7 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
 vault<span class="w"> </span>auth<span class="w"> </span>-method<span class="o">=</span>token<span class="w"> </span><span class="nv">token</span><span class="o">=</span>&lt;ROOT_TOKEN&gt;
 
 <span class="c1"># Or run commands directly in container</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault &lt;COMMAND&gt;&#39;</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault &lt;COMMAND&gt;'</span>
 </code></pre></div>
 <h2 id="configuration-files">Configuration Files<a class="headerlink" href="#configuration-files" title="Permanent link">&para;</a></h2>
 <h3 id="docker-composeyml">docker-compose.yml<a class="headerlink" href="#docker-composeyml" title="Permanent link">&para;</a></h3>
@@ -3617,28 +3617,28 @@ vault<span class="w"> </span>operator<span class="w"> </span>rekey
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="nb">set</span><span class="w"> </span>-e
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting Vault...&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Starting Vault..."</span>
 docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>vault
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Waiting for Vault to start...&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Waiting for Vault to start..."</span>
 sleep<span class="w"> </span><span class="m">10</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Initializing Vault...&quot;</span>
-<span class="nv">INIT_OUTPUT</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault operator init&#39;</span><span class="k">)</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Initializing Vault..."</span>
+<span class="nv">INIT_OUTPUT</span><span class="o">=</span><span class="k">$(</span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault operator init'</span><span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$INIT_OUTPUT</span><span class="s2">"</span>
 
 <span class="c1"># Extract keys and token (you should do this more securely)</span>
-<span class="nv">UNSEAL_KEY_1</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 1:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
-<span class="nv">UNSEAL_KEY_2</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 2:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
-<span class="nv">UNSEAL_KEY_3</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INIT_OUTPUT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Unseal Key 3:&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $4}&#39;</span><span class="k">)</span>
+<span class="nv">UNSEAL_KEY_1</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$INIT_OUTPUT</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Unseal Key 1:"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $4}'</span><span class="k">)</span>
+<span class="nv">UNSEAL_KEY_2</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$INIT_OUTPUT</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Unseal Key 2:"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $4}'</span><span class="k">)</span>
+<span class="nv">UNSEAL_KEY_3</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$INIT_OUTPUT</span><span class="s2">"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">"Unseal Key 3:"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $4}'</span><span class="k">)</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Unsealing Vault...&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_1</span><span class="s2">&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_2</span><span class="s2">&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_3</span><span class="s2">&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Unsealing Vault..."</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_1</span><span class="s2">"</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_2</span><span class="s2">"</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">"VAULT_ADDR=http://127.0.0.1:8200 vault operator unseal </span><span class="nv">$UNSEAL_KEY_3</span><span class="s2">"</span>
 
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Vault is ready!&quot;</span>
-docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;VAULT_ADDR=http://127.0.0.1:8200 vault status&#39;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Vault is ready!"</span>
+docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>vault<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s1">'VAULT_ADDR=http://127.0.0.1:8200 vault status'</span>
 </code></pre></div>
 
 
@@ -3758,10 +3758,10 @@ docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </spa
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../js/timeago.min.js"></script>
       

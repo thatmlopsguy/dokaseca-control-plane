@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3551,7 +3551,7 @@ structure:</p>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">addons-metallb</span>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">argocd.argoproj.io/sync-wave</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;-20&#39;</span>
+<span class="w">    </span><span class="nt">argocd.argoproj.io/sync-wave</span><span class="p">:</span><span class="w"> </span><span class="s">'-20'</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">syncPolicy</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">preserveResourcesOnDeletion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
@@ -3571,7 +3571,7 @@ structure:</p>
 <span class="w">                </span><span class="nt">matchExpressions</span><span class="p">:</span>
 <span class="w">                  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enable_metallb</span>
 <span class="w">                    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<span class="w">                    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;true&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">                    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'true'</span><span class="p p-Indicator">]</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
@@ -3592,32 +3592,32 @@ structure:</p>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">addons</span>
 <span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{metadata.annotations.addons_repo_url}}&#39;</span>
-<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{metadata.annotations.addons_repo_revision}}&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">'{{metadata.annotations.addons_repo_url}}'</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">'{{metadata.annotations.addons_repo_revision}}'</span>
 <span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">values</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChart}}&#39;</span>
-<span class="w">          </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChartRepository}}&#39;</span>
-<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChartVersion}}&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChart}}'</span>
+<span class="w">          </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChartRepository}}'</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChartVersion}}'</span>
 <span class="w">          </span><span class="nt">helm</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChart}}&#39;</span>
+<span class="w">            </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChart}}'</span>
 <span class="w">            </span><span class="nt">ignoreMissingValueFiles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">            </span><span class="nt">valueFiles</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/environments/default/addons/{{values.addonChart}}/values.yaml</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/values.yaml</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/clusters/{{name}}/addons/{{values.addonChart}}/values.yaml</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChart}}-extras&#39;</span>
-<span class="w">          </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChartRepositoryExtra}}&#39;</span>
-<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChartExtraVersion}}&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChart}}-extras'</span>
+<span class="w">          </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChartRepositoryExtra}}'</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChartExtraVersion}}'</span>
 <span class="w">          </span><span class="nt">helm</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChart}}-extras&#39;</span>
+<span class="w">            </span><span class="nt">releaseName</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChart}}-extras'</span>
 <span class="w">            </span><span class="nt">ignoreMissingValueFiles</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">            </span><span class="nt">valueFiles</span><span class="p">:</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/environments/default/addons/{{values.addonChart}}/extras.yaml</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/environments/{{metadata.labels.environment}}/addons/{{values.addonChart}}/extras.yaml</span>
 <span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$values/clusters/{{name}}/addons/{{values.addonChart}}/extras.yaml</span>
 <span class="w">      </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{values.addonChartNamespace}}&#39;</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{name}}&#39;</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">'{{values.addonChartNamespace}}'</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">'{{name}}'</span>
 <span class="w">      </span><span class="nt">syncPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">automated</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 <span class="w">        </span><span class="nt">syncOptions</span><span class="p">:</span>
@@ -3633,7 +3633,7 @@ structure:</p>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="w">    </span><span class="nt">memberlist</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">      </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;metallbspeakersecret&quot;</span>
+<span class="w">      </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">"metallbspeakersecret"</span>
 
 <span class="w">  </span><span class="c1"># Default controller configuration  </span>
 <span class="w">  </span><span class="nt">controller</span><span class="p">:</span>
@@ -3706,29 +3706,29 @@ structure:</p>
 </code></pre></div>
 <p>You can see that terraform will add GitOps Bridge Metadata to the ArgoCD secret.
 The annotations contain metadata for the addons' Helm charts and ArgoCD ApplicationSets.</p>
-<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-l<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>cluster<span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">&#39;.items[0].metadata.labels&#39;</span>
+<div class="highlight"><pre><span></span><code>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span>-l<span class="w"> </span>argocd.argoproj.io/secret-type<span class="o">=</span>cluster<span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span><span class="s1">'.items[0].metadata.labels'</span>
 </code></pre></div>
 <p>The output looks like the following:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;argocd.argoproj.io/secret-type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cluster&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cloud_provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;cluster_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hub-dev&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_alloy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_argo_cd&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_argo_cd_image_updater&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_argo_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_argo_rollouts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_argo_workflows&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_metallb&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">&lt;</span><span class="mi">-</span><span class="w"> </span><span class="err">i</span><span class="kc">t</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">i</span><span class="kc">nstall</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">Me</span><span class="kc">tal</span><span class="err">LB</span><span class="w"> </span><span class="err">addo</span><span class="kc">n</span>
-<span class="w">  </span><span class="nt">&quot;enable_trivy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_vault&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_vcluster&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_vector&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;enable_zipkin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;k8s_cluster_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hub-dev&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;k8s_domain_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dokaseca.local&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;kubernetes_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.31.2&quot;</span>
+<span class="w">  </span><span class="nt">"argocd.argoproj.io/secret-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cluster"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"cloud_provider"</span><span class="p">:</span><span class="w"> </span><span class="s2">"local"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"cluster_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hub-dev"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_alloy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_argo_cd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_argo_cd_image_updater"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_argo_events"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_argo_rollouts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_argo_workflows"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_metallb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">  </span><span class="err">#</span><span class="w"> </span><span class="err">&lt;</span><span class="mi">-</span><span class="w"> </span><span class="err">i</span><span class="kc">t</span><span class="w"> </span><span class="err">will</span><span class="w"> </span><span class="err">i</span><span class="kc">nstall</span><span class="w"> </span><span class="kc">t</span><span class="err">he</span><span class="w"> </span><span class="err">Me</span><span class="kc">tal</span><span class="err">LB</span><span class="w"> </span><span class="err">addo</span><span class="kc">n</span>
+<span class="w">  </span><span class="nt">"enable_trivy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_vault"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_vcluster"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_vector"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"enable_zipkin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"k8s_cluster_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hub-dev"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"k8s_domain_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dokaseca.local"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"kubernetes_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.31.2"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The ApplicationSet automatically discovers clusters with the addon annotation and deploys the addon.</p>
@@ -3747,7 +3747,7 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
 <div class="highlight"><pre><span></span><code><span class="c1"># In addon manifests</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">argocd.argoproj.io/sync-wave</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span><span class="w">  </span><span class="c1"># Deploy first</span>
+<span class="w">    </span><span class="nt">argocd.argoproj.io/sync-wave</span><span class="p">:</span><span class="w"> </span><span class="s">"1"</span><span class="w">  </span><span class="c1"># Deploy first</span>
 </code></pre></div>
 
 
@@ -3905,10 +3905,10 @@ The annotations contain metadata for the addons' Helm charts and ArgoCD Applicat
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3736,11 +3736,11 @@ container images, Helm charts, and other deployment artifacts.</p>
 <span class="nt">data</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">.dockerconfigjson</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">    </span><span class="no">{</span>
-<span class="w">      </span><span class="no">&quot;auths&quot;: {</span>
-<span class="w">        </span><span class="no">&quot;ghcr.io&quot;: {</span>
-<span class="w">          </span><span class="no">&quot;username&quot;: &quot;your-username&quot;,</span>
-<span class="w">          </span><span class="no">&quot;password&quot;: &quot;your-token&quot;,</span>
-<span class="w">          </span><span class="no">&quot;auth&quot;: &quot;base64-encoded-credentials&quot;</span>
+<span class="w">      </span><span class="no">"auths": {</span>
+<span class="w">        </span><span class="no">"ghcr.io": {</span>
+<span class="w">          </span><span class="no">"username": "your-username",</span>
+<span class="w">          </span><span class="no">"password": "your-token",</span>
+<span class="w">          </span><span class="no">"auth": "base64-encoded-credentials"</span>
 <span class="w">        </span><span class="no">}</span>
 <span class="w">      </span><span class="no">}</span>
 <span class="w">    </span><span class="no">}</span>
@@ -3753,7 +3753,7 @@ container images, Helm charts, and other deployment artifacts.</p>
 <span class="nt">on</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">push</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&#39;v*&#39;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">'v*'</span><span class="p p-Indicator">]</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
@@ -3816,11 +3816,11 @@ container images, Helm charts, and other deployment artifacts.</p>
 <h3 id="package-metadata"><strong>Package Metadata</strong><a class="headerlink" href="#package-metadata" title="Permanent link">&para;</a></h3>
 <p>Rich metadata support for better package management:</p>
 <div class="highlight"><pre><span></span><code><span class="c"># Dockerfile with metadata labels</span>
-<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.title<span class="o">=</span><span class="s2">&quot;DoKa Seca Control Plane&quot;</span>
-<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.description<span class="o">=</span><span class="s2">&quot;Platform engineering framework for Kubernetes&quot;</span>
-<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.source<span class="o">=</span><span class="s2">&quot;https://github.com/your-org/dokaseca-control-plane&quot;</span>
-<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.documentation<span class="o">=</span><span class="s2">&quot;https://dokaseca.dev/docs&quot;</span>
-<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.version<span class="o">=</span><span class="s2">&quot;1.0.0&quot;</span>
+<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.title<span class="o">=</span><span class="s2">"DoKa Seca Control Plane"</span>
+<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.description<span class="o">=</span><span class="s2">"Platform engineering framework for Kubernetes"</span>
+<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.source<span class="o">=</span><span class="s2">"https://github.com/your-org/dokaseca-control-plane"</span>
+<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.documentation<span class="o">=</span><span class="s2">"https://dokaseca.dev/docs"</span>
+<span class="k">LABEL</span><span class="w"> </span>org.opencontainers.image.version<span class="o">=</span><span class="s2">"1.0.0"</span>
 </code></pre></div>
 <h3 id="vulnerability-scanning"><strong>Vulnerability Scanning</strong><a class="headerlink" href="#vulnerability-scanning" title="Permanent link">&para;</a></h3>
 <p>GHCR provides built-in security scanning:</p>
@@ -3887,11 +3887,11 @@ container images, Helm charts, and other deployment artifacts.</p>
 <p>DoKa Seca provides migration tools for transitioning from other container registries:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Migration script example</span>
 <span class="c1">#!/bin/bash</span>
-<span class="nv">SOURCE_REGISTRY</span><span class="o">=</span><span class="s2">&quot;docker.io/myorg&quot;</span>
-<span class="nv">TARGET_REGISTRY</span><span class="o">=</span><span class="s2">&quot;ghcr.io/myorg&quot;</span>
+<span class="nv">SOURCE_REGISTRY</span><span class="o">=</span><span class="s2">"docker.io/myorg"</span>
+<span class="nv">TARGET_REGISTRY</span><span class="o">=</span><span class="s2">"ghcr.io/myorg"</span>
 
 <span class="c1"># Pull, retag, and push images</span>
-<span class="k">for</span><span class="w"> </span>image<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>images<span class="w"> </span>--format<span class="w"> </span><span class="s2">&quot;{{.Repository}}:{{.Tag}}&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">$SOURCE_REGISTRY</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="k">for</span><span class="w"> </span>image<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>docker<span class="w"> </span>images<span class="w"> </span>--format<span class="w"> </span><span class="s2">"{{.Repository}}:{{.Tag}}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="nv">$SOURCE_REGISTRY</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <span class="w">  </span><span class="nv">new_image</span><span class="o">=</span><span class="si">${</span><span class="nv">image</span><span class="p">/</span><span class="nv">$SOURCE_REGISTRY</span><span class="p">/</span><span class="nv">$TARGET_REGISTRY</span><span class="si">}</span>
 <span class="w">  </span>docker<span class="w"> </span>tag<span class="w"> </span><span class="nv">$image</span><span class="w"> </span><span class="nv">$new_image</span>
 <span class="w">  </span>docker<span class="w"> </span>push<span class="w"> </span><span class="nv">$new_image</span>
@@ -4053,10 +4053,10 @@ container images, Helm charts, and other deployment artifacts.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../js/timeago.min.js"></script>
       

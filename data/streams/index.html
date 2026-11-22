@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3812,7 +3812,7 @@ helm<span class="w"> </span>install<span class="w"> </span>strimzi-kafka-operato
 <span class="w">      </span><span class="nt">transaction.state.log.min.isr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
 <span class="w">      </span><span class="nt">default.replication.factor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="w">      </span><span class="nt">min.insync.replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<span class="w">      </span><span class="nt">inter.broker.protocol.version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3.6&quot;</span>
+<span class="w">      </span><span class="nt">inter.broker.protocol.version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.6"</span>
 <span class="w">    </span><span class="nt">storage</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jbod</span>
 <span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
@@ -3850,7 +3850,7 @@ helm<span class="w"> </span>install<span class="w"> </span>strimzi-kafka-operato
 kubectl<span class="w"> </span>-n<span class="w"> </span>kafka<span class="w"> </span>port-forward<span class="w"> </span>svc/my-kafka-cluster-kafka-bootstrap<span class="w"> </span><span class="m">9092</span>:9092
 
 <span class="c1"># Use kafkacat to produce messages</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, Kafka!&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kcat<span class="w"> </span>-b<span class="w"> </span>localhost:9092<span class="w"> </span>-t<span class="w"> </span>my-topic<span class="w"> </span>-P
+<span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello, Kafka!"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kcat<span class="w"> </span>-b<span class="w"> </span>localhost:9092<span class="w"> </span>-t<span class="w"> </span>my-topic<span class="w"> </span>-P
 
 <span class="c1"># Consume messages</span>
 kcat<span class="w"> </span>-b<span class="w"> </span>localhost:9092<span class="w"> </span>-t<span class="w"> </span>my-topic<span class="w"> </span>-C
@@ -3877,7 +3877,7 @@ helm<span class="w"> </span>install<span class="w"> </span>nats-operator<span cl
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nats</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
-<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2.10.7&quot;</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"2.10.7"</span>
 <span class="w">  </span><span class="nt">pod</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enableConfigReload</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">auth</span><span class="p">:</span>
@@ -3899,7 +3899,7 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </
 
 <span class="c1"># Create a stream</span>
 nats<span class="w"> </span>stream<span class="w"> </span>add<span class="w"> </span>my-stream<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--subjects<span class="o">=</span><span class="s2">&quot;orders.*&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--subjects<span class="o">=</span><span class="s2">"orders.*"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--retention<span class="o">=</span>limits<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--storage<span class="o">=</span>file<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--replicas<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
@@ -3911,7 +3911,7 @@ nats<span class="w"> </span>stream<span class="w"> </span>add<span class="w"> </
 
 <span class="c1"># Create a consumer</span>
 nats<span class="w"> </span>consumer<span class="w"> </span>add<span class="w"> </span>my-stream<span class="w"> </span>my-consumer<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--filter<span class="o">=</span><span class="s2">&quot;orders.created&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--filter<span class="o">=</span><span class="s2">"orders.created"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--ack<span class="o">=</span>explicit<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--pull<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--deliver<span class="o">=</span>all<span class="w"> </span><span class="se">\</span>
@@ -3926,7 +3926,7 @@ helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </sp
 helm<span class="w"> </span>repo<span class="w"> </span>update
 
 <span class="c1"># Install the RabbitMQ Cluster Operator</span>
-kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml&quot;</span>
+kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span><span class="s2">"https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"</span>
 </code></pre></div>
 <h3 id="deploying-a-rabbitmq-cluster">Deploying a RabbitMQ Cluster<a class="headerlink" href="#deploying-a-rabbitmq-cluster" title="Permanent link">&para;</a></h3>
 <p>Create a RabbitMQ cluster using the following manifest:</p>
@@ -3961,22 +3961,22 @@ kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> <
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>port-forward<span class="w"> </span>svc/rabbitmq-cluster<span class="w"> </span><span class="m">15672</span>:15672
 
 <span class="c1"># Get the admin credentials</span>
-<span class="nv">RABBITMQ_USER</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>rabbitmq-cluster-default-user<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.username}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="k">)</span><span class="s2">&quot;</span>
-<span class="nv">RABBITMQ_PASS</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>rabbitmq-cluster-default-user<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.password}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">RABBITMQ_USER</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>rabbitmq-cluster-default-user<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.username}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="k">)</span><span class="s2">"</span>
+<span class="nv">RABBITMQ_PASS</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>rabbitmq-cluster-default-user<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.data.password}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="k">)</span><span class="s2">"</span>
 
 <span class="c1"># Use the RabbitMQ CLI</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-cluster-server-0<span class="w"> </span>--<span class="w"> </span>rabbitmqadmin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_USER</span><span class="s2">&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-u<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_USER</span><span class="s2">"</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nb">declare</span><span class="w"> </span>vhost<span class="w"> </span><span class="nv">name</span><span class="o">=</span>my-vhost
 
 <span class="c1"># Create a queue</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-cluster-server-0<span class="w"> </span>--<span class="w"> </span>rabbitmqadmin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_USER</span><span class="s2">&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-u<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_USER</span><span class="s2">"</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nb">declare</span><span class="w"> </span>queue<span class="w"> </span><span class="nv">name</span><span class="o">=</span>my-queue<span class="w"> </span><span class="nv">vhost</span><span class="o">=</span>my-vhost<span class="w"> </span><span class="nv">durable</span><span class="o">=</span><span class="nb">true</span>
 
 <span class="c1"># Create an exchange</span>
 kubectl<span class="w"> </span>-n<span class="w"> </span>rabbitmq<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>rabbitmq-cluster-server-0<span class="w"> </span>--<span class="w"> </span>rabbitmqadmin<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>-u<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_USER</span><span class="s2">&quot;</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-u<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_USER</span><span class="s2">"</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$RABBITMQ_PASS</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nb">declare</span><span class="w"> </span>exchange<span class="w"> </span><span class="nv">name</span><span class="o">=</span>my-exchange<span class="w"> </span><span class="nv">type</span><span class="o">=</span>topic<span class="w"> </span><span class="nv">vhost</span><span class="o">=</span>my-vhost<span class="w"> </span><span class="nv">durable</span><span class="o">=</span><span class="nb">true</span>
 </code></pre></div>
 <h2 id="integration-with-applications">Integration with Applications<a class="headerlink" href="#integration-with-applications" title="Permanent link">&para;</a></h2>
@@ -4268,10 +4268,10 @@ kubectl<span class="w"> </span>-n<span class="w"> </span>nats<span class="w"> </
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

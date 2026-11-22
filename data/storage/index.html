@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3515,7 +3515,7 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">  </span>--bucket<span class="w"> </span>velero<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--secret-file<span class="w"> </span>./credentials-velero<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--use-volume-snapshots<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--backup-location-config<span class="w"> </span><span class="nv">region</span><span class="o">=</span>minio,s3ForcePathStyle<span class="o">=</span><span class="s2">&quot;true&quot;</span>,s3Url<span class="o">=</span>http://&lt;docker-host-ip&gt;:9000
+<span class="w">  </span>--backup-location-config<span class="w"> </span><span class="nv">region</span><span class="o">=</span>minio,s3ForcePathStyle<span class="o">=</span><span class="s2">"true"</span>,s3Url<span class="o">=</span>http://&lt;docker-host-ip&gt;:9000
 </code></pre></div>
 <h3 id="loki-log-storage">Loki Log Storage<a class="headerlink" href="#loki-log-storage" title="Permanent link">&para;</a></h3>
 <p><a href="https://grafana.com/oss/loki/">Loki</a> is configured to use MinIO for persistent log storage:</p>
@@ -3553,15 +3553,15 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
 <span class="w">  </span><span class="nt">persistentVolume</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">extraArgs</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">storageDataPath</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/storage&quot;</span>
-<span class="w">    </span><span class="nt">retentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3m&quot;</span>
+<span class="w">    </span><span class="nt">storageDataPath</span><span class="p">:</span><span class="w"> </span><span class="s">"/storage"</span>
+<span class="w">    </span><span class="nt">retentionPeriod</span><span class="p">:</span><span class="w"> </span><span class="s">"3m"</span>
 <span class="w">  </span><span class="nt">s3</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://&lt;docker-host-ip&gt;:9000&quot;</span>
-<span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;vm&quot;</span>
-<span class="w">    </span><span class="nt">accessKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minioadmin&quot;</span>
-<span class="w">    </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minioadmin&quot;</span>
-<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;minio&quot;</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">"http://&lt;docker-host-ip&gt;:9000"</span>
+<span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="s">"vm"</span>
+<span class="w">    </span><span class="nt">accessKey</span><span class="p">:</span><span class="w"> </span><span class="s">"minioadmin"</span>
+<span class="w">    </span><span class="nt">secretKey</span><span class="p">:</span><span class="w"> </span><span class="s">"minioadmin"</span>
+<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">"minio"</span>
 </code></pre></div>
 <h2 id="reportportal-dependencies">ReportPortal Dependencies<a class="headerlink" href="#reportportal-dependencies" title="Permanent link">&para;</a></h2>
 <p>ReportPortal relies on MinIO for object storage. You can deploy MinIO manually as described earlier in this document or use a cloud-based alternative like AWS S3 or Azure Blob Storage.</p>
@@ -3738,10 +3738,10 @@ velero<span class="w"> </span>install<span class="w"> </span><span class="se">\<
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

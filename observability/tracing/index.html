@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -4252,17 +4252,17 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/jaeger-qu
 <span class="w">      </span><span class="no">resource:</span>
 <span class="w">        </span><span class="no">attributes:</span>
 <span class="w">          </span><span class="no">- key: cluster.name</span>
-<span class="w">            </span><span class="no">value: &quot;production&quot;</span>
+<span class="w">            </span><span class="no">value: "production"</span>
 <span class="w">            </span><span class="no">action: insert</span>
 
 <span class="w">    </span><span class="no">exporters:</span>
 <span class="w">      </span><span class="no">otlp/tempo:</span>
-<span class="w">        </span><span class="no">endpoint: &quot;http://tempo-distributor:4317&quot;</span>
+<span class="w">        </span><span class="no">endpoint: "http://tempo-distributor:4317"</span>
 <span class="w">        </span><span class="no">tls:</span>
 <span class="w">          </span><span class="no">insecure: true</span>
 
 <span class="w">      </span><span class="no">jaeger/jaeger:</span>
-<span class="w">        </span><span class="no">endpoint: &quot;jaeger-collector:14250&quot;</span>
+<span class="w">        </span><span class="no">endpoint: "jaeger-collector:14250"</span>
 <span class="w">        </span><span class="no">tls:</span>
 <span class="w">          </span><span class="no">insecure: true</span>
 
@@ -4291,7 +4291,7 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/jaeger-qu
 
 <span class="w">  </span><span class="nt">sampler</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">parentbased_traceidratio</span>
-<span class="w">    </span><span class="nt">argument</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.1&quot;</span><span class="w">  </span><span class="c1"># 10% sampling rate</span>
+<span class="w">    </span><span class="nt">argument</span><span class="p">:</span><span class="w"> </span><span class="s">"0.1"</span><span class="w">  </span><span class="c1"># 10% sampling rate</span>
 
 <span class="w">  </span><span class="nt">java</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/open-telemetry/opentelemetry-operator/autoinstrumentation-java:latest</span>
@@ -4314,9 +4314,9 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/jaeger-qu
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">annotations</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-java</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default-instrumentation&quot;</span>
-<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-nodejs</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default-instrumentation&quot;</span>
-<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-python</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;default-instrumentation&quot;</span>
+<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-java</span><span class="p">:</span><span class="w"> </span><span class="s">"default-instrumentation"</span>
+<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-nodejs</span><span class="p">:</span><span class="w"> </span><span class="s">"default-instrumentation"</span>
+<span class="w">        </span><span class="nt">instrumentation.opentelemetry.io/inject-python</span><span class="p">:</span><span class="w"> </span><span class="s">"default-instrumentation"</span>
 <span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
@@ -4370,7 +4370,7 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/jaeger-qu
 <div class="highlight"><pre><span></span><code><span class="c1"># Basic probabilistic sampling</span>
 <span class="nt">sampler</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">probabilistic</span>
-<span class="w">  </span><span class="nt">argument</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.1&quot;</span><span class="w">  </span><span class="c1"># 10% of traces</span>
+<span class="w">  </span><span class="nt">argument</span><span class="p">:</span><span class="w"> </span><span class="s">"0.1"</span><span class="w">  </span><span class="c1"># 10% of traces</span>
 </code></pre></div>
 <h3 id="2-adaptive-sampling">2. Adaptive Sampling<a class="headerlink" href="#2-adaptive-sampling" title="Permanent link">&para;</a></h3>
 <p>TODO</p>
@@ -4532,10 +4532,10 @@ kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/jaeger-qu
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

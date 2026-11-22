@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3490,10 +3490,10 @@ vault<span class="w"> </span>auth<span class="w"> </span><span class="nb">enable
 
 <span class="c1"># Configure OIDC</span>
 vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_discovery_url</span><span class="o">=</span><span class="s2">&quot;https://keycloak.dokaseca.local/realms/dokaseca&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_client_id</span><span class="o">=</span><span class="s2">&quot;vault&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">oidc_client_secret</span><span class="o">=</span><span class="s2">&quot;vault-client-secret&quot;</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span><span class="nv">default_role</span><span class="o">=</span><span class="s2">&quot;default&quot;</span>
+<span class="w">    </span><span class="nv">oidc_discovery_url</span><span class="o">=</span><span class="s2">"https://keycloak.dokaseca.local/realms/dokaseca"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">oidc_client_id</span><span class="o">=</span><span class="s2">"vault"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">oidc_client_secret</span><span class="o">=</span><span class="s2">"vault-client-secret"</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">default_role</span><span class="o">=</span><span class="s2">"default"</span>
 </code></pre></div>
 <h3 id="argocd">ArgoCD<a class="headerlink" href="#argocd" title="Permanent link">&para;</a></h3>
 <p>ArgoCD integrates with Keycloak for SSO and RBAC:</p>
@@ -3502,7 +3502,7 @@ vault<span class="w"> </span>write<span class="w"> </span>auth/oidc/config<span 
 <span class="w">  </span><span class="no">issuer: https://keycloak.dokaseca.local/realms/dokaseca</span>
 <span class="w">  </span><span class="no">clientId: argocd</span>
 <span class="w">  </span><span class="no">clientSecret: argocd-client-secret</span>
-<span class="w">  </span><span class="no">requestedScopes: [&quot;openid&quot;, &quot;profile&quot;, &quot;email&quot;, &quot;groups&quot;]</span>
+<span class="w">  </span><span class="no">requestedScopes: ["openid", "profile", "email", "groups"]</span>
 
 <span class="nt">policy.csv</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">  </span><span class="no">p, role:platform-admin, applications, *, */*, allow</span>
@@ -3541,26 +3541,26 @@ granted to their role.</p>
 <h3 id="github-integration">GitHub Integration<a class="headerlink" href="#github-integration" title="Permanent link">&para;</a></h3>
 <p>Configure GitHub as an identity provider for developer authentication:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;GitHub&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;clientId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${github.client.id}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;clientSecret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${github.client.secret}&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;defaultScope&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user:email&quot;</span>
+<span class="w">  </span><span class="nt">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GitHub"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"clientId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${github.client.id}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"clientSecret"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${github.client.secret}"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"defaultScope"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user:email"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="ldapactive-directory">LDAP/Active Directory<a class="headerlink" href="#ldapactive-directory" title="Permanent link">&para;</a></h3>
 <p>Enterprise LDAP integration for corporate users:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;providerId&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;alias&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldap&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Doka Seca LDAP&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ad&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;connectionUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ldaps://ldap.dokaseca.local:636&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;usersDn&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ou=users,dc=dokaseca,dc=local&quot;</span>
+<span class="w">  </span><span class="nt">"providerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ldap"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"alias"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ldap"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"displayName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doka Seca LDAP"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"config"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"vendor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ad"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"connectionUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ldaps://ldap.dokaseca.local:636"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"usersDn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ou=users,dc=dokaseca,dc=local"</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -3689,10 +3689,10 @@ granted to their role.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

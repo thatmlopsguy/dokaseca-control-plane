@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -4397,21 +4397,21 @@ fits your requirements.</p>
 <span class="w">  </span><span class="nt">kubernetes_logs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes_logs</span>
 <span class="w">    </span><span class="nt">include_paths</span><span class="p">:</span>
-<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/var/log/pods/*/*/*.log&quot;</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"/var/log/pods/*/*/*.log"</span>
 
 <span class="nt">transforms</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">parse_logs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;kubernetes_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"kubernetes_logs"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">.timestamp = parse_timestamp!(.timestamp, &quot;%Y-%m-%dT%H:%M:%S%.fZ&quot;)</span>
-<span class="w">      </span><span class="no">.level = parse_regex!(.message, r&#39;level=(?P&lt;level&gt;\w+)&#39;)</span>
+<span class="w">      </span><span class="no">.timestamp = parse_timestamp!(.timestamp, "%Y-%m-%dT%H:%M:%S%.fZ")</span>
+<span class="w">      </span><span class="no">.level = parse_regex!(.message, r'level=(?P&lt;level&gt;\w+)')</span>
 
 <span class="nt">sinks</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">victoria_logs</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">loki</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;parse_logs&quot;</span><span class="p p-Indicator">]</span>
-<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;http://victoria-logs:9428&quot;</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"parse_logs"</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">endpoint</span><span class="p">:</span><span class="w"> </span><span class="s">"http://victoria-logs:9428"</span>
 </code></pre></div>
 <h2 id="logging-architecture-patterns">Logging Architecture Patterns<a class="headerlink" href="#logging-architecture-patterns" title="Permanent link">&para;</a></h2>
 <p>Use different agents for different purposes:</p>
@@ -4474,34 +4474,34 @@ sent to storage backends.</p>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ip_address</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user_id</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">session_id</span>
-<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[REDACTED]&quot;</span>
+<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">"[REDACTED]"</span>
 
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">regex_replace</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">patterns</span><span class="p">:</span>
 <span class="w">        </span><span class="c1"># Email addresses</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[EMAIL_REDACTED]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'[EMAIL_REDACTED]'</span>
 <span class="w">        </span><span class="c1"># IP addresses</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[IP_REDACTED]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'[IP_REDACTED]'</span>
 <span class="w">        </span><span class="c1"># Phone numbers</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b\d{3}-\d{3}-\d{4}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;[PHONE_REDACTED]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b\d{3}-\d{3}-\d{4}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'[PHONE_REDACTED]'</span>
 </code></pre></div>
 <p><strong>Vector Configuration for GDPR:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">transforms</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">gdpr_redaction</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;application_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"application_logs"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no"># Redact email addresses</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;, &quot;[EMAIL_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', "[EMAIL_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># Redact IP addresses</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;, &quot;[IP_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', "[IP_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># Redact credit card numbers</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b&#39;, &quot;[CARD_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b\d{4}[\s-]?\d{4}[\s-]?\d{4}[\s-]?\d{4}\b', "[CARD_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># Remove sensitive fields</span>
 <span class="w">      </span><span class="no">del(.user_email)</span>
@@ -4526,21 +4526,21 @@ sent to storage backends.</p>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
 <span class="w">        </span><span class="nt">statements</span><span class="p">:</span>
 <span class="w">          </span><span class="c1"># Redact medical record numbers</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;MRN[:\\s]*\\d+&quot;, &quot;MRN:[MRN_REDACTED]&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, "MRN[:\\s]*\\d+", "MRN:[MRN_REDACTED]")</span>
 
 <span class="w">          </span><span class="c1"># Redact social security numbers</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;\\b\\d{3}-\\d{2}-\\d{4}\\b&quot;, &quot;[SSN_REDACTED]&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, "\\b\\d{3}-\\d{2}-\\d{4}\\b", "[SSN_REDACTED]")</span>
 
 <span class="w">          </span><span class="c1"># Redact dates of birth</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;\\b\\d{1,2}/\\d{1,2}/\\d{4}\\b&quot;, &quot;[DOB_REDACTED]&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, "\\b\\d{1,2}/\\d{1,2}/\\d{4}\\b", "[DOB_REDACTED]")</span>
 
 <span class="w">          </span><span class="c1"># Redact patient names (basic pattern)</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, &quot;Patient[:\\s]+[A-Za-z\\s]+&quot;, &quot;Patient</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">NAME_REDACTED</span><span class="p p-Indicator">]</span><span class="s">&quot;)</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">replace_pattern(body, "Patient[:\\s]+[A-Za-z\\s]+", "Patient</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">NAME_REDACTED</span><span class="p p-Indicator">]</span><span class="s">")</span>
 
 <span class="w">          </span><span class="s">#</span><span class="nv"> </span><span class="s">Remove</span><span class="nv"> </span><span class="s">PHI</span><span class="nv"> </span><span class="s">attributes</span>
-<span class="w">          </span><span class="s">-</span><span class="nv"> </span><span class="s">delete_key(attributes,</span><span class="nv"> </span><span class="s">&quot;</span><span class="l l-Scalar l-Scalar-Plain">patient_id&quot;)</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, &quot;ssn&quot;)</span>
-<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, &quot;dob&quot;)</span>
+<span class="w">          </span><span class="s">-</span><span class="nv"> </span><span class="s">delete_key(attributes,</span><span class="nv"> </span><span class="s">"</span><span class="l l-Scalar l-Scalar-Plain">patient_id")</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, "ssn")</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">delete_key(attributes, "dob")</span>
 
 <span class="w">  </span><span class="nt">batch</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1s</span>
@@ -4574,18 +4574,18 @@ sent to storage backends.</p>
 <p><strong>HIPAA Redaction Lua Script:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">-- /fluent-bit/scripts/hipaa_redact.lua</span>
 <span class="kr">function</span><span class="w"> </span><span class="nf">redact_phi</span><span class="p">(</span><span class="nv">tag</span><span class="p">,</span><span class="w"> </span><span class="nv">timestamp</span><span class="p">,</span><span class="w"> </span><span class="nv">record</span><span class="p">)</span>
-<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">record</span><span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="kd">local</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">record</span><span class="p">[</span><span class="s2">"log"</span><span class="p">]</span>
 <span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="nv">log</span><span class="w"> </span><span class="kr">then</span>
 <span class="w">        </span><span class="c1">-- Redact SSN patterns</span>
-<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;%d%d%d%-%d%d%-%d%d%d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;[SSN_REDACTED]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">"%d%d%d%-%d%d%-%d%d%d%d"</span><span class="p">,</span><span class="w"> </span><span class="s2">"[SSN_REDACTED]"</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1">-- Redact MRN patterns</span>
-<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MRN[:%s]*%d+&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;MRN:[MRN_REDACTED]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">"MRN[:%s]*%d+"</span><span class="p">,</span><span class="w"> </span><span class="s2">"MRN:[MRN_REDACTED]"</span><span class="p">)</span>
 
 <span class="w">        </span><span class="c1">-- Redact phone numbers</span>
-<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;%(%d%d%d%)%s*%d%d%d%-%d%d%d%d&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;[PHONE_REDACTED]&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">string.gsub</span><span class="p">(</span><span class="nv">log</span><span class="p">,</span><span class="w"> </span><span class="s2">"%(%d%d%d%)%s*%d%d%d%-%d%d%d%d"</span><span class="p">,</span><span class="w"> </span><span class="s2">"[PHONE_REDACTED]"</span><span class="p">)</span>
 
-<span class="w">        </span><span class="nv">record</span><span class="p">[</span><span class="s2">&quot;log&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">log</span>
+<span class="w">        </span><span class="nv">record</span><span class="p">[</span><span class="s2">"log"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">log</span>
 <span class="w">    </span><span class="kr">end</span>
 <span class="w">    </span><span class="kr">return</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nv">timestamp</span><span class="p">,</span><span class="w"> </span><span class="nv">record</span>
 <span class="kr">end</span>
@@ -4605,18 +4605,18 @@ sent to storage backends.</p>
 <div class="highlight"><pre><span></span><code><span class="nt">transforms</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">pci_redaction</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;payment_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"payment_logs"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no"># Redact credit card numbers (PAN)</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b4\d{15}\b&#39;, &quot;4***-****-****-[VISA_REDACTED]&quot;)  # Visa</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b5[1-5]\d{14}\b&#39;, &quot;5***-****-****-[MC_REDACTED]&quot;)  # MasterCard</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b3[47]\d{13}\b&#39;, &quot;3***-******-*[AMEX_REDACTED]&quot;)  # AmEx</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b4\d{15}\b', "4***-****-****-[VISA_REDACTED]")  # Visa</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b5[1-5]\d{14}\b', "5***-****-****-[MC_REDACTED]")  # MasterCard</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b3[47]\d{13}\b', "3***-******-*[AMEX_REDACTED]")  # AmEx</span>
 
 <span class="w">      </span><span class="no"># Redact CVV codes</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\bCVV[:\s]*\d{3,4}\b&#39;, &quot;CVV:[CVV_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\bCVV[:\s]*\d{3,4}\b', "CVV:[CVV_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># Redact track data</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;%[^?]+\?[^?]+\?&#39;, &quot;[TRACK_DATA_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'%[^?]+\?[^?]+\?', "[TRACK_DATA_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># Remove sensitive fields</span>
 <span class="w">      </span><span class="no">del(.pan)</span>
@@ -4626,8 +4626,8 @@ sent to storage backends.</p>
 
 <span class="w">      </span><span class="no"># Mask account numbers (show only last 4 digits)</span>
 <span class="w">      </span><span class="no">if exists(.account_number) {</span>
-<span class="w">        </span><span class="no">.account_number = replace(.account_number, r&#39;\b\d{12,19}\b&#39;) do |match|</span>
-<span class="w">          </span><span class="no">&quot;**** **** **** &quot; + slice(match, -4)</span>
+<span class="w">        </span><span class="no">.account_number = replace(.account_number, r'\b\d{12,19}\b') do |match|</span>
+<span class="w">          </span><span class="no">"**** **** **** " + slice(match, -4)</span>
 <span class="w">        </span><span class="no">end</span>
 <span class="w">      </span><span class="no">}</span>
 </code></pre></div>
@@ -4636,12 +4636,12 @@ sent to storage backends.</p>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">redact</span><span class="p">:</span>
 <span class="w">      </span><span class="c1"># Credit card patterns</span>
 <span class="w">      </span><span class="nt">patterns</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b4[0-9]{15}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;4***-****-****-[VISA]&#39;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b5[1-5][0-9]{14}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;5***-****-****-[MC]&#39;</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;\b3[47][0-9]{13}\b&#39;</span>
-<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3***-******-*[AMEX]&#39;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b4[0-9]{15}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'4***-****-****-[VISA]'</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b5[1-5][0-9]{14}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'5***-****-****-[MC]'</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">'\b3[47][0-9]{13}\b'</span>
+<span class="w">          </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">'3***-******-*[AMEX]'</span>
 
 <span class="w">      </span><span class="c1"># Sensitive authentication data</span>
 <span class="w">      </span><span class="nt">fields</span><span class="p">:</span>
@@ -4651,7 +4651,7 @@ sent to storage backends.</p>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pin</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">track_data</span>
 
-<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;[PCI_REDACTED]&quot;</span>
+<span class="w">      </span><span class="nt">replacement</span><span class="p">:</span><span class="w"> </span><span class="s">"[PCI_REDACTED]"</span>
 </code></pre></div>
 <h3 id="multi-compliance-architecture">Multi-Compliance Architecture<a class="headerlink" href="#multi-compliance-architecture" title="Permanent link">&para;</a></h3>
 <p>For environments requiring multiple compliance standards:</p>
@@ -4659,19 +4659,19 @@ sent to storage backends.</p>
 <span class="nt">transforms</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">compliance_processor</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;raw_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"raw_logs"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no"># GDPR - Personal data redaction</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b&#39;, &quot;[EMAIL_REDACTED]&quot;)</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b&#39;, &quot;[IP_REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', "[EMAIL_REDACTED]")</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b', "[IP_REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># HIPAA - PHI redaction</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b\d{3}-\d{2}-\d{4}\b&#39;, &quot;[SSN_REDACTED]&quot;)</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;MRN[:\s]*\d+&#39;, &quot;MRN:[REDACTED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b\d{3}-\d{2}-\d{4}\b', "[SSN_REDACTED]")</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'MRN[:\s]*\d+', "MRN:[REDACTED]")</span>
 
 <span class="w">      </span><span class="no"># PCI DSS - Payment data redaction</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b4\d{15}\b&#39;, &quot;4***-****-****-[MASKED]&quot;)</span>
-<span class="w">      </span><span class="no">.message = replace(.message, r&#39;\b5[1-5]\d{14}\b&#39;, &quot;5***-****-****-[MASKED]&quot;)</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b4\d{15}\b', "4***-****-****-[MASKED]")</span>
+<span class="w">      </span><span class="no">.message = replace(.message, r'\b5[1-5]\d{14}\b', "5***-****-****-[MASKED]")</span>
 
 <span class="w">      </span><span class="no"># Add compliance tags</span>
 <span class="w">      </span><span class="no">.compliance_processed = true</span>
@@ -4683,17 +4683,17 @@ sent to storage backends.</p>
 <span class="nt">transforms</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">compliance_validator</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">remap</span>
-<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;processed_logs&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"processed_logs"</span><span class="p p-Indicator">]</span>
 <span class="w">    </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">      </span><span class="no"># Check for potential data leaks</span>
-<span class="w">      </span><span class="no">if match(.message, r&#39;\b\d{3}-\d{2}-\d{4}\b&#39;) {</span>
-<span class="w">        </span><span class="no">log(&quot;COMPLIANCE_VIOLATION: Potential SSN found in logs&quot;, level: &quot;error&quot;)</span>
-<span class="w">        </span><span class="no">.compliance_violation = &quot;SSN_DETECTED&quot;</span>
+<span class="w">      </span><span class="no">if match(.message, r'\b\d{3}-\d{2}-\d{4}\b') {</span>
+<span class="w">        </span><span class="no">log("COMPLIANCE_VIOLATION: Potential SSN found in logs", level: "error")</span>
+<span class="w">        </span><span class="no">.compliance_violation = "SSN_DETECTED"</span>
 <span class="w">      </span><span class="no">}</span>
 
-<span class="w">      </span><span class="no">if match(.message, r&#39;\b4\d{15}\b&#39;) {</span>
-<span class="w">        </span><span class="no">log(&quot;COMPLIANCE_VIOLATION: Potential credit card found in logs&quot;, level: &quot;error&quot;)</span>
-<span class="w">        </span><span class="no">.compliance_violation = &quot;CARD_DETECTED&quot;</span>
+<span class="w">      </span><span class="no">if match(.message, r'\b4\d{15}\b') {</span>
+<span class="w">        </span><span class="no">log("COMPLIANCE_VIOLATION: Potential credit card found in logs", level: "error")</span>
+<span class="w">        </span><span class="no">.compliance_violation = "CARD_DETECTED"</span>
 <span class="w">      </span><span class="no">}</span>
 </code></pre></div>
 <h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
@@ -4863,10 +4863,10 @@ sent to storage backends.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

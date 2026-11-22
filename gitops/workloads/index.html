@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3433,7 +3433,7 @@ with environment-specific configurations:</p>
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">argocd</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">goTemplate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="w">  </span><span class="nt">goTemplateOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;missingkey=error&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">goTemplateOptions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"missingkey=error"</span><span class="p p-Indicator">]</span>
 <span class="w">  </span><span class="nt">generators</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">merge</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">mergeKeys</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">server</span><span class="p p-Indicator">]</span>
@@ -3441,34 +3441,34 @@ with environment-specific configurations:</p>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;workload&quot;</span>
-<span class="w">                  </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"workload"</span>
+<span class="w">                  </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"0.4.0"</span><span class="w"> </span><span class="c1"># Default chart version</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev</span>
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.4.0&quot;</span><span class="w"> </span><span class="c1"># Default helm chart version for dev</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"0.4.0"</span><span class="w"> </span><span class="c1"># Default helm chart version for dev</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stg</span>
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.3.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version for staging</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"0.3.0"</span><span class="w"> </span><span class="c1"># Default chart version for staging</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">selector</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">matchLabels</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prod</span>
 <span class="w">              </span><span class="nt">values</span><span class="p">:</span>
-<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0.2.0&quot;</span><span class="w"> </span><span class="c1"># Default chart version for production</span>
+<span class="w">                </span><span class="nt">chartVersion</span><span class="p">:</span><span class="w"> </span><span class="s">"0.2.0"</span><span class="w"> </span><span class="c1"># Default chart version for production</span>
 <span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">python-api-helm-{{.name}}</span>
 <span class="w">      </span><span class="c1"># annotations:</span>
 <span class="w">      </span><span class="c1"># https://docs.kargo.io/user-guide/how-to-guides/argo-cd-integration#authorizing-updates</span>
-<span class="w">      </span><span class="c1">#  kargo.akuity.io/authorized-stage: kargo-simple-python-demo:{{.metadata.labels.env}} # &quot;&lt;project-name&gt;:&lt;stage-name&gt;&quot;</span>
+<span class="w">      </span><span class="c1">#  kargo.akuity.io/authorized-stage: kargo-simple-python-demo:{{.metadata.labels.env}} # "&lt;project-name&gt;:&lt;stage-name&gt;"</span>
 <span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/write-back-method: git</span>
 <span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/write-back-target: kustomization</span>
 <span class="w">      </span><span class="c1">#   argocd-image-updater.argoproj.io/image-list: python-app=ghcr.io/thatmlopsguy/python-demo-api</span>
@@ -3483,15 +3483,15 @@ with environment-specific configurations:</p>
 <span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repoURL</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ghcr.io/&lt;org&gt;/charts</span><span class="w"> </span><span class="c1"># helm chart repository</span>
 <span class="w">          </span><span class="nt">chart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global</span><span class="w"> </span><span class="c1"># helm chart used for all applications</span>
-<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{.values.chartVersion}}&#39;</span>
+<span class="w">          </span><span class="nt">targetRevision</span><span class="p">:</span><span class="w"> </span><span class="s">'{{.values.chartVersion}}'</span>
 <span class="w">          </span><span class="nt">helm</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">valueFiles</span><span class="p">:</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/common.yaml&#39;</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/envs/{{.metadata.labels.env}}.yaml&#39;</span>
-<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;$root/chart/simple/values/regions/{{.metadata.labels.region}}.yaml&#39;</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'$root/chart/simple/values/common.yaml'</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'$root/chart/simple/values/envs/{{.metadata.labels.env}}.yaml'</span>
+<span class="w">              </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'$root/chart/simple/values/regions/{{.metadata.labels.region}}.yaml'</span>
 <span class="w">      </span><span class="nt">destination</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;{{.server}}&#39;</span>
-<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;python-demo-{{.metadata.labels.env}}&#39;</span>
+<span class="w">        </span><span class="nt">server</span><span class="p">:</span><span class="w"> </span><span class="s">'{{.server}}'</span>
+<span class="w">        </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="s">'python-demo-{{.metadata.labels.env}}'</span>
 <span class="w">      </span><span class="nt">syncPolicy</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">automated</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">prune</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -3520,11 +3520,11 @@ only to clusters belonging to that specific team.</p>
 DoKa Seca Terraform configuration. In the cluster secret, add the label under the <code>metadata.labels</code> section:</p>
 <div class="highlight"><pre><span></span><code><span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
-<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;workload&quot;</span>
-<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dev&quot;</span><span class="w">  </span><span class="c1"># or stg, prod</span>
-<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span><span class="w">  </span><span class="c1"># your specific region</span>
-<span class="w">    </span><span class="nt">cloud</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;local&quot;</span>
+<span class="w">    </span><span class="nt">team-a</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">"workload"</span>
+<span class="w">    </span><span class="nt">env</span><span class="p">:</span><span class="w"> </span><span class="s">"dev"</span><span class="w">  </span><span class="c1"># or stg, prod</span>
+<span class="w">    </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">"us-east-1"</span><span class="w">  </span><span class="c1"># your specific region</span>
+<span class="w">    </span><span class="nt">cloud</span><span class="p">:</span><span class="w"> </span><span class="s">"local"</span>
 </code></pre></div>
 <p>This labeling strategy allows ApplicationSets to precisely target the right clusters based on team ownership, environment,
 and geographical region, ensuring proper workload isolation and deployment control across your multi-cluster setup.</p>
@@ -3689,10 +3689,10 @@ and geographical region, ensuring proper workload isolation and deployment contr
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       

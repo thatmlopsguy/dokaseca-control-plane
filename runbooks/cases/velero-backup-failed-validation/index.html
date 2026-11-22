@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../../assets/logos/favicon.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -3302,14 +3302,14 @@ by the Velero AWS plugin.</p>
 my-backup   FailedValidation   0        0          &lt;nil&gt;     29d       default            &lt;none&gt;
 </code></pre></div>
 <p>Velero controller logs contain:</p>
-<div class="highlight"><pre><span></span><code>level=error msg=&quot;Error getting a backup store&quot;
+<div class="highlight"><pre><span></span><code>level=error msg="Error getting a backup store"
   backup-storage-location=velero/default
-  error=&quot;unable to get credentials: unable to get key for secret:
-         \&quot;velero-s3-credentials\&quot; secret is missing data for key \&quot;cloud\&quot;&quot;
+  error="unable to get credentials: unable to get key for secret:
+         \"velero-s3-credentials\" secret is missing data for key \"cloud\""
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>level=error msg=&quot;Current BackupStorageLocations available/unavailable/unknown: 0/1/0,
-  BackupStorageLocation \&quot;default\&quot; is unavailable: unable to get credentials:
-  unable to get key for secret: \&quot;velero-s3-credentials\&quot; secret is missing data for key \&quot;cloud\&quot;&quot;
+<div class="highlight"><pre><span></span><code>level=error msg="Current BackupStorageLocations available/unavailable/unknown: 0/1/0,
+  BackupStorageLocation \"default\" is unavailable: unable to get credentials:
+  unable to get key for secret: \"velero-s3-credentials\" secret is missing data for key \"cloud\""
 </code></pre></div>
 <hr />
 <h2 id="root-cause">Root Cause<a class="headerlink" href="#root-cause" title="Permanent link">&para;</a></h2>
@@ -3319,8 +3319,8 @@ contain an INI-formatted AWS credentials file. Providing the credentials as indi
 causes the <code>BackupStorageLocation</code> to fail validation.</p>
 <h3 id="incorrect-secret-format-causes-failure">Incorrect Secret format (causes failure)<a class="headerlink" href="#incorrect-secret-format-causes-failure" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">stringData</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;velero&quot;</span>
-<span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;secret&gt;&quot;</span>
+<span class="w">  </span><span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span><span class="w"> </span><span class="s">"velero"</span>
+<span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="s">"&lt;secret&gt;"</span>
 </code></pre></div>
 <h3 id="correct-secret-format">Correct Secret format<a class="headerlink" href="#correct-secret-format" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nt">stringData</span><span class="p">:</span>
@@ -3507,10 +3507,10 @@ When installing via Helm, the equivalent value is:</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.footer"], "search": "../../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
